@@ -1,4 +1,4 @@
-4px-sdk
+fop-sdk
 ======
 
 主要是封装了 跨境物流 [4PX 开放平台](http://open.4px.com/apiInfo/api) 接口
@@ -11,11 +11,10 @@
 
 <dependency>
     <groupId>com.kte</groupId>
-    <artifactId>4px-sdk</artifactId>
+    <artifactId>fop-sdk</artifactId>
     <version>1.0-SNAPSHOT</version>
 </dependency>
 ```
-
 
 | 服务名    | Client名称                                                                                            |                                                                             
 |:-------|:----------------------------------------------------------------------------------------------------|
