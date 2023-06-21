@@ -29,8 +29,6 @@
             <artifactId>jackson-databind</artifactId>
             <version>${jackson.version.databind}</version>
         </dependency>
-
-
     </dependencies>
 
 </project>

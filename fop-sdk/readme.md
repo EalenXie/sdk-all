@@ -10,7 +10,7 @@ fop-sdk
 ```xml
 
 <dependency>
-    <groupId>com.kte</groupId>
+    <groupId>io.github.ealenxie</groupId>
     <artifactId>fop-sdk</artifactId>
     <version>1.0-SNAPSHOT</version>
 </dependency>

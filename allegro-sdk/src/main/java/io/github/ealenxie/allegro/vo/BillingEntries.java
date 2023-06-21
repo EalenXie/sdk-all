@@ -1,0 +1,57 @@
+package io.github.ealenxie.allegro.vo;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+public class BillingEntries {
+    /**
+     * 账单条目id
+     */
+    @JsonProperty("id")
+    private String id;
+
+    /**
+     * 入账日期
+     */
+    @JsonProperty("occurredAt")
+    private String occurredAt;
+
+    /**
+     * 账单类型
+     */
+    @JsonProperty("type")
+    private BillingType type;
+
+    /**
+     * 账单条目的报价
+     */
+    @JsonProperty("offer")
+    private BillingOffer offer;
+
+    /**
+     * 账单条目的货币金额
+     */
+    @JsonProperty("value")
+    private BillingValue value;
+
+    /**
+     * 账单条目的税率
+     */
+    @JsonProperty("tax")
+    private BillingTax tax;
+
+    /**
+     * 账户余额
+     */
+    @JsonProperty("balance")
+    private Money balance;
+
+    /**
+     * 与此账单关联的订单id
+     */
+    @JsonProperty("order")
+    private IdVO order;
+}

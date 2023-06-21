@@ -11,6 +11,33 @@
     <name>sdk-all</name>
     <modules>
         <module>fop-sdk</module>
+        <module>allegro-sdk</module>
+        <module>amazon-sdk</module>
+        <module>wish-sdk</module>
+        <module>walmart-sdk</module>
+        <module>paypal-sdk</module>
+        <module>pingpong-sdk</module>
+        <module>shopify-sdk</module>
+        <module>ebay-sdk</module>
+        <module>lianlian-sdk</module>
+        <module>manomano-sdk</module>
+        <module>fruugo-sdk</module>
+        <module>payoneer-sdk</module>
+        <module>kaufland-sdk</module>
+        <module>dingtalk-sdk</module>
+        <module>feishu-sdk</module>
+        <module>enterprise-wechat-sdk</module>
+        <module>eccang-sdk</module>
+        <module>goodcang-sdk</module>
+        <module>cne-sdk</module>
+        <module>tianyancha-sdk</module>
+        <module>aliyun-ocr-sdk</module>
+        <module>alibaba-1688-sdk</module>
+        <module>edayun-sdk</module>
+        <module>winit-sdk</module>
+        <module>alyunwms-sdk</module>
+        <module>armlogi-sdk</module>
+        <module>worldfirst-sdk</module>
     </modules>
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -20,10 +47,12 @@
         <maven.compiler.target>8</maven.compiler.target>
         <lombok.version>1.18.26</lombok.version>
         <jackson.version.databind>2.15.1</jackson.version.databind>
+        <jackson.version.dataformat>2.15.1</jackson.version.dataformat>
+        <commons-codec.version>1.14</commons-codec.version>
+        <okhttp3.version>3.14.9</okhttp3.version>
     </properties>
-
     <description>
-                xxxxxxxxxxxxxxxxxxx
+        此项目为EalenXie个人研发并总结所有对接第三方请求接口SDK封装整合项目
     </description>
     <url>https://github.com/EalenXie/sdk-all</url>
     <licenses>
@@ -72,6 +101,21 @@
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-databind</artifactId>
                 <version>${jackson.version.databind}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.dataformat</groupId>
+                <artifactId>jackson-dataformat-xml</artifactId>
+                <version>${jackson.version.dataformat}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-codec</groupId>
+                <artifactId>commons-codec</artifactId>
+                <version>${commons-codec.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.squareup.okhttp3</groupId>
+                <artifactId>okhttp</artifactId>
+                <version>${okhttp3.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
