@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * <a href="https://open.1688.com/solution/solutionDetail.htm?spm=a260s.11247765.je8hk6gy.24.5d2932ba0QlkSC&solutionKey=1610440369288#apiAndMessageList">跨境ERP对接解决方案</a>
  *
- * @author 无敌暴龙战士
+ * @author jadechiang
  * @since 2022/12/15 15:42
  */
 public class CrossBorderERPClient extends Alibaba1688Client {

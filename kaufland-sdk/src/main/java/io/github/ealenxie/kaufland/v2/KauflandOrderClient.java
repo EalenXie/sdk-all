@@ -14,7 +14,7 @@ import java.net.URI;
 import java.util.Collections;
 
 /**
- * @author 无敌暴龙战士
+ * @author jadechiang
  * @since 2022/10/31 12:30
  */
 public class KauflandOrderClient extends KauflandClient {

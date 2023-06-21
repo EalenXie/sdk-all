@@ -20,7 +20,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * @author 无敌暴龙战士
+ * @author jadechiang
  * @since 2022/08/12 12:45
  */
 public class KauflandOrderClient extends KauflandClient {

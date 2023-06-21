@@ -8,7 +8,7 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.web.client.RestOperations;
 
 /**
- * @author 无敌暴龙战士
+ * @author jadechiang
  * @since 2023/6/5 14:00
  */
 public class BillClient extends WorldFirstClient {

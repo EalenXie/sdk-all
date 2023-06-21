@@ -19,7 +19,7 @@ import java.util.Map;
 import static java.nio.charset.StandardCharsets.UTF_8;
 
 /**
- * @author 无敌暴龙战士
+ * @author jadechiang
  * @since 2022/08/12 12:45
  */
 public abstract class KauflandClient {

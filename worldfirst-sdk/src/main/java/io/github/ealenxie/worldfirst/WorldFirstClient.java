@@ -26,7 +26,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Base64;
 
 /**
- * @author 无敌暴龙战士
+ * @author jadechiang
  * @since 2023/6/2 14:19
  * 万里汇平台
  */

@@ -7,7 +7,7 @@ import org.springframework.web.client.RestOperations;
 import java.util.Collections;
 
 /**
- * @author 无敌暴龙战士
+ * @author jadechiang
  * @since 2022/08/10 10:39
  */
 public abstract class FruugoClient {
