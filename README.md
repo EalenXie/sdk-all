@@ -6,10 +6,7 @@ SDK ALL
 >
 > - 节省接口对接成本,按需引入即用
 > - 让使用者更加专注于业务开发,底层SDK与业务代码解耦
-> - 核心主要依赖`Spring-web`原生特性,`Spring`项目
-> - 项目可持续迭代发展
-
-> - 🔁 项目同步维护：[Github](https://github.com/EalenXie/sdk-all)
+> - 共同维护与营造,项目可持续迭代发展
 
 #### SDK 整合列表
 
@@ -42,4 +39,17 @@ SDK ALL
 | [feishu-sdk](https://github.com/EalenXie/sdk-all/tree/main/feishu-sdk)                       | 飞书机器人                | [飞书开放平台](https://open.feishu.cn/document/ukTMukTMukTM/ucTM5YjL3ETO24yNxkjN)                                        |
 | [enterprise-wechat-sdk](https://github.com/EalenXie/sdk-all/tree/main/enterprise-wechat-sdk) | 企业微信机器人              | [企业微信-开发者中心](https://developer.work.weixin.qq.com/document/path/91770)                                             |
 | [tianyancha-sdk](https://github.com/EalenXie/sdk-all/tree/main/tianyancha-sdk)               | 天眼查 接口目录             | [天眼查 接口目录](https://open.tianyancha.com/api_list)                                                                   |
+
+### Release version
+
+鉴于sdk-all对接的第三方接口具变更性,差异性，请根据实际情况选用sdk;目前未完善的情况下,约定都采用快照版本进行迭代
+
+当完成一阶段的所有sdk接口后,定期发布的sdk正式版本
+
+### Contributing
+
+欢迎参与项目贡献,比如提交PR修复bug,或者新建Issue讨论新特性或者变更。
+
+> - 🔁 项目同步地址：[Github](https://github.com/EalenXie/sdk-all)
+> - 📖 代码贡献指南: [CONTRIBUTING.md](https://github.com/EalenXie/sdk-all//blob/main/CONTRIBUTING.md)
 
