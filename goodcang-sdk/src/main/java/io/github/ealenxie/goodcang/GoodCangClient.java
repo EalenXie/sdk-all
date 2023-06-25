@@ -5,6 +5,7 @@ import io.github.ealenxie.goodcang.dto.*;
 import io.github.ealenxie.goodcang.vo.*;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
+import org.springframework.lang.Nullable;
 import org.springframework.web.client.RestOperations;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -18,9 +19,9 @@ import java.util.List;
  */
 public class GoodCangClient {
 
-    private static final String HOST = "https://oms.goodcang.net/public_open";
+    protected static final String HOST = "https://oms.goodcang.net/public_open";
 
-    private static final String TEST_HOST = "https://uat-oms.eminxing.com/public_open";
+    protected static final String TEST_HOST = "https://uat-oms.eminxing.com/public_open";
 
     /**
      * 当前是否沙箱环境
@@ -43,8 +44,12 @@ public class GoodCangClient {
 
     public GoodCangClient(RestOperations restOperations) {
         this.restOperations = restOperations;
-
     }
+
+    public RestOperations getRestOperations() {
+        return restOperations;
+    }
+
 
     /**
      * <a href="https://open.goodcang.com/docs_api/order/get_order_list">获取订单列表</a>
@@ -112,25 +117,6 @@ public class GoodCangClient {
         return exchange.getBody();
     }
 
-    /**
-     * <a href="https://open.goodcang.com/docs_api/product/add_product">新建商品</a>
-     */
-    public AddProductResponse addProduct(String appKey, String appToken, AddProductDTO dto) {
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(String.format("%s/product/add_product", isSandBox() ? TEST_HOST : HOST));
-        URI uri = builder.build().encode().toUri();
-        ResponseEntity<AddProductResponse> exchange = restOperations.exchange(uri, HttpMethod.POST, new HttpEntity<>(dto, getGoodCangHeaders(appKey, appToken)), AddProductResponse.class);
-        return exchange.getBody();
-    }
-
-    /**
-     * <a href="https://open.goodcang.com/docs_api/product/get_product_sku_list">获取商品列表</a>
-     */
-    public ResponsePage<List<ProductSkuVO>> getProductSkuList(String appKey, String appToken, GetProductSkuList dto) {
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(String.format("%s/product/get_product_sku_list", isSandBox() ? TEST_HOST : HOST));
-        URI uri = builder.build().encode().toUri();
-        return restOperations.exchange(uri, HttpMethod.POST, new HttpEntity<>(dto, getGoodCangHeaders(appKey, appToken)), new ParameterizedTypeReference<ResponsePage<List<ProductSkuVO>>>() {
-        }).getBody();
-    }
 
     /**
      * <a href="https://open.goodcang.com/docs_api/inventory/get_product_inventory">获取库存</a>
@@ -179,24 +165,13 @@ public class GoodCangClient {
         return exchange.getBody();
     }
 
-    /**
-     * <a href="https://open.goodcang.com/docs_api/base_data/get_warehouse">获取仓库信息</a>
-     */
-    public ResponsePage<List<Warehouse>> getWarehouse(String appKey, String appToken) {
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(String.format("%s/base_data/get_warehouse", isSandBox() ? TEST_HOST : HOST));
-        URI uri = builder.build().encode().toUri();
-        ResponseEntity<ResponsePage<List<Warehouse>>> exchange = restOperations.exchange(uri, HttpMethod.POST, new HttpEntity<>(null, getGoodCangHeaders(appKey, appToken)), new ParameterizedTypeReference<ResponsePage<List<Warehouse>>>() {
-        });
-        return exchange.getBody();
-    }
-
 
     /**
      * @param appKey   appKey
      * @param appToken appToken
      */
     @SuppressWarnings("all")
-    public HttpHeaders getGoodCangHeaders(String appKey, String appToken) {
+    protected HttpHeaders getGoodCangHeaders(String appKey, String appToken) {
         HttpHeaders headers = new HttpHeaders();
         headers.add("app-key", appKey);
         headers.add("app-token", appToken);
@@ -205,5 +180,25 @@ public class GoodCangClient {
         return headers;
     }
 
+
+    /**
+     * post调用goodcang接口
+     *
+     * @param urlNotPrefix 无环境前缀的url路径
+     * @param appKey       appKey
+     * @param appToken     appToken
+     * @param payload      请求参数
+     */
+    @SuppressWarnings("all")
+    protected <T> T postGoodCang(String urlNotPrefix, String appKey, String appToken, @Nullable Object payload, ParameterizedTypeReference<T> parameterizedTypeReference) {
+        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(String.format("%s%s", isSandBox() ? TEST_HOST : HOST, urlNotPrefix));
+        URI uri = builder.build().encode().toUri();
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("app-key", appKey);
+        headers.add("app-token", appToken);
+        headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        return restOperations.exchange(uri, HttpMethod.POST, new HttpEntity<>(payload, headers), parameterizedTypeReference).getBody();
+    }
 
 }
