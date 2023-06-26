@@ -1,4 +1,4 @@
-package io.github.ealenxie.goodcang.vo;
+package io.github.ealenxie.goodcang.warehouse;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;

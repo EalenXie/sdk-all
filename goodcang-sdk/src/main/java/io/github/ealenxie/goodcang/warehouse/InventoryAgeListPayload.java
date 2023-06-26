@@ -1,4 +1,4 @@
-package io.github.ealenxie.goodcang.dto;
+package io.github.ealenxie.goodcang.warehouse;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
@@ -8,7 +8,7 @@ import java.util.List;
 
 @Getter
 @Setter
-public class InventoryAgeList {
+public class InventoryAgeListPayload {
 
 
     @JsonProperty("product_sku_list")

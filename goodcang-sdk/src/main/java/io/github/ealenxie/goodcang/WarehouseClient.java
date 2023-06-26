@@ -408,4 +408,87 @@ public class WarehouseClient extends GoodCangClient {
         return postGoodCang("/return_order/get_service_config", null, new ParameterizedTypeReference<ResponseAsk<List<ServiceConfig>>>() {
         });
     }
+
+    /**
+     * <a href="https://open.goodcang.com/docs_api/plan_order/create">新建计划单</a>
+     *
+     * @param payload 请求参数
+     */
+    public ResponseAsk<PlanOrderCodePayload> planOrderCreate(PlanOrderCreatePayload payload) {
+        return postGoodCang("/plan_order/create", payload, new ParameterizedTypeReference<ResponseAsk<PlanOrderCodePayload>>() {
+        });
+    }
+
+    /**
+     * <a href="https://open.goodcang.com/docs_api/plan_order/list">计划单列表</a>
+     *
+     * @param payload 请求参数
+     */
+    public ResponseAsk<PlanOrderListResponse> planOrderList(PlanOrderListPayload payload) {
+        return postGoodCang("/plan_order/list", payload, new ParameterizedTypeReference<ResponseAsk<PlanOrderListResponse>>() {
+        });
+    }
+
+    /**
+     * <a href="https://open.goodcang.com/docs_api/plan_order/cancel">取消计划单</a>
+     *
+     * @param planOrderCode 计划单号
+     * @param reason        取消原因
+     */
+    public ResponseAsk<Void> planOrderCancel(String planOrderCode, String reason) {
+        return postGoodCang("/plan_order/cancel", new PlanOrderCancelPayload(planOrderCode, reason), new ParameterizedTypeReference<ResponseAsk<Void>>() {
+        });
+    }
+
+    /**
+     * <a href="https://open.goodcang.com/docs_api/plan_order/box_list">装箱列表</a>
+     *
+     * @param payload 请求参数
+     */
+    public ResponseAsk<PlanOrderBoxListResponse> planOrderBoxList(PlanOrderBoxListPayload payload) {
+        return postGoodCang("/plan_order/box_list", payload, new ParameterizedTypeReference<ResponseAsk<PlanOrderBoxListResponse>>() {
+        });
+    }
+
+    /**
+     * <a href="https://open.goodcang.com/docs_api/inventory/get_product_inventory">获取库存</a>
+     *
+     * @param payload 请求参数
+     */
+    public ResponsePage<List<ProductInventory>> getProductInventory(GetProductInventoryPayload payload) {
+        return postGoodCang("/inventory/get_product_inventory", payload, new ParameterizedTypeReference<ResponsePage<List<ProductInventory>>>() {
+        });
+    }
+
+    /**
+     * <a href="https://open.goodcang.com/docs_api/inventory/get_inventory_log">获取库存动态列表</a>
+     *
+     * @param payload 请求参数
+     */
+    public ResponsePage<List<InventoryLog>> getInventoryLog(GetInventoryLogPayload payload) {
+        return postGoodCang("/inventory/get_inventory_log", payload, new ParameterizedTypeReference<ResponsePage<List<InventoryLog>>>() {
+        });
+    }
+
+    /**
+     * <a href="https://open.goodcang.com/docs_api/inventory/inventory_age_list">获取库龄列表</a>
+     *
+     * @param payload 请求参数
+     */
+    public ResponseAsk<InventoryAgeTotal> inventoryAgeList(InventoryAgeListPayload payload) {
+        return postGoodCang("/inventory/inventory_age_list", payload, new ParameterizedTypeReference<ResponseAsk<InventoryAgeTotal>>() {
+        });
+    }
+
+    /**
+     * <a href="https://open.goodcang.com/docs_api/inventory/set_inventory_warning">设置库龄预警</a>
+     *
+     * @param payload 请求参数
+     */
+    public ResponseAsk<Void> setInventoryWarning(SetInventoryWarningPayload payload) {
+        return postGoodCang("/inventory/set_inventory_warning", payload, new ParameterizedTypeReference<ResponseAsk<Void>>() {
+        });
+
+    }
+
 }
