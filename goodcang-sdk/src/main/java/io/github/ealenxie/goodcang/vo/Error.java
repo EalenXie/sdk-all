@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class GoodCangError {
+public class Error {
     private String errMessage;
     private String errCode;
 }

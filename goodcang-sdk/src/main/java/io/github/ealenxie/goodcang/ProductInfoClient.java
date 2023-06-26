@@ -15,24 +15,19 @@ import java.util.List;
  */
 public class ProductInfoClient extends GoodCangClient {
 
-    private final String appKey;
-    private final String appToken;
-
     public ProductInfoClient(String appKey, String appToken) {
         this(new RestTemplate(), appKey, appToken);
     }
 
     public ProductInfoClient(RestOperations restOperations, String appKey, String appToken) {
-        super(restOperations);
-        this.appKey = appKey;
-        this.appToken = appToken;
+        super(appKey, appToken, restOperations);
     }
 
     /**
      * <a href="https://open.goodcang.com/docs_api/product/get_category">获取商品品类</a>
      */
     public ResponseAsk<List<Category>> getCategory() {
-        return postGoodCang("/product/get_category", appKey, appToken, null, new ParameterizedTypeReference<ResponseAsk<List<Category>>>() {
+        return postGoodCang("/product/get_category", null, new ParameterizedTypeReference<ResponseAsk<List<Category>>>() {
         });
     }
 
@@ -40,7 +35,7 @@ public class ProductInfoClient extends GoodCangClient {
      * <a href="https://open.goodcang.com/docs_api/product/get_declare_commodity_name_list">获取建议中文申报品名</a>
      */
     public ResponseAsk<DeclareListResponse> getDeclareCommodityNameList() {
-        return postGoodCang("/product/get_declare_commodity_name_list", appKey, appToken, null, new ParameterizedTypeReference<ResponseAsk<DeclareListResponse>>() {
+        return postGoodCang("/product/get_declare_commodity_name_list", null, new ParameterizedTypeReference<ResponseAsk<DeclareListResponse>>() {
         });
     }
 
@@ -48,7 +43,7 @@ public class ProductInfoClient extends GoodCangClient {
      * <a href="https://open.goodcang.com/docs_api/product/get_declare_commodity_name_list">获取建议材质</a>
      */
     public ResponseAsk<MaterialListResponse> getMaterialList() {
-        return postGoodCang("/product/get_material_list", appKey, appToken, null, new ParameterizedTypeReference<ResponseAsk<MaterialListResponse>>() {
+        return postGoodCang("/product/get_material_list", null, new ParameterizedTypeReference<ResponseAsk<MaterialListResponse>>() {
         });
     }
 
@@ -58,7 +53,7 @@ public class ProductInfoClient extends GoodCangClient {
      * @param payload 请求参数
      */
     public ProductResponse addProduct(AddProductPayload payload) {
-        return postGoodCang("/product/add_product", appKey, appToken, payload, new ParameterizedTypeReference<ProductResponse>() {
+        return postGoodCang("/product/add_product", payload, new ParameterizedTypeReference<ProductResponse>() {
         });
     }
 
@@ -68,7 +63,7 @@ public class ProductInfoClient extends GoodCangClient {
      * @param payload 请求参数
      */
     public ProductResponse editProduct(EditProductPayload payload) {
-        return postGoodCang("/product/edit_product", appKey, appToken, payload, new ParameterizedTypeReference<ProductResponse>() {
+        return postGoodCang("/product/edit_product", payload, new ParameterizedTypeReference<ProductResponse>() {
         });
     }
 
@@ -78,7 +73,7 @@ public class ProductInfoClient extends GoodCangClient {
      * @param payload 请求参数
      */
     public ResponsePage<List<ProductSkuResponse>> getProductSkuList(ProductSkuListPayload payload) {
-        return postGoodCang("/product/get_product_sku_list", appKey, appToken, payload, new ParameterizedTypeReference<ResponsePage<List<ProductSkuResponse>>>() {
+        return postGoodCang("/product/get_product_sku_list", payload, new ParameterizedTypeReference<ResponsePage<List<ProductSkuResponse>>>() {
         });
     }
 
@@ -88,7 +83,7 @@ public class ProductInfoClient extends GoodCangClient {
      * @param payload 请求参数
      */
     public ResponseAsk<PrintSkuResponse> printSku(PrintSkuPayload payload) {
-        return postGoodCang("/product/print_sku", appKey, appToken, payload, new ParameterizedTypeReference<ResponseAsk<PrintSkuResponse>>() {
+        return postGoodCang("/product/print_sku", payload, new ParameterizedTypeReference<ResponseAsk<PrintSkuResponse>>() {
         });
     }
 
@@ -98,7 +93,7 @@ public class ProductInfoClient extends GoodCangClient {
      * @param payload 请求参数
      */
     public ResponseAsk<Void> addImportCountry(AddImportCountryPayload payload) {
-        return postGoodCang("/product/add_import_country", appKey, appToken, payload, new ParameterizedTypeReference<ResponseAsk<Void>>() {
+        return postGoodCang("/product/add_import_country", payload, new ParameterizedTypeReference<ResponseAsk<Void>>() {
         });
     }
 
@@ -108,7 +103,7 @@ public class ProductInfoClient extends GoodCangClient {
      * @param payload 请求参数
      */
     public ResponseAsk<Void> updateCustomsClearance(UpdateCustomsClearancePayload payload) {
-        return postGoodCang("/product/update_customs_clearance", appKey, appToken, payload, new ParameterizedTypeReference<ResponseAsk<Void>>() {
+        return postGoodCang("/product/update_customs_clearance", payload, new ParameterizedTypeReference<ResponseAsk<Void>>() {
         });
     }
 
@@ -118,7 +113,7 @@ public class ProductInfoClient extends GoodCangClient {
      * @param payload 请求参数
      */
     public ResponseAsk<Void> modifyProductStatus(ModifyProductStatusPayload payload) {
-        return postGoodCang("/product/modify_product_status", appKey, appToken, payload, new ParameterizedTypeReference<ResponseAsk<Void>>() {
+        return postGoodCang("/product/modify_product_status", payload, new ParameterizedTypeReference<ResponseAsk<Void>>() {
         });
     }
 
@@ -128,7 +123,7 @@ public class ProductInfoClient extends GoodCangClient {
      * @param payload 请求参数
      */
     public ResponseAsk<ProductFreezeListResponse> productFreezeList(ProductFreezeListPayload payload) {
-        return postGoodCang("/product/product_freeze_list", appKey, appToken, payload, new ParameterizedTypeReference<ResponseAsk<ProductFreezeListResponse>>() {
+        return postGoodCang("/product/product_freeze_list", payload, new ParameterizedTypeReference<ResponseAsk<ProductFreezeListResponse>>() {
         });
     }
 
@@ -139,7 +134,7 @@ public class ProductInfoClient extends GoodCangClient {
      * @param id 冻结Id
      */
     public ResponseAsk<ProductFreezeDetailResponse> productFreezeDetail(String id) {
-        return postGoodCang("/product/product_freeze_detail", appKey, appToken, new IdPayload(id), new ParameterizedTypeReference<ResponseAsk<ProductFreezeDetailResponse>>() {
+        return postGoodCang("/product/product_freeze_detail", new IdPayload(id), new ParameterizedTypeReference<ResponseAsk<ProductFreezeDetailResponse>>() {
         });
     }
 
@@ -149,7 +144,7 @@ public class ProductInfoClient extends GoodCangClient {
      * @param payload 请求参数
      */
     public ResponseAsk<List<SnResponse>> createSerialNumber(SnListPayload payload) {
-        return postGoodCang("/product/create_serial_number", appKey, appToken, payload, new ParameterizedTypeReference<ResponseAsk<List<SnResponse>>>() {
+        return postGoodCang("/product/create_serial_number", payload, new ParameterizedTypeReference<ResponseAsk<List<SnResponse>>>() {
         });
     }
 
@@ -159,7 +154,7 @@ public class ProductInfoClient extends GoodCangClient {
      * @param payload 请求参数
      */
     public ResponseAsk<List<SnResponse>> discardSerialNumber(SnListPayload payload) {
-        return postGoodCang("/product/discard_serial_number", appKey, appToken, payload, new ParameterizedTypeReference<ResponseAsk<List<SnResponse>>>() {
+        return postGoodCang("/product/discard_serial_number", payload, new ParameterizedTypeReference<ResponseAsk<List<SnResponse>>>() {
         });
     }
 
@@ -169,7 +164,7 @@ public class ProductInfoClient extends GoodCangClient {
      * @param payload 请求参数
      */
     public ResponseAsk<SerialNumberListResponse> serialNumberList(SerialNumberListPayload payload) {
-        return postGoodCang("/product/serial_number_list", appKey, appToken, payload, new ParameterizedTypeReference<ResponseAsk<SerialNumberListResponse>>() {
+        return postGoodCang("/product/serial_number_list", payload, new ParameterizedTypeReference<ResponseAsk<SerialNumberListResponse>>() {
         });
     }
 

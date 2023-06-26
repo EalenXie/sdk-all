@@ -11,7 +11,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class FeeDetails {
+public class OrderFeeDetails {
     /**
      * 总费用
      */

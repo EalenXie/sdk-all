@@ -17,9 +17,11 @@ public class ResponseAsk<T> {
     @JsonProperty("data")
     private T data;
     @JsonProperty("Error")
-    private GoodCangError error;
+    private Error error;
+    @JsonProperty("code")
+    private Integer code;
 
     public boolean isSuccess() {
-        return "Success".equals(ask);
+        return "Success".equals(ask) || 1 == code;
     }
 }

@@ -1,19 +1,21 @@
 package io.github.ealenxie.goodcang.warehouse;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
- * @author EalenXie created on 2023/6/26 13:50
+ * @author EalenXie created on 2023/6/26 15:39
  */
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
-public class ReferenceNoPayload {
+public class ReturnOrderSearchPayload {
+
+    /**
+     * 退件单号
+     */
+    @JsonProperty("asroCodes")
+    private String asroCodes;
     /**
      * 参考号
      */

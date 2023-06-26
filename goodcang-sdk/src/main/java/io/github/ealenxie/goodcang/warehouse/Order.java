@@ -225,7 +225,7 @@ public class Order {
      * 订单费用对象，参见OrderFeeComposite。
      */
     @JsonProperty("fee_details")
-    private FeeDetails feeDetails;
+    private OrderFeeDetails feeDetails;
     /**
      * 一票多箱装箱明细（适用于一票多箱，或者FBA订单）
      */

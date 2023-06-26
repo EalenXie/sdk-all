@@ -9,17 +9,22 @@ import lombok.Setter;
 import java.util.List;
 
 /**
- * @author EalenXie created on 2023/6/26 9:53
+ * @author EalenXie created on 2023/6/26 16:41
  */
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ReceivingListPayload {
+public class ReturnOrderMessagePayload {
 
     /**
-     * 入库单单号 列表
+     * 退件订单号
      */
-    @JsonProperty("receiving_list")
-    private List<String> receivingList;
+    @JsonProperty("returnOrderCodes")
+    private List<String> returnOrderCodes;
+    /**
+     * 留言说明
+     */
+    @JsonProperty("message")
+    private String message;
 }

@@ -21,11 +21,10 @@ import java.util.List;
  * Created by EalenXie on 2022/9/22 10:34
  */
 public class GoodCangClient {
-
     protected static final String HOST = "https://oms.goodcang.net/public_open";
-
     protected static final String TEST_HOST = "https://uat-oms.eminxing.com/public_open";
-
+    private final String appKey;
+    private final String appToken;
     /**
      * 当前是否沙箱环境
      */
@@ -41,11 +40,13 @@ public class GoodCangClient {
 
     private final RestOperations restOperations;
 
-    public GoodCangClient() {
-        this(new RestTemplate());
+    public GoodCangClient(String appKey, String appToken) {
+        this(appKey, appToken, new RestTemplate());
     }
 
-    public GoodCangClient(RestOperations restOperations) {
+    public GoodCangClient(String appKey, String appToken, RestOperations restOperations) {
+        this.appKey = appKey;
+        this.appToken = appToken;
         this.restOperations = restOperations;
     }
 
@@ -65,7 +66,6 @@ public class GoodCangClient {
         return exchange.getBody();
     }
 
-
     /**
      * <a href="https://open.goodcang.com/docs_api/inventory/get_inventory_log">获取库存动态列表</a>
      */
@@ -76,7 +76,6 @@ public class GoodCangClient {
         });
         return exchange.getBody();
     }
-
 
     /**
      * <a href="https://open.goodcang.com/docs_api/inventory/inventory_age_list">获取库龄列表</a>
@@ -121,12 +120,10 @@ public class GoodCangClient {
      * post调用goodcang接口
      *
      * @param urlNotPrefix 无环境前缀的url路径
-     * @param appKey       appKey
-     * @param appToken     appToken
      * @param payload      请求参数
      */
     @SuppressWarnings("all")
-    protected <T> T postGoodCang(String urlNotPrefix, String appKey, String appToken, @Nullable Object payload, ParameterizedTypeReference<T> parameterizedTypeReference) {
+    protected <T> T postGoodCang(String urlNotPrefix, @Nullable Object payload, ParameterizedTypeReference<T> parameterizedTypeReference) {
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(String.format("%s%s", isSandBox() ? TEST_HOST : HOST, urlNotPrefix));
         URI uri = builder.build().encode().toUri();
         HttpHeaders headers = new HttpHeaders();

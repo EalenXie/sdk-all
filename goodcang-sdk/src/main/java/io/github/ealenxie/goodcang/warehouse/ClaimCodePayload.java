@@ -6,20 +6,18 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
-
 /**
- * @author EalenXie created on 2023/6/26 9:53
+ * @author EalenXie created on 2023/6/26 16:31
  */
-@Getter
 @Setter
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ReceivingListPayload {
+public class ClaimCodePayload {
 
     /**
-     * 入库单单号 列表
+     * 认领单号
      */
-    @JsonProperty("receiving_list")
-    private List<String> receivingList;
+    @JsonProperty("claim_code")
+    private String claimCode;
 }

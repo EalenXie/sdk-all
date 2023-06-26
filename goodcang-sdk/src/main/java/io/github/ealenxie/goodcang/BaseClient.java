@@ -13,24 +13,20 @@ import java.util.List;
  * 基础资料与工具
  */
 public class BaseClient extends GoodCangClient {
-    private final String appKey;
-    private final String appToken;
 
     public BaseClient(String appKey, String appToken) {
         this(new RestTemplate(), appKey, appToken);
     }
 
     public BaseClient(RestOperations restOperations, String appKey, String appToken) {
-        super(restOperations);
-        this.appKey = appKey;
-        this.appToken = appToken;
+        super(appKey, appToken, restOperations);
     }
 
     /**
      * <a href="https://open.goodcang.com/docs_api/base_data/get_country">获取国家/地区列表</a>
      */
     public ResponseAsk<List<Country>> getCountry() {
-        return postGoodCang("/base_data/get_country", appKey, appToken, null, new ParameterizedTypeReference<ResponseAsk<List<Country>>>() {
+        return postGoodCang("/base_data/get_country", null, new ParameterizedTypeReference<ResponseAsk<List<Country>>>() {
         });
     }
 
@@ -38,7 +34,7 @@ public class BaseClient extends GoodCangClient {
      * <a href="https://open.goodcang.com/docs_api/base_data/get_warehouse">获取仓库信息</a>
      */
     public ResponseAsk<List<Warehouse>> getWarehouse() {
-        return postGoodCang("/base_data/get_warehouse", appKey, appToken, null, new ParameterizedTypeReference<ResponseAsk<List<Warehouse>>>() {
+        return postGoodCang("/base_data/get_warehouse", null, new ParameterizedTypeReference<ResponseAsk<List<Warehouse>>>() {
         });
     }
 
@@ -48,7 +44,7 @@ public class BaseClient extends GoodCangClient {
      * @param warehouseCode 尾程仓库代码
      */
     public ResponseAsk<List<ShippingMethod>> getShippingMethod(String warehouseCode) {
-        return postGoodCang("/base_data/get_shipping_method", appKey, appToken, new WarehouseCodePayload(warehouseCode), new ParameterizedTypeReference<ResponseAsk<List<ShippingMethod>>>() {
+        return postGoodCang("/base_data/get_shipping_method", new WarehouseCodePayload(warehouseCode), new ParameterizedTypeReference<ResponseAsk<List<ShippingMethod>>>() {
         });
     }
 
@@ -56,7 +52,7 @@ public class BaseClient extends GoodCangClient {
      * <a href="https://open.goodcang.com/docs_api/base_data/get_account_list">获取公司账户</a>
      */
     public ResponseAsk<AccountListResponse> getAccountList() {
-        return postGoodCang("/base_data/get_account_list", appKey, appToken, null, new ParameterizedTypeReference<ResponseAsk<AccountListResponse>>() {
+        return postGoodCang("/base_data/get_account_list", null, new ParameterizedTypeReference<ResponseAsk<AccountListResponse>>() {
         });
     }
 
@@ -66,7 +62,7 @@ public class BaseClient extends GoodCangClient {
      * @param signBusinessType 费用业务类型
      */
     public ResponseAsk<List<CostType>> costTypeList(Integer signBusinessType) {
-        return postGoodCang("/base_data/cost_type_list", appKey, appToken, new SignBusinessTypePayload(signBusinessType), new ParameterizedTypeReference<ResponseAsk<List<CostType>>>() {
+        return postGoodCang("/base_data/cost_type_list", new SignBusinessTypePayload(signBusinessType), new ParameterizedTypeReference<ResponseAsk<List<CostType>>>() {
         });
     }
 
@@ -77,7 +73,7 @@ public class BaseClient extends GoodCangClient {
      * @param payload 费用业务类型
      */
     public ResponseAsk<FuelRateResponse> fuelRateList(FuelRatePayload payload) {
-        return postGoodCang("/base_data/fuel_rate_list", appKey, appToken, payload, new ParameterizedTypeReference<ResponseAsk<FuelRateResponse>>() {
+        return postGoodCang("/base_data/fuel_rate_list", payload, new ParameterizedTypeReference<ResponseAsk<FuelRateResponse>>() {
         });
     }
 
@@ -87,7 +83,7 @@ public class BaseClient extends GoodCangClient {
      * @param requestIdList 请求id数组
      */
     public ResponseAsk<List<TaskStatus>> taskStatusList(List<String> requestIdList) {
-        return postGoodCang("/base_data/task_status_list", appKey, appToken, new TaskStatusListPayload(requestIdList), new ParameterizedTypeReference<ResponseAsk<List<TaskStatus>>>() {
+        return postGoodCang("/base_data/task_status_list", new TaskStatusListPayload(requestIdList), new ParameterizedTypeReference<ResponseAsk<List<TaskStatus>>>() {
         });
     }
 
@@ -95,11 +91,9 @@ public class BaseClient extends GoodCangClient {
      * <a href="https://open.goodcang.com/docs_api/base_data/sys_base_info">获取业务基础数据信息</a>
      */
     public ResponseAsk<BaseInfoResponse> sysBaseInfo() {
-        return postGoodCang("/base_data/sys_base_info", appKey, appToken, null, new ParameterizedTypeReference<ResponseAsk<BaseInfoResponse>>() {
+        return postGoodCang("/base_data/sys_base_info", null, new ParameterizedTypeReference<ResponseAsk<BaseInfoResponse>>() {
         });
-
     }
-
 
     /**
      * <a href="https://open.goodcang.com/docs_api/base_data/upload_attachment">上传附件</a>
@@ -107,7 +101,7 @@ public class BaseClient extends GoodCangClient {
      * @param payload 请求参数
      */
     public ResponseAsk<AttachmentResponse> uploadAttachment(UploadAttachmentPayload payload) {
-        return postGoodCang("/base_data/upload_attachment", appKey, appToken, payload, new ParameterizedTypeReference<ResponseAsk<AttachmentResponse>>() {
+        return postGoodCang("/base_data/upload_attachment", payload, new ParameterizedTypeReference<ResponseAsk<AttachmentResponse>>() {
         });
     }
 
@@ -118,7 +112,7 @@ public class BaseClient extends GoodCangClient {
      * @param payload 请求参数
      */
     public ResponseAsk<List<CalculateDeliveryFee>> getCalculateDeliveryFee(CalculateDeliveryFeePayload payload) {
-        return postGoodCang("/inventory/get_calculate_delivery_fee", appKey, appToken, payload, new ParameterizedTypeReference<ResponseAsk<List<CalculateDeliveryFee>>>() {
+        return postGoodCang("/inventory/get_calculate_delivery_fee", payload, new ParameterizedTypeReference<ResponseAsk<List<CalculateDeliveryFee>>>() {
         });
     }
 
@@ -128,7 +122,7 @@ public class BaseClient extends GoodCangClient {
      * @param payload 请求参数
      */
     public ResponseAsk<VerifyAddressInfoResponse> verifyAddressInfo(VerifyAddressInfoPayload payload) {
-        return postGoodCang("/address/verify_address_info", appKey, appToken, payload, new ParameterizedTypeReference<ResponseAsk<VerifyAddressInfoResponse>>() {
+        return postGoodCang("/address/verify_address_info", payload, new ParameterizedTypeReference<ResponseAsk<VerifyAddressInfoResponse>>() {
         });
     }
 }
