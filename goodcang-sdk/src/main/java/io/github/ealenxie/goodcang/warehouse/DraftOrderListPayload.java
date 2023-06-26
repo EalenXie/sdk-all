@@ -1,19 +1,24 @@
-package io.github.ealenxie.goodcang.dto;
+package io.github.ealenxie.goodcang.warehouse;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 /**
- * Created by EalenXie on 2022/9/22 11:08
+ * @author EalenXie created on 2023/6/26 14:04
  */
-
-@Getter
-@Setter
-public class OrderListDTO {
-
+@NoArgsConstructor
+@Data
+public class DraftOrderListPayload {
+    /**
+     * 订单状态
+     * C:待发货审核
+     * H:暂存
+     */
+    @JsonProperty("order_status")
+    private String orderStatus;
 
     /**
      * 每页数据长度，最大值100
@@ -77,31 +82,5 @@ public class OrderListDTO {
      */
     @JsonProperty("modify_date_to")
     private String modifyDateTo;
-
-    /**
-     * datetime
-     * 订单出库开始时间
-     */
-    @JsonProperty("date_shipping_from")
-    private String dateShippingFrom;
-
-    /**
-     * datetime
-     * 订单出库结束时间
-     */
-    @JsonProperty("date_shipping_to")
-    private String dateShippingTo;
-
-    /**
-     * 订单状态
-     * W:待发货
-     * D:已发货
-     * N:异常订单
-     * P:问题件
-     * X:废弃
-     */
-    @JsonProperty("order_status")
-    private String orderStatus;
-
 
 }

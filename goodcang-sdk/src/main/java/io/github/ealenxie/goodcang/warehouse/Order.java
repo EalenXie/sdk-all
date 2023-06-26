@@ -1,4 +1,4 @@
-package io.github.ealenxie.goodcang.vo;
+package io.github.ealenxie.goodcang.warehouse;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
@@ -219,19 +219,18 @@ public class Order {
      * 订单明细对象数组，元素结构参数 OrderLineItem。
      */
     @JsonProperty("items")
-    private List<Item> items;
+    private List<OrderItem> items;
 
     /**
      * 订单费用对象，参见OrderFeeComposite。
      */
     @JsonProperty("fee_details")
-    private OrderFeeComposite feeDetails;
-
+    private FeeDetails feeDetails;
     /**
-     * 一票多箱装箱明细（适用于一票多箱，或者FBA订单），数组元素参见OrderCartonItem。
+     * 一票多箱装箱明细（适用于一票多箱，或者FBA订单）
      */
     @JsonProperty("orderBoxInfo")
-    private List<OrderCartonItem> orderBoxInfo;
+    private List<OrderBoxInfo> orderBoxInfo;
 
     /**
      * LiftGate服务 0为否 1为是

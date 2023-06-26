@@ -1,4 +1,4 @@
-package io.github.ealenxie.goodcang.vo;
+package io.github.ealenxie.goodcang.warehouse;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
@@ -11,20 +11,20 @@ import java.util.List;
  */
 @Getter
 @Setter
-public class CartonProductItem {
+public class CartonInfo {
 
 
     /**
      * 箱唛号列表
      */
     @JsonProperty("carton_list")
-    private List<CartonListItem> cartonList;
+    private List<Carton> cartonList;
 
 
     /**
      * 商品信息变更列表
      */
     @JsonProperty("renewal_product_list")
-    private List<CartonProductLineItem> renewalProductList;
+    private List<RenewalProduct> renewalProductList;
 
 }

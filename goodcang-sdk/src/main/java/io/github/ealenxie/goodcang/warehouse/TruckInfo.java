@@ -1,10 +1,8 @@
-package io.github.ealenxie.goodcang.vo;
+package io.github.ealenxie.goodcang.warehouse;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.io.Serializable;
 
 /**
  * 卡派渠道物流信息
@@ -13,7 +11,7 @@ import java.io.Serializable;
  */
 @Getter
 @Setter
-public class TruckInfo implements Serializable {
+public class TruckInfo {
     /**
      * 参考号
      */

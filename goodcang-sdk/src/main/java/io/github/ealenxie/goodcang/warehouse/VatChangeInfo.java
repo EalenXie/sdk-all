@@ -1,4 +1,4 @@
-package io.github.ealenxie.goodcang.vo;
+package io.github.ealenxie.goodcang.warehouse;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
@@ -49,5 +49,9 @@ public class VatChangeInfo {
      */
     @JsonProperty("recipient_eori_country")
     private String recipientEoriCountry;
-
+    /**
+     * 发件人公司名称
+     */
+    @JsonProperty("shipper_company_name")
+    private String shipperCompanyName;
 }

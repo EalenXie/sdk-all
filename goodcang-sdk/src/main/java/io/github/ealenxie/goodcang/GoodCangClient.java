@@ -1,7 +1,10 @@
 package io.github.ealenxie.goodcang;
 
 
-import io.github.ealenxie.goodcang.dto.*;
+import io.github.ealenxie.goodcang.dto.GetInventoryLog;
+import io.github.ealenxie.goodcang.dto.GetProductInventory;
+import io.github.ealenxie.goodcang.dto.InventoryAgeList;
+import io.github.ealenxie.goodcang.dto.SetInventoryWarning;
 import io.github.ealenxie.goodcang.vo.*;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
@@ -48,73 +51,6 @@ public class GoodCangClient {
 
     public RestOperations getRestOperations() {
         return restOperations;
-    }
-
-
-    /**
-     * <a href="https://open.goodcang.com/docs_api/order/get_order_list">获取订单列表</a>
-     *
-     * @param appKey   appKey
-     * @param appToken appToken
-     * @param dto      订单列表请求参数
-     */
-    public ResponsePage<List<Order>> orderList(String appKey, String appToken, OrderListDTO dto) {
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(String.format("%s/order/get_order_list", isSandBox() ? TEST_HOST : HOST));
-        URI uri = builder.build().encode().toUri();
-        ResponseEntity<ResponsePage<List<Order>>> exchange = restOperations.exchange(uri, HttpMethod.POST, new HttpEntity<>(dto, getGoodCangHeaders(appKey, appToken)), new ParameterizedTypeReference<ResponsePage<List<Order>>>() {
-        });
-        return exchange.getBody();
-    }
-
-
-    /**
-     * <a href="https://open.goodcang.com/docs_api/order/get_order_by_ref_code">根据参考号获取单票订单信息</a>
-     *
-     * @param appKey      appKey
-     * @param appToken    appToken
-     * @param referenceNo 参考号
-     */
-    public ResponseAsk<Order> getOrderByRefCode(String appKey, String appToken, String referenceNo) {
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(String.format("%s/order/get_order_by_ref_code", isSandBox() ? TEST_HOST : HOST));
-        URI uri = builder.build().encode().toUri();
-        ResponseEntity<ResponseAsk<Order>> exchange = restOperations.exchange(uri, HttpMethod.POST, new HttpEntity<>(new ReferenceNoDTO(referenceNo), getGoodCangHeaders(appKey, appToken)), new ParameterizedTypeReference<ResponseAsk<Order>>() {
-        });
-        return exchange.getBody();
-    }
-
-    /**
-     * <a href="https://open.goodcang.com/docs_api/order/create_order">新建出库单</a>
-     *
-     * @param appKey   appKey
-     * @param appToken appToken
-     * @param dto      请求参数
-     */
-    public OrderCodeResponse createOrder(String appKey, String appToken, CreateOrderDTO dto) {
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(String.format("%s/order/create_order", isSandBox() ? TEST_HOST : HOST));
-        URI uri = builder.build().encode().toUri();
-        ResponseEntity<OrderCodeResponse> exchange = restOperations.exchange(uri, HttpMethod.POST, new HttpEntity<>(dto, getGoodCangHeaders(appKey, appToken)), OrderCodeResponse.class);
-        return exchange.getBody();
-    }
-
-    /**
-     * <a href="https://open.goodcang.com/docs_api/order/cancel_order">取消订单</a>
-     */
-    public CancelOrderResponse cancelOrder(String appKey, String appToken, CancelOrderDTO dto) {
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(String.format("%s/order/cancel_order", isSandBox() ? TEST_HOST : HOST));
-        URI uri = builder.build().encode().toUri();
-        ResponseEntity<CancelOrderResponse> exchange = restOperations.exchange(uri, HttpMethod.POST, new HttpEntity<>(dto, getGoodCangHeaders(appKey, appToken)), CancelOrderResponse.class);
-        return exchange.getBody();
-    }
-
-    /**
-     * <a href="https://open.goodcang.com/docs_api/order/upload_order_label">上传面单</a>
-     */
-    public ResponseAsk<Void> uploadOrderLabel(String appKey, String appToken, UploadOrderLabelDTO dto) {
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(String.format("%s/order/upload_order_label", isSandBox() ? TEST_HOST : HOST));
-        URI uri = builder.build().encode().toUri();
-        ResponseEntity<ResponseAsk<Void>> exchange = restOperations.exchange(uri, HttpMethod.POST, new HttpEntity<>(dto, getGoodCangHeaders(appKey, appToken)), new ParameterizedTypeReference<ResponseAsk<Void>>() {
-        });
-        return exchange.getBody();
     }
 
 

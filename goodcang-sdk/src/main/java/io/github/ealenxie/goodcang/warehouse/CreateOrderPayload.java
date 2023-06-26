@@ -1,7 +1,6 @@
-package io.github.ealenxie.goodcang.dto;
+package io.github.ealenxie.goodcang.warehouse;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.github.ealenxie.goodcang.vo.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,7 +8,7 @@ import java.util.List;
 
 @Getter
 @Setter
-public class CreateOrderDTO {
+public class CreateOrderPayload {
     /**
      * 订单参考号(建议使用平台单号)
      */
@@ -176,7 +175,7 @@ public class CreateOrderDTO {
      * 订单明细
      */
     @JsonProperty("items")
-    private List<Item> items;
+    private List<OrderItem> items;
     /**
      * LiftGate服务
      */
@@ -243,7 +242,7 @@ public class CreateOrderDTO {
      * 如果是FBA订单，并且选择仓库装箱商品（is_warehouse_packing = 1），必填。
      */
     @JsonProperty("carton_info")
-    private CartonProductItem cartonInfo;
+    private CartonInfo cartonInfo;
 
     /**
      * 卡派渠道物流信息

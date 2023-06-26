@@ -1,10 +1,8 @@
-package io.github.ealenxie.goodcang.vo;
+package io.github.ealenxie.goodcang.warehouse;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.io.Serializable;
 
 /**
  * 一票多箱装箱明细
@@ -13,7 +11,7 @@ import java.io.Serializable;
  */
 @Getter
 @Setter
-public class OrderCartonItem implements Serializable {
+public class OrderBoxInfo {
     /**
      * 箱号
      */

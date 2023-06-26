@@ -1,4 +1,4 @@
-package io.github.ealenxie.goodcang.dto;
+package io.github.ealenxie.goodcang.warehouse;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
@@ -7,16 +7,16 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
- * Created by EalenXie on 2022/10/21 11:33
+ * @author EalenXie created on 2023/6/26 13:56
  */
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
-public class CancelOrderDTO {
-
+public class OrderCodePayload {
+    /**
+     * 订单号
+     */
     @JsonProperty("order_code")
     private String orderCode;
-    @JsonProperty("reason")
-    private String reason;
 }

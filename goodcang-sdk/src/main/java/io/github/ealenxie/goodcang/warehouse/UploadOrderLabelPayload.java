@@ -1,7 +1,6 @@
-package io.github.ealenxie.goodcang.dto;
+package io.github.ealenxie.goodcang.warehouse;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.github.ealenxie.goodcang.vo.LabelInfo;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,13 +9,25 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class UploadOrderLabelDTO {
+public class UploadOrderLabelPayload {
+    /**
+     * 订单号
+     */
     @JsonProperty("order_code")
     private String orderCode;
+    /**
+     * 物流跟踪号
+     */
     @JsonProperty("tracking_number")
     private String trackingNumber;
+    /**
+     * 分拣码
+     */
     @JsonProperty("package_area_code")
     private String packageAreaCode;
+    /**
+     * 面单内容
+     */
     @JsonProperty("label_info")
     private LabelInfo labelInfo;
 }
