@@ -26,9 +26,9 @@ SDK ALL
 
 #### SDK 列表
 
-| SDK名                                                                                         | 描述                   | 官方文档地址                                                                                                             |                        完善度                        |
+| SDK名                                                                                         | 描述                   | 官方文档地址                                                                                                             |                       大概完善度                       |
 |:---------------------------------------------------------------------------------------------|:---------------------|:-------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------:|
-| [goodcang-sdk](https://github.com/EalenXie/sdk-all/tree/main/goodcang-sdk)                   | 谷仓海外仓                | [谷仓海外仓 调用API](https://open.goodcang.com/docs_api/practice)                                                         | ![](https://img.shields.io/badge/-97%25-blue.svg) |
+| [goodcang-sdk](https://github.com/EalenXie/sdk-all/tree/main/goodcang-sdk)                   | 谷仓海外仓                | [谷仓海外仓 调用API](https://open.goodcang.com/docs_api/practice)                                                         | ![](https://img.shields.io/badge/-98%25-blue.svg) |
 | [fop-sdk](https://github.com/EalenXie/sdk-all/tree/main/fop-sdk)                             | 4PX 开放平台接口整合SDK      | [4PX 开放平台 OPEN PLATFORM ](http://open.4px.com/apiInfo/api)                                                         | ![](https://img.shields.io/badge/-95%25-blue.svg) |
 | [aliyun-ocr-sdk](https://github.com/EalenXie/sdk-all/tree/main/aliyun-ocr-sdk)               | 阿里云 文字识别（OCR）        | [阿里云 文字识别](https://help.aliyun.com/product/252763.html)                                                            | ![](https://img.shields.io/badge/-78%25-blue.svg) |
 | [allegro-sdk](https://github.com/EalenXie/sdk-all/tree/main/allegro-sdk)                     | Allegro 开发者门户接口整合SDK | [Allegro Developer Portal](https://developer.allegro.pl/documentation)                                             | ![](https://img.shields.io/badge/-20%25-red.svg)  |
