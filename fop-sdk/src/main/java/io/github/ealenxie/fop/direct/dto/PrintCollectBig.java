@@ -12,7 +12,9 @@ import java.util.List;
 @Getter
 @Setter
 public class PrintCollectBig {
-
+    /**
+     * 揽收大包号
+     */
     @JsonProperty("bag_collect_no")
     private List<String> bagCollectNo;
 }

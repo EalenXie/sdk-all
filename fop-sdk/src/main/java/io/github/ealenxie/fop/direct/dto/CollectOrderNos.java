@@ -12,6 +12,9 @@ import java.util.List;
 @Getter
 @Setter
 public class CollectOrderNos {
+    /**
+     * 预约单号
+     */
     @JsonProperty("collect_order_no")
     private List<String> collectOrderNo;
 }

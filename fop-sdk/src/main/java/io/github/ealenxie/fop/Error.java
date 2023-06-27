@@ -12,10 +12,21 @@ import lombok.Setter;
 @Setter
 @Getter
 public class Error {
+    /**
+     * 错误代码
+     */
     @JsonProperty("error_code")
     private String errorCode;
+
+    /**
+     * 错误信息
+     */
     @JsonProperty("error_msg")
     private String errorMsg;
+
+    /**
+     *
+     */
     @JsonProperty("error_data")
     private String errorData;
     @JsonProperty("referenceCode")

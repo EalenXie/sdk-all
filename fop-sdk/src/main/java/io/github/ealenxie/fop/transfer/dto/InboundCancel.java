@@ -11,9 +11,15 @@ import lombok.Setter;
 @Setter
 public class InboundCancel {
 
-
+    /**
+     * 请求单号（4PX跟踪号）
+     */
     @JsonProperty("fpxTrackingNo")
     private String fpxTrackingNo;
+
+    /**
+     * 取消原因
+     */
     @JsonProperty("cancelReason")
     private String cancelReason;
 }

@@ -229,6 +229,8 @@ public class DirectClient extends FopClient {
 
     /**
      * <a href="http://open.4px.com/apiInfo/apiDetail?itemId=2&mainId=189">商家工作台-获取袋标</a>
+     *
+     * @param containerNo 袋号
      */
     public FopResp<PackageLabel> getPackageLabel(AppKeySecret appKeySecret, String containerNo) {
         CommonArgs common = new CommonArgs(appKeySecret, "bws.package.getLabel");
@@ -238,6 +240,8 @@ public class DirectClient extends FopClient {
 
     /**
      * <a href="http://open.4px.com/apiInfo/apiDetail?itemId=2&mainId=190">商家工作台-取消组包</a>
+     *
+     * @param containerNo 袋号
      */
     public FopResp<ContainerNoDTO> cancelPackage(AppKeySecret appKeySecret, String containerNo) {
         CommonArgs common = new CommonArgs(appKeySecret, "bws.package.cancelPackage");
@@ -247,6 +251,8 @@ public class DirectClient extends FopClient {
 
     /**
      * <a href="http://open.4px.com/apiInfo/apiDetail?itemId=2&mainId=191">商家工作台-组包</a>
+     * <p>
+     * todo 这个接口传参与文档不匹配
      */
     public FopResp<PackageLabel> packageGroup(AppKeySecret appKeySecret, PickupAddress pickupAddress) {
         CommonArgs common = new CommonArgs(appKeySecret, "bws.package.group");
@@ -274,6 +280,8 @@ public class DirectClient extends FopClient {
 
     /**
      * <a href="http://open.4px.com/apiInfo/apiDetail?itemId=2&mainId=194">商家工作台-订单分拣</a>
+     *
+     * @param scanNo 面单条码
      */
     public FopResp<SortingResp> sorting(AppKeySecret appKeySecret, String scanNo) {
         CommonArgs common = new CommonArgs(appKeySecret, "bws.sorting.sorting");
@@ -282,7 +290,7 @@ public class DirectClient extends FopClient {
     }
 
     /**
-     * <a href="http://open.4px.com/apiInfo/apiDetail?itemId=2&mainId=195">异常件查询接口</a>
+     * <a href="http://open.4px.com/apiInfo/apiDetail?itemId=2&mainId=197">异常件查询接口</a>
      */
     public FopResp<List<XmsOrderAbnormal>> abnormalList(AppKeySecret appKeySecret, OrderAbnormalList list) {
         CommonArgs common = new CommonArgs(appKeySecret, "ds.xms.order_abnormal.getlist");

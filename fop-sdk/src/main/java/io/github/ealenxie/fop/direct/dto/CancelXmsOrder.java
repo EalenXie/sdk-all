@@ -11,9 +11,15 @@ import lombok.Setter;
 @Setter
 public class CancelXmsOrder {
 
-
+    /**
+     * 取消原因
+     */
     @JsonProperty("cancel_reason")
     private String cancelReason;
+
+    /**
+     * 请求单号
+     */
     @JsonProperty("request_no")
     private String requestNo;
 }

@@ -10,6 +10,9 @@ import lombok.Setter;
 @Getter
 @Setter
 public class LogisticsOrder {
+    /**
+     * 4px单号
+     */
     @JsonProperty("fpxTrackingNo")
     private String fpxTrackingNo;
 }

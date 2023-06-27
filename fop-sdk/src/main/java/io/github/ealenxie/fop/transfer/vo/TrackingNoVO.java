@@ -11,6 +11,9 @@ import lombok.Setter;
 @Setter
 public class TrackingNoVO {
 
+    /**
+     * 4PX跟踪号
+     */
     @JsonProperty("4pxTrackingNo")
     private String fpxTrackingNo;
 }

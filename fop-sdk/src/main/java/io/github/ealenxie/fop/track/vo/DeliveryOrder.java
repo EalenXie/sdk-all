@@ -13,11 +13,21 @@ import java.util.List;
 @Setter
 public class DeliveryOrder {
 
-
+    /**
+     * 返回传入的物流单号
+     */
     @JsonProperty("deliveryOrderNo")
     private String deliveryOrderNo;
+
+    /**
+     * 目的地国家
+     */
     @JsonProperty("destinationCountry")
     private String destinationCountry;
+
+    /**
+     * 物流轨迹信息集合
+     */
     @JsonProperty("trackingList")
     private List<Tracking> trackingList;
 }

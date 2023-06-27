@@ -12,10 +12,21 @@ import java.util.List;
 @Getter
 @Setter
 public class UpdateXmsOrderWeight {
+    /**
+     * 请求单号(支持4PX单号/客户单号/服务商单号)
+     */
     @JsonProperty("request_no")
     private String requestNo;
+
+    /**
+     * 预报重量（g）
+     */
     @JsonProperty("weight")
     private String weight;
+
+    /**
+     * 包裹列表
+     */
     @JsonProperty("parcelist")
     private List<ParcelVO> parcelist;
 }

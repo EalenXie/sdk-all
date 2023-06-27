@@ -14,7 +14,9 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class DeliveryOrderNoDTO {
-
+    /**
+     * 物流单号
+     */
     @JsonProperty("deliveryOrderNo")
     private String deliveryOrderNo;
 }
