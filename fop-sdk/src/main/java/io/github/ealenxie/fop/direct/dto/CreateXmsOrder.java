@@ -108,6 +108,10 @@ public class CreateXmsOrder {
      */
     @JsonProperty("deliver_type_info")
     private DeliverTypeInfo deliverTypeInfo;
+
+    /**
+     * 标签配置信息
+     */
     @JsonProperty("label_config_info")
     private LabelConfigInfo labelConfigInfo;
 }

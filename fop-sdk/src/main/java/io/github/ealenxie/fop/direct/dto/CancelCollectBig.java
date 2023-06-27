@@ -10,8 +10,16 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CancelCollectBig {
+
+    /**
+     * 取消原因
+     */
     @JsonProperty("cancel_reason")
     private String cancelReason;
+
+    /**
+     * 揽收大包号
+     */
     @JsonProperty("bag_collect_no")
     private String bagCollectNo;
 }

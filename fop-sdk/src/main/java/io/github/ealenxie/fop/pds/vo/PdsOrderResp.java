@@ -11,9 +11,15 @@ import lombok.Setter;
 @Setter
 public class PdsOrderResp {
 
-
+    /**
+     * 4PX跟踪号
+     */
     @JsonProperty("fpxTrackingNo")
     private String fpxTrackingNo;
+
+    /**
+     * 服务商单号
+     */
     @JsonProperty("spNumber")
     private String spNumber;
 }

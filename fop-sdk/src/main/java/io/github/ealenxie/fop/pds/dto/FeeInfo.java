@@ -10,14 +10,39 @@ import lombok.Setter;
 @Getter
 @Setter
 public class FeeInfo {
+    /**
+     * 代收货款
+     */
     @JsonProperty("feeCollectionPayment")
     private Integer feeCollectionPayment;
+
+    /**
+     * 运费
+     */
     @JsonProperty("feeDelivery")
     private Integer feeDelivery;
+
+    /**
+     * 价格单位
+     */
     @JsonProperty("feeUnit")
     private String feeUnit;
+
+    /**
+     * 币种
+     */
     @JsonProperty("currency")
     private String currency;
+
+    /**
+     * 运费付费方式：
+     * <p>
+     * 到付 CONSIGNEE_PAY
+     * <p>
+     * 寄付 SENDER_PAY
+     * <p>
+     * 月结 MONTHLY_PAY
+     */
     @JsonProperty("paymentType")
     private String paymentType;
 }

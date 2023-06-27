@@ -10,12 +10,27 @@ import lombok.Setter;
 @Getter
 @Setter
 public class OrderParcel {
+    /**
+     * 重量
+     */
     @JsonProperty("weight")
     private Integer weight;
+
+    /**
+     * 长
+     */
     @JsonProperty("length")
     private Integer length;
+
+    /**
+     * 宽
+     */
     @JsonProperty("width")
     private Integer width;
+
+    /**
+     * 高
+     */
     @JsonProperty("height")
     private Integer height;
 }

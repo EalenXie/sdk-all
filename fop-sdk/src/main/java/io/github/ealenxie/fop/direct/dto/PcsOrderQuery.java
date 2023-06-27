@@ -11,9 +11,19 @@ import lombok.Setter;
 @Setter
 public class PcsOrderQuery {
 
-
+    /**
+     * 4px跟踪号
+     */
     @JsonProperty("fpxTrackingNo")
     private String fpxTrackingNo;
+
+    /**
+     * 订单类型
+     * <p>
+     * inbound ：入库；
+     * <p>
+     * outbound：出库
+     */
     @JsonProperty("orderType")
     private String orderType;
 }

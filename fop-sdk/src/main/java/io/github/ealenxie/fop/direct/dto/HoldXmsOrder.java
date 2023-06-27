@@ -10,11 +10,23 @@ import lombok.Setter;
 @Getter
 @Setter
 public class HoldXmsOrder {
-
+    /**
+     * 请求单号
+     */
     @JsonProperty("request_no")
     private String requestNo;
+
+    /**
+     * 拦截指令
+     * <p>
+     * 可选值，拦截：Y；取消拦截：N
+     */
     @JsonProperty("is_hold")
     private String isHold;
+
+    /**
+     * 拦截原因
+     */
     @JsonProperty("hold_reason")
     private String holdReason;
 }

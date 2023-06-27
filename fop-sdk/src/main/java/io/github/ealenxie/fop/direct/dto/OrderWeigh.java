@@ -12,12 +12,28 @@ import java.util.List;
 @Getter
 @Setter
 public class OrderWeigh {
+
+    /**
+     * 请求id
+     */
     @JsonProperty("requestId")
     private String requestId;
+
+    /**
+     * 请求单号
+     */
     @JsonProperty("requestNo")
     private String requestNo;
+
+    /**
+     * 外包装件数
+     */
     @JsonProperty("pieces")
     private Integer pieces;
+
+    /**
+     * 件数序列
+     */
     @JsonProperty("parcelList")
     private List<OrderParcel> parcelList;
 }

@@ -141,7 +141,7 @@ public class FulfillmentClient extends FopClient {
     }
 
     /**
-     * <a href="http://open.4px.com/apiInfo/apiDetail?itemId=1&mainId=117">查询出库委托费用</a>
+     * <a href="http://open.4px.com/apiInfo/apiDetail?itemId=1&mainId=118">查询出库委托费用（逐步弃用）</a>
      */
     public FopResp<OutBoundBillingVO> outboundBilling(AppKeySecret appKeySecret, OutBoundBilling dto) {
         CommonArgs common = new CommonArgs(appKeySecret, "fu.wms.outbound.getbilling");

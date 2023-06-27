@@ -13,9 +13,15 @@ import java.util.List;
 @Setter
 public class GetLabelList {
 
-
+    /**
+     * 请求id
+     */
     @JsonProperty("requestId")
     private String requestId;
+
+    /**
+     * 请求单号集合
+     */
     @JsonProperty("requestNos")
     private List<String> requestNos;
 }

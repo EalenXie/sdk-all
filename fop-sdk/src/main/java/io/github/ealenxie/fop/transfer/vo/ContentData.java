@@ -12,8 +12,15 @@ import java.util.List;
 @Getter
 @Setter
 public class ContentData {
+    /**
+     * 运单信息
+     */
     @JsonProperty("logisticsOrder")
     private LogisticsOrder logisticsOrder;
+
+    /**
+     * 包裹信息
+     */
     @JsonProperty("parcelList")
     private List<Parcel> parcelList;
 }

@@ -11,7 +11,9 @@ import lombok.Setter;
 @Setter
 public class GetOutbound {
 
-
+    /**
+     * 请求单号（4PX跟踪号）
+     */
     @JsonProperty("fpxTrackingNo")
     private String fpxTrackingNo;
 }

@@ -11,8 +11,15 @@ import lombok.Setter;
 @Getter
 @Setter
 public class OrderVO {
+    /**
+     * 单号
+     */
     @JsonProperty("orderNo")
     private String orderNo;
+
+    /**
+     * 订单重量（单位:g）
+     */
     @JsonProperty("weight")
     private String weight;
 

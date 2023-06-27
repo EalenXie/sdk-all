@@ -40,6 +40,8 @@ public class GrsClient extends FopClient {
 
     /**
      * <a href="http://open.4px.com/apiInfo/apiDetail?itemId=4&mainId=139">查询退货单信息</a>
+     *
+     * @param rmaNo 退货单（退货预报单）
      */
     public FopResp<ReceivedInfo> rmaInfoGet(AppKeySecret appKeySecret, String rmaNo) {
         CommonArgs common = new CommonArgs(appKeySecret, "re.grs.rmainfo.get");
@@ -58,6 +60,8 @@ public class GrsClient extends FopClient {
 
     /**
      * <a href="http://open.4px.com/apiInfo/apiDetail?itemId=4&mainId=149">购买预付款标签</a>
+     *
+     * todo 这个接口的传参，与文档参数不对应
      */
     public FopResp<PrepaymentLabel> prepaymentBuy(AppKeySecret appKeySecret, PrepaymentBuy prepaymentBuy) {
         CommonArgs common = new CommonArgs(appKeySecret, "re.grs.prepayment.buy");

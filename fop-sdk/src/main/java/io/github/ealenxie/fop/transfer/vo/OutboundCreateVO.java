@@ -10,10 +10,15 @@ import lombok.Setter;
 @Getter
 @Setter
 public class OutboundCreateVO {
-
+    /**
+     * 4PX跟踪号
+     */
     @JsonProperty("fpxTrackingNo")
     private String fpxTrackingNo;
 
+    /**
+     * 入库委托单号
+     */
     @JsonProperty("consignment_no")
     private String consignmentNo;
 

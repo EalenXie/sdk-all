@@ -11,9 +11,15 @@ import lombok.Setter;
 @Setter
 public class CreateCollectOrder {
 
-
+    /**
+     * 预约时间，格式为：yyyy-MM-dd
+     */
     @JsonProperty("reserve_time")
     private String reserveTime;
+
+    /**
+     * 揽收地址信息
+     */
     @JsonProperty("pickup_info")
     private PickupInfoVO pickupInfo;
 }

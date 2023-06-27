@@ -29,6 +29,8 @@ public class TrackClient extends FopClient {
 
     /**
      * <a href="http://open.4px.com/apiInfo/apiDetail?itemId=6&mainId=25">物流轨迹查询</a>
+     *
+     * @param deliveryOrderNo 物流单号
      */
     public FopResp<DeliveryOrder> getTrackingOrder(AppKeySecret appKeySecret, String deliveryOrderNo) {
         CommonArgs common = new CommonArgs(appKeySecret, "tr.order.tracking.get");

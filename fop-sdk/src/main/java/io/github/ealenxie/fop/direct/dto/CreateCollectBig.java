@@ -13,9 +13,15 @@ import java.util.List;
 @Setter
 public class CreateCollectBig {
 
-
+    /**
+     * 揽收地址信息
+     */
     @JsonProperty("pickup_info")
     private PickupInfoVO pickupInfo;
+
+    /**
+     * 袋序号
+     */
     @JsonProperty("bag_list")
     private List<BagVO> bagList;
 }

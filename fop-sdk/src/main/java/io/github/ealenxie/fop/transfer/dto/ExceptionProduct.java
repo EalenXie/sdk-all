@@ -10,8 +10,15 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ExceptionProduct {
+    /**
+     * 商品数量
+     */
     @JsonProperty("declareProductCodeQty")
     private Integer declareProductCodeQty;
+
+    /**
+     * 商品编号
+     */
     @JsonProperty("goodsNo")
     private String goodsNo;
 }
