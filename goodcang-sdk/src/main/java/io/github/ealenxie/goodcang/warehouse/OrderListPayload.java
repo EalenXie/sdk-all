@@ -1,6 +1,7 @@
 package io.github.ealenxie.goodcang.warehouse;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.ealenxie.goodcang.Pagination;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,22 +13,8 @@ import java.util.List;
 
 @Getter
 @Setter
-public class OrderListPayload {
+public class OrderListPayload extends Pagination {
 
-
-    /**
-     * 每页数据长度，最大值100
-     * Required
-     */
-    @JsonProperty("pageSize")
-    private Integer pageSize;
-
-    /**
-     * 当前页
-     * Required
-     */
-    @JsonProperty("page")
-    private Integer page;
 
     /**
      * 50

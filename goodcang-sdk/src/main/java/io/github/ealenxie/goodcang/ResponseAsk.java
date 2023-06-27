@@ -1,4 +1,4 @@
-package io.github.ealenxie.goodcang.vo;
+package io.github.ealenxie.goodcang;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
@@ -10,16 +10,23 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ResponseAsk<T> {
+    /**
+     * v1
+     */
     @JsonProperty("ask")
     private String ask;
+    /**
+     * v2
+     */
+    @JsonProperty("code")
+    private Integer code;
     @JsonProperty("message")
     private String message;
     @JsonProperty("data")
     private T data;
     @JsonProperty("Error")
     private Error error;
-    @JsonProperty("code")
-    private Integer code;
+
 
     public boolean isSuccess() {
         return "Success".equals(ask) || 1 == code;

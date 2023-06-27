@@ -1,7 +1,7 @@
 package io.github.ealenxie.goodcang.assistant;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.github.ealenxie.goodcang.warehouse.PagePayload;
+import io.github.ealenxie.goodcang.PagePayload;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -69,14 +69,4 @@ public class LogisticTicketListPayload extends PagePayload {
      */
     @JsonProperty("trail_status")
     private String trailStatus;
-    /**
-     * pageSize
-     */
-    @JsonProperty("page_size")
-    private Integer pageSize;
-    /**
-     * page
-     */
-    @JsonProperty("page")
-    private Integer page;
 }

@@ -1,6 +1,7 @@
 package io.github.ealenxie.goodcang.base;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.ealenxie.goodcang.PagePayload;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,7 +10,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class FuelRatePayload {
+public class FuelRatePayload extends PagePayload {
 
     /**
      * 物流产品
@@ -31,14 +32,5 @@ public class FuelRatePayload {
      */
     @JsonProperty("end_time")
     private String endTime;
-    /**
-     * 分页数量
-     */
-    @JsonProperty("page_size")
-    private Integer pageSize;
-    /**
-     * 分页页码
-     */
-    @JsonProperty("page")
-    private Integer page;
+
 }

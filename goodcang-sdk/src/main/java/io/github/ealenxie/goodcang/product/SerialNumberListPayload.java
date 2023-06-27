@@ -1,6 +1,7 @@
 package io.github.ealenxie.goodcang.product;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.ealenxie.goodcang.Pagination;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,7 +10,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class SerialNumberListPayload {
+public class SerialNumberListPayload extends Pagination {
 
     /**
      * 查询类型
@@ -41,14 +42,5 @@ public class SerialNumberListPayload {
      */
     @JsonProperty("end_time")
     private String endTime;
-    /**
-     * 每页数据长度
-     */
-    @JsonProperty("pageSize")
-    private Integer pageSize;
-    /**
-     * 当前页
-     */
-    @JsonProperty("page")
-    private Integer page;
+
 }

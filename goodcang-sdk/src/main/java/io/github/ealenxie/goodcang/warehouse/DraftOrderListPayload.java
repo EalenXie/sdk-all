@@ -1,6 +1,7 @@
 package io.github.ealenxie.goodcang.warehouse;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.ealenxie.goodcang.Pagination;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,7 +12,7 @@ import java.util.List;
  */
 @Getter
 @Setter
-public class DraftOrderListPayload {
+public class DraftOrderListPayload extends Pagination {
     /**
      * 订单状态
      * C:待发货审核
@@ -19,20 +20,6 @@ public class DraftOrderListPayload {
      */
     @JsonProperty("order_status")
     private String orderStatus;
-
-    /**
-     * 每页数据长度，最大值100
-     * Required
-     */
-    @JsonProperty("pageSize")
-    private Integer pageSize;
-
-    /**
-     * 当前页
-     * Required
-     */
-    @JsonProperty("page")
-    private Integer page;
 
     /**
      * 50

@@ -1,6 +1,7 @@
 package io.github.ealenxie.goodcang.warehouse;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.ealenxie.goodcang.PagePayload;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,7 +9,7 @@ import java.util.List;
 
 @Getter
 @Setter
-public class InventoryAgeListPayload {
+public class InventoryAgeListPayload extends PagePayload {
 
 
     @JsonProperty("product_sku_list")
@@ -33,8 +34,5 @@ public class InventoryAgeListPayload {
     private String fifoTimeFrom;
     @JsonProperty("fifo_time_to")
     private String fifoTimeTo;
-    @JsonProperty("page_size")
-    private String pageSize;
-    @JsonProperty("page")
-    private String page;
+
 }

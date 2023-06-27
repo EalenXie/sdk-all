@@ -1,6 +1,7 @@
 package io.github.ealenxie.goodcang.product;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.ealenxie.goodcang.Pagination;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,8 +12,7 @@ import java.util.List;
  */
 @Getter
 @Setter
-public class ProductSkuListPayload {
-
+public class ProductSkuListPayload extends Pagination {
     /**
      * 客户SKU
      */
@@ -35,15 +35,5 @@ public class ProductSkuListPayload {
      */
     @JsonProperty("product_update_time_to")
     private String productUpdateTimeTo;
-    /**
-     * 每页数据长度
-     * 最大值200 默认值 : 20
-     */
-    @JsonProperty("pageSize")
-    private Integer pageSize;
-    /**
-     * 当前页 默认值 : 1
-     */
-    @JsonProperty("page")
-    private Integer page;
+
 }

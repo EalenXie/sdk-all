@@ -1,6 +1,7 @@
 package io.github.ealenxie.goodcang.warehouse;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.ealenxie.goodcang.Pagination;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,8 +12,7 @@ import java.util.List;
  */
 @Getter
 @Setter
-public class GrnListPayload {
-
+public class GrnListPayload extends Pagination {
     /**
      * 入库单号
      */
@@ -43,14 +43,5 @@ public class GrnListPayload {
      */
     @JsonProperty("is_rollover")
     private Integer isRollover;
-    /**
-     * 每页数据长度
-     */
-    @JsonProperty("pageSize")
-    private Integer pageSize;
-    /**
-     * 当前页
-     */
-    @JsonProperty("page")
-    private Integer page;
+
 }

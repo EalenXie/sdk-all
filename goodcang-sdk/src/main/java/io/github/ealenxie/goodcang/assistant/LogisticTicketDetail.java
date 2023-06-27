@@ -1,7 +1,7 @@
 package io.github.ealenxie.goodcang.assistant;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.github.ealenxie.goodcang.vo.ListPayload;
+import io.github.ealenxie.goodcang.ListPayload;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -1,6 +1,7 @@
 package io.github.ealenxie.goodcang.product;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.ealenxie.goodcang.PagePayload;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,7 +12,7 @@ import java.util.List;
  */
 @Getter
 @Setter
-public class ProductFreezeListPayload {
+public class ProductFreezeListPayload extends PagePayload {
 
     /**
      * 冻结状态
@@ -48,14 +49,4 @@ public class ProductFreezeListPayload {
      */
     @JsonProperty("end_time")
     private String endTime;
-    /**
-     * 分页数量
-     */
-    @JsonProperty("page_size")
-    private Integer pageSize;
-    /**
-     * 分页页码
-     */
-    @JsonProperty("page")
-    private Integer page;
 }

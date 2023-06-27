@@ -1,4 +1,4 @@
-package io.github.ealenxie.goodcang.warehouse;
+package io.github.ealenxie.goodcang;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
@@ -11,13 +11,13 @@ import lombok.Setter;
 @Setter
 public class PagePayload {
     /**
-     * 每页数据长度
-     */
-    @JsonProperty("page_size")
-    private Integer pageSize;
-    /**
      * 当前页
      */
     @JsonProperty("page")
     private Integer page;
+    /**
+     * 每页数据长度
+     */
+    @JsonProperty("page_size")
+    private Integer pageSize;
 }
