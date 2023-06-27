@@ -14,7 +14,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class UrlFileDTO implements OcrFile {
+public class UrlFilePayload implements OcrFile {
 
     /**
      * 请求的图片 url地址
@@ -28,11 +28,11 @@ public class UrlFileDTO implements OcrFile {
     @JsonIgnore
     private byte[] body;
 
-    public UrlFileDTO(String url) {
+    public UrlFilePayload(String url) {
         this.url = url;
     }
 
-    public UrlFileDTO(byte[] body) {
+    public UrlFilePayload(byte[] body) {
         this.body = body;
     }
 

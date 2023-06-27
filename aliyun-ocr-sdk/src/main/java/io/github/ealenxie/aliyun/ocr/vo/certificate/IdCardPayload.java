@@ -2,7 +2,7 @@ package io.github.ealenxie.aliyun.ocr.vo.certificate;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.github.ealenxie.aliyun.ocr.dto.UrlFileDTO;
+import io.github.ealenxie.aliyun.ocr.dto.UrlFilePayload;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,7 +11,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class IdCardDTO extends UrlFileDTO {
+public class IdCardPayload extends UrlFilePayload {
 
 
     /**
@@ -31,11 +31,11 @@ public class IdCardDTO extends UrlFileDTO {
     private Boolean outputQualityInfo;
 
 
-    public IdCardDTO(String url) {
+    public IdCardPayload(String url) {
         super(url);
     }
 
-    public IdCardDTO(byte[] body) {
+    public IdCardPayload(byte[] body) {
         super(body);
     }
 }

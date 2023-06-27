@@ -9,7 +9,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class VerifyBusinessLicenseDTO {
+public class VerifyBusinessLicensePayload {
     /**
      * 企业注册号或统一社会信用代码
      */

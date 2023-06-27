@@ -2,7 +2,7 @@ package io.github.ealenxie.aliyun.ocr;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.github.ealenxie.aliyun.ocr.dto.UrlFileDTO;
+import io.github.ealenxie.aliyun.ocr.dto.UrlFilePayload;
 import io.github.ealenxie.aliyun.ocr.vo.OcrResponse;
 import io.github.ealenxie.aliyun.ocr.vo.RecognizeData;
 import io.github.ealenxie.aliyun.ocr.vo.car.*;
@@ -31,7 +31,7 @@ public class CarClient extends OcrClient {
      *
      * @param dto 请求参数
      */
-    public RecognizeData<VehicleLicense> recognizeVehicleLicense(UrlFileDTO dto) {
+    public RecognizeData<VehicleLicense> recognizeVehicleLicense(UrlFilePayload dto) {
         return getData(ocr("RecognizeVehicleLicense", dto, OcrResponse.class), new TypeReference<RecognizeData<VehicleLicense>>() {
         });
     }
@@ -41,7 +41,7 @@ public class CarClient extends OcrClient {
      *
      * @param dto 请求参数
      */
-    public RecognizeData<DrivingLicense> recognizeDrivingLicense(UrlFileDTO dto) {
+    public RecognizeData<DrivingLicense> recognizeDrivingLicense(UrlFilePayload dto) {
         return getData(ocr("RecognizeDrivingLicense", dto, OcrResponse.class), new TypeReference<RecognizeData<DrivingLicense>>() {
         });
     }
@@ -51,7 +51,7 @@ public class CarClient extends OcrClient {
      *
      * @param dto 请求参数
      */
-    public RecognizeData<Waybill> recognizeWaybill(UrlFileDTO dto) {
+    public RecognizeData<Waybill> recognizeWaybill(UrlFilePayload dto) {
         return getData(ocr("RecognizeWaybill", dto, OcrResponse.class), new TypeReference<RecognizeData<Waybill>>() {
         });
     }
@@ -61,7 +61,7 @@ public class CarClient extends OcrClient {
      *
      * @param dto 请求参数
      */
-    public RecognizeData<CarNumber> recognizeCarNumber(UrlFileDTO dto) {
+    public RecognizeData<CarNumber> recognizeCarNumber(UrlFilePayload dto) {
         return getData(ocr("RecognizeCarNumber", dto, OcrResponse.class), new TypeReference<RecognizeData<CarNumber>>() {
         });
     }
@@ -71,7 +71,7 @@ public class CarClient extends OcrClient {
      *
      * @param dto 请求参数
      */
-    public RecognizeData<CarVinCode> recognizeCarVinCode(UrlFileDTO dto) {
+    public RecognizeData<CarVinCode> recognizeCarVinCode(UrlFilePayload dto) {
         return getData(ocr("RecognizeCarVinCode", dto, OcrResponse.class), new TypeReference<RecognizeData<CarVinCode>>() {
         });
     }
@@ -81,7 +81,7 @@ public class CarClient extends OcrClient {
      *
      * @param dto 请求参数
      */
-    public RecognizeData<VehicleRegistration> recognizeVehicleRegistration(UrlFileDTO dto) {
+    public RecognizeData<VehicleRegistration> recognizeVehicleRegistration(UrlFilePayload dto) {
         return getData(ocr("RecognizeVehicleRegistration", dto, OcrResponse.class), new TypeReference<RecognizeData<VehicleRegistration>>() {
         });
     }
@@ -91,7 +91,7 @@ public class CarClient extends OcrClient {
      *
      * @param dto 请求参数
      */
-    public RecognizeData<VehicleCertification> recognizeVehicleCertification(UrlFileDTO dto) {
+    public RecognizeData<VehicleCertification> recognizeVehicleCertification(UrlFilePayload dto) {
         return getData(ocr("RecognizeVehicleCertification", dto, OcrResponse.class), new TypeReference<RecognizeData<VehicleCertification>>() {
         });
     }

@@ -1,7 +1,7 @@
 package io.github.ealenxie.aliyun.ocr.vo.word;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.github.ealenxie.aliyun.ocr.dto.UrlFileDTO;
+import io.github.ealenxie.aliyun.ocr.dto.UrlFilePayload;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,7 +10,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class TableOcrDTO extends UrlFileDTO {
+public class TableOcrPayload extends UrlFilePayload {
 
 
     /**

@@ -4,9 +4,9 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.ealenxie.aliyun.ocr.vo.OcrResponse;
 import io.github.ealenxie.aliyun.ocr.vo.invoice.verify.VerifyBusinessLicense;
-import io.github.ealenxie.aliyun.ocr.vo.invoice.verify.VerifyBusinessLicenseDTO;
+import io.github.ealenxie.aliyun.ocr.vo.invoice.verify.VerifyBusinessLicensePayload;
 import io.github.ealenxie.aliyun.ocr.vo.invoice.verify.VerifyVATInvoice;
-import io.github.ealenxie.aliyun.ocr.vo.invoice.verify.VerifyVATInvoiceDTO;
+import io.github.ealenxie.aliyun.ocr.vo.invoice.verify.VerifyVATInvoicePayload;
 import org.springframework.web.client.RestOperations;
 
 /**
@@ -31,20 +31,20 @@ public class InvoiceVerifyClient extends OcrClient {
     /**
      * <a href="https://help.aliyun.com/document_detail/465204.html">营业执照核验</a>
      *
-     * @param dto 请求参数
+     * @param payload 请求参数
      */
-    public VerifyBusinessLicense verifyBusinessLicense(VerifyBusinessLicenseDTO dto) {
-        return getData(ocr("VerifyBusinessLicense", dto, OcrResponse.class), new TypeReference<VerifyBusinessLicense>() {
+    public VerifyBusinessLicense verifyBusinessLicense(VerifyBusinessLicensePayload payload) {
+        return getData(ocr("VerifyBusinessLicense", payload, OcrResponse.class), new TypeReference<VerifyBusinessLicense>() {
         });
     }
 
     /**
      * <a href="https://help.aliyun.com/document_detail/465205.html">发票核验</a>
      *
-     * @param dto 请求参数
+     * @param payload 请求参数
      */
-    public VerifyVATInvoice verifyVATInvoice(VerifyVATInvoiceDTO dto) {
-        return getData(ocr("VerifyVATInvoice", dto, OcrResponse.class), new TypeReference<VerifyVATInvoice>() {
+    public VerifyVATInvoice verifyVATInvoice(VerifyVATInvoicePayload payload) {
+        return getData(ocr("VerifyVATInvoice", payload, OcrResponse.class), new TypeReference<VerifyVATInvoice>() {
         });
     }
 }

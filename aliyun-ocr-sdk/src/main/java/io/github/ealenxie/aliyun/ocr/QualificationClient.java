@@ -2,10 +2,10 @@ package io.github.ealenxie.aliyun.ocr;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.github.ealenxie.aliyun.ocr.dto.UrlFileDTO;
+import io.github.ealenxie.aliyun.ocr.dto.UrlFilePayload;
 import io.github.ealenxie.aliyun.ocr.vo.OcrResponse;
 import io.github.ealenxie.aliyun.ocr.vo.RecognizeData;
-import io.github.ealenxie.aliyun.ocr.vo.certificate.InternationalBusinessLicenseDTO;
+import io.github.ealenxie.aliyun.ocr.vo.certificate.CountryPayload;
 import io.github.ealenxie.aliyun.ocr.vo.qualification.*;
 import org.springframework.web.client.RestOperations;
 
@@ -30,80 +30,80 @@ public class QualificationClient extends OcrClient {
     /**
      * <a href="https://help.aliyun.com/document_detail/442288.html">营业执照识别</a>
      *
-     * @param dto 请求参数
+     * @param payload 请求参数
      */
-    public RecognizeData<BusinessLicense> recognizeBusinessLicense(UrlFileDTO dto) {
-        return getData(ocr("RecognizeBusinessLicense", dto, OcrResponse.class), new TypeReference<RecognizeData<BusinessLicense>>() {
+    public RecognizeData<BusinessLicense> recognizeBusinessLicense(UrlFilePayload payload) {
+        return getData(ocr("RecognizeBusinessLicense", payload, OcrResponse.class), new TypeReference<RecognizeData<BusinessLicense>>() {
         });
     }
 
     /**
      * <a href="https://help.aliyun.com/document_detail/442289.html">银行开户许可证识别</a>
      *
-     * @param dto 请求参数
+     * @param payload 请求参数
      */
-    public RecognizeData<BankAccountLicense> recognizeBankAccountLicense(UrlFileDTO dto) {
-        return getData(ocr("RecognizeBankAccountLicense", dto, OcrResponse.class), new TypeReference<RecognizeData<BankAccountLicense>>() {
+    public RecognizeData<BankAccountLicense> recognizeBankAccountLicense(UrlFilePayload payload) {
+        return getData(ocr("RecognizeBankAccountLicense", payload, OcrResponse.class), new TypeReference<RecognizeData<BankAccountLicense>>() {
         });
     }
 
     /**
      * <a href="https://help.aliyun.com/document_detail/442290.html">商标注册证识别</a>
      *
-     * @param dto 请求参数
+     * @param payload 请求参数
      */
-    public RecognizeData<TradeMarkCertification> recognizeTradeMarkCertification(UrlFileDTO dto) {
-        return getData(ocr("RecognizeTradeMarkCertification", dto, OcrResponse.class), new TypeReference<RecognizeData<TradeMarkCertification>>() {
+    public RecognizeData<TradeMarkCertification> recognizeTradeMarkCertification(UrlFilePayload payload) {
+        return getData(ocr("RecognizeTradeMarkCertification", payload, OcrResponse.class), new TypeReference<RecognizeData<TradeMarkCertification>>() {
         });
     }
 
     /**
      * <a href="https://help.aliyun.com/document_detail/442291.html">食品生产许可证识别</a>
      *
-     * @param dto 请求参数
+     * @param payload 请求参数
      */
-    public RecognizeData<FoodProduceLicense> recognizeFoodProduceLicense(UrlFileDTO dto) {
-        return getData(ocr("RecognizeFoodProduceLicense", dto, OcrResponse.class), new TypeReference<RecognizeData<FoodProduceLicense>>() {
+    public RecognizeData<FoodProduceLicense> recognizeFoodProduceLicense(UrlFilePayload payload) {
+        return getData(ocr("RecognizeFoodProduceLicense", payload, OcrResponse.class), new TypeReference<RecognizeData<FoodProduceLicense>>() {
         });
     }
 
     /**
      * <a href="https://help.aliyun.com/document_detail/442292.html">食品经营许可证识别</a>
      *
-     * @param dto 请求参数
+     * @param payload 请求参数
      */
-    public RecognizeData<FoodManageLicense> recognizeFoodManageLicense(UrlFileDTO dto) {
-        return getData(ocr("RecognizeFoodManageLicense", dto, OcrResponse.class), new TypeReference<RecognizeData<FoodManageLicense>>() {
+    public RecognizeData<FoodManageLicense> recognizeFoodManageLicense(UrlFilePayload payload) {
+        return getData(ocr("RecognizeFoodManageLicense", payload, OcrResponse.class), new TypeReference<RecognizeData<FoodManageLicense>>() {
         });
     }
 
     /**
      * <a href="https://help.aliyun.com/document_detail/442293.html">医疗器械经营许可证识别</a>
      *
-     * @param dto 请求参数
+     * @param payload 请求参数
      */
-    public RecognizeData<MedicalDeviceManageLicense> recognizeMedicalDeviceManageLicense(UrlFileDTO dto) {
-        return getData(ocr("RecognizeMedicalDeviceManageLicense", dto, OcrResponse.class), new TypeReference<RecognizeData<MedicalDeviceManageLicense>>() {
+    public RecognizeData<MedicalDeviceManageLicense> recognizeMedicalDeviceManageLicense(UrlFilePayload payload) {
+        return getData(ocr("RecognizeMedicalDeviceManageLicense", payload, OcrResponse.class), new TypeReference<RecognizeData<MedicalDeviceManageLicense>>() {
         });
     }
 
     /**
      * <a href="https://help.aliyun.com/document_detail/442294.html">医疗器械生产许可证识别</a>
      *
-     * @param dto 请求参数
+     * @param payload 请求参数
      */
-    public RecognizeData<MedicalDeviceProduceLicense> recognizeMedicalDeviceProduceLicense(UrlFileDTO dto) {
-        return getData(ocr("RecognizeMedicalDeviceProduceLicense", dto, OcrResponse.class), new TypeReference<RecognizeData<MedicalDeviceProduceLicense>>() {
+    public RecognizeData<MedicalDeviceProduceLicense> recognizeMedicalDeviceProduceLicense(UrlFilePayload payload) {
+        return getData(ocr("RecognizeMedicalDeviceProduceLicense", payload, OcrResponse.class), new TypeReference<RecognizeData<MedicalDeviceProduceLicense>>() {
         });
     }
 
     /**
      * <a href="https://help.aliyun.com/document_detail/442295.html">第二类医疗器械经营备案凭证识别</a>
      *
-     * @param dto 请求参数
+     * @param payload 请求参数
      */
-    public RecognizeData<CTwoMedicalDeviceManageLicense> recognizeCTwoMedicalDeviceManageLicense(UrlFileDTO dto) {
-        return getData(ocr("RecognizeCtwoMedicalDeviceManageLicense", dto, OcrResponse.class), new TypeReference<RecognizeData<CTwoMedicalDeviceManageLicense>>() {
+    public RecognizeData<CTwoMedicalDeviceManageLicense> recognizeCTwoMedicalDeviceManageLicense(UrlFilePayload payload) {
+        return getData(ocr("RecognizeCtwoMedicalDeviceManageLicense", payload, OcrResponse.class), new TypeReference<RecognizeData<CTwoMedicalDeviceManageLicense>>() {
         });
     }
 
@@ -111,10 +111,10 @@ public class QualificationClient extends OcrClient {
     /**
      * <a href="https://help.aliyun.com/document_detail/442296.html">化妆品生产许可证识别</a>
      *
-     * @param dto 请求参数
+     * @param payload 请求参数
      */
-    public RecognizeData<CosmeticProduceLicense> recognizeCosmeticProduceLicense(UrlFileDTO dto) {
-        return getData(ocr("RecognizeCosmeticProduceLicense", dto, OcrResponse.class), new TypeReference<RecognizeData<CosmeticProduceLicense>>() {
+    public RecognizeData<CosmeticProduceLicense> recognizeCosmeticProduceLicense(UrlFilePayload payload) {
+        return getData(ocr("RecognizeCosmeticProduceLicense", payload, OcrResponse.class), new TypeReference<RecognizeData<CosmeticProduceLicense>>() {
         });
     }
 
@@ -126,8 +126,8 @@ public class QualificationClient extends OcrClient {
      * <p>Korea {@link  KoreaBusinessLicense}</p>
      */
     @SuppressWarnings("all")
-    public RecognizeData<?> recognizeInternationalBusinessLicense(InternationalBusinessLicenseDTO dto) {
-        return getData(ocr("RecognizeInternationalBusinessLicense", dto, OcrResponse.class), new TypeReference<RecognizeData<?>>() {
+    public RecognizeData<?> recognizeInternationalBusinessLicense(CountryPayload payload) {
+        return getData(ocr("RecognizeInternationalBusinessLicense", payload, OcrResponse.class), new TypeReference<RecognizeData<?>>() {
         });
     }
 

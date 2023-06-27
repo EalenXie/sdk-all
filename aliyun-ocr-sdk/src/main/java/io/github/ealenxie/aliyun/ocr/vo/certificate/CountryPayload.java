@@ -1,22 +1,19 @@
 package io.github.ealenxie.aliyun.ocr.vo.certificate;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.github.ealenxie.aliyun.ocr.dto.UrlFileDTO;
+import io.github.ealenxie.aliyun.ocr.dto.UrlFilePayload;
 import lombok.Getter;
 import lombok.Setter;
 
 /**
- * @author EalenXie created on 2023/4/4 18:03
+ * @author EalenXie created on 2023/6/27 16:14
  */
 @Getter
 @Setter
-public class InternationalBusinessLicenseDTO extends UrlFileDTO {
-
+public class CountryPayload extends UrlFilePayload {
     /**
      * 国家名称
-     * India（India、Korea）
      */
     @JsonProperty("Country")
     private String country;
-
 }

@@ -2,7 +2,7 @@ package io.github.ealenxie.aliyun.ocr;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.github.ealenxie.aliyun.ocr.dto.UrlFileDTO;
+import io.github.ealenxie.aliyun.ocr.dto.UrlFilePayload;
 import io.github.ealenxie.aliyun.ocr.vo.OcrResponse;
 import io.github.ealenxie.aliyun.ocr.vo.RecognizeData;
 import io.github.ealenxie.aliyun.ocr.vo.invoice.*;
@@ -32,7 +32,7 @@ public class InvoiceClient extends OcrClient {
      *
      * @param dto 请求参数
      */
-    public MixedInvoices recognizeMixedInvoices(UrlFileDTO dto) {
+    public MixedInvoices recognizeMixedInvoices(UrlFilePayload dto) {
         return ocr("RecognizeMixedInvoices", dto, MixedInvoices.class).getBody();
     }
 
@@ -41,7 +41,7 @@ public class InvoiceClient extends OcrClient {
      *
      * @param dto 请求参数
      */
-    public RecognizeData<Invoice> recognizeInvoice(UrlFileDTO dto) {
+    public RecognizeData<Invoice> recognizeInvoice(UrlFilePayload dto) {
         return getData(ocr("RecognizeInvoice", dto, OcrResponse.class), new TypeReference<RecognizeData<Invoice>>() {
         });
     }
@@ -52,7 +52,7 @@ public class InvoiceClient extends OcrClient {
      *
      * @param dto 请求参数
      */
-    public RecognizeData<CarInvoice> recognizeCarInvoice(UrlFileDTO dto) {
+    public RecognizeData<CarInvoice> recognizeCarInvoice(UrlFilePayload dto) {
         return getData(ocr("RecognizeCarInvoice", dto, OcrResponse.class), new TypeReference<RecognizeData<CarInvoice>>() {
         });
     }
@@ -62,7 +62,7 @@ public class InvoiceClient extends OcrClient {
      *
      * @param dto 请求参数
      */
-    public RecognizeData<QuotaInvoice> recognizeQuotaInvoice(UrlFileDTO dto) {
+    public RecognizeData<QuotaInvoice> recognizeQuotaInvoice(UrlFilePayload dto) {
         return getData(ocr("RecognizeQuotaInvoice", dto, OcrResponse.class), new TypeReference<RecognizeData<QuotaInvoice>>() {
         });
     }
@@ -73,7 +73,7 @@ public class InvoiceClient extends OcrClient {
      *
      * @param dto 请求参数
      */
-    public RecognizeData<AirItinerary> recognizeAirItinerary(UrlFileDTO dto) {
+    public RecognizeData<AirItinerary> recognizeAirItinerary(UrlFilePayload dto) {
         return getData(ocr("RecognizeAirItinerary", dto, OcrResponse.class), new TypeReference<RecognizeData<AirItinerary>>() {
         });
     }
@@ -83,7 +83,7 @@ public class InvoiceClient extends OcrClient {
      *
      * @param dto 请求参数
      */
-    public RecognizeData<TrainInvoice> recognizeTrainInvoice(UrlFileDTO dto) {
+    public RecognizeData<TrainInvoice> recognizeTrainInvoice(UrlFilePayload dto) {
         return getData(ocr("RecognizeTrainInvoice", dto, OcrResponse.class), new TypeReference<RecognizeData<TrainInvoice>>() {
         });
     }
@@ -93,7 +93,7 @@ public class InvoiceClient extends OcrClient {
      *
      * @param dto 请求参数
      */
-    public RecognizeData<TaxiInvoice> recognizeTaxiInvoice(UrlFileDTO dto) {
+    public RecognizeData<TaxiInvoice> recognizeTaxiInvoice(UrlFilePayload dto) {
         return getData(ocr("RecognizeTaxiInvoice", dto, OcrResponse.class), new TypeReference<RecognizeData<TaxiInvoice>>() {
         });
     }
@@ -103,7 +103,7 @@ public class InvoiceClient extends OcrClient {
      *
      * @param dto 请求参数
      */
-    public RecognizeData<RollTicket> recognizeRollTicket(UrlFileDTO dto) {
+    public RecognizeData<RollTicket> recognizeRollTicket(UrlFilePayload dto) {
         return getData(ocr("RecognizeRollTicket", dto, OcrResponse.class), new TypeReference<RecognizeData<RollTicket>>() {
         });
     }
@@ -113,7 +113,7 @@ public class InvoiceClient extends OcrClient {
      *
      * @param dto 请求参数
      */
-    public RecognizeData<BankAcceptance> recognizeBankAcceptance(UrlFileDTO dto) {
+    public RecognizeData<BankAcceptance> recognizeBankAcceptance(UrlFilePayload dto) {
         return getData(ocr("RecognizeBankAcceptance", dto, OcrResponse.class), new TypeReference<RecognizeData<BankAcceptance>>() {
         });
     }
@@ -123,7 +123,7 @@ public class InvoiceClient extends OcrClient {
      *
      * @param dto 请求参数
      */
-    public RecognizeData<BusShipTicket> recognizeBusShipTicket(UrlFileDTO dto) {
+    public RecognizeData<BusShipTicket> recognizeBusShipTicket(UrlFilePayload dto) {
         return getData(ocr("RecognizeBusShipTicket", dto, OcrResponse.class), new TypeReference<RecognizeData<BusShipTicket>>() {
         });
     }
@@ -133,7 +133,7 @@ public class InvoiceClient extends OcrClient {
      *
      * @param dto 请求参数
      */
-    public RecognizeData<NonTaxInvoice> recognizeNonTaxInvoice(UrlFileDTO dto) {
+    public RecognizeData<NonTaxInvoice> recognizeNonTaxInvoice(UrlFilePayload dto) {
         return getData(ocr("RecognizeNonTaxInvoice", dto, OcrResponse.class), new TypeReference<RecognizeData<NonTaxInvoice>>() {
         });
     }
@@ -143,7 +143,7 @@ public class InvoiceClient extends OcrClient {
      *
      * @param dto 请求参数
      */
-    public RecognizeData<CommonPrintedInvoice> recognizeCommonPrintedInvoice(UrlFileDTO dto) {
+    public RecognizeData<CommonPrintedInvoice> recognizeCommonPrintedInvoice(UrlFilePayload dto) {
         return getData(ocr("RecognizeCommonPrintedInvoice", dto, OcrResponse.class), new TypeReference<RecognizeData<CommonPrintedInvoice>>() {
         });
     }
@@ -154,7 +154,7 @@ public class InvoiceClient extends OcrClient {
      *
      * @param dto 请求参数
      */
-    public RecognizeData<HotelConsume> recognizeHotelConsume(UrlFileDTO dto) {
+    public RecognizeData<HotelConsume> recognizeHotelConsume(UrlFilePayload dto) {
         return getData(ocr("RecognizeHotelConsume", dto, OcrResponse.class), new TypeReference<RecognizeData<HotelConsume>>() {
         });
     }
@@ -165,7 +165,7 @@ public class InvoiceClient extends OcrClient {
      *
      * @param dto 请求参数
      */
-    public RecognizeData<PaymentRecord> recognizePaymentRecord(UrlFileDTO dto) {
+    public RecognizeData<PaymentRecord> recognizePaymentRecord(UrlFilePayload dto) {
         return getData(ocr("RecognizePaymentRecord", dto, OcrResponse.class), new TypeReference<RecognizeData<PaymentRecord>>() {
         });
     }
@@ -175,7 +175,7 @@ public class InvoiceClient extends OcrClient {
      *
      * @param dto 请求参数
      */
-    public RecognizeData<PurchaseRecord> recognizePurchaseRecord(UrlFileDTO dto) {
+    public RecognizeData<PurchaseRecord> recognizePurchaseRecord(UrlFilePayload dto) {
         return getData(ocr("RecognizePurchaseRecord", dto, OcrResponse.class), new TypeReference<RecognizeData<PurchaseRecord>>() {
         });
     }
@@ -185,7 +185,7 @@ public class InvoiceClient extends OcrClient {
      *
      * @param dto 请求参数
      */
-    public RecognizeData<RideHailingItinerary> recognizeRideHailingItinerary(UrlFileDTO dto) {
+    public RecognizeData<RideHailingItinerary> recognizeRideHailingItinerary(UrlFilePayload dto) {
         return getData(ocr("RecognizeRideHailingItinerary", dto, OcrResponse.class), new TypeReference<RecognizeData<RideHailingItinerary>>() {
         });
     }
@@ -195,7 +195,7 @@ public class InvoiceClient extends OcrClient {
      *
      * @param dto 请求参数
      */
-    public RecognizeData<ShoppingReceipt> recognizeShoppingReceipt(UrlFileDTO dto) {
+    public RecognizeData<ShoppingReceipt> recognizeShoppingReceipt(UrlFilePayload dto) {
         return getData(ocr("RecognizeShoppingReceipt", dto, OcrResponse.class), new TypeReference<RecognizeData<ShoppingReceipt>>() {
         });
     }
@@ -205,7 +205,7 @@ public class InvoiceClient extends OcrClient {
      *
      * @param dto 请求参数
      */
-    public RecognizeData<SocialSecurityCard> recognizeSocialSecurityCard(UrlFileDTO dto) {
+    public RecognizeData<SocialSecurityCard> recognizeSocialSecurityCard(UrlFilePayload dto) {
         return getData(ocr("RecognizeSocialSecurityCard", dto, OcrResponse.class), new TypeReference<RecognizeData<SocialSecurityCard>>() {
         });
     }
@@ -215,7 +215,7 @@ public class InvoiceClient extends OcrClient {
      *
      * @param dto 请求参数
      */
-    public RecognizeData<TollInvoice> recognizeTollInvoice(UrlFileDTO dto) {
+    public RecognizeData<TollInvoice> recognizeTollInvoice(UrlFilePayload dto) {
         return getData(ocr("RecognizeTollInvoice", dto, OcrResponse.class), new TypeReference<RecognizeData<TollInvoice>>() {
         });
     }
@@ -225,7 +225,7 @@ public class InvoiceClient extends OcrClient {
      *
      * @param dto 请求参数
      */
-    public RecognizeData<TaxClearanceCertificate> recognizeTaxClearanceCertificate(UrlFileDTO dto) {
+    public RecognizeData<TaxClearanceCertificate> recognizeTaxClearanceCertificate(UrlFilePayload dto) {
         return getData(ocr("RecognizeTaxClearanceCertificate", dto, OcrResponse.class), new TypeReference<RecognizeData<TaxClearanceCertificate>>() {
         });
     }
@@ -235,7 +235,7 @@ public class InvoiceClient extends OcrClient {
      *
      * @param dto 请求参数
      */
-    public RecognizeData<UsedCarInvoice> recognizeUsedCarInvoice(UrlFileDTO dto) {
+    public RecognizeData<UsedCarInvoice> recognizeUsedCarInvoice(UrlFilePayload dto) {
         return getData(ocr("RecognizeUsedCarInvoice", dto, OcrResponse.class), new TypeReference<RecognizeData<UsedCarInvoice>>() {
         });
     }

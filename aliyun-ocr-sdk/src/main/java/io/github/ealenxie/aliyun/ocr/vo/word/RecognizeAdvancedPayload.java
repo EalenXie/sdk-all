@@ -1,7 +1,7 @@
 package io.github.ealenxie.aliyun.ocr.vo.word;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.github.ealenxie.aliyun.ocr.dto.UrlFileDTO;
+import io.github.ealenxie.aliyun.ocr.dto.UrlFilePayload;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,7 +10,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class RecognizeAdvancedDTO extends UrlFileDTO {
+public class RecognizeAdvancedPayload extends UrlFilePayload {
 
     /**
      * 是否输出单字识别结果，默认不需要。

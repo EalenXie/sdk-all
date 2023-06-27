@@ -2,7 +2,7 @@ package io.github.ealenxie.aliyun.ocr.vo.certificate;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.github.ealenxie.aliyun.ocr.dto.UrlFileDTO;
+import io.github.ealenxie.aliyun.ocr.dto.UrlFilePayload;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,7 +12,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class OutputFigureDTO extends UrlFileDTO {
+public class OutputFigurePayload extends UrlFilePayload {
     /**
      * 是否需要图案检测功能，默认需要
      * true：需要；false：不需要。

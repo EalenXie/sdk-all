@@ -2,7 +2,7 @@ package io.github.ealenxie.aliyun.ocr;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.github.ealenxie.aliyun.ocr.dto.UrlFileDTO;
+import io.github.ealenxie.aliyun.ocr.dto.UrlFilePayload;
 import io.github.ealenxie.aliyun.ocr.vo.OcrResponse;
 import io.github.ealenxie.aliyun.ocr.vo.RecognizeData;
 import io.github.ealenxie.aliyun.ocr.vo.certificate.*;
@@ -32,7 +32,7 @@ public class CertificateClient extends OcrClient {
      *
      * @param dto 请求参数
      */
-    public RecognizeData<IdCard> recognizeIdCard(IdCardDTO dto) {
+    public RecognizeData<IdCard> recognizeIdCard(IdCardPayload dto) {
         return getData(ocr("RecognizeIdcard", dto, OcrResponse.class), new TypeReference<RecognizeData<IdCard>>() {
         });
     }
@@ -42,7 +42,7 @@ public class CertificateClient extends OcrClient {
      *
      * @param dto 请求参数
      */
-    public RecognizeData<Passport> recognizePassport(UrlFileDTO dto) {
+    public RecognizeData<Passport> recognizePassport(UrlFilePayload dto) {
         return getData(ocr("RecognizePassport", dto, OcrResponse.class), new TypeReference<RecognizeData<Passport>>() {
         });
     }
@@ -52,7 +52,7 @@ public class CertificateClient extends OcrClient {
      *
      * @param dto 请求参数
      */
-    public RecognizeData<Household> recognizeHousehold(HouseholdDTO dto) {
+    public RecognizeData<Household> recognizeHousehold(HouseholdPayload dto) {
         return getData(ocr("RecognizeHousehold", dto, OcrResponse.class), new TypeReference<RecognizeData<Household>>() {
         });
     }
@@ -62,7 +62,7 @@ public class CertificateClient extends OcrClient {
      *
      * @param dto 请求参数
      */
-    public RecognizeData<Certification> recognizeEstateCertification(UrlFileDTO dto) {
+    public RecognizeData<Certification> recognizeEstateCertification(UrlFilePayload dto) {
         return getData(ocr("RecognizeEstateCertification", dto, OcrResponse.class), new TypeReference<RecognizeData<Certification>>() {
         });
     }
@@ -72,7 +72,7 @@ public class CertificateClient extends OcrClient {
      *
      * @param dto 请求参数
      */
-    public RecognizeData<BankCard> recognizeBankCard(UrlFileDTO dto) {
+    public RecognizeData<BankCard> recognizeBankCard(UrlFilePayload dto) {
         return getData(ocr("RecognizeBankCard", dto, OcrResponse.class), new TypeReference<RecognizeData<BankCard>>() {
         });
     }
@@ -82,7 +82,7 @@ public class CertificateClient extends OcrClient {
      *
      * @param dto 请求参数
      */
-    public RecognizeData<BirthCertification> recognizeBirthCertification(UrlFileDTO dto) {
+    public RecognizeData<BirthCertification> recognizeBirthCertification(UrlFilePayload dto) {
         return getData(ocr("RecognizeBirthCertification", dto, OcrResponse.class), new TypeReference<RecognizeData<BirthCertification>>() {
         });
     }
@@ -92,7 +92,7 @@ public class CertificateClient extends OcrClient {
      *
      * @param dto 请求参数
      */
-    public RecognizeData<ChinesePassport> recognizeChinesePassport(OutputFigureDTO dto) {
+    public RecognizeData<ChinesePassport> recognizeChinesePassport(OutputFigurePayload dto) {
         return getData(ocr("RecognizeChinesePassport", dto, OcrResponse.class), new TypeReference<RecognizeData<ChinesePassport>>() {
         });
     }
@@ -102,7 +102,7 @@ public class CertificateClient extends OcrClient {
      *
      * @param dto 请求参数
      */
-    public RecognizeData<ExitEntryPermitToMainland> recognizeExitEntryPermitToMainland(OutputFigureDTO dto) {
+    public RecognizeData<ExitEntryPermitToMainland> recognizeExitEntryPermitToMainland(OutputFigurePayload dto) {
         return getData(ocr("RecognizeExitEntryPermitToMainland", dto, OcrResponse.class), new TypeReference<RecognizeData<ExitEntryPermitToMainland>>() {
         });
     }
@@ -112,7 +112,7 @@ public class CertificateClient extends OcrClient {
      *
      * @param dto 请求参数
      */
-    public RecognizeData<RecognizeExitEntryPermitToHK> recognizeExitEntryPermitToHK(OutputFigureDTO dto) {
+    public RecognizeData<RecognizeExitEntryPermitToHK> recognizeExitEntryPermitToHK(OutputFigurePayload dto) {
         return getData(ocr("RecognizeExitEntryPermitToHK", dto, OcrResponse.class), new TypeReference<RecognizeData<RecognizeExitEntryPermitToHK>>() {
         });
     }
@@ -122,7 +122,7 @@ public class CertificateClient extends OcrClient {
      *
      * @param dto 请求参数
      */
-    public RecognizeData<SocialSecurityCardVersionII> recognizeSocialSecurityCardVersionII(UrlFileDTO dto) {
+    public RecognizeData<SocialSecurityCardVersionII> recognizeSocialSecurityCardVersionII(UrlFilePayload dto) {
         return getData(ocr("RecognizeSocialSecurityCardVersionII", dto, OcrResponse.class), new TypeReference<RecognizeData<SocialSecurityCardVersionII>>() {
         });
     }
@@ -139,7 +139,7 @@ public class CertificateClient extends OcrClient {
      * <p>Bangladesh {@link  BangladeshIdCard}</p>
      */
     @SuppressWarnings("all")
-    public RecognizeData<?> recognizeInternationalIdCard(InternationalIdCardDTO dto) {
+    public RecognizeData<?> recognizeInternationalIdCard(CountryPayload dto) {
         return getData(ocr("RecognizeInternationalIdcard", dto, OcrResponse.class), new TypeReference<RecognizeData<?>>() {
         });
     }

@@ -10,7 +10,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class VerifyVATInvoiceDTO {
+public class VerifyVATInvoicePayload {
 
     /**
      * 发票代码。全电发票（发票类型代码为31，32）时可为空（发票类型代码见请求参数补充说明）
