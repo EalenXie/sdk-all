@@ -10,13 +10,16 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Vas {
-    @JsonProperty("logistics_recomendation_option")
-    private Integer logisticsRecomendationOption;
+
+    /**
+     * 物流优选时效枚举选项
+     */
     @JsonProperty("logistics_recommendation_option")
     private Integer logisticsRecommendationOption;
+    /**
+     * 换标要求
+     */
     @JsonProperty("label_replacement_option")
     private Integer labelReplacementOption;
-    @JsonProperty("is_intransit_priority")
-    private Integer isIntransitPriority;
 
 }

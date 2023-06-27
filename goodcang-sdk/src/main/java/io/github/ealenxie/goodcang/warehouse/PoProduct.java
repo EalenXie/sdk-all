@@ -1,14 +1,14 @@
 package io.github.ealenxie.goodcang.warehouse;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * @author EalenXie created on 2023/6/26 17:22
  */
-@NoArgsConstructor
-@Data
+@Getter
+@Setter
 public class PoProduct {
     /**
      * 商品名称

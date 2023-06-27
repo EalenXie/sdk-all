@@ -54,8 +54,9 @@ public abstract class GoodCangClient {
     /**
      * post调用goodcang接口
      *
-     * @param urlNotPrefix 无环境前缀的url路径
-     * @param payload      请求参数
+     * @param urlNotPrefix               无环境前缀的url路径
+     * @param payload                    请求参数
+     * @param parameterizedTypeReference 参数返回类型
      */
     @SuppressWarnings("all")
     protected <T> T postGoodCang(String urlNotPrefix, @Nullable Object payload, ParameterizedTypeReference<T> parameterizedTypeReference) {

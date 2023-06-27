@@ -1,6 +1,7 @@
 package io.github.ealenxie.goodcang;
 
 import io.github.ealenxie.goodcang.product.*;
+import io.github.ealenxie.goodcang.vo.ListTotalPayload;
 import io.github.ealenxie.goodcang.vo.ResponseAsk;
 import io.github.ealenxie.goodcang.vo.ResponsePage;
 import org.springframework.core.ParameterizedTypeReference;
@@ -122,8 +123,8 @@ public class ProductInfoClient extends GoodCangClient {
      *
      * @param payload 请求参数
      */
-    public ResponseAsk<ProductFreezeListResponse> productFreezeList(ProductFreezeListPayload payload) {
-        return postGoodCang("/product/product_freeze_list", payload, new ParameterizedTypeReference<ResponseAsk<ProductFreezeListResponse>>() {
+    public ResponseAsk<ListTotalPayload<ProductFreeze>> productFreezeList(ProductFreezeListPayload payload) {
+        return postGoodCang("/product/product_freeze_list", payload, new ParameterizedTypeReference<ResponseAsk<ListTotalPayload<ProductFreeze>>>() {
         });
     }
 
@@ -133,8 +134,8 @@ public class ProductInfoClient extends GoodCangClient {
      *
      * @param id 冻结Id
      */
-    public ResponseAsk<ProductFreezeDetailResponse> productFreezeDetail(String id) {
-        return postGoodCang("/product/product_freeze_detail", new IdPayload(id), new ParameterizedTypeReference<ResponseAsk<ProductFreezeDetailResponse>>() {
+    public ResponseAsk<ProductFreezeDetail> productFreezeDetail(String id) {
+        return postGoodCang("/product/product_freeze_detail", new IdPayload(id), new ParameterizedTypeReference<ResponseAsk<ProductFreezeDetail>>() {
         });
     }
 
@@ -163,8 +164,8 @@ public class ProductInfoClient extends GoodCangClient {
      *
      * @param payload 请求参数
      */
-    public ResponseAsk<SerialNumberListResponse> serialNumberList(SerialNumberListPayload payload) {
-        return postGoodCang("/product/serial_number_list", payload, new ParameterizedTypeReference<ResponseAsk<SerialNumberListResponse>>() {
+    public ResponseAsk<ListTotalPayload<SerialNumberResponse>> serialNumberList(SerialNumberListPayload payload) {
+        return postGoodCang("/product/serial_number_list", payload, new ParameterizedTypeReference<ResponseAsk<ListTotalPayload<SerialNumberResponse>>>() {
         });
     }
 

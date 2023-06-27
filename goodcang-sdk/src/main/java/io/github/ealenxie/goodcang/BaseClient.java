@@ -1,6 +1,7 @@
 package io.github.ealenxie.goodcang;
 
 import io.github.ealenxie.goodcang.base.*;
+import io.github.ealenxie.goodcang.vo.ListTotalPayload;
 import io.github.ealenxie.goodcang.vo.ResponseAsk;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.web.client.RestOperations;
@@ -72,8 +73,8 @@ public class BaseClient extends GoodCangClient {
      *
      * @param payload 费用业务类型
      */
-    public ResponseAsk<FuelRateResponse> fuelRateList(FuelRatePayload payload) {
-        return postGoodCang("/base_data/fuel_rate_list", payload, new ParameterizedTypeReference<ResponseAsk<FuelRateResponse>>() {
+    public ResponseAsk<ListTotalPayload<FuelRate>> fuelRateList(FuelRatePayload payload) {
+        return postGoodCang("/base_data/fuel_rate_list", payload, new ParameterizedTypeReference<ResponseAsk<ListTotalPayload<FuelRate>>>() {
         });
     }
 

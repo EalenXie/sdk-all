@@ -11,7 +11,7 @@ import java.util.List;
  */
 @Getter
 @Setter
-public class ProductFreezeDetailResponse {
+public class ProductFreezeDetail {
     /**
      * 商品名称
      */

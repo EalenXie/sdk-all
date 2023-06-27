@@ -1,5 +1,8 @@
 package io.github.ealenxie.goodcang;
 
+import io.github.ealenxie.goodcang.assistant.*;
+import io.github.ealenxie.goodcang.vo.ListPayload;
+import io.github.ealenxie.goodcang.vo.ListTotalPayload;
 import io.github.ealenxie.goodcang.vo.ResponseAsk;
 import io.github.ealenxie.goodcang.vo.ResponsePage;
 import io.github.ealenxie.goodcang.warehouse.*;
@@ -345,8 +348,8 @@ public class WarehouseClient extends GoodCangClient {
      *
      * @param payload 请求参数
      */
-    public ResponseAsk<UnauthorizedListResponse> unauthorizedList(UnauthorizedListPayload payload) {
-        return postGoodCang("/return_order/unauthorized_list", payload, new ParameterizedTypeReference<ResponseAsk<UnauthorizedListResponse>>() {
+    public ResponseAsk<ListTotalPayload<ReturnOrderUnauthorized>> unauthorizedList(UnauthorizedListPayload payload) {
+        return postGoodCang("/return_order/unauthorized_list", payload, new ParameterizedTypeReference<ResponseAsk<ListTotalPayload<ReturnOrderUnauthorized>>>() {
         });
     }
 
@@ -424,8 +427,8 @@ public class WarehouseClient extends GoodCangClient {
      *
      * @param payload 请求参数
      */
-    public ResponseAsk<PlanOrderListResponse> planOrderList(PlanOrderListPayload payload) {
-        return postGoodCang("/plan_order/list", payload, new ParameterizedTypeReference<ResponseAsk<PlanOrderListResponse>>() {
+    public ResponseAsk<ListTotalPayload<PlanOrder>> planOrderList(PlanOrderListPayload payload) {
+        return postGoodCang("/plan_order/list", payload, new ParameterizedTypeReference<ResponseAsk<ListTotalPayload<PlanOrder>>>() {
         });
     }
 
@@ -445,8 +448,8 @@ public class WarehouseClient extends GoodCangClient {
      *
      * @param payload 请求参数
      */
-    public ResponseAsk<PlanOrderBoxListResponse> planOrderBoxList(PlanOrderBoxListPayload payload) {
-        return postGoodCang("/plan_order/box_list", payload, new ParameterizedTypeReference<ResponseAsk<PlanOrderBoxListResponse>>() {
+    public ResponseAsk<ListTotalPayload<Box>> planOrderBoxList(PlanOrderBoxListPayload payload) {
+        return postGoodCang("/plan_order/box_list", payload, new ParameterizedTypeReference<ResponseAsk<ListTotalPayload<Box>>>() {
         });
     }
 
@@ -475,8 +478,8 @@ public class WarehouseClient extends GoodCangClient {
      *
      * @param payload 请求参数
      */
-    public ResponseAsk<InventoryAgeTotal> inventoryAgeList(InventoryAgeListPayload payload) {
-        return postGoodCang("/inventory/inventory_age_list", payload, new ParameterizedTypeReference<ResponseAsk<InventoryAgeTotal>>() {
+    public ResponseAsk<ListTotalPayload<InventoryAge>> inventoryAgeList(InventoryAgeListPayload payload) {
+        return postGoodCang("/inventory/inventory_age_list", payload, new ParameterizedTypeReference<ResponseAsk<ListTotalPayload<InventoryAge>>>() {
         });
     }
 
@@ -485,10 +488,80 @@ public class WarehouseClient extends GoodCangClient {
      *
      * @param payload 请求参数
      */
-    public ResponseAsk<Void> setInventoryWarning(SetInventoryWarningPayload payload) {
+    public ResponseAsk<Void> setInventoryWarning(ListPayload<SetInventory> payload) {
         return postGoodCang("/inventory/set_inventory_warning", payload, new ParameterizedTypeReference<ResponseAsk<Void>>() {
         });
+    }
 
+    /**
+     * <a href="https://open.goodcang.com/docs_api/assistant/logistic_ticket_list">获取查件列表</a>
+     *
+     * @param payload 请求参数
+     */
+    public ResponseAsk<ListTotalPayload<LogisticTicket>> logisticTicketList(LogisticTicketListPayload payload) {
+        return postGoodCang("/assistant/logistic_ticket_list", payload, new ParameterizedTypeReference<ResponseAsk<ListTotalPayload<LogisticTicket>>>() {
+        });
+    }
+
+    /**
+     * <a href="https://open.goodcang.com/docs_api/assistant/logistic_ticket_type_list">获取查件单类型列表</a>
+     *
+     * @param smCode 请求参数
+     */
+    public ResponseAsk<List<LogisticTicketType>> logisticTicketTypeList(String smCode) {
+        return postGoodCang("/assistant/logistic_ticket_type_list", new SmCodePayload(smCode), new ParameterizedTypeReference<ResponseAsk<List<LogisticTicketType>>>() {
+        });
+    }
+
+    /**
+     * <a href="https://open.goodcang.com/docs_api/assistant/logistic_ticket_list">新增查件单</a>
+     *
+     * @param payload 请求参数
+     */
+    public ResponseAsk<IoCodePayload> createLogisticTicket(CreateLogisticTicketPayload payload) {
+        return postGoodCang("/assistant/create_logistic_ticket", payload, new ParameterizedTypeReference<ResponseAsk<IoCodePayload>>() {
+        });
+    }
+
+    /**
+     * <a href="https://open.goodcang.com/docs_api/assistant/modify_logistic_ticket">新增查件单</a>
+     *
+     * @param payload 请求参数
+     */
+    public ResponseAsk<Void> modifyLogisticTicket(ModifyLogisticTicketPayload payload) {
+        return postGoodCang("/assistant/modify_logistic_ticket", payload, new ParameterizedTypeReference<ResponseAsk<Void>>() {
+        });
+    }
+
+    /**
+     * <a href="https://open.goodcang.com/docs_api/assistant/logistic_ticket_detail">获取查件单详情</a>
+     *
+     * @param ioCode 查件单号
+     */
+    public ResponseAsk<LogisticTicketDetail> logisticTicketDetail(String ioCode) {
+        return postGoodCang("/assistant/logistic_ticket_detail", new IoCodePayload(ioCode), new ParameterizedTypeReference<ResponseAsk<LogisticTicketDetail>>() {
+        });
+    }
+
+    /**
+     * <a href="https://open.goodcang.com/docs_api/assistant/modify_logistic_ticket_status">查件单状态变更</a>
+     *
+     * @param ioCodeList 查件单号列表
+     * @param status     修改的状态
+     */
+    public ResponseAsk<Void> modifyLogisticTicketStatus(List<String> ioCodeList, Integer status) {
+        return postGoodCang("/assistant/modify_logistic_ticket_status", new ModifyLogisticTicketStatusPayload(ioCodeList, status), new ParameterizedTypeReference<ResponseAsk<Void>>() {
+        });
+    }
+
+    /**
+     * <a href="https://open.goodcang.com/docs_api/assistant/recheck_logistic_ticket">复查查件单</a>
+     *
+     * @param payload 请求参数
+     */
+    public ResponseAsk<Void> recheckLogisticTicket(RecheckLogisticTicketPayload payload) {
+        return postGoodCang("/assistant/recheck_logistic_ticket", payload, new ParameterizedTypeReference<ResponseAsk<Void>>() {
+        });
     }
 
 }
