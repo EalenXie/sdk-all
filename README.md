@@ -40,7 +40,7 @@ SDK ALL
 | [enterprise-wechat-sdk](https://github.com/EalenXie/sdk-all/tree/main/enterprise-wechat-sdk) | 企业微信机器人              | [企业微信-开发者中心](https://developer.work.weixin.qq.com/document/path/91770)                                             |
 | [tianyancha-sdk](https://github.com/EalenXie/sdk-all/tree/main/tianyancha-sdk)               | 天眼查 接口目录             | [天眼查 接口目录](https://open.tianyancha.com/api_list)                                                                   |
 
-### Release version
+### Release Version
 
 鉴于sdk-all对接的第三方接口具变更性,差异性，请根据实际情况选用sdk;目前未完善的情况下,约定都采用快照版本进行迭代
 

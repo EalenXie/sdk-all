@@ -108,7 +108,7 @@ public class GoodCangClient {
     }
 
     /**
-     * <a href="https://open.goodcang.com/docs_api/base_data/fuel_rate_list">获取异步任务结果列表</a>
+     * <a href="https://open.goodcang.com/docs_api/base_data/task_status_list">获取异步任务结果列表</a>
      *
      * @param requestIdList 请求id数组
      */
@@ -173,7 +173,7 @@ public class GoodCangClient {
     }
 
     /**
-     * <a href="https://open.goodcang.com/docs_api/product/get_declare_commodity_name_list">获取建议材质</a>
+     * <a href="https://open.goodcang.com/docs_api/product/get_material_list">获取建议材质</a>
      */
     public ResponseAsk<MaterialListResponse> getMaterialList() {
         return postGoodCang("/product/get_material_list", null, new ParameterizedTypeReference<ResponseAsk<MaterialListResponse>>() {
@@ -305,7 +305,7 @@ public class GoodCangClient {
     /**
      * <a href="https://open.goodcang.com/docs_api/inbound_order/get_vat_list">进出口商列表</a>
      */
-    public ResponseAsk<List<Vat>> getInboundOrderVatList(PagePayload payload) {
+    public ResponseAsk<List<Vat>> getVatList(PagePayload payload) {
         return postGoodCang("/inbound_order/get_vat_list", payload, new ParameterizedTypeReference<ResponseAsk<List<Vat>>>() {
         });
     }
@@ -427,7 +427,7 @@ public class GoodCangClient {
     }
 
     /**
-     * <a href="https://open.goodcang.com/docs_api/inbound_order/get_clearance_document">上传清关文件</a>
+     * <a href="https://open.goodcang.com/docs_api/inbound_order/get_clearance_document">获取清关文件上传状态</a>
      *
      * @param receivingList 入库单号列表
      */
@@ -457,7 +457,7 @@ public class GoodCangClient {
     }
 
     /**
-     * <a href="https://open.goodcang.com/docs_api/order/create_order">修改出库单</a>
+     * <a href="https://open.goodcang.com/docs_api/order/modify_order">修改出库单</a>
      *
      * @param payload 请求参数
      */
@@ -568,7 +568,7 @@ public class GoodCangClient {
     }
 
     /**
-     * <a href="https://open.goodcang.com/docs_api/return_order/create">修改退货单</a>
+     * <a href="https://open.goodcang.com/docs_api/return_order/update">修改退货单</a>
      *
      * @param payload 请求参数
      */
@@ -789,7 +789,7 @@ public class GoodCangClient {
     }
 
     /**
-     * <a href="https://open.goodcang.com/docs_api/assistant/logistic_ticket_list">新增查件单</a>
+     * <a href="https://open.goodcang.com/docs_api/assistant/create_logistic_ticket">新增查件单</a>
      *
      * @param payload 请求参数
      */
@@ -799,7 +799,7 @@ public class GoodCangClient {
     }
 
     /**
-     * <a href="https://open.goodcang.com/docs_api/assistant/modify_logistic_ticket">新增查件单</a>
+     * <a href="https://open.goodcang.com/docs_api/assistant/modify_logistic_ticket">编辑查件单</a>
      *
      * @param payload 请求参数
      */
