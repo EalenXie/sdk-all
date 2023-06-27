@@ -10,8 +10,15 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ValueAddedService {
+    /**
+     * 增值服务代码
+     */
     @JsonProperty("code")
     private String code;
+
+    /**
+     * 增值服务描述/具体内容
+     */
     @JsonProperty("content")
     private String content;
 }

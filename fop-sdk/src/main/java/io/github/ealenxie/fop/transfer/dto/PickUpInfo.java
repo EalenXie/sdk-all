@@ -10,10 +10,25 @@ import lombok.Setter;
 @Getter
 @Setter
 public class PickUpInfo {
+    /**
+     * 期望提货最早时间
+     * <p>
+     * *注：时间传入必须是时间戳
+     */
     @JsonProperty("expectPickUpEarliestTime")
     private String expectPickUpEarliestTime;
+
+    /**
+     * 期望提货最迟时间
+     * <p>
+     * *注：时间传入必须是时间戳
+     */
     @JsonProperty("expectPickUpLatestTime")
     private String expectPickUpLatestTime;
+
+    /**
+     * 收货地址
+     */
     @JsonProperty("pickUpAddressInfo")
     private AddressInfo pickUpAddressInfo;
 }

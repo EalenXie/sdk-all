@@ -10,8 +10,15 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CargoUnit {
+    /**
+     * 货物单位-值
+     */
     @JsonProperty("value")
     private Integer value;
+
+    /**
+     * 货物单位，可选 BOX：箱 PAO：票 JIN：件
+     */
     @JsonProperty("unit")
     private String unit;
 }

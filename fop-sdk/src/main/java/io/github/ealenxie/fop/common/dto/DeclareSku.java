@@ -10,6 +10,9 @@ import lombok.Setter;
 @Getter
 @Setter
 public class DeclareSku {
+    /**
+     * SKU编码
+     */
     @JsonProperty("sku_code")
     private String skuCode;
 }
