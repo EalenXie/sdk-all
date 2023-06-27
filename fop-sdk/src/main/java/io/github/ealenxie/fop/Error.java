@@ -17,13 +17,11 @@ public class Error {
      */
     @JsonProperty("error_code")
     private String errorCode;
-
     /**
      * 错误信息
      */
     @JsonProperty("error_msg")
     private String errorMsg;
-
     /**
      *
      */

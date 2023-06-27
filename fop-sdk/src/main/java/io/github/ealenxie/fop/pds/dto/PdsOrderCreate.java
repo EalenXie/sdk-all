@@ -88,7 +88,7 @@ public class PdsOrderCreate {
     private AddressInfo recipientInfo;
 
     /**
-     * 	投递信息
+     * 投递信息
      */
     @JsonProperty("deliverToRecipientInfo")
     private DeliverToRecipientInfo deliverToRecipientInfo;

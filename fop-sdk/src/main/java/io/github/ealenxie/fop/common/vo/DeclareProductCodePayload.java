@@ -9,8 +9,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class DeclareProductCodeVO {
-
+public class DeclareProductCodePayload {
 
     @JsonProperty("declare_product_code")
     private String declareProductCode;

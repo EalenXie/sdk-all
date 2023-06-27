@@ -5,13 +5,12 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * Created by EalenXie on 2023/3/22 16:38
+ * Created by EalenXie on 2023/3/25 15:10
  */
 @Getter
 @Setter
-public class CollectNoVO {
+public class FpxTrackingNoPayload {
 
-
-    @JsonProperty("collect_no")
-    private String collectNo;
+    @JsonProperty("fpxTrackingNo")
+    private String fpxTrackingNo;
 }

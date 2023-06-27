@@ -49,7 +49,7 @@ public class PcsOutboundCreate {
     private String eori;
 
     /**
-     * 	VAT税号
+     * VAT税号
      */
     private String vat;
 
@@ -57,7 +57,7 @@ public class PcsOutboundCreate {
      * 一段包裹列表
      */
     @JsonProperty("fpxTrackingNoList")
-    private List<FpxTrackingNoDTO> fpxTrackingNoList;
+    private List<FpxTrackingNoPayload> fpxTrackingNoList;
 
     /**
      * 发件人信息

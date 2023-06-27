@@ -11,7 +11,7 @@ import java.util.List;
  */
 @Getter
 @Setter
-public class DeclareCategoryListVO {
+public class DeclareCategoryListResponse {
 
     @JsonProperty("declarecategorylist")
     private List<DeclareCategory> declareCategoryList;

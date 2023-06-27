@@ -12,7 +12,7 @@ import java.util.List;
  */
 @Getter
 @Setter
-public class DeclareCountryDTO {
+public class DeclareCountryPayload {
     /**
      * 申报产品品牌
      */

@@ -28,5 +28,5 @@ public class UpdateXmsOrderWeight {
      * 包裹列表
      */
     @JsonProperty("parcelist")
-    private List<ParcelVO> parcelist;
+    private List<ParcelPayload> parcelist;
 }

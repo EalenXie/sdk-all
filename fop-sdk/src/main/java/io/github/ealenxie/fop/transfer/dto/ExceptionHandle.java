@@ -27,7 +27,7 @@ public class ExceptionHandle {
     private String exceptionHandleCode;
 
     /**
-     * 	异常描述
+     * 异常描述
      */
     @JsonProperty("exceptionHandleDesc")
     private String exceptionHandleDesc;

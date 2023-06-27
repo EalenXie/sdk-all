@@ -7,12 +7,15 @@ import lombok.Setter;
 import java.util.List;
 
 /**
- * Created by EalenXie on 2023/2/28 23:15
+ * Created by EalenXie on 2022/10/8 17:07
  */
 @Getter
 @Setter
-public class DeclareProductList {
+public class BillingListResponse {
 
-    @JsonProperty("declare_product_list")
-    private List<DeclareProduct> declareProducts;
+    /**
+     * 费用信息集合
+     */
+    @JsonProperty("billinglist")
+    private List<Billing> billings;
 }

@@ -8,7 +8,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class CancelDTO {
+public class CancelPayload {
     /**
      * 4px跟踪号
      */

@@ -11,7 +11,7 @@ import java.util.List;
  */
 @Getter
 @Setter
-public class DeclareCountryVO {
+public class DeclareCountryPayload {
     @JsonProperty("declare_country")
     private String declareCountry;
     @JsonProperty("declare_type")

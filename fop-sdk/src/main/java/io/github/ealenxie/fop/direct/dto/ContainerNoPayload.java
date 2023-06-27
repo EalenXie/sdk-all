@@ -7,15 +7,14 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
- * @author EalenXie created on 2023/6/16 10:11
+ * Created by EalenXie on 2023/3/22 16:48
  */
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class RequestNoDTO {
+public class ContainerNoPayload {
 
-    @JsonProperty("request_no")
-    private String requestNo;
-
+    @JsonProperty("containerNo")
+    private String containerNo;
 }

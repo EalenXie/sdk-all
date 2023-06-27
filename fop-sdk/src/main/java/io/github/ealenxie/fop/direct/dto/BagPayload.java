@@ -11,9 +11,9 @@ import java.util.List;
  */
 @Getter
 @Setter
-public class BagVO {
+public class BagPayload {
     @JsonProperty("bag_no")
     private String bagNo;
     @JsonProperty("order_list")
-    private List<RefNoVO> orderList;
+    private List<RefNoPayload> orderList;
 }

@@ -9,7 +9,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class RefNoVO {
+public class RefNoPayload {
     @JsonProperty("ref_no")
     private String refNo;
 }

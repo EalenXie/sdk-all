@@ -11,7 +11,7 @@ import java.util.List;
  */
 @Getter
 @Setter
-public class PriceCalculatorVO {
+public class PriceCalculatorResponse {
     @JsonProperty("service_code")
     private String serviceCode;
     @JsonProperty("product_code")

@@ -14,7 +14,7 @@ import java.util.List;
 public class CountryBindDeclare {
     /**
      * 申报产品代码，客户创建申报产品时唯一代码。
-     *
+     * <p>
      * 申报产品审核失败后，客户可根据申报产品代码修改。
      */
     @JsonProperty("declare_product_code")
@@ -24,5 +24,5 @@ public class CountryBindDeclare {
      * 申报国家列表
      */
     @JsonProperty("declare_country_list")
-    private List<DeclareCountryDTO> declareCountryList;
+    private List<DeclareCountryPayload> declareCountryList;
 }

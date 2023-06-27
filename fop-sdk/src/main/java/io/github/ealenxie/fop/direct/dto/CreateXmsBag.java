@@ -40,5 +40,5 @@ public class CreateXmsBag {
      * 订单列表
      */
     @JsonProperty("order_list")
-    private List<OrderVO> orderList;
+    private List<OrderWeightPayload> orderList;
 }

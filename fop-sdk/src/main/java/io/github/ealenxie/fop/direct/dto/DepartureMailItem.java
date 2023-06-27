@@ -52,6 +52,6 @@ public class DepartureMailItem {
      * 订单列表
      */
     @JsonProperty("orderList")
-    private List<OrderVO> orderList;
+    private List<OrderWeightPayload> orderList;
 
 }

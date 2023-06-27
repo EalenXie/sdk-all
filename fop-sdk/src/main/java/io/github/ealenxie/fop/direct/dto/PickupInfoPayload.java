@@ -9,7 +9,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class PickupInfoVO {
+public class PickupInfoPayload {
     /**
      * 名称
      */

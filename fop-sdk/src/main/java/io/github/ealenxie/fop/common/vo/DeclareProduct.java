@@ -29,7 +29,7 @@ public class DeclareProduct {
     @JsonProperty("origin_country")
     private String originCountry;
     @JsonProperty("declare_country_list")
-    private List<DeclareCountryVO> declareCountryList;
+    private List<DeclareCountryPayload> declareCountryList;
     @JsonProperty("declare_sku_list")
     private List<DeclareSku> declareSkuList;
     @JsonProperty("exception_reason")

@@ -46,5 +46,5 @@ public class Bag {
      * 订单列表
      */
     @JsonProperty("orderList")
-    private List<OrderVO> orderList;
+    private List<OrderWeightPayload> orderList;
 }

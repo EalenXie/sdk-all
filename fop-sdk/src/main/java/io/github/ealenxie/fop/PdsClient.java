@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.ealenxie.fop.pds.dto.PdsOrderCancel;
 import io.github.ealenxie.fop.pds.dto.PdsOrderCreate;
 import io.github.ealenxie.fop.pds.vo.PdsOrderResp;
-import org.springframework.http.HttpMethod;
 import org.springframework.web.client.RestOperations;
 
 /**
@@ -13,33 +12,32 @@ import org.springframework.web.client.RestOperations;
  * 末端网络服务
  */
 public class PdsClient extends FopClient {
-    public PdsClient() {
+    public PdsClient(String appKey, String appSecret) {
 
+        super(appKey, appSecret);
     }
 
-    public PdsClient(RestOperations restOperations) {
-        super(restOperations);
+    public PdsClient(String appKey, String appSecret, RestOperations restOperations) {
+        super(appKey, appSecret, restOperations);
     }
 
-    public PdsClient(RestOperations restOperations, ObjectMapper objectMapper) {
-        super(restOperations, objectMapper);
+    public PdsClient(String appKey, String appSecret, RestOperations restOperations, ObjectMapper objectMapper) {
+        super(appKey, appSecret, restOperations, objectMapper);
     }
 
     /**
      * <a href="http://open.4px.com/apiInfo/apiDetail?itemId=5&mainId=179">末端派送下单</a>
      */
-    public FopResp<PdsOrderResp> pdsOrderCreate(AppKeySecret appKeySecret, PdsOrderCreate dto) {
-        CommonArgs common = new CommonArgs(appKeySecret, "lm.pds.order.create");
-        return readFopBody(callFop(HttpMethod.POST, common, dto), new TypeReference<FopResp<PdsOrderResp>>() {
+    public FopResp<PdsOrderResp> pdsOrderCreate(PdsOrderCreate dto) {
+        return postFop("lm.pds.order.create", dto, new TypeReference<FopResp<PdsOrderResp>>() {
         });
     }
 
     /**
      * <a href="http://open.4px.com/apiInfo/apiDetail?itemId=5&mainId=180">末端派送订单取消</a>
      */
-    public FopResp<Void> pdsOrderCancel(AppKeySecret appKeySecret, PdsOrderCancel dto) {
-        CommonArgs common = new CommonArgs(appKeySecret, "lm.pds.order.cancel");
-        return readFopBody(callFop(HttpMethod.POST, common, dto), new TypeReference<FopResp<Void>>() {
+    public FopResp<Void> pdsOrderCancel(PdsOrderCancel dto) {
+        return postFop("lm.pds.order.cancel", dto, new TypeReference<FopResp<Void>>() {
         });
     }
 

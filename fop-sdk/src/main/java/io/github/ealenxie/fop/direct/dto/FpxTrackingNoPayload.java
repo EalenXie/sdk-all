@@ -11,7 +11,7 @@ import java.util.List;
  */
 @Getter
 @Setter
-public class FpxTrackingNoDTO {
+public class FpxTrackingNoPayload {
 
     /**
      * 一段包裹4px单号

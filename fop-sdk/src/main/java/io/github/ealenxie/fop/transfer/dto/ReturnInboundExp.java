@@ -17,7 +17,7 @@ public class ReturnInboundExp {
     private String firstName;
 
     /**
-     * 	姓
+     * 姓
      */
     @JsonProperty("lastName")
     private String lastName;
@@ -65,13 +65,13 @@ public class ReturnInboundExp {
     private String city;
 
     /**
-     * 	区、县
+     * 区、县
      */
     @JsonProperty("district")
     private String district;
 
     /**
-     * 	街道/详细地址
+     * 街道/详细地址
      */
     @JsonProperty("street")
     private String street;

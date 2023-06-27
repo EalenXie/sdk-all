@@ -17,11 +17,11 @@ public class CreateCollectBig {
      * 揽收地址信息
      */
     @JsonProperty("pickup_info")
-    private PickupInfoVO pickupInfo;
+    private PickupInfoPayload pickupInfo;
 
     /**
      * 袋序号
      */
     @JsonProperty("bag_list")
-    private List<BagVO> bagList;
+    private List<BagPayload> bagList;
 }

@@ -73,7 +73,7 @@ public class PcsInboundCreate {
     private Integer height;
 
     /**
-     * 	包裹申报价值
+     * 包裹申报价值
      */
     @JsonProperty("parcelValue")
     private Double parcelValue;

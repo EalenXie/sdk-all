@@ -21,5 +21,5 @@ public class CreateCollectOrder {
      * 揽收地址信息
      */
     @JsonProperty("pickup_info")
-    private PickupInfoVO pickupInfo;
+    private PickupInfoPayload pickupInfo;
 }

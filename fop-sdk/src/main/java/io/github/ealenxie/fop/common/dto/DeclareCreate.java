@@ -22,7 +22,7 @@ public class DeclareCreate {
      * 申报国家列表
      */
     @JsonProperty("declare_country_list")
-    private List<DeclareCountryDTO> declareCountryList;
+    private List<DeclareCountryPayload> declareCountryList;
 
     /**
      * 申报产品代码

@@ -9,7 +9,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class ParcelVO {
+public class ParcelPayload {
     /**
      * 包裹高度
      */
