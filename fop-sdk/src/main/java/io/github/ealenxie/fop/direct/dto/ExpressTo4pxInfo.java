@@ -10,8 +10,15 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ExpressTo4pxInfo {
+    /**
+     * 快递公司
+     */
     @JsonProperty("express_company")
     private String expressCompany;
+
+    /**
+     * 追踪号
+     */
     @JsonProperty("tracking_no")
     private String trackingNo;
 }

@@ -11,11 +11,21 @@ import lombok.Setter;
 @Setter
 public class PrepaymentLabel {
 
-
+    /**
+     * 面单标签下载URL
+     */
     @JsonProperty("label_url")
     private String labelUrl;
+
+    /**
+     * 预估金额（单位：人民币，最多5位小数点）
+     */
     @JsonProperty("estimate_amount")
     private String estimateAmount;
+
+    /**
+     * 物流单号
+     */
     @JsonProperty("mail_no")
     private String mailNo;
 }

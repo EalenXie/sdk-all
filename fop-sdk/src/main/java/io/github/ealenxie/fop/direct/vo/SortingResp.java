@@ -10,11 +10,21 @@ import lombok.Setter;
 @Getter
 @Setter
 public class SortingResp {
-
+    /**
+     * 分拣规则编码
+     */
     @JsonProperty("ruleCode")
     private String ruleCode;
+
+    /**
+     * 分拣规则名称
+     */
     @JsonProperty("ruleName")
     private String ruleName;
+
+    /**
+     * 分拣规则id
+     */
     @JsonProperty("sortingId")
     private Integer sortingId;
 }

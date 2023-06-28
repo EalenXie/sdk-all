@@ -10,8 +10,15 @@ import lombok.Setter;
 @Getter
 @Setter
 public class PcsOutboundCreateResp {
+    /**
+     * 4px单号
+     */
     @JsonProperty("fpxTrackingNo")
     private String fpxTrackingNo;
+
+    /**
+     * 出库单号
+     */
     @JsonProperty("orderNo")
     private String orderNo;
 

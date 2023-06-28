@@ -14,6 +14,9 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RmaInfoGet {
+    /**
+     * 退货单（退货预报单）
+     */
     @JsonProperty("rma_no")
     private String rmaNo;
 }

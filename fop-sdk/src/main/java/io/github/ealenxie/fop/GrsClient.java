@@ -41,6 +41,7 @@ public class GrsClient extends FopClient {
      * <a href="http://open.4px.com/apiInfo/apiDetail?itemId=4&mainId=139">查询退货单信息</a>
      *
      * @param rmaNo 退货单（退货预报单）
+     * todo 这个接口的返回内容，与文档不对应
      */
     public FopResp<ReceivedInfo> rmaInfoGet(String rmaNo) {
         return postFop("re.grs.rmainfo.get", new RmaInfoGet(rmaNo), new TypeReference<FopResp<ReceivedInfo>>() {

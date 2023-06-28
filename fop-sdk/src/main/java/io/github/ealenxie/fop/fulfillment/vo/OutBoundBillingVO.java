@@ -12,7 +12,9 @@ import java.util.List;
 @Getter
 @Setter
 public class OutBoundBillingVO {
-
+    /**
+     * 库存信息集合
+     */
     @JsonProperty("billinglist")
     private List<Billing> billinglist;
 }

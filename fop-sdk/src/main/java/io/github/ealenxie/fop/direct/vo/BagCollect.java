@@ -10,8 +10,15 @@ import lombok.Setter;
 @Getter
 @Setter
 public class BagCollect {
+    /**
+     * 揽收大包号
+     */
     @JsonProperty("bag_collect_no")
     private String bagCollectNo;
+
+    /**
+     * 袋序号
+     */
     @JsonProperty("bag_no")
     private String bagNo;
 }

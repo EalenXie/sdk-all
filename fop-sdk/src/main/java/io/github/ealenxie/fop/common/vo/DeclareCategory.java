@@ -10,12 +10,27 @@ import lombok.Setter;
 @Getter
 @Setter
 public class DeclareCategory {
+    /**
+     * 申报产品种类代码
+     */
     @JsonProperty("category_code")
     private Integer categoryCode;
+
+    /**
+     * 申报产品种类父类节点代码。(一级节点的父类节点为0)
+     */
     @JsonProperty("category_parent_code")
     private Integer categoryParentCode;
+
+    /**
+     * 申报产品种类中文名称。
+     */
     @JsonProperty("category_name")
     private String categoryName;
+
+    /**
+     * 申报产品种类英文名称。
+     */
     @JsonProperty("category_ename")
     private String categoryEname;
 }

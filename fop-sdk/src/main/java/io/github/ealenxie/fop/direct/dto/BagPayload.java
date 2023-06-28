@@ -12,8 +12,15 @@ import java.util.List;
 @Getter
 @Setter
 public class BagPayload {
+    /**
+     * 袋序号
+     */
     @JsonProperty("bag_no")
     private String bagNo;
+
+    /**
+     * 小包集合
+     */
     @JsonProperty("order_list")
     private List<RefNoPayload> orderList;
 }

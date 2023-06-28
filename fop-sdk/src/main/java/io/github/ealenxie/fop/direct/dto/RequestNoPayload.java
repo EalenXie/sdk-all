@@ -14,7 +14,9 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RequestNoPayload {
-
+    /**
+     * 请求单号，支持4PX单号、服务商单号、客户单号
+     */
     @JsonProperty("request_no")
     private String requestNo;
 

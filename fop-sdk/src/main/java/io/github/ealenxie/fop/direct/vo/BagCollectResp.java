@@ -12,7 +12,9 @@ import java.util.List;
 @Getter
 @Setter
 public class BagCollectResp {
-
+    /**
+     * 响应大包,类型是List对象集合
+     */
     @JsonProperty("bag_list")
     private List<BagCollect> bagList;
 }

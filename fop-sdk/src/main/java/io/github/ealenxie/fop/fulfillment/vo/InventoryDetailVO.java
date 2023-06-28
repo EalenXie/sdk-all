@@ -13,7 +13,9 @@ import java.util.List;
 @Getter
 @Setter
 public class InventoryDetailVO {
-
+    /**
+     * 库存信息集合
+     */
     @JsonProperty("inventorydetaillist")
     private List<InventoryDetailResp> inventoryDetails;
 

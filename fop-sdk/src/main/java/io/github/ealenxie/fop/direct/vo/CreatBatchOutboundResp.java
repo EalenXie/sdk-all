@@ -11,9 +11,15 @@ import lombok.Setter;
 @Setter
 public class CreatBatchOutboundResp {
 
-
+    /**
+     * 请求id
+     */
     @JsonProperty("requestId")
     private String requestId;
+
+    /**
+     * 出库预报批次号（一次预报产生一个唯一识别的批次号）
+     */
     @JsonProperty("departureCode")
     private String departureCode;
 }

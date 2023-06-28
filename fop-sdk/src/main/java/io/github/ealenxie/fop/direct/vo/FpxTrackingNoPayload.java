@@ -10,7 +10,9 @@ import lombok.Setter;
 @Getter
 @Setter
 public class FpxTrackingNoPayload {
-
+    /**
+     * 4PX跟踪号
+     */
     @JsonProperty("fpxTrackingNo")
     private String fpxTrackingNo;
 }

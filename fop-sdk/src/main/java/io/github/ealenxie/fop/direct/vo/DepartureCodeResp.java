@@ -11,9 +11,15 @@ import lombok.Setter;
 @Setter
 public class DepartureCodeResp {
 
-
+    /**
+     * 出库预报批次号（一次预报产生一个唯一识别的批次号）
+     */
     @JsonProperty("departure_code")
     private String departureCode;
+
+    /**
+     * 请求id
+     */
     @JsonProperty("request_id")
     private String requestId;
 }

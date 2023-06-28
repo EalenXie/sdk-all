@@ -10,9 +10,15 @@ import lombok.Setter;
 @Getter
 @Setter
 public class XmsOrder {
-
+    /**
+     * 委托单信息
+     */
     @JsonProperty("consignment_info")
     private ConsignmentInfo consignmentInfo;
+
+    /**
+     * 订单信息
+     */
     @JsonProperty("parcel_confirm_info")
     private ParcelConfirmInfo parcelConfirmInfo;
 }

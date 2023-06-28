@@ -10,6 +10,9 @@ import lombok.Setter;
 @Getter
 @Setter
 public class RefNoPayload {
+    /**
+     * 小包服务商单号
+     */
     @JsonProperty("ref_no")
     private String refNo;
 }

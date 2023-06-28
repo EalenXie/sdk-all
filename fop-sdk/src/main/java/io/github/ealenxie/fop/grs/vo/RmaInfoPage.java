@@ -13,13 +13,27 @@ import java.util.List;
 @Setter
 public class RmaInfoPage {
 
-
+    /**
+     * 收货信息
+     */
     @JsonProperty("list")
     private List<ReceivedListInfo> list;
+
+    /**
+     * 分页面数量，默认值为100
+     */
     @JsonProperty("pageNum")
     private Integer pageNum;
+
+    /**
+     * 分页开始页，默认值为0
+     */
     @JsonProperty("pages")
     private Integer pages;
+
+    /**
+     * 总数
+     */
     @JsonProperty("total")
     private Integer total;
 }

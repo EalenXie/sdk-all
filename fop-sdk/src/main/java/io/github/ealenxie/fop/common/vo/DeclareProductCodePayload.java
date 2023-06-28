@@ -11,6 +11,11 @@ import lombok.Setter;
 @Setter
 public class DeclareProductCodePayload {
 
+    /**
+     * 申报产品代码
+     * <p>
+     * 客户自定义申报产品代码
+     */
     @JsonProperty("declare_product_code")
     private String declareProductCode;
 }

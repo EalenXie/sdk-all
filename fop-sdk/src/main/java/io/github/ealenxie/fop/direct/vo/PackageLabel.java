@@ -11,9 +11,15 @@ import lombok.Setter;
 @Setter
 public class PackageLabel {
 
-
+    /**
+     * 袋号
+     */
     @JsonProperty("containerNo")
     private String containerNo;
+
+    /**
+     * 标签地址
+     */
     @JsonProperty("labelUrl")
     private String labelUrl;
 }

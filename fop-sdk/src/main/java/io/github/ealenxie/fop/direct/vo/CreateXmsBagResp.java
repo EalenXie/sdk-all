@@ -10,10 +10,21 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CreateXmsBagResp {
+    /**
+     * 请求唯一识别号
+     */
     @JsonProperty("request_id")
     private String requestId;
+
+    /**
+     * 袋子号
+     */
     @JsonProperty("bag_code")
     private String bagCode;
+
+    /**
+     * 袋标签，下载地址
+     */
     @JsonProperty("bag_label_url")
     private String bagLabelUrl;
 

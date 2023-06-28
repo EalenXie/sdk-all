@@ -13,6 +13,9 @@ import java.util.List;
 @Setter
 public class DeclareCategoryListResponse {
 
+    /**
+     * 申报产品种类集合
+     */
     @JsonProperty("declarecategorylist")
     private List<DeclareCategory> declareCategoryList;
 }

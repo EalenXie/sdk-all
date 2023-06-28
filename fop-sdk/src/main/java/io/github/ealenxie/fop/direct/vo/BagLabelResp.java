@@ -11,11 +11,19 @@ import lombok.Setter;
 @Setter
 public class BagLabelResp {
 
-
+    /**
+     * 请求id
+     */
     private String requestId;
 
+    /**
+     * 袋序号
+     */
     private String bagCode;
 
+    /**
+     * 袋标签地址
+     */
     @JsonProperty("bagLabelURL")
     private String bagLabelUrl;
 }

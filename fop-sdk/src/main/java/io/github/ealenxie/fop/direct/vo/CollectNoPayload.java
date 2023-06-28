@@ -10,7 +10,9 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CollectNoPayload {
-
+    /**
+     * 揽收大包号
+     */
     @JsonProperty("collect_no")
     private String collectNo;
 }

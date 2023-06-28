@@ -14,6 +14,10 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ScanNoPayload {
+
+    /**
+     * 面单条码
+     */
     @JsonProperty("scanNo")
     private String scanNo;
 }

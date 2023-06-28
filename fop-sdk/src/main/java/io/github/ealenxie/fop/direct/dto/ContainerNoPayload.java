@@ -14,7 +14,9 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ContainerNoPayload {
-
+    /**
+     * 袋号
+     */
     @JsonProperty("containerNo")
     private String containerNo;
 }

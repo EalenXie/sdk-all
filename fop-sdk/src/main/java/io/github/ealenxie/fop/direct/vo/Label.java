@@ -10,9 +10,15 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Label {
-
+    /**
+     * 请求单号
+     */
     @JsonProperty("requestNo")
     private String requestNo;
+
+    /**
+     * 标签地址
+     */
     @JsonProperty("labelUrl")
     private String labelUrl;
 }

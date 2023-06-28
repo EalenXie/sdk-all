@@ -10,8 +10,17 @@ import lombok.Setter;
 @Getter
 @Setter
 public class DeclareSku {
+    /**
+     * SKU编码
+     */
     @JsonProperty("sku_code")
     private String skuCode;
+
+    /**
+     * SKU申报审核状态。
+     * <p>
+     * 如：N（草稿）；S（待审核）；C（已审核）；E（异常）
+     */
     @JsonProperty("declare_sku_status")
     private String declareSkuStatus;
 }

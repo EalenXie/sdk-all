@@ -11,6 +11,9 @@ import lombok.Setter;
 @Setter
 public class ExternalCreateVO {
 
+    /**
+     * 返回派送委托单号
+     */
     @JsonProperty("consignment_no")
     private String consignmentNo;
 }

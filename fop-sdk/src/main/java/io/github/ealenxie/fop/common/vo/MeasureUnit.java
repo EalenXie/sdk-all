@@ -10,13 +10,27 @@ import lombok.Setter;
 @Getter
 @Setter
 public class MeasureUnit {
-
+    /**
+     * 计量单位唯一编码
+     */
     @JsonProperty("code")
     private String code;
+
+    /**
+     * 中文名
+     */
     @JsonProperty("name_cn")
     private String nameCn;
+
+    /**
+     * 英文名
+     */
     @JsonProperty("name_en")
     private String nameEn;
+
+    /**
+     * 符号
+     */
     @JsonProperty("symbol")
     private String symbol;
 }

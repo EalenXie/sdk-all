@@ -12,10 +12,21 @@ import java.util.List;
 @Getter
 @Setter
 public class ParcelConfirmInfo {
+    /**
+     * 订单的实际包裹数
+     */
     @JsonProperty("confirm_parcel_qty")
     private String confirmParcelQty;
+
+    /**
+     * 	订单实重（默认g）
+     */
     @JsonProperty("confirm_parcel_weight")
     private Integer confirmParcelWeight;
+
+    /**
+     * 包裹列表
+     */
     @JsonProperty("parcel_list_confirm_info")
     private List<ParcelListConfirmInfo> parcelListConfirmInfo;
 }

@@ -224,11 +224,9 @@ public class DirectClient extends FopClient {
 
     /**
      * <a href="http://open.4px.com/apiInfo/apiDetail?itemId=2&mainId=191">商家工作台-组包</a>
-     * <p>
-     * todo 这个接口传参与文档不匹配
      */
-    public FopResp<PackageLabel> packageGroup(PickupAddress pickupAddress) {
-        return postFop("bws.package.group", pickupAddress, new TypeReference<FopResp<PackageLabel>>() {
+    public FopResp<PackageLabel> packageGroup(PackageGroup dto) {
+        return postFop("bws.package.group", dto, new TypeReference<FopResp<PackageLabel>>() {
         });
     }
 
