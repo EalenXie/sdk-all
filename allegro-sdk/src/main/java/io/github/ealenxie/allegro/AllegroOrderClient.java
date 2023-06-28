@@ -2,10 +2,8 @@ package io.github.ealenxie.allegro;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.github.ealenxie.allegro.dto.*;
-import io.github.ealenxie.allegro.vo.*;
-import io.github.ealenxie.allegro.vo.checkoutform.CheckoutForm;
-import io.github.ealenxie.allegro.vo.orderevent.OrderEvent;
+import io.github.ealenxie.allegro.order.*;
+import io.github.ealenxie.allegro.vo.IdInputPayload;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.web.client.RestOperations;
@@ -21,7 +19,6 @@ import java.util.List;
 
 public class AllegroOrderClient extends AllegroClient {
 
-
     public AllegroOrderClient() {
         this(new RestTemplate());
     }
@@ -35,11 +32,30 @@ public class AllegroOrderClient extends AllegroClient {
     }
 
     /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getOrderEventsUsingGET">获取订单事件查询</a>
+     *
+     * @param queryParams 事件查询参数
+     * @param accessToken 请求token
+     */
+    public OrderEvent events(String accessToken, OrderEventQueryParams queryParams) {
+        return getAllegro("/order/events", accessToken, queryParams, OrderEvent.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getOrderEventsStatisticsUsingGET">获取订单事件统计</a>
+     *
+     * @param accessToken 请求token
+     */
+    public EventStats eventStats(String accessToken) {
+        return getAllegro("/order/event-stats", accessToken, null, EventStats.class);
+    }
+
+
+    /**
      * <a href="https://developer.allegro.pl/documentation/#operation/getListOfOrdersUsingGET">获取用户订单</a>
      *
      * @param accessToken 令牌
      * @param queryParams 用户订单查询参数
-     * @return {@link CheckoutForms} 订单详情
      */
     public CheckoutForms userOrders(String accessToken, OrdersQueryParams queryParams) {
         return getAllegro("/order/checkout-forms", accessToken, queryParams, CheckoutForms.class);
@@ -79,26 +95,6 @@ public class AllegroOrderClient extends AllegroClient {
         return getAllegro(String.format("/order/checkout-forms/%s/shipments", orderId), accessToken, null, Shipment.class);
     }
 
-    /**
-     * <a href="https://developer.allegro.pl/documentation/#operation/getOrderEventsUsingGET">获取订单事件查询</a>
-     *
-     * @param queryParams 事件查询参数
-     * @param accessToken 请求token
-     * @return {@link OrderEvent}
-     */
-    public OrderEvent events(String accessToken, OrderEventQueryParams queryParams) {
-        return getAllegro("/order/events", accessToken, queryParams, OrderEvent.class);
-    }
-
-    /**
-     * <a href="https://developer.allegro.pl/documentation/#operation/getOrderEventsStatisticsUsingGET">获取订单事件统计</a>
-     *
-     * @param accessToken 请求token
-     * @return {@link EventStats}
-     */
-    public EventStats eventStats(String accessToken) {
-        return getAllegro("/order/event-stats", accessToken, null, EventStats.class);
-    }
 
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/getOrdersCarriersUsingGET">获取订单物流</a>
@@ -126,10 +122,9 @@ public class AllegroOrderClient extends AllegroClient {
      *
      * @param orderId     订单Id
      * @param accessToken 请求token
-     * @return {@link Invoices} 发票
      */
-    public Invoices invoices(String accessToken, String orderId) {
-        return getAllegro(String.format("/order/checkout-forms/%s/invoices", orderId), accessToken, null, Invoices.class);
+    public InvoicesResponse invoices(String accessToken, String orderId) {
+        return getAllegro(String.format("/order/checkout-forms/%s/invoices", orderId), accessToken, null, InvoicesResponse.class);
     }
 
     /**
@@ -157,8 +152,8 @@ public class AllegroOrderClient extends AllegroClient {
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/getBillingEntries">获取账单条目列表</a>
      */
-    public BillingEntriesPayload billings(String accessToken, BillingQueryParams queryParams) {
-        return getAllegro("/billing/billing-entries", accessToken, queryParams, BillingEntriesPayload.class);
+    public BillingEntriesResponse billings(String accessToken, BillingQueryParams queryParams) {
+        return getAllegro("/billing/billing-entries", accessToken, queryParams, BillingEntriesResponse.class);
     }
 
     /**
@@ -175,8 +170,8 @@ public class AllegroOrderClient extends AllegroClient {
      * @param accessToken 授权
      * @param queryParams 请求参数
      */
-    public PaymentOperations payments(String accessToken, PaymentsQueryParams queryParams) {
-        return getAllegro("/payments/payment-operations", accessToken, queryParams, PaymentOperations.class);
+    public PaymentOperationsResponse payments(String accessToken, PaymentsQueryParams queryParams) {
+        return getAllegro("/payments/payment-operations", accessToken, queryParams, PaymentOperationsResponse.class);
     }
 
     /**
@@ -205,8 +200,8 @@ public class AllegroOrderClient extends AllegroClient {
      * @param accessToken 授权
      * @param disputeId   争议id
      */
-    public Messages getMessages(String accessToken, String disputeId, GetMessagesQueryParams queryParams) {
-        return getAllegro(String.format("/sale/disputes/%s/messages", disputeId), accessToken, queryParams, Messages.class);
+    public Message getMessages(String accessToken, String disputeId, MessagesQueryParams queryParams) {
+        return getAllegro(String.format("/sale/disputes/%s/messages", disputeId), accessToken, queryParams, Message.class);
     }
 
     /**
@@ -245,8 +240,8 @@ public class AllegroOrderClient extends AllegroClient {
      * @param commandId   Command UUID.
      * @param payload     请求参数
      */
-    public IdInputPayload<CreateNewParcelResponse> createNewParcel(String accessToken, String commandId, CreateNewParcelPayload payload) {
-        return exchangeAllegro(String.format("/parcel-management/parcel-create-commands/%s", commandId), HttpMethod.PUT, accessToken, null, payload, new ParameterizedTypeReference<IdInputPayload<CreateNewParcelResponse>>() {
+    public IdInputPayload<ParcelPayload> createNewParcel(String accessToken, String commandId, ParcelPayload payload) {
+        return exchangeAllegro(String.format("/parcel-management/parcel-create-commands/%s", commandId), HttpMethod.PUT, accessToken, null, payload, new ParameterizedTypeReference<IdInputPayload<ParcelPayload>>() {
         });
     }
 
@@ -256,8 +251,8 @@ public class AllegroOrderClient extends AllegroClient {
      * @param accessToken 授权
      * @param commandId   Command UUID
      */
-    public GetParcelCreationStatusResponse getParcelCreationStatus(String accessToken, String commandId) {
-        return getAllegro(String.format("/parcel-management/parcel-create-commands/%s", commandId), accessToken, null, GetParcelCreationStatusResponse.class);
+    public ParcelCreationStatusResponse getParcelCreationStatus(String accessToken, String commandId) {
+        return getAllegro(String.format("/parcel-management/parcel-create-commands/%s", commandId), accessToken, null, ParcelCreationStatusResponse.class);
     }
 
     /**
@@ -266,8 +261,8 @@ public class AllegroOrderClient extends AllegroClient {
      * @param accessToken 授权
      * @param parcelId    id of parcel 包裹Id
      */
-    public GetParcelDetailsResponse getParcelDetails(String accessToken, String parcelId) {
-        return getAllegro(String.format("/parcel-management/parcels/%s", parcelId), accessToken, null, GetParcelDetailsResponse.class);
+    public ParcelDetailsResponse getParcelDetails(String accessToken, String parcelId) {
+        return getAllegro(String.format("/parcel-management/parcels/%s", parcelId), accessToken, null, ParcelDetailsResponse.class);
     }
 
     /**
@@ -286,8 +281,8 @@ public class AllegroOrderClient extends AllegroClient {
      * @param accessToken 授权
      * @param payload     请求参数
      */
-    public IdInputPayload<RequestParcelPayload> requestParcelPickup(String accessToken, String commandId, RequestParcelPickupPayload payload) {
-        return exchangeAllegro(String.format("/parcel-management/parcel-pickup-request-commands/%s", commandId), HttpMethod.PUT, accessToken, null, payload, new ParameterizedTypeReference<IdInputPayload<RequestParcelPayload>>() {
+    public IdInputPayload<ParcelPickupPayload> requestParcelPickup(String accessToken, String commandId, ParcelPickupPayload payload) {
+        return exchangeAllegro(String.format("/parcel-management/parcel-pickup-request-commands/%s", commandId), HttpMethod.PUT, accessToken, null, payload, new ParameterizedTypeReference<IdInputPayload<ParcelPickupPayload>>() {
         });
     }
 
@@ -297,8 +292,8 @@ public class AllegroOrderClient extends AllegroClient {
      * @param accessToken 授权
      * @param commandId   包含包裹Id和日期
      */
-    public GetParcelPickupStatusResponse getParcelPickupStatus(String accessToken, String commandId) {
-        return getAllegro(String.format("/parcel-management/parcel-pickup-request-commands/%s", commandId), accessToken, null, GetParcelPickupStatusResponse.class);
+    public ParcelPickupStatusResponse getParcelPickupStatus(String accessToken, String commandId) {
+        return getAllegro(String.format("/parcel-management/parcel-pickup-request-commands/%s", commandId), accessToken, null, ParcelPickupStatusResponse.class);
     }
 
     /**
@@ -307,7 +302,7 @@ public class AllegroOrderClient extends AllegroClient {
      * @param accessToken 授权
      * @param queryParams 请求参数
      */
-    public byte[] getParcelLabel(String accessToken, GetParcelLabelQueryParams queryParams) {
+    public byte[] getParcelLabel(String accessToken, ParcelLabelQueryParams queryParams) {
         return getAllegro("/parcel-management/parcels/label", accessToken, queryParams, byte[].class);
     }
 
