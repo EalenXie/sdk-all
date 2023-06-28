@@ -1,7 +1,8 @@
 aliyun-ocr-sdk
 ===========
 
-主要是封装了阿里云市场 [文字识别（OCR）](https://help.aliyun.com/document_detail/442243.html) 接口
+主要是封装了阿里云市场 [文字识别（OCR）](https://help.aliyun.com/document_detail/442243.html)接口,
+同样推荐使用[官方SDK](https://help.aliyun.com/document_detail/295361.html?spm=a2c4g.294602.0.0.7d6b273fcuQtyU),
 
 ### 快速开始
 
