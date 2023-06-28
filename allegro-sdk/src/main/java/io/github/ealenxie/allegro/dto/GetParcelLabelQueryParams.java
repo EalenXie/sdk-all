@@ -10,7 +10,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class GetParcelLabelDTO {
+public class GetParcelLabelQueryParams {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private String parcelId;
 

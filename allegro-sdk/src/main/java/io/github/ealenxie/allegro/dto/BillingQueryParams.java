@@ -9,7 +9,7 @@ import java.util.List;
 
 @Getter
 @Setter
-public class BillingDTO {
+public class BillingQueryParams {
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("offer.id")

@@ -9,7 +9,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class ProposalsDTO {
+public class ProposalsQueryParams {
     /**
      * Array of strings <= 100 items [ items <= 100 characters ]
      * Ids of parcels. Passing more than one value will search pickup dates for all of them separately.

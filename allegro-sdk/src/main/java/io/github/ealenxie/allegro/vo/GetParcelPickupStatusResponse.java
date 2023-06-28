@@ -8,15 +8,14 @@ import java.util.List;
 
 /**
  * @author jadechiang
- * @since 2023/3/28 9:39
+ * @since 2023/4/4 14:36
  */
 @Getter
 @Setter
-public class GetParcelCreationStatusVO {
+public class GetParcelPickupStatusResponse {
+
     @JsonProperty("id")
     private String id;
-    @JsonProperty("parcelId")
-    private String parcelId;
     @JsonProperty("status")
     private String status;
     @JsonProperty("errors")

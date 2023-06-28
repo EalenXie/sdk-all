@@ -9,7 +9,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class FulfillmentDTO {
+public class FulfillmentPayload {
 
 
     /**

@@ -10,7 +10,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class GetMessagesDTO {
+public class GetMessagesQueryParams {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private String offset = "0";
 

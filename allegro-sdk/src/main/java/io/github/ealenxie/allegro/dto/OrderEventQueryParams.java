@@ -9,7 +9,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class OrderEventDTO {
+public class OrderEventQueryParams {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private String from;
     /**

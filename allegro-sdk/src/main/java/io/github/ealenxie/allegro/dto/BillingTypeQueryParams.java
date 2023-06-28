@@ -6,10 +6,8 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class FileDTO {
-    /**
-     * 文件名
-     */
-    @JsonProperty("name")
-    private String name;
+public class BillingTypeQueryParams {
+
+    @JsonProperty("Accept-Language")
+    private String language;
 }

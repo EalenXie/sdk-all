@@ -12,7 +12,7 @@ import java.util.List;
  */
 @Getter
 @Setter
-public class CreateNewParcelInput {
+public class CreateNewParcelResponse {
     @JsonProperty("serviceId")
     private String serviceId;
     @JsonProperty("receiver")

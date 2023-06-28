@@ -6,13 +6,11 @@ import lombok.Setter;
 
 import java.util.List;
 
-/**
- * @author jadechiang
- * @since 2023/3/27 10:49
- */
+
 @Getter
 @Setter
-public class DeliveryServicesVO {
-    @JsonProperty("deliveryServices")
-    private List<DeliveryServices> deliveryServices;
+public class BillingEntriesPayload {
+
+    @JsonProperty("billingEntries")
+    private List<BillingEntries> billingEntries;
 }

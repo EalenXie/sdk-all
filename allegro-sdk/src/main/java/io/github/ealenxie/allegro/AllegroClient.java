@@ -1,22 +1,29 @@
 package io.github.ealenxie.allegro;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.ealenxie.allegro.vo.AllegroToken;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
+import org.springframework.lang.Nullable;
+import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.web.client.RestOperations;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
+import java.util.Map;
 
 /**
  * Created by EalenXie on 2022/3/18 12:57
  * <a href="https://developer.allegro.pl/documentation/#section/Authentication">Allegro REST API</a>
  */
-public class AllegroClient {
-
+public abstract class AllegroClient {
 
     private final RestOperations restOperations;
+    private final ObjectMapper mapper;
     /**
      * Allegro 认证服务器的域名 <a href="https://api.allegro.pl">https://allegro.pl</a>
      */
@@ -48,12 +55,13 @@ public class AllegroClient {
         this.sandBox = sandBox;
     }
 
-    public AllegroClient() {
-        this(new RestTemplate());
+    protected AllegroClient(ObjectMapper mapper) {
+        this(new RestTemplate(), mapper);
     }
 
-    public AllegroClient(RestOperations restOperations) {
+    protected AllegroClient(RestOperations restOperations, ObjectMapper mapper) {
         this.restOperations = restOperations;
+        this.mapper = mapper;
     }
 
     public RestOperations getRestOperations() {
@@ -120,6 +128,110 @@ public class AllegroClient {
     public AllegroToken refreshToken(String clientId, String clientSecret, String refreshToken, String redirectUri) {
         HttpHeaders headers = getBasicHeaders(clientId, clientSecret);
         return restOperations.exchange(URI.create(String.format("%s/auth/oauth/token?grant_type=refresh_token&refresh_token=%s&redirect_uri=%s", isSandBox() ? AUTH_SANDBOX_HOST : AUTH_HOST, refreshToken, redirectUri)), HttpMethod.POST, new HttpEntity<>(null, headers), AllegroToken.class).getBody();
+    }
+
+
+    /**
+     * GET 调用 Allegro API
+     *
+     * @param urlNotHost   不带host的请求url
+     * @param accessToken  访问令牌
+     * @param queryParams  url请求参数
+     * @param responseType 响应类型
+     */
+    protected <T> T getAllegro(String urlNotHost, String accessToken, @Nullable Object queryParams, Class<T> responseType) {
+        return exchangeAllegro(urlNotHost, HttpMethod.GET, accessToken, queryParams, null, responseType);
+    }
+
+    /**
+     * GET 调用 Allegro API
+     *
+     * @param urlNotHost   不带host的请求url
+     * @param accessToken  访问令牌
+     * @param queryParams  url请求参数
+     * @param responseType 响应类型
+     */
+    protected <T> T getAllegro(String urlNotHost, String accessToken, @Nullable Object queryParams, ParameterizedTypeReference<T> responseType) {
+        return exchangeAllegro(urlNotHost, HttpMethod.GET, accessToken, queryParams, null, responseType);
+    }
+
+    /**
+     * POST 调用 Allegro API
+     *
+     * @param urlNotHost   不带host的请求url
+     * @param accessToken  访问令牌
+     * @param payload      请求参数
+     * @param responseType 响应类型
+     */
+    protected <T> T postAllegro(String urlNotHost, String accessToken, @Nullable Object payload, Class<T> responseType) {
+        return exchangeAllegro(urlNotHost, HttpMethod.POST, accessToken, null, payload, responseType);
+    }
+
+    /**
+     * POST 调用 Allegro API
+     *
+     * @param urlNotHost   不带host的请求url
+     * @param accessToken  访问令牌
+     * @param payload      请求参数
+     * @param responseType 响应类型
+     */
+    protected <T> T postAllegro(String urlNotHost, String accessToken, @Nullable Object payload, ParameterizedTypeReference<T> responseType) {
+        return exchangeAllegro(urlNotHost, HttpMethod.POST, accessToken, null, payload, responseType);
+    }
+
+
+    /**
+     * 调用 Allegro API
+     *
+     * @param urlNotHost   不带host的请求url
+     * @param httpMethod   HttpMethod
+     * @param accessToken  访问令牌
+     * @param queryParams  url请求参数
+     * @param payload      请求body
+     * @param responseType 响应类型
+     * @return 响应结果对象
+     */
+    protected <T> T exchangeAllegro(String urlNotHost, HttpMethod httpMethod, String accessToken, @Nullable Object queryParams, @Nullable Object payload, Class<T> responseType) {
+        return getRestOperations().exchange(buildUri(urlNotHost, queryParams), httpMethod, new HttpEntity<>(payload, getBearerHeaders(accessToken)), responseType).getBody();
+    }
+
+
+    /**
+     * 调用 Allegro API
+     *
+     * @param urlNotHost   不带host的请求url
+     * @param httpMethod   HttpMethod
+     * @param accessToken  访问令牌
+     * @param queryParams  url请求参数
+     * @param payload      请求body
+     * @param responseType 响应类型
+     * @return 响应结果对象
+     */
+    protected <T> T exchangeAllegro(String urlNotHost, HttpMethod httpMethod, String accessToken, @Nullable Object queryParams, @Nullable Object payload, ParameterizedTypeReference<T> responseType) {
+        return getRestOperations().exchange(buildUri(urlNotHost, queryParams), httpMethod, new HttpEntity<>(payload, getBearerHeaders(accessToken)), responseType).getBody();
+
+    }
+
+    /**
+     * 构建请求URI
+     *
+     * @param urlNotHost  不带host的请求url
+     * @param queryParams url请求参数
+     */
+    protected URI buildUri(String urlNotHost, @Nullable Object queryParams) {
+        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(String.format("%s%s", isSandBox() ? API_SANDBOX_HOST : API_HOST, urlNotHost));
+        if (queryParams != null) {
+            if (queryParams instanceof String) {
+                builder = UriComponentsBuilder.fromHttpUrl(String.format("%s%s%s", isSandBox() ? API_SANDBOX_HOST : API_HOST, urlNotHost, queryParams));
+            } else {
+                Map<String, String> args = mapper.convertValue(queryParams, new TypeReference<Map<String, String>>() {
+                });
+                LinkedMultiValueMap<String, String> req = new LinkedMultiValueMap<>();
+                req.setAll(args);
+                builder.queryParams(req);
+            }
+        }
+        return builder.build().encode().toUri();
     }
 
 

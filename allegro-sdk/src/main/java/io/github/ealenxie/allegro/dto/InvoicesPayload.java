@@ -9,14 +9,13 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class InvoicesDTO {
-
+public class InvoicesPayload {
 
     /**
      * 文件
      */
     @JsonProperty("file")
-    private FileDTO file;
+    private NamePayload file;
     /**
      * 发票号码
      */

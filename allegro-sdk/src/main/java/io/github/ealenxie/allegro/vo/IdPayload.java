@@ -4,13 +4,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.List;
-
-
+/**
+ * Created by EalenXie on 2022/3/18 15:20
+ */
 @Getter
 @Setter
-public class BillingVO {
+public class IdPayload {
 
-    @JsonProperty("billingEntries")
-    private List<BillingEntries> billingEntries;
+    @JsonProperty("id")
+    private String id;
 }

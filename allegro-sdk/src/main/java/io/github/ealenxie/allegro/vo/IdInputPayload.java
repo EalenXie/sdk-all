@@ -5,15 +5,13 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * @author jadechiang
- * @since 2023/4/4 14:47
+ * @author EalenXie created on 2023/6/28 15:38
  */
 @Getter
 @Setter
-public class CancelParcelVO {
-
+public class IdInputPayload<T> {
     @JsonProperty("id")
     private String id;
     @JsonProperty("input")
-    private Input input;
+    private T input;
 }

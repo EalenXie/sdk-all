@@ -1,4 +1,4 @@
-package io.github.ealenxie.allegro.vo;
+package io.github.ealenxie.allegro.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
@@ -8,14 +8,12 @@ import java.util.List;
 
 /**
  * @author jadechiang
- * @since 2023/3/28 9:43
+ * @since 2023/3/27 10:54
  */
 @Getter
 @Setter
-public class GetParcelDetailsVO {
+public class CreateNewParcelPayload {
 
-    @JsonProperty("parcelId")
-    private String parcelId;
     @JsonProperty("serviceId")
     private String serviceId;
     @JsonProperty("receiver")
@@ -29,7 +27,5 @@ public class GetParcelDetailsVO {
     @JsonProperty("label")
     private Label label;
     @JsonProperty("additionalServices")
-    private AdditionalService additionalServices;
-    @JsonProperty("state")
-    private String state;
+    private AdditionalServicesX additionalServices;
 }

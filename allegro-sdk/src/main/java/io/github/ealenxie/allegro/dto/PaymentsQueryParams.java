@@ -11,7 +11,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class PaymentsDTO {
+public class PaymentsQueryParams {
     /**
      * 钱包类型
      * 枚举：AVAILABLE、WAITING

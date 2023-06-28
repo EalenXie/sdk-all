@@ -1,25 +1,17 @@
 package io.github.ealenxie.allegro;
 
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.ealenxie.allegro.dto.*;
 import io.github.ealenxie.allegro.vo.*;
 import io.github.ealenxie.allegro.vo.checkoutform.CheckoutForm;
 import io.github.ealenxie.allegro.vo.orderevent.OrderEvent;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
-import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.web.client.RestOperations;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.util.UriComponentsBuilder;
 
-import java.io.IOException;
-import java.net.URI;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by EalenXie on 2022/2/21 12:59
@@ -28,8 +20,6 @@ import java.util.Map;
  */
 
 public class AllegroOrderClient extends AllegroClient {
-
-    private final ObjectMapper mapper;
 
 
     public AllegroOrderClient() {
@@ -41,53 +31,41 @@ public class AllegroOrderClient extends AllegroClient {
     }
 
     public AllegroOrderClient(ObjectMapper objectMapper, RestOperations restOperations) {
-        super(restOperations);
-        this.mapper = objectMapper;
+        super(restOperations, objectMapper);
     }
 
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/getListOfOrdersUsingGET">获取用户订单</a>
      *
-     * @param dto         用户订单查询参数
      * @param accessToken 令牌
+     * @param queryParams 用户订单查询参数
      * @return {@link CheckoutForms} 订单详情
      */
-    public CheckoutForms userOrders(OrdersDTO dto, String accessToken) {
-        HttpHeaders headers = getBearerHeaders(accessToken);
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(String.format("%s/order/checkout-forms", isSandBox() ? API_SANDBOX_HOST : API_HOST));
-        LinkedMultiValueMap<String, String> req = getQueryParams(dto);
-        builder.queryParams(req);
-        URI uri = builder.build().encode().toUri();
-        ResponseEntity<CheckoutForms> exchange = getRestOperations().exchange(uri, HttpMethod.GET, new HttpEntity<>(null, headers), CheckoutForms.class);
-        return exchange.getBody();
+    public CheckoutForms userOrders(String accessToken, OrdersQueryParams queryParams) {
+        return getAllegro("/order/checkout-forms", accessToken, queryParams, CheckoutForms.class);
     }
 
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/getOrdersDetailsUsingGET">获取订单详情</a>
      *
-     * @param orderId     订单Id
      * @param accessToken 令牌
+     * @param orderId     订单Id
      * @return {@link CheckoutForm} 订单详情
      */
-    public CheckoutForm ordersDetails(String orderId, String accessToken) {
-        HttpHeaders headers = getBearerHeaders(accessToken);
-        ResponseEntity<CheckoutForm> exchange = getRestOperations().exchange(URI.create(String.format("%s/order/checkout-forms/%s", isSandBox() ? API_SANDBOX_HOST : API_HOST, orderId)), HttpMethod.GET, new HttpEntity<>(null, headers), CheckoutForm.class);
-        return exchange.getBody();
+    public CheckoutForm ordersDetails(String accessToken, String orderId) {
+        return getAllegro(String.format("/order/checkout-forms/%s", orderId), accessToken, null, CheckoutForm.class);
     }
 
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/createOrderShipmentsUsingPOST">订单标记发货</a>
      *
      * @param orderId     订单Id
-     * @param dto         标记发货请求参数
+     * @param payload     标记发货请求参数
      * @param accessToken 请求token
      * @return {@link Shipment} 标记发货
      */
-    public Shipment shipments(String orderId, ShipmentDTO dto, String accessToken) {
-        HttpHeaders headers = getBearerHeaders(accessToken);
-        HttpEntity<ShipmentDTO> mapHttpEntity = new HttpEntity<>(dto, headers);
-        ResponseEntity<Shipment> exchange = getRestOperations().exchange(String.format("%s/order/checkout-forms/%s/shipments", isSandBox() ? API_SANDBOX_HOST : API_HOST, orderId), HttpMethod.POST, mapHttpEntity, Shipment.class);
-        return exchange.getBody();
+    public Shipment shipments(String accessToken, String orderId, ShipmentPayload payload) {
+        return postAllegro(String.format("/order/checkout-forms/%s/shipments", orderId), accessToken, payload, Shipment.class);
     }
 
     /**
@@ -97,27 +75,19 @@ public class AllegroOrderClient extends AllegroClient {
      * @param accessToken 请求token
      * @return {@link Shipment} 物流返回对象
      */
-    public Shipment shipments(String orderId, String accessToken) {
-        HttpHeaders headers = getBearerHeaders(accessToken);
-        ResponseEntity<Shipment> exchange = getRestOperations().exchange(String.format("%s/order/checkout-forms/%s/shipments", isSandBox() ? API_SANDBOX_HOST : API_HOST, orderId), HttpMethod.GET, new HttpEntity<>(null, headers), Shipment.class);
-        return exchange.getBody();
+    public Shipment shipments(String accessToken, String orderId) {
+        return getAllegro(String.format("/order/checkout-forms/%s/shipments", orderId), accessToken, null, Shipment.class);
     }
-
 
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/getOrderEventsUsingGET">获取订单事件查询</a>
      *
-     * @param dto         事件查询参数
+     * @param queryParams 事件查询参数
      * @param accessToken 请求token
      * @return {@link OrderEvent}
      */
-    public OrderEvent events(OrderEventDTO dto, String accessToken) {
-        HttpHeaders headers = getBearerHeaders(accessToken);
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(String.format("%s/order/events", isSandBox() ? API_SANDBOX_HOST : API_HOST));
-        LinkedMultiValueMap<String, String> req = getQueryParams(dto);
-        builder.queryParams(req);
-        ResponseEntity<OrderEvent> exchange = getRestOperations().exchange(builder.build().encode().toUri(), HttpMethod.GET, new HttpEntity<>(null, headers), OrderEvent.class);
-        return exchange.getBody();
+    public OrderEvent events(String accessToken, OrderEventQueryParams queryParams) {
+        return getAllegro("/order/events", accessToken, queryParams, OrderEvent.class);
     }
 
     /**
@@ -127,11 +97,8 @@ public class AllegroOrderClient extends AllegroClient {
      * @return {@link EventStats}
      */
     public EventStats eventStats(String accessToken) {
-        HttpHeaders headers = getBearerHeaders(accessToken);
-        ResponseEntity<EventStats> exchange = getRestOperations().exchange(String.format("%s/order/event-stats", isSandBox() ? API_SANDBOX_HOST : API_HOST), HttpMethod.GET, new HttpEntity<>(null, headers), EventStats.class);
-        return exchange.getBody();
+        return getAllegro("/order/event-stats", accessToken, null, EventStats.class);
     }
-
 
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/getOrdersCarriersUsingGET">获取订单物流</a>
@@ -140,22 +107,18 @@ public class AllegroOrderClient extends AllegroClient {
      * @return {@link OrderCarriers} 订单物流信息
      */
     public OrderCarriers orderCarriers(String accessToken) {
-        HttpHeaders headers = getBearerHeaders(accessToken);
-        ResponseEntity<OrderCarriers> exchange = getRestOperations().exchange(String.format("%s/order/carriers", isSandBox() ? API_SANDBOX_HOST : API_HOST), HttpMethod.GET, new HttpEntity<>(null, headers), OrderCarriers.class);
-        return exchange.getBody();
+        return getAllegro("/order/carriers", accessToken, null, OrderCarriers.class);
     }
-
 
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/setOrderFulfillmentUsingPUT">修改订单状态</a>
      *
      * @param orderId     订单Id
-     * @param dto         修改订单状态请求参数
+     * @param payload     修改订单状态请求参数
      * @param accessToken 请求token
      */
-    public void fulfillment(String orderId, FulfillmentDTO dto, String accessToken) {
-        HttpHeaders headers = getBearerHeaders(accessToken);
-        getRestOperations().put(String.format("%s/order/checkout-forms/%s/fulfillment", isSandBox() ? API_SANDBOX_HOST : API_HOST, orderId), new HttpEntity<>(dto, headers));
+    public void fulfillment(String accessToken, String orderId, FulfillmentPayload payload) {
+        exchangeAllegro(String.format("/order/checkout-forms/%s/fulfillment", orderId), HttpMethod.PUT, accessToken, null, payload, Object.class);
     }
 
     /**
@@ -165,26 +128,19 @@ public class AllegroOrderClient extends AllegroClient {
      * @param accessToken 请求token
      * @return {@link Invoices} 发票
      */
-    public Invoices invoices(String orderId, String accessToken) {
-        HttpHeaders headers = getBearerHeaders(accessToken);
-        ResponseEntity<Invoices> exchange = getRestOperations().exchange(String.format("%s/order/checkout-forms/%s/invoices", isSandBox() ? API_SANDBOX_HOST : API_HOST, orderId), HttpMethod.GET, new HttpEntity<>(null, headers), Invoices.class);
-        return exchange.getBody();
+    public Invoices invoices(String accessToken, String orderId) {
+        return getAllegro(String.format("/order/checkout-forms/%s/invoices", orderId), accessToken, null, Invoices.class);
     }
-
 
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/addOrderInvoicesMetadata">创建发票</a>
      *
      * @param orderId     订单Id
-     * @param dto         发票请求参数
+     * @param payload     发票请求参数
      * @param accessToken 请求token
-     * @return {@link IdVO} IdVO
      */
-    public IdVO invoices(String orderId, InvoicesDTO dto, String accessToken) {
-        HttpHeaders headers = getBearerHeaders(accessToken);
-        String url = String.format("%s/order/checkout-forms/%s/invoices", isSandBox() ? API_SANDBOX_HOST : API_HOST, orderId);
-        ResponseEntity<IdVO> exchange = getRestOperations().exchange(URI.create(url), HttpMethod.POST, new HttpEntity<>(dto, headers), IdVO.class);
-        return exchange.getBody();
+    public IdPayload invoices(String accessToken, String orderId, InvoicesPayload payload) {
+        return postAllegro(String.format("/order/checkout-forms/%s/invoices", orderId), accessToken, payload, IdPayload.class);
     }
 
     /**
@@ -194,268 +150,198 @@ public class AllegroOrderClient extends AllegroClient {
      * @param file      发票文件
      * @param invoiceId 发票id
      */
-    public void putInvoices(String orderId, String invoiceId, byte[] file, String accessToken) {
-        HttpHeaders headers = getBearerHeaders(accessToken);
-        String url = String.format("%s/order/checkout-forms/%s/invoices/%s/file", isSandBox() ? API_SANDBOX_HOST : API_HOST, orderId, invoiceId);
-        getRestOperations().exchange(URI.create(url), HttpMethod.PUT, new HttpEntity<>(file, headers), String.class);
+    public void putInvoices(String accessToken, String orderId, String invoiceId, byte[] file) {
+        exchangeAllegro(String.format("/order/checkout-forms/%s/invoices/%s/file", orderId, invoiceId), HttpMethod.PUT, accessToken, null, file, Object.class);
     }
-
 
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/getBillingEntries">获取账单条目列表</a>
      */
-    public BillingVO billings(BillingDTO dto, String accessToken) {
-        HttpHeaders headers = getBearerHeaders(accessToken);
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(String.format("%s/billing/billing-entries", isSandBox() ? API_SANDBOX_HOST : API_HOST));
-        LinkedMultiValueMap<String, String> req = getQueryParams(dto);
-        builder.queryParams(req);
-        ResponseEntity<BillingVO> exchange = getRestOperations().exchange(builder.build().encode().toUri(), HttpMethod.GET, new HttpEntity<>(null, headers), BillingVO.class);
-        return exchange.getBody();
+    public BillingEntriesPayload billings(String accessToken, BillingQueryParams queryParams) {
+        return getAllegro("/billing/billing-entries", accessToken, queryParams, BillingEntriesPayload.class);
     }
-
 
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/getBillingTypes">获取费用类型</a>
      */
-    public List<BillingTypeVO> billingsType(String token, BillingTypeDTO dto) {
-        HttpHeaders headers = getBearerHeaders(token);
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(String.format("%s/billing/billing-types", isSandBox() ? API_SANDBOX_HOST : API_HOST));
-        LinkedMultiValueMap<String, String> req = getQueryParams(dto);
-        builder.queryParams(req);
-        ResponseEntity<String> exchange = getRestOperations().exchange(builder.build().encode().toUri(), HttpMethod.GET, new HttpEntity<>(null, headers), String.class);
-        return readAllegroBody(exchange.getBody(), new TypeReference<List<BillingTypeVO>>() {
+    public List<BillingTypePayload> billingsType(String accessToken, BillingTypeQueryParams queryParams) {
+        return getAllegro("/billing/billing-types", accessToken, queryParams, new ParameterizedTypeReference<List<BillingTypePayload>>() {
         });
     }
 
     /**
      * <a href="https://developer.allegro.pl/documentation#operation/getAllegroParcelTrackingUsingGET">查询支付历史</a>
      *
-     * @param token 授权
-     * @param dto   请求参数
+     * @param accessToken 授权
+     * @param queryParams 请求参数
      */
-    public PaymentOperations payments(String token, PaymentsDTO dto) {
-        HttpHeaders headers = getBearerHeaders(token);
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(String.format("%s/payments/payment-operations", isSandBox() ? API_SANDBOX_HOST : API_HOST));
-        LinkedMultiValueMap<String, String> req = getQueryParams(dto);
-        builder.queryParams(req);
-        return getRestOperations().exchange(builder.build().encode().toUri(), HttpMethod.GET, new HttpEntity<>(null, headers), PaymentOperations.class).getBody();
+    public PaymentOperations payments(String accessToken, PaymentsQueryParams queryParams) {
+        return getAllegro("/payments/payment-operations", accessToken, queryParams, PaymentOperations.class);
     }
 
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/initiateRefund">发起退款</a>
      *
-     * @param token 授权
-     * @param dto   请求参数
+     * @param accessToken 授权
+     * @param payload     请求参数
      */
-    public InitiateRefundVO initiateRefund(String token, InitiateRefundDTO dto) {
-        HttpHeaders headers = getBearerHeaders(token);
-        String url = String.format("%s/payments/refunds", isSandBox() ? API_SANDBOX_HOST : API_HOST);
-        return getRestOperations().exchange(URI.create(url), HttpMethod.POST, new HttpEntity<>(dto, headers), InitiateRefundVO.class).getBody();
+    public InitiateRefundResponse initiateRefund(String accessToken, InitiateRefundPayload payload) {
+        return postAllegro("/payments/refunds", accessToken, payload, InitiateRefundResponse.class);
     }
 
     /**
      * <a href="https://developer.allegro.pl/documentation/#tag/Disputes">获取用户的纠纷</a>
      *
-     * @param token 授权
-     * @param dto   请求参数
+     * @param accessToken 授权
+     * @param queryParams 请求参数
      */
-    public DisputesVO disputes(String token, DisputesDTO dto) {
-        HttpHeaders headers = getBearerHeaders(token);
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(String.format("%s/sale/disputes", isSandBox() ? API_SANDBOX_HOST : API_HOST));
-        LinkedMultiValueMap<String, String> req = getQueryParams(dto);
-        builder.queryParams(req);
-        return getRestOperations().exchange(builder.build().encode().toUri(), HttpMethod.GET, new HttpEntity<>(null, headers), DisputesVO.class).getBody();
+    public DisputesResponse disputes(String accessToken, DisputesQueryParams queryParams) {
+        return getAllegro("/sale/disputes", accessToken, queryParams, DisputesResponse.class);
     }
 
     /**
      * <a href="https://developer.allegro.pl/documentation/#tag/Disputes">获取争议中的消息</a>
      *
-     * @param token     授权
-     * @param disputeId 争议id
+     * @param accessToken 授权
+     * @param disputeId   争议id
      */
-    public Messages getMessages(String token, String disputeId, GetMessagesDTO dto) {
-        HttpHeaders headers = getBearerHeaders(token);
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(String.format("%s/sale/disputes/%s/messages", isSandBox() ? API_SANDBOX_HOST : API_HOST, disputeId));
-        LinkedMultiValueMap<String, String> req = getQueryParams(dto);
-        builder.queryParams(req);
-        return getRestOperations().exchange(builder.build().encode().toUri(), HttpMethod.GET, new HttpEntity<>(null, headers), Messages.class).getBody();
+    public Messages getMessages(String accessToken, String disputeId, GetMessagesQueryParams queryParams) {
+        return getAllegro(String.format("/sale/disputes/%s/messages", disputeId), accessToken, queryParams, Messages.class);
     }
 
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/uploadDisputeAttachmentUsingPUT">上传争议邮件附件</a>
      *
-     * @param token        授权
+     * @param accessToken  授权
      * @param attachmentId 附件标识符
      */
-    public void uploadAttachment(String token, String attachmentId) {
-        HttpHeaders headers = getBearerHeaders(token);
-        String url = String.format("%s/sale/dispute-attachments/%s", isSandBox() ? API_SANDBOX_HOST : API_HOST, attachmentId);
-        getRestOperations().put(URI.create(url), new HttpEntity<>(null, headers));
+    public void uploadAttachment(String accessToken, String attachmentId) {
+        exchangeAllegro(String.format("/sale/dispute-attachments/%s", attachmentId), HttpMethod.PUT, accessToken, null, null, Object.class);
     }
 
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/getAttachmentUsingGET">获取争议邮件附件</a>
      *
-     * @param token        授权
+     * @param accessToken  授权
      * @param attachmentId 附件标识符
      */
-    public byte[] getAttachment(String token, String attachmentId) {
-        HttpHeaders headers = getBearerHeaders(token);
-        String url = String.format("%s/sale/dispute-attachments/%s", isSandBox() ? API_SANDBOX_HOST : API_HOST, attachmentId);
-        return getRestOperations().exchange(URI.create(url), HttpMethod.GET, new HttpEntity<>(null, headers), byte[].class).getBody();
+    public byte[] getAttachment(String accessToken, String attachmentId) {
+        return getAllegro(String.format("/sale/dispute-attachments/%s", attachmentId), accessToken, null, byte[].class);
     }
 
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/getAvailableDeliveryServices">Get available delivery services/获得可用的送货服务</a>
      *
-     * @param token 授权
+     * @param accessToken 授权
      */
-    public DeliveryServicesVO getAvailableDeliveryServices(String token) {
-        HttpHeaders headers = getBearerHeaders(token);
-        String url = String.format("%s/parcel-management/delivery-services", isSandBox() ? API_SANDBOX_HOST : API_HOST);
-        return getRestOperations().exchange(URI.create(url), HttpMethod.GET, new HttpEntity<>(null, headers), DeliveryServicesVO.class).getBody();
+    public DeliveryServicesResponse getAvailableDeliveryServices(String accessToken) {
+        return getAllegro("/parcel-management/delivery-services", accessToken, null, DeliveryServicesResponse.class);
     }
 
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/createNewParcel">Create a new parcel/创建一个新的包裹</a>
      *
-     * @param token 授权
+     * @param accessToken 授权
+     * @param commandId   Command UUID.
+     * @param payload     请求参数
      */
-    public CreateNewParcelVO createNewParcel(String token, String commandId, CreateNewParcelDTO dto) {
-        HttpHeaders headers = getBearerHeaders(token);
-        String url = String.format("%s/parcel-management/parcel-create-commands/%s", isSandBox() ? API_SANDBOX_HOST : API_HOST, commandId);
-        return getRestOperations().exchange(URI.create(url), HttpMethod.PUT, new HttpEntity<>(dto, headers), CreateNewParcelVO.class).getBody();
+    public IdInputPayload<CreateNewParcelResponse> createNewParcel(String accessToken, String commandId, CreateNewParcelPayload payload) {
+        return exchangeAllegro(String.format("/parcel-management/parcel-create-commands/%s", commandId), HttpMethod.PUT, accessToken, null, payload, new ParameterizedTypeReference<IdInputPayload<CreateNewParcelResponse>>() {
+        });
     }
 
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/getParcelCreationStatus">Get parcel creation status/获取包创建状态</a>
      *
-     * @param token     授权
-     * @param commandId Command UUID
+     * @param accessToken 授权
+     * @param commandId   Command UUID
      */
-    public GetParcelCreationStatusVO getParcelCreationStatus(String token, String commandId) {
-        HttpHeaders headers = getBearerHeaders(token);
-        String url = String.format("%s/parcel-management/parcel-create-commands/%s", isSandBox() ? API_SANDBOX_HOST : API_HOST, commandId);
-        return getRestOperations().exchange(URI.create(url), HttpMethod.GET, new HttpEntity<>(null, headers), GetParcelCreationStatusVO.class).getBody();
+    public GetParcelCreationStatusResponse getParcelCreationStatus(String accessToken, String commandId) {
+        return getAllegro(String.format("/parcel-management/parcel-create-commands/%s", commandId), accessToken, null, GetParcelCreationStatusResponse.class);
     }
 
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/getParcelDetails">Get parcel details/获取包裹详情</a>
      *
-     * @param token    授权
-     * @param parcelId id of parcel 包裹Id
+     * @param accessToken 授权
+     * @param parcelId    id of parcel 包裹Id
      */
-    public GetParcelDetailsVO getParcelDetails(String token, String parcelId) {
-        HttpHeaders headers = getBearerHeaders(token);
-        String url = String.format("%s/parcel-management/parcels/%s", isSandBox() ? API_SANDBOX_HOST : API_HOST, parcelId);
-        return getRestOperations().exchange(URI.create(url), HttpMethod.GET, new HttpEntity<>(null, headers), GetParcelDetailsVO.class).getBody();
+    public GetParcelDetailsResponse getParcelDetails(String accessToken, String parcelId) {
+        return getAllegro(String.format("/parcel-management/parcels/%s", parcelId), accessToken, null, GetParcelDetailsResponse.class);
     }
 
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/getParcelsPickupDateProposals">Get parcels pickup date proposals/获取包裹提货日期建议</a>
      *
-     * @param token 授权
-     * @param dto   包含:包裹Id和日期
+     * @param accessToken 授权
+     * @param queryParams 请求参数
      */
-    public ProposalsVO getParcelsPickupDateProposals(String token, ProposalsDTO dto) {
-        HttpHeaders headers = getBearerHeaders(token);
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(String.format("%s/parcel-management/parcels/pickup-date-proposals", isSandBox() ? API_SANDBOX_HOST : API_HOST));
-        LinkedMultiValueMap<String, String> req = getQueryParams(dto);
-        builder.queryParams(req);
-        return getRestOperations().exchange(builder.build().encode().toUri(), HttpMethod.GET, new HttpEntity<>(null, headers), ProposalsVO.class).getBody();
+    public ProposalsResponse getParcelsPickupDateProposals(String accessToken, ProposalsQueryParams queryParams) {
+        return getAllegro("/parcel-management/parcels/pickup-date-proposals", accessToken, queryParams, ProposalsResponse.class);
     }
 
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/requestParcelPickup">Request parcel pickup/申请取件</a>
      *
-     * @param token 授权
-     * @param dto   包含包裹Id和日期
+     * @param accessToken 授权
+     * @param payload     请求参数
      */
-    public RequestParcelPickupVO requestParcelPickup(String token, String commandId, RequestParcelPickupDTO dto) {
-        HttpHeaders headers = getBearerHeaders(token);
-        String url = String.format("%s/parcel-management/parcel-pickup-request-commands/%s", isSandBox() ? API_SANDBOX_HOST : API_HOST, commandId);
-        return getRestOperations().exchange(URI.create(url), HttpMethod.PUT, new HttpEntity<>(dto, headers), RequestParcelPickupVO.class).getBody();
+    public IdInputPayload<RequestParcelPayload> requestParcelPickup(String accessToken, String commandId, RequestParcelPickupPayload payload) {
+        return exchangeAllegro(String.format("/parcel-management/parcel-pickup-request-commands/%s", commandId), HttpMethod.PUT, accessToken, null, payload, new ParameterizedTypeReference<IdInputPayload<RequestParcelPayload>>() {
+        });
     }
 
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/getParcelPickupStatus">Get parcel pickup status/获取包裹提货状态</a>
      *
-     * @param token     授权
-     * @param commandId 包含包裹Id和日期
+     * @param accessToken 授权
+     * @param commandId   包含包裹Id和日期
      */
-    public GetParcelPickupStatusVO getParcelPickupStatus(String token, String commandId) {
-        HttpHeaders headers = getBearerHeaders(token);
-        String url = String.format("%s/parcel-management/parcel-pickup-request-commands/%s", isSandBox() ? API_SANDBOX_HOST : API_HOST, commandId);
-        return getRestOperations().exchange(URI.create(url), HttpMethod.GET, new HttpEntity<>(null, headers), GetParcelPickupStatusVO.class).getBody();
+    public GetParcelPickupStatusResponse getParcelPickupStatus(String accessToken, String commandId) {
+        return getAllegro(String.format("/parcel-management/parcel-pickup-request-commands/%s", commandId), accessToken, null, GetParcelPickupStatusResponse.class);
     }
 
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/getParcelLabel">Get parcel label/领取包裹标签</a>
      *
-     * @param token 授权
-     * @param dto   请求参数
+     * @param accessToken 授权
+     * @param queryParams 请求参数
      */
-    public byte[] getParcelLabel(String token, GetParcelLabelDTO dto) {
-        HttpHeaders headers = getBearerHeaders(token);
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(String.format("%s/parcel-management/parcels/label", isSandBox() ? API_SANDBOX_HOST : API_HOST));
-        LinkedMultiValueMap<String, String> req = getQueryParams(dto);
-        builder.queryParams(req);
-
-        return getRestOperations().exchange(builder.build().toUri(), HttpMethod.GET, new HttpEntity<>(null, headers), byte[].class).getBody();
+    public byte[] getParcelLabel(String accessToken, GetParcelLabelQueryParams queryParams) {
+        return getAllegro("/parcel-management/parcels/label", accessToken, queryParams, byte[].class);
     }
 
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/getParcelsProtocol">Get parcels protocol/领取包裹协议</a>
      *
-     * @param token    授权
-     * @param parcelId 请求参数
+     * @param accessToken 授权
+     * @param parcelId    请求参数
      */
-    public byte[] getParcelsProtocol(String token, String parcelId) {
-        HttpHeaders headers = getBearerHeaders(token);
-        String url = String.format("%s/parcel-management/parcels/protocol/%s", isSandBox() ? API_SANDBOX_HOST : API_HOST, parcelId);
-        return getRestOperations().exchange(URI.create(url), HttpMethod.GET, new HttpEntity<>(null, headers), byte[].class).getBody();
+    public byte[] getParcelsProtocol(String accessToken, String parcelId) {
+        return getAllegro(String.format("/parcel-management/parcels/protocol/%s", parcelId), accessToken, null, byte[].class);
     }
 
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/cancelParcel">Cancel parcel/取消包裹</a>
      *
-     * @param token     授权
-     * @param parcelId  请求参数
-     * @param commandId 请求参数
+     * @param accessToken 授权
+     * @param parcelId    请求参数
+     * @param commandId   请求参数
      */
-    public CancelParcelVO cancelParcel(String token, String parcelId, String commandId) {
-        HttpHeaders headers = getBearerHeaders(token);
-        String url = String.format("%s/parcel-management/parcel-cancel-commands/%s", isSandBox() ? API_SANDBOX_HOST : API_HOST, commandId);
-        return getRestOperations().exchange(URI.create(url), HttpMethod.PUT, new HttpEntity<>(parcelId, headers), CancelParcelVO.class).getBody();
+    public IdInputPayload<ParcelIdPayload> cancelParcel(String accessToken, String parcelId, String commandId) {
+        return exchangeAllegro(String.format("/parcel-management/parcel-cancel-commands/%s", commandId), HttpMethod.PUT, accessToken, null, new ParcelIdPayload(parcelId), new ParameterizedTypeReference<IdInputPayload<ParcelIdPayload>>() {
+        });
     }
 
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/getParcelCancellationStatus">Get parcel cancellation status/获取包裹取消状态</a>
      *
-     * @param token     授权
-     * @param commandId 请求参数
+     * @param accessToken 授权
+     * @param commandId   请求参数
      */
-    public CancelParcelVO getParcelCancellationStatus(String token, String commandId) {
-        HttpHeaders headers = getBearerHeaders(token);
-        String url = String.format("%s/parcel-management/parcel-cancel-commands/%s", isSandBox() ? API_SANDBOX_HOST : API_HOST, commandId);
-        return getRestOperations().exchange(URI.create(url), HttpMethod.GET, new HttpEntity<>(null, headers), CancelParcelVO.class).getBody();
-    }
-
-    @SuppressWarnings("all")
-    public LinkedMultiValueMap<String, String> getQueryParams(Object dto) {
-        Map<String, String> args = mapper.convertValue(dto, new TypeReference<Map<String, String>>() {
+    public IdInputPayload<ParcelIdPayload> getParcelCancellationStatus(String accessToken, String commandId) {
+        return getAllegro(String.format("/parcel-management/parcel-cancel-commands/%s", commandId), accessToken, null, new ParameterizedTypeReference<IdInputPayload<ParcelIdPayload>>() {
         });
-        LinkedMultiValueMap<String, String> req = new LinkedMultiValueMap<>();
-        req.setAll(args);
-        return req;
     }
 
-
-    public <T> T readAllegroBody(String body, TypeReference<T> valueTypeRef) {
-        try {
-            return mapper.readValue(body, valueTypeRef);
-        } catch (IOException e) {
-            throw new UnsupportedOperationException(e);
-        }
-    }
 }

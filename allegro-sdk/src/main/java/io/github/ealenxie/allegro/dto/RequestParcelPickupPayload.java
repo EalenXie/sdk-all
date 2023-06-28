@@ -12,7 +12,7 @@ import java.util.List;
  */
 @Getter
 @Setter
-public class RequestParcelPickupDTO {
+public class RequestParcelPickupPayload {
     /**
      * Array of strings
      * Ids of parcels.

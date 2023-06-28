@@ -53,5 +53,5 @@ public class BillingEntries {
      * 与此账单关联的订单id
      */
     @JsonProperty("order")
-    private IdVO order;
+    private IdPayload order;
 }

@@ -8,12 +8,14 @@ import java.util.List;
 
 /**
  * @author jadechiang
- * @since 2023/4/4 9:08
+ * @since 2023/3/3 12:46
  */
 @Getter
 @Setter
-public class ProposalsVO {
-
-    @JsonProperty("pickupDateProposals")
-    private List<PickupDateProposals> pickupDateProposals;
+public class DisputesResponse {
+    /**
+     * Array of objects (Dispute) [ items ]
+     */
+    @JsonProperty("disputes")
+    private List<Dispute> disputes;
 }

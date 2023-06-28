@@ -8,13 +8,12 @@ import java.util.List;
 
 /**
  * @author jadechiang
- * @since 2023/4/4 9:16
+ * @since 2023/4/4 9:08
  */
 @Getter
 @Setter
-public class RequestParcelInput {
-    @JsonProperty("parcelIds")
-    private List<String> parcelIds;
-    @JsonProperty("pickupDate")
-    private Proposals pickupDate;
+public class ProposalsResponse {
+
+    @JsonProperty("pickupDateProposals")
+    private List<PickupDateProposals> pickupDateProposals;
 }

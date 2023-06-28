@@ -4,13 +4,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
-/**
- * Created by EalenXie on 2022/3/18 15:20
- */
 @Getter
 @Setter
-public class IdVO {
+public class BillingTypePayload {
 
+    /**
+     * 计费类型id
+     */
     @JsonProperty("id")
     private String id;
+
+    /**
+     * 描述
+     */
+    @JsonProperty("description")
+    private String description;
 }

@@ -10,7 +10,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class DisputesDTO {
+public class DisputesQueryParams {
     /**
      * string <uuid>
      * Example: checkoutForm.id=29738e61-7f6a-11e8-ac45-09db60ede9d6

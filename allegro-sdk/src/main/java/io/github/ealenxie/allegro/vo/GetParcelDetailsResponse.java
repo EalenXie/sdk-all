@@ -1,4 +1,4 @@
-package io.github.ealenxie.allegro.dto;
+package io.github.ealenxie.allegro.vo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
@@ -8,12 +8,14 @@ import java.util.List;
 
 /**
  * @author jadechiang
- * @since 2023/3/27 10:54
+ * @since 2023/3/28 9:43
  */
 @Getter
 @Setter
-public class CreateNewParcelDTO {
+public class GetParcelDetailsResponse {
 
+    @JsonProperty("parcelId")
+    private String parcelId;
     @JsonProperty("serviceId")
     private String serviceId;
     @JsonProperty("receiver")
@@ -27,5 +29,7 @@ public class CreateNewParcelDTO {
     @JsonProperty("label")
     private Label label;
     @JsonProperty("additionalServices")
-    private AdditionalServicesX additionalServices;
+    private AdditionalService additionalServices;
+    @JsonProperty("state")
+    private String state;
 }
