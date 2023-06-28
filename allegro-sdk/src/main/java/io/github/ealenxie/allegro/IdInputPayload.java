@@ -1,16 +1,17 @@
-package io.github.ealenxie.allegro.vo;
+package io.github.ealenxie.allegro;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
 /**
- * Created by EalenXie on 2022/3/18 15:20
+ * @author EalenXie created on 2023/6/28 15:38
  */
 @Getter
 @Setter
-public class IdPayload {
-
+public class IdInputPayload<T> {
     @JsonProperty("id")
     private String id;
+    @JsonProperty("input")
+    private T input;
 }

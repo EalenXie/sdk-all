@@ -1,7 +1,7 @@
 package io.github.ealenxie.allegro.order;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.github.ealenxie.allegro.vo.Money;
+import io.github.ealenxie.allegro.Money;
 import lombok.Getter;
 import lombok.Setter;
 

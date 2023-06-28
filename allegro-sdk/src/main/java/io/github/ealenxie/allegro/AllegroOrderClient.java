@@ -3,7 +3,6 @@ package io.github.ealenxie.allegro;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.ealenxie.allegro.order.*;
-import io.github.ealenxie.allegro.vo.IdInputPayload;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.web.client.RestOperations;
