@@ -2,9 +2,7 @@ package io.github.ealenxie.fop;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.github.ealenxie.fop.direct.dto.*;
-import io.github.ealenxie.fop.direct.vo.*;
-import io.github.ealenxie.fop.direct.vo.FpxTrackingNoPayload;
+import io.github.ealenxie.fop.direct.*;
 import org.springframework.web.client.RestOperations;
 
 import java.util.List;
@@ -25,40 +23,40 @@ public class DirectClient extends FopClient {
     /**
      * <a href="http://open.4px.com/apiInfo/apiDetail?itemId=2&mainId=96">创建直发委托单</a>
      */
-    public FopResp<CreateXmsOrderResp> createXmsOrder(CreateXmsOrder dto) {
-        return postFop("ds.xms.order.create", dto, new TypeReference<FopResp<CreateXmsOrderResp>>() {
+    public FopResp<CreateXmsOrderResponse> createXmsOrder(CreateXmsOrder payload) {
+        return postFop("ds.xms.order.create", payload, new TypeReference<FopResp<CreateXmsOrderResponse>>() {
         });
     }
 
     /**
      * <a href="http://open.4px.com/apiInfo/apiDetail?itemId=2&mainId=98">查询直发委托单</a>
      */
-    public FopResp<List<XmsOrder>> getXmsOrder(GetXmsOrder dto) {
-        return postFop("ds.xms.order.get", dto, new TypeReference<FopResp<List<XmsOrder>>>() {
+    public FopResp<List<XmsOrder>> getXmsOrder(GetXmsOrder payload) {
+        return postFop("ds.xms.order.get", payload, new TypeReference<FopResp<List<XmsOrder>>>() {
         });
     }
 
     /**
      * <a href="http://open.4px.com/apiInfo/apiDetail?itemId=2&mainId=99">取消直发委托单</a>
      */
-    public FopResp<Void> cancelXmsOrder(CancelXmsOrder dto) {
-        return postFop("ds.xms.order.cancel", dto, new TypeReference<FopResp<Void>>() {
+    public FopResp<Void> cancelXmsOrder(CancelXmsOrder payload) {
+        return postFop("ds.xms.order.cancel", payload, new TypeReference<FopResp<Void>>() {
         });
     }
 
     /**
      * <a href="http://open.4px.com/apiInfo/apiDetail?itemId=2&mainId=100">申请|取消拦截订单</a>
      */
-    public FopResp<Void> holdXmsOrder(HoldXmsOrder dto) {
-        return postFop("ds.xms.order.hold", dto, new TypeReference<FopResp<Void>>() {
+    public FopResp<Void> holdXmsOrder(HoldXmsOrder payload) {
+        return postFop("ds.xms.order.hold", payload, new TypeReference<FopResp<Void>>() {
         });
     }
 
     /**
      * <a href="http://open.4px.com/apiInfo/apiDetail?itemId=2&mainId=102">获取标签</a>
      */
-    public FopResp<XmsLabelInfo> getXmsLabel(GetXmsLabel dto) {
-        return postFop("ds.xms.label.get", dto, new TypeReference<FopResp<XmsLabelInfo>>() {
+    public FopResp<XmsLabelInfo> getXmsLabel(GetXmsLabel payload) {
+        return postFop("ds.xms.label.get", payload, new TypeReference<FopResp<XmsLabelInfo>>() {
         });
     }
 
@@ -66,8 +64,8 @@ public class DirectClient extends FopClient {
      * <a href="http://open.4px.com/apiInfo/apiDetail?itemId=2&mainId=134">直发授权-出库预报</a>
      * <p><b>收费</b></p>
      */
-    public FopResp<CreatBatchOutboundResp> creatBatchOutbound(CreateBatchOutbound dto) {
-        return postFop("ds.xms.batch_outbound.create", dto, new TypeReference<FopResp<CreatBatchOutboundResp>>() {
+    public FopResp<CreatBatchOutboundResp> creatBatchOutbound(CreateBatchOutbound payload) {
+        return postFop("ds.xms.batch_outbound.create", payload, new TypeReference<FopResp<CreatBatchOutboundResp>>() {
         });
     }
 
@@ -75,8 +73,8 @@ public class DirectClient extends FopClient {
      * <a href="http://open.4px.com/apiInfo/apiDetail?itemId=2&mainId=136">直发授权-袋标签</a>
      * <p><b>收费</b></p>
      */
-    public FopResp<BagLabelResp> getBagLabel(GetBagLabel dto) {
-        return postFop("ds.xms.bag_label.get", dto, new TypeReference<FopResp<BagLabelResp>>() {
+    public FopResp<BagLabelResp> getBagLabel(GetBagLabel payload) {
+        return postFop("ds.xms.bag_label.get", payload, new TypeReference<FopResp<BagLabelResp>>() {
         });
     }
 
@@ -84,56 +82,56 @@ public class DirectClient extends FopClient {
      * <a href="http://open.4px.com/apiInfo/apiDetail?itemId=2&mainId=163">直发授权-批量单票出库预报</a>
      * <p><b>收费</b></p>
      */
-    public FopResp<DepartureCodeResp> departureMailItem(DepartureMailItem dto) {
-        return postFop("ds.xms.departure.mailitem", dto, new TypeReference<FopResp<DepartureCodeResp>>() {
+    public FopResp<DepartureCodeResp> departureMailItem(DepartureMailItem payload) {
+        return postFop("ds.xms.departure.mailitem", payload, new TypeReference<FopResp<DepartureCodeResp>>() {
         });
     }
 
     /**
      * <a href="http://open.4px.com/apiInfo/apiDetail?itemId=2&mainId=164">直发授权-完成装袋</a>
      */
-    public FopResp<CreateXmsBagResp> createXmsBag(CreateXmsBag dto) {
-        return postFop("ds.xms.bag.create", dto, new TypeReference<FopResp<CreateXmsBagResp>>() {
+    public FopResp<CreateXmsBagResp> createXmsBag(CreateXmsBag payload) {
+        return postFop("ds.xms.bag.create", payload, new TypeReference<FopResp<CreateXmsBagResp>>() {
         });
     }
 
     /**
      * <a href="http://open.4px.com/apiInfo/apiDetail?itemId=2&mainId=165">批量获取标签</a>
      */
-    public FopResp<String> getXmsLabelList(GetXmsLabelList dto) {
-        return postFop("ds.xms.label.getlist", dto, new TypeReference<FopResp<String>>() {
+    public FopResp<String> getXmsLabelList(GetXmsLabelList payload) {
+        return postFop("ds.xms.label.getlist", payload, new TypeReference<FopResp<String>>() {
         });
     }
 
     /**
      * <a href="http://open.4px.com/apiInfo/apiDetail?itemId=2&mainId=166">单票交航</a>
      */
-    public FopResp<Void> createOrderAirline(CreateOrderAirline dto) {
-        return postFop("ds.xms.order_airline.create", dto, new TypeReference<FopResp<Void>>() {
+    public FopResp<Void> createOrderAirline(CreateOrderAirline payload) {
+        return postFop("ds.xms.order_airline.create", payload, new TypeReference<FopResp<Void>>() {
         });
     }
 
     /**
      * <a href="http://open.4px.com/apiInfo/apiDetail?itemId=2&mainId=167">物流产品查询</a>
      */
-    public FopResp<List<LogisticsProduct>> getLogisticsProductList(GetLogisticsProductList dto) {
-        return postFop("ds.xms.logistics_product.getlist", dto, new TypeReference<FopResp<List<LogisticsProduct>>>() {
+    public FopResp<List<LogisticsProduct>> getLogisticsProductList(GetLogisticsProductList payload) {
+        return postFop("ds.xms.logistics_product.getlist", payload, new TypeReference<FopResp<List<LogisticsProduct>>>() {
         });
     }
 
     /**
      * <a href="http://open.4px.com/apiInfo/apiDetail?itemId=2&mainId=168">单票入库</a>
      */
-    public FopResp<Void> createOrderInbound(CreateOrderInbound dto) {
-        return postFop("ds.xms.order_inbound.create", dto, new TypeReference<FopResp<Void>>() {
+    public FopResp<Void> createOrderInbound(CreateOrderInbound payload) {
+        return postFop("ds.xms.order_inbound.create", payload, new TypeReference<FopResp<Void>>() {
         });
     }
 
     /**
      * <a href="http://open.4px.com/apiInfo/apiDetail?itemId=2&mainId=169">更新预报重</a>
      */
-    public FopResp<Void> updateXmsOrderWeight(UpdateXmsOrderWeight dto) {
-        return postFop("ds.xms.order.updateweight", dto, new TypeReference<FopResp<Void>>() {
+    public FopResp<Void> updateXmsOrderWeight(UpdateXmsOrderWeight payload) {
+        return postFop("ds.xms.order.updateweight", payload, new TypeReference<FopResp<Void>>() {
         });
     }
 
@@ -141,64 +139,64 @@ public class DirectClient extends FopClient {
      * <a href="http://open.4px.com/apiInfo/apiDetail?itemId=2&mainId=174">单票出库</a>
      * <p><b>收费</b></p>
      */
-    public FopResp<Void> createOrderOutbound(CreateOrderOutbound dto) {
-        return postFop("ds.xms.order_outbound.create", dto, new TypeReference<FopResp<Void>>() {
+    public FopResp<Void> createOrderOutbound(CreateOrderOutbound payload) {
+        return postFop("ds.xms.order_outbound.create", payload, new TypeReference<FopResp<Void>>() {
         });
     }
 
     /**
      * <a href="http://open.4px.com/apiInfo/apiDetail?itemId=2&mainId=181">预估费用查询/运费试算</a>
      */
-    public FopResp<List<XmsEstimatedCost>> getEstimatedCost(GetEstimatedCost dto) {
-        return postFop("ds.xms.estimated_cost.get", dto, new TypeReference<FopResp<List<XmsEstimatedCost>>>() {
+    public FopResp<List<XmsEstimatedCost>> getEstimatedCost(GetEstimatedCost payload) {
+        return postFop("ds.xms.estimated_cost.get", payload, new TypeReference<FopResp<List<XmsEstimatedCost>>>() {
         });
     }
 
     /**
      * <a href="http://open.4px.com/apiInfo/apiDetail?itemId=2&mainId=183">新增预约组包接口</a>
      */
-    public FopResp<BagCollectResp> createCollectBig(CreateCollectBig dto) {
-        return postFop("ds.xms.api.collect.create.big", dto, new TypeReference<FopResp<BagCollectResp>>() {
+    public FopResp<BagCollectResp> createCollectBig(CreateCollectBig payload) {
+        return postFop("ds.xms.api.collect.create.big", payload, new TypeReference<FopResp<BagCollectResp>>() {
         });
     }
 
     /**
      * <a href="http://open.4px.com/apiInfo/apiDetail?itemId=2&mainId=184">取消预约组包</a>
      */
-    public FopResp<Void> cancelCollectBig(CancelCollectBig dto) {
-        return postFop("ds.xms.api.collect.cancel.big", dto, new TypeReference<FopResp<Void>>() {
+    public FopResp<Void> cancelCollectBig(CancelCollectBig payload) {
+        return postFop("ds.xms.api.collect.cancel.big", payload, new TypeReference<FopResp<Void>>() {
         });
     }
 
     /**
      * <a href="http://open.4px.com/apiInfo/apiDetail?itemId=2&mainId=185">打印组包面单</a>
      */
-    public FopResp<String> printCollectBig(PrintCollectBig dto) {
-        return postFop("ds.xms.api.collect.print.big", dto, new TypeReference<FopResp<String>>() {
+    public FopResp<String> printCollectBig(PrintCollectBig payload) {
+        return postFop("ds.xms.api.collect.print.big", payload, new TypeReference<FopResp<String>>() {
         });
     }
 
     /**
      * <a href="http://open.4px.com/apiInfo/apiDetail?itemId=2&mainId=186">创建揽收预约单</a>
      */
-    public FopResp<CollectNoPayload> createCollectOrder(CreateCollectOrder dto) {
-        return postFop("ds.xms.api.collect.create.order", dto, new TypeReference<FopResp<CollectNoPayload>>() {
+    public FopResp<CollectNoPayload> createCollectOrder(CreateCollectOrder payload) {
+        return postFop("ds.xms.api.collect.create.order", payload, new TypeReference<FopResp<CollectNoPayload>>() {
         });
     }
 
     /**
      * <a href="http://open.4px.com/apiInfo/apiDetail?itemId=2&mainId=187">取消预约单</a>
      */
-    public FopResp<Void> cancelCollectOrder(CancelCollectOrder dto) {
-        return postFop("ds.xms.api.collect.cancel.order", dto, new TypeReference<FopResp<Void>>() {
+    public FopResp<Void> cancelCollectOrder(CancelCollectOrder payload) {
+        return postFop("ds.xms.api.collect.cancel.order", payload, new TypeReference<FopResp<Void>>() {
         });
     }
 
     /**
      * <a href="http://open.4px.com/apiInfo/apiDetail?itemId=2&mainId=188">打印预约单</a>
      */
-    public FopResp<String> printCollectOrder(CollectOrderNos dto) {
-        return postFop("ds.xms.api.collect.print.order", dto, new TypeReference<FopResp<String>>() {
+    public FopResp<String> printCollectOrder(CollectOrderNos payload) {
+        return postFop("ds.xms.api.collect.print.order", payload, new TypeReference<FopResp<String>>() {
         });
     }
 
@@ -225,8 +223,8 @@ public class DirectClient extends FopClient {
     /**
      * <a href="http://open.4px.com/apiInfo/apiDetail?itemId=2&mainId=191">商家工作台-组包</a>
      */
-    public FopResp<PackageLabel> packageGroup(PackageGroup dto) {
-        return postFop("bws.package.group", dto, new TypeReference<FopResp<PackageLabel>>() {
+    public FopResp<PackageLabel> packageGroup(PackageGroup payload) {
+        return postFop("bws.package.group", payload, new TypeReference<FopResp<PackageLabel>>() {
         });
     }
 
@@ -283,24 +281,24 @@ public class DirectClient extends FopClient {
     /**
      * <a href="http://open.4px.com/apiInfo/apiDetail?itemId=2&mainId=208">集运一段包裹取消</a>
      */
-    public FopResp<FpxTrackingNoPayload> pcsInboundCancel(CancelPayload dto) {
-        return postFop("pcs.order.inbound.cancel", dto, new TypeReference<FopResp<FpxTrackingNoPayload>>() {
+    public FopResp<FpxTrackingNoPayload> pcsInboundCancel(CancelPayload payload) {
+        return postFop("pcs.order.inbound.cancel", payload, new TypeReference<FopResp<FpxTrackingNoPayload>>() {
         });
     }
 
     /**
      * <a href="http://open.4px.com/apiInfo/apiDetail?itemId=2&mainId=209">集运二段包裹拦截</a>
      */
-    public FopResp<FpxTrackingNoPayload> pcsOutboundCancel(CancelPayload dto) {
-        return postFop("pcs.order.outbound.cancel", dto, new TypeReference<FopResp<FpxTrackingNoPayload>>() {
+    public FopResp<FpxTrackingNoPayload> pcsOutboundCancel(CancelPayload payload) {
+        return postFop("pcs.order.outbound.cancel", payload, new TypeReference<FopResp<FpxTrackingNoPayload>>() {
         });
     }
 
     /**
      * <a href="http://open.4px.com/apiInfo/apiDetail?itemId=2&mainId=210">集运订单查询</a>
      */
-    public FopResp<PcsOrderResp> pcsOrderQuery(PcsOrderQuery dto) {
-        return postFop("pcs.order.query", dto, new TypeReference<FopResp<PcsOrderResp>>() {
+    public FopResp<PcsOrderResp> pcsOrderQuery(PcsOrderQuery payload) {
+        return postFop("pcs.order.query", payload, new TypeReference<FopResp<PcsOrderResp>>() {
         });
     }
 

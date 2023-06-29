@@ -2,9 +2,9 @@ package io.github.ealenxie.fop;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.github.ealenxie.fop.pds.dto.PdsOrderCancel;
-import io.github.ealenxie.fop.pds.dto.PdsOrderCreate;
-import io.github.ealenxie.fop.pds.vo.PdsOrderResp;
+import io.github.ealenxie.fop.pds.PdsOrderCancel;
+import io.github.ealenxie.fop.pds.PdsOrderCreate;
+import io.github.ealenxie.fop.pds.PdsOrderResponse;
 import org.springframework.web.client.RestOperations;
 
 /**
@@ -28,8 +28,8 @@ public class PdsClient extends FopClient {
     /**
      * <a href="http://open.4px.com/apiInfo/apiDetail?itemId=5&mainId=179">末端派送下单</a>
      */
-    public FopResp<PdsOrderResp> pdsOrderCreate(PdsOrderCreate dto) {
-        return postFop("lm.pds.order.create", dto, new TypeReference<FopResp<PdsOrderResp>>() {
+    public FopResp<PdsOrderResponse> pdsOrderCreate(PdsOrderCreate dto) {
+        return postFop("lm.pds.order.create", dto, new TypeReference<FopResp<PdsOrderResponse>>() {
         });
     }
 

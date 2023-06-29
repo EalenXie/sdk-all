@@ -2,11 +2,7 @@ package io.github.ealenxie.fop;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.github.ealenxie.fop.track.dto.CreateBusiness;
-import io.github.ealenxie.fop.track.dto.CreateByTrackNo;
-import io.github.ealenxie.fop.track.dto.CreateTrack;
-import io.github.ealenxie.fop.track.dto.DeliveryOrderNoDTO;
-import io.github.ealenxie.fop.track.vo.DeliveryOrder;
+import io.github.ealenxie.fop.track.*;
 import org.springframework.web.client.RestOperations;
 
 /**
@@ -32,7 +28,7 @@ public class TrackClient extends FopClient {
      * @param deliveryOrderNo 物流单号
      */
     public FopResp<DeliveryOrder> getTrackingOrder(String deliveryOrderNo) {
-        return postFop("tr.order.tracking.get", new DeliveryOrderNoDTO(deliveryOrderNo), new TypeReference<FopResp<DeliveryOrder>>() {
+        return postFop("tr.order.tracking.get", new DeliveryOrderNoPayload(deliveryOrderNo), new TypeReference<FopResp<DeliveryOrder>>() {
         });
     }
 

@@ -2,13 +2,7 @@ package io.github.ealenxie.fop;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.github.ealenxie.fop.grs.dto.PrepaymentBuy;
-import io.github.ealenxie.fop.grs.dto.RmaInfoCreate;
-import io.github.ealenxie.fop.grs.dto.RmaInfoGet;
-import io.github.ealenxie.fop.grs.dto.RmaInfoList;
-import io.github.ealenxie.fop.grs.vo.PrepaymentLabel;
-import io.github.ealenxie.fop.grs.vo.ReceivedInfo;
-import io.github.ealenxie.fop.grs.vo.RmaInfoPage;
+import io.github.ealenxie.fop.grs.*;
 import org.springframework.web.client.RestOperations;
 
 /**
@@ -41,7 +35,7 @@ public class GrsClient extends FopClient {
      * <a href="http://open.4px.com/apiInfo/apiDetail?itemId=4&mainId=139">查询退货单信息</a>
      *
      * @param rmaNo 退货单（退货预报单）
-     * todo 这个接口的返回内容，与文档不对应
+     *              todo 这个接口的返回内容，与文档不对应
      */
     public FopResp<ReceivedInfo> rmaInfoGet(String rmaNo) {
         return postFop("re.grs.rmainfo.get", new RmaInfoGet(rmaNo), new TypeReference<FopResp<ReceivedInfo>>() {

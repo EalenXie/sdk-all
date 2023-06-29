@@ -105,18 +105,18 @@ public abstract class FopClient {
      * <a href="http://open.4px.com/apiInfo/partner">http://open.4px.com/apiInfo/introduce</a>
      *
      * @param method        函数方法
-     * @param body          请求body
+     * @param payload       请求body
      * @param typeReference 返回值类型
      * @return 调用FOP返回接口
      */
-    public <T> T postFop(String method, Object body, TypeReference<T> typeReference) {
+    public <T> T postFop(String method, Object payload, TypeReference<T> typeReference) {
         try {
             CommonArgs common = new CommonArgs(new AppKeySecret(appKey, appSecret, accessToken), method);
             String bodyJson;
-            if (body instanceof String) {
-                bodyJson = (String) body;
+            if (payload instanceof String) {
+                bodyJson = (String) payload;
             } else {
-                bodyJson = body == null ? "" : objectMapper.writeValueAsString(body);
+                bodyJson = payload == null ? "" : objectMapper.writeValueAsString(payload);
             }
             UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(String.format("%s/router/api/service", isSandBox() ? TEST_FOP_URL : FOP_URL));
             SortedMap<String, String> sortedMap = objectMapper.convertValue(common, new TypeReference<SortedMap<String, String>>() {

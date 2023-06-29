@@ -2,8 +2,7 @@ package io.github.ealenxie.fop;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.github.ealenxie.fop.common.dto.*;
-import io.github.ealenxie.fop.common.vo.*;
+import io.github.ealenxie.fop.common.*;
 import org.springframework.web.client.RestOperations;
 
 import java.util.List;

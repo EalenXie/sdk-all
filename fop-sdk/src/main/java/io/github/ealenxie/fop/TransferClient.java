@@ -2,8 +2,7 @@ package io.github.ealenxie.fop;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.github.ealenxie.fop.transfer.dto.*;
-import io.github.ealenxie.fop.transfer.vo.*;
+import io.github.ealenxie.fop.transfer.*;
 import org.springframework.web.client.RestOperations;
 
 /**
@@ -27,16 +26,16 @@ public class TransferClient extends FopClient {
     /**
      * <a href="http://open.4px.com/apiInfo/apiDetail?itemId=3&mainId=48">创建集货入库委托</a>
      */
-    public FopResp<InboundCreateVO> inboundCreate(InboundCreate dto) {
-        return postFop("cs.trs.inbound.create", dto, new TypeReference<FopResp<InboundCreateVO>>() {
+    public FopResp<InboundCreateResponse> inboundCreate(InboundCreate payload) {
+        return postFop("cs.trs.inbound.create", payload, new TypeReference<FopResp<InboundCreateResponse>>() {
         });
     }
 
     /**
      * <a href="http://open.4px.com/apiInfo/apiDetail?itemId=3&mainId=49">创建集运出库委托</a>
      */
-    public FopResp<OutboundCreateVO> outboundCreate(OutboundCreate dto) {
-        return postFop("cs.trs.outbound.create", dto, new TypeReference<FopResp<OutboundCreateVO>>() {
+    public FopResp<OutboundCreateResponse> outboundCreate(OutboundCreate payload) {
+        return postFop("cs.trs.outbound.create", payload, new TypeReference<FopResp<OutboundCreateResponse>>() {
         });
     }
 
@@ -44,8 +43,8 @@ public class TransferClient extends FopClient {
     /**
      * <a href="http://open.4px.com/apiInfo/apiDetail?itemId=3&mainId=50">取消入库委托</a>
      */
-    public FopResp<TrackingNoVO> inboundCancel(InboundCancel dto) {
-        return postFop("cs.trs.inbound.cancel", dto, new TypeReference<FopResp<TrackingNoVO>>() {
+    public FopResp<TrackingNoPayload> inboundCancel(InboundCancel payload) {
+        return postFop("cs.trs.inbound.cancel", payload, new TypeReference<FopResp<TrackingNoPayload>>() {
         });
     }
 
@@ -53,8 +52,8 @@ public class TransferClient extends FopClient {
     /**
      * <a href="http://open.4px.com/apiInfo/apiDetail?itemId=3&mainId=51">查询出库委托</a>
      */
-    public FopResp<OutboundVO> getOutbound(GetOutbound dto) {
-        return postFop("cs.trs.outbound.get", dto, new TypeReference<FopResp<OutboundVO>>() {
+    public FopResp<OutboundResponse> getOutbound(GetOutbound payload) {
+        return postFop("cs.trs.outbound.get", payload, new TypeReference<FopResp<OutboundResponse>>() {
         });
     }
 
@@ -62,24 +61,24 @@ public class TransferClient extends FopClient {
     /**
      * <a href="http://open.4px.com/apiInfo/apiDetail?itemId=3&mainId=143">会员注册</a>
      */
-    public FopResp<Void> memberRegister(MemberRegister dto) {
-        return postFop("cs.trs.member.register", dto, new TypeReference<FopResp<Void>>() {
+    public FopResp<Void> memberRegister(MemberRegister payload) {
+        return postFop("cs.trs.member.register", payload, new TypeReference<FopResp<Void>>() {
         });
     }
 
     /**
      * <a href="http://open.4px.com/apiInfo/apiDetail?itemId=3&mainId=157">入库异常解决方案</a>
      */
-    public FopResp<Void> inboundExceptionHandle(InboundExceptionHandle dto) {
-        return postFop("cs.trs.inbound.exception.handle", dto, new TypeReference<FopResp<Void>>() {
+    public FopResp<Void> inboundExceptionHandle(InboundExceptionHandle payload) {
+        return postFop("cs.trs.inbound.exception.handle", payload, new TypeReference<FopResp<Void>>() {
         });
     }
 
     /**
      * <a href="http://open.4px.com/apiInfo/apiDetail?itemId=3&mainId=162">创建直运委托</a>
      */
-    public FopResp<TrackingNo> directShipCreate(DirectShipCreate dto) {
-        return postFop("cs.trs.directship.create", dto, new TypeReference<FopResp<TrackingNo>>() {
+    public FopResp<TrackingNo> directShipCreate(DirectShipCreate payload) {
+        return postFop("cs.trs.directship.create", payload, new TypeReference<FopResp<TrackingNo>>() {
         });
     }
 
@@ -87,8 +86,8 @@ public class TransferClient extends FopClient {
     /**
      * <a href="http://open.4px.com/apiInfo/apiDetail?itemId=3&mainId=196">轨迹节点查询</a>
      */
-    public FopResp<OrderNodeVO> queryOrderNode(TrackingNo dto) {
-        return postFop("cs.trs.query.orderNode", dto, new TypeReference<FopResp<OrderNodeVO>>() {
+    public FopResp<OrderNodeResponse> queryOrderNode(TrackingNo payload) {
+        return postFop("cs.trs.query.orderNode", payload, new TypeReference<FopResp<OrderNodeResponse>>() {
         });
     }
 
