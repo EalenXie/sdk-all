@@ -25,6 +25,18 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 | accessToken  | [Autoryzacja użytkownika](https://developer.allegro.pl/auth/#autoryzacja-u%c5%bcytkownika)                          | ✔️  |
 | refreshToken | [Przedłużenie ważności tokena](https://developer.allegro.pl/auth/#przed%c5%82u%c5%bcenie-wa%c5%bcno%c5%9bci-tokena) | ✔️  |
 
+
+### OFFER
+
+#### User's offer information
+
+| 方法名           | 📚 官方文档地址                                                                                                                                        | 状态  |
+|:--------------|:-------------------------------------------------------------------------------------------------------------------------------------------------|:----|
+| searchOffers  | [Get seller's offers](https://developer.allegro.pl/documentation/#operation/searchOffersUsingGET)                                                | ✔️  |
+| ~~getOffer~~  | ~~[Get all fields of the particular offer](https://developer.allegro.pl/documentation/#operation/getOfferUsingGET)~~                             | ✔️  |
+| getSmartOffer | [Get Smart! classification report of the particular offer](https://developer.allegro.pl/documentation/#operation/getOfferSmartClassificationGET) | ✔️  |
+
+
 ### ORDERS
 
 [AllegroOrderClient](https://github.com/EalenXie/sdk-all/blob/main/allegro-sdk/src/main/java/io/github/ealenxie/allegro/AllegroOrdersClient.java)
