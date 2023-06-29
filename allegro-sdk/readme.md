@@ -19,37 +19,76 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 
 #### [AllegroClient](https://github.com/EalenXie/sdk-all/blob/main/allegro-sdk/src/main/java/io/github/ealenxie/allegro/AllegroClient.java) 已支持的接口列表
 
-| 接口名                | 方法名          | 官方文档地址                                                                                                              | 状态  |
-|:-------------------|:-------------|:--------------------------------------------------------------------------------------------------------------------|:----|
-| 获取授权地址             | authorize    | [Autoryzacja użytkownika](https://developer.allegro.pl/auth/#autoryzacja-u%c5%bcytkownika)                          | ✔️  |
-| 授权码模式获取accessToken | accessToken  | [Autoryzacja użytkownika](https://developer.allegro.pl/auth/#autoryzacja-u%c5%bcytkownika)                          | ✔️  |
-| 刷新令牌               | refreshToken | [Przedłużenie ważności tokena](https://developer.allegro.pl/auth/#przed%c5%82u%c5%bcenie-wa%c5%bcno%c5%9bci-tokena) | ✔️  |
+| 方法名          | 官方文档地址                                                                                                              | 状态  |
+|:-------------|:--------------------------------------------------------------------------------------------------------------------|:----|
+| authorize    | [Autoryzacja użytkownika](https://developer.allegro.pl/auth/#autoryzacja-u%c5%bcytkownika)                          | ✔️  |
+| accessToken  | [Autoryzacja użytkownika](https://developer.allegro.pl/auth/#autoryzacja-u%c5%bcytkownika)                          | ✔️  |
+| refreshToken | [Przedłużenie ważności tokena](https://developer.allegro.pl/auth/#przed%c5%82u%c5%bcenie-wa%c5%bcno%c5%9bci-tokena) | ✔️  |
 
-#### [AllegroOrderClient](https://github.com/EalenXie/sdk-all/blob/main/allegro-sdk/src/main/java/io/github/ealenxie/allegro/AllegroOrderClient.java) 已支持的接口列表
+### ORDERS
 
-| 接口名        | 方法名                           | 官方文档地址                                                                                                                       | 状态  |
-|:-----------|:------------------------------|:-----------------------------------------------------------------------------------------------------------------------------|:----|
-| 获取用户订单     | userOrders                    | [Get the user's orders](https://developer.allegro.pl/documentation/#operation/getListOfOrdersUsingGET)                       | ✔️  |
-| 获取订单详情     | ordersDetails                 | [Get an order's details](https://developer.allegro.pl/documentation/#operation/getOrdersDetailsUsingGET)                     | ✔️  |
-| 获取订单发票详细信息 | invoices                      | [Get order invoices details](https://developer.allegro.pl/documentation/#operation/getOrderInvoicesDetails)                  | ✔️  |
-| 创建发票       | invoices                      | [Post new invoice](https://developer.allegro.pl/documentation/#operation/addOrderInvoicesMetadata)                           | ✔️  |
-| 上传发票       | putInvoices                   | [Upload invoice file](https://developer.allegro.pl/documentation/#operation/uploadOrderInvoiceFile)                          | ✔️  |
-| 获取账单条目列表   | billings                      | [Get a list of billing entries](https://developer.allegro.pl/documentation/#operation/getBillingEntries)                     | ✔️  |
-| 获取费用类型     | billingsType                  | [Get a list of billing types](https://developer.allegro.pl/documentation/#operation/getBillingTypes)                         | ✔️  |
-| 查询支付历史     | payments                      | [Payment operations history](https://developer.allegro.pl/documentation#operation/getAllegroParcelTrackingUsingGET)          | ✔️  |
-| 发起退款       | initiateRefund                | [Initiate a refund of a payment](https://developer.allegro.pl/documentation/#operation/initiateRefund)                       | ✔️  |
-| 获取用户的纠纷    | disputes                      | [Get the user's disputes](https://developer.allegro.pl/documentation/#tag/Disputes)                                          | ✔️  |
-| 获取争议中的消息   | getMessages                   | [Get the messages within a dispute](https://developer.allegro.pl/documentation/#tag/Disputes)                                | ✔️  |
-| 上传争议邮件附件   | uploadAttachment              | [Upload a dispute message attachment](https://developer.allegro.pl/documentation/#operation/uploadDisputeAttachmentUsingPUT) | ✔️  |
-| 获取争议邮件附件   | getAttachment                 | [Get an attachment](https://developer.allegro.pl/documentation/#operation/getAttachmentUsingGET)                             | ✔️  |
-| 获得可用的送货服务  | getAvailableDeliveryServices  | [Get available delivery services](https://developer.allegro.pl/documentation/#operation/getAvailableDeliveryServices)        | ✔️  |
-| 创建一个新的包裹   | createNewParcel               | [Create a new parcel](https://developer.allegro.pl/documentation/#operation/createNewParcel)                                 | ✔️  |
-| 获取包创建状态    | getParcelCreationStatus       | [Get parcel creation status](https://developer.allegro.pl/documentation/#operation/getParcelCreationStatus)                  | ✔️  |
-| 获取包裹详情     | getParcelDetails              | [Get parcel details](https://developer.allegro.pl/documentation/#operation/getParcelDetails)                                 | ✔️  |
-| 获取包裹提货日期建议 | getParcelsPickupDateProposals | [Get parcels pickup date proposals](https://developer.allegro.pl/documentation/#operation/getParcelsPickupDateProposals)     | ✔️  |
-| 申请取件       | requestParcelPickup           | [Request parcel pickup](https://developer.allegro.pl/documentation/#operation/requestParcelPickup)                           | ✔️  |
-| 获取包裹提货状态   | getParcelPickupStatus         | [Get parcel pickup status](https://developer.allegro.pl/documentation/#operation/getParcelPickupStatus)                      | ✔️  |
-| 领取包裹标签     | getParcelLabel                | [Get parcel label](https://developer.allegro.pl/documentation/#operation/getParcelLabel)                                     | ✔️  |
-| 领取包裹协议     | getParcelsProtocol            | [Get parcels protocol](https://developer.allegro.pl/documentation/#operation/getParcelsProtocol)                             | ✔️  |
-| 取消包裹       | cancelParcel                  | [Cancel parcel](https://developer.allegro.pl/documentation/#operation/cancelParcel)                                          | ✔️  |
-| 获取包裹取消状态   | getParcelCancellationStatus   | [Get parcel cancellation status](https://developer.allegro.pl/documentation/#operation/getParcelCancellationStatus)          | ✔️  |
+[AllegroOrderClient](https://github.com/EalenXie/sdk-all/blob/main/allegro-sdk/src/main/java/io/github/ealenxie/allegro/AllegroOrdersClient.java)
+已支持的接口列表
+
+#### Order Management
+
+| 方法名                 | 官方文档地址                                                                                                                       | 状态  |
+|:--------------------|:-----------------------------------------------------------------------------------------------------------------------------|:----|
+| events              | [Get order events](https://developer.allegro.pl/documentation/#operation/getOrderEventsUsingGET)                             | ✔️  |
+| eventStats          | [Get order events statistics](https://developer.allegro.pl/documentation/#operation/getOrderEventsStatisticsUsingGET)        | ✔️  |
+| userOrders          | [Get the user's orders](https://developer.allegro.pl/documentation/#operation/getListOfOrdersUsingGET)                       | ✔️  |
+| ordersDetails       | [Get an order's details](https://developer.allegro.pl/documentation/#operation/getOrdersDetailsUsingGET)                     | ✔️  |
+| orderCarriers       | [Get a list of available shipping carriers](https://developer.allegro.pl/documentation/#operation/getOrdersCarriersUsingGET) | ✔️  |
+| getShipment         | [Get a list of parcel tracking numbers](https://developer.allegro.pl/documentation/#operation/getOrderShipmentsUsingGET)     | ✔️  |
+| shipments           | [Add a parcel tracking number](https://developer.allegro.pl/documentation/#operation/createOrderShipmentsUsingPOST)          | ✔️  |
+| fulfillment         | [Set seller order status](https://developer.allegro.pl/documentation/#operation/setOrderFulfillmentUsingPUT)                 | ✔️  |
+| invoices            | [Get order invoices details](https://developer.allegro.pl/documentation/#operation/getOrderInvoicesDetails)                  | ✔️  |
+| newInvoice          | [Post new invoice](https://developer.allegro.pl/documentation/#operation/addOrderInvoicesMetadata)                           | ✔️  |
+| uploadInvoiceFile   | [Upload invoice file](https://developer.allegro.pl/documentation/#operation/uploadOrderInvoiceFile)                          | ✔️  |
+| orderCarriersPoints | [Get Allegro pickup drop off points](https://developer.allegro.pl/documentation/#operation/getAllegroPickupDropOffPointsGET) | ✔️  |
+| carriersTracking    | [Get carrier parcel tracking history](https://developer.allegro.pl/documentation/#operation/getParcelTrackingUsingGET)       | ✔️  |
+
+#### Payments
+
+| 方法名                 | 官方文档地址                                                                                                         | 状态  |
+|:--------------------|:---------------------------------------------------------------------------------------------------------------|:----|
+| paymentOperations   | [Payment operations history](https://developer.allegro.pl/documentation#operation/getPaymentsOperationHistory) | ✔️  |
+| initiateRefund      | [Initiate a refund of a payment](https://developer.allegro.pl/documentation/#operation/initiateRefund)         | ✔️  |
+| getRefundedPayments | [Get a list of refunded payments](https://developer.allegro.pl/documentation/#operation/getRefundedPayments)   | ✔️  |
+
+#### Disputes
+
+| 方法名                     | 官方文档地址                                                                                                                       | 状态  |
+|:------------------------|:-----------------------------------------------------------------------------------------------------------------------------|:----|
+| disputes                | [Get the user's disputes](https://developer.allegro.pl/documentation/#tag/getListOfDisputesUsingGET)                         | ✔️  |
+| dispute                 | [Get a single dispute](https://developer.allegro.pl/documentation/#tag/getDisputeUsingGET)                                   | ✔️  |
+| getDisputeMessages      | [Get the messages within a dispute](https://developer.allegro.pl/documentation/#operation/getMessagesFromDisputeUsingGET)    | ✔️  |
+| addMessageToDispute     | [Add a message to a dispute](https://developer.allegro.pl/documentation/#operation/addMessageToDisputeUsingPOST)             | ✔️  |
+| createAnAttachment      | [Create an attachment declaration](https://developer.allegro.pl/documentation/#operation/createAnAttachmentUsingPOST)        | ✔️  |
+| uploadDisputeAttachment | [Upload a dispute message attachment](https://developer.allegro.pl/documentation/#operation/uploadDisputeAttachmentUsingPUT) | ✔️  |
+| getAttachment           | [Get an attachment](https://developer.allegro.pl/documentation/#operation/getAttachmentUsingGET)                             | ✔️  |
+
+#### Parcel Management
+
+| 方法名                           | 官方文档地址                                                                                                                   | 状态  |
+|:------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:----|
+| getAvailableDeliveryServices  | [Get available delivery services](https://developer.allegro.pl/documentation/#operation/getAvailableDeliveryServices)    | ✔️  |
+| createNewParcel               | [Create a new parcel](https://developer.allegro.pl/documentation/#operation/createNewParcel)                             | ✔️  |
+| getParcelCreationStatus       | [Get parcel creation status](https://developer.allegro.pl/documentation/#operation/getParcelCreationStatus)              | ✔️  |
+| getParcelDetails              | [Get parcel details](https://developer.allegro.pl/documentation/#operation/getParcelDetails)                             | ✔️  |
+| getParcelsPickupDateProposals | [Get parcels pickup date proposals](https://developer.allegro.pl/documentation/#operation/getParcelsPickupDateProposals) | ✔️  |
+| requestParcelPickup           | [Request parcel pickup](https://developer.allegro.pl/documentation/#operation/requestParcelPickup)                       | ✔️  |
+| getParcelPickupStatus         | [Get parcel pickup status](https://developer.allegro.pl/documentation/#operation/getParcelPickupStatus)                  | ✔️  |
+| getParcelLabel                | [Get parcel label](https://developer.allegro.pl/documentation/#operation/getParcelLabel)                                 | ✔️  |
+| getParcelsProtocol            | [Get parcels protocol](https://developer.allegro.pl/documentation/#operation/getParcelsProtocol)                         | ✔️  |
+| cancelParcel                  | [Cancel parcel](https://developer.allegro.pl/documentation/#operation/cancelParcel)                                      | ✔️  |
+| getParcelCancellationStatus   | [Get parcel cancellation status](https://developer.allegro.pl/documentation/#operation/getParcelCancellationStatus)      | ✔️  |
+
+### OTHERS
+
+#### Billing
+
+| 方法名          | 官方文档地址                                                                                                   | 状态  |
+|:-------------|:---------------------------------------------------------------------------------------------------------|:----|
+| billings     | [Get a list of billing entries](https://developer.allegro.pl/documentation/#operation/getBillingEntries) | ✔️  |
+| billingsType | [Get a list of billing types](https://developer.allegro.pl/documentation/#operation/getBillingTypes)     | ✔️  |

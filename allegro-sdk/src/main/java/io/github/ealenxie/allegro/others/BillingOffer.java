@@ -1,22 +1,21 @@
-package io.github.ealenxie.allegro.order;
+package io.github.ealenxie.allegro.others;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
+
 @Getter
 @Setter
-public class BillingTypePayload {
-
+public class BillingOffer {
     /**
-     * 计费类型id
+     * 与账单条目的报价ID
      */
     @JsonProperty("id")
     private String id;
-
     /**
-     * 描述
+     * 与计费条目的报价名称
      */
-    @JsonProperty("description")
-    private String description;
+    @JsonProperty("name")
+    private String name;
 }

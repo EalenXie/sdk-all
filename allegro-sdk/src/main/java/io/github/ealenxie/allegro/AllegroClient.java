@@ -7,13 +7,14 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.lang.Nullable;
-import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.web.client.RestOperations;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
+import java.util.Collection;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by EalenXie on 2022/3/18 12:57
@@ -218,19 +219,29 @@ public abstract class AllegroClient {
      * @param queryParams url请求参数
      */
     protected URI buildUri(String urlNotHost, @Nullable Object queryParams) {
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(String.format("%s%s", isSandBox() ? API_SANDBOX_HOST : API_HOST, urlNotHost));
+        String host = isSandBox() ? API_SANDBOX_HOST : API_HOST;
+        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(String.format("%s%s", host, urlNotHost));
         if (queryParams != null) {
             if (queryParams instanceof String) {
-                builder = UriComponentsBuilder.fromHttpUrl(String.format("%s%s%s", isSandBox() ? API_SANDBOX_HOST : API_HOST, urlNotHost, queryParams));
+                builder = UriComponentsBuilder.fromHttpUrl(String.format("%s%s?%s", host, urlNotHost, queryParams));
             } else {
-                Map<String, String> args = mapper.convertValue(queryParams, new TypeReference<Map<String, String>>() {
-                });
-                LinkedMultiValueMap<String, String> req = new LinkedMultiValueMap<>();
-                req.setAll(args);
-                builder.queryParams(req);
+                builderQueryParam(builder, mapper.convertValue(queryParams, new TypeReference<Map<String, Object>>() {
+                }));
             }
         }
         return builder.build().encode().toUri();
+    }
+
+    private void builderQueryParam(UriComponentsBuilder builder, Map<String, Object> args) {
+        Set<Map.Entry<String, Object>> entries = args.entrySet();
+        for (Map.Entry<String, Object> entry : entries) {
+            Object value = entry.getValue();
+            if (value instanceof Collection) {
+                builder.queryParam(entry.getKey(), (Collection<?>) value);
+            } else {
+                builder.queryParam(entry.getKey(), value);
+            }
+        }
     }
 
 

@@ -1,4 +1,4 @@
-package io.github.ealenxie.allegro.order;
+package io.github.ealenxie.allegro.others;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
