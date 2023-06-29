@@ -98,9 +98,24 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 
 ### OTHERS
 
+#### Information about user
+
+| 方法名          | 📚 官方文档地址                                                                                                | 状态  |
+|:-------------|:---------------------------------------------------------------------------------------------------------|:----|
+| getUserRatings     | [Get the user's ratings](https://developer.allegro.pl/documentation/#operation/getUserRatingsUsingGET) | ✔️  |
+| answerUserRating     | [Answer for user's rating](https://developer.allegro.pl/documentation/#operation/answerUserRatingUsingPUT) | ✔️  |
+| userRatingRemoval     | [Request removal of user's rating](https://developer.allegro.pl/documentation/#operation/userRatingRemovalUsingPUT) | ✔️  |
+| me     | [Get basic information about user](https://developer.allegro.pl/documentation/#operation/meGET) | ✔️  |
+| getListOfAdditionalEmails     | [Get user's additional emails](https://developer.allegro.pl/documentation/#operation/getListOfAdditionalEmailsUsingGET) | ✔️  |
+| addAdditionalEmail     | [Add a new additional email address to user's account](https://developer.allegro.pl/documentation/#operation/addAdditionalEmailUsingPOST) | ✔️  |
+| getAdditionalEmail     | [Get information about a particular additional email](https://developer.allegro.pl/documentation/#operation/getAdditionalEmailUsingGET) | ✔️  |
+| deleteAdditionalEmail     | [Delete an additional email address](https://developer.allegro.pl/documentation/#operation/deleteAdditionalEmailUsingDELETE) | ✔️  |
+| getSellerSmartClassification     | [Get Smart! seller classification report](https://developer.allegro.pl/documentation/#operation/getSellerSmartClassificationGET) | ✔️  |
+
+
 #### Billing
 
 | 方法名          | 📚 官方文档地址                                                                                                | 状态  |
 |:-------------|:---------------------------------------------------------------------------------------------------------|:----|
-| billings     | [Get a list of billing entries](https://developer.allegro.pl/documentation/#operation/getBillingEntries) | ✔️  |
-| billingsType | [Get a list of billing types](https://developer.allegro.pl/documentation/#operation/getBillingTypes)     | ✔️  |
+| getBillingEntries     | [Get a list of billing entries](https://developer.allegro.pl/documentation/#operation/getBillingEntries) | ✔️  |
+| getBillingTypes | [Get a list of billing types](https://developer.allegro.pl/documentation/#operation/getBillingTypes)     | ✔️  |
