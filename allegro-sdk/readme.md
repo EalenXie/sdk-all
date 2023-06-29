@@ -19,7 +19,7 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 
 #### [AllegroClient](https://github.com/EalenXie/sdk-all/blob/main/allegro-sdk/src/main/java/io/github/ealenxie/allegro/AllegroClient.java) 已支持的接口列表
 
-| 方法名          | 官方文档地址                                                                                                              | 状态  |
+| 方法名          | 📚 官方文档地址                                                                                                           | 状态  |
 |:-------------|:--------------------------------------------------------------------------------------------------------------------|:----|
 | authorize    | [Autoryzacja użytkownika](https://developer.allegro.pl/auth/#autoryzacja-u%c5%bcytkownika)                          | ✔️  |
 | accessToken  | [Autoryzacja użytkownika](https://developer.allegro.pl/auth/#autoryzacja-u%c5%bcytkownika)                          | ✔️  |
@@ -32,7 +32,7 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 
 #### Order Management
 
-| 方法名                 | 官方文档地址                                                                                                                       | 状态  |
+| 方法名                 | 📚 官方文档地址                                                                                                                    | 状态  |
 |:--------------------|:-----------------------------------------------------------------------------------------------------------------------------|:----|
 | events              | [Get order events](https://developer.allegro.pl/documentation/#operation/getOrderEventsUsingGET)                             | ✔️  |
 | eventStats          | [Get order events statistics](https://developer.allegro.pl/documentation/#operation/getOrderEventsStatisticsUsingGET)        | ✔️  |
@@ -50,7 +50,7 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 
 #### Payments
 
-| 方法名                 | 官方文档地址                                                                                                         | 状态  |
+| 方法名                 | 📚 官方文档地址                                                                                                      | 状态  |
 |:--------------------|:---------------------------------------------------------------------------------------------------------------|:----|
 | paymentOperations   | [Payment operations history](https://developer.allegro.pl/documentation#operation/getPaymentsOperationHistory) | ✔️  |
 | initiateRefund      | [Initiate a refund of a payment](https://developer.allegro.pl/documentation/#operation/initiateRefund)         | ✔️  |
@@ -58,7 +58,7 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 
 #### Disputes
 
-| 方法名                     | 官方文档地址                                                                                                                       | 状态  |
+| 方法名                     | 📚 官方文档地址                                                                                                                    | 状态  |
 |:------------------------|:-----------------------------------------------------------------------------------------------------------------------------|:----|
 | disputes                | [Get the user's disputes](https://developer.allegro.pl/documentation/#tag/getListOfDisputesUsingGET)                         | ✔️  |
 | dispute                 | [Get a single dispute](https://developer.allegro.pl/documentation/#tag/getDisputeUsingGET)                                   | ✔️  |
@@ -70,7 +70,7 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 
 #### Parcel Management
 
-| 方法名                           | 官方文档地址                                                                                                                   | 状态  |
+| 方法名                           | 📚 官方文档地址                                                                                                                | 状态  |
 |:------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:----|
 | getAvailableDeliveryServices  | [Get available delivery services](https://developer.allegro.pl/documentation/#operation/getAvailableDeliveryServices)    | ✔️  |
 | createNewParcel               | [Create a new parcel](https://developer.allegro.pl/documentation/#operation/createNewParcel)                             | ✔️  |
@@ -88,7 +88,7 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 
 #### Billing
 
-| 方法名          | 官方文档地址                                                                                                   | 状态  |
+| 方法名          | 📚 官方文档地址                                                                                                | 状态  |
 |:-------------|:---------------------------------------------------------------------------------------------------------|:----|
 | billings     | [Get a list of billing entries](https://developer.allegro.pl/documentation/#operation/getBillingEntries) | ✔️  |
 | billingsType | [Get a list of billing types](https://developer.allegro.pl/documentation/#operation/getBillingTypes)     | ✔️  |

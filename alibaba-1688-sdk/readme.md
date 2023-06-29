@@ -20,7 +20,7 @@ alibaba-1688-sdk
 
 #### [CrossBorderERPClient](https://github.com/EalenXie/sdk-all/blob/main/alibaba-1688-sdk/src/main/java/io/github/ealenxie/alibaba/CrossBorderERPClient.java) API及消息列表
 
-| 方法名                                  | 官方文档地址                                                                                                                                                                       | 状态  |
+| 方法名                                  | 📚 官方文档地址                                                                                                                                                                    | 状态  |
 |:-------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:----|
 | getTradeInfo                         | [订单详情查看(买家视角)](https://open.1688.com/api/apidocdetail.htm?id=com.alibaba.trade:alibaba.trade.get.buyerView-1&aopApiCategory=trade_new)                                       | ✔️  |
 | createCrossOrder                     | [跨境订单创建](https://open.1688.com/api/apidocdetail.htm?id=com.alibaba.trade:alibaba.trade.createCrossOrder-1)                                                                   | ✔️  |
