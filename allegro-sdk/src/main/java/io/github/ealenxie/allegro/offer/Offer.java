@@ -80,7 +80,7 @@ public class Offer {
      * b2b
      */
     @JsonProperty("b2b")
-    private OfferB2b b2b;
+    private B2b b2b;
     /**
      * fundraisingCampaign
      */

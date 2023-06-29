@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
  */
 @NoArgsConstructor
 @Data
-public class ParticularOfferAllegrocz {
+public class AllegroczPayload {
     /**
      * publication
      */

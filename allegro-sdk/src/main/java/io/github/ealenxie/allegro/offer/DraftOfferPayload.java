@@ -8,12 +8,11 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 /**
- * @author EalenXie created on 2023/6/29 15:51
+ * @author EalenXie created on 2023/6/29 16:42
  */
 @NoArgsConstructor
 @Data
-public class ParticularOfferResponse {
-
+public class DraftOfferPayload {
 
     /**
      * category
@@ -39,7 +38,7 @@ public class ParticularOfferResponse {
      * attachments
      */
     @JsonProperty("attachments")
-    private List<IdPayload> attachments;
+    private List<Tax> attachments;
     /**
      * compatibilityList
      */
@@ -64,7 +63,7 @@ public class ParticularOfferResponse {
      * delivery
      */
     @JsonProperty("delivery")
-    private ParticularOfferDelivery delivery;
+    private DeliveryPayload delivery;
     /**
      * description
      */
@@ -129,7 +128,7 @@ public class ParticularOfferResponse {
      * publication
      */
     @JsonProperty("publication")
-    private ParticularOfferPublication publication;
+    private PublicationPayload publication;
     /**
      * sellingMode
      */
@@ -149,7 +148,7 @@ public class ParticularOfferResponse {
      * sizeTable
      */
     @JsonProperty("sizeTable")
-    private IdPayload sizeTable;
+    private Tax sizeTable;
     /**
      * stock
      */

@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
  */
 @NoArgsConstructor
 @Data
-public class ParticularOfferSellingMode {
+public class SellingModePayload {
     /**
      * format
      */

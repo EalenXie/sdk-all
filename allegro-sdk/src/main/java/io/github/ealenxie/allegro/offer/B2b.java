@@ -5,11 +5,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * @author EalenXie created on 2023/6/29 15:39
+ * @author EalenXie created on 2023/6/29 16:43
  */
 @NoArgsConstructor
 @Data
-public class OfferB2b {
+public class B2b {
     /**
      * buyableOnlyByBusiness
      */

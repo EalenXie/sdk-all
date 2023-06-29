@@ -9,10 +9,10 @@ import lombok.NoArgsConstructor;
  */
 @NoArgsConstructor
 @Data
-public class ParticularOfferMarketplaces {
+public class AdditionalMarketplacesPayload {
     /**
      * allegrocz
      */
     @JsonProperty("allegro-cz")
-    private ParticularOfferAllegrocz allegrocz;
+    private AllegroczPayload allegrocz;
 }
