@@ -7,14 +7,16 @@ import lombok.Setter;
 import java.util.List;
 
 /**
- * @author EalenXie created on 2023/6/29 15:51
+ * @author EalenXie created on 2023/6/30 10:04
  */
 @Getter
 @Setter
-public class Sections {
+public class PublicationTasksResponse {
+
+
     /**
-     * items
+     * tasks
      */
-    @JsonProperty("items")
-    private List<TypePayload> items;
+    @JsonProperty("tasks")
+    private List<PublicationTask> tasks;
 }

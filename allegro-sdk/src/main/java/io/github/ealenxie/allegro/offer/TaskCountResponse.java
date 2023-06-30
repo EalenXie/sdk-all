@@ -4,22 +4,22 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.List;
-
 /**
- * @author EalenXie created on 2023/6/29 15:51
+ * @author EalenXie created on 2023/6/30 9:53
  */
 @Getter
 @Setter
-public class TecdocSpecification {
+public class TaskCountResponse {
+
+
     /**
      * id
      */
     @JsonProperty("id")
     private String id;
     /**
-     * items
+     * taskCount
      */
-    @JsonProperty("items")
-    private List<TecdocSpecificationItem> items;
+    @JsonProperty("taskCount")
+    private TaskCount taskCount;
 }

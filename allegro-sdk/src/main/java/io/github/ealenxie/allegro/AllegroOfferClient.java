@@ -87,4 +87,32 @@ public class AllegroOfferClient extends AllegroClient {
     public void deleteDraftOffer(String accessToken, String offerId) {
         exchangeAllegro(String.format(SALE_OFFER, offerId), HttpMethod.DELETE, accessToken, null, null, Void.class);
     }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/changePublicationStatusUsingPUT">Batch offer publish / unpublish</a>
+     */
+    public TaskCountResponse changePublicationStatus(String accessToken, String commandId, ChangePublicationStatusPayload payload) {
+        return exchangeAllegro(String.format("/sale/offer-publication-commands/%s", commandId), HttpMethod.PUT, accessToken, null, payload, TaskCountResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getPublicationReportUsingGET">Publish command summary</a>
+     */
+    public TaskCountResponse getPublicationReport(String accessToken, String commandId) {
+        return getAllegro(String.format("/sale/offer-publication-commands/%s", commandId), accessToken, null, TaskCountResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getPublicationTasksUsingGET">Publish command detailed report</a>
+     */
+    public PublicationTasksResponse getPublicationTasks(String accessToken, String commandId) {
+        return getAllegro(String.format("/sale/offer-publication-commands/%s/tasks", commandId), accessToken, null, PublicationTasksResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getAvailableOfferPromotionPackages">Get all available offer promotion packages</a>
+     */
+    public OfferPromotionPackagesResponse getAvailableOfferPromotionPackages(String accessToken) {
+        return getAllegro("/sale/offer-promotion-packages", accessToken, null, OfferPromotionPackagesResponse.class);
+    }
 }

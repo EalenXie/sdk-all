@@ -4,22 +4,25 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.List;
-
 /**
- * @author EalenXie created on 2023/6/29 15:51
+ * @author EalenXie created on 2023/6/30 11:08
  */
 @Getter
 @Setter
-public class TecdocSpecificationItem {
+public class BasePackages {
+    /**
+     * id
+     */
+    @JsonProperty("id")
+    private String id;
     /**
      * name
      */
     @JsonProperty("name")
     private String name;
     /**
-     * values
+     * cycleDuration
      */
-    @JsonProperty("values")
-    private List<String> values;
+    @JsonProperty("cycleDuration")
+    private String cycleDuration;
 }
