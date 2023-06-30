@@ -24,9 +24,11 @@
 > - 📖 代码贡献指南：[CONTRIBUTING.md](https://github.com/EalenXie/sdk-all/blob/main/CONTRIBUTING.md)
 > - ❓ 如果你有任何问题或疑问，请在项目的Issue页面提问。
 
-## 授权许可
+## License
 
-该项目基于 MIT 许可证进行发布和分发。
+Copyright (c) 2023 EalenXie . All rights reserved.
+
+Licensed under the [MIT](https://github.com/EalenXie/sdk-all/blob/master/LICENSE) license.
 
 ## SDK 列表
 
