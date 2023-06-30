@@ -1,42 +1,38 @@
 package io.github.ealenxie.allegro.offer;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Getter;
-import lombok.Setter;
+import io.github.ealenxie.allegro.IdPayload;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 /**
- * @author EalenXie created on 2023/6/30 10:05
+ * @author EalenXie created on 2023/6/30 16:17
  */
-@Getter
-@Setter
-public class PublicationTask {
-    /**
-     * field
-     */
-    @JsonProperty("field")
-    private String field;
-    /**
-     * finishedAt
-     */
-    @JsonProperty("finishedAt")
-    private String finishedAt;
-    /**
-     * message
-     */
-    @JsonProperty("message")
-    private String message;
+@NoArgsConstructor
+@Data
+public class PromoModifyTask {
     /**
      * offer
      */
     @JsonProperty("offer")
-    private Offer offer;
+    private IdPayload offer;
+    /**
+     * marketplaceId
+     */
+    @JsonProperty("marketplaceId")
+    private String marketplaceId;
     /**
      * scheduledAt
      */
     @JsonProperty("scheduledAt")
     private String scheduledAt;
+    /**
+     * finishedAt
+     */
+    @JsonProperty("finishedAt")
+    private String finishedAt;
     /**
      * status
      */

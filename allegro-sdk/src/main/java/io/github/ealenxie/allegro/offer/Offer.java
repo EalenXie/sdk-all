@@ -30,7 +30,7 @@ public class Offer {
      * primaryImage
      */
     @JsonProperty("primaryImage")
-    private PrimaryImage primaryImage;
+    private UrlPayload primaryImage;
     /**
      * sellingMode
      */
@@ -55,7 +55,7 @@ public class Offer {
      * publication
      */
     @JsonProperty("publication")
-    private Publication publication;
+    private Publish publication;
     /**
      * afterSalesServices
      */
@@ -90,5 +90,5 @@ public class Offer {
      * additionalMarketplaces
      */
     @JsonProperty("additionalMarketplaces")
-    private AdditionalMarketplaces additionalMarketplaces;
+    private OfferAdditionalMarketplaces additionalMarketplaces;
 }

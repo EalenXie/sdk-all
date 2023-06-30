@@ -9,7 +9,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class BasePackages {
+public class PromotionPackage {
     /**
      * id
      */

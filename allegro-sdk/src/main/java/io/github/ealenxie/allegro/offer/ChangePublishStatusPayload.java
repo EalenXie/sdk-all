@@ -11,7 +11,7 @@ import java.util.List;
  */
 @Getter
 @Setter
-public class ChangePublicationStatusPayload {
+public class ChangePublishStatusPayload {
     /**
      * offerCriteria
      */
@@ -21,5 +21,5 @@ public class ChangePublicationStatusPayload {
      * publication
      */
     @JsonProperty("publication")
-    private PublicationAction publication;
+    private ChangePublish publication;
 }

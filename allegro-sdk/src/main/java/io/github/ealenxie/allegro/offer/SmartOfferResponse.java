@@ -18,7 +18,7 @@ public class SmartOfferResponse {
      * classification
      */
     @JsonProperty("classification")
-    private Classification classification;
+    private Classify classification;
     /**
      * scheduledForReclassification
      */

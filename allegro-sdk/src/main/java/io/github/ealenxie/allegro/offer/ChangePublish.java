@@ -9,7 +9,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class PublicationAction {
+public class ChangePublish {
     /**
      * action
      */

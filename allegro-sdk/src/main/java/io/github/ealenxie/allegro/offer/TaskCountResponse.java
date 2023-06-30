@@ -11,7 +11,6 @@ import lombok.Setter;
 @Setter
 public class TaskCountResponse {
 
-
     /**
      * id
      */

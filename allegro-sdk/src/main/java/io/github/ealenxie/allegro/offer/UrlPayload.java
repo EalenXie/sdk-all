@@ -9,10 +9,10 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class AdditionalMarketplaces {
+public class UrlPayload {
     /**
-     * allegrocz
+     * url
      */
-    @JsonProperty("allegro-cz")
-    private Allegrocz allegrocz;
+    @JsonProperty("url")
+    private String url;
 }

@@ -14,7 +14,7 @@ public class AllegroczPayload {
      * publication
      */
     @JsonProperty("publication")
-    private Publication publication;
+    private Publish publication;
     /**
      * sellingMode
      */

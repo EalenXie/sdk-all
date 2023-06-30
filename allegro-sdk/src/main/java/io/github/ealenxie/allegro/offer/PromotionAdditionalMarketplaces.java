@@ -7,12 +7,11 @@ import lombok.Setter;
 import java.util.List;
 
 /**
- * @author EalenXie created on 2023/6/30 11:07
+ * @author EalenXie created on 2023/6/30 11:08
  */
 @Getter
 @Setter
-public class OfferPromotionPackagesResponse {
-
+public class PromotionAdditionalMarketplaces {
     /**
      * marketplaceId
      */
@@ -22,15 +21,10 @@ public class OfferPromotionPackagesResponse {
      * basePackages
      */
     @JsonProperty("basePackages")
-    private List<BasePackages> basePackages;
+    private List<PromotionPackage> basePackages;
     /**
      * extraPackages
      */
     @JsonProperty("extraPackages")
-    private List<BasePackages> extraPackages;
-    /**
-     * additionalMarketplaces
-     */
-    @JsonProperty("additionalMarketplaces")
-    private List<OfferPromotionAdditionalMarketplaces> additionalMarketplaces;
+    private List<PromotionPackage> extraPackages;
 }

@@ -9,7 +9,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class Classification {
+public class Classify {
     /**
      * fulfilled
      */

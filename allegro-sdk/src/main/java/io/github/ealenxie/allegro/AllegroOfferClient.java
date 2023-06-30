@@ -91,28 +91,70 @@ public class AllegroOfferClient extends AllegroClient {
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/changePublicationStatusUsingPUT">Batch offer publish / unpublish</a>
      */
-    public TaskCountResponse changePublicationStatus(String accessToken, String commandId, ChangePublicationStatusPayload payload) {
+    public TaskCountResponse changePublishStatus(String accessToken, String commandId, ChangePublishStatusPayload payload) {
         return exchangeAllegro(String.format("/sale/offer-publication-commands/%s", commandId), HttpMethod.PUT, accessToken, null, payload, TaskCountResponse.class);
     }
 
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/getPublicationReportUsingGET">Publish command summary</a>
      */
-    public TaskCountResponse getPublicationReport(String accessToken, String commandId) {
+    public TaskCountResponse getPublish(String accessToken, String commandId) {
         return getAllegro(String.format("/sale/offer-publication-commands/%s", commandId), accessToken, null, TaskCountResponse.class);
     }
 
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/getPublicationTasksUsingGET">Publish command detailed report</a>
      */
-    public PublicationTasksResponse getPublicationTasks(String accessToken, String commandId) {
-        return getAllegro(String.format("/sale/offer-publication-commands/%s/tasks", commandId), accessToken, null, PublicationTasksResponse.class);
+    public PublishTasksResponse getPublicationTasks(String accessToken, String commandId) {
+        return getAllegro(String.format("/sale/offer-publication-commands/%s/tasks", commandId), accessToken, null, PublishTasksResponse.class);
     }
 
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/getAvailableOfferPromotionPackages">Get all available offer promotion packages</a>
      */
-    public OfferPromotionPackagesResponse getAvailableOfferPromotionPackages(String accessToken) {
-        return getAllegro("/sale/offer-promotion-packages", accessToken, null, OfferPromotionPackagesResponse.class);
+    public PromotionPackagesResponse getAvailablePromotionPackages(String accessToken) {
+        return getAllegro("/sale/offer-promotion-packages", accessToken, null, PromotionPackagesResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/modifyOfferPromoOptionsUsingPOST">Modify offer promotion packages</a>
+     */
+    public PromoOptionResponse modifyOfferPromoOptions(String accessToken, String offerId, PromoOptionPayload payload) {
+        return postAllegro(String.format("/sale/offers/%s/promo-options-modification", offerId), accessToken, payload, PromoOptionResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getOfferPromoOptionsUsingGET">Get offer promotion packages</a>
+     */
+    public PromoOptionResponse getOfferPromoOptions(String accessToken, String offerId) {
+        return getAllegro(String.format("/sale/offers/%s/promo-options", offerId), accessToken, null, PromoOptionResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getPromoOptionsForSellerOffersUsingGET">Get promo options for seller's offers</a>
+     */
+    public PromoOptionsResponse getSellerOffersPromoOptions(String accessToken, PagePayload queryParams) {
+        return getAllegro("/sale/offers/promo-options", accessToken, queryParams, PromoOptionsResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/promoModificationCommandUsingPUT">Batch offer promotion package modification</a>
+     */
+    public TaskCountResponse promoModify(String accessToken, String commandId, PromoModifyPayload payload) {
+        return exchangeAllegro(String.format("/sale/offers/promo-options-commands/%s", commandId), HttpMethod.PUT, accessToken, null, payload, TaskCountResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getPromoModificationCommandResultUsingGET">Modification command summary</a>
+     */
+    public TaskCountResponse getPromoModify(String accessToken, String commandId) {
+        return getAllegro(String.format("/sale/offers/promo-options-commands/%s", commandId), accessToken, null, TaskCountResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getPromoModificationCommandDetailedResultUsingGET">Modification command detailed result</a>
+     */
+    public PromoModifyDetailResult getPromoModifyDetail(String accessToken, String commandId) {
+        return getAllegro(String.format("/sale/offers/promo-options-commands/%s/tasks", commandId), accessToken, null, PromoModifyDetailResult.class);
     }
 }
