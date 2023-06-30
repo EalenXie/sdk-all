@@ -216,7 +216,7 @@ public class AllegroOrdersClient extends AllegroClient {
      * @param accessToken accessToken
      * @param disputeId   disputeId
      */
-    public Message getDisputeMessages(String accessToken, String disputeId, MessagesQueryParams queryParams) {
+    public Message getDisputeMessages(String accessToken, String disputeId, PageQueryParams queryParams) {
         return getAllegro(String.format("/sale/disputes/%s/messages", disputeId), accessToken, queryParams, Message.class);
     }
 

@@ -36,8 +36,8 @@ public class AllegroOfferClient extends AllegroClient {
      * @deprecated deprecated by Allegro
      */
     @Deprecated
-    public ParticularOfferResponse getOffer(String accessToken, String offerId) {
-        return getAllegro(String.format(SALE_OFFER, offerId), accessToken, null, ParticularOfferResponse.class);
+    public DraftOfferPayload getOffer(String accessToken, String offerId) {
+        return getAllegro(String.format(SALE_OFFER, offerId), accessToken, null, DraftOfferPayload.class);
     }
 
     /**

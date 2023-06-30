@@ -16,5 +16,5 @@ public class Description {
      * sections
      */
     @JsonProperty("sections")
-    private List<Sections> sections;
+    private List<Section> sections;
 }
