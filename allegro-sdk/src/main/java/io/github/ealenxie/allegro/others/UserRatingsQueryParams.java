@@ -2,7 +2,7 @@ package io.github.ealenxie.allegro.others;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.github.ealenxie.allegro.PagePayload;
+import io.github.ealenxie.allegro.PageQueryParams;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,7 +11,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class UserRatingsQueryParams extends PagePayload {
+public class UserRatingsQueryParams extends PageQueryParams {
 
 
     @JsonInclude(JsonInclude.Include.NON_NULL)

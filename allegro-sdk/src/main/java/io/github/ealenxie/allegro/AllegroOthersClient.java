@@ -96,7 +96,7 @@ public class AllegroOthersClient extends AllegroClient {
      * <a href="https://developer.allegro.pl/documentation/#operation/listThreadsGET">List user threads</a>
      */
     public ThreadsResponse listThreads(String accessToken, Integer limit, Integer offset) {
-        return getAllegro("/messaging/threads", accessToken, new PagePayload(limit, offset), ThreadsResponse.class);
+        return getAllegro("/messaging/threads", accessToken, new PageQueryParams(limit, offset), ThreadsResponse.class);
     }
 
     /**

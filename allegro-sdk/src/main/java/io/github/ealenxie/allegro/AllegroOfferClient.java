@@ -133,7 +133,7 @@ public class AllegroOfferClient extends AllegroClient {
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/getPromoOptionsForSellerOffersUsingGET">Get promo options for seller's offers</a>
      */
-    public PromoOptionsResponse getSellerOffersPromoOptions(String accessToken, PagePayload queryParams) {
+    public PromoOptionsResponse getSellerOffersPromoOptions(String accessToken, PageQueryParams queryParams) {
         return getAllegro("/sale/offers/promo-options", accessToken, queryParams, PromoOptionsResponse.class);
     }
 

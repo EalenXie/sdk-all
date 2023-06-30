@@ -13,7 +13,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class PagePayload {
+public class PageQueryParams {
 
     @JsonProperty("limit")
     private Integer limit;
