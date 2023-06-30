@@ -40,12 +40,17 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 
 #### Offer management
 
-| 方法名                  | 📚 官方文档地址                                                                                                                      | 状态  |
-|:---------------------|:-------------------------------------------------------------------------------------------------------------------------------|:----|
-| modifyOfferPrice     | [Modify the Buy Now price in an offer](https://developer.allegro.pl/documentation/#operation/createChangePriceCommandUsingPUT) | ✔️  |
-| ~~createDraftOffer~~ | ~~[Create a draft offer ](https://developer.allegro.pl/documentation/#operation/createOfferUsingPOST)~~                        | ✔️  |
-| ~~updateDraftOffer~~ | ~~[Complete a draft offer or edit an offer](https://developer.allegro.pl/documentation/#operation/updateOfferUsingPUT)~~       | ✔️  |
-| deleteDraftOffer     | [Delete a draft offer](https://developer.allegro.pl/documentation/#operation/deleteOfferUsingDELETE)                           | ✔️  |
+| 方法名                                | 📚 官方文档地址                                                                                                                              | 状态  |
+|:-----------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------|:----|
+| modifyOfferPrice                   | [Modify the Buy Now price in an offer](https://developer.allegro.pl/documentation/#operation/createChangePriceCommandUsingPUT)         | ✔️  |
+| ~~createDraftOffer~~               | ~~[Create a draft offer ](https://developer.allegro.pl/documentation/#operation/createOfferUsingPOST)~~                                | ✔️  |
+| ~~updateDraftOffer~~               | ~~[Complete a draft offer or edit an offer](https://developer.allegro.pl/documentation/#operation/updateOfferUsingPUT)~~               | ✔️  |
+| deleteDraftOffer                   | [Delete a draft offer](https://developer.allegro.pl/documentation/#operation/deleteOfferUsingDELETE)                                   | ✔️  |
+| changePublicationStatus            | [Batch offer publish / unpublished](https://developer.allegro.pl/documentation/#operation/changePublicationStatusUsingPUT)             | ✔️  |
+| getPublicationReport               | [Publish command summary](https://developer.allegro.pl/documentation/#operation/getPublicationReportUsingGET)                          | ✔️  |
+| getPublicationTasks                | [Publish command detailed report](https://developer.allegro.pl/documentation/#operation/getPublicationTasksUsingGET)                   | ✔️  |
+| getAvailableOfferPromotionPackages | [Get all available offer promotion packages](https://developer.allegro.pl/documentation/#operation/getAvailableOfferPromotionPackages) | ✔️  |
+
 
 
 
