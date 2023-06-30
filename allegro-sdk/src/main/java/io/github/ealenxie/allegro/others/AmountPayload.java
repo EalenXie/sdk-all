@@ -1,6 +1,7 @@
 package io.github.ealenxie.allegro.others;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.ealenxie.allegro.Money;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,14 +12,13 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
-public class Page {
+@AllArgsConstructor
+public class AmountPayload {
 
-    @JsonProperty("limit")
-    private Integer limit;
-
-    @JsonProperty("offset")
-    private Integer offset;
-
+    /**
+     * maxAmount
+     */
+    @JsonProperty("maxAmount")
+    private Money maxAmount;
 }

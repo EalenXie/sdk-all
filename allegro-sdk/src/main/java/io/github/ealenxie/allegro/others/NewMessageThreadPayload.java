@@ -1,6 +1,7 @@
 package io.github.ealenxie.allegro.others;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.ealenxie.allegro.IdPayload;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,5 +22,5 @@ public class NewMessageThreadPayload {
      * attachments
      */
     @JsonProperty("attachments")
-    private List<BaseId> attachments;
+    private List<IdPayload> attachments;
 }

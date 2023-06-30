@@ -1,6 +1,7 @@
 package io.github.ealenxie.allegro.others;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.ealenxie.allegro.Money;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,10 +10,10 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class BaseMarketplace {
+public class Auction {
     /**
-     * id
+     * currentPrice
      */
-    @JsonProperty("id")
-    private String id;
+    @JsonProperty("currentPrice")
+    private Money currentPrice;
 }

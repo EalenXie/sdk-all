@@ -155,6 +155,15 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 | uploadAttachment     | [Upload attachment binary data](https://developer.allegro.pl/documentation/#operation/uploadAttachmentPUT) | ✔️  |
 | downloadAttachment     | [Download attachment](https://developer.allegro.pl/documentation/#operation/downloadAttachmentGET) | ✔️  |
 
+
+#### Auctions and Bidding
+
+| 方法名               | 📚 官方文档地址                                                                                                | 状态  |
+|:------------------|:---------------------------------------------------------------------------------------------------------|:----|
+| placeBid | [Place a bid in an auction](https://developer.allegro.pl/documentation/#operation/placeBid) | ✔️  |
+| getBid   | [Get current user's bid information](https://developer.allegro.pl/documentation/#operation/getBid)     | ✔️  |
+
+
 #### Billing
 
 | 方法名               | 📚 官方文档地址                                                                                                | 状态  |
