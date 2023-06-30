@@ -5,12 +5,12 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * Created by EalenXie on 2023/3/2 13:11
+ * Created by EalenXie on 2022/3/18 16:35
  */
 @Getter
 @Setter
-public class MerchantIdVO {
+public class NamePayload {
 
-    @JsonProperty("merchant_id")
-    private String merchantId;
+    @JsonProperty("name")
+    private String name;
 }

@@ -10,7 +10,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class RefreshTokenDTO {
+public class RefreshTokenQueryParams {
     @JsonProperty("client_id")
     private String clientId;
     @JsonProperty("client_secret")

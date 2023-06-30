@@ -9,7 +9,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class TrackingDTO {
+public class TrackingQueryParams {
 
 
     @JsonProperty("tracking_number")

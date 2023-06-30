@@ -10,7 +10,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class ModifyAddressDTO {
+public class ModifyAddressPayload {
     @JsonProperty("city")
     private String city;
     @JsonProperty("country")

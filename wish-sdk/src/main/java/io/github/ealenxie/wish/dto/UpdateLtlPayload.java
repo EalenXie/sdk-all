@@ -9,7 +9,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class UpdateLtlDTO {
+public class UpdateLtlPayload {
 
     @JsonProperty("delivery_receipt_file_url")
     private String deliveryReceiptFileUrl;

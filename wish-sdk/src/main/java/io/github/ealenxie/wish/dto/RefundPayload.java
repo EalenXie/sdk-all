@@ -9,7 +9,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class RefundDTO {
+public class RefundPayload {
 
     @JsonProperty("refund_reason_note")
     private String refundReasonNote;

@@ -9,7 +9,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class ShippingCarriersDTO {
+public class ShippingCarriersQueryParams {
 
     @JsonProperty("dest_country_code")
     private String destCountryCode;

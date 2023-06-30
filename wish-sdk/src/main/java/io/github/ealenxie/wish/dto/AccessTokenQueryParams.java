@@ -10,7 +10,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class AccessTokenDTO {
+public class AccessTokenQueryParams {
 
     @JsonProperty("code")
     private String code;

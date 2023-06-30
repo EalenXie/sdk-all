@@ -9,7 +9,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class BrandsDTO {
+public class BrandsQueryParams {
 
     @JsonProperty("id_max")
     private String idMax;
