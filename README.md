@@ -22,7 +22,7 @@
 
 > - 🔁 项目同步地址：[https://github.com/EalenXie/sdk-all](https://github.com/EalenXie/sdk-all)
 > - 📖 代码贡献指南：[CONTRIBUTING.md](https://github.com/EalenXie/sdk-all/blob/main/CONTRIBUTING.md)
-> - 💬 如果你有任何问题或疑问，请在项目的Issue页面提问。
+> - 💬 如果你有任何问题或疑问，请在项目的[Issues](https://github.com/EalenXie/sdk-all/issues)页面提问。
 
 ## License
 
