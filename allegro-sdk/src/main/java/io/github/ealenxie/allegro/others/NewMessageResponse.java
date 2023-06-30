@@ -1,6 +1,7 @@
 package io.github.ealenxie.allegro.others;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.ealenxie.allegro.IdPayload;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -37,7 +38,7 @@ public class NewMessageResponse {
      * thread
      */
     @JsonProperty("thread")
-    private BaseId thread;
+    private IdPayload thread;
     /**
      * author
      */

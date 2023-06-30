@@ -96,7 +96,7 @@ public class AllegroOthersClient extends AllegroClient {
      * <a href="https://developer.allegro.pl/documentation/#operation/listThreadsGET">List user threads</a>
      */
     public ThreadsResponse listThreads(String accessToken, Integer limit, Integer offset) {
-        return getAllegro("/messaging/threads", accessToken, new Page(limit, offset), ThreadsResponse.class);
+        return getAllegro("/messaging/threads", accessToken, new PagePayload(limit, offset), ThreadsResponse.class);
     }
 
     /**
@@ -151,15 +151,15 @@ public class AllegroOthersClient extends AllegroClient {
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/newAttachmentDeclarationPOST">Add attachment declaration</a>
      */
-    public BaseId newAttachmentDeclaration(String accessToken, NewAttachmentPayload payload) {
-        return postAllegro("/messaging/message-attachments", accessToken, payload, BaseId.class);
+    public IdPayload newAttachmentDeclaration(String accessToken, NewAttachmentPayload payload) {
+        return postAllegro("/messaging/message-attachments", accessToken, payload, IdPayload.class);
     }
 
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/uploadAttachmentPUT">Upload attachment binary data</a>
      */
-    public BaseId uploadAttachment(String accessToken, String attachmentId, byte[] file) {
-        return exchangeAllegro(String.format("/messaging/message-attachments/%s", attachmentId), HttpMethod.PUT, accessToken, null, file, BaseId.class);
+    public IdPayload uploadAttachment(String accessToken, String attachmentId, byte[] file) {
+        return exchangeAllegro(String.format("/messaging/message-attachments/%s", attachmentId), HttpMethod.PUT, accessToken, null, file, IdPayload.class);
     }
 
     /**
@@ -167,6 +167,20 @@ public class AllegroOthersClient extends AllegroClient {
      */
     public byte[] downloadAttachment(String accessToken, String attachmentId) {
         return getAllegro(String.format("/messaging/message-attachments/%s", attachmentId), accessToken, null, byte[].class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/placeBid">Place a bid in an auction</a>
+     */
+    public PlaceBidResponse placeBid(String accessToken, String offerId, AmountPayload payload) {
+        return exchangeAllegro(String.format("/bidding/offers/%s/bid", offerId), HttpMethod.PUT, accessToken, null, payload, PlaceBidResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getBid">Get current user's bid information</a>
+     */
+    public PlaceBidResponse getBid(String accessToken, String offerId) {
+        return getAllegro(String.format("/bidding/offers/%s/bid", offerId), accessToken, null, PlaceBidResponse.class);
     }
 
     /**

@@ -1,6 +1,7 @@
 package io.github.ealenxie.allegro.others;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.ealenxie.allegro.IdPayload;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -28,5 +29,5 @@ public class ClassificationResponse {
      * excludedDeliveryMethods
      */
     @JsonProperty("excludedDeliveryMethods")
-    private List<ExcludedDeliveryMethods> excludedDeliveryMethods;
+    private List<IdPayload> excludedDeliveryMethods;
 }

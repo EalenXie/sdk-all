@@ -1,6 +1,7 @@
 package io.github.ealenxie.allegro.others;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.ealenxie.allegro.IdPayload;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -42,7 +43,7 @@ public class MeResponse {
      * baseMarketplace
      */
     @JsonProperty("baseMarketplace")
-    private BaseMarketplace baseMarketplace;
+    private IdPayload baseMarketplace;
     /**
      * company
      */
