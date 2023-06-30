@@ -47,10 +47,4 @@ public class PublicationPayload {
     private Boolean republish;
 
 
-
-
-
-
-
-
 }

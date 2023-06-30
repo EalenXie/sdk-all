@@ -46,8 +46,4 @@ public class ParticularOfferPublication {
     @JsonProperty("republish")
     private Boolean republish;
 
-
-
-
-
 }

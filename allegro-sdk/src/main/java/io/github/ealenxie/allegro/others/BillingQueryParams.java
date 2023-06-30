@@ -9,7 +9,7 @@ import java.util.List;
 
 @Getter
 @Setter
-public class BillingQueryParams {
+public class BillingQueryParams extends Page {
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("offer.id")
@@ -26,10 +26,4 @@ public class BillingQueryParams {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("occurredAt.gte")
     private String occurredAtGte;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    @JsonProperty("limit")
-    private Integer limit;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    @JsonProperty("offset")
-    private Integer offset;
 }

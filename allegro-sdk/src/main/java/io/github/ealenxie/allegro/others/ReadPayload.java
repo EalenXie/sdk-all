@@ -1,22 +1,22 @@
 package io.github.ealenxie.allegro.others;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.util.List;
 
 /**
  * @author TangShangCheng
  */
 @Getter
 @Setter
-public class AdditionalEmailResponse {
-
-
+@AllArgsConstructor
+@NoArgsConstructor
+public class ReadPayload {
     /**
-     * additional-emails
+     * read
      */
-    @JsonProperty("additional-emails")
-    private List<AdditionalEmail> additionalEmails;
+    @JsonProperty("read")
+    private Boolean read;
 }
