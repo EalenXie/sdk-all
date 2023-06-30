@@ -132,6 +132,29 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 | getSellerSmartClassification | [Get Smart! seller classification report](https://developer.allegro.pl/documentation/#operation/getSellerSmartClassificationGET)          | ✔️  |
 
 
+#### Information about marketplaces
+
+| 方法名          | 📚 官方文档地址                                                                                                | 状态  |
+|:-------------|:---------------------------------------------------------------------------------------------------------|:----|
+| marketplaces     | [Get details for all marketplaces in allegro](https://developer.allegro.pl/documentation/#operation/marketplacesGET) | ✔️  |
+
+
+#### Message Center
+
+| 方法名          | 📚 官方文档地址                                                                                                | 状态  |
+|:-------------|:---------------------------------------------------------------------------------------------------------|:----|
+| listThreads     | [List user threads](https://developer.allegro.pl/documentation/#operation/listThreadsGET) | ✔️  |
+| getThread     | [Get user thread](https://developer.allegro.pl/documentation/#operation/getThreadGET) | ✔️  |
+| changeReadFlagOnThread     | [Mark a particular thread as read](https://developer.allegro.pl/documentation/#operation/changeReadFlagOnThreadPUT) | ✔️  |
+| newMessage     | [Write a new message](https://developer.allegro.pl/documentation/#operation/newMessagePOST) | ✔️  |
+| listMessages     | [List messages in thread](https://developer.allegro.pl/documentation/#operation/listMessagesGET) | ✔️  |
+| newMessageInThread     | [Write a new message in thread](https://developer.allegro.pl/documentation/#operation/newMessageInThreadPOST) | ✔️  |
+| getMessage     | [Get single message](https://developer.allegro.pl/documentation/#operation/getMessageGET) | ✔️  |
+| deleteMessage     | [Delete single message](https://developer.allegro.pl/documentation/#operation/deleteMessageDELETE) | ✔️  |
+| newAttachmentDeclaration     | [Add attachment declaration](https://developer.allegro.pl/documentation/#operation/newAttachmentDeclarationPOST) | ✔️  |
+| uploadAttachment     | [Upload attachment binary data](https://developer.allegro.pl/documentation/#operation/uploadAttachmentPUT) | ✔️  |
+| downloadAttachment     | [Download attachment](https://developer.allegro.pl/documentation/#operation/downloadAttachmentGET) | ✔️  |
+
 #### Billing
 
 | 方法名               | 📚 官方文档地址                                                                                                | 状态  |

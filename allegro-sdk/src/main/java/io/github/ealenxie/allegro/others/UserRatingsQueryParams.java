@@ -10,7 +10,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class UserRatingsQueryParams {
+public class UserRatingsQueryParams extends Page {
 
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -24,14 +24,5 @@ public class UserRatingsQueryParams {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("lastChangedAt.lte")
     private String lastChangedAtLte;
-
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    @JsonProperty("limit")
-    private Integer limit;
-
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    @JsonProperty("offset")
-    private String offset;
-
 
 }

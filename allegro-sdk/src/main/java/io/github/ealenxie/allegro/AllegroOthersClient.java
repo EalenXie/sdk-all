@@ -1,6 +1,7 @@
 package io.github.ealenxie.allegro;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.github.ealenxie.allegro.others.Thread;
 import io.github.ealenxie.allegro.others.*;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
@@ -52,8 +53,8 @@ public class AllegroOthersClient extends AllegroClient {
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/getListOfAdditionalEmailsUsingGET">Get user's additional emails</a>
      */
-    public AdditionalEmailResponse getListOfAdditionalEmails(String accessToken) {
-        return getAllegro("/account/additional-emails", accessToken, null, AdditionalEmailResponse.class);
+    public AdditionalEmailsResponse getListOfAdditionalEmails(String accessToken) {
+        return getAllegro("/account/additional-emails", accessToken, null, AdditionalEmailsResponse.class);
     }
 
     /**
@@ -82,6 +83,90 @@ public class AllegroOthersClient extends AllegroClient {
      */
     public ClassificationResponse getSellerSmartClassification(String accessToken, String marketplaceId) {
         return getAllegro("/sale/smart", accessToken, new SmartClassificationQueryParams(marketplaceId), ClassificationResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/marketplacesGET">Get details for all marketplaces in allegro</a>
+     */
+    public MarketplacesResponse marketplaces(String accessToken) {
+        return getAllegro("/marketplaces", accessToken, null, MarketplacesResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/listThreadsGET">List user threads</a>
+     */
+    public ThreadsResponse listThreads(String accessToken, Integer limit, Integer offset) {
+        return getAllegro("/messaging/threads", accessToken, new Page(limit, offset), ThreadsResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getThreadGET">Get user thread</a>
+     */
+    public Thread getThread(String accessToken, String threadId) {
+        return getAllegro(String.format("/messaging/threads/%s", threadId), accessToken, null, Thread.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/changeReadFlagOnThreadPUT">Mark a particular thread as read</a>
+     */
+    public Thread changeReadFlagOnThread(String accessToken, String threadId, Boolean read) {
+        return exchangeAllegro(String.format("/messaging/threads/%s/read", threadId), HttpMethod.PUT, accessToken, null, new ReadPayload(read), Thread.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/newMessagePOST">Write a new message</a>
+     */
+    public NewMessageResponse newMessage(String accessToken, NewMessagePayload payload) {
+        return postAllegro("/messaging/messages", accessToken, payload, NewMessageResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/listMessagesGET">List messages in thread</a>
+     */
+    public MessagesResponse listMessages(String accessToken, String threadId, ListMessageQueryParams params) {
+        return getAllegro(String.format("/messaging/threads/%s/messages", threadId), accessToken, params, MessagesResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/newMessageInThreadPOST">Write a new message in thread</a>
+     */
+    public NewMessageResponse newMessageInThread(String accessToken, String threadId, NewMessageThreadPayload payload) {
+        return postAllegro(String.format("/messaging/threads/%s/messages", threadId), accessToken, payload, NewMessageResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getMessageGET">Get single message</a>
+     */
+    public NewMessageResponse getMessage(String accessToken, String messageId) {
+        return getAllegro(String.format("/messaging/messages/%s", messageId), accessToken, null, NewMessageResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/deleteMessageDELETE">Delete single message</a>
+     */
+    public void deleteMessage(String accessToken, String messageId) {
+        exchangeAllegro(String.format("/messaging/messages/%s", messageId), HttpMethod.DELETE, accessToken, null, null, Object.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/newAttachmentDeclarationPOST">Add attachment declaration</a>
+     */
+    public BaseId newAttachmentDeclaration(String accessToken, NewAttachmentPayload payload) {
+        return postAllegro("/messaging/message-attachments", accessToken, payload, BaseId.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/uploadAttachmentPUT">Upload attachment binary data</a>
+     */
+    public BaseId uploadAttachment(String accessToken, String attachmentId, byte[] file) {
+        return exchangeAllegro(String.format("/messaging/message-attachments/%s", attachmentId), HttpMethod.PUT, accessToken, null, file, BaseId.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/downloadAttachmentGET">Download attachment</a>
+     */
+    public byte[] downloadAttachment(String accessToken, String attachmentId) {
+        return getAllegro(String.format("/messaging/message-attachments/%s", attachmentId), accessToken, null, byte[].class);
     }
 
     /**
