@@ -9,7 +9,8 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class IdInputPayload<T> extends InputPayload<T> {
-    @JsonProperty("id")
-    private String id;
+public class InputPayload<T> {
+
+    @JsonProperty("input")
+    private T input;
 }
