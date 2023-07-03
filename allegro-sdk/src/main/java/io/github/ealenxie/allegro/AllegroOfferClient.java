@@ -2,6 +2,7 @@ package io.github.ealenxie.allegro;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.ealenxie.allegro.offer.*;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.lang.Nullable;
 import org.springframework.web.client.RestOperations;
@@ -252,7 +253,6 @@ public class AllegroOfferClient extends AllegroClient {
         return getAllegro("/sale/category-events", accessToken, queryParams, CategoryEventsResponse.class);
     }
 
-
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/categorySuggestionUsingGET">Get categories suggestions</a>
      */
@@ -260,4 +260,24 @@ public class AllegroOfferClient extends AllegroClient {
         return getAllegro("/sale/matching-categories", accessToken, new NameQueryParam(name), MatchingCategoriesResponse.class);
     }
 
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/uploadOfferImageUsingPOST">Upload an offer image</a>
+     */
+    public UploadOfferImageResponse uploadOfferImage(String accessToken, UrlPayload payload) {
+        return exchangeAllegro(buildUri(getUploadHost(), "/sale/images", null), HttpMethod.POST, new HttpEntity<>(payload, getBearerHeaders(accessToken)), UploadOfferImageResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/createOfferAttachmentUsingPOST">Create an offer attachment</a>
+     */
+    public OfferAttachmentResponse createOfferAttachment(String accessToken, CreateOfferAttachmentPayload payload) {
+        return postAllegro("/sale/offer-attachments", accessToken, payload, OfferAttachmentResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/uploadOfferAttachmentUsingPUT">Upload an offer attachment</a>
+     */
+    public OfferAttachmentResponse uploadOfferAttachment(String accessToken, String attachmentId, byte[] file) {
+        return exchangeAllegro(buildUri(getUploadHost(), String.format("/sale/offer-attachments/%s", attachmentId), null), HttpMethod.PUT, new HttpEntity<>(file, getBearerHeaders(accessToken)), OfferAttachmentResponse.class);
+    }
 }

@@ -42,6 +42,8 @@ public abstract class AllegroClient {
      */
     public static final String API_SANDBOX_HOST = "https://api.allegro.pl.allegrosandbox.pl";
 
+    public static final String UPLOAD_SANDBOX_HOST = "https://upload.allegro.pl.allegrosandbox.pl";
+    public static final String UPLOAD_HOST = "https://upload.allegro.pl";
     /**
      * 是否沙箱环境
      */
@@ -223,7 +225,7 @@ public abstract class AllegroClient {
      * @return 响应结果对象
      */
     protected <T> T exchangeAllegro(String urlNotHost, HttpMethod httpMethod, String accessToken, @Nullable Object queryParams, @Nullable Object payload, ParameterizedTypeReference<T> responseType) {
-        return exchangeAllegro(urlNotHost, httpMethod, queryParams, new HttpEntity<>(payload, getBearerHeaders(accessToken)), responseType);
+        return exchangeAllegro(buildUri(urlNotHost, queryParams), httpMethod, new HttpEntity<>(payload, getBearerHeaders(accessToken)), responseType);
     }
 
     /**
@@ -237,7 +239,34 @@ public abstract class AllegroClient {
      * @return 响应结果对象
      */
     protected <T> T exchangeAllegro(String urlNotHost, HttpMethod httpMethod, @Nullable Object queryParams, HttpEntity<?> httpEntity, ParameterizedTypeReference<T> responseType) {
-        return getRestOperations().exchange(buildUri(urlNotHost, queryParams), httpMethod, httpEntity, responseType).getBody();
+        return exchangeAllegro(buildUri(urlNotHost, queryParams), httpMethod, httpEntity, responseType);
+    }
+
+    /**
+     * 调用 Allegro API
+     *
+     * @param uri          uri
+     * @param httpMethod   HttpMethod
+     * @param httpEntity   httpEntity
+     * @param responseType 响应类型
+     * @return 响应结果对象
+     */
+    protected <T> T exchangeAllegro(URI uri, HttpMethod httpMethod, HttpEntity<?> httpEntity, Class<T> responseType) {
+        return getRestOperations().exchange(uri, httpMethod, httpEntity, responseType).getBody();
+    }
+
+
+    /**
+     * 调用 Allegro API
+     *
+     * @param uri          uri
+     * @param httpMethod   HttpMethod
+     * @param httpEntity   httpEntity
+     * @param responseType 响应类型
+     * @return 响应结果对象
+     */
+    protected <T> T exchangeAllegro(URI uri, HttpMethod httpMethod, HttpEntity<?> httpEntity, ParameterizedTypeReference<T> responseType) {
+        return getRestOperations().exchange(uri, httpMethod, httpEntity, responseType).getBody();
     }
 
     /**
@@ -247,7 +276,16 @@ public abstract class AllegroClient {
      * @param queryParams url请求参数
      */
     protected URI buildUri(String urlNotHost, @Nullable Object queryParams) {
-        String host = isSandBox() ? API_SANDBOX_HOST : API_HOST;
+        return buildUri(getApiHost(), urlNotHost, queryParams);
+    }
+
+    /**
+     * 构建请求URI
+     *
+     * @param urlNotHost  不带host的请求url
+     * @param queryParams url请求参数
+     */
+    protected URI buildUri(String host, String urlNotHost, @Nullable Object queryParams) {
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(String.format("%s%s", host, urlNotHost));
         if (queryParams != null) {
             if (queryParams instanceof String) {
@@ -259,6 +297,16 @@ public abstract class AllegroClient {
         }
         return builder.build().encode().toUri();
     }
+
+
+    protected String getApiHost() {
+        return isSandBox() ? API_SANDBOX_HOST : API_HOST;
+    }
+
+    protected String getUploadHost() {
+        return isSandBox() ? UPLOAD_SANDBOX_HOST : UPLOAD_HOST;
+    }
+
 
     private void builderQueryParam(UriComponentsBuilder builder, Map<String, Object> args) {
         Set<Map.Entry<String, Object>> entries = args.entrySet();

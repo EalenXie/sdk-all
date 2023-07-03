@@ -79,6 +79,14 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 | getCategoryEvents           | [Get changes in categories](https://developer.allegro.pl/documentation/#operation/getCategoryEventsUsingGET_1)                                      | ✔️  |
 | categorySuggestion          | [Get categories suggestions](https://developer.allegro.pl/documentation/#operation/categorySuggestionUsingGET)                                      | ✔️  |
 
+#### Images and attachments
+
+| 方法名                   | 📚 官方文档地址                                                                                                          | 状态  |
+|:----------------------|:-------------------------------------------------------------------------------------------------------------------|:----|
+| uploadOfferImage      | [Upload an offer image](https://developer.allegro.pl/documentation/#operation/uploadOfferImageUsingPOST)           | ✔️  |
+| createOfferAttachment | [Create an offer attachment](https://developer.allegro.pl/documentation/#operation/createOfferAttachmentUsingPOST) | ✔️  |
+| uploadOfferAttachment | [Upload an offer attachment](https://developer.allegro.pl/documentation/#operation/uploadOfferAttachmentUsingPUT)  | ✔️  |
+
 ### ORDERS
 
 [AllegroOrderClient](https://github.com/EalenXie/sdk-all/blob/main/allegro-sdk/src/main/java/io/github/ealenxie/allegro/AllegroOrdersClient.java)
@@ -158,7 +166,6 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 | updateWarranty          | [Change the user's warranty](https://developer.allegro.pl/documentation/#operation/updateAfterSalesServiceWarrantyUsingPUT)                         | ✔️  |
 | createAttachment        | [Create a warranty attachment metadata](https://developer.allegro.pl/documentation/#operation/createAfterSalesServiceConditionsAttachmentUsingPOST) | ✔️  |
 | getAttachment           | [Upload an warranty attachment](https://developer.allegro.pl/documentation/#operation/uploadAfterSalesServiceConditionsAttachmentUsingPUT)          | ✔️  |
-
 
 ### FULFILLMENT
 
@@ -243,23 +250,21 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 
 #### Charity
 
-| 方法名               | 📚 官方文档地址                                                                                                | 状态  |
-|:------------------|:---------------------------------------------------------------------------------------------------------|:----|
+| 方法名                        | 📚 官方文档地址                                                                                                        | 状态  |
+|:---------------------------|:-----------------------------------------------------------------------------------------------------------------|:----|
 | searchFundraisingCampaigns | [Search fundraising campaigns](https://developer.allegro.pl/documentation/#operation/searchFundraisingCampaigns) | ✔️  |
-
 
 #### Public user information
 
-| 方法名               | 📚 官方文档地址                                                                                                | 状态  |
-|:------------------|:---------------------------------------------------------------------------------------------------------|:----|
+| 方法名            | 📚 官方文档地址                                                                                                      | 状态  |
+|:---------------|:---------------------------------------------------------------------------------------------------------------|:----|
 | getUserSummary | [Get any user's ratings summary](https://developer.allegro.pl/documentation/#operation/getUserSummaryUsingGET) | ✔️  |
 
 #### Public offer information
 
-| 方法名               | 📚 官方文档地址                                                                                                | 状态  |
-|:------------------|:---------------------------------------------------------------------------------------------------------|:----|
+| 方法名        | 📚 官方文档地址                                                                         | 状态  |
+|:-----------|:----------------------------------------------------------------------------------|:----|
 | getListing | [Search offers](https://developer.allegro.pl/documentation/#operation/getListing) | ✔️  |
-
 
 #### Billing
 

@@ -4,6 +4,7 @@ package io.github.ealenxie.allegro;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.ealenxie.allegro.order.*;
 import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.web.client.RestOperations;
 import org.springframework.web.client.RestTemplate;
@@ -248,7 +249,7 @@ public class AllegroOrdersClient extends AllegroClient {
      * @param file         文件
      */
     public void uploadDisputeAttachment(String accessToken, String attachmentId, byte[] file) {
-        exchangeAllegro(String.format("/sale/dispute-attachments/%s", attachmentId), HttpMethod.PUT, accessToken, null, file, Object.class);
+        exchangeAllegro(buildUri(getUploadHost(), String.format("/sale/dispute-attachments/%s", attachmentId), null), HttpMethod.PUT, new HttpEntity<>(file, getBearerHeaders(accessToken)), Object.class);
     }
 
 
