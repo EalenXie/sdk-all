@@ -1,15 +1,14 @@
 package io.github.ealenxie.allegro.others;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * @author TangShangCheng
- * @date 2023年07月03日, 0003 10:14
  */
-@NoArgsConstructor
-@Data
+@Getter
+@Setter
 public class AverageRates {
     /**
      * delivery
