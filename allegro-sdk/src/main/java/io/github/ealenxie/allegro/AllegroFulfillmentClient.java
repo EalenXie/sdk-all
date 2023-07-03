@@ -60,7 +60,7 @@ public class AllegroFulfillmentClient extends AllegroClient {
     }
 
     /**
-     * <a href="https://developer.allegro.pl/documentation/#operation/getAdvanceShipNoticeLabels">Get list of Advance Ship Notices</a>
+     * <a href="https://developer.allegro.pl/documentation/#operation/getAdvanceShipNoticeLabels">Get labels for Advance Ship Notice</a>
      */
     public byte[] getAdvanceShipNoticeLabels(String accessToken, String id, String accept) {
         HttpHeaders headers = getBearerHeaders(accessToken);
@@ -102,6 +102,20 @@ public class AllegroFulfillmentClient extends AllegroClient {
      */
     public AdvanceShipNoticeReceivingResponse getAdvanceShipNoticeReceivingState(String accessToken, String id) {
         return getAllegro(String.format("/fulfillment/advance-ship-notices/%s/receiving-state", id), accessToken, null, AdvanceShipNoticeReceivingResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getFulfillmentStock">Get available stock</a>
+     */
+    public FulfillmentStockResponse getFulfillmentStock(String accessToken, FulfillmentStockQueryParams queryParam) {
+        return getAllegro("/fulfillment/stock", accessToken, queryParam, FulfillmentStockResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#tag/Fulfillment-Parcels">Get list of shipped parcels</a>
+     */
+    public ParcelResponse getFulfillmentParcels(String accessToken, String orderId) {
+        return getAllegro(String.format("/fulfillment/orders/%s/parcels", orderId), accessToken, null, ParcelResponse.class);
     }
 
     /**

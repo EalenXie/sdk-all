@@ -25,7 +25,6 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 | accessToken  | [Autoryzacja użytkownika](https://developer.allegro.pl/auth/#autoryzacja-u%c5%bcytkownika)                          | ✔️  |
 | refreshToken | [Przedłużenie ważności tokena](https://developer.allegro.pl/auth/#przed%c5%82u%c5%bcenie-wa%c5%bcno%c5%9bci-tokena) | ✔️  |
 
-
 ### OFFER
 
 #### User's offer information
@@ -33,18 +32,20 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 | 方法名            | 📚 官方文档地址                                                                                                                                        | 状态  |
 |:---------------|:-------------------------------------------------------------------------------------------------------------------------------------------------|:----|
 | searchOffers   | [Get seller's offers](https://developer.allegro.pl/documentation/#operation/searchOffersUsingGET)                                                | ✔️  |
-| ~~getOffer~~   | ~~[Get all fields of the particular offer](https://developer.allegro.pl/documentation/#operation/getOfferUsingGET)~~                             | ✔️  |
+| ~~
+getOffer~~   | ~~[Get all fields of the particular offer](https://developer.allegro.pl/documentation/#operation/getOfferUsingGET)~~                             | ✔️  |
 | getSmartOffer  | [Get Smart! classification report of the particular offer](https://developer.allegro.pl/documentation/#operation/getOfferSmartClassificationGET) | ✔️  |
 | getOfferEvents | [Get events about the seller's offers](https://developer.allegro.pl/documentation/#operation/getOfferEvents)                                     | ✔️  |
-
 
 #### Offer management
 
 | 方法名                           | 📚 官方文档地址                                                                                                                                       | 状态  |
 |:------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------|:----|
 | modifyOfferPrice              | [Modify the Buy Now price in an offer](https://developer.allegro.pl/documentation/#operation/createChangePriceCommandUsingPUT)                  | ✔️  |
-| ~~createDraftOffer~~          | ~~[Create a draft offer ](https://developer.allegro.pl/documentation/#operation/createOfferUsingPOST)~~                                         | ✔️  |
-| ~~updateDraftOffer~~          | ~~[Complete a draft offer or edit an offer](https://developer.allegro.pl/documentation/#operation/updateOfferUsingPUT)~~                        | ✔️  |
+| ~~
+createDraftOffer~~          | ~~[Create a draft offer ](https://developer.allegro.pl/documentation/#operation/createOfferUsingPOST)~~                                         | ✔️  |
+| ~~
+updateDraftOffer~~          | ~~[Complete a draft offer or edit an offer](https://developer.allegro.pl/documentation/#operation/updateOfferUsingPUT)~~                        | ✔️  |
 | deleteDraftOffer              | [Delete a draft offer](https://developer.allegro.pl/documentation/#operation/deleteOfferUsingDELETE)                                            | ✔️  |
 | changePublishStatus           | [Batch offer publish / unpublished](https://developer.allegro.pl/documentation/#operation/changePublicationStatusUsingPUT)                      | ✔️  |
 | getPublish                    | [Publish command summary](https://developer.allegro.pl/documentation/#operation/getPublicationReportUsingGET)                                   | ✔️  |
@@ -56,7 +57,6 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 | promoModify                   | [Batch offer promotion package modification](https://developer.allegro.pl/documentation/#operation/promoModificationCommandUsingPUT)            | ✔️  |
 | getPromoModify                | [Modification command summary](https://developer.allegro.pl/documentation/#operation/getPromoModificationCommandResultUsingGET)                 | ✔️  |
 | getPromoModifyDetail          | [Modification command detailed result](https://developer.allegro.pl/documentation/#operation/getPromoModificationCommandDetailedResultUsingGET) | ✔️  |
-
 
 ### ORDERS
 
@@ -117,6 +117,42 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 | cancelParcel                  | [Cancel parcel](https://developer.allegro.pl/documentation/#operation/cancelParcel)                                      | ✔️  |
 | getParcelCancellationStatus   | [Get parcel cancellation status](https://developer.allegro.pl/documentation/#operation/getParcelCancellationStatus)      | ✔️  |
 
+### FULFILLMENT
+
+#### Advance Ship Notices
+
+| 方法名                                | 📚 官方文档地址                                                                                                                                                    | 状态  |
+|:-----------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|:----|
+| getAdvanceShipNotices              | [Get list of Advance Ship Notices](https://developer.allegro.pl/documentation/#operation/getAdvanceShipNotices)                                              | ✔️  |
+| createAdvanceShipNotice            | [Create an Advance Ship Notice](https://developer.allegro.pl/documentation/#operation/createAdvanceShipNotice)                                               | ✔️  |
+| getAdvanceShipNotice               | [Get single Advance Ship Notice](https://developer.allegro.pl/documentation/#operation/getAdvanceShipNotice)                                                 | ✔️  |
+| updateAdvanceShipNotice            | [Update Advance Ship Notice](https://developer.allegro.pl/documentation/#operation/updateAdvanceShipNotice)                                                  | ✔️  |
+| deleteAdvanceShipNotice            | [Delete Advance Ship Notice](https://developer.allegro.pl/documentation/#operation/deleteAdvanceShipNotice)                                                  | ✔️  |
+| getAdvanceShipNoticeLabels         | [Get labels for Advance Ship Notice](https://developer.allegro.pl/documentation/#operation/getAdvanceShipNoticeLabels)                                       | ✔️  |
+| createLabelsCommand                | [Create labels](https://developer.allegro.pl/documentation/#operation/createLabelsCommand)                                                                   | ✔️  |
+| getLabelCommand                    | [Get labels](https://developer.allegro.pl/documentation/#operation/getLabelCommand)                                                                          | ✔️  |
+| submitCommand                      | [Submit the Advance Ship Notice](https://developer.allegro.pl/documentation/#operation/submitCommand)                                                        | ✔️  |
+| getSubmitCommand                   | [Get submit status](https://developer.allegro.pl/documentation/#operation/getSubmitCommand)                                                                  | ✔️  |
+| getAdvanceShipNoticeReceivingState | [Check current state and details of Advance Ship Notice receiving](https://developer.allegro.pl/documentation/#operation/getAdvanceShipNoticeReceivingState) | ✔️  |
+
+#### Fulfillment Stock
+
+| 方法名                 | 📚 官方文档地址                                                                                        | 状态  |
+|:--------------------|:-------------------------------------------------------------------------------------------------|:----|
+| getFulfillmentStock | [Get available stock](https://developer.allegro.pl/documentation/#operation/getFulfillmentStock) | ✔️  |
+
+#### Fulfillment Parcels
+
+| 方法名                   | 📚 官方文档地址                                                                                          | 状态  |
+|:----------------------|:---------------------------------------------------------------------------------------------------|:----|
+| getFulfillmentParcels | [Get list of shipped parcels](https://developer.allegro.pl/documentation/#tag/Fulfillment-Parcels) | ✔️  |
+
+#### Fulfillment Products
+
+| 方法名                  | 📚 官方文档地址                                                                                                    | 状态  |
+|:---------------------|:-------------------------------------------------------------------------------------------------------------|:----|
+| getAvailableProducts | [Get list of available products](https://developer.allegro.pl/documentation/#operation/getAvailableProducts) | ✔️  |
+
 ### OTHERS
 
 #### Information about user
@@ -133,13 +169,11 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 | deleteAdditionalEmail        | [Delete an additional email address](https://developer.allegro.pl/documentation/#operation/deleteAdditionalEmailUsingDELETE)              | ✔️  |
 | getSellerSmartClassification | [Get Smart! seller classification report](https://developer.allegro.pl/documentation/#operation/getSellerSmartClassificationGET)          | ✔️  |
 
-
 #### Information about marketplaces
 
 | 方法名          | 📚 官方文档地址                                                                                                | 状态  |
 |:-------------|:---------------------------------------------------------------------------------------------------------|:----|
 | marketplaces     | [Get details for all marketplaces in allegro](https://developer.allegro.pl/documentation/#operation/marketplacesGET) | ✔️  |
-
 
 #### Message Center
 
@@ -157,14 +191,12 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 | uploadAttachment     | [Upload attachment binary data](https://developer.allegro.pl/documentation/#operation/uploadAttachmentPUT) | ✔️  |
 | downloadAttachment     | [Download attachment](https://developer.allegro.pl/documentation/#operation/downloadAttachmentGET) | ✔️  |
 
-
 #### Auctions and Bidding
 
 | 方法名               | 📚 官方文档地址                                                                                                | 状态  |
 |:------------------|:---------------------------------------------------------------------------------------------------------|:----|
 | placeBid | [Place a bid in an auction](https://developer.allegro.pl/documentation/#operation/placeBid) | ✔️  |
 | getBid   | [Get current user's bid information](https://developer.allegro.pl/documentation/#operation/getBid)     | ✔️  |
-
 
 #### Billing
 
