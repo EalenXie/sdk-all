@@ -12,7 +12,7 @@
 ## Release Version
 
 > ⚠️ 鉴于**第三方接口本身会进行无法预测的迭代更新**，本SDK遵循以下基本发布原则，请注意：
-> - _**本项目维护者将尽最大努力维护所有SDK的基本稳定性，但无法保证SDK中的所有接口和文档注释都是完全稳定和正确的。**_。
+> - _**本项目维护者将尽最大努力维护所有SDK的基本稳定性，但无法保证SDK中的所有接口和文档注释都是完全稳定和正确的。**_
 > - 本项目仅参考官方文档提供的样例编写接口。鉴于平台授权认证等原因，我们未对所有接口进行单元测试。
 > - 所有的SDK版本均采用快照版本进行迭代开发。只有当SDK完成度达到80%以上时，我们才会定期发布正式版本，其他版本均为快照版本。
 > - 我们会定期对主分支上的代码进行打包，并将其部署到中央Maven库。
@@ -40,7 +40,7 @@ For inquiries and support, please contact us at [ealenxie@outlook.com](mailto:ea
 | [goodcang-sdk](https://github.com/EalenXie/sdk-all/tree/main/goodcang-sdk)                   | 谷仓海外仓                | [谷仓海外仓 调用API](https://open.goodcang.com/docs_api/practice)                                                         | ![](https://img.shields.io/badge/-98%25-blue.svg) |
 | [fop-sdk](https://github.com/EalenXie/sdk-all/tree/main/fop-sdk)                             | 4PX 开放平台接口整合SDK      | [4PX 开放平台 OPEN PLATFORM ](http://open.4px.com/apiInfo/api)                                                         | ![](https://img.shields.io/badge/-95%25-blue.svg) |
 | [aliyun-ocr-sdk](https://github.com/EalenXie/sdk-all/tree/main/aliyun-ocr-sdk)               | 阿里云 文字识别（OCR）        | [阿里云 文字识别](https://help.aliyun.com/product/252763.html)                                                            | ![](https://img.shields.io/badge/-83%25-blue.svg) |
-| [allegro-sdk](https://github.com/EalenXie/sdk-all/tree/main/allegro-sdk)                     | Allegro 开发者门户接口整合SDK | [Allegro Developer Portal](https://developer.allegro.pl/documentation)                                             | ![](https://img.shields.io/badge/-15%25-red.svg)  |
+| [allegro-sdk](https://github.com/EalenXie/sdk-all/tree/main/allegro-sdk)                     | Allegro 开发者门户接口整合SDK | [Allegro Developer Portal](https://developer.allegro.pl/documentation)                                             | ![](https://img.shields.io/badge/-61%25-red.svg)  |
 | [amazon-sdk](https://github.com/EalenXie/sdk-all/tree/main/amazon-sdk)                       | amazon               | [amazon sp-api](https://developer-docs.amazon.com/sp-api)                                                          |  ![](https://img.shields.io/badge/-1%25-red.svg)  |
 | [wish-sdk](https://github.com/EalenXie/sdk-all/tree/main/wish-sdk)                           | wish 合作伙伴开发          | [Wish API Explorer](https://china-merchant.wish.com/documentation/api/v3/explorer)                                 | ![](https://img.shields.io/badge/-10%25-red.svg)  |
 | [ebay-sdk](https://github.com/EalenXie/sdk-all/tree/main/ebay-sdk)                           | ebay                 | [Ebay Developers Program](https://developer.ebay.com/develop/apis/restful-apis)                                    |  ![](https://img.shields.io/badge/-1%25-red.svg)  |

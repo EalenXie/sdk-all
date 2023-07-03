@@ -1,6 +1,8 @@
 goodcang-sdk
 ======
 
+<img src="https://open.goodcang.com/img/logo.0f5177ea.png" alt="Goodcang Logo" width="200">
+
 主要是封装了 跨境电商 谷仓[ERP对外API开放文档](https://open.goodcang.com/docs_api/glance) 接口
 
 ## 快速开始

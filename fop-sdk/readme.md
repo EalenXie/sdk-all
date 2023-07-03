@@ -1,6 +1,8 @@
 fop-sdk
 ======
 
+<img src="http://open.4px.com/images/4PX_OPEN_blue.png" alt="Goodcang Logo" width="200">
+
 主要是封装了 跨境物流 [4PX 开放平台](http://open.4px.com/apiInfo/api) 接口
 
 ### 快速开始
