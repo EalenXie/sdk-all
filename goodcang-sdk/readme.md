@@ -3,7 +3,7 @@ goodcang-sdk
 
 主要是封装了 跨境电商 谷仓[ERP对外API开放文档](https://open.goodcang.com/docs_api/glance) 接口
 
-### 快速开始
+## 快速开始
 
 #### `pom.xml`配置
 
@@ -14,6 +14,29 @@ goodcang-sdk
     <artifactId>goodcang-sdk</artifactId>
     <version>1.0-SNAPSHOT</version>
 </dependency>
+```
+
+## 代码示例
+
+```java
+
+import io.github.ealenxie.goodcang.GoodCangClient;
+import io.github.ealenxie.goodcang.ResponseAsk;
+import io.github.ealenxie.goodcang.base.Country;
+
+import java.util.List;
+
+class GoodCangClientTest {
+    @Test
+    void getCountry() {
+        String appKey = "your appKey";
+        String appToken = "your appToken";
+        GoodCangClient goodCangClient = new GoodCangClient(appKey, appToken);
+        goodCangClient.setSandBox(false);
+        ResponseAsk<List<Country>> country = goodCangClient.getCountry();
+        System.out.println(country);
+    }
+}
 ```
 
 #### [GoodCangClient](https://github.com/EalenXie/sdk-all/blob/main/goodcang-sdk/src/main/java/io/github/ealenxie/goodcang/GoodCangClient.java) 已支持的接口列表

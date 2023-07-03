@@ -17,6 +17,31 @@ aliyun-ocr-sdk
 </dependency>
 ```
 
+#### 代码示例
+
+```java
+
+import io.github.ealenxie.aliyun.ocr.InvoiceClient;
+import io.github.ealenxie.aliyun.ocr.dto.UrlFilePayload;
+import io.github.ealenxie.aliyun.ocr.vo.RecognizeData;
+import io.github.ealenxie.aliyun.ocr.vo.invoice.Invoice;
+
+class InvoiceClientTest {
+    @Test
+    void recognizeInvoice() {
+        String accessKeyId = "your accessKeyId";
+        String accessKeySecret = "your accessKeySecret";
+        InvoiceClient invoiceClient = new InvoiceClient(accessKeyId, accessKeySecret);
+        UrlFilePayload payload = new UrlFilePayload();
+        // 您的图片地址
+        payload.setUrl("");
+        RecognizeData<Invoice> recognizeData = invoiceClient.recognizeInvoice(payload);
+        System.out.println(recognizeData);
+    }
+}
+
+```
+
 ### [票据凭证识别](https://help.aliyun.com/document_detail/442265.html)
 
 #### [InvoiceClient](https://github.com/EalenXie/sdk-all/blob/main/aliyun-ocr-sdk/src/main/java/io/github/ealenxie/aliyun/ocr/InvoiceClient.java) 已支持的接口列表

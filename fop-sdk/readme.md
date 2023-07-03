@@ -15,6 +15,33 @@ fop-sdk
     <version>1.0-SNAPSHOT</version>
 </dependency>
 ```
+#### 代码示例
+
+```java
+
+
+import io.github.ealenxie.fop.FopResp;
+import io.github.ealenxie.fop.PublicClient;
+import io.github.ealenxie.fop.common.MeasureUnit;
+
+import java.util.List;
+
+class PublicClientTest {
+    @Test
+    void measureUnitList() {
+        String appKey = "your appKey";
+        String appSecret = "your appSecret";
+        PublicClient publicClient = new PublicClient(appKey, appSecret);
+        // 通过OAuth授权方式获得，要求平台服务商、第三方软件商必须传入，4PX客户（B类客户）可不传
+        publicClient.setAccessToken(null);
+        publicClient.setSandBox(false);
+        FopResp<List<MeasureUnit>> measureUnitList = publicClient.measureUnitList();
+        System.out.println(measureUnitList);
+    }
+}
+```
+
+### [4PX 服务列表](http://open.4px.com/apiInfo/api)
 
 | 服务名    | Client名称                                                                                            |                                                                             
 |:-------|:----------------------------------------------------------------------------------------------------|
