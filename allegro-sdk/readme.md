@@ -70,12 +70,14 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 
 #### Categories and parameters
 
-| 方法名                   | 📚 官方文档地址                                                                                                                   | 状态  |
-|:----------------------|:----------------------------------------------------------------------------------------------------------------------------|:----|
-| getCategories         | [Get IDs of Allegro categories](https://developer.allegro.pl/documentation/#operation/getCategoriesUsingGET)                | ✔️  |
-| getCategory           | [Get a category by ID](https://developer.allegro.pl/documentation/#operation/getCategoryUsingGET_1)                         | ✔️  |
-| getCategoryParameters | [Get parameters supported by a category](https://developer.allegro.pl/documentation/#operation/getFlatParametersUsingGET_2) | ✔️  |
-
+| 方法名                         | 📚 官方文档地址                                                                                                                                           | 状态  |
+|:----------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------|:----|
+| getCategories               | [Get IDs of Allegro categories](https://developer.allegro.pl/documentation/#operation/getCategoriesUsingGET)                                        | ✔️  |
+| getCategory                 | [Get a category by ID](https://developer.allegro.pl/documentation/#operation/getCategoryUsingGET_1)                                                 | ✔️  |
+| getCategoryParameters       | [Get parameters supported by a category](https://developer.allegro.pl/documentation/#operation/getFlatParametersUsingGET_2)                         | ✔️  |
+| getCategoryScheduledChanges | [Get planned changes in category parameters](https://developer.allegro.pl/documentation/#operation/getCategoryParametersScheduledChangesUsingGET_1) | ✔️  |
+| getCategoryEvents           | [Get changes in categories](https://developer.allegro.pl/documentation/#operation/getCategoryEventsUsingGET_1)                                      | ✔️  |
+| categorySuggestion          | [Get categories suggestions](https://developer.allegro.pl/documentation/#operation/categorySuggestionUsingGET)                                      | ✔️  |
 
 ### ORDERS
 

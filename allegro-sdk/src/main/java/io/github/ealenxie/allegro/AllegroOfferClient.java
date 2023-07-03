@@ -14,6 +14,10 @@ public class AllegroOfferClient extends AllegroClient {
     private static final String SALE_OFFERS = "/sale/offers";
     private static final String SALE_OFFER = SALE_OFFERS + "/%s";
 
+    protected AllegroOfferClient() {
+        super(new ObjectMapper());
+    }
+
     protected AllegroOfferClient(ObjectMapper mapper) {
         super(mapper);
     }
@@ -234,5 +238,26 @@ public class AllegroOfferClient extends AllegroClient {
         return getAllegro(String.format("/sale/categories/%s/parameters", categoryId), accessToken, null, CategoryParametersResponse.class);
     }
 
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getCategoryParametersScheduledChangesUsingGET_1">Get planned changes in category parameters</a>
+     */
+    public ScheduledChangesResponse getCategoryScheduledChanges(String accessToken, CategoryScheduledChangesQueryParams queryParams) {
+        return getAllegro("/sale/category-parameters-scheduled-changes", accessToken, queryParams, ScheduledChangesResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getCategoryEventsUsingGET_1">Get changes in categories</a>
+     */
+    public CategoryEventsResponse getCategoryEvents(String accessToken, CategoryEventsQueryParams queryParams) {
+        return getAllegro("/sale/category-events", accessToken, queryParams, CategoryEventsResponse.class);
+    }
+
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/categorySuggestionUsingGET">Get categories suggestions</a>
+     */
+    public MatchingCategoriesResponse categorySuggestion(String accessToken, String name) {
+        return getAllegro("/sale/matching-categories", accessToken, new NameQueryParam(name), MatchingCategoriesResponse.class);
+    }
 
 }
