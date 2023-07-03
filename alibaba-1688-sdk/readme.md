@@ -18,6 +18,8 @@ alibaba-1688-sdk
 
 ### [跨境ERP解决方案](https://open.1688.com/solution/solutionDetail.htm?spm=a260s.11247765.je8hk6gy.25.3fcd32baesEynz&solutionKey=1610440369288#apiAndMessageList)
 
+同样推荐官方[SDK下载](https://open.1688.com/solution/solutionDetail.htm?spm=a260s.11247765.je8hk6gy.24.5d2932ba0QlkSC&solutionKey=1610440369288#sdk)
+
 #### [CrossBorderERPClient](https://github.com/EalenXie/sdk-all/blob/main/alibaba-1688-sdk/src/main/java/io/github/ealenxie/alibaba/CrossBorderERPClient.java) API及消息列表
 
 | 方法名                                  | 📚 官方文档地址                                                                                                                                                                    | 状态  |
