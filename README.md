@@ -12,9 +12,9 @@
 ## Release Version
 
 > ⚠️ 鉴于**第三方接口本身会进行无法预测的迭代更新**，本SDK遵循以下基本发布原则，请注意：
-> - _**本项目维护者将尽最大努力维护所有SDK的基本稳定性，但不保证sdk中的所有接口和文档注释都是百分之百稳定和正确的**_。
-> - 所有的SDK都约定采用**快照版本**进行迭代和发布。
-> - 会定期对main分支上的代码打包并部署到中央maven库。
+> - _**本项目维护者将尽最大努力维护所有SDK的基本稳定性，但无法保证SDK中的所有接口和文档注释都是完全稳定和正确的**_。
+> - 所有的SDK都采用**快照版本**进行迭代。只有在完成度达到80%以上的SDK将定期发布正式版本，其他版本均为快照版本。
+> - 我们会定期对主分支上的代码进行打包，并将其部署到中央Maven库。
 
 ## Contributing
 
@@ -26,9 +26,11 @@
 
 ## License
 
-Copyright (c) 2023 EalenXie . All rights reserved.
+Copyright (c) 2023 EalenXie. All rights reserved.
 
-Licensed under the [MIT](https://github.com/EalenXie/sdk-all/blob/master/LICENSE) license.
+Licensed under the [MIT](https://github.com/EalenXie/sdk-all/blob/main/LICENSE) license.
+
+For inquiries and support, please contact us at [ealenxie@outlook.com](mailto:ealenxie@outlook.com)
 
 ## SDK 列表
 
