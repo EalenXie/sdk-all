@@ -12,10 +12,10 @@ import org.springframework.web.client.RestOperations;
 public class AllegroSaleSettingClient extends AllegroClient {
 
     public static final String POLICY = "/after-sales-service-conditions/return-policies";
-
     public static final String IMPLIED_WARRANTIES = "/after-sales-service-conditions/implied-warranties";
-
     public static final String WARRANTIES = "/after-sales-service-conditions/warranties";
+    public static final String SALE_SHIPPING_RATES = "/sale/shipping-rates";
+    public static final String SALE_OFFER_ADDITIONAL_SERVICES_GROUPS = "/sale/offer-additional-services/groups";
 
     public static final String FORMAT = "%s/%s";
 
@@ -59,14 +59,14 @@ public class AllegroSaleSettingClient extends AllegroClient {
      * <a href="https://developer.allegro.pl/documentation/#operation/getPublicSellerListingUsingGET">Get the user's implied warranties</a>
      */
     public ImpliedWarrantiesResponse getImpliedWarranties(String accessToken, PageQueryParams queryParams) {
-        return getAllegro("/after-sales-service-conditions/implied-warranties", accessToken, queryParams, ImpliedWarrantiesResponse.class);
+        return getAllegro(IMPLIED_WARRANTIES, accessToken, queryParams, ImpliedWarrantiesResponse.class);
     }
 
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/createAfterSalesServiceImpliedWarrantyUsingPOST">Create new user's implied warranty</a>
      */
     public ImpliedWarrantyResponse createImpliedWarranties(String accessToken, ImpliedWarrantyPayload payload) {
-        return postAllegro("/after-sales-service-conditions/implied-warranties", accessToken, payload, ImpliedWarrantyResponse.class);
+        return postAllegro(IMPLIED_WARRANTIES, accessToken, payload, ImpliedWarrantyResponse.class);
     }
 
     /**
@@ -123,5 +123,91 @@ public class AllegroSaleSettingClient extends AllegroClient {
      */
     public Attachment getAttachment(String accessToken, String attachmentId) {
         return exchangeAllegro(String.format(FORMAT, WARRANTIES, attachmentId), HttpMethod.PUT, accessToken, null, null, Attachment.class);
+    }
+
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getListOfShippingRatestUsingGET">Get the user's shipping rates</a>
+     */
+    public ShippingRateResponse getSaleShippingRates(String accessToken) {
+        return getAllegro(SALE_SHIPPING_RATES, accessToken, null, ShippingRateResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/createShippingRatesSetUsingPOST">Create a new shipping rates set</a>
+     */
+    public ShippingRatePayload createShippingRates(String accessToken, ShippingRatePayload payload) {
+        return postAllegro(SALE_SHIPPING_RATES, accessToken, payload, ShippingRatePayload.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getShippingRatesSetUsingGET">Get the details of a shipping rates set</a>
+     */
+    public ShippingRatePayload getShippingRateById(String accessToken, String id) {
+        return getAllegro(String.format(FORMAT, SALE_SHIPPING_RATES, id), accessToken, null, ShippingRatePayload.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/modifyShippingRatesSetUsingPUT">Edit a user's shipping rates set</a>
+     */
+    public ShippingRatePayload updateShippingRates(String accessToken, String id, ShippingRatePayload payload) {
+        return exchangeAllegro(String.format(FORMAT, SALE_SHIPPING_RATES, id), HttpMethod.PUT, accessToken, null, payload, ShippingRatePayload.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getSaleDeliverySettings">Get the user's delivery settings</a>
+     */
+    public SaleDeliveryPayload getSaleDeliverySettings(String accessToken, MarketplaceIdQueryParams queryParams) {
+        return getAllegro("/sale/delivery-settings", accessToken, queryParams, SaleDeliveryPayload.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/putSaleDeliverySettings">Modify the user's delivery settings</a>
+     */
+    public SaleDeliveryPayload updateSaleDeliverySettings(String accessToken, SaleDeliveryPayload payload) {
+        return exchangeAllegro("/sale/delivery-settings", HttpMethod.PUT, accessToken, null, payload, SaleDeliveryPayload.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getListOfDeliveryMethodsUsingGET">Get the list of delivery methods</a>
+     */
+    public DeliverMethodResponse getDeliveryMethods(String accessToken, MarketplaceQueryParams queryParams) {
+        return getAllegro("/sale/delivery-methods", accessToken, queryParams, DeliverMethodResponse.class);
+    }
+
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/createAdditionalServicesGroupUsingPOST">Create additional services group</a>
+     */
+    public AdditionalServiceGroup createAdditionalServiceGroups(String accessToken, AdditionalServicePayload payload) {
+        return postAllegro(SALE_OFFER_ADDITIONAL_SERVICES_GROUPS, accessToken, payload, AdditionalServiceGroup.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getListOfAdditionalServicesGroupsUsingGET"Get the user's additional services groups</a>
+     */
+    public AdditionalServiceResponse getAdditionalServiceGroups(String accessToken, PageQueryParams queryParams) {
+        return getAllegro(SALE_OFFER_ADDITIONAL_SERVICES_GROUPS, accessToken, queryParams, AdditionalServiceResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getListOfAdditionalServicesDefinitionsCategoriesUsingGET">Get the additional services definitions by categories</a>
+     */
+    public CategoryResponse getCategories(String accessToken) {
+        return getAllegro("/sale/offer-additional-services/categories", accessToken, null, CategoryResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getAdditionalServicesGroupUsingGET">Get the details of an additional services group</a>
+     */
+    public AdditionalServiceGroup getAdditionalServiceGroupById(String accessToken, String groupId) {
+        return getAllegro(String.format(FORMAT, SALE_OFFER_ADDITIONAL_SERVICES_GROUPS, groupId), accessToken, null, AdditionalServiceGroup.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/modifyAdditionalServicesGroupUsingPUT">Modify an additional services group</a>
+     */
+    public AdditionalServiceGroup updateAdditionalServiceGroups(String accessToken, String groupId, AdditionalServicePayload payload) {
+        return exchangeAllegro(String.format(FORMAT, SALE_OFFER_ADDITIONAL_SERVICES_GROUPS, groupId), HttpMethod.PUT, accessToken, null, payload, AdditionalServiceGroup.class);
     }
 }

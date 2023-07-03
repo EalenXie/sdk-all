@@ -167,6 +167,28 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 | createAttachment        | [Create a warranty attachment metadata](https://developer.allegro.pl/documentation/#operation/createAfterSalesServiceConditionsAttachmentUsingPOST) | ✔️  |
 | getAttachment           | [Upload an warranty attachment](https://developer.allegro.pl/documentation/#operation/uploadAfterSalesServiceConditionsAttachmentUsingPUT)          | ✔️  |
 
+#### Delivery
+
+| 方法名                        | 📚 官方文档地址                                                                                                                    | 状态  |
+|:---------------------------|------------------------------------------------------------------------------------------------------------------------------|:----|
+| getSaleShippingRates       | [Get the user's shipping rates](https://developer.allegro.pl/documentation/#operation/getListOfShippingRatestUsingGET)       | ✔️  |
+| createShippingRates        | [Create a new shipping rates set](https://developer.allegro.pl/documentation/#operation/createShippingRatesSetUsingPOST)     | ✔️  |
+| getShippingRateById        | [Get the details of a shipping rates set](https://developer.allegro.pl/documentation/#operation/getShippingRatesSetUsingGET) | ✔️  |
+| updateShippingRates        | [Edit a user's shipping rates set](https://developer.allegro.pl/documentation/#operation/modifyShippingRatesSetUsingPUT)     | ✔️  |
+| getSaleDeliverySettings    | [Get the user's delivery settings](https://developer.allegro.pl/documentation/#operation/getSaleDeliverySettings)            | ✔️  |
+| updateSaleDeliverySettings | [Modify the user's delivery settings](https://developer.allegro.pl/documentation/#operation/putSaleDeliverySettings)         | ✔️  |
+| getDeliveryMethods         | [Get the list of delivery methods](https://developer.allegro.pl/documentation/#operation/getListOfDeliveryMethodsUsingGET)   | ✔️  |
+
+#### Additional services
+
+| 方法名                           | 📚 官方文档地址                                                                                                                                                               | 状态  |
+|:------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:----|
+| createAdditionalServiceGroups | [Create additional services group](https://developer.allegro.pl/documentation/#operation/createAdditionalServicesGroupUsingPOST)                                        | ✔️  |
+| getAdditionalServiceGroups    | [Get the user's additional services groups](https://developer.allegro.pl/documentation/#operation/getListOfAdditionalServicesGroupsUsingGET)                            | ✔️  |
+| getCategories                 | [Get the additional services definitions by categories](https://developer.allegro.pl/documentation/#operation/getListOfAdditionalServicesDefinitionsCategoriesUsingGET) | ✔️  |
+| getAdditionalServiceGroupById | [Get the details of an additional services group](https://developer.allegro.pl/documentation/#operation/getAdditionalServicesGroupUsingGET)                             | ✔️  |
+| updateAdditionalServiceGroups | [Modify an additional services group](https://developer.allegro.pl/documentation/#operation/modifyAdditionalServicesGroupUsingPUT)                                      | ✔️  |
+
 ### FULFILLMENT
 
 #### Advance Ship Notices

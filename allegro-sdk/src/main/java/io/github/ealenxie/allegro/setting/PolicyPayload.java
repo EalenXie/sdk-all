@@ -1,6 +1,7 @@
 package io.github.ealenxie.allegro.setting;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.ealenxie.allegro.IdPayload;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,7 +22,7 @@ public class PolicyPayload {
      * seller
      */
     @JsonProperty("seller")
-    private Seller seller;
+    private IdPayload seller;
     /**
      * name
      */
