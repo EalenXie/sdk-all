@@ -128,7 +128,7 @@ public class DraftOfferPayload {
      * publication
      */
     @JsonProperty("publication")
-    private PublicationPayload publication;
+    private PublishPayload publication;
     /**
      * sellingMode
      */

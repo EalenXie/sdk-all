@@ -36,7 +36,7 @@ public class AllegroOfferClient extends AllegroClient {
      * @deprecated deprecated by Allegro
      */
     @Deprecated
-    public DraftOfferPayload getOffer(String accessToken, String offerId) {
+    public DraftOfferPayload getDraftOffer(String accessToken, String offerId) {
         return getAllegro(String.format(SALE_OFFER, offerId), accessToken, null, DraftOfferPayload.class);
     }
 
@@ -157,4 +157,40 @@ public class AllegroOfferClient extends AllegroClient {
     public PromoModifyDetailResult getPromoModifyDetail(String accessToken, String commandId) {
         return getAllegro(String.format("/sale/offers/promo-options-commands/%s/tasks", commandId), accessToken, null, PromoModifyDetailResult.class);
     }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/createProductOffers">Create offer based on product</a>
+     */
+    public OfferResponse createOffer(String accessToken, OfferPayload payload) {
+        return postAllegro("/sale/product-offers", accessToken, payload, OfferResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/editProductOffers">Edit an offer</a>
+     */
+    public OfferResponse editOffer(String accessToken, String offerId, OfferPayload payload) {
+        return exchangeAllegro(String.format("/sale/product-offers/%s", offerId), HttpMethod.PATCH, accessToken, null, payload, OfferResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getProductOffer">Get all data of the particular product-offer</a>
+     */
+    public OfferResponse getOffer(String accessToken, String offerId) {
+        return getAllegro(String.format("/sale/product-offers/%s", offerId), accessToken, null, OfferResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getProductOfferProcessingStatus">Check the processing status of a POST or PATCH request</a>
+     */
+    public OfferProcessingStatusResponse getOfferProcessingStatus(String accessToken, String offerId, String operationId) {
+        return getAllegro(String.format("/sale/product-offers/%s/operations/%s", offerId, operationId), accessToken, null, OfferProcessingStatusResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getOffersUnfilledParametersUsingGET_1">Get offers with missing parameters</a>
+     */
+    public OffersUnfilledParametersResponse getOffersUnfilledParameters(String accessToken, OffersUnfilledParametersQueryParams queryParams) {
+        return getAllegro("/sale/offers/unfilled-parameters", accessToken, queryParams, OffersUnfilledParametersResponse.class);
+    }
+
 }

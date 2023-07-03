@@ -29,23 +29,20 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 
 #### User's offer information
 
-| 方法名            | 📚 官方文档地址                                                                                                                                        | 状态  |
-|:---------------|:-------------------------------------------------------------------------------------------------------------------------------------------------|:----|
-| searchOffers   | [Get seller's offers](https://developer.allegro.pl/documentation/#operation/searchOffersUsingGET)                                                | ✔️  |
-| ~~
-getOffer~~   | ~~[Get all fields of the particular offer](https://developer.allegro.pl/documentation/#operation/getOfferUsingGET)~~                             | ✔️  |
-| getSmartOffer  | [Get Smart! classification report of the particular offer](https://developer.allegro.pl/documentation/#operation/getOfferSmartClassificationGET) | ✔️  |
-| getOfferEvents | [Get events about the seller's offers](https://developer.allegro.pl/documentation/#operation/getOfferEvents)                                     | ✔️  |
+| 方法名               | 📚 官方文档地址                                                                                                                                        | 状态  |
+|:------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------|:----|
+| searchOffers      | [Get seller's offers](https://developer.allegro.pl/documentation/#operation/searchOffersUsingGET)                                                | ✔️  |
+| ~~getDraftOffer~~ | ~~[Get all fields of the particular offer](https://developer.allegro.pl/documentation/#operation/getOfferUsingGET)~~                             | ✔️  |
+| getSmartOffer     | [Get Smart! classification report of the particular offer](https://developer.allegro.pl/documentation/#operation/getOfferSmartClassificationGET) | ✔️  |
+| getOfferEvents    | [Get events about the seller's offers](https://developer.allegro.pl/documentation/#operation/getOfferEvents)                                     | ✔️  |
 
 #### Offer management
 
 | 方法名                           | 📚 官方文档地址                                                                                                                                       | 状态  |
 |:------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------|:----|
 | modifyOfferPrice              | [Modify the Buy Now price in an offer](https://developer.allegro.pl/documentation/#operation/createChangePriceCommandUsingPUT)                  | ✔️  |
-| ~~
-createDraftOffer~~          | ~~[Create a draft offer ](https://developer.allegro.pl/documentation/#operation/createOfferUsingPOST)~~                                         | ✔️  |
-| ~~
-updateDraftOffer~~          | ~~[Complete a draft offer or edit an offer](https://developer.allegro.pl/documentation/#operation/updateOfferUsingPUT)~~                        | ✔️  |
+| ~~createDraftOffer~~          | ~~[Create a draft offer ](https://developer.allegro.pl/documentation/#operation/createOfferUsingPOST)~~                                         | ✔️  |
+| ~~updateDraftOffer~~          | ~~[Complete a draft offer or edit an offer](https://developer.allegro.pl/documentation/#operation/updateOfferUsingPUT)~~                        | ✔️  |
 | deleteDraftOffer              | [Delete a draft offer](https://developer.allegro.pl/documentation/#operation/deleteOfferUsingDELETE)                                            | ✔️  |
 | changePublishStatus           | [Batch offer publish / unpublished](https://developer.allegro.pl/documentation/#operation/changePublicationStatusUsingPUT)                      | ✔️  |
 | getPublish                    | [Publish command summary](https://developer.allegro.pl/documentation/#operation/getPublicationReportUsingGET)                                   | ✔️  |
@@ -57,6 +54,11 @@ updateDraftOffer~~          | ~~[Complete a draft offer or edit an offer](https:
 | promoModify                   | [Batch offer promotion package modification](https://developer.allegro.pl/documentation/#operation/promoModificationCommandUsingPUT)            | ✔️  |
 | getPromoModify                | [Modification command summary](https://developer.allegro.pl/documentation/#operation/getPromoModificationCommandResultUsingGET)                 | ✔️  |
 | getPromoModifyDetail          | [Modification command detailed result](https://developer.allegro.pl/documentation/#operation/getPromoModificationCommandDetailedResultUsingGET) | ✔️  |
+| createOffer                   | [Create offer based on product](https://developer.allegro.pl/documentation/#operation/createProductOffers)                                      | ✔️  |
+| editOffer                     | [Edit an offer](https://developer.allegro.pl/documentation/#operation/editProductOffers)                                                        | ✔️  |
+| getOffer                      | [Get all data of the particular product-offer](https://developer.allegro.pl/documentation/#operation/getProductOffer)                           | ✔️  |
+| getOfferProcessingStatus      | [Check the processing status of a POST or PATCH request](https://developer.allegro.pl/documentation/#operation/getProductOfferProcessingStatus) | ✔️  |
+| getOffersUnfilledParameters   | [Get offers with missing parameters](https://developer.allegro.pl/documentation/#operation/getOffersUnfilledParametersUsingGET_1)               | ✔️  |
 
 ### ORDERS
 

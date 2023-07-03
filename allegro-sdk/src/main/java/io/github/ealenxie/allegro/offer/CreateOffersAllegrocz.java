@@ -1,25 +1,23 @@
 package io.github.ealenxie.allegro.offer;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
- * @author EalenXie created on 2023/6/29 15:51
+ * @author EalenXie created on 2023/7/3 10:05
  */
-@Getter
-@Setter
-public class AllegroczPayload {
+@NoArgsConstructor
+@Data
+public class CreateOffersAllegrocz {
     /**
      * publication
      */
     @JsonProperty("publication")
-    private Publish publication;
+    private PublishPayload publication;
     /**
      * sellingMode
      */
     @JsonProperty("sellingMode")
     private SellingMode sellingMode;
-
-
 }
