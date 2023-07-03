@@ -60,6 +60,23 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 | getOfferProcessingStatus      | [Check the processing status of a POST or PATCH request](https://developer.allegro.pl/documentation/#operation/getProductOfferProcessingStatus) | ✔️  |
 | getOffersUnfilledParameters   | [Get offers with missing parameters](https://developer.allegro.pl/documentation/#operation/getOffersUnfilledParametersUsingGET_1)               | ✔️  |
 
+#### Offer translations
+
+| 方法名                     | 📚 官方文档地址                                                                                                            | 状态  |
+|:------------------------|:---------------------------------------------------------------------------------------------------------------------|:----|
+| getOfferTranslation     | [Get offer translations](https://developer.allegro.pl/documentation/#operation/getOfferTranslationUsingGET)          | ✔️  |
+| updateOfferTranslation  | [Update offer translation](https://developer.allegro.pl/documentation/#operation/updateOfferTranslationUsingPATCH)   | ✔️  |
+| deleteManualTranslation | [Delete offer translation](https://developer.allegro.pl/documentation/#operation/deleteManualTranslationUsingDELETE) | ✔️  |
+
+#### Categories and parameters
+
+| 方法名                   | 📚 官方文档地址                                                                                                                   | 状态  |
+|:----------------------|:----------------------------------------------------------------------------------------------------------------------------|:----|
+| getCategories         | [Get IDs of Allegro categories](https://developer.allegro.pl/documentation/#operation/getCategoriesUsingGET)                | ✔️  |
+| getCategory           | [Get a category by ID](https://developer.allegro.pl/documentation/#operation/getCategoryUsingGET_1)                         | ✔️  |
+| getCategoryParameters | [Get parameters supported by a category](https://developer.allegro.pl/documentation/#operation/getFlatParametersUsingGET_2) | ✔️  |
+
+
 ### ORDERS
 
 [AllegroOrderClient](https://github.com/EalenXie/sdk-all/blob/main/allegro-sdk/src/main/java/io/github/ealenxie/allegro/AllegroOrdersClient.java)
@@ -173,32 +190,32 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 
 #### Information about marketplaces
 
-| 方法名          | 📚 官方文档地址                                                                                                | 状态  |
-|:-------------|:---------------------------------------------------------------------------------------------------------|:----|
-| marketplaces     | [Get details for all marketplaces in allegro](https://developer.allegro.pl/documentation/#operation/marketplacesGET) | ✔️  |
+| 方法名          | 📚 官方文档地址                                                                                                            | 状态  |
+|:-------------|:---------------------------------------------------------------------------------------------------------------------|:----|
+| marketplaces | [Get details for all marketplaces in allegro](https://developer.allegro.pl/documentation/#operation/marketplacesGET) | ✔️  |
 
 #### Message Center
 
-| 方法名          | 📚 官方文档地址                                                                                                | 状态  |
-|:-------------|:---------------------------------------------------------------------------------------------------------|:----|
-| listThreads     | [List user threads](https://developer.allegro.pl/documentation/#operation/listThreadsGET) | ✔️  |
-| getThread     | [Get user thread](https://developer.allegro.pl/documentation/#operation/getThreadGET) | ✔️  |
-| changeReadFlagOnThread     | [Mark a particular thread as read](https://developer.allegro.pl/documentation/#operation/changeReadFlagOnThreadPUT) | ✔️  |
-| newMessage     | [Write a new message](https://developer.allegro.pl/documentation/#operation/newMessagePOST) | ✔️  |
-| listMessages     | [List messages in thread](https://developer.allegro.pl/documentation/#operation/listMessagesGET) | ✔️  |
-| newMessageInThread     | [Write a new message in thread](https://developer.allegro.pl/documentation/#operation/newMessageInThreadPOST) | ✔️  |
-| getMessage     | [Get single message](https://developer.allegro.pl/documentation/#operation/getMessageGET) | ✔️  |
-| deleteMessage     | [Delete single message](https://developer.allegro.pl/documentation/#operation/deleteMessageDELETE) | ✔️  |
-| newAttachmentDeclaration     | [Add attachment declaration](https://developer.allegro.pl/documentation/#operation/newAttachmentDeclarationPOST) | ✔️  |
-| uploadAttachment     | [Upload attachment binary data](https://developer.allegro.pl/documentation/#operation/uploadAttachmentPUT) | ✔️  |
-| downloadAttachment     | [Download attachment](https://developer.allegro.pl/documentation/#operation/downloadAttachmentGET) | ✔️  |
+| 方法名                      | 📚 官方文档地址                                                                                                           | 状态  |
+|:-------------------------|:--------------------------------------------------------------------------------------------------------------------|:----|
+| listThreads              | [List user threads](https://developer.allegro.pl/documentation/#operation/listThreadsGET)                           | ✔️  |
+| getThread                | [Get user thread](https://developer.allegro.pl/documentation/#operation/getThreadGET)                               | ✔️  |
+| changeReadFlagOnThread   | [Mark a particular thread as read](https://developer.allegro.pl/documentation/#operation/changeReadFlagOnThreadPUT) | ✔️  |
+| newMessage               | [Write a new message](https://developer.allegro.pl/documentation/#operation/newMessagePOST)                         | ✔️  |
+| listMessages             | [List messages in thread](https://developer.allegro.pl/documentation/#operation/listMessagesGET)                    | ✔️  |
+| newMessageInThread       | [Write a new message in thread](https://developer.allegro.pl/documentation/#operation/newMessageInThreadPOST)       | ✔️  |
+| getMessage               | [Get single message](https://developer.allegro.pl/documentation/#operation/getMessageGET)                           | ✔️  |
+| deleteMessage            | [Delete single message](https://developer.allegro.pl/documentation/#operation/deleteMessageDELETE)                  | ✔️  |
+| newAttachmentDeclaration | [Add attachment declaration](https://developer.allegro.pl/documentation/#operation/newAttachmentDeclarationPOST)    | ✔️  |
+| uploadAttachment         | [Upload attachment binary data](https://developer.allegro.pl/documentation/#operation/uploadAttachmentPUT)          | ✔️  |
+| downloadAttachment       | [Download attachment](https://developer.allegro.pl/documentation/#operation/downloadAttachmentGET)                  | ✔️  |
 
 #### Auctions and Bidding
 
-| 方法名               | 📚 官方文档地址                                                                                                | 状态  |
-|:------------------|:---------------------------------------------------------------------------------------------------------|:----|
-| placeBid | [Place a bid in an auction](https://developer.allegro.pl/documentation/#operation/placeBid) | ✔️  |
-| getBid   | [Get current user's bid information](https://developer.allegro.pl/documentation/#operation/getBid)     | ✔️  |
+| 方法名      | 📚 官方文档地址                                                                                          | 状态  |
+|:---------|:---------------------------------------------------------------------------------------------------|:----|
+| placeBid | [Place a bid in an auction](https://developer.allegro.pl/documentation/#operation/placeBid)        | ✔️  |
+| getBid   | [Get current user's bid information](https://developer.allegro.pl/documentation/#operation/getBid) | ✔️  |
 
 #### Billing
 
