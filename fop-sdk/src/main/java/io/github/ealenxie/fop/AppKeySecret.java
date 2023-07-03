@@ -32,7 +32,7 @@ public class AppKeySecret {
     /**
      * 通过OAuth授权方式获得，要求平台服务商、第三方软件商必须传入，4PX客户（B类客户）可不传
      */
-    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonInclude(JsonInclude.Include.NON_EMPTY)
     @JsonProperty("access_token")
     private String accessToken;
 

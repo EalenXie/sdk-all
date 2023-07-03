@@ -9,7 +9,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class PublicationPayload {
+public class PublishPayload {
     /**
      * duration
      */
