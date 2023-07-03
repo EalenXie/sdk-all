@@ -86,8 +86,8 @@ public class AllegroSaleSettingClient extends AllegroClient {
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/getPublicSellerListingUsingGET_2">Get the user's warranties</a>
      */
-    public WarrantiesResponse getWarranties(String accessToken, String impliedWarrantyId) {
-        return getAllegro(WARRANTIES, accessToken, null, WarrantiesResponse.class);
+    public WarrantiesResponse getWarranties(String accessToken, PageQueryParams queryParams) {
+        return getAllegro(WARRANTIES, accessToken, queryParams, WarrantiesResponse.class);
     }
 
     /**

@@ -36,7 +36,7 @@ public class Regular {
      * delivery
      */
     @JsonProperty("delivery")
-    private DeliveryX delivery;
+    private Delivery delivery;
     /**
      * images
      */
@@ -46,7 +46,7 @@ public class Regular {
      * sellingMode
      */
     @JsonProperty("sellingMode")
-    private SellingModeX sellingMode;
+    private SellingMode sellingMode;
     /**
      * stock
      */
