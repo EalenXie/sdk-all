@@ -119,6 +119,28 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 | cancelParcel                  | [Cancel parcel](https://developer.allegro.pl/documentation/#operation/cancelParcel)                                      | ✔️  |
 | getParcelCancellationStatus   | [Get parcel cancellation status](https://developer.allegro.pl/documentation/#operation/getParcelCancellationStatus)      | ✔️  |
 
+### SALE SETTINGS
+
+#### After sale services
+
+| 方法名                     | 📚 官方文档地址                                                                                                                                           | 状态  |
+|:------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------|:----|
+| getPolicies             | [Get the user's return policies](https://developer.allegro.pl/documentation/#operation/getPublicSellerListingUsingGET_1)                            | ✔️  |
+| createPolicy            | [Create new user's return policy](https://developer.allegro.pl/documentation/#operation/createAfterSalesServiceReturnPolicyUsingPOST)               | ✔️  |
+| getPolicyById           | [Get the user's return policy](https://developer.allegro.pl/documentation/#operation/getAfterSalesServiceReturnPolicyUsingGET)                      | ✔️  |
+| updatePolicy            | [Change the user's return policy](https://developer.allegro.pl/documentation/#operation/updateAfterSalesServiceReturnPolicyUsingPUT)                | ✔️  |
+| getImpliedWarranties    | [Get the user's implied warranties](https://developer.allegro.pl/documentation/#operation/getPublicSellerListingUsingGET)                           | ✔️  |
+| createImpliedWarranties | [Create new user's implied warranty](https://developer.allegro.pl/documentation/#operation/createAfterSalesServiceImpliedWarrantyUsingPOST)         | ✔️  |
+| getImpliedWarrantyById  | [Get the user's implied warranty](https://developer.allegro.pl/documentation/#operation/getAfterSalesServiceImpliedWarrantyUsingGET)                | ✔️  |
+| updateImpliedWarranty   | [Change the user's implied warranty](https://developer.allegro.pl/documentation/#operation/updateAfterSalesServiceImpliedWarrantyUsingPUT)          | ✔️  |
+| getWarranties           | [Get the user's warranties](https://developer.allegro.pl/documentation/#operation/getPublicSellerListingUsingGET_2)                                 | ✔️  |
+| createWarranty          | [Create new user's warranty](https://developer.allegro.pl/documentation/#operation/createAfterSalesServiceWarrantyUsingPOST)                        | ✔️  |
+| getWarrantyById         | [Get the user's warranty](https://developer.allegro.pl/documentation/#operation/getAfterSalesServiceWarrantyUsingGET)                               | ✔️  |
+| updateWarranty          | [Change the user's warranty](https://developer.allegro.pl/documentation/#operation/updateAfterSalesServiceWarrantyUsingPUT)                         | ✔️  |
+| createAttachment        | [Create a warranty attachment metadata](https://developer.allegro.pl/documentation/#operation/createAfterSalesServiceConditionsAttachmentUsingPOST) | ✔️  |
+| getAttachment           | [Upload an warranty attachment](https://developer.allegro.pl/documentation/#operation/uploadAfterSalesServiceConditionsAttachmentUsingPUT)          | ✔️  |
+
+
 ### FULFILLMENT
 
 #### Advance Ship Notices
