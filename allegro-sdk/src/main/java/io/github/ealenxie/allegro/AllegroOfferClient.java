@@ -3,6 +3,7 @@ package io.github.ealenxie.allegro;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.ealenxie.allegro.offer.*;
 import org.springframework.http.HttpMethod;
+import org.springframework.lang.Nullable;
 import org.springframework.web.client.RestOperations;
 
 /**
@@ -10,9 +11,7 @@ import org.springframework.web.client.RestOperations;
  */
 public class AllegroOfferClient extends AllegroClient {
 
-
     private static final String SALE_OFFERS = "/sale/offers";
-
     private static final String SALE_OFFER = SALE_OFFERS + "/%s";
 
     protected AllegroOfferClient(ObjectMapper mapper) {
@@ -192,5 +191,48 @@ public class AllegroOfferClient extends AllegroClient {
     public OffersUnfilledParametersResponse getOffersUnfilledParameters(String accessToken, OffersUnfilledParametersQueryParams queryParams) {
         return getAllegro("/sale/offers/unfilled-parameters", accessToken, queryParams, OffersUnfilledParametersResponse.class);
     }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getOfferTranslationUsingGET">Get offer translations</a>
+     */
+    public OfferTranslationResponse getOfferTranslation(String accessToken, String offerId, @Nullable String language) {
+        return getAllegro(String.format("/sale/offers/%s/translations", offerId), accessToken, new LanguageQueryParam(language), OfferTranslationResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/updateOfferTranslationUsingPATCH">Update offer translation</a>
+     */
+    public void updateOfferTranslation(String accessToken, String offerId, String language, UpdateOfferTranslationPayload payload) {
+        exchangeAllegro(String.format("/sale/offers/%s/translations/%s", offerId, language), HttpMethod.PATCH, accessToken, null, payload, OfferTranslationResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/deleteManualTranslationUsingDELETE">Delete offer translation</a>
+     */
+    public void deleteManualTranslation(String accessToken, String offerId, String language, @Nullable String element) {
+        exchangeAllegro(String.format("/sale/offers/%s/translations/%s", offerId, language), HttpMethod.DELETE, accessToken, new ElementQueryParam(element), null, OfferTranslationResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getCategoriesUsingGET">Get IDs of Allegro categories</a>
+     */
+    public CategoryResponse getCategories(String accessToken, @Nullable CategoryQueryParam queryParam) {
+        return getAllegro("/sale/categories", accessToken, queryParam, CategoryResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getCategoryUsingGET_1">Get a category by ID</a>
+     */
+    public Category getCategory(String accessToken, String categoryId) {
+        return getAllegro(String.format("/sale/categories/%s", categoryId), accessToken, null, Category.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getFlatParametersUsingGET_2">Get parameters supported by a category</a>
+     */
+    public CategoryParametersResponse getCategoryParameters(String accessToken, String categoryId) {
+        return getAllegro(String.format("/sale/categories/%s/parameters", categoryId), accessToken, null, CategoryParametersResponse.class);
+    }
+
 
 }
