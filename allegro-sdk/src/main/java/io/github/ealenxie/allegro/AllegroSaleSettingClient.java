@@ -210,4 +210,26 @@ public class AllegroSaleSettingClient extends AllegroClient {
     public AdditionalServiceGroup updateAdditionalServiceGroups(String accessToken, String groupId, AdditionalServicePayload payload) {
         return exchangeAllegro(String.format(FORMAT, SALE_OFFER_ADDITIONAL_SERVICES_GROUPS, groupId), HttpMethod.PUT, accessToken, null, payload, AdditionalServiceGroup.class);
     }
+
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getAdditionalServiceGroupTranslations">Get translations for specified group</a>
+     */
+    public TranslationResponse getTranslations(String accessToken, String groupId, LanguageQueryParams queryParams) {
+        return getAllegro(String.format("/sale/offer-additional-services/groups/%s/translations", groupId), accessToken, queryParams, TranslationResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/updateAdditionalServiceGroupTranslation">Create/Update translations for specified group and language</a>
+     */
+    public Translations createOrUpdateTranslations(String accessToken, String groupId, String language, AdditionalServices payload) {
+        return exchangeAllegro(String.format("/sale/offer-additional-services/groups/%s/translations/%s", groupId, language), HttpMethod.PATCH, accessToken, null, payload, Translations.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/deleteAdditionalServiceGroupTranslation">Delete a translation for a specified group and language</a>
+     */
+    public void deleteTransaction(String accessToken, String groupId, String language) {
+        exchangeAllegro(String.format("/sale/offer-additional-services/groups/%s/translations/%s", groupId, language), HttpMethod.DELETE, accessToken, null, null, Object.class);
+    }
 }

@@ -189,6 +189,14 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 | getAdditionalServiceGroupById | [Get the details of an additional services group](https://developer.allegro.pl/documentation/#operation/getAdditionalServicesGroupUsingGET)                             | ✔️  |
 | updateAdditionalServiceGroups | [Modify an additional services group](https://developer.allegro.pl/documentation/#operation/modifyAdditionalServicesGroupUsingPUT)                                      | ✔️  |
 
+#### Additional services translations
+
+| 方法名                        | 📚 官方文档地址                                                                                                                                                    | 状态  |
+|:---------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|:----|
+| getTranslations            | [Get translations for specified group](https://developer.allegro.pl/documentation/#operation/getAdditionalServiceGroupTranslations)                          | ✔️  |
+| createOrUpdateTranslations | [Create/Update translations for specified group and language](https://developer.allegro.pl/documentation/#operation/updateAdditionalServiceGroupTranslation) | ✔️  |
+| deleteTransaction          | [Delete a translation for a specified group and language](https://developer.allegro.pl/documentation/#operation/deleteAdditionalServiceGroupTranslation)     | ✔️  |
+
 ### FULFILLMENT
 
 #### Advance Ship Notices
