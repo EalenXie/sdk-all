@@ -165,6 +165,25 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 | placeBid | [Place a bid in an auction](https://developer.allegro.pl/documentation/#operation/placeBid) | ✔️  |
 | getBid   | [Get current user's bid information](https://developer.allegro.pl/documentation/#operation/getBid)     | ✔️  |
 
+#### Charity
+
+| 方法名               | 📚 官方文档地址                                                                                                | 状态  |
+|:------------------|:---------------------------------------------------------------------------------------------------------|:----|
+| searchFundraisingCampaigns | [Search fundraising campaigns](https://developer.allegro.pl/documentation/#operation/searchFundraisingCampaigns) | ✔️  |
+
+
+#### Public user information
+
+| 方法名               | 📚 官方文档地址                                                                                                | 状态  |
+|:------------------|:---------------------------------------------------------------------------------------------------------|:----|
+| getUserSummary | [Get any user's ratings summary](https://developer.allegro.pl/documentation/#operation/getUserSummaryUsingGET) | ✔️  |
+
+#### Public offer information
+
+| 方法名               | 📚 官方文档地址                                                                                                | 状态  |
+|:------------------|:---------------------------------------------------------------------------------------------------------|:----|
+| getListing | [Search offers](https://developer.allegro.pl/documentation/#operation/getListing) | ✔️  |
+
 
 #### Billing
 

@@ -184,6 +184,27 @@ public class AllegroOthersClient extends AllegroClient {
     }
 
     /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/searchFundraisingCampaigns">Search fundraising campaigns</a>
+     */
+    public CampaignsResponse searchFundraisingCampaigns(String accessToken, Integer limit, String phrase) {
+        return getAllegro("/charity/fundraising-campaigns", accessToken, new CampaignsQueryParams(limit, phrase), CampaignsResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getUserSummaryUsingGET">Get any user's ratings summary</a>
+     */
+    public UserSummaryResponse getUserSummary(String accessToken, String userId) {
+        return getAllegro(String.format("/users/%s/ratings-summary", userId), accessToken, null, UserSummaryResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getListing">Search offers</a>
+     */
+    public OffersResponse getListing(String accessToken, OffersQueryParams queryParams) {
+        return getAllegro("/offers/listing", accessToken, queryParams, OffersResponse.class);
+    }
+
+    /**
      * <a href="https://developer.allegro.pl/documentation/#operation/getBillingEntries">获取账单条目列表</a>
      */
     public BillingEntriesResponse getBillingEntries(String accessToken, BillingQueryParams queryParams) {
