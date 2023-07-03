@@ -1,7 +1,7 @@
 wish-sdk
 ======
 
-主要是封装了 跨境电商 [wish 商户平台](http://open.4px.com/apiInfo/api) 接口
+主要是封装了 跨境电商 [wish 商户平台](https://china-merchant.wish.com/documentation/api/v3/explorer) 接口
 
 ### 快速开始
 

@@ -1,5 +1,8 @@
-Allegro
+allegro-sdk
 ===========
+
+<img src="https://assets.allegrostatic.com/metrum/metrum-brand/allegro-347440b030.svg" alt="Goodcang Logo" width="200">
+
 <p>Allegro波兰电商平台是东欧最大拍卖网站.成立于1999年，于2020年在华沙证券交易所(WSE)上市。作为波兰认知度最高的品牌之Allegro是波兰最受欢迎的在线购物平台，同时也是波兰本土最大电商平台。Allegro目前主要面向消费者，但现已开通面向所有欧盟消费者的销售业务，并将持续扩张中东欧市场。平台以超高的月访问量跻身全球十大电商平台排名，是欧洲市场主要的蓝海平台之一。</p>
 
 Allegro开发平台: https://developer.allegro.pl/documentation/
@@ -19,7 +22,7 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 
 #### [AllegroClient](https://github.com/EalenXie/sdk-all/blob/main/allegro-sdk/src/main/java/io/github/ealenxie/allegro/AllegroClient.java) 已支持的接口列表
 
-| 方法名          | 📚 官方文档地址                                                                                                           | 状态  |
+| 🏷️方法名       | 📚 官方文档地址                                                                                                           | 状态  |
 |:-------------|:--------------------------------------------------------------------------------------------------------------------|:----|
 | authorize    | [Autoryzacja użytkownika](https://developer.allegro.pl/auth/#autoryzacja-u%c5%bcytkownika)                          | ✔️  |
 | accessToken  | [Autoryzacja użytkownika](https://developer.allegro.pl/auth/#autoryzacja-u%c5%bcytkownika)                          | ✔️  |
@@ -29,7 +32,7 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 
 #### User's offer information
 
-| 方法名               | 📚 官方文档地址                                                                                                                                        | 状态  |
+| 🏷️方法名            | 📚 官方文档地址                                                                                                                                        | 状态  |
 |:------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------|:----|
 | searchOffers      | [Get seller's offers](https://developer.allegro.pl/documentation/#operation/searchOffersUsingGET)                                                | ✔️  |
 | ~~getDraftOffer~~ | ~~[Get all fields of the particular offer](https://developer.allegro.pl/documentation/#operation/getOfferUsingGET)~~                             | ✔️  |
@@ -38,7 +41,7 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 
 #### Offer management
 
-| 方法名                           | 📚 官方文档地址                                                                                                                                       | 状态  |
+| 🏷️方法名                        | 📚 官方文档地址                                                                                                                                       | 状态  |
 |:------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------|:----|
 | modifyOfferPrice              | [Modify the Buy Now price in an offer](https://developer.allegro.pl/documentation/#operation/createChangePriceCommandUsingPUT)                  | ✔️  |
 | ~~createDraftOffer~~          | ~~[Create a draft offer ](https://developer.allegro.pl/documentation/#operation/createOfferUsingPOST)~~                                         | ✔️  |
@@ -62,7 +65,7 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 
 #### Offer translations
 
-| 方法名                     | 📚 官方文档地址                                                                                                            | 状态  |
+| 🏷️方法名                  | 📚 官方文档地址                                                                                                            | 状态  |
 |:------------------------|:---------------------------------------------------------------------------------------------------------------------|:----|
 | getOfferTranslation     | [Get offer translations](https://developer.allegro.pl/documentation/#operation/getOfferTranslationUsingGET)          | ✔️  |
 | updateOfferTranslation  | [Update offer translation](https://developer.allegro.pl/documentation/#operation/updateOfferTranslationUsingPATCH)   | ✔️  |
@@ -70,7 +73,7 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 
 #### Categories and parameters
 
-| 方法名                         | 📚 官方文档地址                                                                                                                                           | 状态  |
+| 🏷️方法名                      | 📚 官方文档地址                                                                                                                                           | 状态  |
 |:----------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------|:----|
 | getCategories               | [Get IDs of Allegro categories](https://developer.allegro.pl/documentation/#operation/getCategoriesUsingGET)                                        | ✔️  |
 | getCategory                 | [Get a category by ID](https://developer.allegro.pl/documentation/#operation/getCategoryUsingGET_1)                                                 | ✔️  |
@@ -81,7 +84,7 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 
 #### Images and attachments
 
-| 方法名                   | 📚 官方文档地址                                                                                                          | 状态  |
+| 🏷️方法名                | 📚 官方文档地址                                                                                                          | 状态  |
 |:----------------------|:-------------------------------------------------------------------------------------------------------------------|:----|
 | uploadOfferImage      | [Upload an offer image](https://developer.allegro.pl/documentation/#operation/uploadOfferImageUsingPOST)           | ✔️  |
 | createOfferAttachment | [Create an offer attachment](https://developer.allegro.pl/documentation/#operation/createOfferAttachmentUsingPOST) | ✔️  |
@@ -94,7 +97,7 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 
 #### Order Management
 
-| 方法名                 | 📚 官方文档地址                                                                                                                    | 状态  |
+| 🏷️方法名              | 📚 官方文档地址                                                                                                                    | 状态  |
 |:--------------------|:-----------------------------------------------------------------------------------------------------------------------------|:----|
 | events              | [Get order events](https://developer.allegro.pl/documentation/#operation/getOrderEventsUsingGET)                             | ✔️  |
 | eventStats          | [Get order events statistics](https://developer.allegro.pl/documentation/#operation/getOrderEventsStatisticsUsingGET)        | ✔️  |
@@ -112,7 +115,7 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 
 #### Payments
 
-| 方法名                 | 📚 官方文档地址                                                                                                      | 状态  |
+| 🏷️方法名              | 📚 官方文档地址                                                                                                      | 状态  |
 |:--------------------|:---------------------------------------------------------------------------------------------------------------|:----|
 | paymentOperations   | [Payment operations history](https://developer.allegro.pl/documentation#operation/getPaymentsOperationHistory) | ✔️  |
 | initiateRefund      | [Initiate a refund of a payment](https://developer.allegro.pl/documentation/#operation/initiateRefund)         | ✔️  |
@@ -120,7 +123,7 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 
 #### Disputes
 
-| 方法名                     | 📚 官方文档地址                                                                                                                    | 状态  |
+| 🏷️方法名                  | 📚 官方文档地址                                                                                                                    | 状态  |
 |:------------------------|:-----------------------------------------------------------------------------------------------------------------------------|:----|
 | disputes                | [Get the user's disputes](https://developer.allegro.pl/documentation/#tag/getListOfDisputesUsingGET)                         | ✔️  |
 | dispute                 | [Get a single dispute](https://developer.allegro.pl/documentation/#tag/getDisputeUsingGET)                                   | ✔️  |
@@ -132,7 +135,7 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 
 #### Parcel Management
 
-| 方法名                           | 📚 官方文档地址                                                                                                                | 状态  |
+| 🏷️方法名                        | 📚 官方文档地址                                                                                                                | 状态  |
 |:------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:----|
 | getAvailableDeliveryServices  | [Get available delivery services](https://developer.allegro.pl/documentation/#operation/getAvailableDeliveryServices)    | ✔️  |
 | createNewParcel               | [Create a new parcel](https://developer.allegro.pl/documentation/#operation/createNewParcel)                             | ✔️  |
@@ -150,7 +153,7 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 
 #### After sale services
 
-| 方法名                     | 📚 官方文档地址                                                                                                                                           | 状态  |
+| 🏷️方法名                  | 📚 官方文档地址                                                                                                                                           | 状态  |
 |:------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------|:----|
 | getPolicies             | [Get the user's return policies](https://developer.allegro.pl/documentation/#operation/getPublicSellerListingUsingGET_1)                            | ✔️  |
 | createPolicy            | [Create new user's return policy](https://developer.allegro.pl/documentation/#operation/createAfterSalesServiceReturnPolicyUsingPOST)               | ✔️  |
@@ -169,7 +172,7 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 
 #### Delivery
 
-| 方法名                        | 📚 官方文档地址                                                                                                                    | 状态  |
+| 🏷️方法名                     | 📚 官方文档地址                                                                                                                    | 状态  |
 |:---------------------------|------------------------------------------------------------------------------------------------------------------------------|:----|
 | getSaleShippingRates       | [Get the user's shipping rates](https://developer.allegro.pl/documentation/#operation/getListOfShippingRatestUsingGET)       | ✔️  |
 | createShippingRates        | [Create a new shipping rates set](https://developer.allegro.pl/documentation/#operation/createShippingRatesSetUsingPOST)     | ✔️  |
@@ -181,7 +184,7 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 
 #### Additional services
 
-| 方法名                           | 📚 官方文档地址                                                                                                                                                               | 状态  |
+| 🏷️方法名                        | 📚 官方文档地址                                                                                                                                                               | 状态  |
 |:------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:----|
 | createAdditionalServiceGroups | [Create additional services group](https://developer.allegro.pl/documentation/#operation/createAdditionalServicesGroupUsingPOST)                                        | ✔️  |
 | getAdditionalServiceGroups    | [Get the user's additional services groups](https://developer.allegro.pl/documentation/#operation/getListOfAdditionalServicesGroupsUsingGET)                            | ✔️  |
@@ -191,7 +194,7 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 
 #### Additional services translations
 
-| 方法名                        | 📚 官方文档地址                                                                                                                                                    | 状态  |
+| 🏷️方法名                     | 📚 官方文档地址                                                                                                                                                    | 状态  |
 |:---------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|:----|
 | getTranslations            | [Get translations for specified group](https://developer.allegro.pl/documentation/#operation/getAdditionalServiceGroupTranslations)                          | ✔️  |
 | createOrUpdateTranslations | [Create/Update translations for specified group and language](https://developer.allegro.pl/documentation/#operation/updateAdditionalServiceGroupTranslation) | ✔️  |
@@ -201,7 +204,7 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 
 #### Advance Ship Notices
 
-| 方法名                                | 📚 官方文档地址                                                                                                                                                    | 状态  |
+| 🏷️方法名                             | 📚 官方文档地址                                                                                                                                                    | 状态  |
 |:-----------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|:----|
 | getAdvanceShipNotices              | [Get list of Advance Ship Notices](https://developer.allegro.pl/documentation/#operation/getAdvanceShipNotices)                                              | ✔️  |
 | createAdvanceShipNotice            | [Create an Advance Ship Notice](https://developer.allegro.pl/documentation/#operation/createAdvanceShipNotice)                                               | ✔️  |
@@ -217,19 +220,19 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 
 #### Fulfillment Stock
 
-| 方法名                 | 📚 官方文档地址                                                                                        | 状态  |
+| 🏷️方法名              | 📚 官方文档地址                                                                                        | 状态  |
 |:--------------------|:-------------------------------------------------------------------------------------------------|:----|
 | getFulfillmentStock | [Get available stock](https://developer.allegro.pl/documentation/#operation/getFulfillmentStock) | ✔️  |
 
 #### Fulfillment Parcels
 
-| 方法名                   | 📚 官方文档地址                                                                                          | 状态  |
+| 🏷️方法名                | 📚 官方文档地址                                                                                          | 状态  |
 |:----------------------|:---------------------------------------------------------------------------------------------------|:----|
 | getFulfillmentParcels | [Get list of shipped parcels](https://developer.allegro.pl/documentation/#tag/Fulfillment-Parcels) | ✔️  |
 
 #### Fulfillment Products
 
-| 方法名                  | 📚 官方文档地址                                                                                                    | 状态  |
+| 🏷️方法名               | 📚 官方文档地址                                                                                                    | 状态  |
 |:---------------------|:-------------------------------------------------------------------------------------------------------------|:----|
 | getAvailableProducts | [Get list of available products](https://developer.allegro.pl/documentation/#operation/getAvailableProducts) | ✔️  |
 
@@ -237,7 +240,7 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 
 #### Information about user
 
-| 方法名                          | 📚 官方文档地址                                                                                                                                 | 状态  |
+| 🏷️方法名                       | 📚 官方文档地址                                                                                                                                 | 状态  |
 |:-----------------------------|:------------------------------------------------------------------------------------------------------------------------------------------|:----|
 | getUserRatings               | [Get the user's ratings](https://developer.allegro.pl/documentation/#operation/getUserRatingsUsingGET)                                    | ✔️  |
 | answerUserRating             | [Answer for user's rating](https://developer.allegro.pl/documentation/#operation/answerUserRatingUsingPUT)                                | ✔️  |
@@ -251,13 +254,13 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 
 #### Information about marketplaces
 
-| 方法名          | 📚 官方文档地址                                                                                                            | 状态  |
+| 🏷️方法名       | 📚 官方文档地址                                                                                                            | 状态  |
 |:-------------|:---------------------------------------------------------------------------------------------------------------------|:----|
 | marketplaces | [Get details for all marketplaces in allegro](https://developer.allegro.pl/documentation/#operation/marketplacesGET) | ✔️  |
 
 #### Message Center
 
-| 方法名                      | 📚 官方文档地址                                                                                                           | 状态  |
+| 🏷️方法名                   | 📚 官方文档地址                                                                                                           | 状态  |
 |:-------------------------|:--------------------------------------------------------------------------------------------------------------------|:----|
 | listThreads              | [List user threads](https://developer.allegro.pl/documentation/#operation/listThreadsGET)                           | ✔️  |
 | getThread                | [Get user thread](https://developer.allegro.pl/documentation/#operation/getThreadGET)                               | ✔️  |
@@ -273,32 +276,32 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 
 #### Auctions and Bidding
 
-| 方法名      | 📚 官方文档地址                                                                                          | 状态  |
+| 🏷️方法名   | 📚 官方文档地址                                                                                          | 状态  |
 |:---------|:---------------------------------------------------------------------------------------------------|:----|
 | placeBid | [Place a bid in an auction](https://developer.allegro.pl/documentation/#operation/placeBid)        | ✔️  |
 | getBid   | [Get current user's bid information](https://developer.allegro.pl/documentation/#operation/getBid) | ✔️  |
 
 #### Charity
 
-| 方法名                        | 📚 官方文档地址                                                                                                        | 状态  |
+| 🏷️方法名                     | 📚 官方文档地址                                                                                                        | 状态  |
 |:---------------------------|:-----------------------------------------------------------------------------------------------------------------|:----|
 | searchFundraisingCampaigns | [Search fundraising campaigns](https://developer.allegro.pl/documentation/#operation/searchFundraisingCampaigns) | ✔️  |
 
 #### Public user information
 
-| 方法名            | 📚 官方文档地址                                                                                                      | 状态  |
+| 🏷️方法名         | 📚 官方文档地址                                                                                                      | 状态  |
 |:---------------|:---------------------------------------------------------------------------------------------------------------|:----|
 | getUserSummary | [Get any user's ratings summary](https://developer.allegro.pl/documentation/#operation/getUserSummaryUsingGET) | ✔️  |
 
 #### Public offer information
 
-| 方法名        | 📚 官方文档地址                                                                         | 状态  |
+| 🏷️方法名     | 📚 官方文档地址                                                                         | 状态  |
 |:-----------|:----------------------------------------------------------------------------------|:----|
 | getListing | [Search offers](https://developer.allegro.pl/documentation/#operation/getListing) | ✔️  |
 
 #### Billing
 
-| 方法名               | 📚 官方文档地址                                                                                                | 状态  |
+| 🏷️方法名            | 📚 官方文档地址                                                                                                | 状态  |
 |:------------------|:---------------------------------------------------------------------------------------------------------|:----|
 | getBillingEntries | [Get a list of billing entries](https://developer.allegro.pl/documentation/#operation/getBillingEntries) | ✔️  |
 | getBillingTypes   | [Get a list of billing types](https://developer.allegro.pl/documentation/#operation/getBillingTypes)     | ✔️  |

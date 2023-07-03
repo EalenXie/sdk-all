@@ -48,7 +48,7 @@ class PublicClientTest {
 
 #### 直发服务  [DirectClient](https://github.com/EalenXie/sdk-all/blob/main/fop-sdk/src/main/java/io/github/ealenxie/fop/DirectClient.java) 已支持的接口列表
 
-| 接口名               | 方法                      | 官方文档地址                                                                                        | 状态  |
+| 接口名               | 🏷️方法名                  | 官方文档地址                                                                                        | 状态  |
 |:------------------|:------------------------|:----------------------------------------------------------------------------------------------|:----|
 | 创建直发委托单           | createXmsOrder          | [ds.xms.order.create](http://open.4px.com/apiInfo/apiDetail?itemId=2&mainId=96)               | ✔️  |
 | 查询直发委托单           | getXmsOrder             | [ds.xms.order.get](http://open.4px.com/apiInfo/apiDetail?itemId=2&mainId=98)                  | ✔️  |
@@ -88,7 +88,7 @@ class PublicClientTest {
 
 #### 订单履约服务 [FulfillmentClient](https://github.com/EalenXie/sdk-all/blob/main/fop-sdk/src/main/java/io/github/ealenxie/fop/FulfillmentClient.java) 已支持的接口列表
 
-| 接口名            | 方法                | 官方文档地址                                                                                        | 状态  |
+| 接口名            | 🏷️方法名            | 官方文档地址                                                                                        | 状态  |
 |:---------------|:------------------|:----------------------------------------------------------------------------------------------|:----|
 | 创建SKU          | skuCreate         | [fu.wms.sku.newcreate](http://open.4px.com/apiInfo/apiDetail?itemId=1&mainId=106)             | ✔️  |
 | 创建入库委托         | inboundCreate     | [fu.wms.inbound.create](http://open.4px.com/apiInfo/apiDetail?itemId=1&mainId=107)            | ✔️  |
@@ -117,7 +117,7 @@ class PublicClientTest {
 
 #### 转运服务 [TransferClient](https://github.com/EalenXie/sdk-all/blob/main/fop-sdk/src/main/java/io/github/ealenxie/fop/TransferClient.java) 已支持的接口列表
 
-| 接口名          | 方法                       | 官方文档地址                                                                                         | 状态  |
+| 接口名          | 🏷️方法名                   | 官方文档地址                                                                                         | 状态  |
 |:-------------|:-------------------------|:-----------------------------------------------------------------------------------------------|:----|
 | 创建集货入库委托     | inboundCreate            | [cs.trs.inbound.create](http://open.4px.com/apiInfo/apiDetail?itemId=3&mainId=48)              | ✔️  |
 | 创建集运出库委托     | outboundCreate           | [cs.trs.outbound.create](http://open.4px.com/apiInfo/apiDetail?itemId=3&mainId=49)             | ✔️  |
@@ -134,7 +134,7 @@ class PublicClientTest {
 
 #### 退件服务  [GrsClient](https://github.com/EalenXie/sdk-all/blob/main/fop-sdk/src/main/java/io/github/ealenxie/fop/GrsClient.java) 已支持的接口列表
 
-| 接口名       | 方法            | 官方文档地址                                                                             | 状态  |
+| 接口名       | 🏷️方法名        | 官方文档地址                                                                             | 状态  |
 |:----------|:--------------|:-----------------------------------------------------------------------------------|:----|
 | 批量查询退货单信息 | rmaInfoList   | [re.grs.rmainfo.list](http://open.4px.com/apiInfo/apiDetail?itemId=4&mainId=138)   | ✔️  |
 | 查询退货单信息   | rmaInfoGet    | [re.grs.rmainfo.get](http://open.4px.com/apiInfo/apiDetail?itemId=4&mainId=139)    | ✔️  |
@@ -143,14 +143,14 @@ class PublicClientTest {
 
 #### 末端网络服务 [PdsClient](https://github.com/EalenXie/sdk-all/blob/main/fop-sdk/src/main/java/io/github/ealenxie/fop/PdsClient.java) 已支持的接口列表
 
-| 接口名      | 方法             | 官方文档地址                                                                           | 状态  |
+| 接口名      | 🏷️方法名         | 官方文档地址                                                                           | 状态  |
 |:---------|:---------------|:---------------------------------------------------------------------------------|:----|
 | 末端派送下单   | pdsOrderCreate | [lm.pds.order.create](http://open.4px.com/apiInfo/apiDetail?itemId=5&mainId=179) | ✔️  |
 | 末端派送订单取消 | pdsOrderCancel | [lm.pds.order.cancel](http://open.4px.com/apiInfo/apiDetail?itemId=5&mainId=180) | ✔️  |
 
 #### 轨迹服务 [TrackClient](https://github.com/EalenXie/sdk-all/blob/main/fop-sdk/src/main/java/io/github/ealenxie/fop/TrackClient.java) 已支持的接口列表
 
-| 接口名           | 方法               | 官方文档地址                                                                                       | 状态  |
+| 接口名           | 🏷️方法名           | 官方文档地址                                                                                       | 状态  |
 |:--------------|:-----------------|:---------------------------------------------------------------------------------------------|:----|
 | 物流轨迹查询        | getTrackingOrder | [tr.order.tracking.get](http://open.4px.com/apiInfo/apiDetail?itemId=6&mainId=25)            | ✔️  |
 | 添加轨迹数据        | createTrack      | [com.track.track.create](http://open.4px.com/apiInfo/apiDetail?itemId=6&mainId=170)          | ✔️  |
@@ -159,7 +159,7 @@ class PublicClientTest {
 
 #### 公共服务 [PublicClient](https://github.com/EalenXie/sdk-all/blob/main/fop-sdk/src/main/java/io/github/ealenxie/fop/PublicClient.java) 已支持的接口列表
 
-| 接口名       | 方法                   | 官方文档地址                                                                                              | 状态  |
+| 接口名       | 🏷️方法名               | 官方文档地址                                                                                              | 状态  |
 |:----------|:---------------------|:----------------------------------------------------------------------------------------------------|:----|
 | 创建申报产品    | declareCreate        | [com.basis.declare.create](http://open.4px.com/apiInfo/apiDetail?itemId=8&mainId=121)               | ✔️  |
 | 批量查询申报产品  | declareList          | [com.basis.declare.getlist](http://open.4px.com/apiInfo/apiDetail?itemId=8&mainId=122)              | ✔️  |
