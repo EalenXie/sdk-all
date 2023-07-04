@@ -29,10 +29,9 @@ import java.util.Collections;
  */
 public abstract class WinitClient {
 
-
     private final ObjectMapper objectMapper;
-
     private final RestOperations restOperations;
+    private final WinitConfig winitConfig;
     /**
      * 是否沙箱环境
      */
@@ -46,24 +45,18 @@ public abstract class WinitClient {
      */
     protected static final String HOST = "https://openapi.winit.com.cn/openapi/service";
 
-    protected WinitClient() {
-        this(new RestTemplate());
+    protected WinitClient(WinitConfig winitConfig) {
+        this(winitConfig, new RestTemplate());
     }
 
-    protected WinitClient(RestOperations restOperations) {
+    protected WinitClient(WinitConfig winitConfig, RestOperations restOperations) {
+        this.winitConfig = winitConfig;
         this.objectMapper = new ObjectMapper();
         this.objectMapper.setConfig(this.objectMapper.getSerializationConfig().with(MapperFeature.SORT_PROPERTIES_ALPHABETICALLY));
         this.objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
         this.restOperations = restOperations;
     }
 
-    public ObjectMapper getObjectMapper() {
-        return objectMapper;
-    }
-
-    public RestOperations getRestOperations() {
-        return restOperations;
-    }
 
     public boolean isSandBox() {
         return sandBox;
@@ -90,15 +83,17 @@ public abstract class WinitClient {
         }
     }
 
+
     /**
-     * 构建必要参数
+     * 构建万邑通请求参数
      *
-     * @param action 方法action
+     * @param action 行为
+     * @param data   请求的data数据
      */
-    public RequireArgs getRequireArgs(WinitConfig winitConfig, String action) {
+    protected WinitRequest<Object> getRequest(String action, Object data) {
         RequireArgs requireArgs = new RequireArgs(action);
         BeanUtils.copyProperties(winitConfig, requireArgs);
-        return requireArgs;
+        return getRequest(requireArgs, data);
     }
 
     /**
@@ -107,7 +102,7 @@ public abstract class WinitClient {
      * @param require 必要请求参数
      * @param data    请求的data数据
      */
-    public WinitRequest<Object> getRequest(RequireArgs require, Object data) {
+    protected WinitRequest<Object> getRequest(RequireArgs require, Object data) {
         WinitRequest<Object> request = new WinitRequest<>(require.getAction(), require.getAppKey(), require.getClientId(), require.getPlatform());
         request.setData(data);
         try {
@@ -125,19 +120,18 @@ public abstract class WinitClient {
     }
 
     /**
-     * 调用万邑通接口请求
+     * POST 调用万邑通接口请求
      *
-     * @param require      系统级别必要请求参数
+     * @param action       系统级别必要请求参数
      * @param data         请求的data数据
-     * @param method       请求Method
      * @param responseType 响应类型
      */
-    public <R, D> R callWinit(RequireArgs require, D data, HttpMethod method, ParameterizedTypeReference<R> responseType) {
+    protected <R, D> R postWinit(String action, D data, ParameterizedTypeReference<R> responseType) {
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(String.format("%s", sandBox ? HOST_SANDBOX : HOST));
         URI uri = builder.build().encode().toUri();
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
-        return restOperations.exchange(uri, method, new HttpEntity<>(getRequest(require, data), headers), responseType).getBody();
+        return restOperations.exchange(uri, HttpMethod.POST, new HttpEntity<>(getRequest(action, data), headers), responseType).getBody();
     }
 }

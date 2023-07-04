@@ -7,7 +7,7 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.deser.ContextualDeserializer;
-import io.github.ealenxie.winit.oswh.inventory.vo.WarehouseStorage;
+import io.github.ealenxie.winit.oswh.WarehouseStorage;
 
 import java.io.IOException;
 import java.util.Collections;
