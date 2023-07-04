@@ -264,7 +264,7 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 | getContact    | [Get contact details](https://developer.allegro.pl/documentation/#operation/getContactUsingGET)            | ✔️  |
 | modifyContact | [Modify contact details](https://developer.allegro.pl/documentation/#operation/modifyContactUsingPUT)      | ✔️  |
 
-### FULFILLMENT
+### ONE FULFILLMENT
 
 #### Advance Ship Notices
 
@@ -338,6 +338,13 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 | uploadAttachment         | [Upload attachment binary data](https://developer.allegro.pl/documentation/#operation/uploadAttachmentPUT)          | ✔️  |
 | downloadAttachment       | [Download attachment](https://developer.allegro.pl/documentation/#operation/downloadAttachmentGET)                  | ✔️  |
 
+#### Billing
+
+| 🏷️方法名            | 📚 官方文档地址                                                                                                | 状态  |
+|:------------------|:---------------------------------------------------------------------------------------------------------|:----|
+| getBillingEntries | [Get a list of billing entries](https://developer.allegro.pl/documentation/#operation/getBillingEntries) | ✔️  |
+| getBillingTypes   | [Get a list of billing types](https://developer.allegro.pl/documentation/#operation/getBillingTypes)     | ✔️  |
+
 #### Auctions and Bidding
 
 | 🏷️方法名   | 📚 官方文档地址                                                                                          | 状态  |
@@ -363,9 +370,3 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 |:-----------|:----------------------------------------------------------------------------------|:----|
 | getListing | [Search offers](https://developer.allegro.pl/documentation/#operation/getListing) | ✔️  |
 
-#### Billing
-
-| 🏷️方法名            | 📚 官方文档地址                                                                                                | 状态  |
-|:------------------|:---------------------------------------------------------------------------------------------------------|:----|
-| getBillingEntries | [Get a list of billing entries](https://developer.allegro.pl/documentation/#operation/getBillingEntries) | ✔️  |
-| getBillingTypes   | [Get a list of billing types](https://developer.allegro.pl/documentation/#operation/getBillingTypes)     | ✔️  |
