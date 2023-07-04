@@ -312,6 +312,14 @@ public abstract class AllegroClient {
         Set<Map.Entry<String, Object>> entries = args.entrySet();
         for (Map.Entry<String, Object> entry : entries) {
             Object value = entry.getValue();
+            if (value instanceof Map) {
+                @SuppressWarnings("unchecked")
+                Map<String, Object> valueMap = (Map<String, Object>) value;
+                Set<Map.Entry<String, Object>> entrySet = valueMap.entrySet();
+                for (Map.Entry<String, Object> e : entrySet) {
+                    builder.queryParam(e.getKey(), e.getValue());
+                }
+            }
             if (value instanceof Collection) {
                 builder.queryParam(entry.getKey(), (Collection<?>) value);
             } else {

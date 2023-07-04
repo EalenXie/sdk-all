@@ -44,7 +44,7 @@ class PublicClientTest {
 }
 ```
 
-### [4PX 服务列表](http://open.4px.com/apiInfo/api)
+### [4PX 服务列表](http://open.4px.com/apiInfo/api)  同 [菜鸟服务列表](https://open.gfn.cainiao.com/apiInfo/api)
 
 #### 直发服务  [DirectClient](https://github.com/EalenXie/sdk-all/blob/main/fop-sdk/src/main/java/io/github/ealenxie/fop/DirectClient.java) 已支持的接口列表
 
