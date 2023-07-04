@@ -37,7 +37,7 @@ For inquiries and support, please contact us at [ealenxie@outlook.com](mailto:ea
 
 本项目的源代码均基于官方接口文档编写。
 
-项目使用的markdown链接仅用于展示与相关信息相关的目的，不涉及商业行为。
+项目中使用的Markdown链接仅用于非商业用途，仅用于展示、描述或表达与之相关的信息。
 
 如果您认为本项目存在侵权内容，请及时告知，我们将积极删除相关内容。
 
