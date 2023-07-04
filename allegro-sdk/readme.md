@@ -20,6 +20,26 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 </dependency>
 ```
 
+#### 代码示例
+
+```java
+
+import io.github.ealenxie.allegro.AllegroOrdersClient;
+import io.github.ealenxie.allegro.order.EventStats;
+
+class AllegroOrdersClientTest {
+    @Test
+    void eventStats() {
+        String accessToken = "your accessToken";
+        AllegroOrdersClient allegroOrdersClient = new AllegroOrdersClient();
+        allegroOrdersClient.setSandBox(false);
+        EventStats eventStats = allegroOrdersClient.eventStats(accessToken);
+        System.out.println(eventStats);
+    }
+}
+
+```
+
 #### [AllegroClient](https://github.com/EalenXie/sdk-all/blob/main/allegro-sdk/src/main/java/io/github/ealenxie/allegro/AllegroClient.java) 已支持的接口列表
 
 | 🏷️方法名       | 📚 官方文档地址                                                                                                           | 状态  |
@@ -29,6 +49,9 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 | refreshToken | [Przedłużenie ważności tokena](https://developer.allegro.pl/auth/#przed%c5%82u%c5%bcenie-wa%c5%bcno%c5%9bci-tokena) | ✔️  |
 
 ### OFFER
+
+[AllegroOfferClient](https://github.com/EalenXie/sdk-all/blob/main/allegro-sdk/src/main/java/io/github/ealenxie/allegro/AllegroOfferClient.java)
+已支持的接口列表
 
 #### User's offer information
 
@@ -112,7 +135,6 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 | getPackageConfigurations | [Get configurations of packages](https://developer.allegro.pl/documentation/#operation/getClassifiedPackageConfigurationsForCategoryUsingGET) | ✔️  |
 | getPackageConfiguration  | [Get the configuration of a package](https://developer.allegro.pl/documentation/#operation/getClassifiedPackageConfigurationUsingGET)         | ✔️  |
 
-
 #### Pricing
 
 | 🏷️方法名              | 📚 官方文档地址                                                                                                                       | 状态  |
@@ -120,10 +142,9 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 | calculateFeePreview | [Calculate fee and commission for an offer](https://developer.allegro.pl/documentation/#operation/calculateFeePreviewUsingPOST) | ✔️  |
 | getOfferQuotes      | [Get the user's current offer quotes](https://developer.allegro.pl/documentation/#operation/offerQuotesPublicUsingGET)          | ✔️  |
 
-
 ### ORDERS
 
-[AllegroOrderClient](https://github.com/EalenXie/sdk-all/blob/main/allegro-sdk/src/main/java/io/github/ealenxie/allegro/AllegroOrdersClient.java)
+[AllegroOrdersClient](https://github.com/EalenXie/sdk-all/blob/main/allegro-sdk/src/main/java/io/github/ealenxie/allegro/AllegroOrdersClient.java)
 已支持的接口列表
 
 #### Order Management
@@ -206,6 +227,9 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 
 ### SALE SETTINGS
 
+[AllegroSaleSettingClient](https://github.com/EalenXie/sdk-all/blob/main/allegro-sdk/src/main/java/io/github/ealenxie/allegro/AllegroSaleSettingClient.java)
+已支持的接口列表
+
 #### After sale services
 
 | 🏷️方法名                  | 📚 官方文档地址                                                                                                                                           | 状态  |
@@ -286,6 +310,9 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 
 ### ONE FULFILLMENT
 
+[AllegroFulfillmentClient](https://github.com/EalenXie/sdk-all/blob/main/allegro-sdk/src/main/java/io/github/ealenxie/allegro/AllegroFulfillmentClient.java)
+已支持的接口列表
+
 #### Advance Ship Notices
 
 | 🏷️方法名                             | 📚 官方文档地址                                                                                                                                                    | 状态  |
@@ -321,6 +348,9 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 | getAvailableProducts | [Get list of available products](https://developer.allegro.pl/documentation/#operation/getAvailableProducts) | ✔️  |
 
 ### OTHERS
+
+[AllegroOthersClient](https://github.com/EalenXie/sdk-all/blob/main/allegro-sdk/src/main/java/io/github/ealenxie/allegro/AllegroOthersClient.java)
+已支持的接口列表
 
 #### Information about user
 
