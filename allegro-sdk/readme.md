@@ -200,6 +200,18 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 | createOrUpdateTranslations | [Create/Update translations for specified group and language](https://developer.allegro.pl/documentation/#operation/updateAdditionalServiceGroupTranslation) | ✔️  |
 | deleteTransaction          | [Delete a translation for a specified group and language](https://developer.allegro.pl/documentation/#operation/deleteAdditionalServiceGroupTranslation)     | ✔️  |
 
+#### Size tables
+
+| 🏷️方法名            | 📚 官方文档地址                                                                                                         | 状态  |
+|:------------------|-------------------------------------------------------------------------------------------------------------------|:----|
+| getTableUsing     | [Get a size table](https://developer.allegro.pl/documentation/#operation/getTableUsingGET)                        | ✔️  |
+| modifyTableUsing  | [Update a size table](https://developer.allegro.pl/documentation/#operation/modifyTableUsingPUT)                  | ✔️  |
+| getTablesUsing    | [Get the user's size tables](https://developer.allegro.pl/documentation/#operation/getTablesUsingGET)             | ✔️  |
+| createTablesUsing | [Create a size table](https://developer.allegro.pl/documentation/#operation/createTableUsingPOST)                 | ✔️  |
+| getTablesUsing    | [Get the size tables templates](https://developer.allegro.pl/documentation/#operation/getTablesTemplatesUsingGET) | ✔️  |
+
+
+
 ### FULFILLMENT
 
 #### Advance Ship Notices

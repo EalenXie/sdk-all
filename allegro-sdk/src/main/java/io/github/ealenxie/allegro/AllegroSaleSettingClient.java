@@ -16,6 +16,7 @@ public class AllegroSaleSettingClient extends AllegroClient {
     public static final String WARRANTIES = "/after-sales-service-conditions/warranties";
     public static final String SALE_SHIPPING_RATES = "/sale/shipping-rates";
     public static final String SALE_OFFER_ADDITIONAL_SERVICES_GROUPS = "/sale/offer-additional-services/groups";
+    public static final String SALE_SIZE_TABLES ="/sale/size-tables";
 
     public static final String FORMAT = "%s/%s";
 
@@ -27,6 +28,7 @@ public class AllegroSaleSettingClient extends AllegroClient {
         super(restOperations, mapper);
     }
 
+    /*------------------------------------ After sale services -----------------------------------------------------*/
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/getPublicSellerListingUsingGET_1">Get the user's return policies</a>
      */
@@ -125,7 +127,7 @@ public class AllegroSaleSettingClient extends AllegroClient {
         return exchangeAllegro(String.format(FORMAT, WARRANTIES, attachmentId), HttpMethod.PUT, accessToken, null, null, Attachment.class);
     }
 
-
+    /*------------------------------------ Delivery -----------------------------------------------------*/
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/getListOfShippingRatestUsingGET">Get the user's shipping rates</a>
      */
@@ -175,7 +177,7 @@ public class AllegroSaleSettingClient extends AllegroClient {
         return getAllegro("/sale/delivery-methods", accessToken, queryParams, DeliverMethodResponse.class);
     }
 
-
+    /*------------------------------------ Additional services -----------------------------------------------------*/
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/createAdditionalServicesGroupUsingPOST">Create additional services group</a>
      */
@@ -211,7 +213,7 @@ public class AllegroSaleSettingClient extends AllegroClient {
         return exchangeAllegro(String.format(FORMAT, SALE_OFFER_ADDITIONAL_SERVICES_GROUPS, groupId), HttpMethod.PUT, accessToken, null, payload, AdditionalServiceGroup.class);
     }
 
-
+    /*------------------------------------ Additional services translations -----------------------------------------------------*/
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/getAdditionalServiceGroupTranslations">Get translations for specified group</a>
      */
@@ -231,5 +233,41 @@ public class AllegroSaleSettingClient extends AllegroClient {
      */
     public void deleteTransaction(String accessToken, String groupId, String language) {
         exchangeAllegro(String.format("/sale/offer-additional-services/groups/%s/translations/%s", groupId, language), HttpMethod.DELETE, accessToken, null, null, Object.class);
+    }
+
+    /*------------------------------------ Size tables -----------------------------------------------------*/
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getTableUsingGET">Get a size table</a>
+     */
+    public TablePayload getTableUsing(String accessToken, String tableId) {
+        return getAllegro(String.format(FORMAT, SALE_SIZE_TABLES, tableId), accessToken, null, TablePayload.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/modifyTableUsingPUT">Update a size table</a>
+     */
+    public TablePayload modifyTableUsing(String accessToken, String tableId, TablePayload payload) {
+        return exchangeAllegro(String.format(FORMAT, SALE_SIZE_TABLES, tableId), HttpMethod.PUT, accessToken, null, payload, TablePayload.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getTablesUsingGET">Update a size table</a>
+     */
+    public TableResponse getTablesUsing(String accessToken, String tableId, TablePayload payload) {
+        return getAllegro(String.format(FORMAT, SALE_SIZE_TABLES, tableId), accessToken, null, TableResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/createTableUsingPOST">Create a size table</a>
+     */
+    public TableResponse createTablesUsing(String accessToken, TablePayload payload) {
+        return postAllegro(SALE_SIZE_TABLES, accessToken, payload, TableResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getTablesTemplatesUsingGET">Get the size tables templates</a>
+     */
+    public TemplatePayload getTablesTemplatesUsing(String accessToken) {
+        return getAllegro("/sale/size-tables-templates", accessToken, null, TemplatePayload.class);
     }
 }
