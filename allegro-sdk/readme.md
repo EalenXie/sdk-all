@@ -220,6 +220,15 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 | modifyPoint     | [Modify a point of service](https://developer.allegro.pl/documentation/#operation/modifyPOSUsingPUT)              | ✔️  |
 | deletePointById | [Delete a point of service](https://developer.allegro.pl/documentation/#operation/deletePOSUsingDELETE)           | ✔️  |
 
+#### Contacts
+
+| 🏷️方法名        | 📚 官方文档地址                                                                                                  | 状态  |
+|:--------------|------------------------------------------------------------------------------------------------------------|:----|
+| createContact | [Create a new contact](https://developer.allegro.pl/documentation/#operation/createContactUsingPOST)       | ✔️  |
+| getContacts   | [Get the user's contacts](https://developer.allegro.pl/documentation/#operation/getListOfContactsUsingGET) | ✔️  |
+| getContact    | [Get contact details](https://developer.allegro.pl/documentation/#operation/getContactUsingGET)            | ✔️  |
+| modifyContact | [Modify contact details](https://developer.allegro.pl/documentation/#operation/modifyContactUsingPUT)      | ✔️  |
+
 
 
 ### FULFILLMENT

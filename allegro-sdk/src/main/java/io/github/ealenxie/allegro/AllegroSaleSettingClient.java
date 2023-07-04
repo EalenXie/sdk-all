@@ -18,6 +18,7 @@ public class AllegroSaleSettingClient extends AllegroClient {
     public static final String SALE_OFFER_ADDITIONAL_SERVICES_GROUPS = "/sale/offer-additional-services/groups";
     public static final String SALE_SIZE_TABLES = "/sale/size-tables";
     public static final String POINTS_OF_SERVICE = "/points-of-service";
+    public static final String SALE_OFFER_CONTACTS = "/sale/offer-contacts";
 
     public static final String FORMAT = "%s/%s";
 
@@ -312,5 +313,35 @@ public class AllegroSaleSettingClient extends AllegroClient {
      */
     public DeletePointResponse deletePointById(String accessToken, String id) {
         return exchangeAllegro(String.format(FORMAT, POINTS_OF_SERVICE, id), HttpMethod.DELETE, accessToken, null, null, DeletePointResponse.class);
+    }
+
+    /*------------------------------------ Contacts -----------------------------------------------------*/
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/createContactUsingPOST">Create a new contact</a>
+     */
+    public ContactPayload createContact(String accessToken, ContactPayload payload) {
+        return postAllegro(SALE_OFFER_CONTACTS, accessToken, payload, ContactPayload.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getListOfContactsUsingGET">Get the user's contacts</a>
+     */
+    public ContactResponse getContacts(String accessToken) {
+        return getAllegro(SALE_OFFER_CONTACTS, accessToken, null, ContactResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getContactUsingGET">Get contact details</a>
+     */
+    public ContactPayload getContact(String accessToken, String id) {
+        return getAllegro(String.format(FORMAT, SALE_OFFER_CONTACTS, id), accessToken, null, ContactPayload.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/modifyContactUsingPUT">Modify contact details</a>
+     */
+    public ContactPayload modifyContact(String accessToken, String id, ContactPayload payload) {
+        return exchangeAllegro(String.format(FORMAT, SALE_OFFER_CONTACTS, id), HttpMethod.PUT, accessToken, null, payload, ContactPayload.class);
     }
 }
