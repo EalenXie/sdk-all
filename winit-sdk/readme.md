@@ -35,18 +35,13 @@ winit-sdk
 | printPackageLabel              | [打印包裹标签](https://developer.winit.com.cn/document/detail/id/31.html)      | ✔️  |
 | printProductLabel              | [打印商品条码标签](https://developer.winit.com.cn/document/detail/id/19.html)    | ✔️  |
 | confirmShipment                | [直发入库-确认发货](https://developer.winit.com.cn/document/detail/id/300.html)  | ✔️  |
-
-#### 海外仓API(OSWH) [OswhOutboundClient](https://github.com/EalenXie/sdk-all/blob/main/winit-sdk/src/main/java/io/github/ealenxie/winit/oswh/OswhOutboundClient.java) 已支持的接口列表
-
-| 方法                     | 官方文档地址                                                                | 状态  |
-|:-----------------------|:----------------------------------------------------------------------|:----|
-| createSubmittedOrder   | [创建出库单-新](https://developer.winit.com.cn/document/detail/id/247.html) | ✔️  |
-| calcDeliveryFee        | [预估派送运费-3](https://developer.winit.com.cn/document/detail/id/96.html) | ✔️  |
-| uploadLabel            | [出库上传附件](https://developer.winit.com.cn/document/detail/id/299.html)  | ✔️  |
-| queryOutboundOrderList | [查询出库单（列表）](https://developer.winit.com.cn/document/detail/id/54.htm) | ✔️  |
-| queryOutboundOrder     | [查询出库单](https://developer.winit.com.cn/document/detail/id/55.html)    | ✔️  |
-| queryOutboundOrderFee  | [查询派送费用](https://developer.winit.com.cn/document/detail/id/145.html)  | ✔️  |
-| cancelOutboundOrder    | [作废出库单](https://developer.winit.com.cn/document/detail/id/276.html)   | ✔️  |
+| createSubmittedOrder           | [创建出库单-新](https://developer.winit.com.cn/document/detail/id/247.html)    | ✔️  |
+| calcDeliveryFee                | [预估派送运费-3](https://developer.winit.com.cn/document/detail/id/96.html)    | ✔️  |
+| uploadLabel                    | [出库上传附件](https://developer.winit.com.cn/document/detail/id/299.html)     | ✔️  |
+| queryOutboundOrderList         | [查询出库单（列表）](https://developer.winit.com.cn/document/detail/id/54.htm)    | ✔️  |
+| queryOutboundOrder             | [查询出库单](https://developer.winit.com.cn/document/detail/id/55.html)       | ✔️  |
+| queryOutboundOrderFee          | [查询派送费用](https://developer.winit.com.cn/document/detail/id/145.html)     | ✔️  |
+| cancelOutboundOrder            | [作废出库单](https://developer.winit.com.cn/document/detail/id/276.html)      | ✔️  |
 
 #### 海外仓API(LAM) [LamClient](https://github.com/EalenXie/sdk-all/blob/main/winit-sdk/src/main/java/io/github/ealenxie/winit/lam/LamClient.java) 已支持的接口列表
 
