@@ -48,7 +48,7 @@ class InvoiceClientTest {
 
 #### [InvoiceClient](https://github.com/EalenXie/sdk-all/blob/main/aliyun-ocr-sdk/src/main/java/io/github/ealenxie/aliyun/ocr/InvoiceClient.java) 已支持的接口列表
 
-| 🏷️方法名                           | 官方文档地址                                                             | 状态  |
+| 🏷️方法名                           | 📚 官方文档地址                                                          | 状态  |
 |:---------------------------------|:-------------------------------------------------------------------|:----|
 | recognizeMixedInvoices           | [混贴发票识别](https://help.aliyun.com/document_detail/442266.htm)       | ✔️  |
 | recognizeInvoice                 | [增值税发票识别](https://help.aliyun.com/document_detail/442267.htm)      | ✔️  |
@@ -76,7 +76,7 @@ class InvoiceClientTest {
 
 #### [CertificateClient](https://github.com/EalenXie/sdk-all/blob/main/aliyun-ocr-sdk/src/main/java/io/github/ealenxie/aliyun/ocr/CertificateClient.java) 已支持的接口列表
 
-| 🏷️方法名                               | 官方文档地址                                                               | 状态  |
+| 🏷️方法名                               | 📚 官方文档地址                                                            | 状态  |
 |:-------------------------------------|:---------------------------------------------------------------------|:----|
 | recognizeIdCard                      | [身份证识别](https://help.aliyun.com/document_detail/442255.htm)          | ✔️  |
 | recognizePassport                    | [护照识别](https://help.aliyun.com/document_detail/442256.htm)           | ✔️  |
@@ -93,7 +93,7 @@ class InvoiceClientTest {
 
 #### [QualificationClient](https://github.com/EalenXie/sdk-all/blob/main/aliyun-ocr-sdk/src/main/java/io/github/ealenxie/aliyun/ocr/QualificationClient.java) 已支持的接口列表
 
-| 🏷️方法名                                  | 官方文档地址                                                                 | 状态  |
+| 🏷️方法名                                  | 📚 官方文档地址                                                              | 状态  |
 |:----------------------------------------|:-----------------------------------------------------------------------|:----|
 | recognizeBusinessLicense                | [营业执照识别](https://help.aliyun.com/document_detail/442288.htm)           | ✔️  |
 | recognizeBankAccountLicense             | [银行开户许可证识别](https://help.aliyun.com/document_detail/442289.htm)        | ✔️  |
@@ -110,7 +110,7 @@ class InvoiceClientTest {
 
 #### [CarClient](https://github.com/EalenXie/sdk-all/blob/main/aliyun-ocr-sdk/src/main/java/io/github/ealenxie/aliyun/ocr/CarClient.java) 已支持的接口列表
 
-| 🏷️方法名                        | 官方文档地址                                                           | 状态  |
+| 🏷️方法名                        | 📚 官方文档地址                                                        | 状态  |
 |:------------------------------|:-----------------------------------------------------------------|:----|
 | recognizeVehicleLicense       | [行驶证识别](https://help.aliyun.com/document_detail/442298.htm)      | ✔️  |
 | recognizeDrivingLicense       | [驾驶证识别](https://help.aliyun.com/document_detail/442299.htm)      | ✔️  |
@@ -124,7 +124,7 @@ class InvoiceClientTest {
 
 #### [InvoiceVerifyClient](https://github.com/EalenXie/sdk-all/blob/main/aliyun-ocr-sdk/src/main/java/io/github/ealenxie/aliyun/ocr/InvoiceVerifyClient.java) 已支持的接口列表
 
-| 🏷️方法名                | 官方文档地址                                                       | 状态  |
+| 🏷️方法名                | 📚 官方文档地址                                                    | 状态  |
 |:----------------------|:-------------------------------------------------------------|:----|
 | verifyBusinessLicense | [营业执照核验](https://help.aliyun.com/document_detail/465204.htm) | ✔️  |
 | verifyVATInvoice      | [发票核验](https://help.aliyun.com/document_detail/465205.htm)   | ✔️  |

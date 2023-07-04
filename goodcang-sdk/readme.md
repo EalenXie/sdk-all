@@ -47,7 +47,7 @@ class GoodCangClientTest {
 
 #### 基础资料的获取
 
-| 🔖方法名             | 官方文档地址                                                                      | 状态  |
+| 🏷️方法名            | 📚 官方文档地址                                                                   | 状态  |
 |:------------------|:----------------------------------------------------------------------------|:----|
 | getCountry        | [获取国家/地区列表](https://open.goodcang.com/docs_api/base_data/get_country)       | ✔️  |
 | getWarehouse      | [获取仓库信息](https://open.goodcang.com/docs_api/base_data/get_warehouse)        | ✔️  |
@@ -60,7 +60,7 @@ class GoodCangClientTest {
 
 #### 通用工具
 
-| 🔖方法名                   | 官方文档地址                                                                          | 状态  |
+| 🏷️方法名                  | 📚 官方文档地址                                                                       | 状态  |
 |:------------------------|:--------------------------------------------------------------------------------|:----|
 | uploadAttachment        | [上传附件](https://open.goodcang.com/docs_api/base_data/upload_attachment)          | ✔️  |
 | getCalculateDeliveryFee | [运费试算](https://open.goodcang.com/docs_api/inventory/get_calculate_delivery_fee) | ✔️  |
@@ -70,7 +70,7 @@ class GoodCangClientTest {
 
 #### 商品管理
 
-| 🔖方法名                       | 官方文档地址                                                                                   | 状态  |
+| 🏷️方法名                      | 📚 官方文档地址                                                                                | 状态  |
 |:----------------------------|:-----------------------------------------------------------------------------------------|:----|
 | getCategory                 | [获取商品品类](https://open.goodcang.com/docs_api/product/get_category)                        | ✔️  |
 | getDeclareCommodityNameList | [获取建议中文申报品名](https://open.goodcang.com/docs_api/product/get_declare_commodity_name_list) | ✔️  |
@@ -87,7 +87,7 @@ class GoodCangClientTest {
 
 #### 商品维护
 
-| 🔖方法名               | 官方文档地址                                                                    | 状态  |
+| 🏷️方法名              | 📚 官方文档地址                                                                 | 状态  |
 |:--------------------|:--------------------------------------------------------------------------|:----|
 | createSerialNumber  | [新增序列号](https://open.goodcang.com/docs_api/product/create_serial_number)  | ✔️  |
 | discardSerialNumber | [废弃序列号](https://open.goodcang.com/docs_api/product/discard_serial_number) | ✔️  |
@@ -97,7 +97,7 @@ class GoodCangClientTest {
 
 #### 入库单管理
 
-| 🔖方法名                   | 官方文档地址                                                                                        | 状态  |
+| 🏷️方法名                  | 📚 官方文档地址                                                                                     | 状态  |
 |:------------------------|:----------------------------------------------------------------------------------------------|:----|
 | getVatList              | [进出口商列表](https://open.goodcang.com/docs_api/inbound_order/get_vat_list)                       | ✔️  |
 | getSmCodeTwcToWarehouse | [获取物流产品与目的仓中转仓](https://open.goodcang.com/docs_api/inbound_order/get_smcode_twc_to_warehouse) | ✔️  |
@@ -117,7 +117,7 @@ class GoodCangClientTest {
 
 #### 出库单管理
 
-| 🔖方法名                    | 官方文档地址                                                                          | 状态  |
+| 🏷️方法名                   | 📚 官方文档地址                                                                       | 状态  |
 |:-------------------------|:--------------------------------------------------------------------------------|:----|
 | createOrder              | [新建出库单](https://open.goodcang.com/docs_api/order/create_order)                  | ✔️  |
 | modifyOrder              | [修改出库单](https://open.goodcang.com/docs_api/order/modify_order)                  | ✔️  |
@@ -133,7 +133,7 @@ class GoodCangClientTest {
 
 #### 退货单管理
 
-| 🔖方法名               | 官方文档地址                                                                          | 状态  |
+| 🏷️方法名              | 📚 官方文档地址                                                                       | 状态  |
 |:--------------------|:--------------------------------------------------------------------------------|:----|
 | returnOrderCreate   | [创建退货单](https://open.goodcang.com/docs_api/return_order/create)                 | ✔️  |
 | returnOrderUpdate   | [修改退货单](https://open.goodcang.com/docs_api/return_order/update)                 | ✔️  |
@@ -151,7 +151,7 @@ class GoodCangClientTest {
 
 #### 计划单管理
 
-| 🔖方法名            | 官方文档地址                                                         | 状态  |
+| 🏷️方法名           | 📚 官方文档地址                                                      | 状态  |
 |:-----------------|:---------------------------------------------------------------|:----|
 | planOrderCreate  | [新建计划单](https://open.goodcang.com/docs_api/plan_order/create)  | ✔️  |
 | planOrderList    | [计划单列表](https://open.goodcang.com/docs_api/plan_order/list)    | ✔️  |
@@ -160,7 +160,7 @@ class GoodCangClientTest {
 
 #### 库存管理
 
-| 🔖方法名               | 官方文档地址                                                                       | 状态  |
+| 🏷️方法名              | 📚 官方文档地址                                                                    | 状态  |
 |:--------------------|:-----------------------------------------------------------------------------|:----|
 | getProductInventory | [获取库存](https://open.goodcang.com/docs_api/inventory/get_product_inventory)   | ✔️  |
 | getInventoryLog     | [获取库存动态列表](https://open.goodcang.com/docs_api/inventory/get_inventory_log)   | ✔️  |
@@ -171,7 +171,7 @@ class GoodCangClientTest {
 
 #### 查件单管理
 
-| 🔖方法名                      | 官方文档地址                                                                                | 状态  |
+| 🏷️方法名                     | 📚 官方文档地址                                                                             | 状态  |
 |:---------------------------|:--------------------------------------------------------------------------------------|:----|
 | logisticTicketList         | [获取查件列表](https://open.goodcang.com/docs_api/assistant/logistic_ticket_list)           | ✔️  |
 | logisticTicketTypeList     | [获取查件单类型列表](https://open.goodcang.com/docs_api/assistant/logistic_ticket_type_list)   | ✔️  |
@@ -185,7 +185,7 @@ class GoodCangClientTest {
 
 #### 账户管理
 
-| 🔖方法名                 | 官方文档地址                                                                        | 状态  |
+| 🏷️方法名                | 📚 官方文档地址                                                                     | 状态  |
 |:----------------------|:------------------------------------------------------------------------------|:----|
 | getWhInventoryStorage | [获取仓租信息](https://open.goodcang.com/docs_api/finance/get_wh_inventory_storage) | ✔️  |
 | currencyRateList      | [获取货币列表](https://open.goodcang.com/docs_api/finance/currency_rate_list)       | ✔️  |
@@ -193,7 +193,7 @@ class GoodCangClientTest {
 
 #### 费用流水
 
-| 🔖方法名                       | 官方文档地址                                                                               | 状态  |
+| 🏷️方法名                      | 📚 官方文档地址                                                                            | 状态  |
 |:----------------------------|:-------------------------------------------------------------------------------------|:----|
 | getWhInventoryStorageDetail | [获取仓租明细](https://open.goodcang.com/docs_api/finance/get_wh_inventory_storage_detail) | ✔️  |
 | costFlowList                | [获取费用流水](https://open.goodcang.com/docs_api/finance/cost_flow_list)                  | ✔️  |
@@ -201,7 +201,7 @@ class GoodCangClientTest {
 
 #### 账单
 
-| 🔖方法名         | 官方文档地址                                                              | 状态  |
+| 🏷️方法名        | 📚 官方文档地址                                                           | 状态  |
 |:--------------|:--------------------------------------------------------------------|:----|
 | billingList   | [获取账单列表](https://open.goodcang.com/docs_api/finance/billing_list)   | ✔️  |
 | billingExport | [下载账单文件](https://open.goodcang.com/docs_api/finance/billing_export) | ✔️  |
