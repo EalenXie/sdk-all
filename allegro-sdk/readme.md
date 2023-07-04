@@ -101,6 +101,26 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 | productChangeProposal    | [Propose changes in product](https://developer.allegro.pl/documentation/#operation/productChangeProposal)                                    | ✔️  |
 | getProductChangeProposal | [Get all data of the particular product changes proposal](https://developer.allegro.pl/documentation/#operation/getProductChangeProposal)    | ✔️  |
 
+#### Classifieds
+
+| 🏷️方法名                   | 📚 官方文档地址                                                                                                                                     | 状态  |
+|:-------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------|:----|
+| getSellerOffersStats     | [Get the seller's advertisements daily statistics](https://developer.allegro.pl/documentation/#operation/classifiedSellerOfferStatsGET)       | ✔️  |
+| getOffersStats           | [Get the advertisements daily statistics](https://developer.allegro.pl/documentation/#operation/classifiedOffersStatsGET)                     | ✔️  |
+| getClassifiedPackages    | [Get classified packages assigned to an offer](https://developer.allegro.pl/documentation/#operation/getClassifiedPackagesUsingGET)           | ✔️  |
+| assignClassifiedPackages | [Assign packages to a classified](https://developer.allegro.pl/documentation/#operation/assignClassifiedPackagesUsingPUT)                     | ✔️  |
+| getPackageConfigurations | [Get configurations of packages](https://developer.allegro.pl/documentation/#operation/getClassifiedPackageConfigurationsForCategoryUsingGET) | ✔️  |
+| getPackageConfiguration  | [Get the configuration of a package](https://developer.allegro.pl/documentation/#operation/getClassifiedPackageConfigurationUsingGET)         | ✔️  |
+
+
+#### Pricing
+
+| 🏷️方法名              | 📚 官方文档地址                                                                                                                       | 状态  |
+|:--------------------|:--------------------------------------------------------------------------------------------------------------------------------|:----|
+| calculateFeePreview | [Calculate fee and commission for an offer](https://developer.allegro.pl/documentation/#operation/calculateFeePreviewUsingPOST) | ✔️  |
+| getOfferQuotes      | [Get the user's current offer quotes](https://developer.allegro.pl/documentation/#operation/offerQuotesPublicUsingGET)          | ✔️  |
+
+
 ### ORDERS
 
 [AllegroOrderClient](https://github.com/EalenXie/sdk-all/blob/main/allegro-sdk/src/main/java/io/github/ealenxie/allegro/AllegroOrdersClient.java)

@@ -326,4 +326,60 @@ public class AllegroOfferClient extends AllegroClient {
         headers.set("Accept-Language", ObjectUtils.isEmpty(acceptLanguage) ? "en-US" : acceptLanguage);
         return exchangeAllegro(String.format("/sale/products/change-proposals/%s", changeProposalId), HttpMethod.GET, null, new HttpEntity<>(null, headers), ProductChangeProposalResponse.class);
     }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/classifiedSellerOfferStatsGET">Get the seller's advertisements daily statistics</a>
+     */
+    public SellerOffersStatsResponse getSellerOffersStats(String accessToken, DateQueryParams queryParams) {
+        return getAllegro("/sale/classified-offers-stats", accessToken, queryParams, SellerOffersStatsResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/classifiedOffersStatsGET">Get the advertisements daily statistics</a>
+     */
+    public OfferStatsResponse getOffersStats(String accessToken, OffersStatsQueryParams queryParams) {
+        return getAllegro("/sale/classified-offers-stats", accessToken, queryParams, OfferStatsResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getClassifiedPackagesUsingGET">Get classified packages assigned to an offer</a>
+     */
+    public AssignClassifiedPackageResponse getClassifiedPackages(String accessToken, String offerId) {
+        return getAllegro(String.format("/sale/offer-classifieds-packages/%s", offerId), accessToken, null, AssignClassifiedPackageResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/assignClassifiedPackagesUsingPUT">Assign packages to a classified</a>
+     */
+    public void assignClassifiedPackages(String accessToken, String offerId, AssignClassifiedPackagePayload payload) {
+        exchangeAllegro(String.format("/sale/offer-classifieds-packages/%s", offerId), HttpMethod.PUT, accessToken, null, payload, Object.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getClassifiedPackageConfigurationsForCategoryUsingGET">Get configurations of packages</a>
+     */
+    public PackageConfigurationResponse getPackageConfigurations(String accessToken, CategoryIdQueryParams queryParams) {
+        return getAllegro("/sale/classifieds-packages", accessToken, queryParams, PackageConfigurationResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getClassifiedPackageConfigurationUsingGET">Get the configuration of a package</a>
+     */
+    public PackageConfigurationPayload getPackageConfiguration(String accessToken, String packageId) {
+        return getAllegro(String.format("/sale/classifieds-packages/%s", packageId), accessToken, null, PackageConfigurationPayload.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/calculateFeePreviewUsingPOST">Calculate fee and commission for an offer</a>
+     */
+    public CalculateFeeResponse calculateFeePreview(String accessToken, CalculateFeePayload payload) {
+        return postAllegro("/pricing/offer-fee-preview", accessToken, payload, CalculateFeeResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/offerQuotesPublicUsingGET">Get the user's current offer quotes</a>
+     */
+    public QuotesPayload getOfferQuotes(String accessToken, OfferIdQueryParams queryParams) {
+        return postAllegro("/pricing/offer-quotes", accessToken, queryParams, QuotesPayload.class);
+    }
 }
