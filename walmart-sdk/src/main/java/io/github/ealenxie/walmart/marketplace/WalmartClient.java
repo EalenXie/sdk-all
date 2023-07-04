@@ -1,22 +1,27 @@
 package io.github.ealenxie.walmart.marketplace;
 
-import io.github.ealenxie.walmart.marketplace.vo.WalmartToken;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import io.github.ealenxie.walmart.marketplace.orders.WalmartToken;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
+import org.springframework.lang.Nullable;
 import org.springframework.web.client.RestOperations;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
-import java.util.Collections;
-import java.util.UUID;
+import java.util.*;
 
 /**
  * Created by EalenXie on 2022/3/16 14:02
  */
 public class WalmartClient {
 
+    private final ObjectMapper mapper;
     private final RestOperations restOperations;
     /**
      * Walmart Marketplace API Host地址 <a href="https://marketplace.walmartapis.com">https://marketplace.walmartapis.com</a>
@@ -29,7 +34,7 @@ public class WalmartClient {
     /**
      * 沙箱模式
      */
-    private boolean sandBoxMode = false;
+    private boolean sandBox = false;
 
     @SuppressWarnings("all")
     public static final String WM_SVC_NAME = "WM_SVC.NAME";
@@ -38,25 +43,35 @@ public class WalmartClient {
     @SuppressWarnings("all")
     public static final String WM_SEC_ACCESS_TOKEN = "WM_SEC.ACCESS_TOKEN";
 
+    private final String clientId;
 
-    public WalmartClient() {
-        this(new RestTemplate());
+    private final String clientSecret;
+
+    public WalmartClient(String clientId, String clientSecret) {
+        this(clientId, clientSecret, new ObjectMapper(), new RestTemplate());
     }
 
-    public WalmartClient(RestOperations restOperations) {
+    public WalmartClient(String clientId, String clientSecret, ObjectMapper mapper) {
+        this(clientId, clientSecret, mapper, new RestTemplate());
+    }
+
+    public WalmartClient(String clientId, String clientSecret, ObjectMapper mapper, RestOperations restOperations) {
+        this.mapper = mapper;
         this.restOperations = restOperations;
+        this.clientId = clientId;
+        this.clientSecret = clientSecret;
     }
 
     public RestOperations getRestOperations() {
         return restOperations;
     }
 
-    public boolean isSandBoxMode() {
-        return sandBoxMode;
+    public boolean isSandBox() {
+        return sandBox;
     }
 
     public void setSandBoxMode(boolean sandBoxMode) {
-        this.sandBoxMode = sandBoxMode;
+        this.sandBox = sandBoxMode;
     }
 
     /**
@@ -64,16 +79,17 @@ public class WalmartClient {
      *
      * @return 访问令牌
      */
-    public WalmartToken accessToken(String clientId, String clientSecret) {
-        HttpHeaders headers = getBasicHeaders(clientId, clientSecret);
+    public WalmartToken accessToken() {
+        HttpHeaders headers = getBasicHeaders();
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-        return getRestOperations().exchange(URI.create(String.format("%s/v3/token?grant_type=client_credentials", isSandBoxMode() ? SANDBOX_HOST : HOST)), HttpMethod.POST, new HttpEntity<>(null, headers), WalmartToken.class).getBody();
+        return getRestOperations().exchange(URI.create(String.format("%s/v3/token?grant_type=client_credentials", isSandBox() ? SANDBOX_HOST : HOST)), HttpMethod.POST, new HttpEntity<>(null, headers), WalmartToken.class).getBody();
     }
+
 
     /**
      * 获取公共的请求头
      */
-    public HttpHeaders getBasicHeaders(String clientId, String clientSecret) {
+    public HttpHeaders getBasicHeaders() {
         HttpHeaders headers = new HttpHeaders();
         headers.setBasicAuth(clientId, clientSecret);
         headers.set(WM_SVC_NAME, "Walmart Marketplace");
@@ -82,4 +98,204 @@ public class WalmartClient {
         return headers;
     }
 
+
+    /**
+     * GET 调用 API
+     *
+     * @param urlNotHost   不带host的请求url
+     * @param accessToken  访问令牌
+     * @param queryParams  url请求参数
+     * @param responseType 响应类型
+     */
+    protected <T> T get(String urlNotHost, String accessToken, @Nullable Object queryParams, Class<T> responseType) {
+        return exchange(urlNotHost, HttpMethod.GET, accessToken, queryParams, null, responseType);
+    }
+
+    /**
+     * GET 调用 API
+     *
+     * @param urlNotHost   不带host的请求url
+     * @param accessToken  访问令牌
+     * @param queryParams  url请求参数
+     * @param responseType 响应类型
+     */
+    protected <T> T get(String urlNotHost, String accessToken, @Nullable Object queryParams, ParameterizedTypeReference<T> responseType) {
+        return exchange(urlNotHost, HttpMethod.GET, accessToken, queryParams, null, responseType);
+    }
+
+    /**
+     * POST 调用 API
+     *
+     * @param urlNotHost   不带host的请求url
+     * @param accessToken  访问令牌
+     * @param payload      请求参数
+     * @param responseType 响应类型
+     */
+    protected <T> T post(String urlNotHost, String accessToken, @Nullable Object payload, Class<T> responseType) {
+        return exchange(urlNotHost, HttpMethod.POST, accessToken, null, payload, responseType);
+    }
+
+    /**
+     * POST 调用 API
+     *
+     * @param urlNotHost   不带host的请求url
+     * @param accessToken  访问令牌
+     * @param payload      请求参数
+     * @param responseType 响应类型
+     */
+    protected <T> T post(String urlNotHost, String accessToken, @Nullable Object payload, ParameterizedTypeReference<T> responseType) {
+        return exchange(urlNotHost, HttpMethod.POST, accessToken, null, payload, responseType);
+    }
+
+
+    /**
+     * 调用 API
+     *
+     * @param urlNotHost   不带host的请求url
+     * @param httpMethod   HttpMethod
+     * @param accessToken  访问令牌
+     * @param queryParams  url请求参数
+     * @param payload      请求body
+     * @param responseType 响应类型
+     * @return 响应结果对象
+     */
+    protected <T> T exchange(String urlNotHost, HttpMethod httpMethod, String accessToken, @Nullable Object queryParams, @Nullable Object payload, Class<T> responseType) {
+        return exchange(urlNotHost, httpMethod, queryParams, new HttpEntity<>(payload, getBearerHeaders(accessToken)), responseType);
+    }
+
+
+    /**
+     * 调用 API
+     *
+     * @param urlNotHost   不带host的请求url
+     * @param httpMethod   HttpMethod
+     * @param queryParams  url请求参数
+     * @param httpEntity   httpEntity
+     * @param responseType 响应类型
+     * @return 响应结果对象
+     */
+    protected <T> T exchange(String urlNotHost, HttpMethod httpMethod, @Nullable Object queryParams, HttpEntity<?> httpEntity, Class<T> responseType) {
+        return getRestOperations().exchange(buildUri(urlNotHost, queryParams), httpMethod, httpEntity, responseType).getBody();
+    }
+
+
+    /**
+     * 调用 API
+     *
+     * @param urlNotHost   不带host的请求url
+     * @param httpMethod   HttpMethod
+     * @param accessToken  访问令牌
+     * @param queryParams  url请求参数
+     * @param payload      请求body
+     * @param responseType 响应类型
+     * @return 响应结果对象
+     */
+    protected <T> T exchange(String urlNotHost, HttpMethod httpMethod, String accessToken, @Nullable Object queryParams, @Nullable Object payload, ParameterizedTypeReference<T> responseType) {
+        return exchange(buildUri(urlNotHost, queryParams), httpMethod, new HttpEntity<>(payload, getBearerHeaders(accessToken)), responseType);
+    }
+
+    /**
+     * 调用 API
+     *
+     * @param urlNotHost   不带host的请求url
+     * @param httpMethod   HttpMethod
+     * @param queryParams  url请求参数
+     * @param httpEntity   httpEntity
+     * @param responseType 响应类型
+     * @return 响应结果对象
+     */
+    protected <T> T exchange(String urlNotHost, HttpMethod httpMethod, @Nullable Object queryParams, HttpEntity<?> httpEntity, ParameterizedTypeReference<T> responseType) {
+        return exchange(buildUri(urlNotHost, queryParams), httpMethod, httpEntity, responseType);
+    }
+
+    /**
+     * 调用 API
+     *
+     * @param uri          uri
+     * @param httpMethod   HttpMethod
+     * @param httpEntity   httpEntity
+     * @param responseType 响应类型
+     * @return 响应结果对象
+     */
+    protected <T> T exchange(URI uri, HttpMethod httpMethod, HttpEntity<?> httpEntity, Class<T> responseType) {
+        return getRestOperations().exchange(uri, httpMethod, httpEntity, responseType).getBody();
+    }
+
+
+    /**
+     * 调用 API
+     *
+     * @param uri          uri
+     * @param httpMethod   HttpMethod
+     * @param httpEntity   httpEntity
+     * @param responseType 响应类型
+     * @return 响应结果对象
+     */
+    protected <T> T exchange(URI uri, HttpMethod httpMethod, HttpEntity<?> httpEntity, ParameterizedTypeReference<T> responseType) {
+        return getRestOperations().exchange(uri, httpMethod, httpEntity, responseType).getBody();
+    }
+
+
+    /**
+     * 构建请求URI
+     *
+     * @param urlNotHost  不带host的请求url
+     * @param queryParams url请求参数
+     */
+    protected URI buildUri(String urlNotHost, @Nullable Object queryParams) {
+        return buildUri(getApiHost(), urlNotHost, queryParams);
+    }
+
+    protected String getApiHost() {
+        return isSandBox() ? SANDBOX_HOST : HOST;
+    }
+
+    /**
+     * 构建请求URI
+     *
+     * @param urlNotHost  不带host的请求url
+     * @param queryParams url请求参数
+     */
+    protected URI buildUri(String host, String urlNotHost, @Nullable Object queryParams) {
+        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(String.format("%s%s", host, urlNotHost));
+        if (queryParams != null) {
+            if (queryParams instanceof Map) {
+                @SuppressWarnings("unchecked")
+                Map<String, Object> valueMap = (Map<String, Object>) queryParams;
+                Set<Map.Entry<String, Object>> entrySet = valueMap.entrySet();
+                for (Map.Entry<String, Object> e : entrySet) {
+                    builder.queryParam(e.getKey(), e.getValue());
+                }
+            } else if (queryParams instanceof String) {
+                builder = UriComponentsBuilder.fromHttpUrl(String.format("%s%s?%s", host, urlNotHost, queryParams));
+            } else {
+                builderQueryParam(builder, mapper.convertValue(queryParams, new TypeReference<Map<String, Object>>() {
+                }));
+            }
+        }
+        return builder.build().encode().toUri();
+    }
+
+
+    /**
+     * 获取公共的请求头
+     */
+    public HttpHeaders getBearerHeaders(String accessToken) {
+        HttpHeaders headers = getBasicHeaders();
+        headers.set(WM_SEC_ACCESS_TOKEN, accessToken);
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        return headers;
+    }
+
+    private void builderQueryParam(UriComponentsBuilder builder, Map<String, Object> args) {
+        Set<Map.Entry<String, Object>> entries = args.entrySet();
+        for (Map.Entry<String, Object> entry : entries) {
+            Object value = entry.getValue();
+            if (value instanceof Collection) {
+                builder.queryParam(entry.getKey(), (Collection<?>) value);
+            } else {
+                builder.queryParam(entry.getKey(), value);
+            }
+        }
+    }
 }
