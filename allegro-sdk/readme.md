@@ -90,6 +90,17 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 | createOfferAttachment | [Create an offer attachment](https://developer.allegro.pl/documentation/#operation/createOfferAttachmentUsingPOST) | ✔️  |
 | uploadOfferAttachment | [Upload an offer attachment](https://developer.allegro.pl/documentation/#operation/uploadOfferAttachmentUsingPUT)  | ✔️  |
 
+#### Products
+
+| 🏷️方法名                   | 📚 官方文档地址                                                                                                                                    | 状态  |
+|:-------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------|:----|
+| getProductParameters     | [Get product parameters available in given category](https://developer.allegro.pl/documentation/#operation/getFlatProductParametersUsingGET) | ✔️  |
+| getSaleProducts          | [Get search products results](https://developer.allegro.pl/documentation/#operation/getSaleProducts)                                         | ✔️  |
+| getSaleProduct           | [Get all data of the particular product](https://developer.allegro.pl/documentation/#operation/getSaleProduct)                               | ✔️  |
+| proposeSaleProduct       | [Propose a product](https://developer.allegro.pl/documentation/#operation/proposeSaleProduct)                                                | ✔️  |
+| productChangeProposal    | [Propose changes in product](https://developer.allegro.pl/documentation/#operation/productChangeProposal)                                    | ✔️  |
+| getProductChangeProposal | [Get all data of the particular product changes proposal](https://developer.allegro.pl/documentation/#operation/getProductChangeProposal)    | ✔️  |
+
 ### ORDERS
 
 [AllegroOrderClient](https://github.com/EalenXie/sdk-all/blob/main/allegro-sdk/src/main/java/io/github/ealenxie/allegro/AllegroOrdersClient.java)
@@ -228,8 +239,6 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 | getContacts   | [Get the user's contacts](https://developer.allegro.pl/documentation/#operation/getListOfContactsUsingGET) | ✔️  |
 | getContact    | [Get contact details](https://developer.allegro.pl/documentation/#operation/getContactUsingGET)            | ✔️  |
 | modifyContact | [Modify contact details](https://developer.allegro.pl/documentation/#operation/modifyContactUsingPUT)      | ✔️  |
-
-
 
 ### FULFILLMENT
 

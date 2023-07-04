@@ -6,6 +6,8 @@ import io.github.ealenxie.allegro.PageQueryParams;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Map;
+
 /**
  * @author TangShangCheng
  */
@@ -75,7 +77,5 @@ public class OffersQueryParams extends PageQueryParams {
      * You can filter and customize your search results to find exactly what you need by applying filters ids and their dictionary values to query according to the flowing pattern: id=value.
      */
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    @JsonProperty("Dynamic filters")
-    private Object filters;
-
+    private Map<String, Object> dynamicFilters;
 }

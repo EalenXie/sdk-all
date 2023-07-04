@@ -3,8 +3,10 @@ package io.github.ealenxie.allegro;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.ealenxie.allegro.offer.*;
 import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.lang.Nullable;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.client.RestOperations;
 
 /**
@@ -279,5 +281,49 @@ public class AllegroOfferClient extends AllegroClient {
      */
     public OfferAttachmentResponse uploadOfferAttachment(String accessToken, String attachmentId, byte[] file) {
         return exchangeAllegro(buildUri(getUploadHost(), String.format("/sale/offer-attachments/%s", attachmentId), null), HttpMethod.PUT, new HttpEntity<>(file, getBearerHeaders(accessToken)), OfferAttachmentResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getFlatProductParametersUsingGET">Get product parameters available in given category</a>
+     */
+    public ProductParametersResponse getProductParameters(String accessToken, String categoryId) {
+        return getAllegro(String.format("/sale/categories/%s/product-parameters", categoryId), accessToken, null, ProductParametersResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getSaleProducts">Get search products results</a>
+     */
+    public SaleProductsResponse getSaleProducts(String accessToken, SaleProductsQueryParams queryParams) {
+        return getAllegro("/sale/products", accessToken, queryParams, SaleProductsResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getSaleProduct">Get all data of the particular product</a>
+     */
+    public SaleProductResponse getSaleProduct(String accessToken, String productId, SaleProductQueryParams queryParams) {
+        return getAllegro(String.format("/sale/products/%s", productId), accessToken, queryParams, SaleProductResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/proposeSaleProduct">Propose a product</a>
+     */
+    public ProposeSaleProductResponse proposeSaleProduct(String accessToken, ProposeSaleProductPayload payload) {
+        return postAllegro("/sale/product-proposals", accessToken, payload, ProposeSaleProductResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/productChangeProposal">Propose changes in product</a>
+     */
+    public ProductChangeProposalResponse productChangeProposal(String accessToken, String productId, ProductChangeProposalPayload payload) {
+        return postAllegro(String.format("/sale/products/%s/change-proposals", productId), accessToken, payload, ProductChangeProposalResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getProductChangeProposal">Get all data of the particular product changes proposal</a>
+     */
+    public ProductChangeProposalResponse getProductChangeProposal(String accessToken, String changeProposalId, @Nullable String acceptLanguage) {
+        HttpHeaders headers = getBearerHeaders(accessToken);
+        headers.set("Accept-Language", ObjectUtils.isEmpty(acceptLanguage) ? "en-US" : acceptLanguage);
+        return exchangeAllegro(String.format("/sale/products/change-proposals/%s", changeProposalId), HttpMethod.GET, null, new HttpEntity<>(null, headers), ProductChangeProposalResponse.class);
     }
 }

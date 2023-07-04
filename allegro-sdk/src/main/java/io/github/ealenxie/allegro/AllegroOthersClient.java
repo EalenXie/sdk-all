@@ -4,7 +4,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.ealenxie.allegro.others.Thread;
 import io.github.ealenxie.allegro.others.*;
 import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
+import org.springframework.lang.Nullable;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.client.RestOperations;
 
 import java.util.List;
@@ -214,8 +218,10 @@ public class AllegroOthersClient extends AllegroClient {
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/getBillingTypes">获取费用类型</a>
      */
-    public List<BillingTypePayload> getBillingTypes(String accessToken, BillingTypeQueryParams queryParams) {
-        return getAllegro("/billing/billing-types", accessToken, queryParams, new ParameterizedTypeReference<List<BillingTypePayload>>() {
+    public List<BillingTypePayload> getBillingTypes(String accessToken, @Nullable String acceptLanguage) {
+        HttpHeaders headers = getBearerHeaders(accessToken);
+        headers.set("Accept-Language", ObjectUtils.isEmpty(acceptLanguage) ? "en-US" : acceptLanguage);
+        return exchangeAllegro("/billing/billing-types", HttpMethod.GET, null, new HttpEntity<>(null, headers), new ParameterizedTypeReference<List<BillingTypePayload>>() {
         });
     }
 }
