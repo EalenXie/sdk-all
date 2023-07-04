@@ -141,8 +141,8 @@ public abstract class AllegroClient {
      * @param queryParams  url请求参数
      * @param responseType 响应类型
      */
-    protected <T> T getAllegro(String urlNotHost, String accessToken, @Nullable Object queryParams, Class<T> responseType) {
-        return exchangeAllegro(urlNotHost, HttpMethod.GET, accessToken, queryParams, null, responseType);
+    protected <T> T get(String urlNotHost, String accessToken, @Nullable Object queryParams, Class<T> responseType) {
+        return exchange(urlNotHost, HttpMethod.GET, accessToken, queryParams, null, responseType);
     }
 
     /**
@@ -153,8 +153,8 @@ public abstract class AllegroClient {
      * @param queryParams  url请求参数
      * @param responseType 响应类型
      */
-    protected <T> T getAllegro(String urlNotHost, String accessToken, @Nullable Object queryParams, ParameterizedTypeReference<T> responseType) {
-        return exchangeAllegro(urlNotHost, HttpMethod.GET, accessToken, queryParams, null, responseType);
+    protected <T> T get(String urlNotHost, String accessToken, @Nullable Object queryParams, ParameterizedTypeReference<T> responseType) {
+        return exchange(urlNotHost, HttpMethod.GET, accessToken, queryParams, null, responseType);
     }
 
     /**
@@ -165,8 +165,8 @@ public abstract class AllegroClient {
      * @param payload      请求参数
      * @param responseType 响应类型
      */
-    protected <T> T postAllegro(String urlNotHost, String accessToken, @Nullable Object payload, Class<T> responseType) {
-        return exchangeAllegro(urlNotHost, HttpMethod.POST, accessToken, null, payload, responseType);
+    protected <T> T post(String urlNotHost, String accessToken, @Nullable Object payload, Class<T> responseType) {
+        return exchange(urlNotHost, HttpMethod.POST, accessToken, null, payload, responseType);
     }
 
     /**
@@ -177,8 +177,8 @@ public abstract class AllegroClient {
      * @param payload      请求参数
      * @param responseType 响应类型
      */
-    protected <T> T postAllegro(String urlNotHost, String accessToken, @Nullable Object payload, ParameterizedTypeReference<T> responseType) {
-        return exchangeAllegro(urlNotHost, HttpMethod.POST, accessToken, null, payload, responseType);
+    protected <T> T post(String urlNotHost, String accessToken, @Nullable Object payload, ParameterizedTypeReference<T> responseType) {
+        return exchange(urlNotHost, HttpMethod.POST, accessToken, null, payload, responseType);
     }
 
 
@@ -193,8 +193,8 @@ public abstract class AllegroClient {
      * @param responseType 响应类型
      * @return 响应结果对象
      */
-    protected <T> T exchangeAllegro(String urlNotHost, HttpMethod httpMethod, String accessToken, @Nullable Object queryParams, @Nullable Object payload, Class<T> responseType) {
-        return exchangeAllegro(urlNotHost, httpMethod, queryParams, new HttpEntity<>(payload, getBearerHeaders(accessToken)), responseType);
+    protected <T> T exchange(String urlNotHost, HttpMethod httpMethod, String accessToken, @Nullable Object queryParams, @Nullable Object payload, Class<T> responseType) {
+        return exchange(urlNotHost, httpMethod, queryParams, new HttpEntity<>(payload, getBearerHeaders(accessToken)), responseType);
     }
 
 
@@ -208,7 +208,7 @@ public abstract class AllegroClient {
      * @param responseType 响应类型
      * @return 响应结果对象
      */
-    protected <T> T exchangeAllegro(String urlNotHost, HttpMethod httpMethod, @Nullable Object queryParams, HttpEntity<?> httpEntity, Class<T> responseType) {
+    protected <T> T exchange(String urlNotHost, HttpMethod httpMethod, @Nullable Object queryParams, HttpEntity<?> httpEntity, Class<T> responseType) {
         return getRestOperations().exchange(buildUri(urlNotHost, queryParams), httpMethod, httpEntity, responseType).getBody();
     }
 
@@ -224,8 +224,8 @@ public abstract class AllegroClient {
      * @param responseType 响应类型
      * @return 响应结果对象
      */
-    protected <T> T exchangeAllegro(String urlNotHost, HttpMethod httpMethod, String accessToken, @Nullable Object queryParams, @Nullable Object payload, ParameterizedTypeReference<T> responseType) {
-        return exchangeAllegro(buildUri(urlNotHost, queryParams), httpMethod, new HttpEntity<>(payload, getBearerHeaders(accessToken)), responseType);
+    protected <T> T exchange(String urlNotHost, HttpMethod httpMethod, String accessToken, @Nullable Object queryParams, @Nullable Object payload, ParameterizedTypeReference<T> responseType) {
+        return exchange(buildUri(urlNotHost, queryParams), httpMethod, new HttpEntity<>(payload, getBearerHeaders(accessToken)), responseType);
     }
 
     /**
@@ -238,8 +238,8 @@ public abstract class AllegroClient {
      * @param responseType 响应类型
      * @return 响应结果对象
      */
-    protected <T> T exchangeAllegro(String urlNotHost, HttpMethod httpMethod, @Nullable Object queryParams, HttpEntity<?> httpEntity, ParameterizedTypeReference<T> responseType) {
-        return exchangeAllegro(buildUri(urlNotHost, queryParams), httpMethod, httpEntity, responseType);
+    protected <T> T exchange(String urlNotHost, HttpMethod httpMethod, @Nullable Object queryParams, HttpEntity<?> httpEntity, ParameterizedTypeReference<T> responseType) {
+        return exchange(buildUri(urlNotHost, queryParams), httpMethod, httpEntity, responseType);
     }
 
     /**
@@ -251,7 +251,7 @@ public abstract class AllegroClient {
      * @param responseType 响应类型
      * @return 响应结果对象
      */
-    protected <T> T exchangeAllegro(URI uri, HttpMethod httpMethod, HttpEntity<?> httpEntity, Class<T> responseType) {
+    protected <T> T exchange(URI uri, HttpMethod httpMethod, HttpEntity<?> httpEntity, Class<T> responseType) {
         return getRestOperations().exchange(uri, httpMethod, httpEntity, responseType).getBody();
     }
 
@@ -265,7 +265,7 @@ public abstract class AllegroClient {
      * @param responseType 响应类型
      * @return 响应结果对象
      */
-    protected <T> T exchangeAllegro(URI uri, HttpMethod httpMethod, HttpEntity<?> httpEntity, ParameterizedTypeReference<T> responseType) {
+    protected <T> T exchange(URI uri, HttpMethod httpMethod, HttpEntity<?> httpEntity, ParameterizedTypeReference<T> responseType) {
         return getRestOperations().exchange(uri, httpMethod, httpEntity, responseType).getBody();
     }
 
