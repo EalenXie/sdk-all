@@ -377,4 +377,67 @@ public class AllegroOrdersClient extends AllegroClient {
         return getAllegro(String.format("/parcel-management/parcel-cancel-commands/%s", commandId), accessToken, null, new ParameterizedTypeReference<IdInputPayload<ParcelIdPayload>>() {
         });
     }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getCustomerReturns">[BETA] Get customer returns by provided query parameters</a>
+     */
+    public CustomerResponse getCustomerReturns(String accessToken, CustomerQueryParams queryParams) {
+        return getAllegro("/order/customer-returns", accessToken, queryParams, CustomerResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getCustomerReturnById">[BETA] Get customer return by id</a>
+     */
+    public CustomerReturns getCustomerReturnById(String accessToken, String customerReturnId) {
+        return getAllegro(String.format("/order/customer-returns/%s", customerReturnId), accessToken, null, CustomerReturns.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/rejectCustomerReturnRefund">[BETA] Reject customer return refund</a>
+     */
+    public CustomerReturns rejectCustomerReturnRefund(String accessToken, String customerReturnId, Rejection payload) {
+        return postAllegro(String.format("/order/customer-returns/%s/rejection", customerReturnId), accessToken, payload, CustomerReturns.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getRefundApplication">Get a refund application details</a>
+     */
+    public RefundPayload getRefundApplication(String accessToken, String claimId) {
+        return getAllegro(String.format("/order/refund-claims/%s", claimId), accessToken, null, RefundPayload.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/cancelRefundApplication">Cancel a refund application</a>
+     */
+    public void cancelRefundApplication(String accessToken, String claimId) {
+        exchangeAllegro(String.format("/order/refund-claims/%s", claimId), HttpMethod.DELETE, accessToken, null, null, Object.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getRefundApplications">Get a list of refund applications</a>
+     */
+    public RefundResponse getRefundApplications(String accessToken, RefundQueryParams queryParams) {
+        return getAllegro("/order/refund-claims", accessToken, queryParams, RefundResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/createRefundApplication">Create a refund application</a>
+     */
+    public IdPayload createRefundApplication(String accessToken, CreateRefundPayload payload) {
+        return postAllegro("/order/refund-claims", accessToken, payload, IdPayload.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/doAddToBlackList">Add a users to the blacklist</a>
+     */
+    public BlackPayload addBlack(String accessToken, BlackPayload payload) {
+        return postAllegro("/sale/blacklisted-users", accessToken, payload, BlackPayload.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/doRemoveFromBlackList">Remove users from the blacklist</a>
+     */
+    public void removeBlack(String accessToken, String excludedUserId) {
+        exchangeAllegro(String.format("/sale/blacklisted-users/%s", excludedUserId), HttpMethod.DELETE, accessToken, null, null, Object.class);
+    }
 }
