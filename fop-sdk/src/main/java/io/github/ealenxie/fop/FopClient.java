@@ -21,8 +21,27 @@ import java.util.SortedMap;
  * Created by EalenXie on 2022/9/22 9:54
  */
 public abstract class FopClient {
+
+    /**
+     * 递四方 正式API地址
+     */
     private static final String FOP_URL = "https://open.4px.com";
+    /**
+     * 递四方 沙箱API地址
+     */
     private static final String TEST_FOP_URL = "https://open-test.4px.com";
+    /**
+     * 菜鸟驿站 正式API 地址
+     */
+    private static final String CAINIAO_URL = "https://open.gfn.cainiao.com";
+    /**
+     * 菜鸟驿站 沙箱API地址
+     */
+    private static final String TEST_CAINIAO_URL = "https://open-test.gfn.cainiao.com";
+    /**
+     * 默认4PX 初始化Client时 ,为否则是菜鸟接口
+     */
+    private final boolean isFop;
     /**
      * 应用接入申请的AppKey
      */
@@ -35,25 +54,20 @@ public abstract class FopClient {
     private final ObjectMapper objectMapper;
     private final HttpHeaders headers = getFopHeader();
 
-    protected FopClient(String appKey, String appSecret, RestOperations restOperations, ObjectMapper objectMapper) {
+    protected FopClient(String appKey, String appSecret, boolean isFop, RestOperations restOperations, ObjectMapper objectMapper) {
         this.appKey = appKey;
         this.appSecret = appSecret;
+        this.isFop = isFop;
         this.restOperations = restOperations;
         this.objectMapper = objectMapper;
     }
 
     protected FopClient(String appKey, String appSecret) {
-        this.appKey = appKey;
-        this.appSecret = appSecret;
-        this.restOperations = new RestTemplate();
-        this.objectMapper = new ObjectMapper();
+        this(appKey, appSecret, true, new RestTemplate(), new ObjectMapper());
     }
 
     protected FopClient(String appKey, String appSecret, RestOperations restOperations) {
-        this.appKey = appKey;
-        this.appSecret = appSecret;
-        this.restOperations = restOperations;
-        this.objectMapper = new ObjectMapper();
+        this(appKey, appSecret, true, restOperations, new ObjectMapper());
     }
 
     /**
@@ -101,6 +115,55 @@ public abstract class FopClient {
     }
 
     /**
+     * 获取授权地址
+     *
+     * @param redirectUri redirectUri
+     */
+    public String getAuthorizeUrl(String redirectUri) {
+        return String.format("%s/authorize/get?client_id=%s&response_type=code&redirect_uri=%s", getHost(), appKey, redirectUri);
+    }
+
+    /**
+     * <a href="https://open.gfn.cainiao.com/apiInfo/partner">授权码模式获取accessToken</a>
+     *
+     * @param code        授权码
+     * @param redirectUri 重定向地址
+     */
+    public AccessTokenResponse accessToken(String code, String redirectUri) {
+        LinkedMultiValueMap<String, String> tokenRequest = new LinkedMultiValueMap<>();
+        tokenRequest.add("client_id", appKey);
+        tokenRequest.add("client_secret", appSecret);
+        tokenRequest.add("redirect_uri", redirectUri);
+        tokenRequest.add("grant_type", "authorization_code");
+        tokenRequest.add("code", code);
+        return getToken(tokenRequest);
+    }
+
+    /**
+     * <a href="https://open.gfn.cainiao.com/apiInfo/partner">刷新令牌</a>
+     *
+     * @param refreshToken 授权码
+     * @param redirectUri  重定向地址
+     */
+    public AccessTokenResponse refreshToken(String refreshToken, String redirectUri) {
+        LinkedMultiValueMap<String, String> tokenRequest = new LinkedMultiValueMap<>();
+        tokenRequest.add("client_id", appKey);
+        tokenRequest.add("client_secret", appSecret);
+        tokenRequest.add("grant_type", "refreshToken");
+        tokenRequest.add("refresh_token", refreshToken);
+        tokenRequest.add("redirect_uri", redirectUri);
+        return getToken(tokenRequest);
+    }
+
+    private AccessTokenResponse getToken(LinkedMultiValueMap<String, String> tokenRequest) {
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(String.format("%s/accessToken/get", getHost()));
+        return restOperations.exchange(builder.build().encode().toUri(), HttpMethod.POST, new HttpEntity<>(tokenRequest, httpHeaders), AccessTokenResponse.class).getBody();
+    }
+
+
+    /**
      * 调用FOP接口
      * <a href="http://open.4px.com/apiInfo/partner">http://open.4px.com/apiInfo/introduce</a>
      *
@@ -118,7 +181,7 @@ public abstract class FopClient {
             } else {
                 bodyJson = payload == null ? "" : objectMapper.writeValueAsString(payload);
             }
-            UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(String.format("%s/router/api/service", isSandBox() ? TEST_FOP_URL : FOP_URL));
+            UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(String.format("%s/router/api/service", getHost()));
             SortedMap<String, String> sortedMap = objectMapper.convertValue(common, new TypeReference<SortedMap<String, String>>() {
             });
             LinkedMultiValueMap<String, String> queryParams = new LinkedMultiValueMap<>();
@@ -136,4 +199,15 @@ public abstract class FopClient {
         }
     }
 
+    public String getHost() {
+        return isFop ? getFopHost() : getCaiNiaoHost();
+    }
+
+    private String getFopHost() {
+        return isSandBox() ? TEST_FOP_URL : FOP_URL;
+    }
+
+    private String getCaiNiaoHost() {
+        return isSandBox() ? TEST_CAINIAO_URL : CAINIAO_URL;
+    }
 }
