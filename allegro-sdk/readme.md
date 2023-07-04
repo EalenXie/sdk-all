@@ -149,6 +149,30 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 | cancelParcel                  | [Cancel parcel](https://developer.allegro.pl/documentation/#operation/cancelParcel)                                      | ✔️  |
 | getParcelCancellationStatus   | [Get parcel cancellation status](https://developer.allegro.pl/documentation/#operation/getParcelCancellationStatus)      | ✔️  |
 
+#### Customer returns
+
+| 🏷️方法名                     | 📚 官方文档地址                                                                                                                            | 状态  |
+|:---------------------------|:-------------------------------------------------------------------------------------------------------------------------------------|:----|
+| getCustomerReturns         | [[BETA] Get customer returns by provided query parameters](https://developer.allegro.pl/documentation/#operation/getCustomerReturns) | ✔️  |
+| getCustomerReturnById      | [[BETA] Get customer return by id](https://developer.allegro.pl/documentation/#operation/getCustomerReturnById)                      | ✔️  |
+| rejectCustomerReturnRefund | [[BETA] Reject customer return refund](https://developer.allegro.pl/documentation/#operation/rejectCustomerReturnRefund)             | ✔️  |
+
+#### Commission refunds
+
+| 🏷️方法名                       | 📚 官方文档地址                                                                                                        | 状态  |
+|:-----------------------------|:-----------------------------------------------------------------------------------------------------------------|:----|
+| getAvailableDeliveryServices | [Get available delivery services](https://developer.allegro.pl/documentation/#operation/getRefundApplication)    | ✔️  |
+| cancelRefundApplication      | [Cancel a refund application](https://developer.allegro.pl/documentation/#operation/cancelRefundApplication)     | ✔️  |
+| getRefundApplications        | [Get a list of refund applications](https://developer.allegro.pl/documentation/#operation/getRefundApplications) | ✔️  |
+| createRefundApplication      | [Create a refund application](https://developer.allegro.pl/documentation/#operation/createRefundApplication)     | ✔️  |
+
+#### Blacklist management
+
+| 🏷️方法名      | 📚 官方文档地址                                                                                                      | 状态  |
+|:------------|:---------------------------------------------------------------------------------------------------------------|:----|
+| addBlack    | [Add a users to the blacklist](https://developer.allegro.pl/documentation/#operation/doAddToBlackList)         | ✔️  |
+| removeBlack | [Remove users from the blacklist](https://developer.allegro.pl/documentation/#operation/doRemoveFromBlackList) | ✔️  |
+
 ### SALE SETTINGS
 
 #### After sale services
