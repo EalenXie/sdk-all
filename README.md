@@ -33,6 +33,16 @@ Licensed under the [MIT](https://github.com/EalenXie/sdk-all/blob/main/LICENSE) 
 
 For inquiries and support, please contact us at [ealenxie@outlook.com](mailto:ealenxie@outlook.com)
 
+## Copyright
+
+本项目的源代码均基于官方接口文档编写。
+
+项目使用的markdown链接仅用于展示与相关信息相关的目的，不涉及商业行为。
+
+如果您认为本项目存在侵权内容，请及时告知，我们将积极删除相关内容。
+
+我们尊重知识产权，如有疑问或建议，请随时联系我们。
+
 ## SDK 列表
 
 | 📁SDK名                                                                                       | 📝描述                 | 📚 官方文档地址                                                                                                          |                       大概完善度                       |
