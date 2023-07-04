@@ -1,6 +1,8 @@
 walmart-sdk
 ======
 
+<img src="https://developer.walmart.com/image/asdp/logo-walmart-dev-portal.png" alt="walmart Logo" width="200">
+
 主要是封装了 跨境电商 [walmart 商户平台](https://developer.walmart.com/api/us/mp/orders) 接口
 
 ### 快速开始

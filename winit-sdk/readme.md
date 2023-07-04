@@ -1,6 +1,8 @@
 winit-sdk
 ======
 
+<img src="https://developer.winit.com.cn/static/images/api_logo.png" alt="winit Logo" width="200">
+
 主要是封装了 跨境电商 [万邑通 开放平台](https://developer.winit.com.cn/document/detail/id/14.html) 接口
 
 ### 快速开始
