@@ -202,13 +202,23 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 
 #### Size tables
 
-| 🏷️方法名            | 📚 官方文档地址                                                                                                         | 状态  |
-|:------------------|-------------------------------------------------------------------------------------------------------------------|:----|
-| getTableUsing     | [Get a size table](https://developer.allegro.pl/documentation/#operation/getTableUsingGET)                        | ✔️  |
-| modifyTableUsing  | [Update a size table](https://developer.allegro.pl/documentation/#operation/modifyTableUsingPUT)                  | ✔️  |
-| getTablesUsing    | [Get the user's size tables](https://developer.allegro.pl/documentation/#operation/getTablesUsingGET)             | ✔️  |
-| createTablesUsing | [Create a size table](https://developer.allegro.pl/documentation/#operation/createTableUsingPOST)                 | ✔️  |
-| getTablesUsing    | [Get the size tables templates](https://developer.allegro.pl/documentation/#operation/getTablesTemplatesUsingGET) | ✔️  |
+| 🏷️方法名                  | 📚 官方文档地址                                                                                                         | 状态  |
+|:------------------------|-------------------------------------------------------------------------------------------------------------------|:----|
+| getTableUsing           | [Get a size table](https://developer.allegro.pl/documentation/#operation/getTableUsingGET)                        | ✔️  |
+| modifyTableUsing        | [Update a size table](https://developer.allegro.pl/documentation/#operation/modifyTableUsingPUT)                  | ✔️  |
+| getTablesUsing          | [Get the user's size tables](https://developer.allegro.pl/documentation/#operation/getTablesUsingGET)             | ✔️  |
+| createTablesUsing       | [Create a size table](https://developer.allegro.pl/documentation/#operation/createTableUsingPOST)                 | ✔️  |
+| getTablesTemplatesUsing | [Get the size tables templates](https://developer.allegro.pl/documentation/#operation/getTablesTemplatesUsingGET) | ✔️  |
+
+#### Points of service
+
+| 🏷️方法名          | 📚 官方文档地址                                                                                                         | 状态  |
+|:----------------|-------------------------------------------------------------------------------------------------------------------|:----|
+| createPoint     | [Create a point of service](https://developer.allegro.pl/documentation/#operation/createPOSUsingPOST)             | ✔️  |
+| getPoints       | [Get the user's points of service](https://developer.allegro.pl/documentation/#operation/getPOSListUsingGET)      | ✔️  |
+| getPointById    | [Get the details of a point of service](https://developer.allegro.pl/documentation/#operation/getPOSDataUsingGET) | ✔️  |
+| modifyPoint     | [Modify a point of service](https://developer.allegro.pl/documentation/#operation/modifyPOSUsingPUT)              | ✔️  |
+| deletePointById | [Delete a point of service](https://developer.allegro.pl/documentation/#operation/deletePOSUsingDELETE)           | ✔️  |
 
 
 

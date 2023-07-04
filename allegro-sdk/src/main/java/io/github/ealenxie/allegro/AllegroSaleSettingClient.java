@@ -16,7 +16,8 @@ public class AllegroSaleSettingClient extends AllegroClient {
     public static final String WARRANTIES = "/after-sales-service-conditions/warranties";
     public static final String SALE_SHIPPING_RATES = "/sale/shipping-rates";
     public static final String SALE_OFFER_ADDITIONAL_SERVICES_GROUPS = "/sale/offer-additional-services/groups";
-    public static final String SALE_SIZE_TABLES ="/sale/size-tables";
+    public static final String SALE_SIZE_TABLES = "/sale/size-tables";
+    public static final String POINTS_OF_SERVICE = "/points-of-service";
 
     public static final String FORMAT = "%s/%s";
 
@@ -29,6 +30,7 @@ public class AllegroSaleSettingClient extends AllegroClient {
     }
 
     /*------------------------------------ After sale services -----------------------------------------------------*/
+
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/getPublicSellerListingUsingGET_1">Get the user's return policies</a>
      */
@@ -128,6 +130,7 @@ public class AllegroSaleSettingClient extends AllegroClient {
     }
 
     /*------------------------------------ Delivery -----------------------------------------------------*/
+
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/getListOfShippingRatestUsingGET">Get the user's shipping rates</a>
      */
@@ -178,6 +181,7 @@ public class AllegroSaleSettingClient extends AllegroClient {
     }
 
     /*------------------------------------ Additional services -----------------------------------------------------*/
+
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/createAdditionalServicesGroupUsingPOST">Create additional services group</a>
      */
@@ -214,6 +218,7 @@ public class AllegroSaleSettingClient extends AllegroClient {
     }
 
     /*------------------------------------ Additional services translations -----------------------------------------------------*/
+
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/getAdditionalServiceGroupTranslations">Get translations for specified group</a>
      */
@@ -236,6 +241,7 @@ public class AllegroSaleSettingClient extends AllegroClient {
     }
 
     /*------------------------------------ Size tables -----------------------------------------------------*/
+
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/getTableUsingGET">Get a size table</a>
      */
@@ -269,5 +275,42 @@ public class AllegroSaleSettingClient extends AllegroClient {
      */
     public TemplatePayload getTablesTemplatesUsing(String accessToken) {
         return getAllegro("/sale/size-tables-templates", accessToken, null, TemplatePayload.class);
+    }
+
+    /*------------------------------------ Points of service -----------------------------------------------------*/
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/createPOSUsingPOST">Create a point of service</a>
+     */
+    public PointPayload createPoint(String accessToken, PointPayload payload) {
+        return postAllegro(POINTS_OF_SERVICE, accessToken, payload, PointPayload.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getPOSListUsingGET">Get the user's points of service</a>
+     */
+    public PointResponse getPoints(String accessToken, SellerQueryParams queryParams) {
+        return getAllegro(POINTS_OF_SERVICE, accessToken, queryParams, PointResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getPOSDataUsingGET">Get the details of a point of service</a>
+     */
+    public PointPayload getPointById(String accessToken, String id) {
+        return getAllegro(String.format(FORMAT, POINTS_OF_SERVICE, id), accessToken, null, PointPayload.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/modifyPOSUsingPUT">Modify a point of service</a>
+     */
+    public PointPayload modifyPoint(String accessToken, String id, PointPayload payload) {
+        return exchangeAllegro(String.format(FORMAT, POINTS_OF_SERVICE, id), HttpMethod.PUT, accessToken, null, payload, PointPayload.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/deletePOSUsingDELETE">Delete a point of service</a>
+     */
+    public DeletePointResponse deletePointById(String accessToken, String id) {
+        return exchangeAllegro(String.format(FORMAT, POINTS_OF_SERVICE, id), HttpMethod.DELETE, accessToken, null, null, DeletePointResponse.class);
     }
 }
