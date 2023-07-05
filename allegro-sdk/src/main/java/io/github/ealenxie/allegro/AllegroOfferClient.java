@@ -478,6 +478,28 @@ public class AllegroOfferClient extends AllegroClient {
     }
 
     /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getTaxSettingsForCategory">Get all tax settings for category</a>
+     */
+    public TaxSettingsResponse getTaxSettings(String accessToken, TaxSettingsQueryParams queryParams) {
+        return get("/sale/tax-settings", accessToken, queryParams, TaxSettingsResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getCategoriesThatSupportCompatibilityList">Get list of categories where compatibility list is supported</a>
+     */
+    public SupportedCategoriesResponse getSupportedCategories(String accessToken) {
+        return get("/sale/compatibility-list/supported-categories", accessToken, null, SupportedCategoriesResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getCompatibilityListSuggestion">Get suggested compatibility list</a>
+     */
+    public CompatibilityListSuggestionResponse getCompatibilityListSuggestion(String accessToken, CompatibilityListSuggestionQueryParams queryParams) {
+        return get("/sale/compatibility-list-suggestions", accessToken, queryParams, CompatibilityListSuggestionResponse.class);
+    }
+
+
+    /**
      * <a href="https://developer.allegro.pl/documentation/#operation/badgeCampaigns_get_all">Get a list of available badge campaigns</a>
      */
     public BadgeCampaignResponse getAllBadgeCampaigns(String accessToken) {
