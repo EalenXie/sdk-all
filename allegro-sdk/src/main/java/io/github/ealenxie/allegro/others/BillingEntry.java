@@ -32,7 +32,7 @@ public class BillingEntry {
      * 账单条目的报价
      */
     @JsonProperty("offer")
-    private BillingOffer offer;
+    private IdNamePayload offer;
 
     /**
      * 账单条目的货币金额

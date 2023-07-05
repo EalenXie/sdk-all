@@ -237,7 +237,7 @@ public class AllegroOrdersClient extends AllegroClient {
      * @param accessToken accessToken
      * @param payload     请求参数
      */
-    public IdPayload createAnAttachment(String accessToken, CreateAttachmentPayload payload) {
+    public IdPayload createAnAttachment(String accessToken, NamePayload payload) {
         return post("/sale/dispute-attachments", accessToken, payload, IdPayload.class);
     }
 

@@ -19,7 +19,7 @@ public class AllegroOffer {
      * additionalMarketplaces
      */
     @JsonProperty("additionalMarketplaces")
-    private AdditionalMarketplaces additionalMarketplaces;
+    private AdditionalMarketplacesPayload additionalMarketplaces;
     /**
      * additionalServices
      */
