@@ -1,6 +1,8 @@
 package io.github.ealenxie.allegro.order;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.ealenxie.allegro.Money;
+import io.github.ealenxie.allegro.User;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -31,12 +33,12 @@ public class RefundPayload {
      * commission
      */
     @JsonProperty("commission")
-    private Commission commission;
+    private Money commission;
     /**
      * buyer
      */
     @JsonProperty("buyer")
-    private Buyer buyer;
+    private User buyer;
     /**
      * createdAt
      */

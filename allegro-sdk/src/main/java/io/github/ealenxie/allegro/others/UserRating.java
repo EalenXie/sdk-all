@@ -1,6 +1,7 @@
 package io.github.ealenxie.allegro.others;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.ealenxie.allegro.User;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,7 +20,7 @@ public class UserRating {
      * buyer
      */
     @JsonProperty("buyer")
-    private Buyer buyer;
+    private User buyer;
     /**
      * comment
      */

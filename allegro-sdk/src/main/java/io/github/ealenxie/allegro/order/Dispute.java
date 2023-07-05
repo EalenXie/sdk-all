@@ -2,6 +2,7 @@ package io.github.ealenxie.allegro.order;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.ealenxie.allegro.NamePayload;
+import io.github.ealenxie.allegro.User;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -40,7 +41,7 @@ public class Dispute {
      * object (DisputeUser)
      */
     @JsonProperty("buyer")
-    private DisputeBuyer buyer;
+    private User buyer;
     /**
      * object (DisputeCheckoutForm)
      */

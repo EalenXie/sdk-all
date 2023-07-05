@@ -2,6 +2,7 @@ package io.github.ealenxie.allegro.order;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.ealenxie.allegro.User;
 import lombok.Getter;
 import lombok.Setter;
 

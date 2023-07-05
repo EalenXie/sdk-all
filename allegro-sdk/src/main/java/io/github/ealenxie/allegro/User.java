@@ -1,16 +1,16 @@
-package io.github.ealenxie.allegro.order;
+package io.github.ealenxie.allegro;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
 /**
- * @author create by sch  2023/7/4 13:43
+ * @author create by sch  2023/7/4 14:34
  * @version 1.0
  */
 @Getter
 @Setter
-public class Buyer {
+public class User {
     /**
      * id
      */
