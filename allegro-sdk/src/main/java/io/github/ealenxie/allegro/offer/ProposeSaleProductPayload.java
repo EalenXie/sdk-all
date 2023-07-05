@@ -40,7 +40,7 @@ public class ProposeSaleProductPayload {
      * description
      */
     @JsonProperty("description")
-    private Description description;
+    private SectionsPayload description;
     /**
      * language
      */

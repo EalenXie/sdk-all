@@ -1,6 +1,7 @@
 package io.github.ealenxie.allegro.offer;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.ealenxie.allegro.TypePayload;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -35,7 +36,7 @@ public class BadgeCampaigns {
      * application
      */
     @JsonProperty("application")
-    private Compatibility application;
+    private TypePayload application;
     /**
      * visibility
      */
@@ -45,7 +46,7 @@ public class BadgeCampaigns {
      * publication
      */
     @JsonProperty("publication")
-    private Compatibility publication;
+    private TypePayload publication;
     /**
      * regulationsLink
      */

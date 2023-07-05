@@ -59,7 +59,7 @@ public class SaleProductResponse {
      * description
      */
     @JsonProperty("description")
-    private Description description;
+    private SectionsPayload description;
     /**
      * isDraft
      */

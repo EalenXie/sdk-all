@@ -1,6 +1,7 @@
 package io.github.ealenxie.allegro.order;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.ealenxie.allegro.TypePayload;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -31,12 +32,12 @@ public class CarriersPoint {
      * services
      */
     @JsonProperty("services")
-    private List<CarriersPointServices> services;
+    private List<TypePayload> services;
     /**
      * restrictions
      */
     @JsonProperty("restrictions")
-    private List<CarriersPointServices> restrictions;
+    private List<TypePayload> restrictions;
     /**
      * description
      */

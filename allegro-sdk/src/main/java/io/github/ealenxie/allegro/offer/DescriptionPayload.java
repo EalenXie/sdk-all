@@ -14,5 +14,5 @@ public class DescriptionPayload {
      * translation
      */
     @JsonProperty("translation")
-    private Translation translation;
+    private SectionsPayload translation;
 }

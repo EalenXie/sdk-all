@@ -123,7 +123,7 @@ public class OfferPayload {
      * description
      */
     @JsonProperty("description")
-    private Description description;
+    private SectionsPayload description;
     /**
      * external
      */

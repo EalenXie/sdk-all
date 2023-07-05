@@ -27,7 +27,7 @@ public class Products {
      * description
      */
     @JsonProperty("description")
-    private Description description;
+    private SectionsPayload description;
     /**
      * category
      */
