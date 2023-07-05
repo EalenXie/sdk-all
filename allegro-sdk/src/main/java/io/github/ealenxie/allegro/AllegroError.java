@@ -10,7 +10,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class Error {
+public class AllegroError {
     @JsonProperty("code")
     private String code;
     @JsonProperty("details")

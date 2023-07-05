@@ -10,7 +10,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class OffersStatsQueryParams extends DateQueryParams{
+public class OffersStatsQueryParams extends DateQueryParams {
     /**
      * offerId
      */

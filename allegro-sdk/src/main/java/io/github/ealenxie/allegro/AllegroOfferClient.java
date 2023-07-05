@@ -497,12 +497,14 @@ public class AllegroOfferClient extends AllegroClient {
     public CompatibilityListSuggestionResponse getCompatibilityListSuggestion(String accessToken, CompatibilityListSuggestionQueryParams queryParams) {
         return get("/sale/compatibility-list-suggestions", accessToken, queryParams, CompatibilityListSuggestionResponse.class);
     }
+
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/getCompatibleProductsGroups">Get list of compatible product groups</a>
      */
     public CompatibleProductsGroupsResponse getCompatibleProductsGroups(String accessToken, CompatibleProductsGroupsQueryParams queryParams) {
         return get("/sale/compatible-products/groups", accessToken, queryParams, CompatibleProductsGroupsResponse.class);
     }
+
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/getCompatibleProducts">Get list of compatible products</a>
      */
@@ -562,15 +564,15 @@ public class AllegroOfferClient extends AllegroClient {
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/getAllegroPricesConsentForOffer">Get the current consent value for an offer</a>
      */
-    public PricesConsentPayload getAllegroPricesConsent(String accessToken, String offerId) {
-        return get(String.format("/sale/allegro-prices-offer-consents/%s", offerId), accessToken, null, PricesConsentPayload.class);
+    public StatusPayload getAllegroPricesConsent(String accessToken, String offerId) {
+        return get(String.format("/sale/allegro-prices-offer-consents/%s", offerId), accessToken, null, StatusPayload.class);
     }
 
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/updateAllegroPricesConsentForOffer">Update consent value for an offer</a>
      */
-    public PricesConsentPayload updateAllegroPricesConsentForOffer(String accessToken, String offerId, PricesConsentPayload payload) {
-        return post(String.format("/sale/allegro-prices-offer-consents/%s", offerId), accessToken, payload, PricesConsentPayload.class);
+    public StatusPayload updateAllegroPricesConsentForOffer(String accessToken, String offerId, StatusPayload payload) {
+        return post(String.format("/sale/allegro-prices-offer-consents/%s", offerId), accessToken, payload, StatusPayload.class);
     }
 
     /**
@@ -583,8 +585,8 @@ public class AllegroOfferClient extends AllegroClient {
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/updateAllegroPricesConsentForAccount">Update consent value for the account</a>
      */
-    public PricesConsentPayload updateAllegroPricesConsentForAccount(String accessToken, PricesConsentPayload payload) {
-        return exchange("/sale/allegro-prices-account-consent", HttpMethod.PUT, accessToken, null, payload, PricesConsentPayload.class);
+    public StatusPayload updateAllegroPricesConsentForAccount(String accessToken, StatusPayload payload) {
+        return exchange("/sale/allegro-prices-account-consent", HttpMethod.PUT, accessToken, null, payload, StatusPayload.class);
     }
 
     /**

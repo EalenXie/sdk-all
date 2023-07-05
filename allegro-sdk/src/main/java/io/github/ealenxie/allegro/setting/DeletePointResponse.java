@@ -1,7 +1,7 @@
 package io.github.ealenxie.allegro.setting;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.github.ealenxie.allegro.Error;
+import io.github.ealenxie.allegro.AllegroError;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,5 +18,5 @@ public class DeletePointResponse {
      * errors
      */
     @JsonProperty("errors")
-    private List<Error> errors;
+    private List<AllegroError> errors;
 }

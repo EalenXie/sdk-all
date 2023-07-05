@@ -1,6 +1,7 @@
 package io.github.ealenxie.allegro.offer;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.ealenxie.allegro.AllegroError;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,12 +17,12 @@ public class Validation {
      * errors
      */
     @JsonProperty("errors")
-    private List<Errors> errors;
+    private List<AllegroError> errors;
     /**
      * warnings
      */
     @JsonProperty("warnings")
-    private List<Errors> warnings;
+    private List<AllegroError> warnings;
     /**
      * validatedAt
      */

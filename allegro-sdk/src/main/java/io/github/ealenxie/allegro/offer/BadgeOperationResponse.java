@@ -10,7 +10,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class BadgeOperationResponse extends CreateBadgeResponse{
+public class BadgeOperationResponse extends CreateBadgeResponse {
     /**
      * type
      */
