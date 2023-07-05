@@ -2,9 +2,6 @@ package io.github.ealenxie.walmart.marketplace;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.ealenxie.walmart.marketplace.orders.*;
-import io.github.ealenxie.walmart.marketplace.orders.WalmartOrder;
-import io.github.ealenxie.walmart.marketplace.orders.WalmartOrders;
-import io.github.ealenxie.walmart.marketplace.orders.WalmartOrdersResp;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -46,6 +43,7 @@ public class WalmartOrderClient extends WalmartClient {
     public String shipment(String accessToken, String purchaseOrderId, ShipmentPayload payload) {
         return post(String.format("/v3/orders/%s/shipping", purchaseOrderId), accessToken, payload, String.class);
     }
+
     /**
      * <a href="https://developer.walmart.com/api/us/mp/orders#operation/getAllOrders">All orders</a>
      * <p>获取订单</p>

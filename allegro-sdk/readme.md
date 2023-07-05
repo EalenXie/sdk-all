@@ -190,7 +190,6 @@ class AllegroOrdersClientTest {
 | updatePromotion     | [Modify a promotion](https://developer.allegro.pl/documentation/#operation/updatePromotionUsingPUT)                       | ✔️  |
 | deletePromotion     | [Deactivate a promotion by id](https://developer.allegro.pl/documentation/#operation/deactivatePromotionUsingDELETE)      | ✔️  |
 
-
 #### Promotion campaigns
 
 | 🏷️方法名                  | 📚 官方文档地址                                                                                                                                           | 状态  |
