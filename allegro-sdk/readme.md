@@ -154,6 +154,17 @@ class AllegroOrdersClientTest {
 | getVariantSet    | [Get a variant set](https://developer.allegro.pl/documentation/#operation/getVariantSet)            | ✔️  |
 | deleteVariantSet | [Delete a variant set](https://developer.allegro.pl/documentation/#operation/deleteVariantSet)      | ✔️  |
 
+#### Offer tags
+
+| 🏷️方法名               | 📚 官方文档地址                                                                                                       | 状态  |
+|:---------------------|:----------------------------------------------------------------------------------------------------------------|:----|
+| createTag            | [Create a tag](https://developer.allegro.pl/documentation/#operation/createTagPOST_1)                           | ✔️  |
+| getTags              | [Get the user's tags](https://developer.allegro.pl/documentation/#operation/listSellerTagsGET_1)                | ✔️  |
+| deleteTag            | [Delete a tag](https://developer.allegro.pl/documentation/#operation/deleteTagUsingDELETE)                      | ✔️  |
+| updateTag            | [Modify a tag](https://developer.allegro.pl/documentation/#operation/updateTagPUT)                              | ✔️  |
+| assignTagToOffer     | [Assign tags to an offer](https://developer.allegro.pl/documentation/#operation/assignTagToOfferPOST)           | ✔️  |
+| getAssignedOfferTags | [Get tags assigned to an offer](https://developer.allegro.pl/documentation/#operation/listAssignedOfferTagsGET) | ✔️  |
+
 #### Badge campaigns
 
 | 🏷️方法名               | 📚 官方文档地址                                                                                                                           | 状态  |

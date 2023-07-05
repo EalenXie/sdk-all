@@ -428,7 +428,6 @@ public class AllegroOfferClient extends AllegroClient {
         return get(String.format(OFFER_VARIANTS_URL, setId), accessToken, null, VariantSetsResponse.class);
     }
 
-
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/deleteVariantSet">Delete a variant set</a>
      */
@@ -436,6 +435,47 @@ public class AllegroOfferClient extends AllegroClient {
         exchange(String.format(OFFER_VARIANTS_URL, setId), HttpMethod.DELETE, accessToken, null, Object.class);
     }
 
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/createTagPOST_1">Create a tag</a>
+     */
+    public IdPayload createTag(String accessToken, OfferTagPayload payload) {
+        return post("/sale/offer-tags", accessToken, payload, IdPayload.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/listSellerTagsGET_1">Get the user's tags</a>
+     */
+    public OfferTagsResponse getTags(String accessToken, PageQueryParams queryParams) {
+        return get("/sale/offer-tags", accessToken, queryParams, OfferTagsResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/deleteTagUsingDELETE">Delete a tag</a>
+     */
+    public void deleteTag(String accessToken, String tagId) {
+        exchange(String.format("/sale/offer-tags/%s", tagId), HttpMethod.DELETE, accessToken, null, Object.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/updateTagPUT">Modify a tag</a>
+     */
+    public void updateTag(String accessToken, String tagId, OfferTagPayload payload) {
+        exchange(String.format("/sale/offer-tags/%s", tagId), HttpMethod.PUT, accessToken, null, payload, Object.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/assignTagToOfferPOST">Assign tags to an offer</a>
+     */
+    public void assignTagToOffer(String accessToken, String offerId, AssignTagToOfferPayload payload) {
+        post(String.format("/sale/offers/%s/tags", offerId), accessToken, payload, Object.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/listAssignedOfferTagsGET">Get tags assigned to an offer</a>
+     */
+    public OfferTagsResponse getAssignedOfferTags(String accessToken, String offerId) {
+        return get(String.format("/sale/offers/%s/tags", offerId), accessToken, null, OfferTagsResponse.class);
+    }
 
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/badgeCampaigns_get_all">Get a list of available badge campaigns</a>
