@@ -497,7 +497,18 @@ public class AllegroOfferClient extends AllegroClient {
     public CompatibilityListSuggestionResponse getCompatibilityListSuggestion(String accessToken, CompatibilityListSuggestionQueryParams queryParams) {
         return get("/sale/compatibility-list-suggestions", accessToken, queryParams, CompatibilityListSuggestionResponse.class);
     }
-
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getCompatibleProductsGroups">Get list of compatible product groups</a>
+     */
+    public CompatibleProductsGroupsResponse getCompatibleProductsGroups(String accessToken, CompatibleProductsGroupsQueryParams queryParams) {
+        return get("/sale/compatible-products/groups", accessToken, queryParams, CompatibleProductsGroupsResponse.class);
+    }
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getCompatibleProducts">Get list of compatible products</a>
+     */
+    public CompatibleProductsResponse getCompatibleProducts(String accessToken, CompatibleProductsQueryParams queryParams) {
+        return get("/sale/compatible-products", accessToken, queryParams, CompatibleProductsResponse.class);
+    }
 
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/badgeCampaigns_get_all">Get a list of available badge campaigns</a>

@@ -166,18 +166,19 @@ class AllegroOrdersClientTest {
 | getAssignedOfferTags | [Get tags assigned to an offer](https://developer.allegro.pl/documentation/#operation/listAssignedOfferTagsGET) | ✔️  |
 
 #### Tax settings
+
 | 🏷️方法名         | 📚 官方文档地址                                                                                                            | 状态  |
 |:---------------|:---------------------------------------------------------------------------------------------------------------------|:----|
 | getTaxSettings | [Get all tax settings for category](https://developer.allegro.pl/documentation/#operation/getTaxSettingsForCategory) | ✔️  |
 
 #### Compatibility List
+
 | 🏷️方法名                         | 📚 官方文档地址                                                                                                                                                       | 状态  |
 |:-------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------|:----|
 | getSupportedCategories         | [Get list of categories where compatibility list is supported](https://developer.allegro.pl/documentation/#operation/getCategoriesThatSupportCompatibilityList) | ✔️  |
 | getCompatibilityListSuggestion | [Get suggested compatibility list](https://developer.allegro.pl/documentation/#operation/getCompatibilityListSuggestion)                                        | ✔️  |
-
-
-
+| getCompatibleProductsGroups    | [Get list of compatible product groups](https://developer.allegro.pl/documentation/#operation/getCompatibleProductsGroups)                                      | ✔️  |
+| getCompatibleProducts          | [Get list of compatible products](https://developer.allegro.pl/documentation/#operation/getCompatibleProducts)                                                  | ✔️  |
 
 #### Badge campaigns
 
