@@ -17,6 +17,9 @@ public class AllegroOfferClient extends AllegroClient {
     private static final String SALE_OFFERS = "/sale/offers";
     private static final String SALE_OFFER = SALE_OFFERS + "/%s";
 
+
+    private static final String OFFER_VARIANTS_URL = "/offer-variants/%s";
+
     protected AllegroOfferClient() {
         super(new ObjectMapper());
     }
@@ -383,7 +386,6 @@ public class AllegroOfferClient extends AllegroClient {
         return exchange(String.format("/sale/offer-quantity-change-commands/%s", commandId), HttpMethod.PUT, accessToken, null, payload, TaskCountResponse.class);
     }
 
-
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/getQuantityModificationCommandStatusUsingGET">Change quantity command summary</a>
      */
@@ -396,6 +398,42 @@ public class AllegroOfferClient extends AllegroClient {
      */
     public TasksResponse getQuantityModifyTasksStatuses(String accessToken, String commandId, PageQueryParams queryParams) {
         return get(String.format("/sale/offer-quantity-change-commands/%s/tasks", commandId), accessToken, queryParams, TasksResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/createVariantSet">Create variant set</a>
+     */
+    public CreateVariantSetResponse createVariantSet(String accessToken, VariantSetPayload payload) {
+        return post("/sale/offer-variants", accessToken, payload, CreateVariantSetResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getVariantSets">Get the user's variant sets</a>
+     */
+    public VariantSetsResponse getVariantSets(String accessToken, VariantSetsQueryParams queryParams) {
+        return get("/sale/offer-variants", accessToken, queryParams, VariantSetsResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/updateVariantSet">Update variant set</a>
+     */
+    public VariantSetsResponse updateVariantSet(String accessToken, String setId, VariantSetPayload payload) {
+        return exchange(String.format(OFFER_VARIANTS_URL, setId), HttpMethod.PUT, accessToken, null, payload, VariantSetsResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getVariantSet">Get a variant set</a>
+     */
+    public VariantSetsResponse getVariantSet(String accessToken, String setId) {
+        return get(String.format(OFFER_VARIANTS_URL, setId), accessToken, null, VariantSetsResponse.class);
+    }
+
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/deleteVariantSet">Delete a variant set</a>
+     */
+    public void deleteVariantSet(String accessToken, String setId) {
+        exchange(String.format(OFFER_VARIANTS_URL, setId), HttpMethod.DELETE, accessToken, null, Object.class);
     }
 
 

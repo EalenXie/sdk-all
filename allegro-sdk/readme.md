@@ -144,6 +144,16 @@ class AllegroOrdersClientTest {
 | getQuantityModifyStatus        | [Change quantity command summary](https://developer.allegro.pl/documentation/#operation/getQuantityModificationCommandStatusUsingGET)                | ✔️  |
 | getQuantityModifyTasksStatuses | [Change quantity command detailed report](https://developer.allegro.pl/documentation/#operation/getQuantityModificationCommandTasksStatusesUsingGET) | ✔️  |
 
+#### Offer variants
+
+| 🏷️方法名           | 📚 官方文档地址                                                                                           | 状态  |
+|:-----------------|:----------------------------------------------------------------------------------------------------|:----|
+| createVariantSet | [Create variant set](https://developer.allegro.pl/documentation/#operation/createVariantSet)        | ✔️  |
+| getVariantSets   | [Get the user's variant sets](https://developer.allegro.pl/documentation/#operation/getVariantSets) | ✔️  |
+| updateVariantSet | [Update variant set](https://developer.allegro.pl/documentation/#operation/updateVariantSet)        | ✔️  |
+| getVariantSet    | [Get a variant set](https://developer.allegro.pl/documentation/#operation/getVariantSet)            | ✔️  |
+| deleteVariantSet | [Delete a variant set](https://developer.allegro.pl/documentation/#operation/deleteVariantSet)      | ✔️  |
+
 #### Badge campaigns
 
 | 🏷️方法名               | 📚 官方文档地址                                                                                                                           | 状态  |
@@ -155,7 +165,6 @@ class AllegroOrdersClientTest {
 | getBadgeApplications | [Get a list of badge applications](https://developer.allegro.pl/documentation/#operation/badgeApplications_get_all)                 | ✔️  |
 | getBadgeOperation    | [Get badge operation details](https://developer.allegro.pl/documentation/#operation/badgeOperations_get_one)                        | ✔️  |
 | updateBadge          | [Update campaign badge for the given offer](https://developer.allegro.pl/documentation/#operation/patchBadge)                       | ✔️  |
-
 
 #### Allegro Prices
 
