@@ -1,6 +1,7 @@
 package io.github.ealenxie.allegro.setting;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.ealenxie.allegro.offer.Extensions;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,5 +21,5 @@ public class Availability {
      * restrictionCause
      */
     @JsonProperty("restrictionCause")
-    private RestrictionCause restrictionCause;
+    private Extensions restrictionCause;
 }

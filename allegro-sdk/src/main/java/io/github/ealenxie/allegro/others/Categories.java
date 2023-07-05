@@ -1,6 +1,7 @@
 package io.github.ealenxie.allegro.others;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.ealenxie.allegro.offer.Subcategories;
 import lombok.Getter;
 import lombok.Setter;
 
