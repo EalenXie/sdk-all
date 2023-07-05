@@ -124,6 +124,34 @@ class AllegroOrdersClientTest {
 | productChangeProposal    | [Propose changes in product](https://developer.allegro.pl/documentation/#operation/productChangeProposal)                                    | ✔️  |
 | getProductChangeProposal | [Get all data of the particular product changes proposal](https://developer.allegro.pl/documentation/#operation/getProductChangeProposal)    | ✔️  |
 
+#### Badge campaigns
+
+| 🏷️方法名               | 📚 官方文档地址                                                                                                                           | 状态  |
+|:---------------------|:------------------------------------------------------------------------------------------------------------------------------------|:----|
+| getAllBadgeCampaigns | [Get the current consent value for an offer](https://developer.allegro.pl/documentation/#operation/getAllegroPricesConsentForOffer) | ✔️  |
+| createBadges         | [Apply for badge in selected offer](https://developer.allegro.pl/documentation/#operation/postBadges)                               | ✔️  |
+| getBadges            | [Get a list of badges](https://developer.allegro.pl/documentation/#operation/getBadges)                                             | ✔️  |
+| getBadgeApplication  | [Get a badge application details](https://developer.allegro.pl/documentation/#operation/badgeApplications_get_one)                  | ✔️  |
+| getBadgeApplications | [Get a list of badge applications](https://developer.allegro.pl/documentation/#operation/badgeApplications_get_all)                 | ✔️  |
+| getBadgeOperation    | [Get badge operation details](https://developer.allegro.pl/documentation/#operation/badgeOperations_get_one)                        | ✔️  |
+| updateBadge          | [Update campaign badge for the given offer](https://developer.allegro.pl/documentation/#operation/patchBadge)                       | ✔️  |
+
+
+#### Allegro Prices
+
+| 🏷️方法名                               | 📚 官方文档地址                                                                                                                                              | 状态  |
+|:-------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------|:----|
+| getAllegroPricesConsent              | [Get the current consent value for an offer](https://developer.allegro.pl/documentation/#operation/getAllegroPricesConsentForOffer)                    | ✔️  |
+| updateAllegroPricesConsentForOffer   | [Update consent value for an offer](https://developer.allegro.pl/documentation/#operation/updateAllegroPricesConsentForOffer)                          | ✔️  |
+| getAllegroPricesEligibility          | [Get the current eligibility information for the account](https://developer.allegro.pl/documentation/#operation/getAllegroPricesEligibilityForAccount) | ✔️  |
+| updateAllegroPricesConsentForAccount | [Calculate fee and commission for an offer](https://developer.allegro.pl/documentation/#operation/updateAllegroPricesConsentForAccount)                | ✔️  |
+
+#### Offer rating
+
+| 🏷️方法名         | 📚 官方文档地址                                                                                                                       | 状态  |
+|:---------------|:--------------------------------------------------------------------------------------------------------------------------------|:----|
+| getOfferRating | [Calculate fee and commission for an offer](https://developer.allegro.pl/documentation/#operation/calculateFeePreviewUsingPOST) | ✔️  |
+
 #### Classifieds
 
 | 🏷️方法名                   | 📚 官方文档地址                                                                                                                                     | 状态  |
