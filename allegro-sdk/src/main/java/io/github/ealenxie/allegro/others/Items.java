@@ -16,7 +16,7 @@ public class Items {
      * promoted
      */
     @JsonProperty("promoted")
-    private List<Promoted> promoted;
+    private List<Regular> promoted;
     /**
      * regular
      */

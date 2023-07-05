@@ -119,7 +119,7 @@ public class AllegroSaleSettingClient extends AllegroClient {
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/createAfterSalesServiceConditionsAttachmentUsingPOST">Create a warranty attachment metadata</a>
      */
-    public Attachment createAttachment(String accessToken, CreateAttachmentPayload payload) {
+    public Attachment createAttachment(String accessToken, NamePayload payload) {
         return post("/after-sales-service-conditions/attachments", accessToken, payload, Attachment.class);
     }
 

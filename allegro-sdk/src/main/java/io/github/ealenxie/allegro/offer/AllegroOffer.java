@@ -54,7 +54,7 @@ public class AllegroOffer {
      * customParameters
      */
     @JsonProperty("customParameters")
-    private List<CustomParameters> customParameters;
+    private List<CustomParameter> customParameters;
     /**
      * delivery
      */

@@ -3,6 +3,7 @@ package io.github.ealenxie.allegro.setting;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.ealenxie.allegro.IdPayload;
+import io.github.ealenxie.allegro.NamePayload;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,7 +21,7 @@ public class TablePayload {
      * headers
      */
     @JsonProperty("headers")
-    private List<Header> headers;
+    private List<NamePayload> headers;
     /**
      * id
      */

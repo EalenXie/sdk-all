@@ -1,6 +1,7 @@
 package io.github.ealenxie.allegro.others;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.ealenxie.allegro.NamePayload;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -24,5 +25,5 @@ public class Campaign {
      * organization
      */
     @JsonProperty("organization")
-    private Organization organization;
+    private NamePayload organization;
 }

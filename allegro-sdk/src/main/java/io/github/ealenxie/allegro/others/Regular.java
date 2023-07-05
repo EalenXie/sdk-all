@@ -67,4 +67,5 @@ public class Regular {
      */
     @JsonProperty("publication")
     private Publication publication;
+
 }
