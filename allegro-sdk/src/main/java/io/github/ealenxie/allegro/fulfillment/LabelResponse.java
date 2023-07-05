@@ -1,6 +1,7 @@
 package io.github.ealenxie.allegro.fulfillment;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.ealenxie.allegro.StatusPayload;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -26,5 +27,5 @@ public class LabelResponse {
      * output
      */
     @JsonProperty("output")
-    private Output output;
+    private StatusPayload output;
 }

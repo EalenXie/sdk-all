@@ -400,6 +400,90 @@ public class AllegroOfferClient extends AllegroClient {
 
 
     /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/badgeCampaigns_get_all">Get a list of available badge campaigns</a>
+     */
+    public BadgeCampaignResponse getAllBadgeCampaigns(String accessToken) {
+        return get("/sale/badge-campaigns", accessToken, null, BadgeCampaignResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/postBadges">Apply for badge in selected offer</a>
+     */
+    public CreateBadgeResponse createBadges(String accessToken, BadgePayload payload) {
+        return post("/sale/badges", accessToken, payload, CreateBadgeResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getBadges">Get a list of badges</a>
+     */
+    public BadgeResponse getBadges(String accessToken, BadgeQueryParams queryParams) {
+        return get("/sale/badges", accessToken, queryParams, BadgeResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/badgeApplications_get_one">Get a badge application details</a>
+     */
+    public CreateBadgeResponse getBadgeApplication(String accessToken, String applicationId) {
+        return get(String.format("/sale/badge-applications/%s", applicationId), accessToken, null, CreateBadgeResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/badgeApplications_get_all">Get a list of badge applications</a>
+     */
+    public BadgeApplicationResponse getBadgeApplications(String accessToken, BadgeApplicationQueryParams queryParams) {
+        return get("/sale/badge-applications", accessToken, queryParams, BadgeApplicationResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/badgeOperations_get_one">Get badge operation details</a>
+     */
+    public BadgeOperationResponse getBadgeOperation(String accessToken, String operationId) {
+        return get(String.format("/sale/badge-operations/%s", operationId), accessToken, null, BadgeOperationResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/patchBadge">Update campaign badge for the given offer</a>
+     */
+    public IdPayload updateBadge(String accessToken, String offerId, String campaignId, UpdateBadgePayload payload) {
+        return exchange(String.format("/sale/badges/offers/%s/campaigns/%s", offerId, campaignId), HttpMethod.PATCH, accessToken, null, payload, IdPayload.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getAllegroPricesConsentForOffer">Get the current consent value for an offer</a>
+     */
+    public PricesConsentPayload getAllegroPricesConsent(String accessToken, String offerId) {
+        return get(String.format("/sale/allegro-prices-offer-consents/%s", offerId), accessToken, null, PricesConsentPayload.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/updateAllegroPricesConsentForOffer">Update consent value for an offer</a>
+     */
+    public PricesConsentPayload updateAllegroPricesConsentForOffer(String accessToken, String offerId, PricesConsentPayload payload) {
+        return post(String.format("/sale/allegro-prices-offer-consents/%s", offerId), accessToken, payload, PricesConsentPayload.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getAllegroPricesEligibilityForAccount">Get the current eligibility information for the account</a>
+     */
+    public EligibilityResponse getAllegroPricesEligibility(String accessToken) {
+        return get("/sale/allegro-prices-account-eligibility", accessToken, null, EligibilityResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/updateAllegroPricesConsentForAccount">Update consent value for the account</a>
+     */
+    public PricesConsentPayload updateAllegroPricesConsentForAccount(String accessToken, PricesConsentPayload payload) {
+        return exchange("/sale/allegro-prices-account-consent", HttpMethod.PUT, accessToken, null, payload, PricesConsentPayload.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/offerRatingGET">Get offer rating</a>
+     */
+    public OfferRateResponse getOfferRating(String accessToken, String offerId) {
+        return get(String.format("/sale/offers/%s/rating", offerId), accessToken, null, OfferRateResponse.class);
+    }
+
+    /**
      * <a href="https://developer.allegro.pl/documentation/#operation/classifiedSellerOfferStatsGET">Get the seller's advertisements daily statistics</a>
      */
     public SellerOffersStatsResponse getSellerOffersStats(String accessToken, DateQueryParams queryParams) {
