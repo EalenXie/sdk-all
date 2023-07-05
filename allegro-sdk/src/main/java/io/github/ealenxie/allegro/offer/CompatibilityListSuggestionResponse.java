@@ -22,5 +22,5 @@ public class CompatibilityListSuggestionResponse {
      * items
      */
     @JsonProperty("items")
-    private List<SuggestionItem> items;
+    private List<CompatibilityItem> items;
 }

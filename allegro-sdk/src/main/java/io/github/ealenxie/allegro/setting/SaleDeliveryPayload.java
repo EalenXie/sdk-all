@@ -3,6 +3,7 @@ package io.github.ealenxie.allegro.setting;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.ealenxie.allegro.IdPayload;
+import io.github.ealenxie.allegro.Money;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,12 +24,12 @@ public class SaleDeliveryPayload {
      * freeDelivery
      */
     @JsonProperty("freeDelivery")
-    private FreeDelivery freeDelivery;
+    private Money freeDelivery;
     /**
      * abroadFreeDelivery
      */
     @JsonProperty("abroadFreeDelivery")
-    private FreeDelivery abroadFreeDelivery;
+    private Money abroadFreeDelivery;
     /**
      * joinPolicy
      */

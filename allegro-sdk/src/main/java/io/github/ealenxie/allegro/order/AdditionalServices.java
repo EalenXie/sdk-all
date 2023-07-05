@@ -1,6 +1,7 @@
 package io.github.ealenxie.allegro.order;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.ealenxie.allegro.offer.Extensions;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,5 +17,5 @@ public class AdditionalServices {
     @JsonProperty("cashOnDelivery")
     private CashOnDelivery cashOnDelivery;
     @JsonProperty("options")
-    private List<AdditionalServicesAvailableOption> options;
+    private List<Extensions> options;
 }

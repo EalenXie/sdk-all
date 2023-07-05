@@ -27,7 +27,7 @@ public class Badges {
      * publication
      */
     @JsonProperty("publication")
-    private Object publication;
+    private Publication publication;
     /**
      * prices
      */
