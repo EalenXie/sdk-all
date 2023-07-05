@@ -21,8 +21,8 @@ public class PdsClient extends FopClient {
         super(appKey, appSecret, restOperations);
     }
 
-    public PdsClient(String appKey, String appSecret, RestOperations restOperations, ObjectMapper objectMapper) {
-        super(appKey, appSecret, restOperations, objectMapper);
+    public PdsClient(String appKey, String appSecret, boolean isFop, RestOperations restOperations, ObjectMapper objectMapper) {
+        super(appKey, appSecret, isFop, restOperations, objectMapper);
     }
 
     /**

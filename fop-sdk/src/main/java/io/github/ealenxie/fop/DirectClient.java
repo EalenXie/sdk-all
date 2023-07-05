@@ -16,8 +16,8 @@ public class DirectClient extends FopClient {
         super(appKey, appSecret, restOperations);
     }
 
-    public DirectClient(String appKey, String appSecret, RestOperations restOperations, ObjectMapper objectMapper) {
-        super(appKey, appSecret, restOperations, objectMapper);
+    public DirectClient(String appKey, String appSecret, boolean isFop, RestOperations restOperations, ObjectMapper objectMapper) {
+        super(appKey, appSecret, isFop, restOperations, objectMapper);
     }
 
     /**
