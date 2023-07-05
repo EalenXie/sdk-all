@@ -1,6 +1,7 @@
 package io.github.ealenxie.allegro.setting;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.ealenxie.allegro.IdNamePayload;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,5 +19,5 @@ public class ShippingRateResponse {
      * shippingRates
      */
     @JsonProperty("shippingRates")
-    private List<ShippingRate> shippingRates;
+    private List<IdNamePayload> shippingRates;
 }

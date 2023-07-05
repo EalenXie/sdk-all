@@ -22,5 +22,5 @@ public class ClassifiedsPackages {
      * extraPackages
      */
     @JsonProperty("extraPackages")
-    private List<ExtraPackages> extraPackages;
+    private List<ExtraPackage> extraPackages;
 }

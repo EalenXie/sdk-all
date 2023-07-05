@@ -1,6 +1,7 @@
 package io.github.ealenxie.allegro.setting;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.ealenxie.allegro.Money;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -32,7 +33,7 @@ public class Definition {
      * maxPrice
      */
     @JsonProperty("maxPrice")
-    private Price maxPrice;
+    private Money maxPrice;
     /**
      * availableConstraints
      */

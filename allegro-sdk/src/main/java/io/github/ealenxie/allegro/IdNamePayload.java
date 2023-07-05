@@ -1,4 +1,4 @@
-package io.github.ealenxie.allegro.offer;
+package io.github.ealenxie.allegro;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;

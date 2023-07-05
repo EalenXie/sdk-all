@@ -1,6 +1,7 @@
 package io.github.ealenxie.allegro.setting;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.ealenxie.allegro.Money;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,5 +21,5 @@ public class Configuration {
      * price
      */
     @JsonProperty("price")
-    private Price price;
+    private Money price;
 }
