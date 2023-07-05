@@ -124,6 +124,26 @@ class AllegroOrdersClientTest {
 | productChangeProposal    | [Propose changes in product](https://developer.allegro.pl/documentation/#operation/productChangeProposal)                                    | ✔️  |
 | getProductChangeProposal | [Get all data of the particular product changes proposal](https://developer.allegro.pl/documentation/#operation/getProductChangeProposal)    | ✔️  |
 
+#### Selection insights
+
+| 🏷️方法名                   | 📚 官方文档地址                                                                                                       | 状态  |
+|:-------------------------|:----------------------------------------------------------------------------------------------------------------|:----|
+| getSaleSelectionInsights | [[BETA] Get selection insights](https://developer.allegro.pl/documentation/#operation/getSaleSelectionInsights) | ✔️  |
+
+#### Batch offer modification
+
+| 🏷️方法名                         | 📚 官方文档地址                                                                                                                                            | 状态  |
+|:-------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------|:----|
+| batchOfferModify               | [Batch offer modification](https://developer.allegro.pl/documentation/#operation/modificationCommandUsingPUT)                                        | ✔️  |
+| getModifySummary               | [Modification command summary](https://developer.allegro.pl/documentation/#operation/getGeneralReportUsingGET)                                       | ✔️  |
+| getTasks                       | [Modification command detailed report](https://developer.allegro.pl/documentation/#operation/getTasksUsingGET)                                       | ✔️  |
+| batchOfferPriceModify          | [Batch offer price modification](https://developer.allegro.pl/documentation/#operation/priceModificationCommandUsingPUT)                             | ✔️  |
+| getPriceModifyStatus           | [Change price command summary](https://developer.allegro.pl/documentation/#operation/getPriceModificationCommandStatusUsingGET)                      | ✔️  |
+| getPriceModifyTasksStatuses    | [Change price command detailed report](https://developer.allegro.pl/documentation/#operation/getPriceModificationCommandTasksStatusesUsingGET)       | ✔️  |
+| batchOfferQuantityModify       | [Batch offer quantity modification](https://developer.allegro.pl/documentation/#operation/quantityModificationCommandUsingPUT)                       | ✔️  |
+| getQuantityModifyStatus        | [Change quantity command summary](https://developer.allegro.pl/documentation/#operation/getQuantityModificationCommandStatusUsingGET)                | ✔️  |
+| getQuantityModifyTasksStatuses | [Change quantity command detailed report](https://developer.allegro.pl/documentation/#operation/getQuantityModificationCommandTasksStatusesUsingGET) | ✔️  |
+
 #### Classifieds
 
 | 🏷️方法名                   | 📚 官方文档地址                                                                                                                                     | 状态  |

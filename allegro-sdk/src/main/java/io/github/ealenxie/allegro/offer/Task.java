@@ -11,7 +11,7 @@ import java.util.List;
  */
 @Getter
 @Setter
-public class PublishTask {
+public class Task {
     /**
      * field
      */

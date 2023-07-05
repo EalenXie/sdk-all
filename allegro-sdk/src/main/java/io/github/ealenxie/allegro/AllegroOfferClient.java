@@ -111,8 +111,8 @@ public class AllegroOfferClient extends AllegroClient {
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/getPublicationTasksUsingGET">Publish command detailed report</a>
      */
-    public PublishTasksResponse getPublicationTasks(String accessToken, String commandId) {
-        return get(String.format("/sale/offer-publication-commands/%s/tasks", commandId), accessToken, null, PublishTasksResponse.class);
+    public TasksResponse getPublicationTasks(String accessToken, String commandId) {
+        return get(String.format("/sale/offer-publication-commands/%s/tasks", commandId), accessToken, null, TasksResponse.class);
     }
 
     /**
@@ -326,6 +326,78 @@ public class AllegroOfferClient extends AllegroClient {
         headers.set("Accept-Language", ObjectUtils.isEmpty(acceptLanguage) ? "en-US" : acceptLanguage);
         return exchange(String.format("/sale/products/change-proposals/%s", changeProposalId), HttpMethod.GET, null, new HttpEntity<>(null, headers), ProductChangeProposalResponse.class);
     }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getSaleSelectionInsights">[BETA] Get selection insights.</a>
+     */
+    public SaleSelectionInsightsResponse getSaleSelectionInsights(String accessToken, SaleSelectionInsightsQueryParams queryParams) {
+        return get("/sale/selection-insights", accessToken, queryParams, SaleSelectionInsightsResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/modificationCommandUsingPUT">Batch offer modification</a>
+     */
+    public TaskCountResponse batchOfferModify(String accessToken, String commandId, BatchOfferModifyPayload payload) {
+        return exchange(String.format("/sale/offer-modification-commands/%s", commandId), HttpMethod.PUT, accessToken, null, payload, TaskCountResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getGeneralReportUsingGET">Modification command summary</a>
+     */
+    public TaskCountResponse getModifySummary(String accessToken, String commandId) {
+        return get(String.format("/sale/offer-modification-commands/%s", commandId), accessToken, null, TaskCountResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getTasksUsingGET">Modification command detailed report</a>
+     */
+    public TasksResponse getTasks(String accessToken, String commandId, PageQueryParams queryParams) {
+        return get(String.format("/sale/offer-modification-commands/%s/tasks", commandId), accessToken, queryParams, TasksResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/priceModificationCommandUsingPUT">Batch offer price modification</a>
+     */
+    public TaskCountResponse batchOfferPriceModify(String accessToken, String commandId, BatchOfferPriceModifyPayload payload) {
+        return exchange(String.format("/sale/offer-price-change-commands/%s", commandId), HttpMethod.PUT, accessToken, null, payload, TaskCountResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getPriceModificationCommandStatusUsingGET">Change price command summary</a>
+     */
+    public TaskCountResponse getPriceModifyStatus(String accessToken, String commandId) {
+        return get(String.format("/sale/offer-price-change-commands/%s", commandId), accessToken, null, TaskCountResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getPriceModificationCommandTasksStatusesUsingGET">Change price command detailed report</a>
+     */
+    public TasksResponse getPriceModifyTasksStatuses(String accessToken, String commandId, PageQueryParams queryParams) {
+        return get(String.format("/sale/offer-price-change-commands/%s/tasks", commandId), accessToken, queryParams, TasksResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/quantityModificationCommandUsingPUT">Batch offer quantity modification</a>
+     */
+    public TaskCountResponse batchOfferQuantityModify(String accessToken, String commandId, BatchOfferQuantityModifyPayload payload) {
+        return exchange(String.format("/sale/offer-quantity-change-commands/%s", commandId), HttpMethod.PUT, accessToken, null, payload, TaskCountResponse.class);
+    }
+
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getQuantityModificationCommandStatusUsingGET">Change quantity command summary</a>
+     */
+    public TaskCountResponse getQuantityModifyStatus(String accessToken, String commandId) {
+        return get(String.format("/sale/offer-quantity-change-commands/%s", commandId), accessToken, null, TaskCountResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getQuantityModificationCommandTasksStatusesUsingGET">Change quantity command detailed report</a>
+     */
+    public TasksResponse getQuantityModifyTasksStatuses(String accessToken, String commandId, PageQueryParams queryParams) {
+        return get(String.format("/sale/offer-quantity-change-commands/%s/tasks", commandId), accessToken, queryParams, TasksResponse.class);
+    }
+
 
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/classifiedSellerOfferStatsGET">Get the seller's advertisements daily statistics</a>

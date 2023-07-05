@@ -11,12 +11,12 @@ import java.util.List;
  */
 @Getter
 @Setter
-public class PublishTasksResponse {
+public class TasksResponse {
 
 
     /**
      * tasks
      */
     @JsonProperty("tasks")
-    private List<PublishTask> tasks;
+    private List<Task> tasks;
 }
