@@ -1,6 +1,7 @@
 package io.github.ealenxie.allegro.order;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.ealenxie.allegro.IdNamePayload;
 import io.github.ealenxie.allegro.Money;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,7 +21,7 @@ public class Delivery {
      * 方法
      */
     @JsonProperty("method")
-    private DeliveryMethod method;
+    private IdNamePayload method;
     /**
      * 接送地点
      */

@@ -96,5 +96,5 @@ public class LogisticTicket {
      * 回复附件列表
      */
     @JsonProperty("replay_attachment_file_list")
-    private List<ReplayAttachmentFile> replayAttachmentFileList;
+    private List<AttachmentFile> replayAttachmentFileList;
 }

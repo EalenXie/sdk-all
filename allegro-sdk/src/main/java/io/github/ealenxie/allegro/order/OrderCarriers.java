@@ -1,6 +1,7 @@
 package io.github.ealenxie.allegro.order;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.ealenxie.allegro.IdNamePayload;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,6 +14,6 @@ import java.util.List;
 @Setter
 public class OrderCarriers {
     @JsonProperty("carriers")
-    private List<Carrier> carriers;
+    private List<IdNamePayload> carriers;
 
 }
