@@ -26,5 +26,5 @@ public class PromoModifyDetailResult {
      * additionalMarketplaces
      */
     @JsonProperty("additionalMarketplaces")
-    private List<PromoModifyDetailAdditionalMarketplaces> additionalMarketplaces;
+    private List<PromoModifyAdditionalMarketplaces> additionalMarketplaces;
 }

@@ -1,6 +1,7 @@
 package io.github.ealenxie.allegro;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.github.ealenxie.allegro.offer.MarketplaceIdQueryParams;
 import io.github.ealenxie.allegro.others.Thread;
 import io.github.ealenxie.allegro.others.*;
 import org.springframework.core.ParameterizedTypeReference;
@@ -86,7 +87,7 @@ public class AllegroOthersClient extends AllegroClient {
      * <a href="https://developer.allegro.pl/documentation/#operation/getSellerSmartClassificationGET">Get Smart! seller classification report</a>
      */
     public ClassificationResponse getSellerSmartClassification(String accessToken, String marketplaceId) {
-        return get("/sale/smart", accessToken, new SmartClassificationQueryParams(marketplaceId), ClassificationResponse.class);
+        return get("/sale/smart", accessToken, new MarketplaceIdQueryParams(marketplaceId), ClassificationResponse.class);
     }
 
     /**

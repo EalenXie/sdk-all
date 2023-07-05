@@ -1,6 +1,7 @@
 package io.github.ealenxie.allegro;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.github.ealenxie.allegro.offer.LanguageQueryParam;
 import io.github.ealenxie.allegro.setting.*;
 import org.springframework.http.HttpMethod;
 import org.springframework.web.client.RestOperations;
@@ -223,8 +224,8 @@ public class AllegroSaleSettingClient extends AllegroClient {
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/getAdditionalServiceGroupTranslations">Get translations for specified group</a>
      */
-    public TranslationResponse getTranslations(String accessToken, String groupId, LanguageQueryParams queryParams) {
-        return get(String.format("/sale/offer-additional-services/groups/%s/translations", groupId), accessToken, queryParams, TranslationResponse.class);
+    public TranslationResponse getTranslations(String accessToken, String groupId, LanguageQueryParam queryParam) {
+        return get(String.format("/sale/offer-additional-services/groups/%s/translations", groupId), accessToken, queryParam, TranslationResponse.class);
     }
 
     /**

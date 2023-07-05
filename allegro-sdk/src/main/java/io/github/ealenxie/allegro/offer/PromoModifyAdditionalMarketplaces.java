@@ -19,5 +19,5 @@ public class PromoModifyAdditionalMarketplaces {
      * modification
      */
     @JsonProperty("modification")
-    private PromoPackageModify modification;
+    private PromoModify modification;
 }

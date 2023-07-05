@@ -41,7 +41,7 @@ public class BadgeCampaigns {
      * visibility
      */
     @JsonProperty("visibility")
-    private Visibility visibility;
+    private Publication visibility;
     /**
      * publication
      */

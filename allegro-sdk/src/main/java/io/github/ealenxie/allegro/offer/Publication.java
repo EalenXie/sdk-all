@@ -26,5 +26,5 @@ public class Publication {
      * to
      */
     @JsonProperty("to")
-    private Object to;
+    private String to;
 }

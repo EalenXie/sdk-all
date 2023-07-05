@@ -263,7 +263,7 @@ public class AllegroOfferClient extends AllegroClient {
      * <a href="https://developer.allegro.pl/documentation/#operation/categorySuggestionUsingGET">Get categories suggestions</a>
      */
     public MatchingCategoriesResponse categorySuggestion(String accessToken, String name) {
-        return get("/sale/matching-categories", accessToken, new NameQueryParam(name), MatchingCategoriesResponse.class);
+        return get("/sale/matching-categories", accessToken, new NamePayload(name), MatchingCategoriesResponse.class);
     }
 
     /**
