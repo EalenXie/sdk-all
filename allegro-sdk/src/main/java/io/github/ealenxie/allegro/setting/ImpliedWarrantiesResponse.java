@@ -1,6 +1,7 @@
 package io.github.ealenxie.allegro.setting;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.ealenxie.allegro.IdNamePayload;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,5 +24,5 @@ public class ImpliedWarrantiesResponse {
      * impliedWarranties
      */
     @JsonProperty("impliedWarranties")
-    private List<ImpliedWarranties> impliedWarranties;
+    private List<IdNamePayload> impliedWarranties;
 }
