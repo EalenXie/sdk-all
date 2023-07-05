@@ -16,9 +16,10 @@ public class AllegroOfferClient extends AllegroClient {
 
     private static final String SALE_OFFERS = "/sale/offers";
     private static final String SALE_OFFER = SALE_OFFERS + "/%s";
-
-
     private static final String OFFER_VARIANTS_URL = "/offer-variants/%s";
+    private static final String LOYALTY_PROMOTIONS_URL = "/sale/loyalty/promotions/%s";
+    private static final String LOYALTY_PROMOTION_CAMPAIGNS_URL = "/sale/loyalty/promotion-campaigns";
+
 
     protected AllegroOfferClient() {
         super(new ObjectMapper());
@@ -530,42 +531,42 @@ public class AllegroOfferClient extends AllegroClient {
      * <a href="https://developer.allegro.pl/documentation/#operation/getPromotionUsingGET">Get a promotion data by id</a>
      */
     public SellerPromotions getSellerPromotion(String accessToken, String promotionId) {
-        return get(String.format("/sale/loyalty/promotions/%s", promotionId), accessToken, null, SellerPromotions.class);
+        return get(String.format(LOYALTY_PROMOTIONS_URL, promotionId), accessToken, null, SellerPromotions.class);
     }
 
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/updatePromotionUsingPUT">Modify a promotion</a>
      */
     public CreatePromotionResponse updatePromotion(String accessToken, String promotionId, CreatePromotionPayload payload) {
-        return exchange(String.format("/sale/loyalty/promotions/%s", promotionId), HttpMethod.PUT, accessToken, null, payload, CreatePromotionResponse.class);
+        return exchange(String.format(LOYALTY_PROMOTIONS_URL, promotionId), HttpMethod.PUT, accessToken, null, payload, CreatePromotionResponse.class);
     }
 
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/deactivatePromotionUsingDELETE">Deactivate a promotion by id</a>
      */
     public void deletePromotion(String accessToken, String promotionId) {
-        exchange(String.format("/sale/loyalty/promotions/%s", promotionId), HttpMethod.DELETE, accessToken, null, null, Object.class);
+        exchange(String.format(LOYALTY_PROMOTIONS_URL, promotionId), HttpMethod.DELETE, accessToken, null, null, Object.class);
     }
 
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/addPromotionToCampaignUsingPOST">Create an application for a promotion campaign</a>
      */
     public CreatePromotionCampaignResponse createPromotionCampaign(String accessToken, PromotionCampaignPayload payload) {
-        return post("/sale/loyalty/promotion-campaigns", accessToken, payload, CreatePromotionCampaignResponse.class);
+        return post(LOYALTY_PROMOTION_CAMPAIGNS_URL, accessToken, payload, CreatePromotionCampaignResponse.class);
     }
 
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/getPromotionCampaignsUsingGET">Get the user's promotion campaigns</a>
      */
     public PromotionCampaignResponse getPromotionCampaigns(String accessToken, PromotionCampaignQueryParams queryParams) {
-        return get("/sale/loyalty/promotion-campaigns", accessToken, queryParams, PromotionCampaignResponse.class);
+        return get(LOYALTY_PROMOTION_CAMPAIGNS_URL, accessToken, queryParams, PromotionCampaignResponse.class);
     }
 
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/deleteCampaignFromPromotionUsingDELETE">Delete a campaign in a promotion</a>
      */
     public void deleteCampaign(String accessToken, CampaignQueryParam queryParams) {
-        exchange("/sale/loyalty/promotion-campaigns", HttpMethod.DELETE, accessToken, queryParams, null, Object.class);
+        exchange(LOYALTY_PROMOTION_CAMPAIGNS_URL, HttpMethod.DELETE, accessToken, queryParams, null, Object.class);
     }
 
     /**
