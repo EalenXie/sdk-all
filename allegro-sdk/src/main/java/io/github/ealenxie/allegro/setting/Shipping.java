@@ -1,6 +1,7 @@
 package io.github.ealenxie.allegro.setting;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.ealenxie.allegro.offer.RangeValue;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,7 +16,7 @@ public class Shipping {
      * defaultX
      */
     @JsonProperty("default")
-    private ShippingTime defaultX;
+    private RangeValue defaultValue;
     /**
      * customizable
      */

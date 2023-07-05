@@ -1,6 +1,7 @@
 package io.github.ealenxie.allegro.order;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.ealenxie.allegro.offer.RangeValue;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,5 +15,5 @@ public class DeliveryTime {
      * 首次交付尝试的保证日期
      */
     @JsonProperty("guaranteed")
-    private Guaranteed guaranteed;
+    private RangeValue guaranteed;
 }

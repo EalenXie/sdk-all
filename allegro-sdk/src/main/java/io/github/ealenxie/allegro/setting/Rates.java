@@ -3,6 +3,8 @@ package io.github.ealenxie.allegro.setting;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.ealenxie.allegro.IdPayload;
 import io.github.ealenxie.allegro.Money;
+import io.github.ealenxie.allegro.offer.RangeValue;
+import io.github.ealenxie.allegro.order.UnitPayload;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -27,7 +29,7 @@ public class Rates {
      * maxPackageWeight
      */
     @JsonProperty("maxPackageWeight")
-    private MaxPackageWeight maxPackageWeight;
+    private UnitPayload maxPackageWeight;
     /**
      * firstItemRate
      */
@@ -42,5 +44,5 @@ public class Rates {
      * shippingTime
      */
     @JsonProperty("shippingTime")
-    private ShippingTime shippingTime;
+    private RangeValue shippingTime;
 }

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.ealenxie.allegro.IdPayload;
 import io.github.ealenxie.allegro.MethodPayload;
+import io.github.ealenxie.allegro.order.Opening;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -70,7 +71,7 @@ public class PointPayload {
      * openHours
      */
     @JsonProperty("openHours")
-    private List<OpenHours> openHours;
+    private List<Opening> openHours;
     /**
      * serviceTime
      */

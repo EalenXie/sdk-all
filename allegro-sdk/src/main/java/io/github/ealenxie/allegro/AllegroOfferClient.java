@@ -255,7 +255,7 @@ public class AllegroOfferClient extends AllegroClient {
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/getCategoryEventsUsingGET_1">Get changes in categories</a>
      */
-    public CategoryEventsResponse getCategoryEvents(String accessToken, CategoryEventsQueryParams queryParams) {
+    public CategoryEventsResponse getCategoryEvents(String accessToken, OfferEventsQueryParams queryParams) {
         return get("/sale/category-events", accessToken, queryParams, CategoryEventsResponse.class);
     }
 

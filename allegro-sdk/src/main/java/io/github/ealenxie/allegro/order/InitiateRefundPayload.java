@@ -33,7 +33,7 @@ public class InitiateRefundPayload {
      * List of order's line items which can be refunded.
      */
     @JsonProperty("lineItems")
-    private List<InitiateRefundLineItem> lineItems;
+    private List<RefundLineItem> lineItems;
     /**
      * object
      * Payment refund for delivery.

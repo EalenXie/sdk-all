@@ -1,6 +1,7 @@
 package io.github.ealenxie.allegro.others;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.ealenxie.allegro.offer.StockUnit;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -51,7 +52,7 @@ public class Regular {
      * stock
      */
     @JsonProperty("stock")
-    private Stock stock;
+    private StockUnit stock;
     /**
      * vendor
      */
