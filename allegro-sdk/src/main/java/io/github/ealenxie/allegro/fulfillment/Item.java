@@ -1,6 +1,7 @@
 package io.github.ealenxie.allegro.fulfillment;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.ealenxie.allegro.IdPayload;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,7 +16,7 @@ public class Item {
      * product
      */
     @JsonProperty("product")
-    private Product product;
+    private IdPayload product;
     /**
      * quantity
      */

@@ -1,6 +1,7 @@
-package io.github.ealenxie.allegro.offer;
+package io.github.ealenxie.allegro;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.ealenxie.allegro.offer.Values;
 import lombok.Getter;
 import lombok.Setter;
 

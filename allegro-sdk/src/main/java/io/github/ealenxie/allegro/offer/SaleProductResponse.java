@@ -1,6 +1,7 @@
 package io.github.ealenxie.allegro.offer;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.ealenxie.allegro.UrlPayload;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -33,7 +34,7 @@ public class SaleProductResponse {
      * images
      */
     @JsonProperty("images")
-    private List<Images> images;
+    private List<UrlPayload> images;
     /**
      * parameters
      */

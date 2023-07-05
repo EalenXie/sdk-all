@@ -1,6 +1,7 @@
 package io.github.ealenxie.allegro.others;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.ealenxie.allegro.IdNamePayload;
 import io.github.ealenxie.allegro.IdPayload;
 import io.github.ealenxie.allegro.Money;
 import lombok.Getter;
@@ -25,7 +26,7 @@ public class BillingEntry {
      * 账单类型
      */
     @JsonProperty("type")
-    private BillingType type;
+    private IdNamePayload type;
 
     /**
      * 账单条目的报价

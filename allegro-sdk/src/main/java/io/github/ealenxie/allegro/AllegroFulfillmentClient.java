@@ -72,29 +72,29 @@ public class AllegroFulfillmentClient extends AllegroClient {
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/createLabelsCommand">Create labels</a>
      */
-    public LabelResponse createLabelsCommand(String accessToken, String commandId, InputPayload<AdvanceShipNoticeIdPayload> payload) {
-        return exchange(String.format("/fulfillment/create-labels-commands/%s", commandId), HttpMethod.PUT, accessToken, null, payload, LabelResponse.class);
+    public LabelPayload createLabelsCommand(String accessToken, String commandId, InputPayload<AdvanceShipNoticeIdPayload> payload) {
+        return exchange(String.format("/fulfillment/create-labels-commands/%s", commandId), HttpMethod.PUT, accessToken, null, payload, LabelPayload.class);
     }
 
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/getLabelCommand">Get labels</a>
      */
-    public LabelResponse getLabelCommand(String accessToken, String commandId) {
-        return get(String.format("/fulfillment/create-labels-commands/%s", commandId), accessToken, null, LabelResponse.class);
+    public LabelPayload getLabelCommand(String accessToken, String commandId) {
+        return get(String.format("/fulfillment/create-labels-commands/%s", commandId), accessToken, null, LabelPayload.class);
     }
 
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/submitCommand">Submit the Advance Ship Notice</a>
      */
-    public LabelResponse submitCommand(String accessToken, String commandId, LabelPayload payload) {
-        return exchange(String.format("/fulfillment/submit-commands/%s", commandId), HttpMethod.PUT, accessToken, null, payload, LabelResponse.class);
+    public LabelPayload submitCommand(String accessToken, String commandId, LabelPayload payload) {
+        return exchange(String.format("/fulfillment/submit-commands/%s", commandId), HttpMethod.PUT, accessToken, null, payload, LabelPayload.class);
     }
 
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/getSubmitCommand">Get submit status</a>
      */
-    public LabelResponse getSubmitCommand(String accessToken, String commandId) {
-        return get(String.format("/fulfillment/submit-commands/%s", commandId), accessToken, null, LabelResponse.class);
+    public LabelPayload getSubmitCommand(String accessToken, String commandId) {
+        return get(String.format("/fulfillment/submit-commands/%s", commandId), accessToken, null, LabelPayload.class);
     }
 
     /**

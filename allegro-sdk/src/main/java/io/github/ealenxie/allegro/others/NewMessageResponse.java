@@ -68,7 +68,7 @@ public class NewMessageResponse {
      * attachments
      */
     @JsonProperty("attachments")
-    private List<AttachmentsX> attachments;
+    private List<Attachment> attachments;
     /**
      * additionalInformation
      */

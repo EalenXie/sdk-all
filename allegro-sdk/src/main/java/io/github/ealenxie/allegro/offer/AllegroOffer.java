@@ -1,6 +1,7 @@
 package io.github.ealenxie.allegro.offer;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.ealenxie.allegro.UrlPayload;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -122,7 +123,7 @@ public class AllegroOffer {
      * publication
      */
     @JsonProperty("publication")
-    private Publication publication;
+    private PublishPayload publication;
     /**
      * sellingMode
      */

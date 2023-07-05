@@ -38,7 +38,7 @@ public class PackageConfigurationPayload {
      * publication
      */
     @JsonProperty("publication")
-    private Publication publication;
+    private PublishPayload publication;
     /**
      * type
      */

@@ -1,6 +1,7 @@
 package io.github.ealenxie.allegro.others;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.ealenxie.allegro.Filter;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -27,7 +28,7 @@ public class OffersResponse {
      * filters
      */
     @JsonProperty("filters")
-    private List<Filters> filters;
+    private List<Filter> filters;
     /**
      * searchMeta
      */
