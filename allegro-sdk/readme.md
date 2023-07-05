@@ -180,6 +180,27 @@ class AllegroOrdersClientTest {
 | getCompatibleProductsGroups    | [Get list of compatible product groups](https://developer.allegro.pl/documentation/#operation/getCompatibleProductsGroups)                                      | ✔️  |
 | getCompatibleProducts          | [Get list of compatible products](https://developer.allegro.pl/documentation/#operation/getCompatibleProducts)                                                  | ✔️  |
 
+#### Rebates and promotions
+
+| 🏷️方法名              | 📚 官方文档地址                                                                                                                 | 状态  |
+|:--------------------|:--------------------------------------------------------------------------------------------------------------------------|:----|
+| createPromotion     | [Create an application for a promotion campaign](https://developer.allegro.pl/documentation/#tag/Rebates-and-promotions)  | ✔️  |
+| getSellerPromotions | [Get the user's list of promotions](https://developer.allegro.pl/documentation/#operation/listSellerPromotionsUsingGET_1) | ✔️  |
+| getSellerPromotion  | [Get a promotion data by id](https://developer.allegro.pl/documentation/#operation/getPromotionUsingGET)                  | ✔️  |
+| updatePromotion     | [Modify a promotion](https://developer.allegro.pl/documentation/#operation/updatePromotionUsingPUT)                       | ✔️  |
+| deletePromotion     | [Deactivate a promotion by id](https://developer.allegro.pl/documentation/#operation/deactivatePromotionUsingDELETE)      | ✔️  |
+
+
+#### Promotion campaigns
+
+| 🏷️方法名                  | 📚 官方文档地址                                                                                                                                           | 状态  |
+|:------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------|:----|
+| createPromotionCampaign | [Create an application for a promotion campaign](https://developer.allegro.pl/documentation/#operation/addPromotionToCampaignUsingPOST)             | ✔️  |
+| getPromotionCampaigns   | [Get the user's promotion campaigns](https://developer.allegro.pl/documentation/#operation/getPromotionCampaignsUsingGET)                           | ✔️  |
+| deleteCampaign          | [Delete a campaign in a promotion](https://developer.allegro.pl/documentation/#operation/deleteCampaignFromPromotionUsingDELETE)                    | ✔️  |
+| getPromotionCampaign    | [Get an application for promotion campaign](https://developer.allegro.pl/documentation/#operation/getPromotionCampaignApplicationUsingGET)          | ✔️  |
+| deletePromotionCampaign | [Delete an application for promotion campaign](https://developer.allegro.pl/documentation/#operation/deletePromotionCampaignApplicationUsingDELETE) | ✔️  |
+
 #### Badge campaigns
 
 | 🏷️方法名               | 📚 官方文档地址                                                                                                                           | 状态  |

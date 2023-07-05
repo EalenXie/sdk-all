@@ -513,6 +513,76 @@ public class AllegroOfferClient extends AllegroClient {
     }
 
     /**
+     * <a href="https://developer.allegro.pl/documentation/#tag/Rebates-and-promotions">Create a new promotion</a>
+     */
+    public CreatePromotionResponse createPromotion(String accessToken, CreatePromotionPayload payload) {
+        return post("/sale/loyalty/promotions", accessToken, payload, CreatePromotionResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/listSellerPromotionsUsingGET_1">Get the user's list of promotions</a>
+     */
+    public SellerPromotionResponse getSellerPromotions(String accessToken, PromotionQueryParams queryParams) {
+        return get("/sale/loyalty/promotions", accessToken, queryParams, SellerPromotionResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getPromotionUsingGET">Get a promotion data by id</a>
+     */
+    public SellerPromotions getSellerPromotion(String accessToken, String promotionId) {
+        return get(String.format("/sale/loyalty/promotions/%s", promotionId), accessToken, null, SellerPromotions.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/updatePromotionUsingPUT">Modify a promotion</a>
+     */
+    public CreatePromotionResponse updatePromotion(String accessToken, String promotionId, CreatePromotionPayload payload) {
+        return exchange(String.format("/sale/loyalty/promotions/%s", promotionId), HttpMethod.PUT, accessToken, null, payload, CreatePromotionResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/deactivatePromotionUsingDELETE">Deactivate a promotion by id</a>
+     */
+    public void deletePromotion(String accessToken, String promotionId) {
+        exchange(String.format("/sale/loyalty/promotions/%s", promotionId), HttpMethod.DELETE, accessToken, null, null, Object.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/addPromotionToCampaignUsingPOST">Create an application for a promotion campaign</a>
+     */
+    public CreatePromotionCampaignResponse createPromotionCampaign(String accessToken, PromotionCampaignPayload payload) {
+        return post("/sale/loyalty/promotion-campaigns", accessToken, payload, CreatePromotionCampaignResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getPromotionCampaignsUsingGET">Get the user's promotion campaigns</a>
+     */
+    public PromotionCampaignResponse getPromotionCampaigns(String accessToken, PromotionCampaignQueryParams queryParams) {
+        return get("/sale/loyalty/promotion-campaigns", accessToken, queryParams, PromotionCampaignResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/deleteCampaignFromPromotionUsingDELETE">Delete a campaign in a promotion</a>
+     */
+    public void deleteCampaign(String accessToken, CampaignQueryParam queryParams) {
+        exchange("/sale/loyalty/promotion-campaigns", HttpMethod.DELETE, accessToken, queryParams, null, Object.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/getPromotionCampaignApplicationUsingGET">Get an application for promotion campaign</a>
+     */
+    public Object getPromotionCampaign(String accessToken, String applicationId) {
+        return get(String.format("/sale/loyalty/promotion-campaign-applications/%s", applicationId), accessToken, null, Object.class);
+    }
+
+    /**
+     * <a href="https://developer.allegro.pl/documentation/#operation/deletePromotionCampaignApplicationUsingDELETE">Delete an application for promotion campaign</a>
+     */
+    public void deletePromotionCampaign(String accessToken, String applicationId) {
+        exchange(String.format("/sale/loyalty/promotion-campaign-applications/%s", applicationId), HttpMethod.DELETE, accessToken, null, null, Object.class);
+    }
+
+    /**
      * <a href="https://developer.allegro.pl/documentation/#operation/badgeCampaigns_get_all">Get a list of available badge campaigns</a>
      */
     public BadgeCampaignResponse getAllBadgeCampaigns(String accessToken) {
