@@ -1,6 +1,7 @@
 package io.github.ealenxie.allegro.order;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.ealenxie.allegro.MethodPayload;
 import io.github.ealenxie.allegro.TypePayload;
 import lombok.Getter;
 import lombok.Setter;
@@ -47,7 +48,7 @@ public class CarriersPoint {
      * payments
      */
     @JsonProperty("payments")
-    private List<CarriersPointPayment> payments;
+    private List<MethodPayload> payments;
     /**
      * address
      */

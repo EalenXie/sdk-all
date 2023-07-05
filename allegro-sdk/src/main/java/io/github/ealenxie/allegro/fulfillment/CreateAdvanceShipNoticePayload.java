@@ -1,6 +1,7 @@
 package io.github.ealenxie.allegro.fulfillment;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.ealenxie.allegro.MethodPayload;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -28,5 +29,5 @@ public class CreateAdvanceShipNoticePayload {
      * shipping
      */
     @JsonProperty("shipping")
-    private Shipping shipping;
+    private MethodPayload shipping;
 }

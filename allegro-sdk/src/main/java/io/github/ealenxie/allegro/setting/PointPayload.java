@@ -3,6 +3,7 @@ package io.github.ealenxie.allegro.setting;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.ealenxie.allegro.IdPayload;
+import io.github.ealenxie.allegro.MethodPayload;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -80,7 +81,7 @@ public class PointPayload {
      * payments
      */
     @JsonProperty("payments")
-    private List<Payments> payments;
+    private List<MethodPayload> payments;
     /**
      * confirmationType
      */
