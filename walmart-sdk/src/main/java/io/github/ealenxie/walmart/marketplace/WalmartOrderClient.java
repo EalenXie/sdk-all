@@ -1,8 +1,14 @@
 package io.github.ealenxie.walmart.marketplace;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.github.ealenxie.walmart.marketplace.Items.*;
+import io.github.ealenxie.walmart.marketplace.feeds.FeedType;
 import io.github.ealenxie.walmart.marketplace.orders.*;
 import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
 import org.springframework.web.client.RestOperations;
 
 /**
@@ -26,6 +32,80 @@ public class WalmartOrderClient extends WalmartClient {
 
     public WalmartOrderClient(String clientId, String clientSecret, ObjectMapper objectMapper) {
         super(clientId, clientSecret, objectMapper);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/items#operation/getCatalogSearch">Catalog Search</a>
+     */
+    public CatalogResponse getCatalogSearch(String accessToken, CatalogQueryParams queryParams, CatalogPayload payload) {
+        return exchange("/v3/items/catalog/search", HttpMethod.POST, accessToken, queryParams, payload, CatalogResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/items#operation/getItemAssociations">Get Item Associations</a>
+     */
+    public ItemsPayload<ItemAssociation> getItemAssociations(String accessToken, ItemsPayload<SkuPayload> payload) {
+        return post("/v3/items/associations", accessToken, payload, new ParameterizedTypeReference<ItemsPayload<ItemAssociation>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/items#operation/itemBulkUploads">Bulk Item Setup</a>
+     */
+    public ItemBulkResponse itemBulkUploads(String accessToken, FeedType queryParams, byte[] file) {
+        HttpHeaders headers = getBearerHeaders(accessToken);
+        headers.setContentType(MediaType.MULTIPART_FORM_DATA);
+        return exchange("/v3/items/associations", HttpMethod.POST, accessToken, queryParams, new HttpEntity<>(file, headers), ItemBulkResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/items#operation/getAllItems">All items</a>
+     */
+    public ItemPayload getAllItems(String accessToken, ItemQueryParams queryParams) {
+        return get("/v3/items", accessToken, queryParams, ItemPayload.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/items#operation/getAnItem">An item</a>
+     */
+    public ItemPayload getItem(String accessToken, String id, ProductIdTypeQueryParams queryParams) {
+        return get(String.format("/v3/items/%s", id), accessToken, queryParams, ItemPayload.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/items#operation/getSearchResult">Item Search</a>
+     */
+    public ItemsPayload<ItemSearch> getSearchResult(String accessToken, ItemSearchQueryParams queryParams) {
+        return get("/v3/items/walmart/search", accessToken, queryParams, new ParameterizedTypeReference<ItemsPayload<ItemSearch>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/items#operation/getTaxonomyResponse">Taxonomy</a>
+     */
+    public TaxonomyResponse getTaxonomy(String accessToken, ProductIdTypeQueryParams queryParams) {
+        return get("/v3/items/taxonomy", accessToken, queryParams, TaxonomyResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/items#operation/getVariantCount">Get item count by groups</a>
+     */
+    public VariantResponse getVariantCount(String accessToken, VariantQueryParams queryParams) {
+        return get("/v3/items/groups/count", accessToken, queryParams, VariantResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/items#operation/getCountByStatus">Get items count by status</a>
+     */
+    public String getCountByStatus(String accessToken, StatusPayload queryParams) {
+        return get("/v3/items/count", accessToken, queryParams, String.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/items#operation/retireAnItem">Retire an item</a>
+     */
+    public RetireItemResponse retireItem(String accessToken, String sku) {
+        return exchange(String.format("/v3/items/%s", sku), HttpMethod.DELETE, accessToken, null, null, RetireItemResponse.class);
     }
 
     /**

@@ -18,11 +18,29 @@ walmart-sdk
 
 #### [WalmartFeedClient](https://github.com/EalenXie/sdk-all/blob/main/walmart-sdk/src/main/java/io/github/ealenxie/walmart/marketplace/WalmartFeedClient.java) 已支持的接口列表
 
-| 方法名                | 官方文档地址                                                                                              | 状态  |
-|:-------------------|:----------------------------------------------------------------------------------------------------|:----|
-| getFeeds           | [All feed statuses](https://developer.walmart.com/api/us/mp/feeds)                                  | ✔️  |
-| getFeedItemStatus  | [Feed item status](https://developer.walmart.com/api/us/mp/feeds#operation/getFeedItemStatus)       | ✔️  |
-| getFeedErrorReport | [Get Feed Error Report](https://developer.walmart.com/api/us/mp/feeds#operation/getFeedErrorReport) | ✔️  |
+#### Feeds
+
+| 方法名               | 官方文档地址                                                                                              | 状态  |
+|:------------------|:----------------------------------------------------------------------------------------------------|:----|
+| getFeeds          | [All feed statuses](https://developer.walmart.com/api/us/mp/feeds)                                  | ✔️  |
+| getFeedItemStatus | [Feed item status](https://developer.walmart.com/api/us/mp/feeds#operation/getFeedItemStatus)       | ✔️  |
+| itemBulkUploads   | [Get Feed Error Report](https://developer.walmart.com/api/us/mp/feeds#operation/getFeedErrorReport) | ✔️  |
+
+#### Items
+
+| 方法名                 | 官方文档地址                                                                                                | 状态  |
+|:--------------------|:------------------------------------------------------------------------------------------------------|:----|
+| getCatalogSearch    | [Catalog Search](https://developer.walmart.com/api/us/mp/items#operation/getCatalogSearch)            | ✔️  |
+| getItemAssociations | [Get Item Associations](https://developer.walmart.com/api/us/mp/items#operation/getItemAssociations)  | ✔️  |
+| getFeedErrorReport  | [Bulk Item Setup](https://developer.walmart.com/api/us/mp/items#operation/itemBulkUploads)            | ✔️  |
+| getAllItems         | [All items](https://developer.walmart.com/api/us/mp/items#operation/getAllItems)                      | ✔️  |
+| getItem             | [An item](https://developer.walmart.com/api/us/mp/items#operation/getAnItem)                          | ✔️  |
+| getSearchResult     | [Item Search](https://developer.walmart.com/api/us/mp/items#operation/getSearchResult)                | ✔️  |
+| getTaxonomy         | [Taxonomy](https://developer.walmart.com/api/us/mp/items#operation/getTaxonomyResponse)               | ✔️  |
+| getVariantCount     | [Get item count by groups](https://developer.walmart.com/api/us/mp/items#operation/getVariantCount)   | ✔️  |
+| getCountByStatus    | [Get items count by status](https://developer.walmart.com/api/us/mp/items#operation/getCountByStatus) | ✔️  |
+| retireItem          | [Retire an item](https://developer.walmart.com/api/us/mp/items#operation/retireAnItem)                | ✔️  |
+
 
 
 #### [WalmartClient](https://github.com/EalenXie/sdk-all/blob/main/walmart-sdk/src/main/java/io/github/ealenxie/walmart/marketplace/WalmartClient.java) 已支持的接口列表
