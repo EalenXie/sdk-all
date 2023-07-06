@@ -17,12 +17,13 @@ import java.util.List;
  */
 public class AllegroOrdersClient extends AllegroClient {
 
+
     public AllegroOrdersClient() {
         this(new RestTemplate());
     }
 
     public AllegroOrdersClient(RestOperations restOperations) {
-        this(new ObjectMapper(), restOperations);
+        super(restOperations);
     }
 
     public AllegroOrdersClient(ObjectMapper objectMapper, RestOperations restOperations) {

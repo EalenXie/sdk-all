@@ -23,11 +23,18 @@ public class AllegroSaleSettingClient extends AllegroClient {
 
     public static final String FORMAT = "%s/%s";
 
-    protected AllegroSaleSettingClient(ObjectMapper mapper) {
+    public AllegroSaleSettingClient() {
+    }
+
+    public AllegroSaleSettingClient(ObjectMapper mapper) {
         super(mapper);
     }
 
-    protected AllegroSaleSettingClient(RestOperations restOperations, ObjectMapper mapper) {
+    public AllegroSaleSettingClient(RestOperations restOperations) {
+        super(restOperations);
+    }
+
+    public AllegroSaleSettingClient(RestOperations restOperations, ObjectMapper mapper) {
         super(restOperations, mapper);
     }
 

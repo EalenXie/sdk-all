@@ -1,6 +1,7 @@
 package io.github.ealenxie.allegro;
 
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
@@ -57,13 +58,29 @@ public abstract class AllegroClient {
         this.sandBox = sandBox;
     }
 
+    protected AllegroClient() {
+        this(new RestTemplate());
+    }
+
     protected AllegroClient(ObjectMapper mapper) {
         this(new RestTemplate(), mapper);
+    }
+
+    protected AllegroClient(RestOperations restOperations) {
+        this.restOperations = restOperations;
+        this.mapper = defaultObjectMapper();
+
     }
 
     protected AllegroClient(RestOperations restOperations, ObjectMapper mapper) {
         this.restOperations = restOperations;
         this.mapper = mapper;
+    }
+
+    public static ObjectMapper defaultObjectMapper() {
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        return mapper;
     }
 
     public RestOperations getRestOperations() {

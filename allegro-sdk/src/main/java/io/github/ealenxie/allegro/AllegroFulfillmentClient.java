@@ -16,6 +16,9 @@ public class AllegroFulfillmentClient extends AllegroClient {
     private static final String FULFILLMENT_ADVANCE_SHIP_NOTICES = "/fulfillment/advance-ship-notices";
     private static final String FORMAT = "%s/%s";
 
+    protected AllegroFulfillmentClient() {
+    }
+
     protected AllegroFulfillmentClient(ObjectMapper mapper) {
         super(mapper);
     }

@@ -18,12 +18,20 @@ import java.util.List;
  * @author EalenXie created on 2023/6/29 12:36
  */
 public class AllegroOthersClient extends AllegroClient {
-    protected AllegroOthersClient(ObjectMapper mapper) {
-        super(mapper);
+
+    public AllegroOthersClient() {
     }
 
-    protected AllegroOthersClient(RestOperations restOperations, ObjectMapper mapper) {
-        super(restOperations, mapper);
+    protected AllegroOthersClient(ObjectMapper objectMapper) {
+        super(objectMapper);
+    }
+
+    public AllegroOthersClient(RestOperations restOperations) {
+        super(restOperations);
+    }
+
+    protected AllegroOthersClient(RestOperations restOperations, ObjectMapper objectMapper) {
+        super(restOperations, objectMapper);
     }
 
 

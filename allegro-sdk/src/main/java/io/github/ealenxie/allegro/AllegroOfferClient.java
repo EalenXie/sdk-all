@@ -20,16 +20,14 @@ public class AllegroOfferClient extends AllegroClient {
     private static final String LOYALTY_PROMOTIONS_URL = "/sale/loyalty/promotions/%s";
     private static final String LOYALTY_PROMOTION_CAMPAIGNS_URL = "/sale/loyalty/promotion-campaigns";
 
-
-    protected AllegroOfferClient() {
-        super(new ObjectMapper());
+    public AllegroOfferClient() {
     }
 
-    protected AllegroOfferClient(ObjectMapper mapper) {
+    public AllegroOfferClient(ObjectMapper mapper) {
         super(mapper);
     }
 
-    protected AllegroOfferClient(RestOperations restOperations, ObjectMapper mapper) {
+    public AllegroOfferClient(RestOperations restOperations, ObjectMapper mapper) {
         super(restOperations, mapper);
     }
 
