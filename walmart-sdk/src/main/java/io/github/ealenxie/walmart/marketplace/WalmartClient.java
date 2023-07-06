@@ -24,27 +24,18 @@ public class WalmartClient {
     private final ObjectMapper mapper;
     private final RestOperations restOperations;
     /**
-     * Walmart Marketplace API Host地址 <a href="https://marketplace.walmartapis.com">https://marketplace.walmartapis.com</a>
+     * Walmart Marketplace API Host地址
      */
     public static final String HOST = "https://marketplace.walmartapis.com";
     /**
-     * Walmart Marketplace API 沙箱环境地址
+     * Walmart Marketplace API 沙箱环境 Host地址
      */
     public static final String SANDBOX_HOST = "https://sandbox.walmartapis.com";
     /**
      * 沙箱模式
      */
     private boolean sandBox = false;
-
-    @SuppressWarnings("all")
-    public static final String WM_SVC_NAME = "WM_SVC.NAME";
-    @SuppressWarnings("all")
-    public static final String WM_QOS_CORRELATION_ID = "WM_QOS.CORRELATION_ID";
-    @SuppressWarnings("all")
-    public static final String WM_SEC_ACCESS_TOKEN = "WM_SEC.ACCESS_TOKEN";
-
     private final String clientId;
-
     private final String clientSecret;
 
     public WalmartClient(String clientId, String clientSecret) {
@@ -89,11 +80,12 @@ public class WalmartClient {
     /**
      * 获取公共的请求头
      */
+    @SuppressWarnings("all")
     public HttpHeaders getBasicHeaders() {
         HttpHeaders headers = new HttpHeaders();
         headers.setBasicAuth(clientId, clientSecret);
-        headers.set(WM_SVC_NAME, "Walmart Marketplace");
-        headers.set(WM_QOS_CORRELATION_ID, UUID.randomUUID().toString());
+        headers.set("WM_SVC.NAME", "Walmart Marketplace");
+        headers.set("WM_QOS.CORRELATION_ID", UUID.randomUUID().toString());
         headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
         return headers;
     }
@@ -298,9 +290,10 @@ public class WalmartClient {
     /**
      * 获取公共的请求头
      */
+    @SuppressWarnings("all")
     public HttpHeaders getBearerHeaders(String accessToken) {
         HttpHeaders headers = getBasicHeaders();
-        headers.set(WM_SEC_ACCESS_TOKEN, accessToken);
+        headers.set("WM_SEC.ACCESS_TOKEN", accessToken);
         headers.setContentType(MediaType.APPLICATION_JSON);
         return headers;
     }

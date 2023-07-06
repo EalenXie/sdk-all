@@ -81,7 +81,6 @@ public class WalmartOrderClient extends WalmartClient {
 
     /**
      * <a href="https://developer.walmart.com/api/us/mp/orders#operation/getAllReleasedOrders">All released orders</a>
-     * <p>获取所有已下达的订单</p>
      */
     public ListElementResponse<OrdersResponse> getAllReleasedOrders(String accessToken) {
         return get("/v3/orders/released", accessToken, null, new ParameterizedTypeReference<ListElementResponse<OrdersResponse>>() {
