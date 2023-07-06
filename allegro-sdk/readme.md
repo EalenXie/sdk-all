@@ -25,14 +25,22 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 ```java
 
 import io.github.ealenxie.allegro.AllegroOrdersClient;
+import io.github.ealenxie.allegro.AllegroToken;
 import io.github.ealenxie.allegro.order.EventStats;
 
 class AllegroOrdersClientTest {
     @Test
     void eventStats() {
-        String accessToken = "your accessToken";
         AllegroOrdersClient allegroOrdersClient = new AllegroOrdersClient();
         allegroOrdersClient.setSandBox(false);
+        // get accessToken 
+        String clientId = "your clientId";
+        String clientSecret = "your clientSecret";
+        String code = "code";
+        String redirectUri = "your redirectUri";
+        AllegroToken allegroToken = allegroOrdersClient.accessToken(clientId, clientSecret, code, redirectUri);
+        String accessToken = allegroToken.getAccessToken();
+        // call api
         EventStats eventStats = allegroOrdersClient.eventStats(accessToken);
         System.out.println(eventStats);
     }

@@ -14,6 +14,10 @@ public class TransferClient extends FopClient {
         super(appKey, appSecret);
     }
 
+    public TransferClient(String appKey, String appSecret, boolean isFop) {
+        super(appKey, appSecret, isFop);
+    }
+
     public TransferClient(String appKey, String appSecret, RestOperations restOperations) {
         super(appKey, appSecret, restOperations);
     }

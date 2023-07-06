@@ -12,6 +12,10 @@ public class DirectClient extends FopClient {
         super(appKey, appSecret);
     }
 
+    public DirectClient(String appKey, String appSecret, boolean isFop) {
+        super(appKey, appSecret, isFop);
+    }
+
     public DirectClient(String appKey, String appSecret, RestOperations restOperations) {
         super(appKey, appSecret, restOperations);
     }

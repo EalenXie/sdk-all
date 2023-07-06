@@ -12,9 +12,14 @@ import org.springframework.web.client.RestOperations;
  * 末端网络服务
  */
 public class PdsClient extends FopClient {
-    public PdsClient(String appKey, String appSecret) {
 
+
+    public PdsClient(String appKey, String appSecret) {
         super(appKey, appSecret);
+    }
+
+    public PdsClient(String appKey, String appSecret, boolean isFop) {
+        super(appKey, appSecret, isFop);
     }
 
     public PdsClient(String appKey, String appSecret, RestOperations restOperations) {

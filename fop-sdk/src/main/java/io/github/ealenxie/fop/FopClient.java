@@ -40,7 +40,7 @@ public abstract class FopClient {
      */
     private static final String TEST_CAINIAO_URL = "https://open-test.gfn.cainiao.com";
     /**
-     * 默认4PX 初始化Client时 ,为否则是菜鸟接口
+     * 默认4PX 初始化Client时 ,为否 则为 菜鸟接口
      */
     private final boolean isFop;
     /**
@@ -55,6 +55,18 @@ public abstract class FopClient {
     private final ObjectMapper objectMapper;
     private final HttpHeaders headers = getFopHeader();
 
+    protected FopClient(String appKey, String appSecret) {
+        this(appKey, appSecret, true, new RestTemplate(), defaultObjectMapper());
+    }
+
+    protected FopClient(String appKey, String appSecret, boolean isFop) {
+        this(appKey, appSecret, isFop, new RestTemplate(), defaultObjectMapper());
+    }
+
+    protected FopClient(String appKey, String appSecret, RestOperations restOperations) {
+        this(appKey, appSecret, true, restOperations, defaultObjectMapper());
+    }
+
     protected FopClient(String appKey, String appSecret, boolean isFop, RestOperations restOperations, ObjectMapper objectMapper) {
         this.appKey = appKey;
         this.appSecret = appSecret;
@@ -63,13 +75,6 @@ public abstract class FopClient {
         this.objectMapper = objectMapper;
     }
 
-    protected FopClient(String appKey, String appSecret) {
-        this(appKey, appSecret, true, new RestTemplate(), defaultObjectMapper());
-    }
-
-    protected FopClient(String appKey, String appSecret, RestOperations restOperations) {
-        this(appKey, appSecret, true, restOperations, defaultObjectMapper());
-    }
 
     public static ObjectMapper defaultObjectMapper() {
         ObjectMapper mapper = new ObjectMapper();

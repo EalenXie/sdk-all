@@ -14,6 +14,10 @@ public class TrackClient extends FopClient {
         super(appKey, appSecret);
     }
 
+    public TrackClient(String appKey, String appSecret, boolean isFop) {
+        super(appKey, appSecret, isFop);
+    }
+
     public TrackClient(String appKey, String appSecret, RestOperations restOperations) {
         super(appKey, appSecret, restOperations);
     }

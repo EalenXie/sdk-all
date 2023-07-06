@@ -14,8 +14,11 @@ public class FulfillmentClient extends FopClient {
 
 
     public FulfillmentClient(String appKey, String appSecret) {
-
         super(appKey, appSecret);
+    }
+
+    public FulfillmentClient(String appKey, String appSecret, boolean isFop) {
+        super(appKey, appSecret, isFop);
     }
 
     public FulfillmentClient(String appKey, String appSecret, RestOperations restOperations) {
