@@ -1,8 +1,8 @@
 package io.github.ealenxie.walmart.marketplace;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.github.ealenxie.walmart.marketplace.Items.*;
-import io.github.ealenxie.walmart.marketplace.feeds.FeedType;
+import io.github.ealenxie.walmart.marketplace.feeds.FeedTypePayload;
+import io.github.ealenxie.walmart.marketplace.items.*;
 import io.github.ealenxie.walmart.marketplace.orders.*;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
@@ -52,10 +52,10 @@ public class WalmartOrderClient extends WalmartClient {
     /**
      * <a href="https://developer.walmart.com/api/us/mp/items#operation/itemBulkUploads">Bulk Item Setup</a>
      */
-    public ItemBulkResponse itemBulkUploads(String accessToken, FeedType queryParams, byte[] file) {
+    public ItemBulkResponse itemBulkUploads(String accessToken, String feedType, byte[] file) {
         HttpHeaders headers = getBearerHeaders(accessToken);
         headers.setContentType(MediaType.MULTIPART_FORM_DATA);
-        return exchange("/v3/items/associations", HttpMethod.POST, accessToken, queryParams, new HttpEntity<>(file, headers), ItemBulkResponse.class);
+        return exchange("/v3/items/associations", HttpMethod.POST, accessToken, new FeedTypePayload(feedType), new HttpEntity<>(file, headers), ItemBulkResponse.class);
     }
 
     /**

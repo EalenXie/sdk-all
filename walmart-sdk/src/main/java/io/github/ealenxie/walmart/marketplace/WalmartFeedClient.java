@@ -39,7 +39,7 @@ public class WalmartFeedClient extends WalmartClient {
      * <a href="https://developer.walmart.com/api/us/mp/feeds#operation/getFeedErrorReport">Get Feed Error Report</a>
      */
     public void getFeedErrorReport(String accessToken, String feedId, String feedType) {
-        get(String.format("/v3/feeds/%s/errorReport", feedId), accessToken, new FeedType(feedType), Object.class);
+        get(String.format("/v3/feeds/%s/errorReport", feedId), accessToken, new FeedTypePayload(feedType), Object.class);
     }
 
 }
