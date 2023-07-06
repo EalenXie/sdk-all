@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class BalancesDTO {
+public class BalancesQueryParams {
 
     /**
      * 币种 默认所有

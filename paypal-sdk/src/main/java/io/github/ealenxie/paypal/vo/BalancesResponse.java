@@ -8,7 +8,7 @@ import java.util.List;
 
 @Getter
 @Setter
-public class BalancesVO {
+public class BalancesResponse {
 
     /**
      * 加密余额

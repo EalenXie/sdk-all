@@ -8,7 +8,7 @@ import java.util.List;
 
 @Getter
 @Setter
-public class TransactionDetailsVO {
+public class TransactionDetailsResponse {
 
     /**
      * 一组交易明细对象。

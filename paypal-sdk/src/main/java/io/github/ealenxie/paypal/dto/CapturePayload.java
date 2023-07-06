@@ -11,7 +11,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class CaptureDTO {
+public class CapturePayload {
 
     @JsonProperty("amount")
     private Money amount;

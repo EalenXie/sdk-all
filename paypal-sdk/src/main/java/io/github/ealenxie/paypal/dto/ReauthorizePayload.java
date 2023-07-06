@@ -9,7 +9,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class ReauthorizeDTO {
+public class ReauthorizePayload {
 
     private Money amount;
 

@@ -17,5 +17,5 @@ public class TrackersPayload {
      * trackers
      */
     @JsonProperty("trackers")
-    private List<Tracker> trackers;
+    private List<TrackerPayload> trackers;
 }

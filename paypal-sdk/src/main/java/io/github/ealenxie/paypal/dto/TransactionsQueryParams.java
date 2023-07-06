@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class TransactionsDTO {
+public class TransactionsQueryParams {
 
     /**
      * PayPal 交易 ID
@@ -19,8 +19,7 @@ public class TransactionsDTO {
 
     /**
      * PayPal 交易类型
-     * 请参阅事务事件代码
-     * https://developer.paypal.com/docs/transaction-search/transaction-event-codes/
+     * 请参阅事务事件代码 <a href="https://developer.paypal.com/docs/transaction-search/transaction-event-codes/">https://developer.paypal.com/docs/transaction-search/transaction-event-codes/</a>
      */
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("transaction_type")
