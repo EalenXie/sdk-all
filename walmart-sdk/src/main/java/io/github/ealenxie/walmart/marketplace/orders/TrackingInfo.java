@@ -1,35 +1,38 @@
 package io.github.ealenxie.walmart.marketplace.orders;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import lombok.Getter;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
- * @author EalenXie
- * @since 2022/08/24 10:33
+ * @author EalenXie created on 2023/7/6 10:02
  */
-@Getter
-@Setter
+@NoArgsConstructor
+@Data
 public class TrackingInfo {
     /**
      * shipDateTime
      */
+    @JsonProperty("shipDateTime")
     private Long shipDateTime;
     /**
      * carrierName
      */
+    @JsonProperty("carrierName")
     private CarrierName carrierName;
     /**
      * methodCode
      */
+    @JsonProperty("methodCode")
     private String methodCode;
     /**
      * trackingNumber
      */
+    @JsonProperty("trackingNumber")
     private String trackingNumber;
     /**
      * trackingURL
      */
-    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonProperty("trackingURL")
     private String trackingURL;
 }

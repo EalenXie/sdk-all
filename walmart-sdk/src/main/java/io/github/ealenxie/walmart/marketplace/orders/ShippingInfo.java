@@ -1,36 +1,38 @@
 package io.github.ealenxie.walmart.marketplace.orders;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
- * @author EalenXie
- * @since 2022/08/04 12:38
+ * @author EalenXie created on 2023/7/6 10:03
  */
-@Getter
-@Setter
+@NoArgsConstructor
+@Data
 public class ShippingInfo {
-    @JsonProperty("postalAddress")
-    private PostalAddress postalAddress;
     /**
-     * 手机号
+     * phone
      */
     @JsonProperty("phone")
     private String phone;
     /**
-     * 预计发货日期
-     */
-    @JsonProperty("estimatedShipDate")
-    private Long estimatedShipDate;
-    /**
-     * 预计交货日期
+     * estimatedDeliveryDate
      */
     @JsonProperty("estimatedDeliveryDate")
     private Long estimatedDeliveryDate;
     /**
-     * 运输方式 Standard、Express、OneDay、Freight、WhiteGlove、Value
+     * estimatedShipDate
+     */
+    @JsonProperty("estimatedShipDate")
+    private Long estimatedShipDate;
+    /**
+     * methodCode
      */
     @JsonProperty("methodCode")
     private String methodCode;
+    /**
+     * postalAddress
+     */
+    @JsonProperty("postalAddress")
+    private PostalAddress postalAddress;
 }

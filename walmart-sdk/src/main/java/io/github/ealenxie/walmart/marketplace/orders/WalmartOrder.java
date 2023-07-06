@@ -13,5 +13,5 @@ import lombok.Setter;
 public class WalmartOrder {
 
     @JsonProperty("order")
-    private Order order;
+    private OrderPayload order;
 }

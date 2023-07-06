@@ -4,17 +4,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 /**
- * @author EalenXie created on 2023/7/6 10:20
+ * @author EalenXie created on 2023/7/6 10:21
  */
 @NoArgsConstructor
 @Data
-public class CancelPayload {
-
-
+public class CancelOrderLines {
     /**
-     * orderCancellation
+     * orderLine
      */
-    @JsonProperty("orderCancellation")
-    private OrderCancellation orderCancellation;
+    @JsonProperty("orderLine")
+    private List<CancelOrderLine> orderLine;
 }

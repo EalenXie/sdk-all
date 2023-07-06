@@ -1,29 +1,34 @@
 package io.github.ealenxie.walmart.marketplace.orders;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Getter;
-import lombok.Setter;
+import io.github.ealenxie.walmart.marketplace.Money;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
- * @author EalenXie
- * @since 2022/08/04 12:31
+ * @author EalenXie created on 2023/7/6 10:03
  */
-@Getter
-@Setter
+@NoArgsConstructor
+@Data
 public class Charge {
     /**
-     * 收费类型 PRODUCT or SHIPPING
+     * chargeType
      */
     @JsonProperty("chargeType")
     private String chargeType;
-    @JsonProperty("chargeAmount")
-    private ChargeAmount chargeAmount;
-    @JsonProperty("tax")
-    private Tax tax;
     /**
-     * If chargeType is PRODUCT, chargeName is Item Price.
-     * If chargeType is SHIPPING, chargeName is Shipping
+     * chargeName
      */
     @JsonProperty("chargeName")
     private String chargeName;
+    /**
+     * chargeAmount
+     */
+    @JsonProperty("chargeAmount")
+    private Money chargeAmount;
+    /**
+     * tax
+     */
+    @JsonProperty("tax")
+    private Tax tax;
 }

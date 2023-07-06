@@ -1,7 +1,6 @@
 package io.github.ealenxie.walmart.marketplace.orders;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.github.ealenxie.walmart.marketplace.Money;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,15 +9,11 @@ import lombok.NoArgsConstructor;
  */
 @NoArgsConstructor
 @Data
-public class Tax {
+public class OrderResponse {
+
     /**
-     * taxName
+     * order
      */
-    @JsonProperty("taxName")
-    private String taxName;
-    /**
-     * taxAmount
-     */
-    @JsonProperty("taxAmount")
-    private Money taxAmount;
+    @JsonProperty("order")
+    private OrderPayload order;
 }

@@ -1,20 +1,28 @@
 package io.github.ealenxie.walmart.marketplace.orders;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
- * @author EalenXie
- * @since 2022/08/04 12:37
+ * @author EalenXie created on 2023/7/6 10:25
  */
-@Getter
-@Setter
+@NoArgsConstructor
+@Data
 public class Fulfillment {
-    @JsonProperty("shipMethod")
-    private String shipMethod;
+    /**
+     * fulfillmentOption
+     */
     @JsonProperty("fulfillmentOption")
     private String fulfillmentOption;
+    /**
+     * shipMethod
+     */
+    @JsonProperty("shipMethod")
+    private String shipMethod;
+    /**
+     * pickUpDateTime
+     */
     @JsonProperty("pickUpDateTime")
     private Long pickUpDateTime;
 }

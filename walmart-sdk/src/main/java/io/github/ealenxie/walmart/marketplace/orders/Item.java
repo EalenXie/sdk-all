@@ -1,17 +1,23 @@
 package io.github.ealenxie.walmart.marketplace.orders;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Getter
-@Setter
+/**
+ * @author EalenXie created on 2023/7/6 10:03
+ */
+@NoArgsConstructor
+@Data
 public class Item {
-    @JsonProperty("sku")
-    private String sku;
     /**
-     * 产品名称
+     * productName
      */
     @JsonProperty("productName")
     private String productName;
+    /**
+     * sku
+     */
+    @JsonProperty("sku")
+    private String sku;
 }

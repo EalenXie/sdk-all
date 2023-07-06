@@ -6,11 +6,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * @author EalenXie created on 2023/7/6 10:03
+ * @author EalenXie created on 2023/7/6 10:13
  */
 @NoArgsConstructor
 @Data
-public class OrderLine {
+public class RefundOrderLineResponse {
     /**
      * lineNumber
      */
@@ -42,8 +42,8 @@ public class OrderLine {
     @JsonProperty("orderLineStatuses")
     private OrderLineStatuses orderLineStatuses;
     /**
-     * fulfillment
+     * refund
      */
-    @JsonProperty("fulfillment")
-    private Fulfillment fulfillment;
+    @JsonProperty("refund")
+    private RefundPayload refund;
 }

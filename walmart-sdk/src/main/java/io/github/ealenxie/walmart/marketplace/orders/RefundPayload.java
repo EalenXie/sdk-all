@@ -1,16 +1,23 @@
 package io.github.ealenxie.walmart.marketplace.orders;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
- * Created by EalenXie on 2022/3/21 13:40
+ * @author EalenXie created on 2023/7/6 10:05
  */
-@Getter
-@Setter
+@NoArgsConstructor
+@Data
 public class RefundPayload {
-
-    @JsonProperty("orderRefund")
-    private OrderRefund orderRefund;
+    /**
+     * refundComments
+     */
+    @JsonProperty("refundComments")
+    private String refundComments;
+    /**
+     * refundCharges
+     */
+    @JsonProperty("refundCharges")
+    private RefundCharges refundCharges;
 }

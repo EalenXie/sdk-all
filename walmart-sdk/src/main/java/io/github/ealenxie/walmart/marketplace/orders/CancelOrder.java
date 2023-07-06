@@ -5,11 +5,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * @author EalenXie created on 2023/7/6 13:43
+ * @author EalenXie created on 2023/7/6 10:22
  */
 @NoArgsConstructor
 @Data
-public class Order {
+public class CancelOrder {
     /**
      * purchaseOrderId
      */
@@ -26,16 +26,6 @@ public class Order {
     @JsonProperty("customerEmailId")
     private String customerEmailId;
     /**
-     * orderType
-     */
-    @JsonProperty("orderType")
-    private String orderType;
-    /**
-     * originalCustomerOrderID
-     */
-    @JsonProperty("originalCustomerOrderID")
-    private String originalCustomerOrderID;
-    /**
      * orderDate
      */
     @JsonProperty("orderDate")
@@ -50,6 +40,7 @@ public class Order {
      */
     @JsonProperty("orderLines")
     private OrderLines orderLines;
+
 
 
 }

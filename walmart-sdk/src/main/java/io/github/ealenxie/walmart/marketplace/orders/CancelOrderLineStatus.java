@@ -6,29 +6,24 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * @author EalenXie created on 2023/7/6 10:02
+ * @author EalenXie created on 2023/7/6 10:21
  */
 @NoArgsConstructor
 @Data
-public class OrderLineStatus {
+public class CancelOrderLineStatus {
     /**
      * status
      */
     @JsonProperty("status")
     private String status;
     /**
+     * cancellationReason
+     */
+    @JsonProperty("cancellationReason")
+    private String cancellationReason;
+    /**
      * statusQuantity
      */
     @JsonProperty("statusQuantity")
     private UnitAmount statusQuantity;
-    /**
-     * trackingInfo
-     */
-    @JsonProperty("trackingInfo")
-    private TrackingInfo trackingInfo;
-    /**
-     * returnCenterAddress
-     */
-    @JsonProperty("returnCenterAddress")
-    private ReturnCenterAddress returnCenterAddress;
 }

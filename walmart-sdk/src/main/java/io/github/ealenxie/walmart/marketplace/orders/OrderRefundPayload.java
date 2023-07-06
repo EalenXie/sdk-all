@@ -5,16 +5,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * @author EalenXie created on 2023/7/6 10:20
+ * @author EalenXie created on 2023/7/6 10:04
  */
 @NoArgsConstructor
 @Data
-public class CancelPayload {
-
+public class OrderRefundPayload {
 
     /**
-     * orderCancellation
+     * orderRefund
      */
-    @JsonProperty("orderCancellation")
-    private OrderCancellation orderCancellation;
+    @JsonProperty("orderRefund")
+    private OrderRefund orderRefund;
 }

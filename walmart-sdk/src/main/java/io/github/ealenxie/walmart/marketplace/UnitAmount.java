@@ -1,18 +1,24 @@
-package io.github.ealenxie.walmart.marketplace.orders;
+package io.github.ealenxie.walmart.marketplace;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
 /**
- * @author EalenXie
- * @since 2022/08/04 12:37
+ * @author EalenXie created on 2023/7/6 9:49
  */
 @Getter
 @Setter
-public class OrderLineQuantity {
+public class UnitAmount {
+
+    /**
+     * unitOfMeasurement
+     */
     @JsonProperty("unitOfMeasurement")
     private String unitOfMeasurement;
+    /**
+     * amount
+     */
     @JsonProperty("amount")
     private String amount;
 }

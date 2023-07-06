@@ -1,20 +1,20 @@
 package io.github.ealenxie.walmart.marketplace.orders;
 
-import lombok.Getter;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 /**
- * @author EalenXie
- * @since 2022/08/24 10:33
+ * @author EalenXie created on 2023/7/6 10:03
  */
-@Getter
-@Setter
+@NoArgsConstructor
+@Data
 public class OrderLines {
     /**
      * orderLine
      */
-
+    @JsonProperty("orderLine")
     private List<OrderLine> orderLine;
 }

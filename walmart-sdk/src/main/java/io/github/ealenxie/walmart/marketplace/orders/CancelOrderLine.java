@@ -9,10 +9,15 @@ import lombok.NoArgsConstructor;
  */
 @NoArgsConstructor
 @Data
-public class OrderCancellation {
+public class CancelOrderLine {
     /**
-     * orderLines
+     * lineNumber
      */
-    @JsonProperty("orderLines")
-    private CancelOrderLines orderLines;
+    @JsonProperty("lineNumber")
+    private String lineNumber;
+    /**
+     * orderLineStatuses
+     */
+    @JsonProperty("orderLineStatuses")
+    private CancelOrderLineStatuses orderLineStatuses;
 }

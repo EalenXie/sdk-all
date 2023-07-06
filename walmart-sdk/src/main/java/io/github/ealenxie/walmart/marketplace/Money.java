@@ -1,4 +1,4 @@
-package io.github.ealenxie.walmart.marketplace.orders;
+package io.github.ealenxie.walmart.marketplace;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
@@ -7,12 +7,11 @@ import lombok.Setter;
 import java.math.BigDecimal;
 
 /**
- * @author EalenXie
- * @since 2022/08/04 12:31
+ * @author EalenXie created on 2023/7/6 9:45
  */
 @Getter
 @Setter
-public class ChargeAmount {
+public class Money {
     /**
      * 金额
      */

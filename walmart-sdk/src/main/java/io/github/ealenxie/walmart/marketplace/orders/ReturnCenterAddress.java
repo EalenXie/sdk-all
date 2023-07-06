@@ -1,45 +1,53 @@
 package io.github.ealenxie.walmart.marketplace.orders;
 
-import lombok.Getter;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
- * @author EalenXie
- * @since 2022/08/24 10:33
+ * @author EalenXie created on 2023/7/6 10:02
  */
-@Getter
-@Setter
+@NoArgsConstructor
+@Data
 public class ReturnCenterAddress {
     /**
      * name
      */
+    @JsonProperty("name")
     private String name;
     /**
      * address1
      */
+    @JsonProperty("address1")
     private String address1;
     /**
      * city
      */
+    @JsonProperty("city")
     private String city;
     /**
      * state
      */
+    @JsonProperty("state")
     private String state;
     /**
      * postalCode
      */
+    @JsonProperty("postalCode")
     private String postalCode;
     /**
      * country
      */
+    @JsonProperty("country")
     private String country;
     /**
      * dayPhone
      */
+    @JsonProperty("dayPhone")
     private String dayPhone;
     /**
      * emailId
      */
+    @JsonProperty("emailId")
     private String emailId;
 }
