@@ -12,6 +12,8 @@ import io.github.ealenxie.walmart.marketplace.reports.ReportQueryParams;
 import io.github.ealenxie.walmart.marketplace.reports.ReportVersionQueryParams;
 import io.github.ealenxie.walmart.marketplace.reviews.*;
 import io.github.ealenxie.walmart.marketplace.shipping.*;
+import io.github.ealenxie.walmart.marketplace.utilities.DepartmentPayload;
+import io.github.ealenxie.walmart.marketplace.utilities.TaxonomyQueryParams;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -79,8 +81,8 @@ public class WalmartOrderClient extends WalmartClient {
     /**
      * <a href="https://developer.walmart.com/api/us/mp/items#operation/getAnItem">An item</a>
      */
-    public ItemPayload getItem(String accessToken, String id, ProductIdTypeQueryParams queryParams) {
-        return get(String.format("/v3/items/%s", id), accessToken, queryParams, ItemPayload.class);
+    public ItemPayload getItem(String accessToken, String id, String productIdType ) {
+        return get(String.format("/v3/items/%s", id), accessToken, new ProductIdTypeQueryParams(productIdType), ItemPayload.class);
     }
 
     /**
@@ -94,21 +96,23 @@ public class WalmartOrderClient extends WalmartClient {
     /**
      * <a href="https://developer.walmart.com/api/us/mp/items#operation/getTaxonomyResponse">Taxonomy</a>
      */
-    public TaxonomyResponse getTaxonomy(String accessToken, ProductIdTypeQueryParams queryParams) {
-        return get("/v3/items/taxonomy", accessToken, queryParams, TaxonomyResponse.class);
+    public StatusPayloadResponse<List<TaxonomyPayload>> getTaxonomy(String accessToken, ProductIdTypeQueryParams queryParams) {
+        return get("/v3/items/taxonomy", accessToken, queryParams, new ParameterizedTypeReference<StatusPayloadResponse<List<TaxonomyPayload>>>() {
+        });
     }
 
     /**
      * <a href="https://developer.walmart.com/api/us/mp/items#operation/getVariantCount">Get item count by groups</a>
      */
-    public VariantResponse getVariantCount(String accessToken, VariantQueryParams queryParams) {
-        return get("/v3/items/groups/count", accessToken, queryParams, VariantResponse.class);
+    public StatusPayloadResponse<List<VariantPayload>> getVariantCount(String accessToken, VariantQueryParams queryParams) {
+        return get("/v3/items/groups/count", accessToken, queryParams, new ParameterizedTypeReference<StatusPayloadResponse<List<VariantPayload>>>() {
+        });
     }
 
     /**
      * <a href="https://developer.walmart.com/api/us/mp/items#operation/getCountByStatus">Get items count by status</a>
      */
-    public String getCountByStatus(String accessToken, StatusPayload queryParams) {
+    public String getCountByStatus(String accessToken, StatusQueryParams queryParams) {
         return get("/v3/items/count", accessToken, queryParams, String.class);
     }
 
@@ -209,6 +213,20 @@ public class WalmartOrderClient extends WalmartClient {
     }
 
     /**
+     * <a href="https://developer.walmart.com/api/us/mp/utilities#operation/getTaxonomyResponse">Taxonomy by spec</a>
+     */
+    public StatusPayloadResponse<List<TaxonomyPayload>> getTaxonomy(String accessToken, TaxonomyQueryParams queryParams) {
+        return get("/v3/utilities/taxonomy", accessToken, queryParams, new ParameterizedTypeReference<StatusPayloadResponse<List<TaxonomyPayload>>>() {
+        });
+    }
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/utilities#operation/getDepartmentList">All Departments</a>
+     */
+    public StatusPayloadResponse<List<DepartmentPayload>> getDepartmentList(String accessToken) {
+        return get("/v3/utilities/taxonomy/departments", accessToken, null, new ParameterizedTypeReference<StatusPayloadResponse<List<DepartmentPayload>>>() {
+        });
+    }
+    /**
      * <a href="https://developer.walmart.com/api/us/mp/insights#operation/itemsDetailsForListing">Item Listing Quality Details</a>
      */
     public ItemsPayload<ItemAssociation> itemListingDetails(String accessToken, ItemListingDetailsQueryParams queryParams, ItemListingDetailsPayload payload) {
@@ -241,43 +259,49 @@ public class WalmartOrderClient extends WalmartClient {
     /**
      * <a href="https://developer.walmart.com/api/us/mp/insights#operation/getTrendingResult">Top Trending Items</a>
      */
-    public TrendingItemsResponse getTrendingItems(String accessToken, TrendingItemsQueryParams queryParams) {
-        return get("/v3/insights/items/trending", accessToken, queryParams, TrendingItemsResponse.class);
+    public StatusPayloadResponse<TrendingItemPayload> getTrendingItems(String accessToken, TrendingItemsQueryParams queryParams) {
+        return get("/v3/insights/items/trending", accessToken, queryParams, new ParameterizedTypeReference<StatusPayloadResponse<TrendingItemPayload>>() {
+        });
     }
 
     /**
      * <a href="https://developer.walmart.com/api/us/mp/insights#operation/getListingQualityScore">Seller Listing Quality Score</a>
      */
-    public ListingQualityScoreResponse listingQualityScore(String accessToken, ListingQualityScoreQueryParams queryParams) {
-        return get("/v3/insights/items/listingQuality/score", accessToken, queryParams, ListingQualityScoreResponse.class);
+    public StatusPayloadResponse<ListingQualityScorePayload> listingQualityScore(String accessToken, ListingQualityScoreQueryParams queryParams) {
+        return get("/v3/insights/items/listingQuality/score", accessToken, queryParams, new ParameterizedTypeReference<StatusPayloadResponse<ListingQualityScorePayload>>() {
+        });
     }
 
     /**
      * <a href="https://developer.walmart.com/api/us/mp/insights#operation/getCategoriesList">Item count with listing quality issues</a>
      */
-    public ListingQualityCountResponse listingQualityCount(String accessToken, ListingQualityCountQueryParams queryParams) {
-        return get("/v3/insights/items/listingQuality/count", accessToken, queryParams, ListingQualityCountResponse.class);
+    public StatusPayloadResponse<List<ListingQualityCountPayload>> listingQualityCount(String accessToken, ListingQualityCountQueryParams queryParams) {
+        return get("/v3/insights/items/listingQuality/count", accessToken, queryParams, new ParameterizedTypeReference<StatusPayloadResponse<List<ListingQualityCountPayload>>>() {
+        });
     }
 
     /**
      * <a href="https://developer.walmart.com/api/us/mp/reviews#operation/bulkUpdateItemStatus">Bulk update item status</a>
      */
-    public BulkItemResponse bulkUpdateItemStatus(String accessToken, BulkUpdateItemPayload payload) {
-        return exchange("/v3/growth/reviews-accelerator/items/status", HttpMethod.PUT, accessToken, null, payload, BulkItemResponse.class);
+    public StatusCodePayloadResponse<BulkItemResponse> bulkUpdateItemStatus(String accessToken, BulkUpdateItemPayload payload) {
+        return exchange("/v3/growth/reviews-accelerator/items/status", HttpMethod.PUT, accessToken, null, payload, new ParameterizedTypeReference<StatusCodePayloadResponse<BulkItemResponse>>() {
+        });
     }
 
     /**
      * <a href="https://developer.walmart.com/api/us/mp/reviews#operation/getIrpItems">Get RAP post-purchase items</a>
      */
-    public IrpItemsResponse getIrpItems(String accessToken, IrpItemsGetPayload payload) {
-        return post("/v3/growth/reviews-accelerator/items", accessToken, payload, IrpItemsResponse.class);
+    public StatusCodePayloadResponse<IrpItemPayload> getIrpItems(String accessToken, IrpItemsGetPayload payload) {
+        return post("/v3/growth/reviews-accelerator/items", accessToken, payload, new ParameterizedTypeReference<StatusCodePayloadResponse<IrpItemPayload>>() {
+        });
     }
 
     /**
      * <a href="https://developer.walmart.com/api/us/mp/reviews#operation/getIrpCategories">Get categories</a>
      */
-    public IrpCategoriesResponse getIrpCategories(String accessToken, IrpCategoriesGetPayload payload) {
-        return post("/v3/growth/reviews-accelerator/categories", accessToken, payload, IrpCategoriesResponse.class);
+    public StatusCodePayloadResponse<IrpCategoriesPayload> getIrpCategories(String accessToken, IrpCategoriesGetPayload payload) {
+        return post("/v3/growth/reviews-accelerator/categories", accessToken, payload, new ParameterizedTypeReference<StatusCodePayloadResponse<IrpCategoriesPayload>>() {
+        });
     }
 
     /**

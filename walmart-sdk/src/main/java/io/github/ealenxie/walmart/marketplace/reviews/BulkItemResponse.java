@@ -5,21 +5,19 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * @author EalenXie created on 2023/7/7 12:44
+ * @author EalenXie created on 2023/7/7 12:45
  */
 @NoArgsConstructor
 @Data
 public class BulkItemResponse {
-
-
     /**
-     * statusCode
+     * success
      */
-    @JsonProperty("statusCode")
-    private Integer statusCode;
+    @JsonProperty("success")
+    private Success success;
     /**
-     * payload
+     * failure
      */
-    @JsonProperty("payload")
-    private BulkItemResponsePayload payload;
+    @JsonProperty("failure")
+    private Failure failure;
 }

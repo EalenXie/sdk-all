@@ -1,27 +1,23 @@
-package io.github.ealenxie.walmart.marketplace.items;
+package io.github.ealenxie.walmart.marketplace;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.List;
-
 /**
- * @author create by sch  2023/7/6 16:58
- * @version 1.0
+ * @author EalenXie created on 2023/7/7 15:32
  */
 @Getter
 @Setter
-public class VariantResponse {
-
+public class StatusPayloadResponse<T> {
     /**
      * status
      */
     @JsonProperty("status")
-    private Integer status;
+    private String status;
     /**
      * payload
      */
     @JsonProperty("payload")
-    private List<VariantPayload> payload;
+    private T payload;
 }
