@@ -1,4 +1,4 @@
-package io.github.ealenxie.walmart.marketplace.orders;
+package io.github.ealenxie.walmart.marketplace.reports;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
@@ -10,11 +10,8 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class ReportQueryParams {
-
-    @JsonInclude(JsonInclude.Include.NON_NULL)
+public class ReportQueryParams extends ReportVersionQueryParams {
+    @JsonInclude(JsonInclude.Include.NON_EMPTY)
     private String reportDate;
-
-    private String reportVersion = "v1";
 
 }

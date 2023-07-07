@@ -2,7 +2,6 @@ package io.github.ealenxie.walmart.marketplace;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.github.ealenxie.walmart.marketplace.orders.ReportQueryParams;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -90,23 +89,6 @@ public class WalmartClient {
         return headers;
     }
 
-    //    /**
-//     * <a href="https://developer.walmart.com/api/us/mp/reports#operation/getAvailableV1ReconReportDates">获取对账报告日期</a>
-//     */
-//    public ReportDateResponse getReportDate(String accessToken) {
-//        Map<String, String> map = new HashMap<>();
-//        map.put("reportVersion", "v1");
-//        return get("/v3/report/reconreport/availableReconFiles", accessToken, map, ReportDateResponse.class);
-//    }
-
-    /**
-     * <a href="https://developer.walmart.com/api/us/mp/reports#operation/getReconReportV1">下载结算报告(ZIP)</a>
-     */
-    public byte[] downloadReport(String accessToken, ReportQueryParams queryParams) {
-        HttpHeaders headers = getBearerHeaders(accessToken);
-        headers.setAccept(Collections.singletonList(MediaType.APPLICATION_OCTET_STREAM));
-        return exchange("/v3/report/reconreport/reconFile", HttpMethod.GET, queryParams, new HttpEntity<>(null, headers), byte[].class);
-    }
 
 
     /**

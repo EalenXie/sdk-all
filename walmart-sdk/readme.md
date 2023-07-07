@@ -60,3 +60,23 @@ walmart-sdk
 | getAllOrders         | [All orders](https://developer.walmart.com/api/us/mp/orders#operation/getAllOrders)                  | ✔️  |
 | getAnOrder           | [An order](https://developer.walmart.com/api/us/mp/orders#operation/getAnOrder)                      | ✔️  |
 | getAllReleasedOrders | [All released orders](https://developer.walmart.com/api/us/mp/orders#operation/getAllReleasedOrders) | ✔️  |
+
+
+
+
+
+
+
+
+#### Reports
+| 方法名                   | 官方文档地址                                                                                                                              | 状态  |
+|:----------------------|:------------------------------------------------------------------------------------------------------------------------------------|:----|
+| reconReport           | [Recon report / (Legacy)](https://developer.walmart.com/api/us/mp/reports#operation/getReconReportV1)                               | ✔️  |
+| availableReconFiles   | [Available recon report dates / (Legacy)](https://developer.walmart.com/api/us/mp/reports#operation/getAvailableV1ReconReportDates) | ✔️  |
+| getPartnerStatement   | [Payment Statement Report](https://developer.walmart.com/api/us/mp/reports#operation/getPartnerStatement)                           | ✔️  |
+| getPartnerPerformance | [Performance Report](https://developer.walmart.com/api/us/mp/reports#operation/getPartnerPerformance)                               | ✔️  |
+
+
+
+
+

@@ -4,12 +4,18 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.ealenxie.walmart.marketplace.feeds.FeedTypePayload;
 import io.github.ealenxie.walmart.marketplace.items.*;
 import io.github.ealenxie.walmart.marketplace.orders.*;
+import io.github.ealenxie.walmart.marketplace.reports.AvailableApReportDatesResponse;
+import io.github.ealenxie.walmart.marketplace.reports.PartnerStatementResponse;
+import io.github.ealenxie.walmart.marketplace.reports.ReportQueryParams;
+import io.github.ealenxie.walmart.marketplace.reports.ReportVersionQueryParams;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.web.client.RestOperations;
+
+import java.util.Collections;
 
 /**
  * Created by EalenXie on 2022/3/16 14:02
@@ -166,5 +172,35 @@ public class WalmartOrderClient extends WalmartClient {
         return get("/v3/orders/released", accessToken, null, new ParameterizedTypeReference<ListElementResponse<OrdersResponse>>() {
         });
     }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/reports">Recon report</a>
+     */
+    public byte[] reconReport(String accessToken, ReportQueryParams queryParams) {
+        HttpHeaders headers = getBearerHeaders(accessToken);
+        headers.setAccept(Collections.singletonList(MediaType.APPLICATION_OCTET_STREAM));
+        return exchange("/v3/report/reconreport/reconFile", HttpMethod.GET, queryParams, new HttpEntity<>(null, headers), byte[].class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/reports">Available recon report dates</a>
+     */
+    public AvailableApReportDatesResponse availableReconFiles(String accessToken, ReportVersionQueryParams queryParams) {
+        return get("/v3/report/reconreport/availableReconFiles", accessToken, queryParams, AvailableApReportDatesResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/reports#operation/getPartnerStatement">Payment Statement Report</a>
+     */
+    public PartnerStatementResponse getPartnerStatement(String accessToken) {
+        return get("/v3/report/payment/statement", accessToken, null, PartnerStatementResponse.class);
+    }
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/reports#operation/getPartnerPerformance">Performance Report</a>
+     */
+    public PartnerStatementResponse getPartnerPerformance(String accessToken) {
+        return get("/v3/report/payment/performance", accessToken, null, PartnerStatementResponse.class);
+    }
+
 
 }
