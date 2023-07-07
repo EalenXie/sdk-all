@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.ealenxie.walmart.marketplace.feeds.FeedTypePayload;
 import io.github.ealenxie.walmart.marketplace.insights.*;
 import io.github.ealenxie.walmart.marketplace.items.*;
+import io.github.ealenxie.walmart.marketplace.notifications.*;
 import io.github.ealenxie.walmart.marketplace.orders.*;
 import io.github.ealenxie.walmart.marketplace.recommendations.*;
 import io.github.ealenxie.walmart.marketplace.reports.AvailableApReportDatesResponse;
@@ -213,6 +214,49 @@ public class WalmartOrderClient extends WalmartClient {
     public PartnerStatementResponse getPartnerPerformance(String accessToken) {
         return get("/v3/report/payment/performance", accessToken, null, PartnerStatementResponse.class);
     }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/notifications#operation/testNotification">Test Notification</a>
+     */
+    public MessageResponse testNotification(String accessToken, TestNotificationPayload payload) {
+        return post("/v3/webhooks/test", accessToken, payload, MessageResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/notifications#operation/getAllSubscriptions">All subscriptions</a>
+     */
+    public AllSubscriptionsResponse getAllSubscriptions(String accessToken, AllSubscriptionsQueryParams queryParams) {
+        return get("/v3/webhooks/subscriptions", accessToken, queryParams, AllSubscriptionsResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/notifications#operation/createSubscription">Create subscription</a>
+     */
+    public SubscriptionPayload createSubscription(String accessToken, SubscriptionPayload payload) {
+        return post("/v3/webhooks/subscriptions", accessToken, payload, SubscriptionPayload.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/notifications#operation/deleteSubscription">Delete Subscription</a>
+     */
+    public DeleteSubscriptionResponse deleteSubscription(String accessToken, String subscriptionId) {
+        return exchange(String.format("/v3/webhooks/subscriptions/%s", subscriptionId), HttpMethod.DELETE, accessToken, null, null, DeleteSubscriptionResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/notifications#operation/updateSubscription">Update Subscription</a>
+     */
+    public Events updateSubscription(String accessToken, String subscriptionId, Events payload) {
+        return exchange(String.format("/v3/webhooks/subscriptions/%s", subscriptionId), HttpMethod.PUT, accessToken, null, payload, Events.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/notifications#operation/getEventTypes">Event Types</a>
+     */
+    public EventTypesResponse getEventTypes(String accessToken) {
+        return get("/v3/webhooks/eventTypes", accessToken, null, EventTypesResponse.class);
+    }
+
 
     /**
      * <a href="https://developer.walmart.com/api/us/mp/utilities#operation/getTaxonomyResponse">Taxonomy by spec</a>

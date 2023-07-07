@@ -68,6 +68,17 @@ walmart-sdk
 | getPartnerStatement   | [Payment Statement Report](https://developer.walmart.com/api/us/mp/reports#operation/getPartnerStatement)                           | ✔️  |
 | getPartnerPerformance | [Performance Report](https://developer.walmart.com/api/us/mp/reports#operation/getPartnerPerformance)                               | ✔️  |
 
+#### Notifications
+
+| 方法名                 | 官方文档地址                                                                                                    | 状态  |
+|:--------------------|:----------------------------------------------------------------------------------------------------------|:----|
+| testNotification    | [Test Notification](https://developer.walmart.com/api/us/mp/notifications#operation/testNotification)     | ✔️  |
+| getAllSubscriptions | [All subscriptions](https://developer.walmart.com/api/us/mp/notifications#operation/getAllSubscriptions)  | ✔️  |
+| createSubscription  | [Create subscription](https://developer.walmart.com/api/us/mp/notifications#operation/createSubscription) | ✔️  |
+| deleteSubscription  | [Delete Subscription](https://developer.walmart.com/api/us/mp/notifications#operation/deleteSubscription) | ✔️  |
+| updateSubscription  | [Update Subscription](https://developer.walmart.com/api/us/mp/notifications#operation/updateSubscription) | ✔️  |
+| getEventTypes       | [Event Types](https://developer.walmart.com/api/us/mp/notifications#operation/getEventTypes)              | ✔️  |
+
 #### Utilities
 
 | 方法名                  | 官方文档地址                                                                                                  | 状态  |
@@ -76,11 +87,6 @@ walmart-sdk
 | getDepartmentList    | [All Departments](https://developer.walmart.com/api/us/mp/utilities#operation/getDepartmentList)        | ✔️  |
 | getCategories        | [All Categories](https://developer.walmart.com/api/us/mp/utilities#operation/getCategories)             | ✔️  |
 | getApiPlatformStatus | [API Platform Status](https://developer.walmart.com/api/us/mp/utilities#operation/getApiPlatformStatus) | ✔️  |
-
-
-
-
-
 
 #### Insights
 
