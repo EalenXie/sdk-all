@@ -70,11 +70,15 @@ walmart-sdk
 
 #### Insights
 
-##### Insight
-
-| 方法名                | 官方文档地址                                                                                                            | 状态  |
-|:-------------------|:------------------------------------------------------------------------------------------------------------------|:----|
-| itemListingDetails | [Item Listing Quality Details](https://developer.walmart.com/api/us/mp/insights#operation/itemsDetailsForListing) | ✔️  |
+| 方法名                     | 官方文档地址                                                                                                                 | 状态  |
+|:------------------------|:-----------------------------------------------------------------------------------------------------------------------|:----|
+| itemListingDetails      | [Item Listing Quality Details](https://developer.walmart.com/api/us/mp/insights#operation/itemsDetailsForListing)      | ✔️  |
+| getProSellerBadgeInfo   | [Pro Seller Badge Status](https://developer.walmart.com/api/us/mp/insights#operation/getProSellerBadgeInfo)            | ✔️  |
+| getUnpublishedItems     | [Unpublished Items](https://developer.walmart.com/api/us/mp/insights#operation/getUnpublishedItems)                    | ✔️  |
+| getUnpublishedItemCount | [Unpublished Item Counts](https://developer.walmart.com/api/us/mp/insights#operation/getUnpublishedItemCount)          | ✔️  |
+| getTrendingItems        | [Top Trending Items](https://developer.walmart.com/api/us/mp/insights#operation/getTrendingResult)                     | ✔️  |
+| listingQualityScore     | [Seller Listing Quality Score](https://developer.walmart.com/api/us/mp/insights#operation/getListingQualityScore)      | ✔️  |
+| listingQualityCount     | [Item count with listing quality issues](https://developer.walmart.com/api/us/mp/insights#operation/getCategoriesList) | ✔️  |
 
 #### Reviews
 

@@ -1,6 +1,7 @@
 package io.github.ealenxie.walmart.marketplace.insights;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.ealenxie.walmart.marketplace.Money;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -24,7 +25,7 @@ public class Stats {
      * gmvAmount
      */
     @JsonProperty("gmvAmount")
-    private GmvAmount gmvAmount;
+    private Money gmvAmount;
     /**
      * totalUnits
      */

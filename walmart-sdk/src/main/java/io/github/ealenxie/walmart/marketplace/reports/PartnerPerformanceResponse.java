@@ -36,5 +36,5 @@ public class PartnerPerformanceResponse {
      * payload
      */
     @JsonProperty("payload")
-    private Payload payload;
+    private PerformancePayload payload;
 }

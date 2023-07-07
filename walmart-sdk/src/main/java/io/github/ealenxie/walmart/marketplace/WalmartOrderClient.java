@@ -2,8 +2,7 @@ package io.github.ealenxie.walmart.marketplace;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.ealenxie.walmart.marketplace.feeds.FeedTypePayload;
-import io.github.ealenxie.walmart.marketplace.insights.ItemListingDetailsPayload;
-import io.github.ealenxie.walmart.marketplace.insights.ItemListingDetailsQueryParams;
+import io.github.ealenxie.walmart.marketplace.insights.*;
 import io.github.ealenxie.walmart.marketplace.items.*;
 import io.github.ealenxie.walmart.marketplace.orders.*;
 import io.github.ealenxie.walmart.marketplace.recommendations.*;
@@ -60,27 +59,6 @@ public class WalmartOrderClient extends WalmartClient {
         return post("/v3/items/associations", accessToken, payload, new ParameterizedTypeReference<ItemsPayload<ItemAssociation>>() {
         });
     }
-
-
-
-    /**
-     * <a href="https://developer.walmart.com/api/us/mp/insights#operation/itemsDetailsForListing">Item Listing Quality Details</a>
-     */
-    public ItemsPayload<ItemAssociation> itemListingDetails(String accessToken, ItemListingDetailsQueryParams queryParams, ItemListingDetailsPayload payload) {
-        return exchange("/v3/insights/items/listingQuality/items", HttpMethod.POST,accessToken, queryParams,payload, new ParameterizedTypeReference<ItemsPayload<ItemAssociation>>() {
-        });
-    }
-
-
-
-
-
-
-
-
-
-
-
 
     /**
      * <a href="https://developer.walmart.com/api/us/mp/items#operation/itemBulkUploads">Bulk Item Setup</a>
@@ -231,6 +209,57 @@ public class WalmartOrderClient extends WalmartClient {
     }
 
     /**
+     * <a href="https://developer.walmart.com/api/us/mp/insights#operation/itemsDetailsForListing">Item Listing Quality Details</a>
+     */
+    public ItemsPayload<ItemAssociation> itemListingDetails(String accessToken, ItemListingDetailsQueryParams queryParams, ItemListingDetailsPayload payload) {
+        return exchange("/v3/insights/items/listingQuality/items", HttpMethod.POST, accessToken, queryParams, payload, new ParameterizedTypeReference<ItemsPayload<ItemAssociation>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/insights#operation/getProSellerBadgeInfo">Pro Seller Badge Status</a>
+     */
+    public ProSellerBadgeInfoResponse getProSellerBadgeInfo(String accessToken) {
+        return get("/v3/insights/prosellerbadge", accessToken, null, ProSellerBadgeInfoResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/insights#operation/getUnpublishedItems">Unpublished Items</a>
+     */
+    public UnpublishedItemsResponse getUnpublishedItems(String accessToken) {
+        return get("/v3/insights/items/unpublished/items", accessToken, null, UnpublishedItemsResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/insights#operation/getUnpublishedItemCount">Unpublished Item Counts</a>
+     */
+    public PayloadResponse<List<UnpublishedCountPayload>> getUnpublishedItemCount(String accessToken, String fromDate) {
+        return get("/v3/insights/items/unpublished/counts", accessToken, new FromDataQueryParams(fromDate), new ParameterizedTypeReference<PayloadResponse<List<UnpublishedCountPayload>>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/insights#operation/getTrendingResult">Top Trending Items</a>
+     */
+    public TrendingItemsResponse getTrendingItems(String accessToken, TrendingItemsQueryParams queryParams) {
+        return get("/v3/insights/items/trending", accessToken, queryParams, TrendingItemsResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/insights#operation/getListingQualityScore">Seller Listing Quality Score</a>
+     */
+    public ListingQualityScoreResponse listingQualityScore(String accessToken, ListingQualityScoreQueryParams queryParams) {
+        return get("/v3/insights/items/listingQuality/score", accessToken, queryParams, ListingQualityScoreResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/insights#operation/getCategoriesList">Item count with listing quality issues</a>
+     */
+    public ListingQualityCountResponse listingQualityCount(String accessToken, ListingQualityCountQueryParams queryParams) {
+        return get("/v3/insights/items/listingQuality/count", accessToken, queryParams, ListingQualityCountResponse.class);
+    }
+
+    /**
      * <a href="https://developer.walmart.com/api/us/mp/reviews#operation/bulkUpdateItemStatus">Bulk update item status</a>
      */
     public BulkItemResponse bulkUpdateItemStatus(String accessToken, BulkUpdateItemPayload payload) {
@@ -352,7 +381,6 @@ public class WalmartOrderClient extends WalmartClient {
     public byte[] downloadLabel(String accessToken, String carrierShortName, String trackingNo) {
         return get(String.format("/v3/shipping/labels/carriers/%s/trackings/%s", carrierShortName, trackingNo), accessToken, null, byte[].class);
     }
-
 
     /**
      * <a href="https://developer.walmart.com/api/us/mp/sww#operation/discardLabel">Discard label</a>

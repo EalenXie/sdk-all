@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
  */
 @NoArgsConstructor
 @Data
-public class Payload {
+public class PerformancePayload {
     /**
      * $7day
      */
