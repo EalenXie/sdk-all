@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.ealenxie.walmart.marketplace.feeds.FeedTypePayload;
 import io.github.ealenxie.walmart.marketplace.items.*;
 import io.github.ealenxie.walmart.marketplace.orders.*;
+import io.github.ealenxie.walmart.marketplace.recommendations.*;
 import io.github.ealenxie.walmart.marketplace.reports.AvailableApReportDatesResponse;
 import io.github.ealenxie.walmart.marketplace.reports.PartnerStatementResponse;
 import io.github.ealenxie.walmart.marketplace.reports.ReportQueryParams;
@@ -205,6 +206,75 @@ public class WalmartOrderClient extends WalmartClient {
         return get("/v3/report/payment/performance", accessToken, null, PartnerStatementResponse.class);
     }
 
+
+
+
+
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/assortmentrecommendations#operation/rejectAssortmentRecommendations">Reject Recommendations</a>
+     */
+    public PayloadResponse<MessagePayload> rejectRecommendations(String accessToken, RecommendationsRejectFilterPayload payload) {
+        return exchange("/v3/growth/assortment/recommendations/rejections", HttpMethod.PUT, accessToken, payload, null, new ParameterizedTypeReference<PayloadResponse<MessagePayload>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/assortmentrecommendations#operation/rejectAssortmentRecommendations">Reject Recommendations</a>
+     */
+    public PayloadResponse<MessagePayload> rejectRecommendations(String accessToken, RecommendationsRejectIdentifierPayload payload) {
+        return exchange("/v3/growth/assortment/recommendations/rejections", HttpMethod.PUT, accessToken, payload, null, new ParameterizedTypeReference<PayloadResponse<MessagePayload>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/assortmentrecommendations#operation/getAssortmentRecommendations">Get Recommendations</a>
+     */
+    public PayloadResponse<RecommendationsPayload> getRecommendations(String accessToken, RecommendationsAllPayload payload) {
+        return post("/v3/growth/assortment/recommendations", accessToken, payload, new ParameterizedTypeReference<PayloadResponse<RecommendationsPayload>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/assortmentrecommendations#operation/getAssortmentRecommendations">Get Recommendations</a>
+     */
+    public PayloadResponse<RecommendationsPayload> getRecommendations(String accessToken, RecommendationsFilterPayload payload) {
+        return post("/v3/growth/assortment/recommendations", accessToken, payload, new ParameterizedTypeReference<PayloadResponse<RecommendationsPayload>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/assortmentrecommendations#operation/createFileOnRequest">Download Recommendations</a>
+     */
+    public PayloadResponse<RecommendationsDownloadResponse> downloadRecommendations(String accessToken, RecommendationDownloadPayload payload) {
+        return post("/v3/growth/assortment/recommendations/fileOnRequest", accessToken, payload, new ParameterizedTypeReference<PayloadResponse<RecommendationsDownloadResponse>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/assortmentrecommendations#operation/getCategorizationDetailsOfAssortmentRecommendations">Get Categorization</a>
+     */
+    public PayloadResponse<CategorizationPayload> getCategorization(String accessToken, CategorizationGetPayload payload) {
+        return post("/v3/growth/assortment/recommendations/categorization/counts", accessToken, payload, new ParameterizedTypeReference<PayloadResponse<CategorizationPayload>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/assortmentrecommendations#operation/getFileOnRequestStatus">Get Download Request Status</a>
+     */
+    public PayloadResponse<FileOnRequestStatus> getDownloadRequestStatus(String accessToken, String requestId) {
+        return get(String.format("/v3/growth/assortment/recommendations/fileOnRequest/%s", requestId), accessToken, null, new ParameterizedTypeReference<PayloadResponse<FileOnRequestStatus>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/assortmentrecommendations#operation/downloadFileAsPerTheRequestId">Get Download URL</a>
+     */
+    public PayloadResponse<DownloadUrlPayload> getDownloadUrl(String accessToken, String requestId) {
+        return get(String.format("/v3/growth/assortment/recommendations/download/%s", requestId), accessToken, null, new ParameterizedTypeReference<PayloadResponse<DownloadUrlPayload>>() {
+        });
+    }
+
     /**
      * <a href="https://developer.walmart.com/api/us/mp/sww#operation/createLabel">Create label</a>
      */
@@ -256,7 +326,7 @@ public class WalmartOrderClient extends WalmartClient {
      * <a href="https://developer.walmart.com/api/us/mp/sww#operation/getCarrierPackageTypes">Supported carrier package types</a>
      */
     public DataResponse<List<CarrierPackageType>> getCarrierPackageTypes(String accessToken, String carrierShortName) {
-        return get(String.format("/v3/shipping/labels/carriers/%s/package-types", carrierShortName),  accessToken, null,  new ParameterizedTypeReference<DataResponse<List<CarrierPackageType>>>() {
+        return get(String.format("/v3/shipping/labels/carriers/%s/package-types", carrierShortName), accessToken, null, new ParameterizedTypeReference<DataResponse<List<CarrierPackageType>>>() {
         });
     }
 

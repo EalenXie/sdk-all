@@ -77,6 +77,17 @@ walmart-sdk
 | getPartnerPerformance | [Performance Report](https://developer.walmart.com/api/us/mp/reports#operation/getPartnerPerformance)                               | ✔️  |
 
 
+
+#### Assortment Recommendations
+| 方法名                     | 官方文档地址                                                                                                                                                | 状态  |
+|:------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------|:----|
+| rejectRecommendations   | [Reject Recommendations](https://developer.walmart.com/api/us/mp/assortmentrecommendations#operation/rejectAssortmentRecommendations)                 | ✔️  |
+| getRecommendations      | [Get Recommendations](https://developer.walmart.com/api/us/mp/assortmentrecommendations#operation/getAssortmentRecommendations)                       | ✔️  |
+| downloadRecommendations | [Download Recommendations](https://developer.walmart.com/api/us/mp/assortmentrecommendations#operation/createFileOnRequest)                           | ✔️  |
+| getCategorization       | [Get Categorization](https://developer.walmart.com/api/us/mp/assortmentrecommendations#operation/getCategorizationDetailsOfAssortmentRecommendations) | ✔️  |
+| getFileOnRequestStatus  | [Get Download Request Status](https://developer.walmart.com/api/us/mp/assortmentrecommendations#operation/getFileOnRequestStatus)                     | ✔️  |
+| getDownloadUrl          | [Get Download URL](https://developer.walmart.com/api/us/mp/assortmentrecommendations#operation/downloadFileAsPerTheRequestId)                         | ✔️  |
+
 #### Shipping
 | 方法名                    | 官方文档地址                                                                                                          | 状态  |
 |:-----------------------|:----------------------------------------------------------------------------------------------------------------|:----|
