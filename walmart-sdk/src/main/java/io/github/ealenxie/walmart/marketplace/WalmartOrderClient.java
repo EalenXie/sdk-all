@@ -12,6 +12,8 @@ import io.github.ealenxie.walmart.marketplace.reports.ReportQueryParams;
 import io.github.ealenxie.walmart.marketplace.reports.ReportVersionQueryParams;
 import io.github.ealenxie.walmart.marketplace.reviews.*;
 import io.github.ealenxie.walmart.marketplace.shipping.*;
+import io.github.ealenxie.walmart.marketplace.utilities.ApiStatusesResponse;
+import io.github.ealenxie.walmart.marketplace.utilities.CategoriesResponse;
 import io.github.ealenxie.walmart.marketplace.utilities.DepartmentPayload;
 import io.github.ealenxie.walmart.marketplace.utilities.TaxonomyQueryParams;
 import org.springframework.core.ParameterizedTypeReference;
@@ -81,7 +83,7 @@ public class WalmartOrderClient extends WalmartClient {
     /**
      * <a href="https://developer.walmart.com/api/us/mp/items#operation/getAnItem">An item</a>
      */
-    public ItemPayload getItem(String accessToken, String id, String productIdType ) {
+    public ItemPayload getItem(String accessToken, String id, String productIdType) {
         return get(String.format("/v3/items/%s", id), accessToken, new ProductIdTypeQueryParams(productIdType), ItemPayload.class);
     }
 
@@ -219,6 +221,7 @@ public class WalmartOrderClient extends WalmartClient {
         return get("/v3/utilities/taxonomy", accessToken, queryParams, new ParameterizedTypeReference<StatusPayloadResponse<List<TaxonomyPayload>>>() {
         });
     }
+
     /**
      * <a href="https://developer.walmart.com/api/us/mp/utilities#operation/getDepartmentList">All Departments</a>
      */
@@ -226,6 +229,21 @@ public class WalmartOrderClient extends WalmartClient {
         return get("/v3/utilities/taxonomy/departments", accessToken, null, new ParameterizedTypeReference<StatusPayloadResponse<List<DepartmentPayload>>>() {
         });
     }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/utilities#operation/getCategories">All Categories</a>
+     */
+    public CategoriesResponse getCategories(String accessToken, String departmentId) {
+        return get(String.format("/v3/utilities/taxonomy/departments/%s", departmentId), accessToken, null, CategoriesResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/utilities#operation/getApiPlatformStatus">API Platform Status</a>
+     */
+    public ApiStatusesResponse getApiPlatformStatus(String accessToken) {
+        return get("/v3/utilities/apiStatus", accessToken, null, ApiStatusesResponse.class);
+    }
+
     /**
      * <a href="https://developer.walmart.com/api/us/mp/insights#operation/itemsDetailsForListing">Item Listing Quality Details</a>
      */

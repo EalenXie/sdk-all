@@ -70,10 +70,17 @@ walmart-sdk
 
 #### Utilities
 
-| 方法名               | 官方文档地址                                                                                              | 状态  |
-|:------------------|:----------------------------------------------------------------------------------------------------|:----|
-| getTaxonomy       | [Taxonomy by spec](https://developer.walmart.com/api/us/mp/utilities#operation/getTaxonomyResponse) | ✔️  |
-| getDepartmentList | [All Departments](https://developer.walmart.com/api/us/mp/utilities#operation/getDepartmentList)    | ✔️  |
+| 方法名                  | 官方文档地址                                                                                                  | 状态  |
+|:---------------------|:--------------------------------------------------------------------------------------------------------|:----|
+| getTaxonomy          | [Taxonomy by spec](https://developer.walmart.com/api/us/mp/utilities#operation/getTaxonomyResponse)     | ✔️  |
+| getDepartmentList    | [All Departments](https://developer.walmart.com/api/us/mp/utilities#operation/getDepartmentList)        | ✔️  |
+| getCategories        | [All Categories](https://developer.walmart.com/api/us/mp/utilities#operation/getCategories)             | ✔️  |
+| getApiPlatformStatus | [API Platform Status](https://developer.walmart.com/api/us/mp/utilities#operation/getApiPlatformStatus) | ✔️  |
+
+
+
+
+
 
 #### Insights
 
