@@ -67,7 +67,6 @@ walmart-sdk
 
 
 
-
 #### Reports
 | 方法名                   | 官方文档地址                                                                                                                              | 状态  |
 |:----------------------|:------------------------------------------------------------------------------------------------------------------------------------|:----|
@@ -76,6 +75,14 @@ walmart-sdk
 | getPartnerStatement   | [Payment Statement Report](https://developer.walmart.com/api/us/mp/reports#operation/getPartnerStatement)                           | ✔️  |
 | getPartnerPerformance | [Performance Report](https://developer.walmart.com/api/us/mp/reports#operation/getPartnerPerformance)                               | ✔️  |
 
+
+
+#### Reviews
+| 方法名                  | 官方文档地址                                                                                                    | 状态  |
+|:---------------------|:----------------------------------------------------------------------------------------------------------|:----|
+| bulkUpdateItemStatus | [Bulk update item status](https://developer.walmart.com/api/us/mp/reviews#operation/bulkUpdateItemStatus) | ✔️  |
+| getIrpItems          | [Get RAP post-purchase items](https://developer.walmart.com/api/us/mp/reviews#operation/getIrpItems)      | ✔️  |
+| getIrpCategories     | [Get categories](https://developer.walmart.com/api/us/mp/reviews#operation/getIrpCategories)              | ✔️  |
 
 
 #### Assortment Recommendations

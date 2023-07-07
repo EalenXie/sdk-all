@@ -9,6 +9,7 @@ import io.github.ealenxie.walmart.marketplace.reports.AvailableApReportDatesResp
 import io.github.ealenxie.walmart.marketplace.reports.PartnerStatementResponse;
 import io.github.ealenxie.walmart.marketplace.reports.ReportQueryParams;
 import io.github.ealenxie.walmart.marketplace.reports.ReportVersionQueryParams;
+import io.github.ealenxie.walmart.marketplace.reviews.*;
 import io.github.ealenxie.walmart.marketplace.shipping.*;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
@@ -206,10 +207,24 @@ public class WalmartOrderClient extends WalmartClient {
         return get("/v3/report/payment/performance", accessToken, null, PartnerStatementResponse.class);
     }
 
-
-
-
-
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/reviews#operation/bulkUpdateItemStatus">Bulk update item status</a>
+     */
+    public BulkItemResponse bulkUpdateItemStatus(String accessToken, BulkUpdateItemPayload payload) {
+        return exchange("/v3/growth/reviews-accelerator/items/status", HttpMethod.PUT, accessToken, null, payload, BulkItemResponse.class);
+    }
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/reviews#operation/getIrpItems">Get RAP post-purchase items</a>
+     */
+    public IrpItemsResponse getIrpItems(String accessToken, IrpItemsGetPayload payload) {
+        return post("/v3/growth/reviews-accelerator/items",accessToken,  payload, IrpItemsResponse.class);
+    }
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/reviews#operation/getIrpCategories">Get categories</a>
+     */
+    public IrpCategoriesResponse getIrpCategories(String accessToken, IrpCategoriesGetPayload payload) {
+        return post("/v3/growth/reviews-accelerator/categories",accessToken,  payload, IrpCategoriesResponse.class);
+    }
 
     /**
      * <a href="https://developer.walmart.com/api/us/mp/assortmentrecommendations#operation/rejectAssortmentRecommendations">Reject Recommendations</a>
