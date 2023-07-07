@@ -1,11 +1,12 @@
 package io.github.ealenxie.walmart.marketplace;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.github.ealenxie.walmart.marketplace.feeds.FeedTypePayload;
+import io.github.ealenxie.walmart.marketplace.feeds.*;
 import io.github.ealenxie.walmart.marketplace.insights.*;
 import io.github.ealenxie.walmart.marketplace.items.*;
 import io.github.ealenxie.walmart.marketplace.notifications.*;
 import io.github.ealenxie.walmart.marketplace.orders.*;
+import io.github.ealenxie.walmart.marketplace.prices.*;
 import io.github.ealenxie.walmart.marketplace.recommendations.*;
 import io.github.ealenxie.walmart.marketplace.reports.AvailableApReportDatesResponse;
 import io.github.ealenxie.walmart.marketplace.reports.PartnerStatementResponse;
@@ -48,6 +49,27 @@ public class WalmartOrderClient extends WalmartClient {
 
     public WalmartOrderClient(String clientId, String clientSecret, ObjectMapper objectMapper) {
         super(clientId, clientSecret, objectMapper);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/feeds">All feed statuses</a>
+     */
+    public FeedResponse getFeeds(String accessToken, FeedQueryParams queryParams) {
+        return get("/v3/feeds", accessToken, queryParams, FeedResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/feeds#operation/getFeedItemStatus">Feed item status</a>
+     */
+    public FeedItemPayload getFeedItemStatus(String accessToken, String feedId, FeedItemQueryParams queryParams) {
+        return get(String.format("/v3/feeds/%s", feedId), accessToken, queryParams, FeedItemPayload.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/feeds#operation/getFeedErrorReport">Get Feed Error Report</a>
+     */
+    public void getFeedErrorReport(String accessToken, String feedId, String feedType) {
+        get(String.format("/v3/feeds/%s/errorReport", feedId), accessToken, new FeedTypePayload(feedType), Object.class);
     }
 
     /**
@@ -124,6 +146,78 @@ public class WalmartOrderClient extends WalmartClient {
      */
     public RetireItemResponse retireItem(String accessToken, String sku) {
         return exchange(String.format("/v3/items/%s", sku), HttpMethod.DELETE, accessToken, null, null, RetireItemResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/price#operation/updateStrategy">Update Repricer Strategy</a>
+     */
+    public StrategyResponse updateStrategy(String accessToken, String strategyCollectionId, StrategyPayload payload) {
+        return exchange(String.format("/v3/repricer/strategy/%s", strategyCollectionId), HttpMethod.PUT, accessToken, null, payload, StrategyResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/price#operation/deleteStrategy">Delete Repricer Strategy</a>
+     */
+    public void deleteStrategy(String accessToken, String strategyCollectionId) {
+        exchange(String.format("/v3/repricer/strategy/%s", strategyCollectionId), HttpMethod.DELETE, accessToken, null, null, Object.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/price#operation/getRepricerIncentive">List of Incentive Items</a>
+     */
+    public IncentiveResponse getIncentive(String accessToken, IncentiveQueryParams queryParams) {
+        return get("/v3/repricer/incentive", accessToken, queryParams, IncentiveResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/price#operation/updateRepricerIncentive">Assign Incentive items to Repricer</a>
+     */
+    public UpdateInventiveResponse updateIncentive(String accessToken, UpdateIncentivePayload payload) {
+        return exchange("/v3/repricer/incentive", HttpMethod.PUT, accessToken, null, payload, UpdateInventiveResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/price#operation/updatePrice">Update a price</a>
+     */
+    public PriceResponse updatePrice(String accessToken, UpdatePricePayload payload) {
+        return exchange("/v3/price", HttpMethod.PUT, accessToken, null, payload, PriceResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/price#operation/getRepricerFeed">Assign/Unassign items to/from Repricer Strategy</a>
+     */
+    public FeedIdResponse repricerFeed(String accessToken, FeedPayload payload) {
+        return post("/v3/repricerFeeds", accessToken, payload, FeedIdResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/price#operation/createStrategy">Create Repricer Strategy</a>
+     */
+    public StrategyResponse createStrategy(String accessToken, StrategyPayload payload) {
+        return post("/v3/repricer/strategy", accessToken, payload, StrategyResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/price#operation/priceBulkUploads">Update bulk prices (Multiple)</a>
+     */
+    public ItemBulkResponse priceBulkUploads(String accessToken, String feedType, byte[] file) {
+        HttpHeaders headers = getBearerHeaders(accessToken);
+        headers.setContentType(MediaType.MULTIPART_FORM_DATA);
+        return exchange("/v3/feeds", HttpMethod.POST, accessToken, new FeedTypePayload(feedType), new HttpEntity<>(file, headers), ItemBulkResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/price#operation/optCapProgramInPrice">Set up CAP SKU All</a>
+     */
+    public OptCapProgramPayload optCapProgramInPrice(String accessToken, StrategyPayload payload) {
+        return post("/v3/cppreference", accessToken, payload, OptCapProgramPayload.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/price#operation/getStrategies">List of Repricer Strategies</a>
+     */
+    public StrategiesResponse getStrategies(String accessToken) {
+        return get("/v3/cppreference", accessToken, null, StrategiesResponse.class);
     }
 
     /**

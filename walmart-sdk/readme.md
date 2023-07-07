@@ -15,8 +15,13 @@ walmart-sdk
     <version>1.0-SNAPSHOT</version>
 </dependency>
 ```
+#### [WalmartClient](https://github.com/EalenXie/sdk-all/blob/main/walmart-sdk/src/main/java/io/github/ealenxie/walmart/marketplace/WalmartClient.java) 已支持的接口列表
 
-#### [WalmartFeedClient](https://github.com/EalenXie/sdk-all/blob/main/walmart-sdk/src/main/java/io/github/ealenxie/walmart/marketplace/WalmartFeedClient.java) 已支持的接口列表
+| 接口名           | 方法名         | 官方文档地址                                                                       | 状态  |
+|:--------------|:------------|:-----------------------------------------------------------------------------|:----|
+| 获取accessToken | accessToken | [Token API](https://developer.walmart.com/api/us/mp/auth#operation/tokenAPI) | ✔️  |
+
+#### [WalmartOrderClient](https://github.com/EalenXie/sdk-all/blob/main/walmart-sdk/src/main/java/io/github/ealenxie/walmart/marketplace/WalmartOrderClient.java) 已支持的接口列表
 
 #### Feeds
 
@@ -41,13 +46,22 @@ walmart-sdk
 | getCountByStatus    | [Get items count by status](https://developer.walmart.com/api/us/mp/items#operation/getCountByStatus) | ✔️  |
 | retireItem          | [Retire an item](https://developer.walmart.com/api/us/mp/items#operation/retireAnItem)                | ✔️  |
 
-#### [WalmartClient](https://github.com/EalenXie/sdk-all/blob/main/walmart-sdk/src/main/java/io/github/ealenxie/walmart/marketplace/WalmartClient.java) 已支持的接口列表
 
-| 接口名           | 方法名         | 官方文档地址                                                                       | 状态  |
-|:--------------|:------------|:-----------------------------------------------------------------------------|:----|
-| 获取accessToken | accessToken | [Token API](https://developer.walmart.com/api/us/mp/auth#operation/tokenAPI) | ✔️  |
+#### Prices
 
-#### [WalmartOrderClient](https://github.com/EalenXie/sdk-all/blob/main/walmart-sdk/src/main/java/io/github/ealenxie/walmart/marketplace/WalmartOrderClient.java) 已支持的接口列表
+| 方法名                  | 官方文档地址                                                                                                                     | 状态  |
+|:---------------------|:---------------------------------------------------------------------------------------------------------------------------|:----|
+| updateStrategy       | [Update Repricer Strategy](https://developer.walmart.com/api/us/mp/price#operation/updateStrategy)                         | ✔️  |
+| deleteStrategy       | [Delete Repricer Strategy](https://developer.walmart.com/api/us/mp/price#operation/deleteStrategy)                         | ✔️  |
+| getIncentive         | [List of Incentive Items](https://developer.walmart.com/api/us/mp/price#operation/getRepricerIncentive)                    | ✔️  |
+| updateIncentive      | [Assign Incentive items to Repricer](https://developer.walmart.com/api/us/mp/price#operation/updateRepricerIncentive)      | ✔️  |
+| updatePrice          | [Update a price](https://developer.walmart.com/api/us/mp/price#operation/updatePrice)                                      | ✔️  |
+| repricerFeed         | [Assign/Unassign items to/from Repricer Strategy](https://developer.walmart.com/api/us/mp/price#operation/getRepricerFeed) | ✔️  |
+| createStrategy       | [Create Repricer Strategy](https://developer.walmart.com/api/us/mp/price#operation/createStrategy)                         | ✔️  |
+| priceBulkUploads     | [Update bulk prices (Multiple)](https://developer.walmart.com/api/us/mp/price#operation/priceBulkUploads)                  | ✔️  |
+| optCapProgramInPrice | [Set up CAP SKU All](https://developer.walmart.com/api/us/mp/price#operation/optCapProgramInPrice)                         | ✔️  |
+| getStrategies        | [List of Repricer Strategies](https://developer.walmart.com/api/us/mp/price#operation/getStrategies)                       | ✔️  |
+
 
 | 方法名                  | 官方文档地址                                                                                               | 状态  |
 |:---------------------|:-----------------------------------------------------------------------------------------------------|:----|
