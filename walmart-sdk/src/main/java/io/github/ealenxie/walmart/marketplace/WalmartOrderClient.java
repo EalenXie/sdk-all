@@ -8,6 +8,7 @@ import io.github.ealenxie.walmart.marketplace.reports.AvailableApReportDatesResp
 import io.github.ealenxie.walmart.marketplace.reports.PartnerStatementResponse;
 import io.github.ealenxie.walmart.marketplace.reports.ReportQueryParams;
 import io.github.ealenxie.walmart.marketplace.reports.ReportVersionQueryParams;
+import io.github.ealenxie.walmart.marketplace.shipping.*;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -16,6 +17,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.client.RestOperations;
 
 import java.util.Collections;
+import java.util.List;
 
 /**
  * Created by EalenXie on 2022/3/16 14:02
@@ -195,6 +197,7 @@ public class WalmartOrderClient extends WalmartClient {
     public PartnerStatementResponse getPartnerStatement(String accessToken) {
         return get("/v3/report/payment/statement", accessToken, null, PartnerStatementResponse.class);
     }
+
     /**
      * <a href="https://developer.walmart.com/api/us/mp/reports#operation/getPartnerPerformance">Performance Report</a>
      */
@@ -202,5 +205,59 @@ public class WalmartOrderClient extends WalmartClient {
         return get("/v3/report/payment/performance", accessToken, null, PartnerStatementResponse.class);
     }
 
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/sww#operation/createLabel">Create label</a>
+     */
+    public DataResponse<LabelResponse> createLabel(String accessToken, CreateLabelPayload payload) {
+        return post("/v3/shipping/labels", accessToken, payload, new ParameterizedTypeReference<DataResponse<LabelResponse>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/sww#operation/getShippingEstimate">Shipping estimates</a>
+     */
+    public DataResponse<ShippingEstimateResponse> getShippingEstimate(String accessToken, ShippingEstimatePayload payload) {
+        return post("/v3/shipping/labels/shipping-estimates", accessToken, payload, new ParameterizedTypeReference<DataResponse<ShippingEstimateResponse>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/sww#operation/getLabel">Labels detail by purchase order id</a>
+     */
+    public DataResponse<LabelResponse> getLabel(String accessToken, String purchaseOrderId) {
+        return get(String.format("/v3/shipping/labels/purchase-orders/%s", purchaseOrderId), accessToken, null, new ParameterizedTypeReference<DataResponse<LabelResponse>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/sww#operation/getCarriers">Supported carriers</a>
+     */
+    public CarriersResponse getCarriers(String accessToken) {
+        return get("/v3/shipping/labels/carriers", accessToken, null, CarriersResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/sww#operation/getLabelByTrackingAndCarrier">Download label</a>
+     */
+    public byte[] downloadLabel(String accessToken, String carrierShortName, String trackingNo) {
+        return get(String.format("/v3/shipping/labels/carriers/%s/trackings/%s", carrierShortName, trackingNo), accessToken, null, byte[].class);
+    }
+
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/sww#operation/discardLabel">Discard label</a>
+     */
+    public DataResponse<Boolean> discardLabel(String accessToken, String carrierShortName, String trackingNo) {
+        return exchange(String.format("/v3/shipping/labels/carriers/%s/trackings/%s", carrierShortName, trackingNo), HttpMethod.DELETE, accessToken, null, null, new ParameterizedTypeReference<DataResponse<Boolean>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/sww#operation/getCarrierPackageTypes">Supported carrier package types</a>
+     */
+    public DataResponse<List<CarrierPackageType>> getCarrierPackageTypes(String accessToken, String carrierShortName) {
+        return get(String.format("/v3/shipping/labels/carriers/%s/package-types", carrierShortName),  accessToken, null,  new ParameterizedTypeReference<DataResponse<List<CarrierPackageType>>>() {
+        });
+    }
 
 }

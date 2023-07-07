@@ -77,6 +77,13 @@ walmart-sdk
 | getPartnerPerformance | [Performance Report](https://developer.walmart.com/api/us/mp/reports#operation/getPartnerPerformance)                               | ✔️  |
 
 
-
-
-
+#### Shipping
+| 方法名                    | 官方文档地址                                                                                                          | 状态  |
+|:-----------------------|:----------------------------------------------------------------------------------------------------------------|:----|
+| createLabel            | [Create label](https://developer.walmart.com/api/us/mp/sww#operation/createLabel)                               | ✔️  |
+| getShippingEstimate    | [Shipping estimates](https://developer.walmart.com/api/us/mp/sww#operation/getShippingEstimate)                 | ✔️  |
+| getLabel               | [Labels detail by purchase order id](https://developer.walmart.com/api/us/mp/sww#operation/getLabel)            | ✔️  |
+| getCarriers            | [Supported carriers](https://developer.walmart.com/api/us/mp/sww#operation/getCarriers)                         | ✔️  |
+| downloadLabel          | [Download label](https://developer.walmart.com/api/us/mp/sww#operation/getLabelByTrackingAndCarrier)            | ✔️  |
+| discardLabel           | [Discard label](https://developer.walmart.com/api/us/mp/sww#operation/discardLabel)                             | ✔️  |
+| getCarrierPackageTypes | [Supported carrier package types](https://developer.walmart.com/api/us/mp/sww#operation/getCarrierPackageTypes) | ✔️  |

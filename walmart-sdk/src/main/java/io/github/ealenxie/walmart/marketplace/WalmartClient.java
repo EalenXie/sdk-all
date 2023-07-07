@@ -75,7 +75,6 @@ public class WalmartClient {
         return getRestOperations().exchange(URI.create(String.format("%s/v3/token?grant_type=client_credentials", isSandBox() ? SANDBOX_HOST : HOST)), HttpMethod.POST, new HttpEntity<>(null, headers), WalmartToken.class).getBody();
     }
 
-
     /**
      * 获取公共的请求头
      */
@@ -85,11 +84,8 @@ public class WalmartClient {
         headers.setBasicAuth(clientId, clientSecret);
         headers.set("WM_SVC.NAME", "Walmart Marketplace");
         headers.set("WM_QOS.CORRELATION_ID", UUID.randomUUID().toString());
-        headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
         return headers;
     }
-
-
 
     /**
      * GET 调用 API
@@ -139,7 +135,6 @@ public class WalmartClient {
         return exchange(urlNotHost, HttpMethod.POST, accessToken, null, payload, responseType);
     }
 
-
     /**
      * 调用 API
      *
@@ -155,7 +150,6 @@ public class WalmartClient {
         return exchange(urlNotHost, httpMethod, queryParams, new HttpEntity<>(payload, getBearerHeaders(accessToken)), responseType);
     }
 
-
     /**
      * 调用 API
      *
@@ -169,7 +163,6 @@ public class WalmartClient {
     protected <T> T exchange(String urlNotHost, HttpMethod httpMethod, @Nullable Object queryParams, HttpEntity<?> httpEntity, Class<T> responseType) {
         return getRestOperations().exchange(buildUri(urlNotHost, queryParams), httpMethod, httpEntity, responseType).getBody();
     }
-
 
     /**
      * 调用 API
@@ -213,7 +206,6 @@ public class WalmartClient {
         return getRestOperations().exchange(uri, httpMethod, httpEntity, responseType).getBody();
     }
 
-
     /**
      * 调用 API
      *
@@ -226,7 +218,6 @@ public class WalmartClient {
     protected <T> T exchange(URI uri, HttpMethod httpMethod, HttpEntity<?> httpEntity, ParameterizedTypeReference<T> responseType) {
         return getRestOperations().exchange(uri, httpMethod, httpEntity, responseType).getBody();
     }
-
 
     /**
      * 构建请求URI
@@ -268,7 +259,6 @@ public class WalmartClient {
         return builder.build().encode().toUri();
     }
 
-
     /**
      * 获取公共的请求头
      */
@@ -277,6 +267,7 @@ public class WalmartClient {
         HttpHeaders headers = getBasicHeaders();
         headers.set("WM_SEC.ACCESS_TOKEN", accessToken);
         headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
         return headers;
     }
 
