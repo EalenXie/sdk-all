@@ -1,6 +1,7 @@
 package io.github.ealenxie.walmart.marketplace.items;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.ealenxie.walmart.marketplace.Filter;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -41,8 +41,6 @@ walmart-sdk
 | getCountByStatus    | [Get items count by status](https://developer.walmart.com/api/us/mp/items#operation/getCountByStatus) | ✔️  |
 | retireItem          | [Retire an item](https://developer.walmart.com/api/us/mp/items#operation/retireAnItem)                | ✔️  |
 
-
-
 #### [WalmartClient](https://github.com/EalenXie/sdk-all/blob/main/walmart-sdk/src/main/java/io/github/ealenxie/walmart/marketplace/WalmartClient.java) 已支持的接口列表
 
 | 接口名           | 方法名         | 官方文档地址                                                                       | 状态  |
@@ -61,13 +59,8 @@ walmart-sdk
 | getAnOrder           | [An order](https://developer.walmart.com/api/us/mp/orders#operation/getAnOrder)                      | ✔️  |
 | getAllReleasedOrders | [All released orders](https://developer.walmart.com/api/us/mp/orders#operation/getAllReleasedOrders) | ✔️  |
 
-
-
-
-
-
-
 #### Reports
+
 | 方法名                   | 官方文档地址                                                                                                                              | 状态  |
 |:----------------------|:------------------------------------------------------------------------------------------------------------------------------------|:----|
 | reconReport           | [Recon report / (Legacy)](https://developer.walmart.com/api/us/mp/reports#operation/getReconReportV1)                               | ✔️  |
@@ -75,17 +68,24 @@ walmart-sdk
 | getPartnerStatement   | [Payment Statement Report](https://developer.walmart.com/api/us/mp/reports#operation/getPartnerStatement)                           | ✔️  |
 | getPartnerPerformance | [Performance Report](https://developer.walmart.com/api/us/mp/reports#operation/getPartnerPerformance)                               | ✔️  |
 
+#### Insights
 
+##### Insight
+
+| 方法名                | 官方文档地址                                                                                                            | 状态  |
+|:-------------------|:------------------------------------------------------------------------------------------------------------------|:----|
+| itemListingDetails | [Item Listing Quality Details](https://developer.walmart.com/api/us/mp/insights#operation/itemsDetailsForListing) | ✔️  |
 
 #### Reviews
+
 | 方法名                  | 官方文档地址                                                                                                    | 状态  |
 |:---------------------|:----------------------------------------------------------------------------------------------------------|:----|
 | bulkUpdateItemStatus | [Bulk update item status](https://developer.walmart.com/api/us/mp/reviews#operation/bulkUpdateItemStatus) | ✔️  |
 | getIrpItems          | [Get RAP post-purchase items](https://developer.walmart.com/api/us/mp/reviews#operation/getIrpItems)      | ✔️  |
 | getIrpCategories     | [Get categories](https://developer.walmart.com/api/us/mp/reviews#operation/getIrpCategories)              | ✔️  |
 
-
 #### Assortment Recommendations
+
 | 方法名                     | 官方文档地址                                                                                                                                                | 状态  |
 |:------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------|:----|
 | rejectRecommendations   | [Reject Recommendations](https://developer.walmart.com/api/us/mp/assortmentrecommendations#operation/rejectAssortmentRecommendations)                 | ✔️  |
@@ -96,6 +96,7 @@ walmart-sdk
 | getDownloadUrl          | [Get Download URL](https://developer.walmart.com/api/us/mp/assortmentrecommendations#operation/downloadFileAsPerTheRequestId)                         | ✔️  |
 
 #### Shipping
+
 | 方法名                    | 官方文档地址                                                                                                          | 状态  |
 |:-----------------------|:----------------------------------------------------------------------------------------------------------------|:----|
 | createLabel            | [Create label](https://developer.walmart.com/api/us/mp/sww#operation/createLabel)                               | ✔️  |

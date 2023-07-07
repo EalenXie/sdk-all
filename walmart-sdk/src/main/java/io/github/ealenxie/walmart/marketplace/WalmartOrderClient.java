@@ -2,6 +2,8 @@ package io.github.ealenxie.walmart.marketplace;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.ealenxie.walmart.marketplace.feeds.FeedTypePayload;
+import io.github.ealenxie.walmart.marketplace.insights.ItemListingDetailsPayload;
+import io.github.ealenxie.walmart.marketplace.insights.ItemListingDetailsQueryParams;
 import io.github.ealenxie.walmart.marketplace.items.*;
 import io.github.ealenxie.walmart.marketplace.orders.*;
 import io.github.ealenxie.walmart.marketplace.recommendations.*;
@@ -58,6 +60,27 @@ public class WalmartOrderClient extends WalmartClient {
         return post("/v3/items/associations", accessToken, payload, new ParameterizedTypeReference<ItemsPayload<ItemAssociation>>() {
         });
     }
+
+
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/insights#operation/itemsDetailsForListing">Item Listing Quality Details</a>
+     */
+    public ItemsPayload<ItemAssociation> itemListingDetails(String accessToken, ItemListingDetailsQueryParams queryParams, ItemListingDetailsPayload payload) {
+        return exchange("/v3/insights/items/listingQuality/items", HttpMethod.POST,accessToken, queryParams,payload, new ParameterizedTypeReference<ItemsPayload<ItemAssociation>>() {
+        });
+    }
+
+
+
+
+
+
+
+
+
+
+
 
     /**
      * <a href="https://developer.walmart.com/api/us/mp/items#operation/itemBulkUploads">Bulk Item Setup</a>
@@ -213,17 +236,19 @@ public class WalmartOrderClient extends WalmartClient {
     public BulkItemResponse bulkUpdateItemStatus(String accessToken, BulkUpdateItemPayload payload) {
         return exchange("/v3/growth/reviews-accelerator/items/status", HttpMethod.PUT, accessToken, null, payload, BulkItemResponse.class);
     }
+
     /**
      * <a href="https://developer.walmart.com/api/us/mp/reviews#operation/getIrpItems">Get RAP post-purchase items</a>
      */
     public IrpItemsResponse getIrpItems(String accessToken, IrpItemsGetPayload payload) {
-        return post("/v3/growth/reviews-accelerator/items",accessToken,  payload, IrpItemsResponse.class);
+        return post("/v3/growth/reviews-accelerator/items", accessToken, payload, IrpItemsResponse.class);
     }
+
     /**
      * <a href="https://developer.walmart.com/api/us/mp/reviews#operation/getIrpCategories">Get categories</a>
      */
     public IrpCategoriesResponse getIrpCategories(String accessToken, IrpCategoriesGetPayload payload) {
-        return post("/v3/growth/reviews-accelerator/categories",accessToken,  payload, IrpCategoriesResponse.class);
+        return post("/v3/growth/reviews-accelerator/categories", accessToken, payload, IrpCategoriesResponse.class);
     }
 
     /**
