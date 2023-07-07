@@ -2,14 +2,14 @@ package io.github.ealenxie.walmart.marketplace.orders;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * @author EalenXie created on 2023/7/6 10:02
  */
-@NoArgsConstructor
-@Data
+@Getter
+@Setter
 public class OrderShipmentPayload {
 
     @JsonInclude(JsonInclude.Include.NON_EMPTY)

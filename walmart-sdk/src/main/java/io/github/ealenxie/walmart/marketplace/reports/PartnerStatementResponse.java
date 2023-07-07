@@ -1,14 +1,14 @@
 package io.github.ealenxie.walmart.marketplace.reports;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * @author EalenXie created on 2023/7/7 10:12
  */
-@NoArgsConstructor
-@Data
+@Getter
+@Setter
 public class PartnerStatementResponse {
 
 
