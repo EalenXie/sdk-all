@@ -70,7 +70,6 @@ walmart-sdk
 | updateBulkPromotionalPrice | [Updates bulk promotional prices](https://developer.walmart.com/api/us/mp/promotion#operation/updateBulkPromotionalPrice) | ✔️  |
 | getPromotionalPrices       | [Promotional prices](https://developer.walmart.com/api/us/mp/promotion#operation/getPromotionalPrices)                    | ✔️  |
 
-
 | 方法名                  | 官方文档地址                                                                                               | 状态  |
 |:---------------------|:-----------------------------------------------------------------------------------------------------|:----|
 | shipOrderLines       | [Ship Order Lines](https://developer.walmart.com/api/us/mp/orders#operation/shippingUpdates)         | ✔️  |
@@ -83,13 +82,22 @@ walmart-sdk
 
 #### Walmart Fulfillment Services
 
-| 方法名                    | 官方文档地址                                                                                                                      | 状态  |
-|:-----------------------|:----------------------------------------------------------------------------------------------------------------------------|:----|
-| updateShipmentQuantity | [Update Shipment Quantities](https://developer.walmart.com/api/us/mp/fulfillment#operation/updateShipmentQuantity)          | ✔️  |
-| onholdSearch           | [Hazmat Items On hold](https://developer.walmart.com/api/us/mp/fulfillment#operation/wercsFeedback)                         | ✔️  |
-| shipmentTracking       | [Update Shipment Tracking](https://developer.walmart.com/api/us/mp/fulfillment#operation/updateShipmentTrackingDetails)     | ✔️  |
-| shipmentLabel          | [Create Inbound Shipment label](https://developer.walmart.com/api/us/mp/fulfillment#operation/createInboundShipmentLabelV2) | ✔️  |
-| createFulfillment      | [Create Customer Order](https://developer.walmart.com/api/us/mp/fulfillment#operation/createFulfillment)                    | ✔️  |
+| 方法名                      | 官方文档地址                                                                                                                      | 状态  |
+|:-------------------------|:----------------------------------------------------------------------------------------------------------------------------|:----|
+| updateShipmentQuantity   | [Update Shipment Quantities](https://developer.walmart.com/api/us/mp/fulfillment#operation/updateShipmentQuantity)          | ✔️  |
+| onholdSearch             | [Hazmat Items On hold](https://developer.walmart.com/api/us/mp/fulfillment#operation/wercsFeedback)                         | ✔️  |
+| shipmentTracking         | [Update Shipment Tracking](https://developer.walmart.com/api/us/mp/fulfillment#operation/updateShipmentTrackingDetails)     | ✔️  |
+| shipmentLabel            | [Create Inbound Shipment label](https://developer.walmart.com/api/us/mp/fulfillment#operation/createInboundShipmentLabelV2) | ✔️  |
+| createFulfillment        | [Create Customer Order](https://developer.walmart.com/api/us/mp/fulfillment#operation/createFulfillment)                    | ✔️  |
+| fetchOrderPromiseOptions | [Fetch Delivery Promise Details](https://developer.walmart.com/api/us/mp/fulfillment#operation/promiseFulfillments)         | ✔️  |
+| cancelFulfillment        | [Cancel Customer Order](https://developer.walmart.com/api/us/mp/fulfillment#operation/cancelFulfillment)                    | ✔️  |
+| getInboundShipments      | [Get Shipments](https://developer.walmart.com/api/us/mp/fulfillment#operation/getInboundShipments)                          | ✔️  |
+| createShipment           | [Create Inbound Shipment](https://developer.walmart.com/api/us/mp/fulfillment#operation/createShipment)                     | ✔️  |
+| inboundPreview           | [Fetch Inbound Preview](https://developer.walmart.com/api/us/mp/fulfillment#operation/inboundPreview)                       | ✔️  |
+| getCarrierRateQuote      | [Get Carrier Rate Quote](https://developer.walmart.com/api/us/mp/fulfillment#operation/getCarrierRateQuote)                 | ✔️  |
+| createCarrierRateQuotes  | [Create Carrier Rate Quote](https://developer.walmart.com/api/us/mp/fulfillment#operation/createCarrierRateQuotes)          | ✔️  |
+| confirmCarrierRateQuote  | [Confirm Carrier Rate Quote](https://developer.walmart.com/api/us/mp/fulfillment#operation/confirmCarrierRateQuote)         | ✔️  |
+| printCarrierLabel        | [Print Carrier Label](https://developer.walmart.com/api/us/mp/fulfillment#operation/printCarrierLabel)                      | ✔️  |
 
 #### Reports
 

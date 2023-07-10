@@ -9,19 +9,11 @@ import lombok.Setter;
  */
 @Setter
 @Getter
-public class WalmartPayload<H, P> {
+public class StatusHeaderPayload<T> extends HeaderPayload<T> {
 
     /**
      * status
      */
     @JsonProperty("status")
     private String status;
-
-    @JsonProperty("header")
-    private H header;
-    /**
-     * payload
-     */
-    @JsonProperty("payload")
-    private P payload;
 }

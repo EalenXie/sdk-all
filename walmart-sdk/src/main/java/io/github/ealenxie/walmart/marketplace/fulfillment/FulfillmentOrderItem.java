@@ -46,5 +46,5 @@ public class FulfillmentOrderItem {
      * chargeDetails
      */
     @JsonProperty("chargeDetails")
-    private List<ChargeDetails> chargeDetails;
+    private List<ChargeDetail> chargeDetails;
 }

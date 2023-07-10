@@ -5,19 +5,19 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * @author EalenXie created on 2023/7/10 11:18
+ * @author EalenXie created on 2023/7/10 13:52
  */
 @NoArgsConstructor
 @Data
-public class LoadTypes {
+public class CancelFulfillmentOrderItem {
     /**
-     * count
+     * sellerLineId
      */
-    @JsonProperty("count")
-    private String count;
+    @JsonProperty("sellerLineId")
+    private String sellerLineId;
     /**
-     * loadType
+     * qty
      */
-    @JsonProperty("loadType")
-    private String loadType;
+    @JsonProperty("qty")
+    private Qty qty;
 }

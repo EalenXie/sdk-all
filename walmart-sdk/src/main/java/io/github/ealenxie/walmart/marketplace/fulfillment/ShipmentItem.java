@@ -5,19 +5,19 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * @author EalenXie created on 2023/7/10 11:18
+ * @author EalenXie created on 2023/7/10 14:14
  */
 @NoArgsConstructor
 @Data
-public class LoadTypes {
+public class ShipmentItem {
     /**
-     * count
+     * vendorSku
      */
-    @JsonProperty("count")
-    private String count;
+    @JsonProperty("vendorSku")
+    private String vendorSku;
     /**
-     * loadType
+     * itemQty
      */
-    @JsonProperty("loadType")
-    private String loadType;
+    @JsonProperty("itemQty")
+    private Integer itemQty;
 }

@@ -373,10 +373,79 @@ public class WalmartOrderClient extends WalmartClient {
     /**
      * <a href="https://developer.walmart.com/api/us/mp/fulfillment#operation/createFulfillment">Create Customer Order</a>
      */
-    public CreateFulfillmentResponse createFulfillment(String accessToken, CreateFulfillmentPayload payload) {
-        return post("/v3/fulfillment/orders-fulfillments", accessToken, payload, CreateFulfillmentResponse.class);
+    public StatusHeaderPayload<RequestIdPayload> createFulfillment(String accessToken, HeaderPayload<FulfillmentPayload> payload) {
+        return post("/v3/fulfillment/orders-fulfillments", accessToken, payload, new ParameterizedTypeReference<StatusHeaderPayload<RequestIdPayload>>() {
+        });
     }
 
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/fulfillment#operation/promiseFulfillments">Fetch Delivery Promise Details</a>
+     */
+    public StatusHeaderPayload<OrderPromiseOptionsResponse> fetchOrderPromiseOptions(String accessToken, HeaderPayload<FetchOrderPromiseOptionsPayload> payload) {
+        return post("/v3/fulfillment/orders-fulfillments/fetchOrderPromiseOptions", accessToken, payload, new ParameterizedTypeReference<StatusHeaderPayload<OrderPromiseOptionsResponse>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/fulfillment#operation/cancelFulfillment">Cancel Customer Order</a>
+     */
+    public StatusHeaderPayload<RequestIdPayload> cancelFulfillment(String accessToken, HeaderPayload<CancelFulfillmentPayload> payload) {
+        return post("/v3/fulfillment/orders-fulfillments/cancel", accessToken, payload, new ParameterizedTypeReference<StatusHeaderPayload<RequestIdPayload>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/fulfillment#operation/getInboundShipments">Get Shipments</a>
+     */
+    public InboundShipmentsResponse getInboundShipments(String accessToken, InboundShipmentsQueryParams queryParams) {
+        return get("/v3/fulfillment/inbound-shipments", accessToken, queryParams, InboundShipmentsResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/fulfillment#operation/createShipment">Create Inbound Shipment</a>
+     */
+    public StatusPayloadResponse<List<CreateShipmentResponse>> createShipment(String accessToken, CreateShipmentPayload payload) {
+        return post("/v3/fulfillment/inbound-shipments", accessToken, payload, new ParameterizedTypeReference<StatusPayloadResponse<List<CreateShipmentResponse>>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/fulfillment#operation/inboundPreview">Fetch Inbound Preview</a>
+     */
+    public StatusPayloadResponse<List<InboundPreviewResponse>> inboundPreview(String accessToken, HeaderPayload<InboundPreviewPayload> payload) {
+        return post("/v3/fulfillment/inbound-preview", accessToken, payload, new ParameterizedTypeReference<StatusPayloadResponse<List<InboundPreviewResponse>>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/fulfillment#operation/getCarrierRateQuote">Get Carrier Rate Quote</a>
+     */
+    public CarrierRateQuoteResponse getCarrierRateQuote(String accessToken, CarrierRateQuoteQueryParams queryParams) {
+        return get("/v3/fulfillment/carrier-rate-quotes", accessToken, queryParams, CarrierRateQuoteResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/fulfillment#operation/createCarrierRateQuotes">Create Carrier Rate Quote</a>
+     */
+    public CarrierRateQuotesCreateResponse createCarrierRateQuotes(String accessToken, CarrierRateQuotesCreatePayload payload) {
+        return post("/v3/fulfillment/carrier-rate-quotes", accessToken, payload, CarrierRateQuotesCreateResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/fulfillment#operation/confirmCarrierRateQuote">Confirm Carrier Rate Quote</a>
+     */
+    public StatusPayloadResponse<Void> confirmCarrierRateQuote(String accessToken, String shipmentId) {
+        return post("/v3/fulfillment/carrier-rate-quote/confirm", accessToken, new ShipmentIdPayload(shipmentId), new ParameterizedTypeReference<StatusPayloadResponse<Void>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/fulfillment#operation/printCarrierLabel">Print Carrier Label</a>
+     */
+    public StatusPayloadResponse<Void> printCarrierLabel(String accessToken, String shipmentId, ShipDatePayload payload) {
+        return post(String.format("/v3/fulfillment/carrier-label/%s", shipmentId), accessToken, payload, new ParameterizedTypeReference<StatusPayloadResponse<Void>>() {
+        });
+    }
 
     /**
      * <a href="https://developer.walmart.com/api/us/mp/notifications#operation/testNotification">Test Notification</a>

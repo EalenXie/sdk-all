@@ -5,19 +5,19 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * @author EalenXie created on 2023/7/10 11:18
+ * @author EalenXie created on 2023/7/10 13:41
  */
 @NoArgsConstructor
 @Data
-public class LoadTypes {
+public class Sla {
     /**
-     * count
+     * tier
      */
-    @JsonProperty("count")
-    private String count;
+    @JsonProperty("tier")
+    private String tier;
     /**
-     * loadType
+     * speed
      */
-    @JsonProperty("loadType")
-    private String loadType;
+    @JsonProperty("speed")
+    private String speed;
 }

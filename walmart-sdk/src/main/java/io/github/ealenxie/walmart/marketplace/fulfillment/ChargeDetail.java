@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
  */
 @NoArgsConstructor
 @Data
-public class ChargeDetails {
+public class ChargeDetail {
     /**
      * chargeCategory
      */
