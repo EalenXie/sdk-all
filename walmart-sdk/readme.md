@@ -15,6 +15,7 @@ walmart-sdk
     <version>1.0-SNAPSHOT</version>
 </dependency>
 ```
+
 #### [WalmartClient](https://github.com/EalenXie/sdk-all/blob/main/walmart-sdk/src/main/java/io/github/ealenxie/walmart/marketplace/WalmartClient.java) 已支持的接口列表
 
 | 接口名           | 方法名         | 官方文档地址                                                                       | 状态  |
@@ -46,7 +47,6 @@ walmart-sdk
 | getCountByStatus    | [Get items count by status](https://developer.walmart.com/api/us/mp/items#operation/getCountByStatus) | ✔️  |
 | retireItem          | [Retire an item](https://developer.walmart.com/api/us/mp/items#operation/retireAnItem)                | ✔️  |
 
-
 #### Prices
 
 | 方法名                  | 官方文档地址                                                                                                                     | 状态  |
@@ -62,7 +62,6 @@ walmart-sdk
 | optCapProgramInPrice | [Set up CAP SKU All](https://developer.walmart.com/api/us/mp/price#operation/optCapProgramInPrice)                         | ✔️  |
 | getStrategies        | [List of Repricer Strategies](https://developer.walmart.com/api/us/mp/price#operation/getStrategies)                       | ✔️  |
 
-
 | 方法名                  | 官方文档地址                                                                                               | 状态  |
 |:---------------------|:-----------------------------------------------------------------------------------------------------|:----|
 | shipOrderLines       | [Ship Order Lines](https://developer.walmart.com/api/us/mp/orders#operation/shippingUpdates)         | ✔️  |
@@ -72,6 +71,16 @@ walmart-sdk
 | getAllOrders         | [All orders](https://developer.walmart.com/api/us/mp/orders#operation/getAllOrders)                  | ✔️  |
 | getAnOrder           | [An order](https://developer.walmart.com/api/us/mp/orders#operation/getAnOrder)                      | ✔️  |
 | getAllReleasedOrders | [All released orders](https://developer.walmart.com/api/us/mp/orders#operation/getAllReleasedOrders) | ✔️  |
+
+#### Walmart Fulfillment Services
+
+| 方法名                    | 官方文档地址                                                                                                                      | 状态  |
+|:-----------------------|:----------------------------------------------------------------------------------------------------------------------------|:----|
+| updateShipmentQuantity | [Update Shipment Quantities](https://developer.walmart.com/api/us/mp/fulfillment#operation/updateShipmentQuantity)          | ✔️  |
+| onholdSearch           | [Hazmat Items On hold](https://developer.walmart.com/api/us/mp/fulfillment#operation/wercsFeedback)                         | ✔️  |
+| shipmentTracking       | [Update Shipment Tracking](https://developer.walmart.com/api/us/mp/fulfillment#operation/updateShipmentTrackingDetails)     | ✔️  |
+| shipmentLabel          | [Create Inbound Shipment label](https://developer.walmart.com/api/us/mp/fulfillment#operation/createInboundShipmentLabelV2) | ✔️  |
+| createFulfillment      | [Create Customer Order](https://developer.walmart.com/api/us/mp/fulfillment#operation/createFulfillment)                    | ✔️  |
 
 #### Reports
 

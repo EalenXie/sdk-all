@@ -1,4 +1,4 @@
-package io.github.ealenxie.walmart.marketplace.items;
+package io.github.ealenxie.walmart.marketplace;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;

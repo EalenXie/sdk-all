@@ -2,6 +2,7 @@ package io.github.ealenxie.walmart.marketplace.reviews;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.ealenxie.walmart.marketplace.Query;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,9 +22,9 @@ public class IrpItemsGetPayload {
     private Filter filter;
     @JsonProperty("search")
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
-    private List<Search> search;
+    private List<Query> search;
 
     @JsonProperty("sort")
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
-    private List<Sort> sort;
+    private List<SortPriority> sort;
 }

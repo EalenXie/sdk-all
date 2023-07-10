@@ -1,22 +1,20 @@
-package io.github.ealenxie.walmart.marketplace.items;
+package io.github.ealenxie.walmart.marketplace.fulfillment;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.ealenxie.walmart.marketplace.Filter;
 import io.github.ealenxie.walmart.marketplace.Query;
 import io.github.ealenxie.walmart.marketplace.Sort;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 /**
- * @author create by sch  2023/7/6 15:07
- * @version 1.0
+ * @author EalenXie created on 2023/7/10 10:53
  */
-
-@Getter
-@Setter
-public class CatalogPayload {
+@NoArgsConstructor
+@Data
+public class OnholdSearchPayload {
 
     /**
      * query

@@ -2,6 +2,7 @@ package io.github.ealenxie.walmart.marketplace;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.ealenxie.walmart.marketplace.feeds.*;
+import io.github.ealenxie.walmart.marketplace.fulfillment.*;
 import io.github.ealenxie.walmart.marketplace.insights.*;
 import io.github.ealenxie.walmart.marketplace.items.*;
 import io.github.ealenxie.walmart.marketplace.notifications.*;
@@ -310,6 +311,45 @@ public class WalmartOrderClient extends WalmartClient {
     }
 
     /**
+     * <a href="https://developer.walmart.com/api/us/mp/fulfillment#operation/updateShipmentQuantity">Update Shipment Quantities</a>
+     */
+    public StatusPayloadResponse<Void> updateShipmentQuantity(String accessToken, UpdatedShipmentQtyPayload payload) {
+        return exchange("/v3/fulfillment/shipment-quantities", HttpMethod.PUT, accessToken, null, payload, new ParameterizedTypeReference<StatusPayloadResponse<Void>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/fulfillment#operation/wercsFeedback">Hazmat Items On hold</a>
+     */
+    public StatusPayloadResponse<OnholdItemsResponse> onholdSearch(String accessToken, OnholdSearchPayload payload) {
+        return post("/v3/items/onhold/search", accessToken, payload, new ParameterizedTypeReference<StatusPayloadResponse<OnholdItemsResponse>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/fulfillment#operation/updateShipmentTrackingDetails">Update Shipment Tracking</a>
+     */
+    public StatusPayloadResponse<Void> shipmentTracking(String accessToken, ShipmentTrackingPayload payload) {
+        return post("/v3/fulfillment/shipment-tracking", accessToken, payload, new ParameterizedTypeReference<StatusPayloadResponse<Void>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/fulfillment#operation/createInboundShipmentLabelV2">Create Inbound Shipment label</a>
+     */
+    public byte[] shipmentLabel(String accessToken, ShipmentLabelPayload payload) {
+        return post("/v3/fulfillment/shipment-label", accessToken, payload, byte[].class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/fulfillment#operation/createFulfillment">Create Customer Order</a>
+     */
+    public CreateFulfillmentResponse createFulfillment(String accessToken, CreateFulfillmentPayload payload) {
+        return post("/v3/fulfillment/orders-fulfillments", accessToken, payload, CreateFulfillmentResponse.class);
+    }
+
+
+    /**
      * <a href="https://developer.walmart.com/api/us/mp/notifications#operation/testNotification">Test Notification</a>
      */
     public MessageResponse testNotification(String accessToken, TestNotificationPayload payload) {
@@ -350,7 +390,6 @@ public class WalmartOrderClient extends WalmartClient {
     public EventTypesResponse getEventTypes(String accessToken) {
         return get("/v3/webhooks/eventTypes", accessToken, null, EventTypesResponse.class);
     }
-
 
     /**
      * <a href="https://developer.walmart.com/api/us/mp/utilities#operation/getTaxonomyResponse">Taxonomy by spec</a>
