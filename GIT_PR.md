@@ -20,5 +20,5 @@
 | major    | 主要/重要提交,和项目整体有关,例如底层架构代码,核心功能,重要公共类等等 | 
 | optimize | 优化,重构代码                               |
 | fix      | 修复bug,issue等问题                        | 
-| hotfix   | 紧急修复项目中的关键性BUG，,issue等问题              | 
+| hotfix   | 紧急修复项目中的关键性BUG，issue等问题               | 
 | upgrade  | 项目升级,版本依赖升级等等                         |
