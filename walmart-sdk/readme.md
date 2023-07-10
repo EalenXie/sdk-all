@@ -62,6 +62,15 @@ walmart-sdk
 | optCapProgramInPrice | [Set up CAP SKU All](https://developer.walmart.com/api/us/mp/price#operation/optCapProgramInPrice)                         | ✔️  |
 | getStrategies        | [List of Repricer Strategies](https://developer.walmart.com/api/us/mp/price#operation/getStrategies)                       | ✔️  |
 
+#### Promotions
+
+| 方法名                        | 官方文档地址                                                                                                                    | 状态  |
+|:---------------------------|:--------------------------------------------------------------------------------------------------------------------------|:----|
+| updatePromotionalPrice     | [Update a promotional price](https://developer.walmart.com/api/us/mp/promotion)                                           | ✔️  |
+| updateBulkPromotionalPrice | [Updates bulk promotional prices](https://developer.walmart.com/api/us/mp/promotion#operation/updateBulkPromotionalPrice) | ✔️  |
+| getPromotionalPrices       | [Promotional prices](https://developer.walmart.com/api/us/mp/promotion#operation/getPromotionalPrices)                    | ✔️  |
+
+
 | 方法名                  | 官方文档地址                                                                                               | 状态  |
 |:---------------------|:-----------------------------------------------------------------------------------------------------|:----|
 | shipOrderLines       | [Ship Order Lines](https://developer.walmart.com/api/us/mp/orders#operation/shippingUpdates)         | ✔️  |

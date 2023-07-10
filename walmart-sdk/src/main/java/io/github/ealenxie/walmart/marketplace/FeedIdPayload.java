@@ -1,4 +1,4 @@
-package io.github.ealenxie.walmart.marketplace.prices;
+package io.github.ealenxie.walmart.marketplace;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
@@ -10,7 +10,7 @@ import lombok.Setter;
  */
 @Setter
 @Getter
-public class FeedIdResponse {
+public class FeedIdPayload {
 
     /**
      * feedId

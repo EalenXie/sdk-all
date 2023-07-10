@@ -8,6 +8,10 @@ import io.github.ealenxie.walmart.marketplace.items.*;
 import io.github.ealenxie.walmart.marketplace.notifications.*;
 import io.github.ealenxie.walmart.marketplace.orders.*;
 import io.github.ealenxie.walmart.marketplace.prices.*;
+import io.github.ealenxie.walmart.marketplace.promotion.PromoQueryParams;
+import io.github.ealenxie.walmart.marketplace.promotion.PromotionalPayload;
+import io.github.ealenxie.walmart.marketplace.promotion.PromotionalPricePayload;
+import io.github.ealenxie.walmart.marketplace.promotion.UpdatePromotionalResponse;
 import io.github.ealenxie.walmart.marketplace.recommendations.*;
 import io.github.ealenxie.walmart.marketplace.reports.AvailableApReportDatesResponse;
 import io.github.ealenxie.walmart.marketplace.reports.PartnerStatementResponse;
@@ -187,8 +191,8 @@ public class WalmartOrderClient extends WalmartClient {
     /**
      * <a href="https://developer.walmart.com/api/us/mp/price#operation/getRepricerFeed">Assign/Unassign items to/from Repricer Strategy</a>
      */
-    public FeedIdResponse repricerFeed(String accessToken, FeedPayload payload) {
-        return post("/v3/repricerFeeds", accessToken, payload, FeedIdResponse.class);
+    public FeedIdPayload repricerFeed(String accessToken, FeedPayload payload) {
+        return post("/v3/repricerFeeds", accessToken, payload, FeedIdPayload.class);
     }
 
     /**
@@ -220,6 +224,31 @@ public class WalmartOrderClient extends WalmartClient {
     public StrategiesResponse getStrategies(String accessToken) {
         return get("/v3/cppreference", accessToken, null, StrategiesResponse.class);
     }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/promotion">Update a promotional price</a>
+     */
+    public UpdatePromotionalResponse updatePromotionalPrice(String accessToken, Boolean promo, PromotionalPayload payload) {
+        return exchange("/v3/price", HttpMethod.PUT, accessToken, new PromoQueryParams(promo), payload, UpdatePromotionalResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/promotion#operation/updateBulkPromotionalPrice">Updates bulk promotional prices</a>
+     */
+    public FeedIdPayload updateBulkPromotionalPrice(String accessToken, String feedType, byte[] file) {
+        HttpHeaders headers = getBearerHeaders(accessToken);
+        headers.setContentType(MediaType.MULTIPART_FORM_DATA);
+        return exchange("/v3/feeds", HttpMethod.POST, accessToken, new FeedTypePayload(feedType), new HttpEntity<>(file, headers), FeedIdPayload.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/promotion#operation/getPromotionalPrices">Promotional prices</a>
+     */
+    public StatusPayloadResponse<PromotionalPricePayload> getPromotionalPrices(String accessToken, String sku) {
+        return get(String.format("/v3/promo/sku/%s", sku), accessToken, null, new ParameterizedTypeReference<StatusPayloadResponse<PromotionalPricePayload>>() {
+        });
+    }
+
 
     /**
      * <a href="https://developer.walmart.com/api/us/mp/orders#operation/shippingUpdates">Ship Order Lines</a>
