@@ -19,9 +19,6 @@ public class PublicClient extends FopClient {
     }
 
 
-
-
-
     public PublicClient(String appKey, String appSecret, RestOperations restOperations) {
         super(appKey, appSecret, restOperations);
     }

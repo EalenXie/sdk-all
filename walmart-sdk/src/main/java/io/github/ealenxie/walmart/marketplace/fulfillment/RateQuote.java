@@ -162,13 +162,4 @@ public class RateQuote {
     private String freightReadyDate;
 
 
-
-
-
-
-
-
-
-
-
 }
