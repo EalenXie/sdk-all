@@ -70,6 +70,8 @@ walmart-sdk
 | updateBulkPromotionalPrice | [Updates bulk promotional prices](https://developer.walmart.com/api/us/mp/promotion#operation/updateBulkPromotionalPrice) | ✔️  |
 | getPromotionalPrices       | [Promotional prices](https://developer.walmart.com/api/us/mp/promotion#operation/getPromotionalPrices)                    | ✔️  |
 
+#### Orders
+
 | 方法名                  | 官方文档地址                                                                                               | 状态  |
 |:---------------------|:-----------------------------------------------------------------------------------------------------|:----|
 | shipOrderLines       | [Ship Order Lines](https://developer.walmart.com/api/us/mp/orders#operation/shippingUpdates)         | ✔️  |
@@ -79,6 +81,24 @@ walmart-sdk
 | getAllOrders         | [All orders](https://developer.walmart.com/api/us/mp/orders#operation/getAllOrders)                  | ✔️  |
 | getAnOrder           | [An order](https://developer.walmart.com/api/us/mp/orders#operation/getAnOrder)                      | ✔️  |
 | getAllReleasedOrders | [All released orders](https://developer.walmart.com/api/us/mp/orders#operation/getAllReleasedOrders) | ✔️  |
+
+#### Reports
+
+| 方法名                   | 官方文档地址                                                                                                                              | 状态  |
+|:----------------------|:------------------------------------------------------------------------------------------------------------------------------------|:----|
+| reconReport           | [Recon report / (Legacy)](https://developer.walmart.com/api/us/mp/reports#operation/getReconReportV1)                               | ✔️  |
+| availableReconFiles   | [Available recon report dates / (Legacy)](https://developer.walmart.com/api/us/mp/reports#operation/getAvailableV1ReconReportDates) | ✔️  |
+| getPartnerStatement   | [Payment Statement Report](https://developer.walmart.com/api/us/mp/reports#operation/getPartnerStatement)                           | ✔️  |
+| getPartnerPerformance | [Performance Report](https://developer.walmart.com/api/us/mp/reports#operation/getPartnerPerformance)                               | ✔️  |
+
+#### On-Request Report
+
+| 方法名               | 官方文档地址                                                                                                               | 状态  |
+|:------------------|:---------------------------------------------------------------------------------------------------------------------|:----|
+| getReportRequests | [Get All Report Requests](https://developer.walmart.com/api/us/mp/onrequestreports#operation/getRequestsStatus)      | ✔️  |
+| generateReport    | [Create Report Request](https://developer.walmart.com/api/us/mp/onrequestreports#operation/generateReport)           | ✔️  |
+| getSingleRequest  | [Get All Report Requests](https://developer.walmart.com/api/us/mp/onrequestreports#operation/getSingleRequestStatus) | ✔️  |
+| downloadReport    | [Get All Report Requests](https://developer.walmart.com/api/us/mp/onrequestreports#operation/downloadReport)         | ✔️  |
 
 #### Walmart Fulfillment Services
 
@@ -98,15 +118,6 @@ walmart-sdk
 | createCarrierRateQuotes  | [Create Carrier Rate Quote](https://developer.walmart.com/api/us/mp/fulfillment#operation/createCarrierRateQuotes)          | ✔️  |
 | confirmCarrierRateQuote  | [Confirm Carrier Rate Quote](https://developer.walmart.com/api/us/mp/fulfillment#operation/confirmCarrierRateQuote)         | ✔️  |
 | printCarrierLabel        | [Print Carrier Label](https://developer.walmart.com/api/us/mp/fulfillment#operation/printCarrierLabel)                      | ✔️  |
-
-#### Reports
-
-| 方法名                   | 官方文档地址                                                                                                                              | 状态  |
-|:----------------------|:------------------------------------------------------------------------------------------------------------------------------------|:----|
-| reconReport           | [Recon report / (Legacy)](https://developer.walmart.com/api/us/mp/reports#operation/getReconReportV1)                               | ✔️  |
-| availableReconFiles   | [Available recon report dates / (Legacy)](https://developer.walmart.com/api/us/mp/reports#operation/getAvailableV1ReconReportDates) | ✔️  |
-| getPartnerStatement   | [Payment Statement Report](https://developer.walmart.com/api/us/mp/reports#operation/getPartnerStatement)                           | ✔️  |
-| getPartnerPerformance | [Performance Report](https://developer.walmart.com/api/us/mp/reports#operation/getPartnerPerformance)                               | ✔️  |
 
 #### Notifications
 

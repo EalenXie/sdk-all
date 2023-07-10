@@ -6,6 +6,7 @@ import io.github.ealenxie.walmart.marketplace.fulfillment.*;
 import io.github.ealenxie.walmart.marketplace.insights.*;
 import io.github.ealenxie.walmart.marketplace.items.*;
 import io.github.ealenxie.walmart.marketplace.notifications.*;
+import io.github.ealenxie.walmart.marketplace.onerequestreport.*;
 import io.github.ealenxie.walmart.marketplace.orders.*;
 import io.github.ealenxie.walmart.marketplace.prices.*;
 import io.github.ealenxie.walmart.marketplace.promotion.PromoQueryParams;
@@ -337,6 +338,34 @@ public class WalmartOrderClient extends WalmartClient {
      */
     public PartnerStatementResponse getPartnerPerformance(String accessToken) {
         return get("/v3/report/payment/performance", accessToken, null, PartnerStatementResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/onrequestreports#operation/getRequestsStatus">Get All Report Requests</a>
+     */
+    public ReportRequestsResponse getReportRequests(String accessToken, ReportRequestsQueryParams queryParams) {
+        return get("/v3/reports/reportRequests", accessToken, queryParams, ReportRequestsResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/onrequestreports#operation/generateReport">Create Report Request</a>
+     */
+    public GenerateReportResponse generateReport(String accessToken, GenerateReportRequestParams queryParams, GenerateReportPayload payload) {
+        return exchange("/v3/reports/reportRequests", HttpMethod.POST, accessToken, queryParams, payload, GenerateReportResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/onrequestreports#operation/getSingleRequestStatus">Report Request Status</a>
+     */
+    public GenerateReportResponse getSingleRequest(String accessToken, String requestId) {
+        return get(String.format("/v3/reports/reportRequests/%s", requestId), accessToken, null, GenerateReportResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/onrequestreports#operation/downloadReport">Download Report URL</a>
+     */
+    public DownloadReportResponse downloadReport(String accessToken, String requestId) {
+        return get("/v3/reports/downloadReport", accessToken, new RequestIdQueryParams(requestId), DownloadReportResponse.class);
     }
 
     /**
