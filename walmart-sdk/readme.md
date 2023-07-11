@@ -90,16 +90,20 @@ walmart-sdk
 | bulkItemOverrideFeed | [Return Item Overrides](https://developer.walmart.com/api/us/mp/returns#operation/bulkItemOverrideFeed) | ✔️  |
 | getReturns           | [Returns](https://developer.walmart.com/api/us/mp/returns#operation/getReturns)                         | ✔️  |
 
-
 #### Settings
 
-| 方法名                   | 官方文档地址                                                                                                                 | 状态  |
-|:----------------------|:-----------------------------------------------------------------------------------------------------------------------|:----|
-| getTemplateDetails    | [Get Shipping Template Details](https://developer.walmart.com/api/us/mp/settings#operation/getShippingTemplateDetails) | ✔️  |
-| updateTemplates       | [Update Shipping Templates](https://developer.walmart.com/api/us/mp/settings#operation/updateShippingTemplates)        | ✔️  |
-| deleteTemplateDetails | [Delete Shipping Template](https://developer.walmart.com/api/us/mp/settings#operation/deleteShippingTemplateDetails)   | ✔️  |
-| getShipNodes          | [Get all fulfillment centers](https://developer.walmart.com/api/us/mp/settings#operation/getAllFulfillmentCenters)     | ✔️  |
-| updateShipNodes       | [Update fulfillment center](https://developer.walmart.com/api/us/mp/settings#operation/updateFulfillmentCenter)        | ✔️  |
+| 方法名                       | 官方文档地址                                                                                                                                | 状态  |
+|:--------------------------|:--------------------------------------------------------------------------------------------------------------------------------------|:----|
+| getTemplateDetails        | [Get Shipping Template Details](https://developer.walmart.com/api/us/mp/settings#operation/getShippingTemplateDetails)                | ✔️  |
+| updateTemplates           | [Update Shipping Templates](https://developer.walmart.com/api/us/mp/settings#operation/updateShippingTemplates)                       | ✔️  |
+| deleteTemplateDetails     | [Delete Shipping Template](https://developer.walmart.com/api/us/mp/settings#operation/deleteShippingTemplateDetails)                  | ✔️  |
+| getShipNodes              | [Get all fulfillment centers](https://developer.walmart.com/api/us/mp/settings#operation/getAllFulfillmentCenters)                    | ✔️  |
+| updateShipNodes           | [Update fulfillment center](https://developer.walmart.com/api/us/mp/settings#operation/updateFulfillmentCenter)                       | ✔️  |
+| createShipNodes           | [Create fulfillment center](https://developer.walmart.com/api/us/mp/settings#operation/createFulfillmentCenter)                       | ✔️  |
+| getShippingTemplates      | [Get All Shipping Templates](https://developer.walmart.com/api/us/mp/settings#operation/getAllShippingTemplates)                      | ✔️  |
+| createShippingTemplates   | [Create Shipping Templates](https://developer.walmart.com/api/us/mp/settings#operation/createShippingTemplates)                       | ✔️  |
+| thirdPartyShipNodes       | [Third party fulfillment center association](https://developer.walmart.com/api/us/mp/settings#operation/associate3PFulfillmentCenter) | ✔️  |
+| getShippingConfigurations | [Get Shipping Configurations](https://developer.walmart.com/api/us/mp/settings#operation/getShippingConfigurations)                   | ✔️  |
 
 #### Rules
 
@@ -122,7 +126,6 @@ walmart-sdk
 | downloadExceptions       | [Download exceptions](https://developer.walmart.com/api/us/mp/rules#operation/downloadExceptions)                 | ✔️  |
 | getAllAreas              | [Get all areas](https://developer.walmart.com/api/us/mp/rules#operation/getAllAreas)                              | ✔️  |
 | deleteRule               | [Delete rule](https://developer.walmart.com/api/us/mp/rules#operation/deleteRule)                                 | ✔️  |
-
 
 #### Reports
 

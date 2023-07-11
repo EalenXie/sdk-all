@@ -62,10 +62,10 @@ public class WalmartOrderClient extends WalmartClient {
         super(clientId, clientSecret, objectMapper);
     }
 
-
     private static final String FEEDS_URL = "/v3/feeds";
     private static final String RULES_EXCEPTIONS_URL = "/v3/rules/exceptions";
     private static final String SETTINGS_TEMPLATES_URL = "/v3/settings/shipping/templates/%s";
+    private static final String SETTINGS_SHIPPING_URL = "/v3/settings/shipping/shipnodes";
 
 
     /**
@@ -328,13 +328,10 @@ public class WalmartOrderClient extends WalmartClient {
     }
 
     /**
-     * TODO 和上面 updateBulkPromotionalPrice 接口一模一样，请求路径也相同
      * <a href="https://developer.walmart.com/api/us/mp/returns#operation/bulkItemOverrideFeed">Return Item Overrides</a>
      */
     public FeedIdPayload bulkItemOverrideFeed(String accessToken, String feedType, byte[] file) {
-        HttpHeaders headers = getBearerHeaders(accessToken);
-        headers.setContentType(MediaType.MULTIPART_FORM_DATA);
-        return exchange("/v3/feeds", HttpMethod.POST, accessToken, new FeedTypePayload(feedType), new HttpEntity<>(file, headers), FeedIdPayload.class);
+        return updateBulkPromotionalPrice(accessToken, feedType, file);
     }
 
     /**
@@ -369,7 +366,7 @@ public class WalmartOrderClient extends WalmartClient {
      * <a href="https://developer.walmart.com/api/us/mp/settings#operation/getAllFulfillmentCenters">Get all fulfillment centers</a>
      */
     public List<ShipNodeResponse> getShipNodes(String accessToken, Boolean includeCalendarDayConfiguration) {
-        return get("/v3/settings/shipping/shipnodes", accessToken, new ShipNodesQueryParams(includeCalendarDayConfiguration), new ParameterizedTypeReference<List<ShipNodeResponse>>() {
+        return get(SETTINGS_SHIPPING_URL, accessToken, new ShipNodesQueryParams(includeCalendarDayConfiguration), new ParameterizedTypeReference<List<ShipNodeResponse>>() {
         });
     }
 
@@ -377,9 +374,45 @@ public class WalmartOrderClient extends WalmartClient {
      * <a href="https://developer.walmart.com/api/us/mp/settings#operation/updateFulfillmentCenter">Update fulfillment center</a>
      */
     public ShipNodeResponse updateShipNodes(String accessToken, ShipNodesUpdatePayload payload) {
-        return get("/v3/settings/shipping/shipnodes", accessToken, payload, ShipNodeResponse.class);
+        return exchange(SETTINGS_SHIPPING_URL, HttpMethod.PUT, accessToken, null, payload, ShipNodeResponse.class);
     }
 
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/settings#operation/createFulfillmentCenter">Create fulfillment center</a>
+     */
+    public List<ShipNodeResponse> createShipNodes(String accessToken, ShipNodesCreatePayload payload) {
+        return post(SETTINGS_SHIPPING_URL, accessToken, payload, new ParameterizedTypeReference<List<ShipNodeResponse>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/settings#operation/getAllShippingTemplates">Get All Shipping Templates</a>
+     */
+    public ShippingTemplatesResponse getShippingTemplates(String accessToken) {
+        return get("/v3/settings/shipping/templates", accessToken, null, ShippingTemplatesResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/settings#operation/createShippingTemplates">Create Shipping Templates</a>
+     */
+    public ShippingTemplateCreateResponse createShippingTemplates(String accessToken, ShippingTemplateCreatePayload payload) {
+        return post("/v3/settings/shipping/templates", accessToken, payload, ShippingTemplateCreateResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/settings#operation/associate3PFulfillmentCenter">Third party fulfillment center association</a>
+     */
+    public List<ShipNodeStatus> thirdPartyShipNodes(String accessToken, ThirdPartyShipNodesPayload payload) {
+        return post("/v3/settings/shipping/3plshipnodes", accessToken, payload, new ParameterizedTypeReference<List<ShipNodeStatus>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/settings#operation/getShippingConfigurations">Get Shipping Configurations</a>
+     */
+    public ShippingConfigurationsResponse getShippingConfigurations(String accessToken) {
+        return get("/v3/settings/shippingprofile", accessToken, null, ShippingConfigurationsResponse.class);
+    }
 
     /**
      * <a href="https://developer.walmart.com/api/us/mp/rules#operation/inactivateRule">Inactivate rule</a>

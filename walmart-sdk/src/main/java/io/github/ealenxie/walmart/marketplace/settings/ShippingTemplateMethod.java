@@ -1,17 +1,17 @@
 package io.github.ealenxie.walmart.marketplace.settings;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 /**
- * @author EalenXie created on 2023/7/11 11:19
+ * @author EalenXie created on 2023/7/11 13:59
  */
-@Getter
-@Setter
-public class ShippingMethod {
+@NoArgsConstructor
+@Data
+public class ShippingTemplateMethod {
     /**
      * shipMethod
      */

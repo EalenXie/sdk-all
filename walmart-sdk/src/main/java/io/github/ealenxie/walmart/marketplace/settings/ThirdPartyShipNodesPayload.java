@@ -1,15 +1,18 @@
 package io.github.ealenxie.walmart.marketplace.settings;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 /**
- * @author EalenXie created on 2023/7/11 11:37
+ * @author EalenXie created on 2023/7/11 14:11
  */
-@Getter
-@Setter
-public class ShipNodesUpdatePayload {
+@NoArgsConstructor
+@Data
+public class ThirdPartyShipNodesPayload {
+
     /**
      * shipNodeHeader
      */
@@ -19,5 +22,5 @@ public class ShipNodesUpdatePayload {
      * shipNode
      */
     @JsonProperty("shipNode")
-    private ShipNodePayload shipNode;
+    private List<ShipNodeStatus> shipNode;
 }
