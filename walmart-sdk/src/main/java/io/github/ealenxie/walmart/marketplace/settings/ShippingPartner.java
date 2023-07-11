@@ -5,11 +5,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * @author EalenXie created on 2023/7/11 14:42
+ * @author EalenXie created on 2023/7/11 14:16
  */
 @NoArgsConstructor
 @Data
-public class Partner {
+public class ShippingPartner {
     /**
      * partnerId
      */
@@ -30,14 +30,4 @@ public class Partner {
      */
     @JsonProperty("partnerStoreId")
     private String partnerStoreId;
-    /**
-     * businessRegNumber
-     */
-    @JsonProperty("businessRegNumber")
-    private String businessRegNumber;
-    /**
-     * countryOfIncorporation
-     */
-    @JsonProperty("countryOfIncorporation")
-    private String countryOfIncorporation;
 }

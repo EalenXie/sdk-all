@@ -415,6 +415,44 @@ public class WalmartOrderClient extends WalmartClient {
     }
 
     /**
+     * <a href="https://developer.walmart.com/api/us/mp/settings#operation/getShippingTemplateActivationStatus">Get Shipping Template Activation Status</a>
+     */
+    public ActivationStatusResponse activationStatus(String accessToken) {
+        return get("/v3/settings/shipping/templates/activationStatus", accessToken, null, ActivationStatusResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/settings#operation/getCoverageForFulfillmentCenters">Get coverage for fulfillment centers</a>
+     */
+    public List<ShipNodesCoverage> getShipNodesCoverage(String accessToken) {
+        return get("/v3/settings/shipping/shipnodes/coverage", accessToken, null, new ParameterizedTypeReference<List<ShipNodesCoverage>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/settings#operation/getCarrierMethods">Get carrier methods</a>
+     */
+    public List<CarrierMethod> getCarrierMethods(String accessToken) {
+        return get("/v3/settings/shipping/carriers", accessToken, null, new ParameterizedTypeReference<List<CarrierMethod>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/settings#operation/get3PFulfillmentProviders">Get all third party fulfillment providers</a>
+     */
+    public List<ShipNodeBody> get3PFulfillmentProviders(String accessToken) {
+        return get("/v3/settings/shipping/3plproviders", accessToken, null, new ParameterizedTypeReference<List<ShipNodeBody>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/settings#operation/getPartnerConfigurations">Get Partner Configurations</a>
+     */
+    public PartnerConfigurationsResponse getPartnerConfigurations(String accessToken) {
+        return get("/v3/settings/partnerprofile", accessToken, null, PartnerConfigurationsResponse.class);
+    }
+
+    /**
      * <a href="https://developer.walmart.com/api/us/mp/rules#operation/inactivateRule">Inactivate rule</a>
      */
     public MessageStatusResponse inactivateRule(String accessToken, RuleInactivatePayload payload) {

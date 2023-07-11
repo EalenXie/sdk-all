@@ -7,19 +7,19 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 /**
- * @author EalenXie created on 2023/7/11 14:16
+ * @author EalenXie created on 2023/7/11 14:41
  */
 @NoArgsConstructor
 @Data
-public class ShippingConfigurationsResponse {
+public class PartnerConfigurationsResponse {
     /**
      * partner
      */
     @JsonProperty("partner")
-    private ShippingPartner partner;
+    private Partner partner;
     /**
      * configurations
      */
     @JsonProperty("configurations")
-    private List<ShippingConfiguration> configurations;
+    private List<Configurations> configurations;
 }
