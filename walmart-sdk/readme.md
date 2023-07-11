@@ -82,6 +82,16 @@ walmart-sdk
 | getAnOrder           | [An order](https://developer.walmart.com/api/us/mp/orders#operation/getAnOrder)                      | ✔️  |
 | getAllReleasedOrders | [All released orders](https://developer.walmart.com/api/us/mp/orders#operation/getAllReleasedOrders) | ✔️  |
 
+#### Rules
+
+| 方法名                  | 官方文档地址                                                                                                         | 状态  |
+|:---------------------|:---------------------------------------------------------------------------------------------------------------|:----|
+| inactivateRule       | [Inactivate rule](https://developer.walmart.com/api/us/mp/rules#operation/inactivateRule)                      | ✔️  |
+| getAllExceptions     | [Gets all exceptions](https://developer.walmart.com/api/us/mp/rules#operation/getAllExceptions)                | ✔️  |
+| deleteExceptions     | [Delete exceptions](https://developer.walmart.com/api/us/mp/rules#operation/deleteExceptions)                  | ✔️  |
+| createExceptions     | [Create override exceptions](https://developer.walmart.com/api/us/mp/rules#operation/createOverrideExceptions) | ✔️  |
+| changeAssortmentType | [Change assortment type](https://developer.walmart.com/api/us/mp/rules#operation/changeAssortmentType)         | ✔️  |
+
 #### Reports
 
 | 方法名                   | 官方文档地址                                                                                                                              | 状态  |

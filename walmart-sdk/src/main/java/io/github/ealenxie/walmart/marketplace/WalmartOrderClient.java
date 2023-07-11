@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.ealenxie.walmart.marketplace.feeds.*;
 import io.github.ealenxie.walmart.marketplace.fulfillment.*;
 import io.github.ealenxie.walmart.marketplace.insights.*;
+import io.github.ealenxie.walmart.marketplace.items.SkuPayload;
 import io.github.ealenxie.walmart.marketplace.items.*;
 import io.github.ealenxie.walmart.marketplace.notifications.*;
 import io.github.ealenxie.walmart.marketplace.onerequestreport.*;
@@ -19,6 +20,7 @@ import io.github.ealenxie.walmart.marketplace.reports.PartnerStatementResponse;
 import io.github.ealenxie.walmart.marketplace.reports.ReportQueryParams;
 import io.github.ealenxie.walmart.marketplace.reports.ReportVersionQueryParams;
 import io.github.ealenxie.walmart.marketplace.reviews.*;
+import io.github.ealenxie.walmart.marketplace.rules.*;
 import io.github.ealenxie.walmart.marketplace.shipping.*;
 import io.github.ealenxie.walmart.marketplace.utilities.ApiStatusesResponse;
 import io.github.ealenxie.walmart.marketplace.utilities.CategoriesResponse;
@@ -57,11 +59,16 @@ public class WalmartOrderClient extends WalmartClient {
         super(clientId, clientSecret, objectMapper);
     }
 
+
+    private static final String FEEDS_URL = "/v3/feeds";
+    private static final String RULES_EXCEPTIONS_URL = "/v3/rules/exceptions";
+
+
     /**
      * <a href="https://developer.walmart.com/api/us/mp/feeds">All feed statuses</a>
      */
     public FeedResponse getFeeds(String accessToken, FeedQueryParams queryParams) {
-        return get("/v3/feeds", accessToken, queryParams, FeedResponse.class);
+        return get(FEEDS_URL, accessToken, queryParams, FeedResponse.class);
     }
 
     /**
@@ -209,7 +216,7 @@ public class WalmartOrderClient extends WalmartClient {
     public ItemBulkResponse priceBulkUploads(String accessToken, String feedType, byte[] file) {
         HttpHeaders headers = getBearerHeaders(accessToken);
         headers.setContentType(MediaType.MULTIPART_FORM_DATA);
-        return exchange("/v3/feeds", HttpMethod.POST, accessToken, new FeedTypePayload(feedType), new HttpEntity<>(file, headers), ItemBulkResponse.class);
+        return exchange(FEEDS_URL, HttpMethod.POST, accessToken, new FeedTypePayload(feedType), new HttpEntity<>(file, headers), ItemBulkResponse.class);
     }
 
     /**
@@ -239,7 +246,7 @@ public class WalmartOrderClient extends WalmartClient {
     public FeedIdPayload updateBulkPromotionalPrice(String accessToken, String feedType, byte[] file) {
         HttpHeaders headers = getBearerHeaders(accessToken);
         headers.setContentType(MediaType.MULTIPART_FORM_DATA);
-        return exchange("/v3/feeds", HttpMethod.POST, accessToken, new FeedTypePayload(feedType), new HttpEntity<>(file, headers), FeedIdPayload.class);
+        return exchange(FEEDS_URL, HttpMethod.POST, accessToken, new FeedTypePayload(feedType), new HttpEntity<>(file, headers), FeedIdPayload.class);
     }
 
     /**
@@ -249,7 +256,6 @@ public class WalmartOrderClient extends WalmartClient {
         return get(String.format("/v3/promo/sku/%s", sku), accessToken, null, new ParameterizedTypeReference<StatusPayloadResponse<PromotionalPricePayload>>() {
         });
     }
-
 
     /**
      * <a href="https://developer.walmart.com/api/us/mp/orders#operation/shippingUpdates">Ship Order Lines</a>
@@ -309,6 +315,45 @@ public class WalmartOrderClient extends WalmartClient {
         return get("/v3/orders/released", accessToken, null, new ParameterizedTypeReference<ListElementResponse<OrdersResponse>>() {
         });
     }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/rules#operation/inactivateRule">Inactivate rule</a>
+     */
+    public MessageStatusResponse inactivateRule(String accessToken, InactivateRulePayload payload) {
+        return post("/v3/rules/inactivate", accessToken, payload, MessageStatusResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/rules#operation/getAllExceptions">Gets all exceptions</a>
+     */
+    public RuleExceptionsResponse getAllExceptions(String accessToken) {
+        return get(RULES_EXCEPTIONS_URL, accessToken, null, RuleExceptionsResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/rules#operation/deleteExceptions">Delete exceptions</a>
+     */
+    public FeedIdStatusPayload deleteExceptions(String accessToken, ExceptionsPayload payload) {
+        return exchange(RULES_EXCEPTIONS_URL, HttpMethod.PUT, accessToken, null, payload, FeedIdStatusPayload.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/rules#operation/createOverrideExceptions">Create override exceptions</a>
+     */
+    public FeedIdStatusPayload createExceptions(String accessToken, ExceptionsPayload payload) {
+        return post(RULES_EXCEPTIONS_URL, accessToken, payload, FeedIdStatusPayload.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/rules#operation/changeAssortmentType">Change assortment type</a>
+     */
+    public StatusPayloadResponse<IdPayload> changeAssortmentType(String accessToken) {
+        return exchange("/v3/rules/assortment", HttpMethod.PUT, accessToken, null, null, new ParameterizedTypeReference<StatusPayloadResponse<IdPayload>>() {
+        });
+    }
+
+
+
 
     /**
      * <a href="https://developer.walmart.com/api/us/mp/reports">Recon report</a>
@@ -725,7 +770,9 @@ public class WalmartOrderClient extends WalmartClient {
      * <a href="https://developer.walmart.com/api/us/mp/sww#operation/getLabelByTrackingAndCarrier">Download label</a>
      */
     public byte[] downloadLabel(String accessToken, String carrierShortName, String trackingNo) {
-        return get(String.format("/v3/shipping/labels/carriers/%s/trackings/%s", carrierShortName, trackingNo), accessToken, null, byte[].class);
+        HttpHeaders headers = getBearerHeaders(accessToken);
+        headers.setAccept(Collections.singletonList(MediaType.APPLICATION_OCTET_STREAM));
+        return exchange(String.format("/v3/shipping/labels/carriers/%s/trackings/%s", carrierShortName, trackingNo), HttpMethod.GET, accessToken, new HttpEntity<>(null, headers), byte[].class);
     }
 
     /**
