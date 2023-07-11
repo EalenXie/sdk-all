@@ -7,19 +7,20 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 /**
- * @author EalenXie created on 2023/7/11 9:44
+ * @author EalenXie created on 2023/7/11 10:21
  */
 @NoArgsConstructor
 @Data
-public class InactivateRulePayload {
-    /**
-     * ruleHeader
-     */
-    @JsonProperty("ruleHeader")
-    private RuleHeader ruleHeader;
+public class RulesAllResponse {
+
     /**
      * rules
      */
     @JsonProperty("rules")
-    private List<InactivateRule> rules;
+    private List<Rule> rules;
+    /**
+     * status
+     */
+    @JsonProperty("status")
+    private String status;
 }

@@ -84,13 +84,21 @@ walmart-sdk
 
 #### Rules
 
-| 方法名                  | 官方文档地址                                                                                                         | 状态  |
-|:---------------------|:---------------------------------------------------------------------------------------------------------------|:----|
-| inactivateRule       | [Inactivate rule](https://developer.walmart.com/api/us/mp/rules#operation/inactivateRule)                      | ✔️  |
-| getAllExceptions     | [Gets all exceptions](https://developer.walmart.com/api/us/mp/rules#operation/getAllExceptions)                | ✔️  |
-| deleteExceptions     | [Delete exceptions](https://developer.walmart.com/api/us/mp/rules#operation/deleteExceptions)                  | ✔️  |
-| createExceptions     | [Create override exceptions](https://developer.walmart.com/api/us/mp/rules#operation/createOverrideExceptions) | ✔️  |
-| changeAssortmentType | [Change assortment type](https://developer.walmart.com/api/us/mp/rules#operation/changeAssortmentType)         | ✔️  |
+| 方法名                      | 官方文档地址                                                                                                            | 状态  |
+|:-------------------------|:------------------------------------------------------------------------------------------------------------------|:----|
+| inactivateRule           | [Inactivate rule](https://developer.walmart.com/api/us/mp/rules#operation/inactivateRule)                         | ✔️  |
+| getAllExceptions         | [Gets all exceptions](https://developer.walmart.com/api/us/mp/rules#operation/getAllExceptions)                   | ✔️  |
+| deleteExceptions         | [Delete exceptions](https://developer.walmart.com/api/us/mp/rules#operation/deleteExceptions)                     | ✔️  |
+| createExceptions         | [Create override exceptions](https://developer.walmart.com/api/us/mp/rules#operation/createOverrideExceptions)    | ✔️  |
+| changeAssortmentType     | [Change assortment type](https://developer.walmart.com/api/us/mp/rules#operation/changeAssortmentType)            | ✔️  |
+| activateRule             | [Activate rule](https://developer.walmart.com/api/us/mp/rules#operation/activateRule)                             | ✔️  |
+| updateShippingAreaToRule | [Update shipping area to rules](https://developer.walmart.com/api/us/mp/rules#operation/updateShippingAreaToRule) | ✔️  |
+| getAllRules              | [Get all rules](https://developer.walmart.com/api/us/mp/rules#operation/getAllRules)                              | ✔️  |
+| updateRule               | [Update rule](https://developer.walmart.com/api/us/mp/rules#operation/updateRule)                                 | ✔️  |
+| ruleCreate               | [Create a new Rule](https://developer.walmart.com/api/us/mp/rules#operation/createItemRule)                       | ✔️  |
+| getRule                  | [Get a rule](https://developer.walmart.com/api/us/mp/rules#operation/getARule)                                    | ✔️  |
+| getSimulationResult      | [Get simulation result](https://developer.walmart.com/api/us/mp/rules#operation/getSimulationResult)              | ✔️  |
+| downloadSimulationResult | [Download simulation result](https://developer.walmart.com/api/us/mp/rules#operation/downloadSimulationResult)    | ✔️  |
 
 #### Reports
 

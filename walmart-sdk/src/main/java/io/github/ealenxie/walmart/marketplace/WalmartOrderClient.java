@@ -319,7 +319,7 @@ public class WalmartOrderClient extends WalmartClient {
     /**
      * <a href="https://developer.walmart.com/api/us/mp/rules#operation/inactivateRule">Inactivate rule</a>
      */
-    public MessageStatusResponse inactivateRule(String accessToken, InactivateRulePayload payload) {
+    public MessageStatusResponse inactivateRule(String accessToken, RuleInactivatePayload payload) {
         return post("/v3/rules/inactivate", accessToken, payload, MessageStatusResponse.class);
     }
 
@@ -352,7 +352,61 @@ public class WalmartOrderClient extends WalmartClient {
         });
     }
 
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/rules#operation/activateRule">Activate rule</a>
+     */
+    public MessageStatusResponse activateRule(String accessToken, RuleActivatePayload payload) {
+        return exchange("/v3/rules/activate", HttpMethod.PUT, accessToken, null, payload, MessageStatusResponse.class);
+    }
 
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/rules#operation/updateShippingAreaToRule">Update shipping area to rules</a>
+     */
+    public UpdateShippingAreaToRuleResponse updateShippingAreaToRule(String accessToken, UpdateShippingAreaToRulePayload payload) {
+        return exchange("/v3/rules/actions", HttpMethod.PUT, accessToken, null, payload, UpdateShippingAreaToRuleResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/rules#operation/getAllRules">Get all rules</a>
+     */
+    public RulesAllResponse getAllRules(String accessToken) {
+        return get("/v3/rules/", accessToken, null, RulesAllResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/rules#operation/updateRule">Update rule</a>
+     */
+    public StatusRuleResponse updateRule(String accessToken, RuleUpdatePayload payload) {
+        return exchange("/v3/rules/", HttpMethod.PUT, accessToken, null, payload, StatusRuleResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/rules#operation/createItemRule">Create a new Rule</a>
+     */
+    public StatusRuleResponse ruleCreate(String accessToken, RuleCreatePayload payload) {
+        return post("/v3/rules/create", accessToken, payload, StatusRuleResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/rules#operation/getARule">Get a rule</a>
+     */
+    public StatusRuleResponse getRule(String accessToken, String ruleId, String ruleStatus) {
+        return get(String.format("/v3/rules/%s/status/%s", ruleId, ruleStatus), accessToken, null, StatusRuleResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/rules#operation/getSimulationResult">Get simulation result</a>
+     */
+    public SimulationResult getSimulationResult(String accessToken, String ruleId, String ruleStatus) {
+        return get(String.format("/v3/rules/%s/status/%s/simulationcount", ruleId, ruleStatus), accessToken, null, SimulationResult.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/rules#operation/downloadSimulationResult">Download simulation result</a>
+     */
+    public byte[] downloadSimulationResult(String accessToken, String ruleId, String ruleStatus) {
+        return get(String.format("/v3/rules/%s/status/%s/simulation", ruleId, ruleStatus), accessToken, null, byte[].class);
+    }
 
 
     /**
