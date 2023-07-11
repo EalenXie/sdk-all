@@ -99,6 +99,10 @@ walmart-sdk
 | getRule                  | [Get a rule](https://developer.walmart.com/api/us/mp/rules#operation/getARule)                                    | ✔️  |
 | getSimulationResult      | [Get simulation result](https://developer.walmart.com/api/us/mp/rules#operation/getSimulationResult)              | ✔️  |
 | downloadSimulationResult | [Download simulation result](https://developer.walmart.com/api/us/mp/rules#operation/downloadSimulationResult)    | ✔️  |
+| getAllSubCategories      | [Get all sub-categories](https://developer.walmart.com/api/us/mp/rules#operation/getAllSubCategories)             | ✔️  |
+| downloadExceptions       | [Download exceptions](https://developer.walmart.com/api/us/mp/rules#operation/downloadExceptions)                 | ✔️  |
+| getAllAreas              | [Get all areas](https://developer.walmart.com/api/us/mp/rules#operation/getAllAreas)                              | ✔️  |
+| deleteRule               | [Delete rule](https://developer.walmart.com/api/us/mp/rules#operation/deleteRule)                                 | ✔️  |
 
 #### Reports
 

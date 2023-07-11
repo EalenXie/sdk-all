@@ -37,6 +37,8 @@ class InvoiceClientTest {
         UrlFilePayload payload = new UrlFilePayload();
         // 您的图片地址
         payload.setUrl("");
+        // 或者您的图片文件
+        payload.setBody(null);
         RecognizeData<Invoice> recognizeData = invoiceClient.recognizeInvoice(payload);
         System.out.println(recognizeData);
     }
