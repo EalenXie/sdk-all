@@ -21,6 +21,7 @@ import io.github.ealenxie.walmart.marketplace.reports.ReportQueryParams;
 import io.github.ealenxie.walmart.marketplace.reports.ReportVersionQueryParams;
 import io.github.ealenxie.walmart.marketplace.reviews.*;
 import io.github.ealenxie.walmart.marketplace.rules.*;
+import io.github.ealenxie.walmart.marketplace.settings.*;
 import io.github.ealenxie.walmart.marketplace.shipping.*;
 import io.github.ealenxie.walmart.marketplace.utilities.ApiStatusesResponse;
 import io.github.ealenxie.walmart.marketplace.utilities.CategoriesResponse;
@@ -62,6 +63,7 @@ public class WalmartOrderClient extends WalmartClient {
 
     private static final String FEEDS_URL = "/v3/feeds";
     private static final String RULES_EXCEPTIONS_URL = "/v3/rules/exceptions";
+    private static final String SETTINGS_TEMPLATES_URL = "/v3/settings/shipping/templates/%s";
 
 
     /**
@@ -315,6 +317,43 @@ public class WalmartOrderClient extends WalmartClient {
         return get("/v3/orders/released", accessToken, null, new ParameterizedTypeReference<ListElementResponse<OrdersResponse>>() {
         });
     }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/settings#operation/getShippingTemplateDetails">Get Shipping Template Details</a>
+     */
+    public TemplateDetailResponse getTemplateDetails(String accessToken, String templateId) {
+        return get(String.format(SETTINGS_TEMPLATES_URL, templateId), accessToken, null, TemplateDetailResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/settings#operation/updateShippingTemplates">Update Shipping Templates</a>
+     */
+    public TemplateDetailResponse updateTemplates(String accessToken, String templateId, ShippingTemplatesUpdatePayload payload) {
+        return exchange(String.format(SETTINGS_TEMPLATES_URL, templateId), HttpMethod.PUT, accessToken, null, payload, TemplateDetailResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/settings#operation/deleteShippingTemplateDetails">Delete Shipping Template</a>
+     */
+    public IdPayload deleteTemplateDetails(String accessToken, String templateId) {
+        return exchange(String.format(SETTINGS_TEMPLATES_URL, templateId), HttpMethod.DELETE, accessToken, null, null, IdPayload.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/settings#operation/getAllFulfillmentCenters">Get all fulfillment centers</a>
+     */
+    public List<ShipNodeResponse> getShipNodes(String accessToken, Boolean includeCalendarDayConfiguration) {
+        return get("/v3/settings/shipping/shipnodes", accessToken, new ShipNodesQueryParams(includeCalendarDayConfiguration), new ParameterizedTypeReference<List<ShipNodeResponse>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/settings#operation/updateFulfillmentCenter">Update fulfillment center</a>
+     */
+    public ShipNodeResponse updateShipNodes(String accessToken, ShipNodesUpdatePayload payload) {
+        return get("/v3/settings/shipping/shipnodes", accessToken, payload, ShipNodeResponse.class);
+    }
+
 
     /**
      * <a href="https://developer.walmart.com/api/us/mp/rules#operation/inactivateRule">Inactivate rule</a>

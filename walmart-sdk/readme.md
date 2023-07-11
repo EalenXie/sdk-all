@@ -82,6 +82,16 @@ walmart-sdk
 | getAnOrder           | [An order](https://developer.walmart.com/api/us/mp/orders#operation/getAnOrder)                      | ✔️  |
 | getAllReleasedOrders | [All released orders](https://developer.walmart.com/api/us/mp/orders#operation/getAllReleasedOrders) | ✔️  |
 
+#### Settings
+
+| 方法名                   | 官方文档地址                                                                                                                 | 状态  |
+|:----------------------|:-----------------------------------------------------------------------------------------------------------------------|:----|
+| getTemplateDetails    | [Get Shipping Template Details](https://developer.walmart.com/api/us/mp/settings#operation/getShippingTemplateDetails) | ✔️  |
+| updateTemplates       | [Update Shipping Templates](https://developer.walmart.com/api/us/mp/settings#operation/updateShippingTemplates)        | ✔️  |
+| deleteTemplateDetails | [Delete Shipping Template](https://developer.walmart.com/api/us/mp/settings#operation/deleteShippingTemplateDetails)   | ✔️  |
+| getShipNodes          | [Get all fulfillment centers](https://developer.walmart.com/api/us/mp/settings#operation/getAllFulfillmentCenters)     | ✔️  |
+| updateShipNodes       | [Update fulfillment center](https://developer.walmart.com/api/us/mp/settings#operation/updateFulfillmentCenter)        | ✔️  |
+
 #### Rules
 
 | 方法名                      | 官方文档地址                                                                                                            | 状态  |
