@@ -104,6 +104,15 @@ walmart-sdk
 | getAllAreas              | [Get all areas](https://developer.walmart.com/api/us/mp/rules#operation/getAllAreas)                              | ✔️  |
 | deleteRule               | [Delete rule](https://developer.walmart.com/api/us/mp/rules#operation/deleteRule)                                 | ✔️  |
 
+#### Returns
+
+| 方法名                  | 官方文档地址                                                                                                  | 状态  |
+|:---------------------|:--------------------------------------------------------------------------------------------------------|:----|
+| refund               | [Issue refund](https://developer.walmart.com/api/us/mp/orders#operation/shippingUpdates)                | ✔️  |
+| bulkItemOverrideFeed | [Return Item Overrides](https://developer.walmart.com/api/us/mp/returns#operation/bulkItemOverrideFeed) | ✔️  |
+| getReturns           | [Returns](https://developer.walmart.com/api/us/mp/returns#operation/getReturns)                         | ✔️  |
+
+
 #### Reports
 
 | 方法名                   | 官方文档地址                                                                                                                              | 状态  |
