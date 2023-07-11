@@ -134,8 +134,8 @@ public class WalmartOrderClient extends WalmartClient {
     /**
      * <a href="https://developer.walmart.com/api/us/mp/items#operation/getTaxonomyResponse">Taxonomy</a>
      */
-    public StatusPayloadResponse<List<TaxonomyPayload>> getTaxonomy(String accessToken, ProductIdTypeQueryParams queryParams) {
-        return get("/v3/items/taxonomy", accessToken, queryParams, new ParameterizedTypeReference<StatusPayloadResponse<List<TaxonomyPayload>>>() {
+    public StatusPayloadResponse<List<CategoryPayload>> getTaxonomy(String accessToken, ProductIdTypeQueryParams queryParams) {
+        return get("/v3/items/taxonomy", accessToken, queryParams, new ParameterizedTypeReference<StatusPayloadResponse<List<CategoryPayload>>>() {
         });
     }
 
@@ -408,6 +408,38 @@ public class WalmartOrderClient extends WalmartClient {
         return get(String.format("/v3/rules/%s/status/%s/simulation", ruleId, ruleStatus), accessToken, null, byte[].class);
     }
 
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/rules#operation/getAllSubCategories">Get all sub-categories</a>
+     */
+    public StatusPayloadResponse<List<CategoryPayload>> getAllSubCategories(String accessToken) {
+        return get("/v3/rules/subcategories", accessToken, null, new ParameterizedTypeReference<StatusPayloadResponse<List<CategoryPayload>>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/rules#operation/downloadExceptions">Download exceptions</a>
+     */
+    public byte[] downloadExceptions(String accessToken) {
+        HttpHeaders headers = getBearerHeaders(accessToken);
+        headers.setAccept(Collections.singletonList(MediaType.APPLICATION_OCTET_STREAM));
+        return exchange("/v3/rules/downloadexceptions", HttpMethod.GET, null, new HttpEntity<>(null, headers), byte[].class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/rules#operation/getAllAreas">Get all areas</a>
+     */
+    public StatusPayloadResponse<AllAreasResponse> getAllAreas(String accessToken) {
+        return get("/v3/rules/areas", accessToken, null, new ParameterizedTypeReference<StatusPayloadResponse<AllAreasResponse>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/rules#operation/deleteRule">Delete rule</a>
+     */
+    public MessageStatusResponse deleteRule(String accessToken, String ruleId, String ruleStatus) {
+        return exchange(String.format("/v3/rules/%s/status/%s", ruleId, ruleStatus), HttpMethod.DELETE, accessToken, null, null, MessageStatusResponse.class);
+    }
+
 
     /**
      * <a href="https://developer.walmart.com/api/us/mp/reports">Recon report</a>
@@ -620,8 +652,8 @@ public class WalmartOrderClient extends WalmartClient {
     /**
      * <a href="https://developer.walmart.com/api/us/mp/utilities#operation/getTaxonomyResponse">Taxonomy by spec</a>
      */
-    public StatusPayloadResponse<List<TaxonomyPayload>> getTaxonomy(String accessToken, TaxonomyQueryParams queryParams) {
-        return get("/v3/utilities/taxonomy", accessToken, queryParams, new ParameterizedTypeReference<StatusPayloadResponse<List<TaxonomyPayload>>>() {
+    public StatusPayloadResponse<List<CategoryPayload>> getTaxonomy(String accessToken, TaxonomyQueryParams queryParams) {
+        return get("/v3/utilities/taxonomy", accessToken, queryParams, new ParameterizedTypeReference<StatusPayloadResponse<List<CategoryPayload>>>() {
         });
     }
 

@@ -12,7 +12,7 @@ import java.util.List;
  */
 @Getter
 @Setter
-public class TaxonomyPayload {
+public class CategoryPayload {
     /**
      * category
      */
