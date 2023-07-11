@@ -806,6 +806,7 @@ public class WalmartOrderClient extends WalmartClient {
         return exchange(String.format("/v3/fulfillment/inbound-shipments/%s", inboundOrderId), HttpMethod.DELETE, accessToken, null, null, new ParameterizedTypeReference<StatusPayloadResponse<Void>>() {
         });
     }
+
     /**
      * <a href="https://developer.walmart.com/api/us/mp/fulfillment#operation/voidCarrierRateQuote">Cancel Carrier Rate Quote</a>
      */
