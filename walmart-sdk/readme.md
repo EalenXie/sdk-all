@@ -90,6 +90,15 @@ walmart-sdk
 | bulkItemOverrideFeed | [Return Item Overrides](https://developer.walmart.com/api/us/mp/returns#operation/bulkItemOverrideFeed) | ✔️  |
 | getReturns           | [Returns](https://developer.walmart.com/api/us/mp/returns#operation/getReturns)                         | ✔️  |
 
+#### Inventory
+
+| 方法名                      | 官方文档地址                                                                                                                                       | 状态  |
+|:-------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------|:----|
+| getInventory             | [Inventory](https://developer.walmart.com/api/us/mp/inventory#operation/getInventory)                                                        | ✔️  |
+| updateInventory          | [Update inventory](https://developer.walmart.com/api/us/mp/inventory#operation/updateInventoryForAnItem)                                     | ✔️  |
+| getMultiNodeInventory    | [Single Item Inventory by Ship Node](https://developer.walmart.com/api/us/mp/inventory#operation/getMultiNodeInventoryForSkuAndAllShipnodes) | ✔️  |
+| updateMultiNodeInventory | [Update Item Inventory per Ship Node](https://developer.walmart.com/api/us/mp/inventory#operation/updateMultiNodeInventory)                  | ✔️  |
+
 #### Settings
 
 | 方法名                       | 官方文档地址                                                                                                                                    | 状态  |

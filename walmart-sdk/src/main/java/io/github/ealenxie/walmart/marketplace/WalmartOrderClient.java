@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.ealenxie.walmart.marketplace.feeds.*;
 import io.github.ealenxie.walmart.marketplace.fulfillment.*;
 import io.github.ealenxie.walmart.marketplace.insights.*;
+import io.github.ealenxie.walmart.marketplace.inventory.*;
 import io.github.ealenxie.walmart.marketplace.items.SkuPayload;
 import io.github.ealenxie.walmart.marketplace.items.*;
 import io.github.ealenxie.walmart.marketplace.notifications.*;
@@ -337,7 +338,7 @@ public class WalmartOrderClient extends WalmartClient {
     /**
      * <a href="https://developer.walmart.com/api/us/mp/returns#operation/getReturns">Returns</a>
      */
-    public ReturnResponse getReturns(String accessToken, String returnOrderId, ReturnQueryParams queryParams) {
+    public ReturnResponse getReturns(String accessToken, ReturnQueryParams queryParams) {
         return get("/v3/returns", accessToken, queryParams, ReturnResponse.class);
     }
 
@@ -451,6 +452,35 @@ public class WalmartOrderClient extends WalmartClient {
     public PartnerConfigurationsResponse getPartnerConfigurations(String accessToken) {
         return get("/v3/settings/partnerprofile", accessToken, null, PartnerConfigurationsResponse.class);
     }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/inventory#operation/getInventory">Inventory</a>
+     */
+    public InventoryPayload getInventory(String accessToken, InventoryQueryParams queryParams) {
+        return get("/v3/inventory", accessToken, queryParams, InventoryPayload.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/inventory#operation/updateInventoryForAnItem">Update inventory</a>
+     */
+    public InventoryPayload updateInventory(String accessToken, InventoryQueryParams queryParams) {
+        return exchange("/v3/inventory", HttpMethod.PUT, accessToken, queryParams, null, InventoryPayload.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/inventory#operation/getMultiNodeInventoryForSkuAndAllShipnodes">Single Item Inventory by Ship Node</a>
+     */
+    public MultiNodeInventoryPayload getMultiNodeInventory(String accessToken, String sku, ShipNodeQueryParams queryParams) {
+        return get(String.format("/v3/inventories/%s", sku), accessToken, queryParams, MultiNodeInventoryPayload.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/inventory#operation/updateMultiNodeInventory">Update Item Inventory per Ship Node</a>
+     */
+    public UpdateInventoryResponse updateMultiNodeInventory(String accessToken, String sku, UpdateInventoryPayload payload) {
+        return exchange(String.format("/v3/inventories/%s", sku), HttpMethod.PUT, accessToken, null, payload, UpdateInventoryResponse.class);
+    }
+
 
     /**
      * <a href="https://developer.walmart.com/api/us/mp/rules#operation/inactivateRule">Inactivate rule</a>
