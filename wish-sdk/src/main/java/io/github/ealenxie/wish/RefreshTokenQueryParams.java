@@ -1,4 +1,4 @@
-package io.github.ealenxie.wish.dto;
+package io.github.ealenxie.wish;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
@@ -18,5 +18,5 @@ public class RefreshTokenQueryParams {
     @JsonProperty("refresh_token")
     private String refreshToken;
     @JsonProperty("grant_type")
-    private String grantType;
+    private String grantType = "refresh_token";
 }

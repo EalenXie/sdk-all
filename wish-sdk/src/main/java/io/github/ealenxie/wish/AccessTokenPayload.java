@@ -1,4 +1,4 @@
-package io.github.ealenxie.wish.dto;
+package io.github.ealenxie.wish;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
@@ -10,7 +10,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class AccessTokenQueryParams {
+public class AccessTokenPayload {
 
     @JsonProperty("code")
     private String code;

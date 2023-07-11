@@ -1,4 +1,4 @@
-package io.github.ealenxie.wish.vo;
+package io.github.ealenxie.wish;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -9,7 +9,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class WishResponse<T> {
+public class WishData<T> {
 
 
     /**

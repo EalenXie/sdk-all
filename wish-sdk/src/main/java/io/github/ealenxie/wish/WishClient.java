@@ -2,15 +2,11 @@ package io.github.ealenxie.wish;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.github.ealenxie.wish.dto.AccessTokenQueryParams;
-import io.github.ealenxie.wish.dto.RefreshTokenQueryParams;
 import io.github.ealenxie.wish.vo.MerchantIdPayload;
-import io.github.ealenxie.wish.vo.WishToken;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
 import org.springframework.lang.Nullable;
 import org.springframework.web.client.RestOperations;
 import org.springframework.web.client.RestTemplate;
@@ -64,9 +60,19 @@ public abstract class WishClient {
         this.objectMapper = objectMapper;
         this.restOperations = restOperations;
     }
-
     public RestOperations getRestOperations() {
         return restOperations;
+    }
+
+    /**
+     * 获取包含认证的 Bearer 标准请求头
+     *
+     * @param accessToken 令牌
+     */
+    public HttpHeaders getBearerHeaders(String accessToken) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setBearerAuth(accessToken);
+        return headers;
     }
 
     /**
@@ -81,37 +87,19 @@ public abstract class WishClient {
     }
 
     /**
-     * 获取包含认证的 Bearer 标准请求头
-     *
-     * @param accessToken 令牌
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/oauthAccessTokenPost">Retrieve an access token</a>
      */
-    public HttpHeaders getBearerHeaders(String accessToken) {
-        HttpHeaders bearTokenHeader = new HttpHeaders();
-        bearTokenHeader.setBearerAuth(accessToken);
-        return bearTokenHeader;
+    public WishData<WishToken> accessTokenPost(AccessTokenPayload payload) {
+        return exchange("/api/v3/oauth/access_token", HttpMethod.POST, null, new HttpEntity<>(payload, new HttpHeaders()), new ParameterizedTypeReference<WishData<WishToken>>() {
+        });
     }
-
-    /**
-     * 获取包含认证的 Basic 标准请求头
-     *
-     * @param clientId     客户端Id
-     * @param clientSecret 客户端密钥
-     */
-    public HttpHeaders getBasicHeaders(String clientId, String clientSecret) {
-        HttpHeaders basicHeader = new HttpHeaders();
-        basicHeader.setBasicAuth(clientId, clientSecret);
-        return basicHeader;
-    }
-
 
     /**
      * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/oauthAccessToken">Retrieve an access token</a>
-     * <p>授权码模式获取accessToken</p>
-     *
-     * @param queryParams 请求参数信息
      */
-    public WishToken accessToken(AccessTokenQueryParams queryParams) {
-        return restOperations.exchange(URI.create(String.format("%s/api/v3/oauth/access_token", isSandbox() ? SANDBOX_HOST : HOST)), HttpMethod.POST, new HttpEntity<>(queryParams, new HttpHeaders()), WishToken.class).getBody();
+    public WishData<WishToken> accessToken(AccessTokenPayload queryParams) {
+        return exchange("/api/v3/oauth/access_token", HttpMethod.GET, queryParams, new HttpEntity<>(null, new HttpHeaders()), new ParameterizedTypeReference<WishData<WishToken>>() {
+        });
     }
 
     /**
@@ -120,72 +108,72 @@ public abstract class WishClient {
      *
      * @param accessToken 访问令牌
      */
-    public MerchantIdPayload oauthTest(String accessToken) {
-        return postWish("/api/v3/oauth/test", accessToken, null, MerchantIdPayload.class);
+    public WishData<MerchantIdPayload> oauthTest(String accessToken) {
+        return get("/api/v3/oauth/test", accessToken, null, new ParameterizedTypeReference<WishData<MerchantIdPayload>>() {
+        });
     }
 
     /**
      * <a href="https://www.merchant.wish.com/documentation/api/v3/reference#operation/oauthRefreshToken">Obtain a new token when the current token expires</a>
      * <p>刷新授权</p>
      *
-     * @param dto 请求参数信息
+     * @param queryParams 请求参数信息
      */
-    public WishToken refreshToken(String accessToken, RefreshTokenQueryParams dto) {
-        return getWish("/api/v3/oauth/refresh_token", accessToken, dto, WishToken.class);
+    public WishData<WishToken> refreshToken(String accessToken, RefreshTokenQueryParams queryParams) {
+        return get("/api/v3/oauth/refresh_token", accessToken, queryParams, new ParameterizedTypeReference<WishData<WishToken>>() {
+        });
     }
 
-
     /**
-     * GET 调用 WISH API
+     * GET 调用 API
      *
      * @param urlNotHost   不带host的请求url
      * @param accessToken  访问令牌
      * @param queryParams  url请求参数
      * @param responseType 响应类型
      */
-    protected <T> T getWish(String urlNotHost, String accessToken, @Nullable Object queryParams, Class<T> responseType) {
-        return exchangeWish(urlNotHost, HttpMethod.GET, accessToken, queryParams, null, responseType);
+    protected <T> T get(String urlNotHost, String accessToken, @Nullable Object queryParams, Class<T> responseType) {
+        return exchange(urlNotHost, HttpMethod.GET, accessToken, queryParams, null, responseType);
     }
 
     /**
-     * GET 调用 WISH API
+     * GET 调用 API
      *
      * @param urlNotHost   不带host的请求url
      * @param accessToken  访问令牌
      * @param queryParams  url请求参数
      * @param responseType 响应类型
      */
-    protected <T> T getWish(String urlNotHost, String accessToken, @Nullable Object queryParams, ParameterizedTypeReference<T> responseType) {
-        return exchangeWish(urlNotHost, HttpMethod.GET, accessToken, queryParams, null, responseType);
+    protected <T> T get(String urlNotHost, String accessToken, @Nullable Object queryParams, ParameterizedTypeReference<T> responseType) {
+        return exchange(urlNotHost, HttpMethod.GET, accessToken, queryParams, null, responseType);
     }
 
     /**
-     * POST 调用 WISH API
+     * POST 调用 API
      *
      * @param urlNotHost   不带host的请求url
      * @param accessToken  访问令牌
      * @param payload      请求参数
      * @param responseType 响应类型
      */
-    protected <T> T postWish(String urlNotHost, String accessToken, @Nullable Object payload, Class<T> responseType) {
-        return exchangeWish(urlNotHost, HttpMethod.POST, accessToken, null, payload, responseType);
+    protected <T> T post(String urlNotHost, String accessToken, @Nullable Object payload, Class<T> responseType) {
+        return exchange(urlNotHost, HttpMethod.POST, accessToken, null, payload, responseType);
     }
 
     /**
-     * POST 调用 WISH API
+     * POST 调用 API
      *
      * @param urlNotHost   不带host的请求url
      * @param accessToken  访问令牌
      * @param payload      请求参数
      * @param responseType 响应类型
      */
-    protected <T> T postWish(String urlNotHost, String accessToken, @Nullable Object payload, ParameterizedTypeReference<T> responseType) {
-        return exchangeWish(urlNotHost, HttpMethod.POST, accessToken, null, payload, responseType);
+    protected <T> T post(String urlNotHost, String accessToken, @Nullable Object payload, ParameterizedTypeReference<T> responseType) {
+        return exchange(urlNotHost, HttpMethod.POST, accessToken, null, payload, responseType);
     }
 
-
     /**
-     * 调用 WISH API
+     * 调用 API
      *
      * @param urlNotHost   不带host的请求url
      * @param httpMethod   HttpMethod
@@ -195,13 +183,26 @@ public abstract class WishClient {
      * @param responseType 响应类型
      * @return 响应结果对象
      */
-    protected <T> T exchangeWish(String urlNotHost, HttpMethod httpMethod, String accessToken, @Nullable Object queryParams, @Nullable Object payload, Class<T> responseType) {
-        return getRestOperations().exchange(buildUri(urlNotHost, queryParams), httpMethod, new HttpEntity<>(payload, getBearerHeaders(accessToken)), responseType).getBody();
+    protected <T> T exchange(String urlNotHost, HttpMethod httpMethod, String accessToken, @Nullable Object queryParams, @Nullable Object payload, Class<T> responseType) {
+        return exchange(urlNotHost, httpMethod, queryParams, new HttpEntity<>(payload, getBearerHeaders(accessToken)), responseType);
     }
 
+    /**
+     * 调用 API
+     *
+     * @param urlNotHost   不带host的请求url
+     * @param httpMethod   HttpMethod
+     * @param queryParams  url请求参数
+     * @param httpEntity   httpEntity
+     * @param responseType 响应类型
+     * @return 响应结果对象
+     */
+    protected <T> T exchange(String urlNotHost, HttpMethod httpMethod, @Nullable Object queryParams, HttpEntity<?> httpEntity, Class<T> responseType) {
+        return getRestOperations().exchange(buildUri(urlNotHost, queryParams), httpMethod, httpEntity, responseType).getBody();
+    }
 
     /**
-     * 调用 WISH API
+     * 调用 API
      *
      * @param urlNotHost   不带host的请求url
      * @param httpMethod   HttpMethod
@@ -211,11 +212,48 @@ public abstract class WishClient {
      * @param responseType 响应类型
      * @return 响应结果对象
      */
-    protected <T> T exchangeWish(String urlNotHost, HttpMethod httpMethod, String accessToken, @Nullable Object queryParams, @Nullable Object payload, ParameterizedTypeReference<T> responseType) {
-        HttpHeaders headers = new HttpHeaders();
-        headers.setBearerAuth(accessToken);
-        headers.setContentType(MediaType.APPLICATION_JSON);
-        return getRestOperations().exchange(buildUri(urlNotHost, queryParams), httpMethod, new HttpEntity<>(payload, headers), responseType).getBody();
+    protected <T> T exchange(String urlNotHost, HttpMethod httpMethod, String accessToken, @Nullable Object queryParams, @Nullable Object payload, ParameterizedTypeReference<T> responseType) {
+        return exchange(buildUri(urlNotHost, queryParams), httpMethod, new HttpEntity<>(payload, getBearerHeaders(accessToken)), responseType);
+    }
+
+    /**
+     * 调用 API
+     *
+     * @param urlNotHost   不带host的请求url
+     * @param httpMethod   HttpMethod
+     * @param queryParams  url请求参数
+     * @param httpEntity   httpEntity
+     * @param responseType 响应类型
+     * @return 响应结果对象
+     */
+    protected <T> T exchange(String urlNotHost, HttpMethod httpMethod, @Nullable Object queryParams, HttpEntity<?> httpEntity, ParameterizedTypeReference<T> responseType) {
+        return exchange(buildUri(urlNotHost, queryParams), httpMethod, httpEntity, responseType);
+    }
+
+    /**
+     * 调用 API
+     *
+     * @param uri          uri
+     * @param httpMethod   HttpMethod
+     * @param httpEntity   httpEntity
+     * @param responseType 响应类型
+     * @return 响应结果对象
+     */
+    protected <T> T exchange(URI uri, HttpMethod httpMethod, HttpEntity<?> httpEntity, Class<T> responseType) {
+        return getRestOperations().exchange(uri, httpMethod, httpEntity, responseType).getBody();
+    }
+
+    /**
+     * 调用 API
+     *
+     * @param uri          uri
+     * @param httpMethod   HttpMethod
+     * @param httpEntity   httpEntity
+     * @param responseType 响应类型
+     * @return 响应结果对象
+     */
+    protected <T> T exchange(URI uri, HttpMethod httpMethod, HttpEntity<?> httpEntity, ParameterizedTypeReference<T> responseType) {
+        return getRestOperations().exchange(uri, httpMethod, httpEntity, responseType).getBody();
     }
 
     /**
@@ -225,10 +263,30 @@ public abstract class WishClient {
      * @param queryParams url请求参数
      */
     protected URI buildUri(String urlNotHost, @Nullable Object queryParams) {
-        String host = isSandbox() ? SANDBOX_HOST : HOST;
+        return buildUri(getApiHost(), urlNotHost, queryParams);
+    }
+
+    protected String getApiHost() {
+        return isSandbox() ? SANDBOX_HOST : HOST;
+    }
+
+    /**
+     * 构建请求URI
+     *
+     * @param urlNotHost  不带host的请求url
+     * @param queryParams url请求参数
+     */
+    protected URI buildUri(String host, String urlNotHost, @Nullable Object queryParams) {
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(String.format("%s%s", host, urlNotHost));
         if (queryParams != null) {
-            if (queryParams instanceof String) {
+            if (queryParams instanceof Map) {
+                @SuppressWarnings("unchecked")
+                Map<String, Object> valueMap = (Map<String, Object>) queryParams;
+                Set<Map.Entry<String, Object>> entrySet = valueMap.entrySet();
+                for (Map.Entry<String, Object> e : entrySet) {
+                    builder.queryParam(e.getKey(), e.getValue());
+                }
+            } else if (queryParams instanceof String) {
                 builder = UriComponentsBuilder.fromHttpUrl(String.format("%s%s?%s", host, urlNotHost, queryParams));
             } else {
                 builderQueryParam(builder, objectMapper.convertValue(queryParams, new TypeReference<Map<String, Object>>() {

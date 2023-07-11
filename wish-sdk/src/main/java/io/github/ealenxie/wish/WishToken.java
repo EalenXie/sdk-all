@@ -1,4 +1,4 @@
-package io.github.ealenxie.wish.vo;
+package io.github.ealenxie.wish;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;

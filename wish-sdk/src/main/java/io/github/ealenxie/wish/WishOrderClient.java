@@ -28,15 +28,14 @@ public class WishOrderClient extends WishClient {
         super(objectMapper, restOperations);
     }
 
-
     /**
      * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#tag/Brands">Get a list of brands from a particular ID range</a>
      * <p>Wish上可用的品牌列表，可用于标记产品。</p>
      *
      * @param accessToken 令牌
      */
-    public WishResponse<List<Brand>> brands(String accessToken, BrandsQueryParams queryParams) {
-        return getWish("/api/v3/brands", accessToken, queryParams, new ParameterizedTypeReference<WishResponse<List<Brand>>>() {
+    public WishData<List<Brand>> brands(String accessToken, BrandsQueryParams queryParams) {
+        return get("/api/v3/brands", accessToken, queryParams, new ParameterizedTypeReference<WishData<List<Brand>>>() {
         });
     }
 
@@ -46,8 +45,8 @@ public class WishOrderClient extends WishClient {
      *
      * @param accessToken 令牌
      */
-    public WishResponse<ProductsBulk> getProductsJobs(String accessToken) {
-        return postWish("/api/v3/brands/products/bulk_get", accessToken, null, new ParameterizedTypeReference<WishResponse<ProductsBulk>>() {
+    public WishData<ProductsBulk> getProductsJobs(String accessToken) {
+        return post("/api/v3/brands/products/bulk_get", accessToken, null, new ParameterizedTypeReference<WishData<ProductsBulk>>() {
         });
     }
 
@@ -56,8 +55,8 @@ public class WishOrderClient extends WishClient {
      *
      * @param accessToken 令牌
      */
-    public WishResponse<ProductsBulk> getProductsJob(String accessToken, String productJobId) {
-        return getWish(String.format("/api/v3/brands/products/bulk_update/%s", productJobId), accessToken, null, new ParameterizedTypeReference<WishResponse<ProductsBulk>>() {
+    public WishData<ProductsBulk> getProductsJob(String accessToken, String productJobId) {
+        return get(String.format("/api/v3/brands/products/bulk_update/%s", productJobId), accessToken, null, new ParameterizedTypeReference<WishData<ProductsBulk>>() {
         });
     }
 
@@ -68,8 +67,8 @@ public class WishOrderClient extends WishClient {
      * @param orderId     订单Id
      * @param accessToken 令牌
      */
-    public WishResponse<WishOrder> getOrder(String accessToken, String orderId) {
-        return getWish(String.format("/api/v3/orders/%s", orderId), accessToken, null, new ParameterizedTypeReference<WishResponse<WishOrder>>() {
+    public WishData<WishOrder> getOrder(String accessToken, String orderId) {
+        return get(String.format("/api/v3/orders/%s", orderId), accessToken, null, new ParameterizedTypeReference<WishData<WishOrder>>() {
         });
     }
 
@@ -80,8 +79,8 @@ public class WishOrderClient extends WishClient {
      * @param queryParams 订单请求参数
      * @param accessToken 令牌
      */
-    public WishResponse<List<WishOrder>> getOrders(String accessToken, OrdersQueryParams queryParams) {
-        return getWish("/api/v3/orders", accessToken, queryParams, new ParameterizedTypeReference<WishResponse<List<WishOrder>>>() {
+    public WishData<List<WishOrder>> getOrders(String accessToken, OrdersQueryParams queryParams) {
+        return get("/api/v3/orders", accessToken, queryParams, new ParameterizedTypeReference<WishData<List<WishOrder>>>() {
         });
     }
 
@@ -92,8 +91,8 @@ public class WishOrderClient extends WishClient {
      * @param queryParams 请求参数
      * @param accessToken 令牌
      */
-    public List<NamePayload> shippingCarriers(String accessToken, ShippingCarriersQueryParams queryParams) {
-        return getWish("/api/v3/shipping_carriers", accessToken, queryParams, new ParameterizedTypeReference<List<NamePayload>>() {
+    public WishData<List<NamePayload>> shippingCarriers(String accessToken, ShippingCarriersQueryParams queryParams) {
+        return get("/api/v3/shipping_carriers", accessToken, queryParams, new ParameterizedTypeReference<WishData<List<NamePayload>>>() {
         });
     }
 
@@ -104,8 +103,9 @@ public class WishOrderClient extends WishClient {
      * @param queryParams 请求参数
      * @param accessToken 令牌
      */
-    public WishDownloadJob batchDownloadOrders(String accessToken, OrdersQueryParams queryParams) {
-        return exchangeWish("/api/v3/bulk_get", HttpMethod.POST, accessToken, queryParams, null, WishDownloadJob.class);
+    public WishData<WishDownloadJob> batchDownloadOrders(String accessToken, OrdersQueryParams queryParams) {
+        return exchange("/api/v3/bulk_get", HttpMethod.POST, accessToken, queryParams, null, new ParameterizedTypeReference<WishData<WishDownloadJob>>() {
+        });
     }
 
     /**
@@ -115,8 +115,9 @@ public class WishOrderClient extends WishClient {
      *
      * @param accessToken 令牌
      */
-    public WishDownloadJob batchDownloadJobStatus(String accessToken, String jobId) {
-        return getWish(String.format("/api/v3/bulk_get/%s", jobId), accessToken, null, WishDownloadJob.class);
+    public WishData<WishDownloadJob> batchDownloadJobStatus(String accessToken, String jobId) {
+        return get(String.format("/api/v3/bulk_get/%s", jobId), accessToken, null, new ParameterizedTypeReference<WishData<WishDownloadJob>>() {
+        });
     }
 
     /**
@@ -127,8 +128,9 @@ public class WishOrderClient extends WishClient {
      * @param queryParams 请求参数
      * @param accessToken 令牌
      */
-    public WishOrder shipOrder(String accessToken, String orderId, TrackingQueryParams queryParams) {
-        return exchangeWish(String.format("/api/v3/orders/%s/tracking", orderId), HttpMethod.PUT, accessToken, queryParams, null, WishOrder.class);
+    public WishData<WishOrder> shipOrder(String accessToken, String orderId, TrackingQueryParams queryParams) {
+        return exchange(String.format("/api/v3/orders/%s/tracking", orderId), HttpMethod.PUT, accessToken, queryParams, null, new ParameterizedTypeReference<WishData<WishOrder>>() {
+        });
     }
 
     /**
@@ -138,8 +140,8 @@ public class WishOrderClient extends WishClient {
      * @param orderId     订单id
      * @param accessToken 令牌
      */
-    public List<String> refundReasons(String accessToken, String orderId) {
-        return getWish(String.format("/api/v3/orders/%s/refund_reasons", orderId), accessToken, null, new ParameterizedTypeReference<List<String>>() {
+    public WishData<List<String>> refundReasons(String accessToken, String orderId) {
+        return get(String.format("/api/v3/orders/%s/refund_reasons", orderId), accessToken, null, new ParameterizedTypeReference<WishData<List<String>>>() {
         });
     }
 
@@ -151,8 +153,9 @@ public class WishOrderClient extends WishClient {
      * @param orderId     订单id
      * @param payload     请求参数
      */
-    public WishOrder refund(String accessToken, String orderId, RefundPayload payload) {
-        return exchangeWish(String.format("/api/v3/orders/%s/refund", orderId), HttpMethod.PUT, accessToken, null, payload, WishOrder.class);
+    public WishData<WishOrder> refund(String accessToken, String orderId, RefundPayload payload) {
+        return exchange(String.format("/api/v3/orders/%s/refund", orderId), HttpMethod.PUT, accessToken, null, payload, new ParameterizedTypeReference<WishData<WishOrder>>() {
+        });
     }
 
     /**
@@ -162,8 +165,9 @@ public class WishOrderClient extends WishClient {
      * @param orderId     订单Id
      * @param accessToken 令牌
      */
-    public WishOrder updateLTLOrder(String accessToken, String orderId, UpdateLtlPayload payload) {
-        return exchangeWish(String.format("/api/v3/orders/%s", orderId), HttpMethod.PUT, accessToken, null, payload, WishOrder.class);
+    public WishData<WishOrder> updateLTLOrder(String accessToken, String orderId, UpdateLtlPayload payload) {
+        return exchange(String.format("/api/v3/orders/%s", orderId), HttpMethod.PUT, accessToken, null, payload, new ParameterizedTypeReference<WishData<WishOrder>>() {
+        });
     }
 
     /**
@@ -173,7 +177,8 @@ public class WishOrderClient extends WishClient {
      * @param orderId     订单Id
      * @param accessToken 令牌
      */
-    public WishOrder modifyAddress(String accessToken, String orderId, ModifyAddressPayload payload) {
-        return exchangeWish(String.format("/api/v3/orders/%s/address", orderId), HttpMethod.PUT, accessToken, null, payload, WishOrder.class);
+    public WishData<WishOrder> modifyAddress(String accessToken, String orderId, ModifyAddressPayload payload) {
+        return exchange(String.format("/api/v3/orders/%s/address", orderId), HttpMethod.PUT, accessToken, null, payload, new ParameterizedTypeReference<WishData<WishOrder>>() {
+        });
     }
 }
