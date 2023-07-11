@@ -19,6 +19,8 @@ import io.github.ealenxie.walmart.marketplace.reports.AvailableApReportDatesResp
 import io.github.ealenxie.walmart.marketplace.reports.PartnerStatementResponse;
 import io.github.ealenxie.walmart.marketplace.reports.ReportQueryParams;
 import io.github.ealenxie.walmart.marketplace.reports.ReportVersionQueryParams;
+import io.github.ealenxie.walmart.marketplace.returns.ReturnQueryParams;
+import io.github.ealenxie.walmart.marketplace.returns.ReturnResponse;
 import io.github.ealenxie.walmart.marketplace.reviews.*;
 import io.github.ealenxie.walmart.marketplace.rules.*;
 import io.github.ealenxie.walmart.marketplace.settings.*;
@@ -316,6 +318,30 @@ public class WalmartOrderClient extends WalmartClient {
     public ListElementResponse<OrdersResponse> getAllReleasedOrders(String accessToken) {
         return get("/v3/orders/released", accessToken, null, new ParameterizedTypeReference<ListElementResponse<OrdersResponse>>() {
         });
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/returns">Issue refund</a>
+     */
+    public RefundResponse refund(String accessToken, String returnOrderId, RefundPayload payload) {
+        return post(String.format("/v3/returns/%s/refund", returnOrderId), accessToken, payload, RefundResponse.class);
+    }
+
+    /**
+     * TODO 和上面 updateBulkPromotionalPrice 接口一模一样，请求路径也相同
+     * <a href="https://developer.walmart.com/api/us/mp/returns#operation/bulkItemOverrideFeed">Return Item Overrides</a>
+     */
+    public FeedIdPayload bulkItemOverrideFeed(String accessToken, String feedType, byte[] file) {
+        HttpHeaders headers = getBearerHeaders(accessToken);
+        headers.setContentType(MediaType.MULTIPART_FORM_DATA);
+        return exchange("/v3/feeds", HttpMethod.POST, accessToken, new FeedTypePayload(feedType), new HttpEntity<>(file, headers), FeedIdPayload.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/returns#operation/getReturns">Returns</a>
+     */
+    public ReturnResponse getReturns(String accessToken, String returnOrderId, ReturnQueryParams queryParams) {
+        return get("/v3/returns", accessToken, queryParams, ReturnResponse.class);
     }
 
     /**
