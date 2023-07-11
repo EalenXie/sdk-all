@@ -152,22 +152,31 @@ walmart-sdk
 
 #### Walmart Fulfillment Services
 
-| 方法名                      | 官方文档地址                                                                                                                      | 状态  |
-|:-------------------------|:----------------------------------------------------------------------------------------------------------------------------|:----|
-| updateShipmentQuantity   | [Update Shipment Quantities](https://developer.walmart.com/api/us/mp/fulfillment#operation/updateShipmentQuantity)          | ✔️  |
-| onholdSearch             | [Hazmat Items On hold](https://developer.walmart.com/api/us/mp/fulfillment#operation/wercsFeedback)                         | ✔️  |
-| shipmentTracking         | [Update Shipment Tracking](https://developer.walmart.com/api/us/mp/fulfillment#operation/updateShipmentTrackingDetails)     | ✔️  |
-| shipmentLabel            | [Create Inbound Shipment label](https://developer.walmart.com/api/us/mp/fulfillment#operation/createInboundShipmentLabelV2) | ✔️  |
-| createFulfillment        | [Create Customer Order](https://developer.walmart.com/api/us/mp/fulfillment#operation/createFulfillment)                    | ✔️  |
-| fetchOrderPromiseOptions | [Fetch Delivery Promise Details](https://developer.walmart.com/api/us/mp/fulfillment#operation/promiseFulfillments)         | ✔️  |
-| cancelFulfillment        | [Cancel Customer Order](https://developer.walmart.com/api/us/mp/fulfillment#operation/cancelFulfillment)                    | ✔️  |
-| getInboundShipments      | [Get Shipments](https://developer.walmart.com/api/us/mp/fulfillment#operation/getInboundShipments)                          | ✔️  |
-| createShipment           | [Create Inbound Shipment](https://developer.walmart.com/api/us/mp/fulfillment#operation/createShipment)                     | ✔️  |
-| inboundPreview           | [Fetch Inbound Preview](https://developer.walmart.com/api/us/mp/fulfillment#operation/inboundPreview)                       | ✔️  |
-| getCarrierRateQuote      | [Get Carrier Rate Quote](https://developer.walmart.com/api/us/mp/fulfillment#operation/getCarrierRateQuote)                 | ✔️  |
-| createCarrierRateQuotes  | [Create Carrier Rate Quote](https://developer.walmart.com/api/us/mp/fulfillment#operation/createCarrierRateQuotes)          | ✔️  |
-| confirmCarrierRateQuote  | [Confirm Carrier Rate Quote](https://developer.walmart.com/api/us/mp/fulfillment#operation/confirmCarrierRateQuote)         | ✔️  |
-| printCarrierLabel        | [Print Carrier Label](https://developer.walmart.com/api/us/mp/fulfillment#operation/printCarrierLabel)                      | ✔️  |
+| 方法名                            | 官方文档地址                                                                                                                                     | 状态  |
+|:-------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------|:----|
+| updateShipmentQuantity         | [Update Shipment Quantities](https://developer.walmart.com/api/us/mp/fulfillment#operation/updateShipmentQuantity)                         | ✔️  |
+| onholdSearch                   | [Hazmat Items On hold](https://developer.walmart.com/api/us/mp/fulfillment#operation/wercsFeedback)                                        | ✔️  |
+| shipmentTracking               | [Update Shipment Tracking](https://developer.walmart.com/api/us/mp/fulfillment#operation/updateShipmentTrackingDetails)                    | ✔️  |
+| shipmentLabel                  | [Create Inbound Shipment label](https://developer.walmart.com/api/us/mp/fulfillment#operation/createInboundShipmentLabelV2)                | ✔️  |
+| createFulfillment              | [Create Customer Order](https://developer.walmart.com/api/us/mp/fulfillment#operation/createFulfillment)                                   | ✔️  |
+| fetchOrderPromiseOptions       | [Fetch Delivery Promise Details](https://developer.walmart.com/api/us/mp/fulfillment#operation/promiseFulfillments)                        | ✔️  |
+| cancelFulfillment              | [Cancel Customer Order](https://developer.walmart.com/api/us/mp/fulfillment#operation/cancelFulfillment)                                   | ✔️  |
+| getInboundShipments            | [Get Shipments](https://developer.walmart.com/api/us/mp/fulfillment#operation/getInboundShipments)                                         | ✔️  |
+| createShipment                 | [Create Inbound Shipment](https://developer.walmart.com/api/us/mp/fulfillment#operation/createShipment)                                    | ✔️  |
+| inboundPreview                 | [Fetch Inbound Preview](https://developer.walmart.com/api/us/mp/fulfillment#operation/inboundPreview)                                      | ✔️  |
+| getCarrierRateQuote            | [Get Carrier Rate Quote](https://developer.walmart.com/api/us/mp/fulfillment#operation/getCarrierRateQuote)                                | ✔️  |
+| createCarrierRateQuotes        | [Create Carrier Rate Quote](https://developer.walmart.com/api/us/mp/fulfillment#operation/createCarrierRateQuotes)                         | ✔️  |
+| confirmCarrierRateQuote        | [Confirm Carrier Rate Quote](https://developer.walmart.com/api/us/mp/fulfillment#operation/confirmCarrierRateQuote)                        | ✔️  |
+| printCarrierLabel              | [Print Carrier Label](https://developer.walmart.com/api/us/mp/fulfillment#operation/printCarrierLabel)                                     | ✔️  |
+| convertItemForWfs              | [Convert items for WFS](https://developer.walmart.com/api/us/mp/fulfillment#operation/convertItemForWfs)                                   | ✔️  |
+| getInventoryHealthReport       | [Get WFS Inventory Health Report](https://developer.walmart.com/api/us/mp/fulfillment#operation/getInventoryHealthReport)                  | ✔️  |
+| getFulfillmentOrdersStatus     | [Get fulfillment orders status](https://developer.walmart.com/api/us/mp/fulfillment#operation/getFulfillmentOrdersStatus)                  | ✔️  |
+| ~~createInboundShipmentLabel~~ | ~~[Create Inbound Shipment label (deprecated)](https://developer.walmart.com/api/us/mp/fulfillment#operation/createInboundShipmentLabel)~~ | ✔️  |
+| getWFSInventoryLog             | [Get Inventory Log for a WFS item](https://developer.walmart.com/api/us/mp/fulfillment#operation/getWFSInventoryLog)                       | ✔️  |
+| getInboundShipmentItems        | [Get Inbound Shipment Items](https://developer.walmart.com/api/us/mp/fulfillment#operation/getInboundShipmentItems)                        | ✔️  |
+| getInboundOrderErrors          | [Get Inbound Shipment errors](https://developer.walmart.com/api/us/mp/fulfillment#operation/getInboundOrderErrors)                         | ✔️  |
+| cancelShipment                 | [Cancel Inbound Shipment](https://developer.walmart.com/api/us/mp/fulfillment#operation/cancelShipment)                                    | ✔️  |
+| cancelCarrierRateQuote         | [Cancel Carrier Rate Quote](https://developer.walmart.com/api/us/mp/fulfillment#operation/voidCarrierRateQuote)                            | ✔️  |
 
 #### Notifications
 

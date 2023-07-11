@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.math.BigDecimal;
+
 /**
  * @author EalenXie created on 2023/7/6 14:28
  */
@@ -19,6 +21,6 @@ public class UnitMoney {
      * amount
      */
     @JsonProperty("amount")
-    private Integer amount;
+    private BigDecimal amount;
 
 }

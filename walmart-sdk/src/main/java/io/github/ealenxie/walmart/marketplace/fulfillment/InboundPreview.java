@@ -51,5 +51,5 @@ public class InboundPreview {
      * shipmentItems
      */
     @JsonProperty("shipmentItems")
-    private List<ShipmentItems> shipmentItems;
+    private List<InboundShipmentItem> shipmentItems;
 }

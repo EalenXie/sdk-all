@@ -26,6 +26,11 @@ public class Error {
     @JsonProperty("description")
     private String description;
     /**
+     * info
+     */
+    @JsonProperty("info")
+    private String info;
+    /**
      * severity
      */
     @JsonProperty("severity")

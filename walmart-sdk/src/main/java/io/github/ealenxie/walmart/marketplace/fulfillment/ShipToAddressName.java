@@ -1,15 +1,20 @@
 package io.github.ealenxie.walmart.marketplace.fulfillment;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
- * @author EalenXie created on 2023/7/10 11:23
+ * @author EalenXie created on 2023/7/11 15:10
  */
-@Getter
-@Setter
-public class Name {
+@NoArgsConstructor
+@Data
+public class ShipToAddressName {
+    /**
+     * completeName
+     */
+    @JsonProperty("completeName")
+    private String completeName;
     /**
      * firstName
      */
@@ -20,10 +25,4 @@ public class Name {
      */
     @JsonProperty("lastName")
     private String lastName;
-
-    /**
-     * completeName
-     */
-    @JsonProperty("completeName")
-    private String completeName;
 }

@@ -20,4 +20,15 @@ public class HeaderAttributes {
      */
     @JsonProperty("martId")
     private String martId;
+
+    /**
+     * pageCount
+     */
+    @JsonProperty("pageCount")
+    private Integer pageCount;
+    /**
+     * totalCount
+     */
+    @JsonProperty("totalCount")
+    private Integer totalCount;
 }

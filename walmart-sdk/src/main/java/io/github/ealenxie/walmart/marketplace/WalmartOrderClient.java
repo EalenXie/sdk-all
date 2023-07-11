@@ -744,6 +744,77 @@ public class WalmartOrderClient extends WalmartClient {
     }
 
     /**
+     * <a href="https://developer.walmart.com/api/us/mp/fulfillment#operation/convertItemForWfs">Convert items for WFS</a>
+     */
+    public FeedIdPayload convertItemForWfs(String accessToken, String feedType, byte[] file) {
+        return updateBulkPromotionalPrice(accessToken, feedType, file);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/fulfillment#operation/getInventoryHealthReport">Get WFS Inventory Health Report</a>
+     */
+    public byte[] getInventoryHealthReport(String accessToken) {
+        HttpHeaders headers = getBearerHeaders(accessToken);
+        headers.setAccept(Collections.singletonList(MediaType.APPLICATION_OCTET_STREAM));
+        return exchange("/v3/report/wfs/getInventoryHealthReport", HttpMethod.GET, accessToken, new HttpEntity<>(null, headers), byte[].class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/fulfillment#operation/getFulfillmentOrdersStatus">Get WFS Inventory Health Report</a>
+     */
+    public FulfillmentOrdersStatusResponse getFulfillmentOrdersStatus(String accessToken, FulfillmentOrdersStatusQueryParams queryParams) {
+        return get("/v3/fulfillment/orders-fulfillments/status", accessToken, queryParams, FulfillmentOrdersStatusResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/fulfillment#operation/createInboundShipmentLabel">Create Inbound Shipment label (deprecated)</a>
+     *
+     * @deprecated deprecated by walmart
+     */
+    @Deprecated
+    public byte[] createInboundShipmentLabel(String accessToken, String shipmentId) {
+        HttpHeaders headers = getBearerHeaders(accessToken);
+        headers.setAccept(Collections.singletonList(MediaType.APPLICATION_PDF));
+        return exchange(String.format("/v3/fulfillment/label/%s", shipmentId), HttpMethod.GET, accessToken, new HttpEntity<>(null, headers), byte[].class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/fulfillment#operation/getWFSInventoryLog">Get Inventory Log for a WFS item</a>
+     */
+    public WFSInventoryLogResponse getWFSInventoryLog(String accessToken, WFSInventoryLogQueryParams queryParams) {
+        return get("/v3/fulfillment/inventory-log", accessToken, queryParams, WFSInventoryLogResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/fulfillment#operation/getInboundShipmentItems">Get Inbound Shipment Items</a>
+     */
+    public InboundShipmentItemsResponse getInboundShipmentItems(String accessToken, ShipmentIdQueryParams queryParams) {
+        return get("/v3/fulfillment/inbound-shipment-items", accessToken, queryParams, InboundShipmentItemsResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/fulfillment#operation/getInboundOrderErrors">Get Inbound Shipment errors</a>
+     */
+    public InboundOrderErrorsResponse getInboundOrderErrors(String accessToken, ShipmentIdQueryParams queryParams) {
+        return get("/v3/fulfillment/inbound-shipment-items", accessToken, queryParams, InboundOrderErrorsResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/fulfillment#operation/cancelShipment">Cancel Inbound Shipment</a>
+     */
+    public StatusPayloadResponse<Void> cancelShipment(String accessToken, String inboundOrderId) {
+        return exchange(String.format("/v3/fulfillment/inbound-shipments/%s", inboundOrderId), HttpMethod.DELETE, accessToken, null, null, new ParameterizedTypeReference<StatusPayloadResponse<Void>>() {
+        });
+    }
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/fulfillment#operation/voidCarrierRateQuote">Cancel Carrier Rate Quote</a>
+     */
+    public StatusPayloadResponse<Void> cancelCarrierRateQuote(String accessToken, String shipmentId) {
+        return exchange(String.format("/v3/fulfillment/carrier-rate-quote/%s", shipmentId), HttpMethod.DELETE, accessToken, null, null, new ParameterizedTypeReference<StatusPayloadResponse<Void>>() {
+        });
+    }
+
+    /**
      * <a href="https://developer.walmart.com/api/us/mp/notifications#operation/testNotification">Test Notification</a>
      */
     public MessageResponse testNotification(String accessToken, TestNotificationPayload payload) {
