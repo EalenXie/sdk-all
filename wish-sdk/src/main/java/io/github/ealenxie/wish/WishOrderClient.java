@@ -8,6 +8,9 @@ import io.github.ealenxie.wish.bulkproducts.ProductUpdatePayload;
 import io.github.ealenxie.wish.currencies.Currency;
 import io.github.ealenxie.wish.dto.*;
 import io.github.ealenxie.wish.euproductcompliance.*;
+import io.github.ealenxie.wish.fbs.FbsRecommendation;
+import io.github.ealenxie.wish.fbs.FbsRecommendationsQueryParams;
+import io.github.ealenxie.wish.fbs.FbsVariation;
 import io.github.ealenxie.wish.vo.NamePayload;
 import io.github.ealenxie.wish.vo.WishDownloadJob;
 import io.github.ealenxie.wish.vo.WishOrder;
@@ -189,6 +192,27 @@ public class WishOrderClient extends WishClient {
         return get("/api/v3/eu_product_compliance/responsible_person", accessToken, queryParams, new ParameterizedTypeReference<WishData<List<ResponsiblePersonPayload>>>() {
         });
     }
+
+    /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/fbsVariation">Get FBS related data for a variation</a>
+     *
+     * @param accessToken 令牌
+     */
+    public WishData<FbsVariation> fbsVariation(String accessToken, String id) {
+        return get(String.format("/api/v3/fbs/variations/%s", id), accessToken, null, new ParameterizedTypeReference<WishData<FbsVariation>>() {
+        });
+    }
+
+    /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/fbsRecommendations">Get FBS inbound shipping recommendations</a>
+     *
+     * @param accessToken 令牌
+     */
+    public WishData<List<FbsRecommendation>> fbsRecommendations(String accessToken, FbsRecommendationsQueryParams queryParams) {
+        return get("/api/v3/fbs/recommendations", accessToken, queryParams, new ParameterizedTypeReference<WishData<List<FbsRecommendation>>>() {
+        });
+    }
+
 
     /**
      * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/GetOrder">Get an order</a>

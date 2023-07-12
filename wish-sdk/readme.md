@@ -62,6 +62,13 @@ wish-sdk
 | createEUResponsiblePerson       | [Update an EU Responsible Person](https://china-merchant.wish.com/documentation/api/v3/reference#operation/createEUResponsiblePerson)           | ✔️  |
 | listEUResponsiblePerson         | [List EU Responsible Persons](https://china-merchant.wish.com/documentation/api/v3/reference#operation/listEUResponsiblePerson)                 | ✔️  |
 
+##### FBS
+
+| 方法名                | 官方文档地址                                                                                                                                  | 状态  |
+|:-------------------|:----------------------------------------------------------------------------------------------------------------------------------------|:----|
+| fbsVariation       | [Get FBS related data for a variation](https://china-merchant.wish.com/documentation/api/v3/reference#operation/fbsVariation)           | ✔️  |
+| fbsRecommendations | [Get FBS inbound shipping recommendations](https://china-merchant.wish.com/documentation/api/v3/reference#operation/fbsRecommendations) | ✔️  |
+
 | 方法名                 | 官方文档地址                                                                                                                         | 状态  |
 |:--------------------|:-------------------------------------------------------------------------------------------------------------------------------|:----|
 | getOrder            | [Get an order](https://china-merchant.wish.com/documentation/api/v3/reference#operation/GetOrder)                              | ✔️  |
