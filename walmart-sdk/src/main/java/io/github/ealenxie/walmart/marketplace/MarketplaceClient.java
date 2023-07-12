@@ -42,24 +42,23 @@ import java.util.List;
 
 /**
  * Created by EalenXie on 2022/3/16 14:02
- * <a href="https://developer.walmart.com/api/us/mp/orders">walmart 商户平台</a>
  */
-public class WalmartOrderClient extends WalmartClient {
+public class MarketplaceClient extends WalmartClient {
 
 
-    public WalmartOrderClient(String clientId, String clientSecret) {
+    public MarketplaceClient(String clientId, String clientSecret) {
         super(clientId, clientSecret);
     }
 
-    public WalmartOrderClient(String clientId, String clientSecret, RestOperations restOperations) {
+    public MarketplaceClient(String clientId, String clientSecret, RestOperations restOperations) {
         super(clientId, clientSecret, new ObjectMapper(), restOperations);
     }
 
-    public WalmartOrderClient(String clientId, String clientSecret, ObjectMapper objectMapper, RestOperations restOperations) {
+    public MarketplaceClient(String clientId, String clientSecret, ObjectMapper objectMapper, RestOperations restOperations) {
         super(clientId, clientSecret, objectMapper, restOperations);
     }
 
-    public WalmartOrderClient(String clientId, String clientSecret, ObjectMapper objectMapper) {
+    public MarketplaceClient(String clientId, String clientSecret, ObjectMapper objectMapper) {
         super(clientId, clientSecret, objectMapper);
     }
 

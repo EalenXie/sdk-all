@@ -22,7 +22,7 @@ walmart-sdk
 |:--------------|:------------|:-----------------------------------------------------------------------------|:----|
 | 获取accessToken | accessToken | [Token API](https://developer.walmart.com/api/us/mp/auth#operation/tokenAPI) | ✔️  |
 
-#### [WalmartOrderClient](https://github.com/EalenXie/sdk-all/blob/main/walmart-sdk/src/main/java/io/github/ealenxie/walmart/marketplace/WalmartOrderClient.java) 已支持的接口列表
+#### [MarketplaceClient](https://github.com/EalenXie/sdk-all/blob/main/walmart-sdk/src/main/java/io/github/ealenxie/walmart/marketplace/MarketplaceClient.java) 已支持的接口列表
 
 #### Feeds
 
