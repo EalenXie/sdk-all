@@ -1,7 +1,7 @@
 package io.github.ealenxie.walmart.marketplace.promotion;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.github.ealenxie.walmart.marketplace.insights.MoneyValue;
+import io.github.ealenxie.walmart.marketplace.MoneyValue;
 import lombok.Getter;
 import lombok.Setter;
 

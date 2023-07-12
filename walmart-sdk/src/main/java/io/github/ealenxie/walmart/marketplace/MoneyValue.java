@@ -1,7 +1,6 @@
-package io.github.ealenxie.walmart.marketplace.insights;
+package io.github.ealenxie.walmart.marketplace;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.github.ealenxie.walmart.marketplace.Money;
 import lombok.Getter;
 import lombok.Setter;
 

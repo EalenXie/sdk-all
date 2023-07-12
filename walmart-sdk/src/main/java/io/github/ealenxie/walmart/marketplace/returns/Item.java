@@ -1,6 +1,7 @@
 package io.github.ealenxie.walmart.marketplace.returns;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.ealenxie.walmart.marketplace.Qty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -25,5 +26,5 @@ public class Item {
      * itemWeight
      */
     @JsonProperty("itemWeight")
-    private Quantity itemWeight;
+    private Qty itemWeight;
 }

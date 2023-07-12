@@ -9,7 +9,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class ActivateRule {
+public class RuleIdStatus {
     /**
      * ruleId
      */

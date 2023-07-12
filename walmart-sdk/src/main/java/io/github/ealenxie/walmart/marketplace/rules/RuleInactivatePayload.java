@@ -21,5 +21,5 @@ public class RuleInactivatePayload {
      * rules
      */
     @JsonProperty("rules")
-    private List<InactivateRule> rules;
+    private List<RuleIdStatus> rules;
 }
