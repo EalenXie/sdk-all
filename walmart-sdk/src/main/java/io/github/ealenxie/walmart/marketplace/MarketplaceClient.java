@@ -480,6 +480,30 @@ public class MarketplaceClient extends WalmartClient {
         return exchange(String.format("/v3/inventories/%s", sku), HttpMethod.PUT, accessToken, null, payload, UpdateInventoryResponse.class);
     }
 
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/inventory#operation/updateBulkInventory">Bulk Item Inventory Update</a>
+     */
+    public ItemBulkResponse updateBulkInventory(String accessToken, UpdateBulkInventoryQueryParams queryParams, byte[] file) {
+        HttpHeaders headers = getBearerHeaders(accessToken);
+        headers.setContentType(MediaType.MULTIPART_FORM_DATA);
+        return exchange(FEEDS_URL, HttpMethod.POST, accessToken, queryParams, new HttpEntity<>(file, headers), ItemBulkResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/inventory#operation/getMultiNodeInventoryForAllSkuAndAllShipNodes">Multiple Item Inventory for All Ship Nodes</a>
+     */
+    public ListElement<MultiNodeInventories> getMultiNodeInventories(String accessToken, ItemListingDetailsQueryParams queryParams) {
+        return get("/v3/inventories", accessToken, queryParams, new ParameterizedTypeReference<ListElement<MultiNodeInventories>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/inventory#operation/getWFSInventory">WFS Inventory</a>
+     */
+    public ListElement<MultiNodeInventories> getWFSInventory(String accessToken, WfsInventoryQueryParams queryParams) {
+        return get("/v3/inventories", accessToken, queryParams, new ParameterizedTypeReference<ListElement<MultiNodeInventories>>() {
+        });
+    }
 
     /**
      * <a href="https://developer.walmart.com/api/us/mp/rules#operation/inactivateRule">Inactivate rule</a>

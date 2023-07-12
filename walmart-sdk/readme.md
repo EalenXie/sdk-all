@@ -92,12 +92,15 @@ walmart-sdk
 
 #### Inventory
 
-| 🏷️方法名                   | 📚 官方文档地址                                                                                                                                    | 状态  |
-|:-------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------|:----|
-| getInventory             | [Inventory](https://developer.walmart.com/api/us/mp/inventory#operation/getInventory)                                                        | ✔️  |
-| updateInventory          | [Update inventory](https://developer.walmart.com/api/us/mp/inventory#operation/updateInventoryForAnItem)                                     | ✔️  |
-| getMultiNodeInventory    | [Single Item Inventory by Ship Node](https://developer.walmart.com/api/us/mp/inventory#operation/getMultiNodeInventoryForSkuAndAllShipnodes) | ✔️  |
-| updateMultiNodeInventory | [Update Item Inventory per Ship Node](https://developer.walmart.com/api/us/mp/inventory#operation/updateMultiNodeInventory)                  | ✔️  |
+| 🏷️方法名                   | 📚 官方文档地址                                                                                                                                               | 状态  |
+|:-------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------|:----|
+| getInventory             | [Inventory](https://developer.walmart.com/api/us/mp/inventory#operation/getInventory)                                                                   | ✔️  |
+| updateInventory          | [Update inventory](https://developer.walmart.com/api/us/mp/inventory#operation/updateInventoryForAnItem)                                                | ✔️  |
+| getMultiNodeInventory    | [Single Item Inventory by Ship Node](https://developer.walmart.com/api/us/mp/inventory#operation/getMultiNodeInventoryForSkuAndAllShipnodes)            | ✔️  |
+| updateMultiNodeInventory | [Update Item Inventory per Ship Node](https://developer.walmart.com/api/us/mp/inventory#operation/updateMultiNodeInventory)                             | ✔️  |
+| updateBulkInventory      | [Bulk Item Inventory Update](https://developer.walmart.com/api/us/mp/inventory#operation/updateBulkInventory)                                           | ✔️  |
+| getMultiNodeInventories  | [Multiple Item Inventory for All Ship Nodes](https://developer.walmart.com/api/us/mp/inventory#operation/getMultiNodeInventoryForAllSkuAndAllShipNodes) | ✔️  |
+| getWFSInventory          | [WFS Inventory](https://developer.walmart.com/api/us/mp/inventory#operation/getWFSInventory)                                                            | ✔️  |
 
 #### Settings
 
