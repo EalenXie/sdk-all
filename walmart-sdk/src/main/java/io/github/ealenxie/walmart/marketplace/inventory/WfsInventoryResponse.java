@@ -1,6 +1,7 @@
 package io.github.ealenxie.walmart.marketplace.inventory;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.ealenxie.walmart.marketplace.PageHeader;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,7 +17,7 @@ public class WfsInventoryResponse {
      * headers
      */
     @JsonProperty("headers")
-    private Header headers;
+    private PageHeader headers;
     /**
      * payload
      */

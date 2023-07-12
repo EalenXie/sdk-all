@@ -1,21 +1,15 @@
-package io.github.ealenxie.walmart.marketplace.inventory;
+package io.github.ealenxie.walmart.marketplace;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
 /**
- * @author create by sch  2023/7/12 11:10
- * @version 1.0
+ * @author EalenXie created on 2023/7/10 14:03
  */
 @Getter
 @Setter
-public class Header {
-    /**
-     * totalCount
-     */
-    @JsonProperty("totalCount")
-    private Integer totalCount;
+public class PageHeader {
     /**
      * limit
      */
@@ -26,4 +20,9 @@ public class Header {
      */
     @JsonProperty("offset")
     private Integer offset;
+    /**
+     * totalCount
+     */
+    @JsonProperty("totalCount")
+    private Integer totalCount;
 }

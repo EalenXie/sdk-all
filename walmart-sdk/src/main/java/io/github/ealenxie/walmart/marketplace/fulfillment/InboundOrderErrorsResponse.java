@@ -1,6 +1,7 @@
 package io.github.ealenxie.walmart.marketplace.fulfillment;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.ealenxie.walmart.marketplace.PageHeader;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,7 +18,7 @@ public class InboundOrderErrorsResponse {
      * headers
      */
     @JsonProperty("headers")
-    private ResponseHeader headers;
+    private PageHeader headers;
     /**
      * payload
      */
