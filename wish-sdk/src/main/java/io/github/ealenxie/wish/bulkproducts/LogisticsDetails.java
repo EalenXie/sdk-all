@@ -2,8 +2,8 @@ package io.github.ealenxie.wish.bulkproducts;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.ealenxie.wish.Money;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -11,8 +11,8 @@ import java.util.List;
 /**
  * @author EalenXie created on 2023/7/12 13:17
  */
-@NoArgsConstructor
-@Data
+@Getter
+@Setter
 public class LogisticsDetails {
     /**
      * originCountry

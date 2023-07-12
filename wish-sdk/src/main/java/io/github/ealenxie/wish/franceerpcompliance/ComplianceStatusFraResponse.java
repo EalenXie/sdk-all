@@ -1,16 +1,16 @@
 package io.github.ealenxie.wish.franceerpcompliance;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 
 /**
  * @author EalenXie created on 2023/7/12 15:26
  */
-@NoArgsConstructor
-@Data
+@Getter
+@Setter
 public class ComplianceStatusFraResponse {
     /**
      * uniqueIdentificationNumberIds
