@@ -18,7 +18,7 @@ walmart-sdk
 
 #### [WalmartClient](https://github.com/EalenXie/sdk-all/blob/main/walmart-sdk/src/main/java/io/github/ealenxie/walmart/marketplace/WalmartClient.java) 已支持的接口列表
 
-| 接口名           | 方法名         | 官方文档地址                                                                       | 状态  |
+| 接口名           | 🏷️方法名      | 📚 官方文档地址                                                                    | 状态  |
 |:--------------|:------------|:-----------------------------------------------------------------------------|:----|
 | 获取accessToken | accessToken | [Token API](https://developer.walmart.com/api/us/mp/auth#operation/tokenAPI) | ✔️  |
 
@@ -26,7 +26,7 @@ walmart-sdk
 
 #### Feeds
 
-| 方法名               | 官方文档地址                                                                                              | 状态  |
+| 🏷️方法名            | 📚 官方文档地址                                                                                           | 状态  |
 |:------------------|:----------------------------------------------------------------------------------------------------|:----|
 | getFeeds          | [All feed statuses](https://developer.walmart.com/api/us/mp/feeds)                                  | ✔️  |
 | getFeedItemStatus | [Feed item status](https://developer.walmart.com/api/us/mp/feeds#operation/getFeedItemStatus)       | ✔️  |
@@ -34,7 +34,7 @@ walmart-sdk
 
 #### Items
 
-| 方法名                 | 官方文档地址                                                                                                | 状态  |
+| 🏷️方法名              | 📚 官方文档地址                                                                                             | 状态  |
 |:--------------------|:------------------------------------------------------------------------------------------------------|:----|
 | getCatalogSearch    | [Catalog Search](https://developer.walmart.com/api/us/mp/items#operation/getCatalogSearch)            | ✔️  |
 | getItemAssociations | [Get Item Associations](https://developer.walmart.com/api/us/mp/items#operation/getItemAssociations)  | ✔️  |
@@ -49,7 +49,7 @@ walmart-sdk
 
 #### Prices
 
-| 方法名                  | 官方文档地址                                                                                                                     | 状态  |
+| 🏷️方法名               | 📚 官方文档地址                                                                                                                  | 状态  |
 |:---------------------|:---------------------------------------------------------------------------------------------------------------------------|:----|
 | updateStrategy       | [Update Repricer Strategy](https://developer.walmart.com/api/us/mp/price#operation/updateStrategy)                         | ✔️  |
 | deleteStrategy       | [Delete Repricer Strategy](https://developer.walmart.com/api/us/mp/price#operation/deleteStrategy)                         | ✔️  |
@@ -64,7 +64,7 @@ walmart-sdk
 
 #### Promotions
 
-| 方法名                        | 官方文档地址                                                                                                                    | 状态  |
+| 🏷️方法名                     | 📚 官方文档地址                                                                                                                 | 状态  |
 |:---------------------------|:--------------------------------------------------------------------------------------------------------------------------|:----|
 | updatePromotionalPrice     | [Update a promotional price](https://developer.walmart.com/api/us/mp/promotion)                                           | ✔️  |
 | updateBulkPromotionalPrice | [Updates bulk promotional prices](https://developer.walmart.com/api/us/mp/promotion#operation/updateBulkPromotionalPrice) | ✔️  |
@@ -72,7 +72,7 @@ walmart-sdk
 
 #### Orders
 
-| 方法名                  | 官方文档地址                                                                                               | 状态  |
+| 🏷️方法名               | 📚 官方文档地址                                                                                            | 状态  |
 |:---------------------|:-----------------------------------------------------------------------------------------------------|:----|
 | shipOrderLines       | [Ship Order Lines](https://developer.walmart.com/api/us/mp/orders#operation/shippingUpdates)         | ✔️  |
 | refundOrderLines     | [Refund Order Lines](https://developer.walmart.com/api/us/mp/orders#operation/refundOrderLines)      | ✔️  |
@@ -84,7 +84,7 @@ walmart-sdk
 
 #### Returns
 
-| 方法名                  | 官方文档地址                                                                                                  | 状态  |
+| 🏷️方法名               | 📚 官方文档地址                                                                                               | 状态  |
 |:---------------------|:--------------------------------------------------------------------------------------------------------|:----|
 | refund               | [Issue refund](https://developer.walmart.com/api/us/mp/orders#operation/shippingUpdates)                | ✔️  |
 | bulkItemOverrideFeed | [Return Item Overrides](https://developer.walmart.com/api/us/mp/returns#operation/bulkItemOverrideFeed) | ✔️  |
@@ -92,7 +92,7 @@ walmart-sdk
 
 #### Inventory
 
-| 方法名                      | 官方文档地址                                                                                                                                       | 状态  |
+| 🏷️方法名                   | 📚 官方文档地址                                                                                                                                    | 状态  |
 |:-------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------|:----|
 | getInventory             | [Inventory](https://developer.walmart.com/api/us/mp/inventory#operation/getInventory)                                                        | ✔️  |
 | updateInventory          | [Update inventory](https://developer.walmart.com/api/us/mp/inventory#operation/updateInventoryForAnItem)                                     | ✔️  |
@@ -101,7 +101,7 @@ walmart-sdk
 
 #### Settings
 
-| 方法名                       | 官方文档地址                                                                                                                                    | 状态  |
+| 🏷️方法名                    | 📚 官方文档地址                                                                                                                                 | 状态  |
 |:--------------------------|:------------------------------------------------------------------------------------------------------------------------------------------|:----|
 | getTemplateDetails        | [Get Shipping Template Details](https://developer.walmart.com/api/us/mp/settings#operation/getShippingTemplateDetails)                    | ✔️  |
 | updateTemplates           | [Update Shipping Templates](https://developer.walmart.com/api/us/mp/settings#operation/updateShippingTemplates)                           | ✔️  |
@@ -121,7 +121,7 @@ walmart-sdk
 
 #### Rules
 
-| 方法名                      | 官方文档地址                                                                                                            | 状态  |
+| 🏷️方法名                   | 📚 官方文档地址                                                                                                         | 状态  |
 |:-------------------------|:------------------------------------------------------------------------------------------------------------------|:----|
 | inactivateRule           | [Inactivate rule](https://developer.walmart.com/api/us/mp/rules#operation/inactivateRule)                         | ✔️  |
 | getAllExceptions         | [Gets all exceptions](https://developer.walmart.com/api/us/mp/rules#operation/getAllExceptions)                   | ✔️  |
@@ -143,7 +143,7 @@ walmart-sdk
 
 #### Reports
 
-| 方法名                   | 官方文档地址                                                                                                                              | 状态  |
+| 🏷️方法名                | 📚 官方文档地址                                                                                                                           | 状态  |
 |:----------------------|:------------------------------------------------------------------------------------------------------------------------------------|:----|
 | reconReport           | [Recon report / (Legacy)](https://developer.walmart.com/api/us/mp/reports#operation/getReconReportV1)                               | ✔️  |
 | availableReconFiles   | [Available recon report dates / (Legacy)](https://developer.walmart.com/api/us/mp/reports#operation/getAvailableV1ReconReportDates) | ✔️  |
@@ -152,7 +152,7 @@ walmart-sdk
 
 #### On-Request Report
 
-| 方法名               | 官方文档地址                                                                                                               | 状态  |
+| 🏷️方法名            | 📚 官方文档地址                                                                                                            | 状态  |
 |:------------------|:---------------------------------------------------------------------------------------------------------------------|:----|
 | getReportRequests | [Get All Report Requests](https://developer.walmart.com/api/us/mp/onrequestreports#operation/getRequestsStatus)      | ✔️  |
 | generateReport    | [Create Report Request](https://developer.walmart.com/api/us/mp/onrequestreports#operation/generateReport)           | ✔️  |
@@ -161,7 +161,7 @@ walmart-sdk
 
 #### Walmart Fulfillment Services
 
-| 方法名                            | 官方文档地址                                                                                                                                     | 状态  |
+| 🏷️方法名                         | 📚 官方文档地址                                                                                                                                  | 状态  |
 |:-------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------|:----|
 | updateShipmentQuantity         | [Update Shipment Quantities](https://developer.walmart.com/api/us/mp/fulfillment#operation/updateShipmentQuantity)                         | ✔️  |
 | onholdSearch                   | [Hazmat Items On hold](https://developer.walmart.com/api/us/mp/fulfillment#operation/wercsFeedback)                                        | ✔️  |
@@ -189,7 +189,7 @@ walmart-sdk
 
 #### Notifications
 
-| 方法名                 | 官方文档地址                                                                                                    | 状态  |
+| 🏷️方法名              | 📚 官方文档地址                                                                                                 | 状态  |
 |:--------------------|:----------------------------------------------------------------------------------------------------------|:----|
 | testNotification    | [Test Notification](https://developer.walmart.com/api/us/mp/notifications#operation/testNotification)     | ✔️  |
 | getAllSubscriptions | [All subscriptions](https://developer.walmart.com/api/us/mp/notifications#operation/getAllSubscriptions)  | ✔️  |
@@ -200,7 +200,7 @@ walmart-sdk
 
 #### Utilities
 
-| 方法名                  | 官方文档地址                                                                                                  | 状态  |
+| 🏷️方法名               | 📚 官方文档地址                                                                                               | 状态  |
 |:---------------------|:--------------------------------------------------------------------------------------------------------|:----|
 | getTaxonomy          | [Taxonomy by spec](https://developer.walmart.com/api/us/mp/utilities#operation/getTaxonomyResponse)     | ✔️  |
 | getDepartmentList    | [All Departments](https://developer.walmart.com/api/us/mp/utilities#operation/getDepartmentList)        | ✔️  |
@@ -209,7 +209,7 @@ walmart-sdk
 
 #### Insights
 
-| 方法名                     | 官方文档地址                                                                                                                 | 状态  |
+| 🏷️方法名                  | 📚 官方文档地址                                                                                                              | 状态  |
 |:------------------------|:-----------------------------------------------------------------------------------------------------------------------|:----|
 | itemListingDetails      | [Item Listing Quality Details](https://developer.walmart.com/api/us/mp/insights#operation/itemsDetailsForListing)      | ✔️  |
 | getProSellerBadgeInfo   | [Pro Seller Badge Status](https://developer.walmart.com/api/us/mp/insights#operation/getProSellerBadgeInfo)            | ✔️  |
@@ -221,7 +221,7 @@ walmart-sdk
 
 #### Reviews
 
-| 方法名                  | 官方文档地址                                                                                                    | 状态  |
+| 🏷️方法名               | 📚 官方文档地址                                                                                                 | 状态  |
 |:---------------------|:----------------------------------------------------------------------------------------------------------|:----|
 | bulkUpdateItemStatus | [Bulk update item status](https://developer.walmart.com/api/us/mp/reviews#operation/bulkUpdateItemStatus) | ✔️  |
 | getIrpItems          | [Get RAP post-purchase items](https://developer.walmart.com/api/us/mp/reviews#operation/getIrpItems)      | ✔️  |
@@ -229,7 +229,7 @@ walmart-sdk
 
 #### Assortment Recommendations
 
-| 方法名                     | 官方文档地址                                                                                                                                                | 状态  |
+| 🏷️方法名                  | 📚 官方文档地址                                                                                                                                             | 状态  |
 |:------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------|:----|
 | rejectRecommendations   | [Reject Recommendations](https://developer.walmart.com/api/us/mp/assortmentrecommendations#operation/rejectAssortmentRecommendations)                 | ✔️  |
 | getRecommendations      | [Get Recommendations](https://developer.walmart.com/api/us/mp/assortmentrecommendations#operation/getAssortmentRecommendations)                       | ✔️  |
@@ -240,7 +240,7 @@ walmart-sdk
 
 #### Shipping
 
-| 方法名                    | 官方文档地址                                                                                                          | 状态  |
+| 🏷️方法名                 | 📚 官方文档地址                                                                                                       | 状态  |
 |:-----------------------|:----------------------------------------------------------------------------------------------------------------|:----|
 | createLabel            | [Create label](https://developer.walmart.com/api/us/mp/sww#operation/createLabel)                               | ✔️  |
 | getShippingEstimate    | [Shipping estimates](https://developer.walmart.com/api/us/mp/sww#operation/getShippingEstimate)                 | ✔️  |
