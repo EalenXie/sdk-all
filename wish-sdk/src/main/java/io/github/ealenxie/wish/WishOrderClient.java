@@ -12,6 +12,7 @@ import io.github.ealenxie.wish.fbs.FbsRecommendation;
 import io.github.ealenxie.wish.fbs.FbsRecommendationsQueryParams;
 import io.github.ealenxie.wish.fbs.FbsVariation;
 import io.github.ealenxie.wish.franceerpcompliance.*;
+import io.github.ealenxie.wish.germanyerpcompliance.*;
 import io.github.ealenxie.wish.vo.NamePayload;
 import io.github.ealenxie.wish.vo.WishDownloadJob;
 import io.github.ealenxie.wish.vo.WishOrder;
@@ -43,6 +44,7 @@ public class WishOrderClient extends WishClient {
 
     private static final String EU_PRODUCT_COMPLIANCE_RESPONSIBLE_PERSON_URL = "/api/v3/eu_product_compliance/responsible_person/%s";
     private static final String FRANCE_EPR_COMPLIANCE_UNIQUE_ID_NUMBER_URL = "/api/v3/france_epr_compliance/unique_identification_number/%s";
+    private static final String GERMANY_EPR_COMPLIANCE_EPR_REGISTRATION_NUMBER_URL = "/api/v3/germany_epr_compliance/epr_registration_number/%s";
 
     /**
      * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/listBrands">Get a list of brands from a particular ID range</a>
@@ -284,6 +286,74 @@ public class WishOrderClient extends WishClient {
         exchange(String.format(FRANCE_EPR_COMPLIANCE_UNIQUE_ID_NUMBER_URL, id), HttpMethod.DELETE, accessToken, null, null, Object.class);
     }
 
+    /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/createGermanyProductEprRegistrationNumber">Create a Germany Product EPR Registration Number</a>
+     *
+     * @param accessToken 令牌
+     */
+    public WishData<RegistrationNumberGerResponse> createGerRegistrationNumber(String accessToken, RegistrationNumberGerCreatePayload payload) {
+        return post("/api/v3/germany_epr_compliance/epr_registration_number", accessToken, payload, new ParameterizedTypeReference<WishData<RegistrationNumberGerResponse>>() {
+        });
+    }
+
+    /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/listGermanyProductEprRegistrationNumbers">List Germany EPR Registration Numbers</a>
+     *
+     * @param accessToken 令牌
+     */
+    public WishData<List<RegistrationNumberGerResponse>> listGerRegistrationNumbers(String accessToken) {
+        return get("/api/v3/germany_epr_compliance/epr_registration_number", accessToken, null, new ParameterizedTypeReference<WishData<List<RegistrationNumberGerResponse>>>() {
+        });
+    }
+
+    /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/updateGermanyEPRProductComplianceStatus">Bulk update Germany EPR Product Compliance Status</a>
+     *
+     * @param accessToken 令牌
+     */
+    public WishData<List<ComplianceStatusGerResponse>> updateGerComplianceStatus(String accessToken, List<ComplianceStatusGerUpdatePayload> payload) {
+        return post("/api/v3/germany_epr_compliance/compliance_status", accessToken, payload, new ParameterizedTypeReference<WishData<List<ComplianceStatusGerResponse>>>() {
+        });
+    }
+
+    /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/getGermanyEPRProductComplianceStatus">Get Germany EPR Product Compliance Status</a>
+     *
+     * @param accessToken 令牌
+     */
+    public WishData<List<ComplianceStatusGerResponse>> getGerComplianceStatus(String accessToken, ComplianceStatusGerQueryParams queryParams) {
+        return get("/api/v3/germany_epr_compliance/compliance_status", accessToken, queryParams, new ParameterizedTypeReference<WishData<List<ComplianceStatusGerResponse>>>() {
+        });
+    }
+
+    /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/updateGermanyProductEprRegistrationNumber">Update a Germany Product EPR Registration Number</a>
+     *
+     * @param accessToken 令牌
+     */
+    public WishData<RegistrationNumberGerResponse> updateGerRegistrationNumber(String accessToken, String id, RegistrationNumberGerUpdatePayload payload) {
+        return exchange(String.format(GERMANY_EPR_COMPLIANCE_EPR_REGISTRATION_NUMBER_URL, id), HttpMethod.PUT, accessToken, null, payload, new ParameterizedTypeReference<WishData<RegistrationNumberGerResponse>>() {
+        });
+    }
+
+    /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/getGermanyProductEprRegistrationNumber">Get a Germany Product EPR Registration Number</a>
+     *
+     * @param accessToken 令牌
+     */
+    public WishData<RegistrationNumberGerResponse> getGerRegistrationNumber(String accessToken, String id) {
+        return get(String.format(GERMANY_EPR_COMPLIANCE_EPR_REGISTRATION_NUMBER_URL, id), accessToken, null, new ParameterizedTypeReference<WishData<RegistrationNumberGerResponse>>() {
+        });
+    }
+
+    /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/deleteGermanyProductEprRegistrationNumber">Delete a Germany Product EPR Registration Number</a>
+     *
+     * @param accessToken 令牌
+     */
+    public void deleteGerRegistrationNumber(String accessToken, String id) {
+        exchange(String.format(GERMANY_EPR_COMPLIANCE_EPR_REGISTRATION_NUMBER_URL, id), HttpMethod.DELETE, accessToken, null, null, Object.class);
+    }
 
     /**
      * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/GetOrder">Get an order</a>

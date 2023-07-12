@@ -81,6 +81,18 @@ wish-sdk
 | getFraUniqueIdNumber      | [Get a France Product Unique Identification Number](https://china-merchant.wish.com/documentation/api/v3/reference#operation/getFranceProductUniqueIdentificationNumber)       | ✔️  |
 | deleteFraUniqueIdNumber   | [Delete a France Product Unique Identification Number](https://china-merchant.wish.com/documentation/api/v3/reference#operation/deleteFranceProductUniqueIdentificationNumber) | ✔️  |
 
+##### Germany EPR Compliance
+
+| 方法名                         | 官方文档地址                                                                                                                                                                 | 状态  |
+|:----------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|:----|
+| createGerRegistrationNumber | [Create a Germany Product EPR Registration Number](https://china-merchant.wish.com/documentation/api/v3/reference#operation/createGermanyProductEprRegistrationNumber) | ✔️  |
+| listGerRegistrationNumbers  | [List Germany EPR Registration Numbers](https://china-merchant.wish.com/documentation/api/v3/reference#operation/listGermanyProductEprRegistrationNumbers)             | ✔️  |
+| updateGerComplianceStatus   | [Bulk update Germany EPR Product Compliance Status](https://china-merchant.wish.com/documentation/api/v3/reference#operation/updateGermanyEPRProductComplianceStatus)  | ✔️  |
+| getGerComplianceStatus      | [Get Germany EPR Product Compliance Status](https://china-merchant.wish.com/documentation/api/v3/reference#operation/getGermanyEPRProductComplianceStatus)             | ✔️  |
+| updateGerRegistrationNumber | [Update a Germany Product EPR Registration Number](https://china-merchant.wish.com/documentation/api/v3/reference#operation/updateGermanyProductEprRegistrationNumber) | ✔️  |
+| getGerRegistrationNumber    | [Get a Germany Product EPR Registration Number](https://china-merchant.wish.com/documentation/api/v3/reference#operation/getGermanyProductEprRegistrationNumber)       | ✔️  |
+| deleteGerRegistrationNumber | [Delete a Germany Product EPR Registration Number](https://china-merchant.wish.com/documentation/api/v3/reference#operation/deleteGermanyProductEprRegistrationNumber) | ✔️  |
+
 | 方法名                 | 官方文档地址                                                                                                                         | 状态  |
 |:--------------------|:-------------------------------------------------------------------------------------------------------------------------------|:----|
 | getOrder            | [Get an order](https://china-merchant.wish.com/documentation/api/v3/reference#operation/GetOrder)                              | ✔️  |
