@@ -1,4 +1,4 @@
-package io.github.ealenxie.wish.vo;
+package io.github.ealenxie.wish;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
@@ -11,8 +11,7 @@ import java.math.BigDecimal;
  */
 @Getter
 @Setter
-public class Amount {
-    @SuppressWarnings("all")
+public class Money {
     @JsonProperty("amount")
     private BigDecimal amount;
     @JsonProperty("currency_code")

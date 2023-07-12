@@ -1,4 +1,4 @@
-package io.github.ealenxie.wish.vo;
+package io.github.ealenxie.wish.bulkproducts;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
@@ -11,7 +11,7 @@ import java.util.List;
  */
 @Getter
 @Setter
-public class ProductsBulk {
+public class ProductBulk {
 
     @JsonProperty("status")
     private String status;

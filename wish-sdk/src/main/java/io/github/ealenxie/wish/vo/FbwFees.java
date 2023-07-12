@@ -1,6 +1,7 @@
 package io.github.ealenxie.wish.vo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.ealenxie.wish.Money;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,7 +12,7 @@ import lombok.Setter;
 @Setter
 public class FbwFees {
     @JsonProperty("amount")
-    private Amount amount;
+    private Money amount;
     @JsonProperty("fee_name")
     private String feeName;
     @JsonProperty("fee_type")

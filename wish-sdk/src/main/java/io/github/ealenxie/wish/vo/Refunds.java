@@ -1,6 +1,7 @@
 package io.github.ealenxie.wish.vo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.ealenxie.wish.Money;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,9 +16,9 @@ public class Refunds {
     @JsonProperty("refund_source")
     private String refundSource;
     @JsonProperty("refund_amount")
-    private Amount refundAmount;
+    private Money refundAmount;
     @JsonProperty("merchant_responsible_amount")
-    private Amount merchantResponsibleAmount;
+    private Money merchantResponsibleAmount;
     @JsonProperty("refund_time")
     private String refundTime;
     @JsonProperty("refund_reason")

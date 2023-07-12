@@ -1,6 +1,7 @@
 package io.github.ealenxie.wish.vo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.ealenxie.wish.Money;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,15 +12,15 @@ import lombok.Setter;
 @Setter
 public class GeneralPaymentDetails {
     @JsonProperty("shipping_merchant_payment")
-    private Amount shippingMerchantPayment;
+    private Money shippingMerchantPayment;
     @JsonProperty("payment_total")
-    private Amount paymentTotal;
+    private Money paymentTotal;
     @JsonProperty("product_price")
-    private Amount productPrice;
+    private Money productPrice;
     @JsonProperty("product_merchant_payment")
-    private Amount productMerchantPayment;
+    private Money productMerchantPayment;
     @JsonProperty("product_shipping_price")
-    private Amount productShippingPrice;
+    private Money productShippingPrice;
     @JsonProperty("product_quantity")
     private Integer productQuantity;
     @JsonProperty("customer_paid_prices_detail")

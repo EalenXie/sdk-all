@@ -1,6 +1,7 @@
 package io.github.ealenxie.wish.vo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.ealenxie.wish.Money;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,9 +12,9 @@ import lombok.Setter;
 @Setter
 public class VatAmount {
     @JsonProperty("shipping_level_vat")
-    private Amount shippingLevelVat;
+    private Money shippingLevelVat;
     @JsonProperty("final_vat")
-    private Amount finalVat;
+    private Money finalVat;
     @JsonProperty("product_level_vat")
-    private Amount productLevelVat;
+    private Money productLevelVat;
 }

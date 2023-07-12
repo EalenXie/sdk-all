@@ -1,6 +1,7 @@
 package io.github.ealenxie.wish.vo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.ealenxie.wish.Money;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,7 +12,7 @@ import lombok.Setter;
 @Setter
 public class CarrierSubsidies {
     @JsonProperty("subsidy")
-    private Amount subsidy;
+    private Money subsidy;
     @JsonProperty("carrier_name")
     private String carrierName;
 }

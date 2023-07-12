@@ -27,17 +27,49 @@ wish-sdk
 
 #### [WishOrderClient](https://github.com/EalenXie/sdk-all/blob/main/wish-sdk/src/main/java/io/github/ealenxie/wish/WishOrderClient.java) 已支持的接口列表
 
-| 接口名       | 方法名                 | 官方文档地址                                                                                                                                 | 状态  |
-|:----------|:--------------------|:---------------------------------------------------------------------------------------------------------------------------------------|:----|
-| 获取订单详情    | getOrder            | [Get an order](https://china-merchant.wish.com/documentation/api/v3/reference#operation/GetOrder)                                      | ✔️  |
-| 获取订单列表    | getOrders           | [List orders](https://china-merchant.wish.com/documentation/api/v3/reference#operation/GetMultipleOrders)                              | ✔️  |
-| 获取货运公司    | shippingCarriers    | [Get accepted shipping carriers](https://china-merchant.wish.com/documentation/api/v3/reference#operation/GetShippingCarriers)         | ✔️  |
-| 批量获取订单下载  | batchDownloadOrders | [Batch download orders](https://china-merchant.wish.com/documentation/api/v3/reference#operation/downloadOrders)                       | ✔️  |
-| 发货或更新跟踪订单 | shipOrder           | [Ship or update tracking](https://china-merchant.wish.com/documentation/api/v3/reference#operation/ShipOrder)                          | ✔️  |
-| 获取退货原因    | refundReasons       | [Get valid refund reasons](https://china-merchant.wish.com/documentation/api/v3/reference#operation/GetValidRefundReasons)             | ✔️  |
-| 取消订单      | refund              | [Refund/Cancel an order](https://china-merchant.wish.com/documentation/api/v3/reference#operation/RefundOrder)                         | ✔️  |
-| 更新订单      | updateLTLOrder      | [Update an LTL order](https://china-merchant.wish.com/documentation/api/v3/reference#operation/UpdateOrder)                            | ✔️  |
-| 修改物流地址    | modifyAddress       | [Modify shipping address](https://china-merchant.wish.com/documentation/api/v3/reference#operation/ModifyAddress)                      | ✔️  |
-| 修改物流地址    | brands              | [Get a list of brands from a particular ID range](https://china-merchant.wish.com/documentation/api/v3/reference#tag/Brands)           | ✔️  |
-| 异步获取产品任务  | getProductsJobs     | [Get products](https://china-merchant.wish.com/documentation/api/v3/reference#operation/getProducts)                                   | ✔️  |
-| 获取产品任务状态  | getProductsJob      | [Get the update products job status](https://china-merchant.wish.com/documentation/api/v3/reference#operation/getUpdateProductsStatus) | ✔️  |
+##### Brands
+
+| 方法名        | 官方文档地址                                                                                                                                 | 状态  |
+|:-----------|:---------------------------------------------------------------------------------------------------------------------------------------|:----|
+| listBrands | [Get a list of brands from a particular ID range](https://china-merchant.wish.com/documentation/api/v3/reference#operation/listBrands) | ✔️  |
+
+##### Bulk Products
+
+| 方法名                     | 官方文档地址                                                                                                                                 | 状态  |
+|:------------------------|:---------------------------------------------------------------------------------------------------------------------------------------|:----|
+| getProducts             | [Get products](https://china-merchant.wish.com/documentation/api/v3/reference#operation/getProducts)                                   | ✔️  |
+| getUpdateProductsStatus | [Get the update products job status](https://china-merchant.wish.com/documentation/api/v3/reference#operation/getUpdateProductsStatus) | ✔️  |
+| updateProducts          | [Update products](https://china-merchant.wish.com/documentation/api/v3/reference#operation/updateProducts)                             | ✔️  |
+| getGetProductsStatus    | [Get the get products job status](https://china-merchant.wish.com/documentation/api/v3/reference#operation/getGetProductsStatus)       | ✔️  |
+
+##### Currencies
+
+| 方法名           | 官方文档地址                                                                                                                | 状态  |
+|:--------------|:----------------------------------------------------------------------------------------------------------------------|:----|
+| getCurrencies | [Get supported currency list](https://china-merchant.wish.com/documentation/api/v3/reference#operation/getCurrencies) | ✔️  |
+
+##### EU Product Compliance
+
+| 方法名                             | 官方文档地址                                                                                                                                          | 状态  |
+|:--------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------|:----|
+| updateEUResponsiblePerson       | [Update an EU Responsible Person](https://china-merchant.wish.com/documentation/api/v3/reference#operation/updateEUResponsiblePerson)           | ✔️  |
+| getEUResponsiblePerson          | [Get an EU Responsible Person](https://china-merchant.wish.com/documentation/api/v3/reference#operation/getEUResponsiblePerson)                 | ✔️  |
+| deleteEUResponsiblePerson       | [Delete an EU Responsible Person](https://china-merchant.wish.com/documentation/api/v3/reference#operation/deleteEUResponsiblePerson)           | ✔️  |
+| bulkUpdateProducts              | [Bulk Update EU Product Compliance Status](https://china-merchant.wish.com/documentation/api/v3/reference#operation/BulkUpdateProducts)         | ✔️  |
+| getBulkUpdateStatus             | [Get Bulk Update Job Status](https://china-merchant.wish.com/documentation/api/v3/reference#operation/GetBulkUpdateStatus)                      | ✔️  |
+| updateEUProductComplianceStatus | [Update EU Product Compliance Status](https://china-merchant.wish.com/documentation/api/v3/reference#operation/updateEUProductComplianceStatus) | ✔️  |
+| getEUProductComplianceStatus    | [Get EU Product Compliance Status](https://china-merchant.wish.com/documentation/api/v3/reference#operation/getEUProductComplianceStatus)       | ✔️  |
+| createEUResponsiblePerson       | [Update an EU Responsible Person](https://china-merchant.wish.com/documentation/api/v3/reference#operation/createEUResponsiblePerson)           | ✔️  |
+| listEUResponsiblePerson         | [List EU Responsible Persons](https://china-merchant.wish.com/documentation/api/v3/reference#operation/listEUResponsiblePerson)                 | ✔️  |
+
+| 方法名                 | 官方文档地址                                                                                                                         | 状态  |
+|:--------------------|:-------------------------------------------------------------------------------------------------------------------------------|:----|
+| getOrder            | [Get an order](https://china-merchant.wish.com/documentation/api/v3/reference#operation/GetOrder)                              | ✔️  |
+| getOrders           | [List orders](https://china-merchant.wish.com/documentation/api/v3/reference#operation/GetMultipleOrders)                      | ✔️  |
+| shippingCarriers    | [Get accepted shipping carriers](https://china-merchant.wish.com/documentation/api/v3/reference#operation/GetShippingCarriers) | ✔️  |
+| batchDownloadOrders | [Batch download orders](https://china-merchant.wish.com/documentation/api/v3/reference#operation/downloadOrders)               | ✔️  |
+| shipOrder           | [Ship or update tracking](https://china-merchant.wish.com/documentation/api/v3/reference#operation/ShipOrder)                  | ✔️  |
+| refundReasons       | [Get valid refund reasons](https://china-merchant.wish.com/documentation/api/v3/reference#operation/GetValidRefundReasons)     | ✔️  |
+| refund              | [Refund/Cancel an order](https://china-merchant.wish.com/documentation/api/v3/reference#operation/RefundOrder)                 | ✔️  |
+| updateLTLOrder      | [Update an LTL order](https://china-merchant.wish.com/documentation/api/v3/reference#operation/UpdateOrder)                    | ✔️  |
+| modifyAddress       | [Modify shipping address](https://china-merchant.wish.com/documentation/api/v3/reference#operation/ModifyAddress)              | ✔️  |

@@ -1,6 +1,7 @@
 package io.github.ealenxie.wish.vo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.ealenxie.wish.Money;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,11 +16,11 @@ public class EuVatCustomsDeclaration {
     @JsonProperty("merchant_identity")
     private String merchantIdentity;
     @JsonProperty("vat_paid_in_authority_currency")
-    private Amount vatPaidInAuthorityCurrency;
+    private Money vatPaidInAuthorityCurrency;
     @JsonProperty("vat_paid_in_customer_currency")
-    private Amount vatPaidInCustomerCurrency;
+    private Money vatPaidInCustomerCurrency;
     @JsonProperty("shipping_cost_in_customer_currency")
-    private Amount shippingCostInCustomerCurrency;
+    private Money shippingCostInCustomerCurrency;
     @JsonProperty("customer_identity")
     private String customerIdentity;
     @JsonProperty("vat_payer")
@@ -27,11 +28,11 @@ public class EuVatCustomsDeclaration {
     @JsonProperty("merchant_address")
     private ShippingDetail merchantAddress;
     @JsonProperty("invoice_amount_in_customer_currency")
-    private Amount invoiceAmountInCustomerCurrency;
+    private Money invoiceAmountInCustomerCurrency;
     @JsonProperty("shipping_cost_in_authority_currency")
-    private Amount shippingCostInAuthorityCurrency;
+    private Money shippingCostInAuthorityCurrency;
     @JsonProperty("invoice_amount_in_authority_currency")
-    private Amount invoiceAmountInAuthorityCurrency;
+    private Money invoiceAmountInAuthorityCurrency;
     @JsonProperty("customer_address")
     private ShippingDetail customerAddress;
     @JsonProperty("merchant_name")

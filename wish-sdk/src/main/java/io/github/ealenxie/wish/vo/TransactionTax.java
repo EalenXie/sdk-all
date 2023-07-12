@@ -1,6 +1,7 @@
 package io.github.ealenxie.wish.vo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.ealenxie.wish.Money;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,9 +12,9 @@ import lombok.Setter;
 @Setter
 public class TransactionTax {
     @JsonProperty("tax_amount_in_merchant_currency")
-    private Amount taxAmountInMerchantCurrency;
+    private Money taxAmountInMerchantCurrency;
     @JsonProperty("tax_amount_in_authority_currency")
-    private Amount taxAmountInAuthorityCurrency;
+    private Money taxAmountInAuthorityCurrency;
     @JsonProperty("tax_type")
     private String taxType;
     @JsonProperty("remit_type")

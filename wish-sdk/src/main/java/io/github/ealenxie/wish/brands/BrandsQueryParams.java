@@ -1,4 +1,4 @@
-package io.github.ealenxie.wish.dto;
+package io.github.ealenxie.wish.brands;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
