@@ -500,9 +500,22 @@ public class MarketplaceClient extends WalmartClient {
     /**
      * <a href="https://developer.walmart.com/api/us/mp/inventory#operation/getWFSInventory">WFS Inventory</a>
      */
-    public ListElement<MultiNodeInventories> getWFSInventory(String accessToken, WfsInventoryQueryParams queryParams) {
-        return get("/v3/inventories", accessToken, queryParams, new ParameterizedTypeReference<ListElement<MultiNodeInventories>>() {
-        });
+    public WfsInventoryResponse getWFSInventory(String accessToken, WfsInventoryQueryParams queryParams) {
+        return get("/v3/fulfillment/inventory", accessToken, queryParams, WfsInventoryResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/lagtime">Update lag time</a>
+     */
+    public FeedIdPayload updateLagTime(String accessToken, String feedType, LagTimeResponse payload) {
+        return exchange(FEEDS_URL, HttpMethod.POST, accessToken, new FeedTypePayload(feedType), payload, FeedIdPayload.class);
+    }
+
+    /**
+     * <a href="https://developer.walmart.com/api/us/mp/lagtime#operation/getLagTime">Lag Time</a>
+     */
+    public LagTimePayload getLagTime(String accessToken, SkuPayload queryParams) {
+        return get("/v3/lagtime", accessToken, queryParams, LagTimePayload.class);
     }
 
     /**

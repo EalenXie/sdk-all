@@ -102,6 +102,13 @@ walmart-sdk
 | getMultiNodeInventories  | [Multiple Item Inventory for All Ship Nodes](https://developer.walmart.com/api/us/mp/inventory#operation/getMultiNodeInventoryForAllSkuAndAllShipNodes) | ✔️  |
 | getWFSInventory          | [WFS Inventory](https://developer.walmart.com/api/us/mp/inventory#operation/getWFSInventory)                                                            | ✔️  |
 
+#### Lag Time
+
+| 🏷️方法名        | 📚 官方文档地址                                                                        | 状态  |
+|:--------------|:---------------------------------------------------------------------------------|:----|
+| updateLagTime | [Update lag time](https://developer.walmart.com/api/us/mp/lagtime)               | ⚠️️ |
+| getLagTime    | [Lag Time](https://developer.walmart.com/api/us/mp/lagtime#operation/getLagTime) | ✔️  |
+
 #### Settings
 
 | 🏷️方法名                    | 📚 官方文档地址                                                                                                                                 | 状态  |
