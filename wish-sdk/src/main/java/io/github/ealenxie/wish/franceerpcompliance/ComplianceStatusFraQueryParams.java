@@ -1,0 +1,37 @@
+package io.github.ealenxie.wish.franceerpcompliance;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.List;
+
+/**
+ * @author EalenXie created on 2023/7/12 15:37
+ */
+@Getter
+@Setter
+public class ComplianceStatusFraQueryParams {
+    /**
+     * limit
+     */
+    @JsonProperty("limit")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Integer limit;
+    /**
+     * sort_by
+     */
+    @JsonProperty("sort_by")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String sortBy;
+    @JsonProperty("product_ids")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private List<String> productIds;
+    @JsonProperty("product_id_max")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String productIdMax;
+    @JsonProperty("product_id_min")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String productIdMin;
+}

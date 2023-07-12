@@ -1,16 +1,22 @@
-package io.github.ealenxie.wish.euproductcompliance;
+package io.github.ealenxie.wish.franceerpcompliance;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 /**
- * @author EalenXie created on 2023/7/12 14:06
+ * @author EalenXie created on 2023/7/12 15:26
  */
 @NoArgsConstructor
 @Data
-public class ComplianceStatusUpdateResponse {
-
+public class ComplianceStatusFraResponse {
+    /**
+     * uniqueIdentificationNumberIds
+     */
+    @JsonProperty("unique_identification_number_ids")
+    private List<String> uniqueIdentificationNumberIds;
     /**
      * complianceStatus
      */
@@ -21,9 +27,4 @@ public class ComplianceStatusUpdateResponse {
      */
     @JsonProperty("product_id")
     private String productId;
-    /**
-     * responsiblePersonId
-     */
-    @JsonProperty("responsible_person_id")
-    private String responsiblePersonId;
 }

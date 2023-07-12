@@ -9,8 +9,13 @@ import lombok.NoArgsConstructor;
  */
 @NoArgsConstructor
 @Data
-public class ComplianceStatusUpdatePayload {
+public class ComplianceStatusEuResponse {
 
+    /**
+     * complianceStatus
+     */
+    @JsonProperty("compliance_status")
+    private String complianceStatus;
     /**
      * productId
      */

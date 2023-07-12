@@ -50,17 +50,17 @@ wish-sdk
 
 ##### EU Product Compliance
 
-| 方法名                             | 官方文档地址                                                                                                                                          | 状态  |
-|:--------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------|:----|
-| updateEUResponsiblePerson       | [Update an EU Responsible Person](https://china-merchant.wish.com/documentation/api/v3/reference#operation/updateEUResponsiblePerson)           | ✔️  |
-| getEUResponsiblePerson          | [Get an EU Responsible Person](https://china-merchant.wish.com/documentation/api/v3/reference#operation/getEUResponsiblePerson)                 | ✔️  |
-| deleteEUResponsiblePerson       | [Delete an EU Responsible Person](https://china-merchant.wish.com/documentation/api/v3/reference#operation/deleteEUResponsiblePerson)           | ✔️  |
-| bulkUpdateProducts              | [Bulk Update EU Product Compliance Status](https://china-merchant.wish.com/documentation/api/v3/reference#operation/BulkUpdateProducts)         | ✔️  |
-| getBulkUpdateStatus             | [Get Bulk Update Job Status](https://china-merchant.wish.com/documentation/api/v3/reference#operation/GetBulkUpdateStatus)                      | ✔️  |
-| updateEUProductComplianceStatus | [Update EU Product Compliance Status](https://china-merchant.wish.com/documentation/api/v3/reference#operation/updateEUProductComplianceStatus) | ✔️  |
-| getEUProductComplianceStatus    | [Get EU Product Compliance Status](https://china-merchant.wish.com/documentation/api/v3/reference#operation/getEUProductComplianceStatus)       | ✔️  |
-| createEUResponsiblePerson       | [Update an EU Responsible Person](https://china-merchant.wish.com/documentation/api/v3/reference#operation/createEUResponsiblePerson)           | ✔️  |
-| listEUResponsiblePerson         | [List EU Responsible Persons](https://china-merchant.wish.com/documentation/api/v3/reference#operation/listEUResponsiblePerson)                 | ✔️  |
+| 方法名                       | 官方文档地址                                                                                                                                          | 状态  |
+|:--------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------|:----|
+| updateEuResponsiblePerson | [Update an EU Responsible Person](https://china-merchant.wish.com/documentation/api/v3/reference#operation/updateEUResponsiblePerson)           | ✔️  |
+| getEuResponsiblePerson    | [Get an EU Responsible Person](https://china-merchant.wish.com/documentation/api/v3/reference#operation/getEUResponsiblePerson)                 | ✔️  |
+| deleteEuResponsiblePerson | [Delete an EU Responsible Person](https://china-merchant.wish.com/documentation/api/v3/reference#operation/deleteEUResponsiblePerson)           | ✔️  |
+| bulkUpdateProducts        | [Bulk Update EU Product Compliance Status](https://china-merchant.wish.com/documentation/api/v3/reference#operation/BulkUpdateProducts)         | ✔️  |
+| getBulkUpdateStatus       | [Get Bulk Update Job Status](https://china-merchant.wish.com/documentation/api/v3/reference#operation/GetBulkUpdateStatus)                      | ✔️  |
+| updateEuComplianceStatus  | [Update EU Product Compliance Status](https://china-merchant.wish.com/documentation/api/v3/reference#operation/updateEUProductComplianceStatus) | ✔️  |
+| getEuComplianceStatus     | [Get EU Product Compliance Status](https://china-merchant.wish.com/documentation/api/v3/reference#operation/getEUProductComplianceStatus)       | ✔️  |
+| createEuResponsiblePerson | [Update an EU Responsible Person](https://china-merchant.wish.com/documentation/api/v3/reference#operation/createEUResponsiblePerson)           | ✔️  |
+| listEuResponsiblePerson   | [List EU Responsible Persons](https://china-merchant.wish.com/documentation/api/v3/reference#operation/listEUResponsiblePerson)                 | ✔️  |
 
 ##### FBS
 
@@ -68,6 +68,18 @@ wish-sdk
 |:-------------------|:----------------------------------------------------------------------------------------------------------------------------------------|:----|
 | fbsVariation       | [Get FBS related data for a variation](https://china-merchant.wish.com/documentation/api/v3/reference#operation/fbsVariation)           | ✔️  |
 | fbsRecommendations | [Get FBS inbound shipping recommendations](https://china-merchant.wish.com/documentation/api/v3/reference#operation/fbsRecommendations) | ✔️  |
+
+##### France EPR Compliance
+
+| 方法名                       | 官方文档地址                                                                                                                                                                         | 状态  |
+|:--------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:----|
+| updateFraComplianceStatus | [Bulk update France EPR Product Compliance Status](https://china-merchant.wish.com/documentation/api/v3/reference#operation/updateFranceEPRProductComplianceStatus)            | ✔️  |
+| getFraComplianceStatus    | [Get France EPR Product Compliance Status](https://china-merchant.wish.com/documentation/api/v3/reference#operation/getFranceEPRProductComplianceStatus)                       | ✔️  |
+| createFraUniqueIdNumber   | [Create a France Product Unique Identification Number](https://china-merchant.wish.com/documentation/api/v3/reference#operation/createFranceProductUniqueIdentificationNumber) | ✔️  |
+| listFraUniqueIdNumber     | [List France Product Unique Identification Numbers](https://china-merchant.wish.com/documentation/api/v3/reference#operation/listFranceProductUniqueIdentificationNumber)      | ✔️  |
+| updateFraUniqueIdNumber   | [Update a France Product Unique Identification Number](https://china-merchant.wish.com/documentation/api/v3/reference#operation/updateFranceProductUniqueIdentificationNumber) | ✔️  |
+| getFraUniqueIdNumber      | [Get a France Product Unique Identification Number](https://china-merchant.wish.com/documentation/api/v3/reference#operation/getFranceProductUniqueIdentificationNumber)       | ✔️  |
+| deleteFraUniqueIdNumber   | [Delete a France Product Unique Identification Number](https://china-merchant.wish.com/documentation/api/v3/reference#operation/deleteFranceProductUniqueIdentificationNumber) | ✔️  |
 
 | 方法名                 | 官方文档地址                                                                                                                         | 状态  |
 |:--------------------|:-------------------------------------------------------------------------------------------------------------------------------|:----|

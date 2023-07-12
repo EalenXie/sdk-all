@@ -11,6 +11,7 @@ import io.github.ealenxie.wish.euproductcompliance.*;
 import io.github.ealenxie.wish.fbs.FbsRecommendation;
 import io.github.ealenxie.wish.fbs.FbsRecommendationsQueryParams;
 import io.github.ealenxie.wish.fbs.FbsVariation;
+import io.github.ealenxie.wish.franceerpcompliance.*;
 import io.github.ealenxie.wish.vo.NamePayload;
 import io.github.ealenxie.wish.vo.WishDownloadJob;
 import io.github.ealenxie.wish.vo.WishOrder;
@@ -41,6 +42,7 @@ public class WishOrderClient extends WishClient {
 
 
     private static final String EU_PRODUCT_COMPLIANCE_RESPONSIBLE_PERSON_URL = "/api/v3/eu_product_compliance/responsible_person/%s";
+    private static final String FRANCE_EPR_COMPLIANCE_UNIQUE_ID_NUMBER_URL = "/api/v3/france_epr_compliance/unique_identification_number/%s";
 
     /**
      * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/listBrands">Get a list of brands from a particular ID range</a>
@@ -109,7 +111,7 @@ public class WishOrderClient extends WishClient {
      *
      * @param accessToken 令牌
      */
-    public WishData<ResponsiblePersonPayload> updateEUResponsiblePerson(String accessToken, String id, ResponsiblePersonRequestPayload payload) {
+    public WishData<ResponsiblePersonPayload> updateEuResponsiblePerson(String accessToken, String id, ResponsiblePersonRequestPayload payload) {
         return exchange(String.format(EU_PRODUCT_COMPLIANCE_RESPONSIBLE_PERSON_URL, id), HttpMethod.PUT, accessToken, null, payload, new ParameterizedTypeReference<WishData<ResponsiblePersonPayload>>() {
         });
     }
@@ -119,7 +121,7 @@ public class WishOrderClient extends WishClient {
      *
      * @param accessToken 令牌
      */
-    public WishData<ResponsiblePersonPayload> getEUResponsiblePerson(String accessToken, String id) {
+    public WishData<ResponsiblePersonPayload> getEuResponsiblePerson(String accessToken, String id) {
         return get(String.format(EU_PRODUCT_COMPLIANCE_RESPONSIBLE_PERSON_URL, id), accessToken, null, new ParameterizedTypeReference<WishData<ResponsiblePersonPayload>>() {
         });
     }
@@ -129,7 +131,7 @@ public class WishOrderClient extends WishClient {
      *
      * @param accessToken 令牌
      */
-    public void deleteEUResponsiblePerson(String accessToken, String id) {
+    public void deleteEuResponsiblePerson(String accessToken, String id) {
         exchange(String.format(EU_PRODUCT_COMPLIANCE_RESPONSIBLE_PERSON_URL, id), HttpMethod.DELETE, accessToken, null, null, Object.class);
     }
 
@@ -158,8 +160,8 @@ public class WishOrderClient extends WishClient {
      *
      * @param accessToken 令牌
      */
-    public WishData<List<ComplianceStatusUpdateResponse>> updateEUProductComplianceStatus(String accessToken, List<ComplianceStatusUpdatePayload> payload) {
-        return exchange("/api/v3/eu_product_compliance/products", HttpMethod.PUT, accessToken, null, payload, new ParameterizedTypeReference<WishData<List<ComplianceStatusUpdateResponse>>>() {
+    public WishData<List<ComplianceStatusEuResponse>> updateEuComplianceStatus(String accessToken, List<ComplianceStatusEuUpdatePayload> payload) {
+        return exchange("/api/v3/eu_product_compliance/products", HttpMethod.PUT, accessToken, null, payload, new ParameterizedTypeReference<WishData<List<ComplianceStatusEuResponse>>>() {
         });
     }
 
@@ -168,8 +170,8 @@ public class WishOrderClient extends WishClient {
      *
      * @param accessToken 令牌
      */
-    public WishData<List<ComplianceStatusUpdateResponse>> getEUProductComplianceStatus(String accessToken, ComplianceStatusQueryParams queryParams) {
-        return get("/api/v3/eu_product_compliance/products", accessToken, queryParams, new ParameterizedTypeReference<WishData<List<ComplianceStatusUpdateResponse>>>() {
+    public WishData<List<ComplianceStatusEuResponse>> getEuComplianceStatus(String accessToken, ComplianceStatusEuQueryParams queryParams) {
+        return get("/api/v3/eu_product_compliance/products", accessToken, queryParams, new ParameterizedTypeReference<WishData<List<ComplianceStatusEuResponse>>>() {
         });
     }
 
@@ -178,7 +180,7 @@ public class WishOrderClient extends WishClient {
      *
      * @param accessToken 令牌
      */
-    public WishData<ResponsiblePersonPayload> createEUResponsiblePerson(String accessToken, ResponsiblePersonRequestPayload payload) {
+    public WishData<ResponsiblePersonPayload> createEuResponsiblePerson(String accessToken, ResponsiblePersonRequestPayload payload) {
         return exchange("/api/v3/eu_product_compliance/responsible_person", HttpMethod.PUT, accessToken, null, payload, new ParameterizedTypeReference<WishData<ResponsiblePersonPayload>>() {
         });
     }
@@ -188,7 +190,7 @@ public class WishOrderClient extends WishClient {
      *
      * @param accessToken 令牌
      */
-    public WishData<List<ResponsiblePersonPayload>> listEUResponsiblePerson(String accessToken, ResponsiblePersonQueryParams queryParams) {
+    public WishData<List<ResponsiblePersonPayload>> listEuResponsiblePerson(String accessToken, ResponsiblePersonQueryParams queryParams) {
         return get("/api/v3/eu_product_compliance/responsible_person", accessToken, queryParams, new ParameterizedTypeReference<WishData<List<ResponsiblePersonPayload>>>() {
         });
     }
@@ -211,6 +213,75 @@ public class WishOrderClient extends WishClient {
     public WishData<List<FbsRecommendation>> fbsRecommendations(String accessToken, FbsRecommendationsQueryParams queryParams) {
         return get("/api/v3/fbs/recommendations", accessToken, queryParams, new ParameterizedTypeReference<WishData<List<FbsRecommendation>>>() {
         });
+    }
+
+    /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/updateFranceEPRProductComplianceStatus">Bulk update France EPR Product Compliance Status</a>
+     *
+     * @param accessToken 令牌
+     */
+    public WishData<List<ComplianceStatusFraResponse>> updateFraComplianceStatus(String accessToken, List<ComplianceStatusFraUpdatePayload> payload) {
+        return exchange("/api/v3/france_epr_compliance/compliance_status", HttpMethod.PUT, accessToken, null, payload, new ParameterizedTypeReference<WishData<List<ComplianceStatusFraResponse>>>() {
+        });
+    }
+
+    /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/getFranceEPRProductComplianceStatus">Get France EPR Product Compliance Status</a>
+     *
+     * @param accessToken 令牌
+     */
+    public WishData<List<ComplianceStatusFraResponse>> getFraComplianceStatus(String accessToken, ComplianceStatusFraQueryParams queryParams) {
+        return get("/api/v3/france_epr_compliance/compliance_status", accessToken, queryParams, new ParameterizedTypeReference<WishData<List<ComplianceStatusFraResponse>>>() {
+        });
+    }
+
+    /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/createFranceProductUniqueIdentificationNumber">Create a France Product Unique Identification Number</a>
+     *
+     * @param accessToken 令牌
+     */
+    public WishData<UniqueIdNumberFraResponse> createFraUniqueIdNumber(String accessToken, UniqueIdNumberFraCreatePayload payload) {
+        return post("/api/v3/france_epr_compliance/unique_identification_number", accessToken, payload, new ParameterizedTypeReference<WishData<UniqueIdNumberFraResponse>>() {
+        });
+    }
+
+    /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/listFranceProductUniqueIdentificationNumber">List France Product Unique Identification Numbers</a>
+     *
+     * @param accessToken 令牌
+     */
+    public WishData<List<UniqueIdNumberFraResponse>> listFraUniqueIdNumber(String accessToken) {
+        return get("/api/v3/france_epr_compliance/unique_identification_number", accessToken, null, new ParameterizedTypeReference<WishData<List<UniqueIdNumberFraResponse>>>() {
+        });
+    }
+
+    /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/updateFranceProductUniqueIdentificationNumber">Update a France Product Unique Identification Number</a>
+     *
+     * @param accessToken 令牌
+     */
+    public WishData<UniqueIdNumberFraResponse> updateFraUniqueIdNumber(String accessToken, String id, UniqueIdNumberFraUpdatePayload payload) {
+        return exchange(String.format(FRANCE_EPR_COMPLIANCE_UNIQUE_ID_NUMBER_URL, id), HttpMethod.PUT, accessToken, null, payload, new ParameterizedTypeReference<WishData<UniqueIdNumberFraResponse>>() {
+        });
+    }
+
+    /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/getFranceProductUniqueIdentificationNumber">Get a France Product Unique Identification Number</a>
+     *
+     * @param accessToken 令牌
+     */
+    public WishData<UniqueIdNumberFraResponse> getFraUniqueIdNumber(String accessToken, String id) {
+        return get(String.format(FRANCE_EPR_COMPLIANCE_UNIQUE_ID_NUMBER_URL, id), accessToken, null, new ParameterizedTypeReference<WishData<UniqueIdNumberFraResponse>>() {
+        });
+    }
+
+    /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/deleteFranceProductUniqueIdentificationNumber">Delete a France Product Unique Identification Number</a>
+     *
+     * @param accessToken 令牌
+     */
+    public void deleteFraUniqueIdNumber(String accessToken, String id) {
+        exchange(String.format(FRANCE_EPR_COMPLIANCE_UNIQUE_ID_NUMBER_URL, id), HttpMethod.DELETE, accessToken, null, null, Object.class);
     }
 
 
