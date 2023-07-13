@@ -17,6 +17,10 @@ import io.github.ealenxie.wish.orders.*;
 import io.github.ealenxie.wish.payments.EarlyPayment;
 import io.github.ealenxie.wish.payments.PaymentInvoicesQueryParams;
 import io.github.ealenxie.wish.payments.PaymentInvoicesResponse;
+import io.github.ealenxie.wish.penalties.CountPayload;
+import io.github.ealenxie.wish.penalties.PenaltiesCountQueryParams;
+import io.github.ealenxie.wish.penalties.PenaltiesQueryParams;
+import io.github.ealenxie.wish.penalties.Penalty;
 import io.github.ealenxie.wish.price.*;
 import io.github.ealenxie.wish.variation.ColorQueryParams;
 import io.github.ealenxie.wish.variation.VariationPayload;
@@ -375,7 +379,7 @@ public class WishOrderClient extends WishClient {
     /**
      * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/downloadOrders">Batch download orders</a>
      */
-    public WishData<WishDownloadJob> batchDownloadOrders(String accessToken, OrdersQueryParams queryParams) {
+    public WishData<WishDownloadJob> downloadOrders(String accessToken, OrdersQueryParams queryParams) {
         return exchange("/api/v3/bulk_get", HttpMethod.POST, accessToken, queryParams, null, new ParameterizedTypeReference<WishData<WishDownloadJob>>() {
         });
     }
@@ -383,7 +387,7 @@ public class WishOrderClient extends WishClient {
     /**
      * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/getOrderDownloadJob">Get batch download job status</a>
      */
-    public WishData<WishDownloadJob> batchDownloadJobStatus(String accessToken, String jobId) {
+    public WishData<WishDownloadJob> getOrderDownloadJob(String accessToken, String jobId) {
         return get(String.format("/api/v3/bulk_get/%s", jobId), accessToken, null, new ParameterizedTypeReference<WishData<WishDownloadJob>>() {
         });
     }
@@ -468,6 +472,29 @@ public class WishOrderClient extends WishClient {
         });
     }
 
+    /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/GetPenalty">Get a penalty by ID</a>
+     */
+    public WishData<Penalty> getPenalty(String accessToken, String id) {
+        return get(String.format("/api/v3/penalties/%s", id), accessToken, null, new ParameterizedTypeReference<WishData<Penalty>>() {
+        });
+    }
+
+    /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/CountPenalties">Count number of penalties</a>
+     */
+    public WishData<CountPayload> penaltiesCount(String accessToken, PenaltiesCountQueryParams queryParams) {
+        return get("/api/v3/penalties/count", accessToken, queryParams, new ParameterizedTypeReference<WishData<CountPayload>>() {
+        });
+    }
+
+    /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/ListPenalties">Retrieve a list of penalties</a>
+     */
+    public WishData<List<Penalty>> listPenalties(String accessToken, PenaltiesQueryParams queryParams) {
+        return get("/api/v3/penalties", accessToken, queryParams, new ParameterizedTypeReference<WishData<List<Penalty>>>() {
+        });
+    }
 
     /**
      * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/createVariation">Create a variation</a>
