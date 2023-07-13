@@ -1,4 +1,10 @@
-# SDK ALL
+<div align="center">
+<font size="100" color="5BAC6E" >SDK ALL</font>
+
+![license](https://img.shields.io/github/license/ealenxie/sdk-all)
+![java version](https://img.shields.io/badge/JAVA-1.8+-green.svg)
+![code size](https://img.shields.io/github/languages/code-size/ealenxie/sdk-all)
+</div>
 
 此项目为个人研发总结的所有第三方请求接口SDK的封装整合项目。
 
@@ -52,7 +58,7 @@ For inquiries and support, please contact us at [ealenxie@outlook.com](mailto:ea
 | [aliyun-ocr-sdk](https://github.com/EalenXie/sdk-all/tree/main/aliyun-ocr-sdk)               | 阿里云 文字识别（OCR）       | [阿里云 文字识别](https://help.aliyun.com/product/252763.html)                                                            | ![](https://img.shields.io/badge/-83%25-blue.svg) |
 | [allegro-sdk](https://github.com/EalenXie/sdk-all/tree/main/allegro-sdk)                     | Allegro 开发者门户 整合SDK | [Allegro Developer Portal](https://developer.allegro.pl/documentation)                                             | ![](https://img.shields.io/badge/-96%25-blue.svg) |
 | [walmart-sdk](https://github.com/EalenXie/sdk-all/tree/main/walmart-sdk)                     | Walmart Market整合SDK | [Walmart Developer Portal](https://developer.walmart.com)                                                          | ![](https://img.shields.io/badge/-90%25-blue.svg) |
-| [wish-sdk](https://github.com/EalenXie/sdk-all/tree/main/wish-sdk)                           | Wish 商户平台 整合SDK     | [Wish API Explorer](https://china-merchant.wish.com/documentation/api/v3/explorer)                                 | ![](https://img.shields.io/badge/-10%25-red.svg)  |
+| [wish-sdk](https://github.com/EalenXie/sdk-all/tree/main/wish-sdk)                           | Wish 商户平台 整合SDK     | [Wish API Explorer](https://china-merchant.wish.com/documentation/api/v3/explorer)                                 | ![](https://img.shields.io/badge/-95%25-blue.svg) |
 | [winit-sdk](https://github.com/EalenXie/sdk-all/tree/main/winit-sdk)                         | 万邑通 海外仓             | [万邑通 开放平台](https://developer.winit.com.cn/document/detail/id/14.html)                                              |  ![](https://img.shields.io/badge/-1%25-red.svg)  |
 | [paypal-sdk](https://github.com/EalenXie/sdk-all/tree/main/paypal-sdk)                       | PayPal              | [PayPal Developer](https://developer.paypal.com)                                                                   |  ![](https://img.shields.io/badge/-1%25-red.svg)  |
 | [payoneer-sdk](https://github.com/EalenXie/sdk-all/tree/main/payoneer-sdk)                   | Payoneer(派安盈)       | [Payoneer APIs](https://developer.payoneer.com/docs/mass-payouts-and-services.html#/ec64bbcc26bbf-overview)        |  ![](https://img.shields.io/badge/-1%25-red.svg)  |
