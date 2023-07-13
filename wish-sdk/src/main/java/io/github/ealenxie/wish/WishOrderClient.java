@@ -18,6 +18,10 @@ import io.github.ealenxie.wish.payments.EarlyPayment;
 import io.github.ealenxie.wish.payments.PaymentInvoicesQueryParams;
 import io.github.ealenxie.wish.payments.PaymentInvoicesResponse;
 import io.github.ealenxie.wish.price.*;
+import io.github.ealenxie.wish.webhook.CreateSubscriptionQueryParams;
+import io.github.ealenxie.wish.webhook.SubscriptionPayload;
+import io.github.ealenxie.wish.webhook.SubscriptionResponse;
+import io.github.ealenxie.wish.webhook.TopicPayload;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.web.client.RestOperations;
@@ -434,6 +438,69 @@ public class WishOrderClient extends WishClient {
      */
     public WishData<WishOrder> modifyAddress(String accessToken, String orderId, ModifyAddressPayload payload) {
         return exchange(String.format("/api/v3/orders/%s/address", orderId), HttpMethod.PUT, accessToken, null, payload, new ParameterizedTypeReference<WishData<WishOrder>>() {
+        });
+    }
+
+    /**
+     * <a href="https://www.merchant.wish.com/documentation/api/v3/reference#operation/createSubscription">Create a Subscription</a>
+     *
+     * @param accessToken 令牌
+     * @param queryParams 请求参数
+     */
+    public WishData<SubscriptionResponse> createSubscription(String accessToken, CreateSubscriptionQueryParams queryParams) {
+        return exchange("/api/v3/webhook/subscriptions", HttpMethod.POST, accessToken, queryParams, null, new ParameterizedTypeReference<WishData<SubscriptionResponse>>() {
+        });
+    }
+
+    /**
+     * <a href="https://www.merchant.wish.com/documentation/api/v3/reference#operation/listSubscriptions">List Subscriptions</a>
+     *
+     * @param accessToken 令牌
+     */
+    public WishData<List<SubscriptionResponse>> getSubscriptions(String accessToken) {
+        return get("/api/v3/webhook/subscriptions", accessToken, null, new ParameterizedTypeReference<WishData<List<SubscriptionResponse>>>() {
+        });
+    }
+
+    /**
+     * <a href="https://www.merchant.wish.com/documentation/api/v3/reference#operation/updateSubscription">Update a Subscription</a>
+     *
+     * @param accessToken 令牌
+     * @param queryParams 请求参数
+     */
+    public WishData<SubscriptionResponse> updateSubscription(String accessToken, String id, SubscriptionPayload queryParams) {
+        return exchange(String.format("/api/v3/webhook/subscriptions/%s", id), HttpMethod.PUT, accessToken, queryParams, null, new ParameterizedTypeReference<WishData<SubscriptionResponse>>() {
+        });
+    }
+
+    /**
+     * <a href="https://www.merchant.wish.com/documentation/api/v3/reference#operation/getSubscription">Get a Subscription</a>
+     *
+     * @param accessToken 令牌
+     * @param id          id
+     */
+    public WishData<SubscriptionResponse> getSubscription(String accessToken, String id) {
+        return get(String.format("/api/v3/webhook/subscriptions/%s", id), accessToken, null, new ParameterizedTypeReference<WishData<SubscriptionResponse>>() {
+        });
+    }
+
+    /**
+     * <a href="https://www.merchant.wish.com/documentation/api/v3/reference#operation/deleteSubscription">Delete a Subscription</a>
+     *
+     * @param accessToken 令牌
+     * @param id          id
+     */
+    public void deleteSubscription(String accessToken, String id) {
+        exchange(String.format("/api/v3/webhook/subscriptions/%s", id), HttpMethod.DELETE, accessToken, null, null, Object.class);
+    }
+
+    /**
+     * <a href="https://www.merchant.wish.com/documentation/api/v3/reference#operation/getTopics">List Topics</a>
+     *
+     * @param accessToken 令牌
+     */
+    public WishData<List<TopicPayload>> getTopics(String accessToken) {
+        return get("/api/v3/webhook/topics", accessToken, null, new ParameterizedTypeReference<WishData<List<TopicPayload>>>() {
         });
     }
 

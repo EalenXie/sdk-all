@@ -128,6 +128,19 @@ wish-sdk
 | getPaymentInvoices      | [Get batch invoice download job status](https://china-merchant.wish.com/documentation/api/v3/reference#operation/getPaymentInvoicesDownloadJob) | ✔️  |
 | getEarlyPayment         | [Get merchant early payment info](https://china-merchant.wish.com/documentation/api/v3/reference#operation/getEarlyPayment)                     | ✔️  |
 
+
+##### Webhook
+
+| 方法名                | 官方文档地址                                                                                                             | 状态  |
+|:-------------------|:-------------------------------------------------------------------------------------------------------------------|:----|
+| createSubscription | [Create a Subscription](https://www.merchant.wish.com/documentation/api/v3/reference#operation/createSubscription) | ✔️  |
+| getSubscriptions   | [List Subscriptions](https://www.merchant.wish.com/documentation/api/v3/reference#operation/listSubscriptions)     | ✔️  |
+| updateSubscription | [Update a Subscription](https://www.merchant.wish.com/documentation/api/v3/reference#operation/updateSubscription) | ✔️  |
+| getSubscription    | [Get a Subscription](https://www.merchant.wish.com/documentation/api/v3/reference#operation/getSubscription)       | ✔️  |
+| deleteSubscription | [Delete a Subscription](https://www.merchant.wish.com/documentation/api/v3/reference#operation/deleteSubscription) | ✔️  |
+| getTopics          | [List Topics](https://www.merchant.wish.com/documentation/api/v3/reference#operation/getTopics)                    | ✔️  |
+
+
 ##### Wish Parcel
 
 | 方法名                | 官方文档地址                                                                                                                         | 状态  |
