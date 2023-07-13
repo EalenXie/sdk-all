@@ -129,6 +129,20 @@ wish-sdk
 | getPaymentInvoices      | [Get batch invoice download job status](https://china-merchant.wish.com/documentation/api/v3/reference#operation/getPaymentInvoicesDownloadJob) | ✔️  |
 | getEarlyPayment         | [Get merchant early payment info](https://china-merchant.wish.com/documentation/api/v3/reference#operation/getEarlyPayment)                     | ✔️  |
 
+##### Tickets
+
+| 方法名          | 官方文档地址                                                                                                    | 状态  |
+|:-------------|:----------------------------------------------------------------------------------------------------------|:----|
+| updateTicket | [Update a ticket](https://china-merchant.wish.com/documentation/api/v3/reference#operation/updateTicket)  | ✔️  |
+| getTicket    | [Get a ticket](https://china-merchant.wish.com/documentation/api/v3/reference#operation/getTicket)        | ✔️  |
+| replyTicket  | [Reply to a ticket](https://china-merchant.wish.com/documentation/api/v3/reference#operation/replyTicket) | ✔️  |
+| getTickets   | [List all tickets](https://china-merchant.wish.com/documentation/api/v3/reference#operation/listTickets)  | ✔️  |
+
+##### Unification Initiative
+
+| 方法名                      | 官方文档地址                                                                                                          | 状态  |
+|:-------------------------|:----------------------------------------------------------------------------------------------------------------|:----|
+| getUnificationInitiative | [Create a variation](https://china-merchant.wish.com/documentation/api/v3/reference#tag/Unification-Initiative) | ✔️  |
 
 ##### Variations
 

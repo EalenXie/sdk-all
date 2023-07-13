@@ -18,6 +18,10 @@ import io.github.ealenxie.wish.payments.EarlyPayment;
 import io.github.ealenxie.wish.payments.PaymentInvoicesQueryParams;
 import io.github.ealenxie.wish.payments.PaymentInvoicesResponse;
 import io.github.ealenxie.wish.price.*;
+import io.github.ealenxie.wish.tickets.MessagePayload;
+import io.github.ealenxie.wish.tickets.ReplyTicketResponse;
+import io.github.ealenxie.wish.tickets.TicketPayload;
+import io.github.ealenxie.wish.tickets.TicketQueryParams;
 import io.github.ealenxie.wish.variation.ColorQueryParams;
 import io.github.ealenxie.wish.variation.VariationPayload;
 import io.github.ealenxie.wish.variation.VariationResponse;
@@ -468,6 +472,46 @@ public class WishOrderClient extends WishClient {
         });
     }
 
+    /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/updateTicket">Update a ticket</a>
+     */
+    public WishData<TicketPayload> updateTicket(String accessToken, String id, String state) {
+        return exchange(String.format("/api/v3/tickets/%s", id), HttpMethod.PUT, accessToken, null, new StatePayload(state), new ParameterizedTypeReference<WishData<TicketPayload>>() {
+        });
+    }
+
+    /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/getTicket">Get a ticket</a>
+     */
+    public WishData<TicketPayload> getTicket(String accessToken, String id) {
+        return get(String.format("/api/v3/tickets/%s", id), accessToken, null, new ParameterizedTypeReference<WishData<TicketPayload>>() {
+        });
+    }
+
+
+    /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/replyTicket">Reply to a ticket</a>
+     */
+    public WishData<ReplyTicketResponse> replyTicket(String accessToken, String id, MessagePayload payload) {
+        return post(String.format("/api/v3/tickets/%s/replies", id), accessToken, payload, new ParameterizedTypeReference<WishData<ReplyTicketResponse>>() {
+        });
+    }
+
+    /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/listTickets">Get a list of Unification Initiative countries</a>
+     */
+    public WishData<List<TicketPayload>> getTickets(String accessToken, TicketQueryParams queryParams) {
+        return get("/api/v3/tickets", accessToken, queryParams, new ParameterizedTypeReference<WishData<List<TicketPayload>>>() {
+        });
+    }
+
+    /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#tag/Unification-Initiative">Get a list of Unification Initiative countries</a>
+     */
+    public WishData<List<String>> getUnificationInitiative(String accessToken) {
+        return get("/api/v3/unification_initiative/countries", accessToken, null, new ParameterizedTypeReference<WishData<List<String>>>() {
+        });
+    }
 
     /**
      * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/createVariation">Create a variation</a>
