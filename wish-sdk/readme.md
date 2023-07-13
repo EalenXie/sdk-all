@@ -153,6 +153,19 @@ wish-sdk
 | listBalanceUpdates  | [List ProductBoost account balance updates](https://china-merchant.wish.com/documentation/api/v3/reference#operation/listBalanceUpdates)                        | ✔️  |
 
 
+##### Promotions Platform
+
+| 方法名                                | 官方文档地址                                                                                                                                     | 状态  |
+|:-----------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------|:----|
+| getPromotionsEligibleProducts      | [Get eligible products](https://china-merchant.wish.com/documentation/api/v3/reference#operation/getPromotionsEligibleProducts)            | ✔️  |
+| cancelPromotionsCampaign           | [Cancel a promotion campaign](https://china-merchant.wish.com/documentation/api/v3/reference#operation/cancelPromotionsCampaign)           | ✔️  |
+| createPromotionsCampaign           | [Create a promotion campaign](https://china-merchant.wish.com/documentation/api/v3/reference#operation/createPromotionsCampaign)           | ✔️  |
+| getPromotionsCampaigns             | [List promotion campaigns](https://china-merchant.wish.com/documentation/api/v3/reference#operation/listPromotionsCampaigns)               | ✔️  |
+| updatePromotionsCampaign           | [Update a promotion campaign](https://china-merchant.wish.com/documentation/api/v3/reference#operation/updatePromotionsCampaign)           | ✔️  |
+| getPromotionsCampaign              | [Get a single promotion campaign](https://china-merchant.wish.com/documentation/api/v3/reference#operation/getPromotionsCampaign)          | ✔️  |
+| getPromotionsEligibleProductsCount | [Get eligible products count](https://china-merchant.wish.com/documentation/api/v3/reference#operation/getPromotionsEligibleProductsCount) | ✔️  |
+
+
 ##### Ratings
 
 | 方法名               | 官方文档地址                                                                                                                | 状态  |
