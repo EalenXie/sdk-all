@@ -12,6 +12,8 @@ fop-sdk
 
 ### 快速开始
 
+![](https://img.shields.io/maven-central/v/io.github.ealenxie/fop-sdk)
+
 #### `pom.xml`配置
 
 ```xml

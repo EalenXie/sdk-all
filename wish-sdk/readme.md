@@ -8,6 +8,8 @@ wish-sdk
 
 #### `pom.xml`配置
 
+![](https://img.shields.io/maven-central/v/io.github.ealenxie/wish-sdk)
+
 ```xml
 
 <dependency>

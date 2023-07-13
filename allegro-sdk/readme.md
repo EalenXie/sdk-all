@@ -9,6 +9,8 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 
 ### 快速开始
 
+![](https://img.shields.io/maven-central/v/io.github.ealenxie/allegro-sdk)
+
 #### `pom.xml`配置
 
 ```xml

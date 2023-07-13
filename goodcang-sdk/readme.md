@@ -9,6 +9,8 @@ goodcang-sdk
 
 #### `pom.xml`配置
 
+![](https://img.shields.io/maven-central/v/io.github.ealenxie/goodcang-sdk)
+
 ```xml
 
 <dependency>

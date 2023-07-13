@@ -8,6 +8,8 @@ aliyun-ocr-sdk
 
 ### 快速开始
 
+![](https://img.shields.io/maven-central/v/io.github.ealenxie/aliyun-ocr-sdk)
+
 #### `pom.xml`配置
 
 ```xml
