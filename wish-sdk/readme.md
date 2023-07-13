@@ -152,6 +152,19 @@ wish-sdk
 | listCampaignMetrics | [Obtain campaign metrics](https://china-merchant.wish.com/documentation/api/v3/reference#operation/listCampaignMetrics)                                         | ✔️  |
 | listBalanceUpdates  | [List ProductBoost account balance updates](https://china-merchant.wish.com/documentation/api/v3/reference#operation/listBalanceUpdates)                        | ✔️  |
 
+##### Products
+
+| 方法名                        | 官方文档地址                                                                                                                                                         | 状态  |
+|:---------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------|:----|
+| listProductUpdateRequests  | [List product create or update requests](https://china-merchant.wish.com/documentation/api/v3/reference#operation/listProductUpdateRequests)                   | ✔️  |
+| calculatedShipping         | [Enable/disable Calculated Shipping for the product](https://china-merchant.wish.com/documentation/api/v3/reference#operation/enableDisableCalculatedShipping) | ✔️  |
+| getProductUpdateRequest    | [Get a product create or update request](https://china-merchant.wish.com/documentation/api/v3/reference#operation/getProductUpdateRequest)                     | ✔️  |
+| deleteProductUpdateRequest | [Delete a product create or update request](https://china-merchant.wish.com/documentation/api/v3/reference#operation/deleteProductUpdateRequest)               | ✔️  |
+| createProduct              | [Get a product create or update request](https://china-merchant.wish.com/documentation/api/v3/reference#operation/createProduct)                               | ✔️  |
+| listProductsSync           | [List products](https://china-merchant.wish.com/documentation/api/v3/reference#operation/listProductsSync)                                                     | ✔️  |
+| updateProduct              | [Update a product](https://china-merchant.wish.com/documentation/api/v3/reference#operation/updateProduct)                                                     | ✔️  |
+| getProduct                 | [Get a product](https://china-merchant.wish.com/documentation/api/v3/reference#operation/getProduct)                                                           | ✔️  |
+| deleteProduct              | [Delete a product](https://china-merchant.wish.com/documentation/api/v3/reference#operation/deleteProduct)                                                     | ✔️  |
 
 ##### Promotions Platform
 
