@@ -14,6 +14,7 @@ import io.github.ealenxie.wish.franceerpcompliance.*;
 import io.github.ealenxie.wish.germanyerpcompliance.*;
 import io.github.ealenxie.wish.merchant.*;
 import io.github.ealenxie.wish.orders.*;
+import io.github.ealenxie.wish.price.*;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.web.client.RestOperations;
@@ -433,6 +434,51 @@ public class WishOrderClient extends WishClient {
      */
     public WishData<WishOrder> modifyAddress(String accessToken, String orderId, ModifyAddressPayload payload) {
         return exchange(String.format("/api/v3/orders/%s/address", orderId), HttpMethod.PUT, accessToken, null, payload, new ParameterizedTypeReference<WishData<WishOrder>>() {
+        });
+    }
+
+    /**
+     * <a href="https://www.merchant.wish.com/documentation/api/v3/reference#operation/wpsCreateShipment">Create a Wish Parcel shipment</a>
+     *
+     * @param accessToken 令牌
+     * @param payload     请求参数
+     */
+    public WishData<ShipmentPayload> createShipment(String accessToken, CreateShipmentPayload payload) {
+        return post("/api/v3/wish_parcel/shipments", accessToken, payload, new ParameterizedTypeReference<WishData<ShipmentPayload>>() {
+        });
+    }
+
+    /**
+     * <a href="https://www.merchant.wish.com/documentation/api/v3/reference#operation/wpsListShipments">List Wish Parcel shipments</a>
+     *
+     * @param accessToken 令牌
+     * @param queryParams 请求参数
+     */
+    public WishData<List<ShipmentPayload>> getShipments(String accessToken, ShipmentQueryParams queryParams) {
+        return get("/api/v3/wish_parcel/shipments", accessToken, queryParams, new ParameterizedTypeReference<WishData<List<ShipmentPayload>>>() {
+        });
+    }
+
+    /**
+     * <a href="https://www.merchant.wish.com/documentation/api/v3/reference#operation/wpsModifyShipment">Modify a paid Wish Parcel shipment</a>
+     *
+     * @param accessToken 令牌
+     * @param id          shipmentId
+     * @param payload     请求参数
+     */
+    public WishData<ShipmentPayload> modifyShipment(String accessToken, String id, ModifyShipmentPayload payload) {
+        return exchange(String.format("/api/v3/wish_parcel/shipments/%s", id), HttpMethod.PATCH, accessToken, null, payload, new ParameterizedTypeReference<WishData<ShipmentPayload>>() {
+        });
+    }
+
+    /**
+     * <a href="https://www.merchant.wish.com/documentation/api/v3/reference#operation/wpsShippingOptions">Get Wish Parcel shipping options</a>
+     *
+     * @param accessToken 令牌
+     * @param queryParams 请求参数
+     */
+    public WishData<List<ShippingOptionPayload>> getShippingOptions(String accessToken, ShippingOptionQueryParams queryParams) {
+        return get("/api/v3/wish_parcel/shipping_options", accessToken, queryParams, new ParameterizedTypeReference<WishData<List<ShippingOptionPayload>>>() {
         });
     }
 }

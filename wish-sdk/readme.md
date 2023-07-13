@@ -119,3 +119,17 @@ wish-sdk
 | refund              | [Refund/Cancel an order](https://china-merchant.wish.com/documentation/api/v3/reference#operation/RefundOrder)                 | ✔️  |
 | updateLTLOrder      | [Update an LTL order](https://china-merchant.wish.com/documentation/api/v3/reference#operation/UpdateOrder)                    | ✔️  |
 | modifyAddress       | [Modify shipping address](https://china-merchant.wish.com/documentation/api/v3/reference#operation/ModifyAddress)              | ✔️  |
+
+
+
+
+
+
+##### Wish Parcel
+
+| 方法名                | 官方文档地址                                                                                                                         | 状态  |
+|:-------------------|:-------------------------------------------------------------------------------------------------------------------------------|:----|
+| createShipment     | [Create a Wish Parcel shipment](https://www.merchant.wish.com/documentation/api/v3/reference#operation/wpsCreateShipment)      | ✔️  |
+| getShipments       | [List Wish Parcel shipments](https://www.merchant.wish.com/documentation/api/v3/reference#operation/wpsListShipments)          | ✔️  |
+| modifyShipment     | [Modify a paid Wish Parcel shipment](https://www.merchant.wish.com/documentation/api/v3/reference#operation/wpsModifyShipment) | ✔️  |
+| getShippingOptions | [Get Wish Parcel shipping options](https://www.merchant.wish.com/documentation/api/v3/reference#operation/wpsShippingOptions)  | ✔️  |
