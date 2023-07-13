@@ -16,6 +16,32 @@ walmart-sdk
 </dependency>
 ```
 
+#### 代码示例
+
+```java
+
+
+import io.github.ealenxie.walmart.marketplace.MarketplaceClient;
+import io.github.ealenxie.walmart.marketplace.WalmartToken;
+import io.github.ealenxie.walmart.marketplace.shipping.CarriersResponse;
+
+class MarketplaceClientTest {
+    @Test
+    void getCarriers() {
+        String clientId = "your clientId";
+        String clientSecret = "your clientSecret";
+        // get accessToken
+        MarketplaceClient marketplaceClient = new MarketplaceClient(clientId, clientSecret);
+        WalmartToken walmartToken = marketplaceClient.accessToken();
+        String accessToken = walmartToken.getAccessToken();
+        // call api
+        CarriersResponse carriers = marketplaceClient.getCarriers(accessToken);
+        System.out.println(carriers);
+    }
+}
+
+```
+
 #### [WalmartClient](https://github.com/EalenXie/sdk-all/blob/main/walmart-sdk/src/main/java/io/github/ealenxie/walmart/marketplace/WalmartClient.java) 已支持的接口列表
 
 | 🏷️方法名      | 📚 官方文档地址                                                                    | 状态  |
@@ -42,7 +68,7 @@ walmart-sdk
 | getAllItems         | [All items](https://developer.walmart.com/api/us/mp/items#operation/getAllItems)                      | ✔️  |
 | getItem             | [An item](https://developer.walmart.com/api/us/mp/items#operation/getAnItem)                          | ✔️  |
 | getSearchResult     | [Item Search](https://developer.walmart.com/api/us/mp/items#operation/getSearchResult)                | ✔️  |
-| getTaxonomy         | [Taxonomy](https://developer.walmart.com/api/us/mp/items#operation/getTaxonomyResponse)               | ✔️  |
+| getItemsTaxonomy    | [Taxonomy](https://developer.walmart.com/api/us/mp/items#operation/getTaxonomyResponse)               | ✔️  |
 | getVariantCount     | [Get item count by groups](https://developer.walmart.com/api/us/mp/items#operation/getVariantCount)   | ✔️  |
 | getCountByStatus    | [Get items count by status](https://developer.walmart.com/api/us/mp/items#operation/getCountByStatus) | ✔️  |
 | retireItem          | [Retire an item](https://developer.walmart.com/api/us/mp/items#operation/retireAnItem)                | ✔️  |
@@ -212,7 +238,7 @@ walmart-sdk
 
 | 🏷️方法名               | 📚 官方文档地址                                                                                               | 状态  |
 |:---------------------|:--------------------------------------------------------------------------------------------------------|:----|
-| getTaxonomy          | [Taxonomy by spec](https://developer.walmart.com/api/us/mp/utilities#operation/getTaxonomyResponse)     | ✔️  |
+| getUtilityTaxonomy   | [Taxonomy by spec](https://developer.walmart.com/api/us/mp/utilities#operation/getTaxonomyResponse)     | ✔️  |
 | getDepartmentList    | [All Departments](https://developer.walmart.com/api/us/mp/utilities#operation/getDepartmentList)        | ✔️  |
 | getCategories        | [All Categories](https://developer.walmart.com/api/us/mp/utilities#operation/getCategories)             | ✔️  |
 | getApiPlatformStatus | [API Platform Status](https://developer.walmart.com/api/us/mp/utilities#operation/getApiPlatformStatus) | ✔️  |

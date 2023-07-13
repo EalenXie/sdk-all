@@ -199,7 +199,7 @@ public class AllegroSaleSettingClient extends AllegroClient {
     }
 
     /**
-     * <a href="https://developer.allegro.pl/documentation/#operation/getListOfAdditionalServicesGroupsUsingGET"Get the user's additional services groups</a>
+     * <a href="https://developer.allegro.pl/documentation/#operation/getListOfAdditionalServicesGroupsUsingGET">Get the user's additional services groups</a>
      */
     public AdditionalServiceResponse getAdditionalServiceGroups(String accessToken, PageQueryParams queryParams) {
         return get(SALE_OFFER_ADDITIONAL_SERVICES_GROUPS, accessToken, queryParams, AdditionalServiceResponse.class);
@@ -268,7 +268,7 @@ public class AllegroSaleSettingClient extends AllegroClient {
     /**
      * <a href="https://developer.allegro.pl/documentation/#operation/getTablesUsingGET">Update a size table</a>
      */
-    public TableResponse getTablesUsing(String accessToken, String tableId, TablePayload payload) {
+    public TableResponse getTablesUsing(String accessToken, String tableId) {
         return get(String.format(FORMAT, SALE_SIZE_TABLES, tableId), accessToken, null, TableResponse.class);
     }
 

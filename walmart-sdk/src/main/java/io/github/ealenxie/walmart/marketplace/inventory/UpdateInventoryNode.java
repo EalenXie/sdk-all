@@ -2,9 +2,7 @@ package io.github.ealenxie.walmart.marketplace.inventory;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.ealenxie.walmart.marketplace.UnitMoney;
-import lombok.Data;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**

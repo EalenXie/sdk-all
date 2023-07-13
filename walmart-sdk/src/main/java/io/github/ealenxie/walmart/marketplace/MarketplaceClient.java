@@ -138,7 +138,7 @@ public class MarketplaceClient extends WalmartClient {
     /**
      * <a href="https://developer.walmart.com/api/us/mp/items#operation/getTaxonomyResponse">Taxonomy</a>
      */
-    public StatusPayloadResponse<List<CategoryPayload>> getTaxonomy(String accessToken, ProductIdTypeQueryParams queryParams) {
+    public StatusPayloadResponse<List<CategoryPayload>> getItemsTaxonomy(String accessToken, ProductIdTypeQueryParams queryParams) {
         return get("/v3/items/taxonomy", accessToken, queryParams, new ParameterizedTypeReference<StatusPayloadResponse<List<CategoryPayload>>>() {
         });
     }
@@ -926,7 +926,7 @@ public class MarketplaceClient extends WalmartClient {
     /**
      * <a href="https://developer.walmart.com/api/us/mp/utilities#operation/getTaxonomyResponse">Taxonomy by spec</a>
      */
-    public StatusPayloadResponse<List<CategoryPayload>> getTaxonomy(String accessToken, TaxonomyQueryParams queryParams) {
+    public StatusPayloadResponse<List<CategoryPayload>> getUtilityTaxonomy(String accessToken, TaxonomyQueryParams queryParams) {
         return get("/v3/utilities/taxonomy", accessToken, queryParams, new ParameterizedTypeReference<StatusPayloadResponse<List<CategoryPayload>>>() {
         });
     }
