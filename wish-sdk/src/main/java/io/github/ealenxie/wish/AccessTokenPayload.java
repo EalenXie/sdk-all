@@ -1,5 +1,6 @@
 package io.github.ealenxie.wish;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,6 +13,7 @@ import lombok.Setter;
 @Setter
 public class AccessTokenPayload {
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("code")
     private String code;
     @JsonProperty("client_secret")

@@ -60,7 +60,7 @@ public class WalmartClient {
         return sandBox;
     }
 
-    public void setSandBoxMode(boolean sandBoxMode) {
+    public void setSandBox(boolean sandBoxMode) {
         this.sandBox = sandBoxMode;
     }
 

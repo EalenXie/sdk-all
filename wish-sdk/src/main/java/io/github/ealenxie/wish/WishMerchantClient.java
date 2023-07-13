@@ -22,9 +22,9 @@ import io.github.ealenxie.wish.penalties.PenaltiesCountQueryParams;
 import io.github.ealenxie.wish.penalties.PenaltiesQueryParams;
 import io.github.ealenxie.wish.penalties.Penalty;
 import io.github.ealenxie.wish.price.*;
-import io.github.ealenxie.wish.promotionplatform.*;
 import io.github.ealenxie.wish.productboost.*;
 import io.github.ealenxie.wish.products.*;
+import io.github.ealenxie.wish.promotionplatform.*;
 import io.github.ealenxie.wish.rating.ProductRatePayload;
 import io.github.ealenxie.wish.rating.RateQueryParams;
 import io.github.ealenxie.wish.taxonomy.AttributeResponse;
@@ -52,17 +52,17 @@ import java.util.List;
  * Created by EalenXie on 2022/2/23 9:51
  * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#tag/Orders">wish 商户平台</a>
  */
-public class WishOrderClient extends WishClient {
+public class WishMerchantClient extends WishClient {
 
-    public WishOrderClient() {
+    public WishMerchantClient() {
         this(new RestTemplate());
     }
 
-    public WishOrderClient(RestOperations restOperations) {
+    public WishMerchantClient(RestOperations restOperations) {
         this(new ObjectMapper(), restOperations);
     }
 
-    public WishOrderClient(ObjectMapper objectMapper, RestOperations restOperations) {
+    public WishMerchantClient(ObjectMapper objectMapper, RestOperations restOperations) {
         super(objectMapper, restOperations);
     }
 
