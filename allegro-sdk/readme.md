@@ -32,6 +32,7 @@ class AllegroOrdersClientTest {
     @Test
     void eventStats() {
         AllegroOrdersClient allegroOrdersClient = new AllegroOrdersClient();
+        // 设置为正式环境
         allegroOrdersClient.setSandBox(false);
         // get accessToken 
         String clientId = "your clientId";

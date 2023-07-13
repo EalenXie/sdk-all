@@ -17,26 +17,59 @@ wish-sdk
 </dependency>
 ```
 
+#### 代码示例
+
+```java
+
+import io.github.ealenxie.wish.AccessTokenPayload;
+import io.github.ealenxie.wish.WishData;
+import io.github.ealenxie.wish.WishMerchantClient;
+import io.github.ealenxie.wish.WishToken;
+import io.github.ealenxie.wish.taxonomy.CategoryPayload;
+
+class WishMerchantClientTest {
+    @Test
+    void getCategories() {
+        WishMerchantClient wishMerchantClient = new WishMerchantClient();
+        // 设置为正式环境
+        wishMerchantClient.setSandbox(false);
+        // get accessToken
+        AccessTokenPayload payload = new AccessTokenPayload();
+        payload.setClientId("your clientId");
+        payload.setClientSecret("your clientSecret");
+        payload.setCode("your code");
+        payload.setRedirectUri("your redirectUri");
+        WishData<WishToken> response = wishMerchantClient.accessToken(payload);
+        WishToken token = response.getData();
+        String accessToken = token.getAccessToken();
+        // call api
+        WishData<CategoryPayload> categories = wishMerchantClient.getCategories(accessToken);
+        System.out.println(categories);
+    }
+}
+
+```
+
 #### [WishClient](https://github.com/EalenXie/sdk-all/blob/main/wish-sdk/src/main/java/io/github/ealenxie/wish/WishClient.java) 已支持的接口列表
 
-| 接口名              | 方法名          | 官方文档地址                                                                                                                 | 状态  |
-|:-----------------|:-------------|:-----------------------------------------------------------------------------------------------------------------------|:----|
-| 获取授权地址           | authorize    | [Authorization URL](https://china-merchant.wish.com/documentation/api/v3/reference#section/Authentication)             | ✔️  |
-| 授权码模式accessToken | accessToken  | [Retrieve an access token](https://china-merchant.wish.com/documentation/api/v3/reference#section/Authentication)      | ✔️  |
-| 刷新授权             | refreshToken | [Obtain a new token](https://www.merchant.wish.com/documentation/api/v3/reference#operation/oauthRefreshToken)         | ✔️  |
-| 验证令牌是否有效         | oauthTest    | [Test if an access token is valid](https://china-merchant.wish.com/documentation/api/v3/reference#operation/oauthTest) | ✔️  |
+| 🏷️方法名       | 📚 官方文档地址                                                                                                              | 状态  |
+|:-------------|:-----------------------------------------------------------------------------------------------------------------------|:----|
+| authorize    | [Authorization URL](https://china-merchant.wish.com/documentation/api/v3/reference#section/Authentication)             | ✔️  |
+| accessToken  | [Retrieve an access token](https://china-merchant.wish.com/documentation/api/v3/reference#section/Authentication)      | ✔️  |
+| refreshToken | [Obtain a new token](https://www.merchant.wish.com/documentation/api/v3/reference#operation/oauthRefreshToken)         | ✔️  |
+| oauthTest    | [Test if an access token is valid](https://china-merchant.wish.com/documentation/api/v3/reference#operation/oauthTest) | ✔️  |
 
-#### [WishOrderClient](https://github.com/EalenXie/sdk-all/blob/main/wish-sdk/src/main/java/io/github/ealenxie/wish/WishOrderClient.java) 已支持的接口列表
+#### [WishMerchantClient](https://github.com/EalenXie/sdk-all/blob/main/wish-sdk/src/main/java/io/github/ealenxie/wish/WishMerchantClient.java) 已支持的接口列表
 
 ##### Brands
 
-| 方法名        | 官方文档地址                                                                                                                                 | 状态  |
+| 🏷️方法名     | 📚 官方文档地址                                                                                                                              | 状态  |
 |:-----------|:---------------------------------------------------------------------------------------------------------------------------------------|:----|
 | listBrands | [Get a list of brands from a particular ID range](https://china-merchant.wish.com/documentation/api/v3/reference#operation/listBrands) | ✔️  |
 
 ##### Bulk Products
 
-| 方法名                     | 官方文档地址                                                                                                                                 | 状态  |
+| 🏷️方法名                  | 📚 官方文档地址                                                                                                                              | 状态  |
 |:------------------------|:---------------------------------------------------------------------------------------------------------------------------------------|:----|
 | getProducts             | [Get products](https://china-merchant.wish.com/documentation/api/v3/reference#operation/getProducts)                                   | ✔️  |
 | getUpdateProductsStatus | [Get the update products job status](https://china-merchant.wish.com/documentation/api/v3/reference#operation/getUpdateProductsStatus) | ✔️  |
@@ -45,13 +78,13 @@ wish-sdk
 
 ##### Currencies
 
-| 方法名           | 官方文档地址                                                                                                                | 状态  |
+| 🏷️方法名        | 📚 官方文档地址                                                                                                             | 状态  |
 |:--------------|:----------------------------------------------------------------------------------------------------------------------|:----|
 | getCurrencies | [Get supported currency list](https://china-merchant.wish.com/documentation/api/v3/reference#operation/getCurrencies) | ✔️  |
 
 ##### EU Product Compliance
 
-| 方法名                       | 官方文档地址                                                                                                                                          | 状态  |
+| 🏷️方法名                    | 📚 官方文档地址                                                                                                                                       | 状态  |
 |:--------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------|:----|
 | updateEuResponsiblePerson | [Update an EU Responsible Person](https://china-merchant.wish.com/documentation/api/v3/reference#operation/updateEUResponsiblePerson)           | ✔️  |
 | getEuResponsiblePerson    | [Get an EU Responsible Person](https://china-merchant.wish.com/documentation/api/v3/reference#operation/getEUResponsiblePerson)                 | ✔️  |
@@ -65,14 +98,14 @@ wish-sdk
 
 ##### FBS
 
-| 方法名                | 官方文档地址                                                                                                                                  | 状态  |
+| 🏷️方法名             | 📚 官方文档地址                                                                                                                               | 状态  |
 |:-------------------|:----------------------------------------------------------------------------------------------------------------------------------------|:----|
 | fbsVariation       | [Get FBS related data for a variation](https://china-merchant.wish.com/documentation/api/v3/reference#operation/fbsVariation)           | ✔️  |
 | fbsRecommendations | [Get FBS inbound shipping recommendations](https://china-merchant.wish.com/documentation/api/v3/reference#operation/fbsRecommendations) | ✔️  |
 
 ##### France EPR Compliance
 
-| 方法名                       | 官方文档地址                                                                                                                                                                         | 状态  |
+| 🏷️方法名                    | 📚 官方文档地址                                                                                                                                                                      | 状态  |
 |:--------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:----|
 | updateFraComplianceStatus | [Bulk update France EPR Product Compliance Status](https://china-merchant.wish.com/documentation/api/v3/reference#operation/updateFranceEPRProductComplianceStatus)            | ✔️  |
 | getFraComplianceStatus    | [Get France EPR Product Compliance Status](https://china-merchant.wish.com/documentation/api/v3/reference#operation/getFranceEPRProductComplianceStatus)                       | ✔️  |
@@ -84,7 +117,7 @@ wish-sdk
 
 ##### Germany EPR Compliance
 
-| 方法名                         | 官方文档地址                                                                                                                                                                 | 状态  |
+| 🏷️方法名                      | 📚 官方文档地址                                                                                                                                                              | 状态  |
 |:----------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|:----|
 | createGerRegistrationNumber | [Create a Germany Product EPR Registration Number](https://china-merchant.wish.com/documentation/api/v3/reference#operation/createGermanyProductEprRegistrationNumber) | ✔️  |
 | listGerRegistrationNumbers  | [List Germany EPR Registration Numbers](https://china-merchant.wish.com/documentation/api/v3/reference#operation/listGermanyProductEprRegistrationNumbers)             | ✔️  |
@@ -96,7 +129,7 @@ wish-sdk
 
 ##### Merchant
 
-| 方法名                      | 官方文档地址                                                                                                                            | 状态  |
+| 🏷️方法名                   | 📚 官方文档地址                                                                                                                         | 状态  |
 |:-------------------------|:----------------------------------------------------------------------------------------------------------------------------------|:----|
 | getCurrencySettings      | [Get merchant currency settings](https://china-merchant.wish.com/documentation/api/v3/reference#operation/getCurrencySettings)    | ✔️  |
 | updateWarehouse          | [Update warehouse information](https://china-merchant.wish.com/documentation/api/v3/reference#operation/updateWarehouse)          | ✔️  |
@@ -109,7 +142,7 @@ wish-sdk
 
 ##### Orders
 
-| 方法名                 | 官方文档地址                                                                                                                         | 状态  |
+| 🏷️方法名              | 📚 官方文档地址                                                                                                                      | 状态  |
 |:--------------------|:-------------------------------------------------------------------------------------------------------------------------------|:----|
 | shippingCarriers    | [Get accepted shipping carriers](https://china-merchant.wish.com/documentation/api/v3/reference#operation/GetShippingCarriers) | ✔️  |
 | downloadOrders      | [Batch download orders](https://china-merchant.wish.com/documentation/api/v3/reference#operation/downloadOrders)               | ✔️  |
@@ -124,7 +157,7 @@ wish-sdk
 
 ##### Payments
 
-| 方法名                     | 官方文档地址                                                                                                                                          | 状态  |
+| 🏷️方法名                  | 📚 官方文档地址                                                                                                                                       | 状态  |
 |:------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------|:----|
 | downloadPaymentInvoices | [Batch download invoices](https://china-merchant.wish.com/documentation/api/v3/reference#operation/downloadPaymentInvoices)                     | ✔️  |
 | getPaymentInvoices      | [Get batch invoice download job status](https://china-merchant.wish.com/documentation/api/v3/reference#operation/getPaymentInvoicesDownloadJob) | ✔️  |
@@ -132,7 +165,7 @@ wish-sdk
 
 ##### Penalties
 
-| 方法名            | 官方文档地址                                                                                                                 | 状态  |
+| 🏷️方法名         | 📚 官方文档地址                                                                                                              | 状态  |
 |:---------------|:-----------------------------------------------------------------------------------------------------------------------|:----|
 | getPenalty     | [Get a penalty by ID](https://china-merchant.wish.com/documentation/api/v3/reference#operation/GetPenalty)             | ✔️  |
 | penaltiesCount | [Count number of penalties](https://china-merchant.wish.com/documentation/api/v3/reference#operation/CountPenalties)   | ✔️  |
@@ -140,7 +173,7 @@ wish-sdk
 
 ##### ProductBoost
 
-| 方法名                 | 官方文档地址                                                                                                                                                          | 状态  |
+| 🏷️方法名              | 📚 官方文档地址                                                                                                                                                       | 状态  |
 |:--------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------|:----|
 | getKeywords         | [Get information for the given keywords or keywords that match the query](https://china-merchant.wish.com/documentation/api/v3/reference#operation/getKeywords) | ✔️  |
 | createCampaign      | [Create a ProductBoost campaign](https://china-merchant.wish.com/documentation/api/v3/reference#operation/createCampaign)                                       | ✔️  |
@@ -154,7 +187,7 @@ wish-sdk
 
 ##### Products
 
-| 方法名                        | 官方文档地址                                                                                                                                                         | 状态  |
+| 🏷️方法名                     | 📚 官方文档地址                                                                                                                                                      | 状态  |
 |:---------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------|:----|
 | listProductUpdateRequests  | [List product create or update requests](https://china-merchant.wish.com/documentation/api/v3/reference#operation/listProductUpdateRequests)                   | ✔️  |
 | calculatedShipping         | [Enable/disable Calculated Shipping for the product](https://china-merchant.wish.com/documentation/api/v3/reference#operation/enableDisableCalculatedShipping) | ✔️  |
@@ -168,7 +201,7 @@ wish-sdk
 
 ##### Promotions Platform
 
-| 方法名                                | 官方文档地址                                                                                                                                     | 状态  |
+| 🏷️方法名                             | 📚 官方文档地址                                                                                                                                  | 状态  |
 |:-----------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------|:----|
 | getPromotionsEligibleProducts      | [Get eligible products](https://china-merchant.wish.com/documentation/api/v3/reference#operation/getPromotionsEligibleProducts)            | ✔️  |
 | cancelPromotionsCampaign           | [Cancel a promotion campaign](https://china-merchant.wish.com/documentation/api/v3/reference#operation/cancelPromotionsCampaign)           | ✔️  |
@@ -178,16 +211,15 @@ wish-sdk
 | getPromotionsCampaign              | [Get a single promotion campaign](https://china-merchant.wish.com/documentation/api/v3/reference#operation/getPromotionsCampaign)          | ✔️  |
 | getPromotionsEligibleProductsCount | [Get eligible products count](https://china-merchant.wish.com/documentation/api/v3/reference#operation/getPromotionsEligibleProductsCount) | ✔️  |
 
-
 ##### Ratings
 
-| 方法名               | 官方文档地址                                                                                                                | 状态  |
+| 🏷️方法名            | 📚 官方文档地址                                                                                                             | 状态  |
 |:------------------|:----------------------------------------------------------------------------------------------------------------------|:----|
 | getProductRatings | [Fetch product ratings](https://china-merchant.wish.com/documentation/api/v3/reference#operation/FetchProductRatings) | ✔️  |
 
 ##### Taxonomy
 
-| 方法名                   | 官方文档地址                                                                                                           | 状态  |
+| 🏷️方法名                | 📚 官方文档地址                                                                                                        | 状态  |
 |:----------------------|:-----------------------------------------------------------------------------------------------------------------|:----|
 | getCategory           | [Get a category](https://china-merchant.wish.com/documentation/api/v3/reference#operation/getCategoryByID)       | ✔️  |
 | getCategoryAttributes | [Get attributes](https://china-merchant.wish.com/documentation/api/v3/reference#operation/getCategoryAttributes) | ✔️  |
@@ -195,7 +227,7 @@ wish-sdk
 
 ##### Tickets
 
-| 方法名          | 官方文档地址                                                                                                    | 状态  |
+| 🏷️方法名       | 📚 官方文档地址                                                                                                 | 状态  |
 |:-------------|:----------------------------------------------------------------------------------------------------------|:----|
 | updateTicket | [Update a ticket](https://china-merchant.wish.com/documentation/api/v3/reference#operation/updateTicket)  | ✔️  |
 | getTicket    | [Get a ticket](https://china-merchant.wish.com/documentation/api/v3/reference#operation/getTicket)        | ✔️  |
@@ -204,20 +236,20 @@ wish-sdk
 
 ##### Unification Initiative
 
-| 方法名                      | 官方文档地址                                                                                                          | 状态  |
+| 🏷️方法名                   | 📚 官方文档地址                                                                                                       | 状态  |
 |:-------------------------|:----------------------------------------------------------------------------------------------------------------|:----|
 | getUnificationInitiative | [Create a variation](https://china-merchant.wish.com/documentation/api/v3/reference#tag/Unification-Initiative) | ✔️  |
 
 ##### Variations
 
-| 方法名             | 官方文档地址                                                                                                              | 状态  |
+| 🏷️方法名          | 📚 官方文档地址                                                                                                           | 状态  |
 |:----------------|:--------------------------------------------------------------------------------------------------------------------|:----|
 | createVariation | [Create a variation](https://china-merchant.wish.com/documentation/api/v3/reference#operation/createVariation)      | ✔️  |
 | getColors       | [Get a list of accepted colors](https://china-merchant.wish.com/documentation/api/v3/reference#operation/getColors) | ✔️  |
 
 ##### Webhook
 
-| 方法名                | 官方文档地址                                                                                                             | 状态  |
+| 🏷️方法名             | 📚 官方文档地址                                                                                                          | 状态  |
 |:-------------------|:-------------------------------------------------------------------------------------------------------------------|:----|
 | createSubscription | [Create a Subscription](https://www.merchant.wish.com/documentation/api/v3/reference#operation/createSubscription) | ✔️  |
 | getSubscriptions   | [List Subscriptions](https://www.merchant.wish.com/documentation/api/v3/reference#operation/listSubscriptions)     | ✔️  |
@@ -228,7 +260,7 @@ wish-sdk
 
 ##### Wish Parcel
 
-| 方法名                | 官方文档地址                                                                                                                         | 状态  |
+| 🏷️方法名             | 📚 官方文档地址                                                                                                                      | 状态  |
 |:-------------------|:-------------------------------------------------------------------------------------------------------------------------------|:----|
 | createShipment     | [Create a Wish Parcel shipment](https://www.merchant.wish.com/documentation/api/v3/reference#operation/wpsCreateShipment)      | ✔️  |
 | getShipments       | [List Wish Parcel shipments](https://www.merchant.wish.com/documentation/api/v3/reference#operation/wpsListShipments)          | ✔️  |

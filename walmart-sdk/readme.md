@@ -20,7 +20,6 @@ walmart-sdk
 
 ```java
 
-
 import io.github.ealenxie.walmart.marketplace.MarketplaceClient;
 import io.github.ealenxie.walmart.marketplace.WalmartToken;
 import io.github.ealenxie.walmart.marketplace.shipping.CarriersResponse;
@@ -30,8 +29,10 @@ class MarketplaceClientTest {
     void getCarriers() {
         String clientId = "your clientId";
         String clientSecret = "your clientSecret";
-        // get accessToken
         MarketplaceClient marketplaceClient = new MarketplaceClient(clientId, clientSecret);
+        // 设置为正式环境
+        marketplaceClient.setSandBox(false);
+        // get accessToken
         WalmartToken walmartToken = marketplaceClient.accessToken();
         String accessToken = walmartToken.getAccessToken();
         // call api
