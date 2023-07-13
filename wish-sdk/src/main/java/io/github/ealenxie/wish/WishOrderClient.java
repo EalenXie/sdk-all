@@ -23,6 +23,7 @@ import io.github.ealenxie.wish.penalties.PenaltiesQueryParams;
 import io.github.ealenxie.wish.penalties.Penalty;
 import io.github.ealenxie.wish.price.*;
 import io.github.ealenxie.wish.productboost.*;
+import io.github.ealenxie.wish.products.*;
 import io.github.ealenxie.wish.rating.ProductRatePayload;
 import io.github.ealenxie.wish.rating.RateQueryParams;
 import io.github.ealenxie.wish.taxonomy.AttributeResponse;
@@ -67,6 +68,9 @@ public class WishOrderClient extends WishClient {
     private static final String EU_PRODUCT_COMPLIANCE_RESPONSIBLE_PERSON_URL = "/api/v3/eu_product_compliance/responsible_person/%s";
     private static final String FRANCE_EPR_COMPLIANCE_UNIQUE_ID_NUMBER_URL = "/api/v3/france_epr_compliance/unique_identification_number/%s";
     private static final String GERMANY_EPR_COMPLIANCE_EPR_REGISTRATION_NUMBER_URL = "/api/v3/germany_epr_compliance/epr_registration_number/%s";
+    private static final String WEBHOOK_SUBSCRIPTIONS_URL = "/api/v3/webhook/subscriptions/%s";
+    private static final String PRODUCTS_URL = "/api/v3/products/%s";
+
 
     /**
      * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/listBrands">Get a list of brands from a particular ID range</a>
@@ -579,6 +583,76 @@ public class WishOrderClient extends WishClient {
     }
 
     /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/listProductUpdateRequests">List product create or update requests</a>
+     */
+    public WishData<List<ProductUpdateRequest>> listProductUpdateRequests(String accessToken, ProductUpdateRequestsQueryParams queryParams) {
+        return get("/api/v3/products/requests", accessToken, queryParams, new ParameterizedTypeReference<WishData<List<ProductUpdateRequest>>>() {
+        });
+    }
+
+    /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/enableDisableCalculatedShipping">Enable/disable Calculated Shipping for the product</a>
+     */
+    public WishData<EnablePayload> calculatedShipping(String accessToken, String id, ProductUpdateRequestsQueryParams queryParams) {
+        return get(String.format("/api/v3/products/%s/calculated_shipping", id), accessToken, queryParams, new ParameterizedTypeReference<WishData<EnablePayload>>() {
+        });
+    }
+
+    /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/getProductUpdateRequest">Get a product create or update request</a>
+     */
+    public WishData<ProductUpdateRequest> getProductUpdateRequest(String accessToken, String id) {
+        return get(String.format("/api/v3/products/requests/%s", id), accessToken, null, new ParameterizedTypeReference<WishData<ProductUpdateRequest>>() {
+        });
+    }
+
+    /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/deleteProductUpdateRequest">Delete a product create or update request</a>
+     */
+    public void deleteProductUpdateRequest(String accessToken, String id) {
+        exchange(String.format("/api/v3/products/requests/%s", id), HttpMethod.DELETE, accessToken, null, null, Object.class);
+    }
+
+    /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/createProduct">Get a product create or update request</a>
+     */
+    public WishData<ProductResponse> createProduct(String accessToken, ProductCreatePayload payload) {
+        return post("/api/v3/products", accessToken, payload, new ParameterizedTypeReference<WishData<ProductResponse>>() {
+        });
+    }
+
+    /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/listProductsSync">List products</a>
+     */
+    public WishData<List<ProductSyncPayload>> listProductsSync(String accessToken, ProductsSyncQueryParams queryParams) {
+        return get("/api/v3/products", accessToken, queryParams, new ParameterizedTypeReference<WishData<List<ProductSyncPayload>>>() {
+        });
+    }
+
+    /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/updateProduct">Update a product</a>
+     */
+    public WishData<ProductPayload> updateProduct(String accessToken, String id, ProductUpdatePayload payload) {
+        return exchange(String.format(PRODUCTS_URL, id), HttpMethod.PUT, accessToken, null, payload, new ParameterizedTypeReference<WishData<ProductPayload>>() {
+        });
+    }
+
+    /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/getProduct">Get a product</a>
+     */
+    public WishData<ProductPayload> getProduct(String accessToken, String id) {
+        return get(String.format(PRODUCTS_URL, id), accessToken, null, new ParameterizedTypeReference<WishData<ProductPayload>>() {
+        });
+    }
+
+    /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/deleteProduct">Delete a product</a>
+     */
+    public void deleteProduct(String accessToken, String id) {
+        exchange(String.format(PRODUCTS_URL, id), HttpMethod.DELETE, accessToken, null, null, Object.class);
+    }
+
+    /**
      * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/FetchProductRatings">Fetch product ratings</a>
      */
     public WishData<List<ProductRatePayload>> getProductRatings(String accessToken, RateQueryParams queryParams) {
@@ -695,7 +769,7 @@ public class WishOrderClient extends WishClient {
      * @param queryParams 请求参数
      */
     public WishData<SubscriptionResponse> updateSubscription(String accessToken, String id, SubscriptionPayload queryParams) {
-        return exchange(String.format("/api/v3/webhook/subscriptions/%s", id), HttpMethod.PUT, accessToken, queryParams, null, new ParameterizedTypeReference<WishData<SubscriptionResponse>>() {
+        return exchange(String.format(WEBHOOK_SUBSCRIPTIONS_URL, id), HttpMethod.PUT, accessToken, queryParams, null, new ParameterizedTypeReference<WishData<SubscriptionResponse>>() {
         });
     }
 
@@ -706,7 +780,7 @@ public class WishOrderClient extends WishClient {
      * @param id          id
      */
     public WishData<SubscriptionResponse> getSubscription(String accessToken, String id) {
-        return get(String.format("/api/v3/webhook/subscriptions/%s", id), accessToken, null, new ParameterizedTypeReference<WishData<SubscriptionResponse>>() {
+        return get(String.format(WEBHOOK_SUBSCRIPTIONS_URL, id), accessToken, null, new ParameterizedTypeReference<WishData<SubscriptionResponse>>() {
         });
     }
 
@@ -717,7 +791,7 @@ public class WishOrderClient extends WishClient {
      * @param id          id
      */
     public void deleteSubscription(String accessToken, String id) {
-        exchange(String.format("/api/v3/webhook/subscriptions/%s", id), HttpMethod.DELETE, accessToken, null, null, Object.class);
+        exchange(String.format(WEBHOOK_SUBSCRIPTIONS_URL, id), HttpMethod.DELETE, accessToken, null, null, Object.class);
     }
 
     /**

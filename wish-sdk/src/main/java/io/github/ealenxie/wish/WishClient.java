@@ -257,6 +257,10 @@ public abstract class WishClient {
         return getRestOperations().exchange(uri, httpMethod, httpEntity, responseType).getBody();
     }
 
+    protected <T> T getWishData(WishData<T> data) {
+        return data.getData();
+    }
+
     /**
      * 构建请求URI
      *
