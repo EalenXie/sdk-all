@@ -578,8 +578,6 @@ public class WishOrderClient extends WishClient {
         });
     }
 
-
-
     /**
      * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/FetchProductRatings">Fetch product ratings</a>
      */
