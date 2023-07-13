@@ -1,14 +1,14 @@
 package io.github.ealenxie.wish.merchant;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * @author EalenXie created on 2023/7/13 10:00
  */
-@NoArgsConstructor
-@Data
+@Getter
+@Setter
 public class SettingsResponse {
 
     /**

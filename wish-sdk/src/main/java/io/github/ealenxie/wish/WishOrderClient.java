@@ -519,6 +519,7 @@ public class WishOrderClient extends WishClient {
         return get(String.format("/api/v3/payments/invoices/bulk_get/%s", id), accessToken, null, new ParameterizedTypeReference<WishData<PaymentInvoicesResponse>>() {
         });
     }
+
     /**
      * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/getEarlyPayment">Get merchant early payment info</a>
      */

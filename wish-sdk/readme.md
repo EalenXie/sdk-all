@@ -1,7 +1,8 @@
 wish-sdk
 ======
+<img src="https://d2ujdsqe3ri19m.cloudfront.net/77b19223edb1/dist/js/5fae4ff29cf989507838ee0e55a17490.svg" alt="Goodcang Logo" width="200">
 
-主要是封装了 跨境电商 [wish 商户平台](https://china-merchant.wish.com/documentation/api/v3/explorer) 接口
+主要是封装了 [wish 商户平台](https://china-merchant.wish.com/documentation/api/v3/explorer) 接口
 
 ### 快速开始
 
@@ -128,7 +129,6 @@ wish-sdk
 | getPaymentInvoices      | [Get batch invoice download job status](https://china-merchant.wish.com/documentation/api/v3/reference#operation/getPaymentInvoicesDownloadJob) | ✔️  |
 | getEarlyPayment         | [Get merchant early payment info](https://china-merchant.wish.com/documentation/api/v3/reference#operation/getEarlyPayment)                     | ✔️  |
 
-
 ##### Webhook
 
 | 方法名                | 官方文档地址                                                                                                             | 状态  |
@@ -139,7 +139,6 @@ wish-sdk
 | getSubscription    | [Get a Subscription](https://www.merchant.wish.com/documentation/api/v3/reference#operation/getSubscription)       | ✔️  |
 | deleteSubscription | [Delete a Subscription](https://www.merchant.wish.com/documentation/api/v3/reference#operation/deleteSubscription) | ✔️  |
 | getTopics          | [List Topics](https://www.merchant.wish.com/documentation/api/v3/reference#operation/getTopics)                    | ✔️  |
-
 
 ##### Wish Parcel
 
