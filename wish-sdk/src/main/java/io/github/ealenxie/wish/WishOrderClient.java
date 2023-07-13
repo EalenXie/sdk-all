@@ -22,6 +22,7 @@ import io.github.ealenxie.wish.penalties.PenaltiesCountQueryParams;
 import io.github.ealenxie.wish.penalties.PenaltiesQueryParams;
 import io.github.ealenxie.wish.penalties.Penalty;
 import io.github.ealenxie.wish.price.*;
+import io.github.ealenxie.wish.promotionplatform.*;
 import io.github.ealenxie.wish.productboost.*;
 import io.github.ealenxie.wish.rating.ProductRatePayload;
 import io.github.ealenxie.wish.rating.RateQueryParams;
@@ -575,6 +576,63 @@ public class WishOrderClient extends WishClient {
      */
     public WishData<List<BalanceUpdate>> listBalanceUpdates(String accessToken, BalanceUpdatesQueryParams queryParams) {
         return get("/api/v3/product_boost/balance_updates", accessToken, queryParams, new ParameterizedTypeReference<WishData<List<BalanceUpdate>>>() {
+        });
+    }
+
+
+    /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/getPromotionsEligibleProducts">Get eligible products</a>
+     */
+    public WishData<EligibleProductPayload> getPromotionsEligibleProducts(String accessToken, EligibleProductQueryParams queryParams) {
+        return get("/api/v3/promotions/eligible_products", accessToken, queryParams, new ParameterizedTypeReference<WishData<EligibleProductPayload>>() {
+        });
+    }
+
+    /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/cancelPromotionsCampaign">Cancel a promotion campaign</a>
+     */
+    public WishData<PromotionCampaignResponse> cancelPromotionsCampaign(String accessToken, String id, CancelPromotionPayload payload) {
+        return exchange(String.format("/api/v3/promotions/campaigns/%s/cancel", id), HttpMethod.PUT, accessToken, null, payload, new ParameterizedTypeReference<WishData<PromotionCampaignResponse>>() {
+        });
+    }
+
+    /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/createPromotionsCampaign">Create a promotion campaign</a>
+     */
+    public WishData<PromotionCampaignResponse> createPromotionsCampaign(String accessToken, CreatePromotionCampaignPayload payload) {
+        return post("/api/v3/promotions/campaigns", accessToken, payload, new ParameterizedTypeReference<WishData<PromotionCampaignResponse>>() {
+        });
+    }
+
+    /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/listPromotionsCampaigns">List promotion campaigns</a>
+     */
+    public WishData<PromotionCampaignResponse> getPromotionsCampaigns(String accessToken, PromotionCampaignQueryParams queryParams) {
+        return get("/api/v3/promotions/campaigns", accessToken, queryParams, new ParameterizedTypeReference<WishData<PromotionCampaignResponse>>() {
+        });
+    }
+
+    /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/updatePromotionsCampaign">Update a promotion campaign</a>
+     */
+    public WishData<PromotionCampaignResponse> updatePromotionsCampaign(String accessToken, String id, UpdatePromotionCampaignPayload payload) {
+        return exchange(String.format("/api/v3/promotions/campaigns/%s", id), HttpMethod.PUT, accessToken, null, payload, new ParameterizedTypeReference<WishData<PromotionCampaignResponse>>() {
+        });
+    }
+
+    /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/getPromotionsCampaign">Get a single promotion campaign</a>
+     */
+    public WishData<PromotionCampaignResponse> getPromotionsCampaign(String accessToken, String id, RateQueryParams queryParams) {
+        return get(String.format("/api/v3/promotions/campaigns/%s", id), accessToken, queryParams, new ParameterizedTypeReference<WishData<PromotionCampaignResponse>>() {
+        });
+    }
+
+    /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/FetchProductRatings">Get eligible products count</a>
+     */
+    public WishData<EligibleProductCountPayload> getPromotionsEligibleProductsCount(String accessToken, RateQueryParams queryParams) {
+        return get("/api/v3/promotions/eligible_products/count", accessToken, queryParams, new ParameterizedTypeReference<WishData<EligibleProductCountPayload>>() {
         });
     }
 
