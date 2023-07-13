@@ -129,6 +129,14 @@ wish-sdk
 | getPaymentInvoices      | [Get batch invoice download job status](https://china-merchant.wish.com/documentation/api/v3/reference#operation/getPaymentInvoicesDownloadJob) | ✔️  |
 | getEarlyPayment         | [Get merchant early payment info](https://china-merchant.wish.com/documentation/api/v3/reference#operation/getEarlyPayment)                     | ✔️  |
 
+
+##### Variations
+
+| 方法名             | 官方文档地址                                                                                                              | 状态  |
+|:----------------|:--------------------------------------------------------------------------------------------------------------------|:----|
+| createVariation | [Create a variation](https://china-merchant.wish.com/documentation/api/v3/reference#operation/createVariation)      | ✔️  |
+| getColors       | [Get a list of accepted colors](https://china-merchant.wish.com/documentation/api/v3/reference#operation/getColors) | ✔️  |
+
 ##### Webhook
 
 | 方法名                | 官方文档地址                                                                                                             | 状态  |

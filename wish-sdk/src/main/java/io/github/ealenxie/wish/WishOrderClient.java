@@ -18,6 +18,9 @@ import io.github.ealenxie.wish.payments.EarlyPayment;
 import io.github.ealenxie.wish.payments.PaymentInvoicesQueryParams;
 import io.github.ealenxie.wish.payments.PaymentInvoicesResponse;
 import io.github.ealenxie.wish.price.*;
+import io.github.ealenxie.wish.variation.ColorQueryParams;
+import io.github.ealenxie.wish.variation.VariationPayload;
+import io.github.ealenxie.wish.variation.VariationResponse;
 import io.github.ealenxie.wish.webhook.CreateSubscriptionQueryParams;
 import io.github.ealenxie.wish.webhook.SubscriptionPayload;
 import io.github.ealenxie.wish.webhook.SubscriptionResponse;
@@ -442,6 +445,47 @@ public class WishOrderClient extends WishClient {
     }
 
     /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/downloadPaymentInvoices">Batch download invoices</a>
+     */
+    public WishData<PaymentInvoicesResponse> downloadPaymentInvoices(String accessToken, PaymentInvoicesQueryParams queryParams) {
+        return exchange("/api/v3/payments/invoices/bulk_get", HttpMethod.POST, accessToken, queryParams, null, new ParameterizedTypeReference<WishData<PaymentInvoicesResponse>>() {
+        });
+    }
+
+    /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/getPaymentInvoicesDownloadJob">Get batch invoice download job status</a>
+     */
+    public WishData<PaymentInvoicesResponse> getPaymentInvoices(String accessToken, String id) {
+        return get(String.format("/api/v3/payments/invoices/bulk_get/%s", id), accessToken, null, new ParameterizedTypeReference<WishData<PaymentInvoicesResponse>>() {
+        });
+    }
+
+    /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/getEarlyPayment">Get merchant early payment info</a>
+     */
+    public WishData<EarlyPayment> getEarlyPayment(String accessToken) {
+        return get("/api/v3/payments/early_payment", accessToken, null, new ParameterizedTypeReference<WishData<EarlyPayment>>() {
+        });
+    }
+
+
+    /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/createVariation">Create a variation</a>
+     */
+    public WishData<VariationResponse> createVariation(String accessToken, String id, VariationPayload payload) {
+        return post(String.format("/api/v3/products/%s/variations", id), accessToken, payload, new ParameterizedTypeReference<WishData<VariationResponse>>() {
+        });
+    }
+
+    /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/getColors">Get a list of accepted colors</a>
+     */
+    public WishData<List<IdNamePayload>> getColors(String accessToken, ColorQueryParams queryParams) {
+        return get("/api/v3/products/variations/colors", accessToken, queryParams, new ParameterizedTypeReference<WishData<List<IdNamePayload>>>() {
+        });
+    }
+
+    /**
      * <a href="https://www.merchant.wish.com/documentation/api/v3/reference#operation/createSubscription">Create a Subscription</a>
      *
      * @param accessToken 令牌
@@ -503,31 +547,6 @@ public class WishOrderClient extends WishClient {
         return get("/api/v3/webhook/topics", accessToken, null, new ParameterizedTypeReference<WishData<List<TopicPayload>>>() {
         });
     }
-
-    /**
-     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/downloadPaymentInvoices">Batch download invoices</a>
-     */
-    public WishData<PaymentInvoicesResponse> downloadPaymentInvoices(String accessToken, PaymentInvoicesQueryParams queryParams) {
-        return exchange("/api/v3/payments/invoices/bulk_get", HttpMethod.POST, accessToken, queryParams, null, new ParameterizedTypeReference<WishData<PaymentInvoicesResponse>>() {
-        });
-    }
-
-    /**
-     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/getPaymentInvoicesDownloadJob">Get batch invoice download job status</a>
-     */
-    public WishData<PaymentInvoicesResponse> getPaymentInvoices(String accessToken, String id) {
-        return get(String.format("/api/v3/payments/invoices/bulk_get/%s", id), accessToken, null, new ParameterizedTypeReference<WishData<PaymentInvoicesResponse>>() {
-        });
-    }
-
-    /**
-     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/getEarlyPayment">Get merchant early payment info</a>
-     */
-    public WishData<EarlyPayment> getEarlyPayment(String accessToken) {
-        return get("/api/v3/payments/early_payment", accessToken, null, new ParameterizedTypeReference<WishData<EarlyPayment>>() {
-        });
-    }
-
 
     /**
      * <a href="https://www.merchant.wish.com/documentation/api/v3/reference#operation/wpsCreateShipment">Create a Wish Parcel shipment</a>
