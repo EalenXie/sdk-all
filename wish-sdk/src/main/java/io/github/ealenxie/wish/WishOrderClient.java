@@ -22,6 +22,8 @@ import io.github.ealenxie.wish.penalties.PenaltiesCountQueryParams;
 import io.github.ealenxie.wish.penalties.PenaltiesQueryParams;
 import io.github.ealenxie.wish.penalties.Penalty;
 import io.github.ealenxie.wish.price.*;
+import io.github.ealenxie.wish.rating.ProductRatePayload;
+import io.github.ealenxie.wish.rating.RateQueryParams;
 import io.github.ealenxie.wish.taxonomy.AttributeResponse;
 import io.github.ealenxie.wish.taxonomy.CategoryIdPayload;
 import io.github.ealenxie.wish.taxonomy.CategoryPayload;
@@ -503,15 +505,22 @@ public class WishOrderClient extends WishClient {
         });
     }
 
-
+    /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/FetchProductRatings">Fetch product ratings</a>
+     */
+    public WishData<List<ProductRatePayload>> getProductRatings(String accessToken, RateQueryParams queryParams) {
+        return get("/api/v3/ratings/products", accessToken, queryParams, new ParameterizedTypeReference<WishData<List<ProductRatePayload>>>() {
+        });
+    }
 
     /**
      * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/getCategoryByID">Get a category</a>
      */
     public WishData<CategoryPayload> getCategory(String accessToken, String id) {
-        return get(String.format("/api/v3/products/categories/%s",id), accessToken, null, new ParameterizedTypeReference<WishData<CategoryPayload>>() {
+        return get(String.format("/api/v3/products/categories/%s", id), accessToken, null, new ParameterizedTypeReference<WishData<CategoryPayload>>() {
         });
     }
+
     /**
      * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/getCategoryAttributes">Get attributes</a>
      */
@@ -519,6 +528,7 @@ public class WishOrderClient extends WishClient {
         return get("/api/v3/products/attributes", accessToken, queryParams, new ParameterizedTypeReference<WishData<AttributeResponse>>() {
         });
     }
+
     /**
      * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/getCategories">Get root category</a>
      */

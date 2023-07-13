@@ -138,6 +138,13 @@ wish-sdk
 | penaltiesCount | [Count number of penalties](https://china-merchant.wish.com/documentation/api/v3/reference#operation/CountPenalties)   | ✔️  |
 | listPenalties  | [Retrieve a list of penalties](https://china-merchant.wish.com/documentation/api/v3/reference#operation/ListPenalties) | ✔️  |
 
+
+##### Ratings
+
+| 方法名               | 官方文档地址                                                                                                                | 状态  |
+|:------------------|:----------------------------------------------------------------------------------------------------------------------|:----|
+| getProductRatings | [Fetch product ratings](https://china-merchant.wish.com/documentation/api/v3/reference#operation/FetchProductRatings) | ✔️  |
+
 ##### Taxonomy
 
 | 方法名                   | 官方文档地址                                                                                                           | 状态  |
@@ -145,7 +152,6 @@ wish-sdk
 | getCategory           | [Get a category](https://china-merchant.wish.com/documentation/api/v3/reference#operation/getCategoryByID)       | ✔️  |
 | getCategoryAttributes | [Get attributes](https://china-merchant.wish.com/documentation/api/v3/reference#operation/getCategoryAttributes) | ✔️  |
 | getCategories         | [Get root category](https://china-merchant.wish.com/documentation/api/v3/reference#operation/getCategories)      | ✔️  |
-
 
 ##### Tickets
 
