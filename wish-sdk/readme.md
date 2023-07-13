@@ -111,19 +111,22 @@ wish-sdk
 | 方法名                 | 官方文档地址                                                                                                                         | 状态  |
 |:--------------------|:-------------------------------------------------------------------------------------------------------------------------------|:----|
 | getOrder            | [Get an order](https://china-merchant.wish.com/documentation/api/v3/reference#operation/GetOrder)                              | ✔️  |
-| getOrders           | [List orders](https://china-merchant.wish.com/documentation/api/v3/reference#operation/GetMultipleOrders)                      | ✔️  |
+| getMultipleOrders   | [List orders](https://china-merchant.wish.com/documentation/api/v3/reference#operation/GetMultipleOrders)                      | ✔️  |
 | shippingCarriers    | [Get accepted shipping carriers](https://china-merchant.wish.com/documentation/api/v3/reference#operation/GetShippingCarriers) | ✔️  |
 | batchDownloadOrders | [Batch download orders](https://china-merchant.wish.com/documentation/api/v3/reference#operation/downloadOrders)               | ✔️  |
 | shipOrder           | [Ship or update tracking](https://china-merchant.wish.com/documentation/api/v3/reference#operation/ShipOrder)                  | ✔️  |
 | refundReasons       | [Get valid refund reasons](https://china-merchant.wish.com/documentation/api/v3/reference#operation/GetValidRefundReasons)     | ✔️  |
 | refund              | [Refund/Cancel an order](https://china-merchant.wish.com/documentation/api/v3/reference#operation/RefundOrder)                 | ✔️  |
-| updateLTLOrder      | [Update an LTL order](https://china-merchant.wish.com/documentation/api/v3/reference#operation/UpdateOrder)                    | ✔️  |
+| updateOrder         | [Update an LTL order](https://china-merchant.wish.com/documentation/api/v3/reference#operation/UpdateOrder)                    | ✔️  |
 | modifyAddress       | [Modify shipping address](https://china-merchant.wish.com/documentation/api/v3/reference#operation/ModifyAddress)              | ✔️  |
 
+##### Payments
 
-
-
-
+| 方法名                     | 官方文档地址                                                                                                                                          | 状态  |
+|:------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------|:----|
+| downloadPaymentInvoices | [Batch download invoices](https://china-merchant.wish.com/documentation/api/v3/reference#operation/downloadPaymentInvoices)                     | ✔️  |
+| getPaymentInvoices      | [Get batch invoice download job status](https://china-merchant.wish.com/documentation/api/v3/reference#operation/getPaymentInvoicesDownloadJob) | ✔️  |
+| getEarlyPayment         | [Get merchant early payment info](https://china-merchant.wish.com/documentation/api/v3/reference#operation/getEarlyPayment)                     | ✔️  |
 
 ##### Wish Parcel
 
