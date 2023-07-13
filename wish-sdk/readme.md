@@ -93,6 +93,21 @@ wish-sdk
 | getGerRegistrationNumber    | [Get a Germany Product EPR Registration Number](https://china-merchant.wish.com/documentation/api/v3/reference#operation/getGermanyProductEprRegistrationNumber)       | ✔️  |
 | deleteGerRegistrationNumber | [Delete a Germany Product EPR Registration Number](https://china-merchant.wish.com/documentation/api/v3/reference#operation/deleteGermanyProductEprRegistrationNumber) | ✔️  |
 
+##### Merchant
+
+| 方法名                      | 官方文档地址                                                                                                                            | 状态  |
+|:-------------------------|:----------------------------------------------------------------------------------------------------------------------------------|:----|
+| getCurrencySettings      | [Get merchant currency settings](https://china-merchant.wish.com/documentation/api/v3/reference#operation/getCurrencySettings)    | ✔️  |
+| updateWarehouse          | [Update warehouse information](https://china-merchant.wish.com/documentation/api/v3/reference#operation/updateWarehouse)          | ✔️  |
+| getSettings              | [Get merchant settings](https://china-merchant.wish.com/documentation/api/v3/reference#operation/getSettings)                     | ✔️  |
+| createWarehouse          | [Create a warehouse](https://china-merchant.wish.com/documentation/api/v3/reference#operation/createWarehouse)                    | ✔️  |
+| listWarehouses           | [Create a warehouse](https://china-merchant.wish.com/documentation/api/v3/reference#operation/listWarehouses)                     | ✔️  |
+| updateShippingSettings   | [Update shipping settings](https://china-merchant.wish.com/documentation/api/v3/reference#operation/updateShippingSettings)       | ✔️  |
+| listShippingSettings     | [Get shipping settings](https://china-merchant.wish.com/documentation/api/v3/reference#operation/listShippingSettings)            | ✔️  |
+| getMerchantAccountDetail | [Get merchant account details](https://china-merchant.wish.com/documentation/api/v3/reference#operation/getMerchantAccountDetail) | ✔️  |
+
+##### Orders
+
 | 方法名                 | 官方文档地址                                                                                                                         | 状态  |
 |:--------------------|:-------------------------------------------------------------------------------------------------------------------------------|:----|
 | getOrder            | [Get an order](https://china-merchant.wish.com/documentation/api/v3/reference#operation/GetOrder)                              | ✔️  |

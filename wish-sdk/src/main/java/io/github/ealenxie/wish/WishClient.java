@@ -2,7 +2,7 @@ package io.github.ealenxie.wish;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.github.ealenxie.wish.vo.MerchantIdPayload;
+import io.github.ealenxie.wish.orders.MerchantIdPayload;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -60,6 +60,7 @@ public abstract class WishClient {
         this.objectMapper = objectMapper;
         this.restOperations = restOperations;
     }
+
     public RestOperations getRestOperations() {
         return restOperations;
     }

@@ -6,16 +6,14 @@ import io.github.ealenxie.wish.brands.BrandsQueryParams;
 import io.github.ealenxie.wish.bulkproducts.ProductBulk;
 import io.github.ealenxie.wish.bulkproducts.ProductUpdatePayload;
 import io.github.ealenxie.wish.currencies.Currency;
-import io.github.ealenxie.wish.dto.*;
 import io.github.ealenxie.wish.euproductcompliance.*;
 import io.github.ealenxie.wish.fbs.FbsRecommendation;
 import io.github.ealenxie.wish.fbs.FbsRecommendationsQueryParams;
 import io.github.ealenxie.wish.fbs.FbsVariation;
 import io.github.ealenxie.wish.franceerpcompliance.*;
 import io.github.ealenxie.wish.germanyerpcompliance.*;
-import io.github.ealenxie.wish.vo.NamePayload;
-import io.github.ealenxie.wish.vo.WishDownloadJob;
-import io.github.ealenxie.wish.vo.WishOrder;
+import io.github.ealenxie.wish.merchant.*;
+import io.github.ealenxie.wish.orders.*;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.web.client.RestOperations;
@@ -49,8 +47,6 @@ public class WishOrderClient extends WishClient {
     /**
      * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/listBrands">Get a list of brands from a particular ID range</a>
      * <p>Wish上可用的品牌列表，可用于标记产品。</p>
-     *
-     * @param accessToken 令牌
      */
     public WishData<List<Brand>> listBrands(String accessToken, BrandsQueryParams queryParams) {
         return get("/api/v3/brands", accessToken, queryParams, new ParameterizedTypeReference<WishData<List<Brand>>>() {
@@ -60,8 +56,6 @@ public class WishOrderClient extends WishClient {
     /**
      * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/getProducts">Get products</a>
      * <p>Get products asynchronously.</p>
-     *
-     * @param accessToken 令牌
      */
     public WishData<ProductBulk> getProducts(String accessToken) {
         return post("/api/v3/brands/products/bulk_get", accessToken, null, new ParameterizedTypeReference<WishData<ProductBulk>>() {
@@ -70,8 +64,6 @@ public class WishOrderClient extends WishClient {
 
     /**
      * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/getUpdateProductsStatus">Get the update products job status</a>
-     *
-     * @param accessToken 令牌
      */
     public WishData<ProductBulk> getUpdateProductsStatus(String accessToken, String id) {
         return get(String.format("/api/v3/brands/products/bulk_update/%s", id), accessToken, null, new ParameterizedTypeReference<WishData<ProductBulk>>() {
@@ -80,8 +72,6 @@ public class WishOrderClient extends WishClient {
 
     /**
      * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/updateProducts">Update products</a>
-     *
-     * @param accessToken 令牌
      */
     public WishData<ProductBulk> updateProducts(String accessToken, List<ProductUpdatePayload> payload) {
         return post("/api/v3/products/bulk_update", accessToken, payload, new ParameterizedTypeReference<WishData<ProductBulk>>() {
@@ -90,8 +80,6 @@ public class WishOrderClient extends WishClient {
 
     /**
      * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/getGetProductsStatus">Get the get products job status</a>
-     *
-     * @param accessToken 令牌
      */
     public WishData<ProductBulk> getGetProductsStatus(String accessToken, String id) {
         return get(String.format("/api/v3/products/bulk_get/%s", id), accessToken, null, new ParameterizedTypeReference<WishData<ProductBulk>>() {
@@ -100,8 +88,6 @@ public class WishOrderClient extends WishClient {
 
     /**
      * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/getCurrencies">Get supported currency list</a>
-     *
-     * @param accessToken 令牌
      */
     public WishData<List<Currency>> getCurrencies(String accessToken) {
         return get("/api/v3/currencies", accessToken, null, new ParameterizedTypeReference<WishData<List<Currency>>>() {
@@ -110,8 +96,6 @@ public class WishOrderClient extends WishClient {
 
     /**
      * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/updateEUResponsiblePerson">Update an EU Responsible Person</a>
-     *
-     * @param accessToken 令牌
      */
     public WishData<ResponsiblePersonPayload> updateEuResponsiblePerson(String accessToken, String id, ResponsiblePersonRequestPayload payload) {
         return exchange(String.format(EU_PRODUCT_COMPLIANCE_RESPONSIBLE_PERSON_URL, id), HttpMethod.PUT, accessToken, null, payload, new ParameterizedTypeReference<WishData<ResponsiblePersonPayload>>() {
@@ -120,8 +104,6 @@ public class WishOrderClient extends WishClient {
 
     /**
      * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/getEUResponsiblePerson">Get an EU Responsible Person</a>
-     *
-     * @param accessToken 令牌
      */
     public WishData<ResponsiblePersonPayload> getEuResponsiblePerson(String accessToken, String id) {
         return get(String.format(EU_PRODUCT_COMPLIANCE_RESPONSIBLE_PERSON_URL, id), accessToken, null, new ParameterizedTypeReference<WishData<ResponsiblePersonPayload>>() {
@@ -130,8 +112,6 @@ public class WishOrderClient extends WishClient {
 
     /**
      * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/deleteEUResponsiblePerson">Delete an EU Responsible Person</a>
-     *
-     * @param accessToken 令牌
      */
     public void deleteEuResponsiblePerson(String accessToken, String id) {
         exchange(String.format(EU_PRODUCT_COMPLIANCE_RESPONSIBLE_PERSON_URL, id), HttpMethod.DELETE, accessToken, null, null, Object.class);
@@ -139,8 +119,6 @@ public class WishOrderClient extends WishClient {
 
     /**
      * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/BulkUpdateProducts">Bulk Update EU Product Compliance Status</a>
-     *
-     * @param accessToken 令牌
      */
     public WishData<ProductsBulkUpdateResponse> bulkUpdateProducts(String accessToken, ProductsBulkUpdateQueryParams queryParams) {
         return exchange("/api/v3/eu_product_compliance/products/bulk_update", HttpMethod.POST, accessToken, queryParams, null, new ParameterizedTypeReference<WishData<ProductsBulkUpdateResponse>>() {
@@ -149,8 +127,6 @@ public class WishOrderClient extends WishClient {
 
     /**
      * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/GetBulkUpdateStatus">Get Bulk Update Job Status</a>
-     *
-     * @param accessToken 令牌
      */
     public WishData<ProductsBulkUpdateResponse> getBulkUpdateStatus(String accessToken, String id) {
         return get(String.format("/api/v3/eu_product_compliance/products/bulk_update/%s", id), accessToken, null, new ParameterizedTypeReference<WishData<ProductsBulkUpdateResponse>>() {
@@ -159,8 +135,6 @@ public class WishOrderClient extends WishClient {
 
     /**
      * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/updateEUProductComplianceStatus">Update EU Product Compliance Status</a>
-     *
-     * @param accessToken 令牌
      */
     public WishData<List<ComplianceStatusEuResponse>> updateEuComplianceStatus(String accessToken, List<ComplianceStatusEuUpdatePayload> payload) {
         return exchange("/api/v3/eu_product_compliance/products", HttpMethod.PUT, accessToken, null, payload, new ParameterizedTypeReference<WishData<List<ComplianceStatusEuResponse>>>() {
@@ -169,8 +143,6 @@ public class WishOrderClient extends WishClient {
 
     /**
      * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/getEUProductComplianceStatus">Get EU Product Compliance Status</a>
-     *
-     * @param accessToken 令牌
      */
     public WishData<List<ComplianceStatusEuResponse>> getEuComplianceStatus(String accessToken, ComplianceStatusEuQueryParams queryParams) {
         return get("/api/v3/eu_product_compliance/products", accessToken, queryParams, new ParameterizedTypeReference<WishData<List<ComplianceStatusEuResponse>>>() {
@@ -179,8 +151,6 @@ public class WishOrderClient extends WishClient {
 
     /**
      * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/createEUResponsiblePerson">Update an EU Responsible Person</a>
-     *
-     * @param accessToken 令牌
      */
     public WishData<ResponsiblePersonPayload> createEuResponsiblePerson(String accessToken, ResponsiblePersonRequestPayload payload) {
         return exchange("/api/v3/eu_product_compliance/responsible_person", HttpMethod.PUT, accessToken, null, payload, new ParameterizedTypeReference<WishData<ResponsiblePersonPayload>>() {
@@ -189,8 +159,6 @@ public class WishOrderClient extends WishClient {
 
     /**
      * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/listEUResponsiblePerson">List EU Responsible Persons</a>
-     *
-     * @param accessToken 令牌
      */
     public WishData<List<ResponsiblePersonPayload>> listEuResponsiblePerson(String accessToken, ResponsiblePersonQueryParams queryParams) {
         return get("/api/v3/eu_product_compliance/responsible_person", accessToken, queryParams, new ParameterizedTypeReference<WishData<List<ResponsiblePersonPayload>>>() {
@@ -199,8 +167,6 @@ public class WishOrderClient extends WishClient {
 
     /**
      * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/fbsVariation">Get FBS related data for a variation</a>
-     *
-     * @param accessToken 令牌
      */
     public WishData<FbsVariation> fbsVariation(String accessToken, String id) {
         return get(String.format("/api/v3/fbs/variations/%s", id), accessToken, null, new ParameterizedTypeReference<WishData<FbsVariation>>() {
@@ -209,8 +175,6 @@ public class WishOrderClient extends WishClient {
 
     /**
      * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/fbsRecommendations">Get FBS inbound shipping recommendations</a>
-     *
-     * @param accessToken 令牌
      */
     public WishData<List<FbsRecommendation>> fbsRecommendations(String accessToken, FbsRecommendationsQueryParams queryParams) {
         return get("/api/v3/fbs/recommendations", accessToken, queryParams, new ParameterizedTypeReference<WishData<List<FbsRecommendation>>>() {
@@ -219,8 +183,6 @@ public class WishOrderClient extends WishClient {
 
     /**
      * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/updateFranceEPRProductComplianceStatus">Bulk update France EPR Product Compliance Status</a>
-     *
-     * @param accessToken 令牌
      */
     public WishData<List<ComplianceStatusFraResponse>> updateFraComplianceStatus(String accessToken, List<ComplianceStatusFraUpdatePayload> payload) {
         return exchange("/api/v3/france_epr_compliance/compliance_status", HttpMethod.PUT, accessToken, null, payload, new ParameterizedTypeReference<WishData<List<ComplianceStatusFraResponse>>>() {
@@ -229,8 +191,6 @@ public class WishOrderClient extends WishClient {
 
     /**
      * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/getFranceEPRProductComplianceStatus">Get France EPR Product Compliance Status</a>
-     *
-     * @param accessToken 令牌
      */
     public WishData<List<ComplianceStatusFraResponse>> getFraComplianceStatus(String accessToken, ComplianceStatusFraQueryParams queryParams) {
         return get("/api/v3/france_epr_compliance/compliance_status", accessToken, queryParams, new ParameterizedTypeReference<WishData<List<ComplianceStatusFraResponse>>>() {
@@ -239,8 +199,6 @@ public class WishOrderClient extends WishClient {
 
     /**
      * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/createFranceProductUniqueIdentificationNumber">Create a France Product Unique Identification Number</a>
-     *
-     * @param accessToken 令牌
      */
     public WishData<UniqueIdNumberFraResponse> createFraUniqueIdNumber(String accessToken, UniqueIdNumberFraCreatePayload payload) {
         return post("/api/v3/france_epr_compliance/unique_identification_number", accessToken, payload, new ParameterizedTypeReference<WishData<UniqueIdNumberFraResponse>>() {
@@ -249,8 +207,6 @@ public class WishOrderClient extends WishClient {
 
     /**
      * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/listFranceProductUniqueIdentificationNumber">List France Product Unique Identification Numbers</a>
-     *
-     * @param accessToken 令牌
      */
     public WishData<List<UniqueIdNumberFraResponse>> listFraUniqueIdNumber(String accessToken) {
         return get("/api/v3/france_epr_compliance/unique_identification_number", accessToken, null, new ParameterizedTypeReference<WishData<List<UniqueIdNumberFraResponse>>>() {
@@ -259,8 +215,6 @@ public class WishOrderClient extends WishClient {
 
     /**
      * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/updateFranceProductUniqueIdentificationNumber">Update a France Product Unique Identification Number</a>
-     *
-     * @param accessToken 令牌
      */
     public WishData<UniqueIdNumberFraResponse> updateFraUniqueIdNumber(String accessToken, String id, UniqueIdNumberFraUpdatePayload payload) {
         return exchange(String.format(FRANCE_EPR_COMPLIANCE_UNIQUE_ID_NUMBER_URL, id), HttpMethod.PUT, accessToken, null, payload, new ParameterizedTypeReference<WishData<UniqueIdNumberFraResponse>>() {
@@ -269,8 +223,6 @@ public class WishOrderClient extends WishClient {
 
     /**
      * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/getFranceProductUniqueIdentificationNumber">Get a France Product Unique Identification Number</a>
-     *
-     * @param accessToken 令牌
      */
     public WishData<UniqueIdNumberFraResponse> getFraUniqueIdNumber(String accessToken, String id) {
         return get(String.format(FRANCE_EPR_COMPLIANCE_UNIQUE_ID_NUMBER_URL, id), accessToken, null, new ParameterizedTypeReference<WishData<UniqueIdNumberFraResponse>>() {
@@ -279,8 +231,6 @@ public class WishOrderClient extends WishClient {
 
     /**
      * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/deleteFranceProductUniqueIdentificationNumber">Delete a France Product Unique Identification Number</a>
-     *
-     * @param accessToken 令牌
      */
     public void deleteFraUniqueIdNumber(String accessToken, String id) {
         exchange(String.format(FRANCE_EPR_COMPLIANCE_UNIQUE_ID_NUMBER_URL, id), HttpMethod.DELETE, accessToken, null, null, Object.class);
@@ -288,8 +238,6 @@ public class WishOrderClient extends WishClient {
 
     /**
      * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/createGermanyProductEprRegistrationNumber">Create a Germany Product EPR Registration Number</a>
-     *
-     * @param accessToken 令牌
      */
     public WishData<RegistrationNumberGerResponse> createGerRegistrationNumber(String accessToken, RegistrationNumberGerCreatePayload payload) {
         return post("/api/v3/germany_epr_compliance/epr_registration_number", accessToken, payload, new ParameterizedTypeReference<WishData<RegistrationNumberGerResponse>>() {
@@ -298,8 +246,6 @@ public class WishOrderClient extends WishClient {
 
     /**
      * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/listGermanyProductEprRegistrationNumbers">List Germany EPR Registration Numbers</a>
-     *
-     * @param accessToken 令牌
      */
     public WishData<List<RegistrationNumberGerResponse>> listGerRegistrationNumbers(String accessToken) {
         return get("/api/v3/germany_epr_compliance/epr_registration_number", accessToken, null, new ParameterizedTypeReference<WishData<List<RegistrationNumberGerResponse>>>() {
@@ -308,8 +254,6 @@ public class WishOrderClient extends WishClient {
 
     /**
      * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/updateGermanyEPRProductComplianceStatus">Bulk update Germany EPR Product Compliance Status</a>
-     *
-     * @param accessToken 令牌
      */
     public WishData<List<ComplianceStatusGerResponse>> updateGerComplianceStatus(String accessToken, List<ComplianceStatusGerUpdatePayload> payload) {
         return post("/api/v3/germany_epr_compliance/compliance_status", accessToken, payload, new ParameterizedTypeReference<WishData<List<ComplianceStatusGerResponse>>>() {
@@ -318,8 +262,6 @@ public class WishOrderClient extends WishClient {
 
     /**
      * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/getGermanyEPRProductComplianceStatus">Get Germany EPR Product Compliance Status</a>
-     *
-     * @param accessToken 令牌
      */
     public WishData<List<ComplianceStatusGerResponse>> getGerComplianceStatus(String accessToken, ComplianceStatusGerQueryParams queryParams) {
         return get("/api/v3/germany_epr_compliance/compliance_status", accessToken, queryParams, new ParameterizedTypeReference<WishData<List<ComplianceStatusGerResponse>>>() {
@@ -328,8 +270,6 @@ public class WishOrderClient extends WishClient {
 
     /**
      * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/updateGermanyProductEprRegistrationNumber">Update a Germany Product EPR Registration Number</a>
-     *
-     * @param accessToken 令牌
      */
     public WishData<RegistrationNumberGerResponse> updateGerRegistrationNumber(String accessToken, String id, RegistrationNumberGerUpdatePayload payload) {
         return exchange(String.format(GERMANY_EPR_COMPLIANCE_EPR_REGISTRATION_NUMBER_URL, id), HttpMethod.PUT, accessToken, null, payload, new ParameterizedTypeReference<WishData<RegistrationNumberGerResponse>>() {
@@ -338,8 +278,6 @@ public class WishOrderClient extends WishClient {
 
     /**
      * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/getGermanyProductEprRegistrationNumber">Get a Germany Product EPR Registration Number</a>
-     *
-     * @param accessToken 令牌
      */
     public WishData<RegistrationNumberGerResponse> getGerRegistrationNumber(String accessToken, String id) {
         return get(String.format(GERMANY_EPR_COMPLIANCE_EPR_REGISTRATION_NUMBER_URL, id), accessToken, null, new ParameterizedTypeReference<WishData<RegistrationNumberGerResponse>>() {
@@ -348,43 +286,78 @@ public class WishOrderClient extends WishClient {
 
     /**
      * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/deleteGermanyProductEprRegistrationNumber">Delete a Germany Product EPR Registration Number</a>
-     *
-     * @param accessToken 令牌
      */
     public void deleteGerRegistrationNumber(String accessToken, String id) {
         exchange(String.format(GERMANY_EPR_COMPLIANCE_EPR_REGISTRATION_NUMBER_URL, id), HttpMethod.DELETE, accessToken, null, null, Object.class);
     }
 
     /**
-     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/GetOrder">Get an order</a>
-     * <p>获取订单详情</p>
-     *
-     * @param orderId     订单Id
-     * @param accessToken 令牌
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/getCurrencySettings">Get merchant currency settings</a>
      */
-    public WishData<WishOrder> getOrder(String accessToken, String orderId) {
-        return get(String.format("/api/v3/orders/%s", orderId), accessToken, null, new ParameterizedTypeReference<WishData<WishOrder>>() {
+    public WishData<CurrencySettingsResponse> getCurrencySettings(String accessToken) {
+        return get("/api/v3/merchant/currency_settings", accessToken, null, new ParameterizedTypeReference<WishData<CurrencySettingsResponse>>() {
         });
     }
 
     /**
-     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/GetMultipleOrders">List orders</a>
-     * <p>获取订单列表</p>
-     *
-     * @param queryParams 订单请求参数
-     * @param accessToken 令牌
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/updateWarehouse">Update warehouse information</a>
      */
-    public WishData<List<WishOrder>> getOrders(String accessToken, OrdersQueryParams queryParams) {
-        return get("/api/v3/orders", accessToken, queryParams, new ParameterizedTypeReference<WishData<List<WishOrder>>>() {
+    public WishData<WarehouseResponse> updateWarehouse(String accessToken, String id, WarehouseUpdatePayload payload) {
+
+        return post(String.format("/api/v3/merchant/warehouses/%s", id), accessToken, payload, new ParameterizedTypeReference<WishData<WarehouseResponse>>() {
+        });
+    }
+
+    /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/getSettings">Get merchant settings</a>
+     */
+    public WishData<SettingsResponse> getSettings(String accessToken) {
+        return get("/api/v3/merchant/settings", accessToken, null, new ParameterizedTypeReference<WishData<SettingsResponse>>() {
+        });
+    }
+
+    /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/createWarehouse">Create a warehouse</a>
+     */
+    public WishData<WarehouseResponse> createWarehouse(String accessToken, WarehousePayload payload) {
+        return post("/api/v3/merchant/warehouses", accessToken, payload, new ParameterizedTypeReference<WishData<WarehouseResponse>>() {
+        });
+    }
+
+    /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/listWarehouses">Create a warehouse</a>
+     */
+    public WishData<List<WarehouseResponse>> listWarehouses(String accessToken) {
+        return get("/api/v3/merchant/warehouses", accessToken, null, new ParameterizedTypeReference<WishData<List<WarehouseResponse>>>() {
+        });
+    }
+
+    /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/updateShippingSettings">Update shipping settings</a>
+     */
+    public WishData<List<ShippingSettingPayload>> shippingSettings(String accessToken, List<ShippingSettingPayload> payload) {
+        return exchange("/api/v3/merchant/shipping_settings", HttpMethod.PUT, accessToken, null, payload, new ParameterizedTypeReference<WishData<List<ShippingSettingPayload>>>() {
+        });
+    }
+
+    /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/listShippingSettings">Get shipping settings</a>
+     */
+    public WishData<List<ShippingSettingPayload>> listShippingSettings(String accessToken) {
+        return get("/api/v3/merchant/shipping_settings", accessToken, null, new ParameterizedTypeReference<WishData<List<ShippingSettingPayload>>>() {
+        });
+    }
+
+    /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/getMerchantAccountDetail">Get merchant account details</a>
+     */
+    public WishData<MerchantAccountDetail> getMerchantAccountDetail(String accessToken) {
+        return get("/api/v3/merchant/account_details", accessToken, null, new ParameterizedTypeReference<WishData<MerchantAccountDetail>>() {
         });
     }
 
     /**
      * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/GetShippingCarriers">Get accepted shipping carriers</a>
-     * <p>获取货运公司</p>
-     *
-     * @param queryParams 请求参数
-     * @param accessToken 令牌
      */
     public WishData<List<NamePayload>> shippingCarriers(String accessToken, ShippingCarriersQueryParams queryParams) {
         return get("/api/v3/shipping_carriers", accessToken, queryParams, new ParameterizedTypeReference<WishData<List<NamePayload>>>() {
@@ -393,10 +366,6 @@ public class WishOrderClient extends WishClient {
 
     /**
      * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/downloadOrders">Batch download orders</a>
-     * <p>批量获取订单下载</p>
-     *
-     * @param queryParams 请求参数
-     * @param accessToken 令牌
      */
     public WishData<WishDownloadJob> batchDownloadOrders(String accessToken, OrdersQueryParams queryParams) {
         return exchange("/api/v3/bulk_get", HttpMethod.POST, accessToken, queryParams, null, new ParameterizedTypeReference<WishData<WishDownloadJob>>() {
@@ -404,11 +373,7 @@ public class WishOrderClient extends WishClient {
     }
 
     /**
-     * 接口文档 <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/getOrderDownloadJob">Get batch download job status</a>
-     *
-     * <p>获取订单下载</p>
-     *
-     * @param accessToken 令牌
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/getOrderDownloadJob">Get batch download job status</a>
      */
     public WishData<WishDownloadJob> batchDownloadJobStatus(String accessToken, String jobId) {
         return get(String.format("/api/v3/bulk_get/%s", jobId), accessToken, null, new ParameterizedTypeReference<WishData<WishDownloadJob>>() {
@@ -416,12 +381,15 @@ public class WishOrderClient extends WishClient {
     }
 
     /**
-     * 接口文档  <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/ShipOrder">Ship or update tracking</a>
-     * <p> 发货或更新跟踪订单。 此操作为异步操作</p>
-     *
-     * @param orderId     订单id
-     * @param queryParams 请求参数
-     * @param accessToken 令牌
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/GetMultipleOrders">List orders</a>
+     */
+    public WishData<List<WishOrder>> getOrders(String accessToken, OrdersQueryParams queryParams) {
+        return get("/api/v3/orders", accessToken, queryParams, new ParameterizedTypeReference<WishData<List<WishOrder>>>() {
+        });
+    }
+
+    /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/ShipOrder">Ship or update tracking</a>
      */
     public WishData<WishOrder> shipOrder(String accessToken, String orderId, TrackingQueryParams queryParams) {
         return exchange(String.format("/api/v3/orders/%s/tracking", orderId), HttpMethod.PUT, accessToken, queryParams, null, new ParameterizedTypeReference<WishData<WishOrder>>() {
@@ -430,10 +398,6 @@ public class WishOrderClient extends WishClient {
 
     /**
      * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/GetValidRefundReasons">Get valid refund reasons</a>
-     * <p>获取退货原因</p>
-     *
-     * @param orderId     订单id
-     * @param accessToken 令牌
      */
     public WishData<List<String>> refundReasons(String accessToken, String orderId) {
         return get(String.format("/api/v3/orders/%s/refund_reasons", orderId), accessToken, null, new ParameterizedTypeReference<WishData<List<String>>>() {
@@ -442,11 +406,6 @@ public class WishOrderClient extends WishClient {
 
     /**
      * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/RefundOrder">Refund/Cancel an order</a>
-     * <p>取消订单</p>
-     *
-     * @param accessToken 令牌
-     * @param orderId     订单id
-     * @param payload     请求参数
      */
     public WishData<WishOrder> refund(String accessToken, String orderId, RefundPayload payload) {
         return exchange(String.format("/api/v3/orders/%s/refund", orderId), HttpMethod.PUT, accessToken, null, payload, new ParameterizedTypeReference<WishData<WishOrder>>() {
@@ -455,10 +414,6 @@ public class WishOrderClient extends WishClient {
 
     /**
      * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/UpdateOrder">Update an LTL order</a>
-     * <p>更新订单</p>
-     *
-     * @param orderId     订单Id
-     * @param accessToken 令牌
      */
     public WishData<WishOrder> updateLTLOrder(String accessToken, String orderId, UpdateLtlPayload payload) {
         return exchange(String.format("/api/v3/orders/%s", orderId), HttpMethod.PUT, accessToken, null, payload, new ParameterizedTypeReference<WishData<WishOrder>>() {
@@ -466,11 +421,15 @@ public class WishOrderClient extends WishClient {
     }
 
     /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/GetOrder">Get an order</a>
+     */
+    public WishData<WishOrder> getOrder(String accessToken, String orderId) {
+        return get(String.format("/api/v3/orders/%s", orderId), accessToken, null, new ParameterizedTypeReference<WishData<WishOrder>>() {
+        });
+    }
+
+    /**
      * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/ModifyAddress">Modify shipping address</a>
-     * <p>修改物流地址</p>
-     *
-     * @param orderId     订单Id
-     * @param accessToken 令牌
      */
     public WishData<WishOrder> modifyAddress(String accessToken, String orderId, ModifyAddressPayload payload) {
         return exchange(String.format("/api/v3/orders/%s/address", orderId), HttpMethod.PUT, accessToken, null, payload, new ParameterizedTypeReference<WishData<WishOrder>>() {
