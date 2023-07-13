@@ -138,6 +138,20 @@ wish-sdk
 | penaltiesCount | [Count number of penalties](https://china-merchant.wish.com/documentation/api/v3/reference#operation/CountPenalties)   | ✔️  |
 | listPenalties  | [Retrieve a list of penalties](https://china-merchant.wish.com/documentation/api/v3/reference#operation/ListPenalties) | ✔️  |
 
+##### ProductBoost
+
+| 方法名                 | 官方文档地址                                                                                                                                                          | 状态  |
+|:--------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------|:----|
+| getKeywords         | [Get information for the given keywords or keywords that match the query](https://china-merchant.wish.com/documentation/api/v3/reference#operation/getKeywords) | ✔️  |
+| createCampaign      | [Create a ProductBoost campaign](https://china-merchant.wish.com/documentation/api/v3/reference#operation/createCampaign)                                       | ✔️  |
+| listCampaigns       | [List ProductBoost campaigns](https://china-merchant.wish.com/documentation/api/v3/reference#operation/listCampaigns)                                           | ✔️  |
+| listProductFeedback | [List products' feedback in a ProductBoost campaign](https://china-merchant.wish.com/documentation/api/v3/reference#operation/ListProductFeedback)              | ✔️  |
+| getBudget           | [Get the ProductBoost budget breakdown](https://china-merchant.wish.com/documentation/api/v3/reference#operation/getBudget)                                     | ✔️  |
+| updateCampaign      | [Update a ProductBoost campaign](https://china-merchant.wish.com/documentation/api/v3/reference#operation/updateCampaign)                                       | ✔️  |
+| getCampaign         | [Get a single ProductBoost campaign](https://china-merchant.wish.com/documentation/api/v3/reference#operation/getCampaign)                                      | ✔️  |
+| listCampaignMetrics | [Obtain campaign metrics](https://china-merchant.wish.com/documentation/api/v3/reference#operation/listCampaignMetrics)                                         | ✔️  |
+| listBalanceUpdates  | [List ProductBoost account balance updates](https://china-merchant.wish.com/documentation/api/v3/reference#operation/listBalanceUpdates)                        | ✔️  |
+
 ##### Tickets
 
 | 方法名          | 官方文档地址                                                                                                    | 状态  |

@@ -22,6 +22,7 @@ import io.github.ealenxie.wish.penalties.PenaltiesCountQueryParams;
 import io.github.ealenxie.wish.penalties.PenaltiesQueryParams;
 import io.github.ealenxie.wish.penalties.Penalty;
 import io.github.ealenxie.wish.price.*;
+import io.github.ealenxie.wish.productboost.*;
 import io.github.ealenxie.wish.tickets.MessagePayload;
 import io.github.ealenxie.wish.tickets.ReplyTicketResponse;
 import io.github.ealenxie.wish.tickets.TicketPayload;
@@ -499,6 +500,80 @@ public class WishOrderClient extends WishClient {
         return get("/api/v3/penalties", accessToken, queryParams, new ParameterizedTypeReference<WishData<List<Penalty>>>() {
         });
     }
+
+    /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/getKeywords">Get information for the given keywords or keywords that match the query</a>
+     */
+    public WishData<List<KeywordPayload>> getKeywords(String accessToken, KeywordsQueryParams queryParams) {
+        return get("/api/v3/product_boost/keywords", accessToken, queryParams, new ParameterizedTypeReference<WishData<List<KeywordPayload>>>() {
+        });
+    }
+
+    /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/createCampaign">Get information for the given keywords or keywords that match the query</a>
+     */
+    public WishData<CampaignResponse> createCampaign(String accessToken, CampaignCreatePayload payload) {
+        return post("/api/v3/product_boost/campaigns", accessToken, payload, new ParameterizedTypeReference<WishData<CampaignResponse>>() {
+        });
+    }
+
+    /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/listCampaigns">List ProductBoost campaigns</a>
+     */
+    public WishData<List<CampaignResponse>> listCampaigns(String accessToken, CampaignsQueryParams queryParams) {
+        return get("/api/v3/product_boost/campaigns", accessToken, queryParams, new ParameterizedTypeReference<WishData<List<CampaignResponse>>>() {
+        });
+    }
+
+    /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/ListProductFeedback">List products' feedback in a ProductBoost campaign</a>
+     */
+    public WishData<List<ProductFeedback>> listProductFeedback(String accessToken, String id, ProductFeedbackQueryParams queryParams) {
+        return get(String.format("/api/v3/product_boost/campaigns/%s/product_feedback", id), accessToken, queryParams, new ParameterizedTypeReference<WishData<List<ProductFeedback>>>() {
+        });
+    }
+
+    /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/getBudget">Get the ProductBoost budget breakdown</a>
+     */
+    public WishData<Budget> getBudget(String accessToken, BudgetQueryParams queryParams) {
+        return get("/api/v3/product_boost/budget", accessToken, queryParams, new ParameterizedTypeReference<WishData<Budget>>() {
+        });
+    }
+
+    /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/updateCampaign">Update a ProductBoost campaign</a>
+     */
+    public WishData<CampaignResponse> updateCampaign(String accessToken, String id, CampaignUpdatePayload payload) {
+        return exchange(String.format("/api/v3/product_boost/campaigns/%s", id), HttpMethod.PUT, accessToken, null, payload, new ParameterizedTypeReference<WishData<CampaignResponse>>() {
+        });
+    }
+
+    /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/getCampaign">Get a single ProductBoost campaign</a>
+     */
+    public WishData<CampaignResponse> getCampaign(String accessToken, String id) {
+        return get(String.format("/api/v3/product_boost/campaigns/%s", id), accessToken, null, new ParameterizedTypeReference<WishData<CampaignResponse>>() {
+        });
+    }
+
+    /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/listCampaignMetrics">Obtain campaign metrics</a>
+     */
+    public WishData<CampaignMetrics> listCampaignMetrics(String accessToken, String id, CampaignMetricsQueryParams queryParams) {
+        return get(String.format("/api/v3/product_boost/campaigns/%s/metrics", id), accessToken, queryParams, new ParameterizedTypeReference<WishData<CampaignMetrics>>() {
+        });
+    }
+
+    /**
+     * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/listBalanceUpdates">List ProductBoost account balance updates</a>
+     */
+    public WishData<List<BalanceUpdate>> listBalanceUpdates(String accessToken, BalanceUpdatesQueryParams queryParams) {
+        return get("/api/v3/product_boost/balance_updates", accessToken, queryParams, new ParameterizedTypeReference<WishData<List<BalanceUpdate>>>() {
+        });
+    }
+
+
     /**
      * <a href="https://china-merchant.wish.com/documentation/api/v3/reference#operation/updateTicket">Update a ticket</a>
      */
