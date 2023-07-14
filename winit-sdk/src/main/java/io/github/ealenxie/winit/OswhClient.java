@@ -22,6 +22,58 @@ public class OswhClient extends WinitClient {
 
 
     /**
+     * <a href="https://developer.winit.com.cn/document/detail/id/15.html">注册/编辑商品</a>
+     */
+    public WinitResponse<List<RegisterProduct>> registerProduct(ProductsPayload payload) {
+        return postWinit("registerProduct", payload, new ParameterizedTypeReference<WinitResponse<List<RegisterProduct>>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.winit.com.cn/document/detail/id/17.html">查询商品信息</a>
+     */
+    public WinitResponse<CommodityInfoResponse> getCommodityInfo(QueryCommodityInfo payload) {
+        return postWinit("winit.mms.item.list", payload, new ParameterizedTypeReference<WinitResponse<CommodityInfoResponse>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.winit.com.cn/document/detail/id/226.html">查询商品信息</a>
+     */
+    public WinitResponse<ProductResponse> getProductAuditStatus(ProductQueryParams payload) {
+        return postWinit("mms.itemmttask.queryItemMtEntitys", payload, new ParameterizedTypeReference<WinitResponse<ProductResponse>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.winit.com.cn/document/detail/id/135.html">打印商品条码标签-返回带有单品信息</a>
+     */
+    public WinitResponse<String> printProductLabelControlItemInfo(PrintProductLabelPayload payload) {
+        return postWinit("winit.singleitem.label.print.v2", payload, new ParameterizedTypeReference<WinitResponse<String>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.winit.com.cn/document/detail/id/19.html">打印商品条码标签</a>
+     */
+    public WinitResponse<String> printProductLabel(PrintProductLabelPayload payload) {
+        return postWinit("winit.singleitem.label.print", payload, new ParameterizedTypeReference<WinitResponse<String>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.winit.com.cn/document/detail/id/241.html">查询商品的单品条码及其状态</a>
+     */
+    public WinitResponse<ProductLabelInfoResponse> getProductLabelInfo(ProductLabelQueryParams queryParams) {
+        return postWinit("winit.singleitem.label.print", queryParams, new ParameterizedTypeReference<WinitResponse<ProductLabelInfoResponse>>() {
+        });
+    }
+
+
+
+
+
+    /**
      * <a href="https://developer.winit.com.cn/document/detail/id/44.html">查询总库存</a>
      *
      * @param payload 请求入参
@@ -60,22 +112,6 @@ public class OswhClient extends WinitClient {
      */
     public WinitResponse<InventoryStatementResp> queryInventoryStatement(QueryInventoryStatement payload) {
         return postWinit("winit.inventory.pageInvInouts", payload, new ParameterizedTypeReference<WinitResponse<InventoryStatementResp>>() {
-        });
-    }
-
-    /**
-     * <a href="https://developer.winit.com.cn/document/detail/id/17.html">查询商品信息</a>
-     */
-    public WinitResponse<CommodityInfoResponse> queryCommodityInfo(QueryCommodityInfo payload) {
-        return postWinit("winit.mms.item.list", payload, new ParameterizedTypeReference<WinitResponse<CommodityInfoResponse>>() {
-        });
-    }
-
-    /**
-     * <a href="https://developer.winit.com.cn/document/detail/id/15.html">注册/编辑商品</a>
-     */
-    public WinitResponse<List<RegisterProduct>> registerProduct(ProductsPayload payload) {
-        return postWinit("registerProduct", payload, new ParameterizedTypeReference<WinitResponse<List<RegisterProduct>>>() {
         });
     }
 
@@ -135,13 +171,6 @@ public class OswhClient extends WinitClient {
         });
     }
 
-    /**
-     * <a href="https://developer.winit.com.cn/document/detail/id/19.html">打印商品条码标签</a>
-     */
-    public WinitResponse<String> printProductLabel(PrintProductLabelPayload payload) {
-        return postWinit("winit.singleitem.label.print", payload, new ParameterizedTypeReference<WinitResponse<String>>() {
-        });
-    }
 
     /**
      * <a href="https://developer.winit.com.cn/document/detail/id/247.html">创建出库单-新</a>

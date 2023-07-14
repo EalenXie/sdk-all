@@ -22,6 +22,19 @@ winit-sdk
 
 #### 海外仓API(OSWH) [OswhClient](https://github.com/EalenXie/sdk-all/blob/main/winit-sdk/src/main/java/io/github/ealenxie/winit/oswh/OswhClient.java) 已支持的接口列表
 
+##### 商品
+
+| 方法                               | 官方文档地址                                                                          | 状态  |
+|:---------------------------------|:--------------------------------------------------------------------------------|:----|
+| registerProduct                  | [注册/编辑商品](https://developer.winit.com.cn/document/detail/id/15.html)            | ✔️  |
+| getCommodityInfo                 | [查询商品信息](https://developer.winit.com.cn/document/detail/id/17.html)             | ✔️  |
+| getProductAuditStatus            | [查询商品审核状态](https://developer.winit.com.cn/document/detail/id/226.html)          | ✔️  |
+| printProductLabelControlItemInfo | [打印商品条码标签-返回带有单品信息](https://developer.winit.com.cn/document/detail/id/135.html) | ✔️  |
+| printProductLabel                | [打印商品条码标签](https://developer.winit.com.cn/document/detail/id/19.html)           | ✔️  |
+| getProductLabelInfo              | [打印商品条码标签](https://developer.winit.com.cn/document/detail/id/241.html)          | ✔️  |
+
+
+
 | 方法                             | 官方文档地址                                                                   | 状态  |
 |:-------------------------------|:-------------------------------------------------------------------------|:----|
 | queryWarehouseStorage          | [查询总库存](https://developer.winit.com.cn/document/detail/id/44.html)       | ✔️  |
@@ -29,15 +42,12 @@ winit-sdk
 | queryProductInventoryList4Page | [查询总库存（含DOI）](https://developer.winit.com.cn/document/detail/id/58.html) | ✔️  |
 | queryWarehouseReceiptDetails   | [查询仓租单明细](https://developer.winit.com.cn/document/detail/id/231.html)    | ✔️  |
 | queryInventoryStatement        | [库存流水查询](https://developer.winit.com.cn/document/detail/id/254.html)     | ✔️  |
-| queryCommodityInfo             | [查询商品信息](https://developer.winit.com.cn/document/detail/id/17.html)      | ✔️  |
-| registerProduct                | [注册/编辑商品](https://developer.winit.com.cn/document/detail/id/15.html)     | ✔️  |
 | queryWarehouse                 | [查询仓库代码](https://developer.winit.com.cn/document/detail/id/43.html)      | ✔️  |
 | createOrder                    | [创建入库单](https://developer.winit.com.cn/document/detail/id/141.html)      | ✔️  |
 | getWinItProducts               | [查询头程服务](https://developer.winit.com.cn/document/detail/id/28.html)      | ✔️  |
 | cancelOrder                    | [作废入库单](https://developer.winit.com.cn/document/detail/id/285.html)      | ✔️  |
 | getOrderDetail                 | [查询入库单详情](https://developer.winit.com.cn/document/detail/id/39.html)     | ✔️  |
 | printPackageLabel              | [打印包裹标签](https://developer.winit.com.cn/document/detail/id/31.html)      | ✔️  |
-| printProductLabel              | [打印商品条码标签](https://developer.winit.com.cn/document/detail/id/19.html)    | ✔️  |
 | confirmShipment                | [直发入库-确认发货](https://developer.winit.com.cn/document/detail/id/300.html)  | ✔️  |
 | createSubmittedOrder           | [创建出库单-新](https://developer.winit.com.cn/document/detail/id/247.html)    | ✔️  |
 | calcDeliveryFee                | [预估派送运费-3](https://developer.winit.com.cn/document/detail/id/96.html)    | ✔️  |
