@@ -33,13 +33,19 @@ winit-sdk
 | printProductLabel                | [打印商品条码标签](https://developer.winit.com.cn/document/detail/id/19.html)           | ✔️  |
 | getProductLabelInfo              | [打印商品条码标签](https://developer.winit.com.cn/document/detail/id/241.html)          | ✔️  |
 
+##### 库存
+
 | 方法                             | 官方文档地址                                                                   | 状态  |
 |:-------------------------------|:-------------------------------------------------------------------------|:----|
 | queryWarehouseStorage          | [查询总库存](https://developer.winit.com.cn/document/detail/id/44.html)       | ✔️  |
-| queryWinItInventoryType        | [查询分类库存](https://developer.winit.com.cn/document/detail/id/297.html)     | ✔️  |
 | queryProductInventoryList4Page | [查询总库存（含DOI）](https://developer.winit.com.cn/document/detail/id/58.html) | ✔️  |
-| queryWarehouseReceiptDetails   | [查询仓租单明细](https://developer.winit.com.cn/document/detail/id/231.html)    | ✔️  |
+| queryWinItInventoryType        | [查询分类库存](https://developer.winit.com.cn/document/detail/id/297.html)     | ✔️  |
 | queryInventoryStatement        | [库存流水查询](https://developer.winit.com.cn/document/detail/id/254.html)     | ✔️  |
+| queryWarehouseReceiptDetails   | [查询仓租单明细](https://developer.winit.com.cn/document/detail/id/231.html)    | ✔️  |
+| createInventoryAdjustment      | [创建库存调整单](https://developer.winit.com.cn/document/detail/id/308.html)    | ✔️  |
+
+
+
 | queryWarehouse                 | [查询仓库代码](https://developer.winit.com.cn/document/detail/id/43.html)      | ✔️  |
 | createOrder                    | [创建入库单](https://developer.winit.com.cn/document/detail/id/141.html)      | ✔️  |
 | getWinItProducts               | [查询头程服务](https://developer.winit.com.cn/document/detail/id/28.html)      | ✔️  |

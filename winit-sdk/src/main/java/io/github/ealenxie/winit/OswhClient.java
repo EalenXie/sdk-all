@@ -81,6 +81,14 @@ public class OswhClient extends WinitClient {
     }
 
     /**
+     * <a href="https://developer.winit.com.cn/document/detail/id/58.html">查询总库存（含DOI）</a>
+     */
+    public WinitResponse<ProductInventoryResp> queryProductInventoryList4Page(QueryProductInventory payload) {
+        return postWinit("queryProductInventoryList4Page", payload, new ParameterizedTypeReference<WinitResponse<ProductInventoryResp>>() {
+        });
+    }
+
+    /**
      * <a href="https://developer.winit.com.cn/document/detail/id/297.html">查询分类库存</a>
      */
     public WinitResponse<WinItInventoryTypeResp> queryWinItInventoryType(QueryWinItInventoryType payload) {
@@ -89,10 +97,10 @@ public class OswhClient extends WinitClient {
     }
 
     /**
-     * <a href="https://developer.winit.com.cn/document/detail/id/58.html">查询总库存（含DOI）</a>
+     * <a href="https://developer.winit.com.cn/document/detail/id/254.html">库存流水查询</a>
      */
-    public WinitResponse<ProductInventoryResp> queryProductInventoryList4Page(QueryProductInventory payload) {
-        return postWinit("queryProductInventoryList4Page", payload, new ParameterizedTypeReference<WinitResponse<ProductInventoryResp>>() {
+    public WinitResponse<InventoryStatementResp> queryInventoryStatement(QueryInventoryStatement payload) {
+        return postWinit("winit.inventory.pageInvInouts", payload, new ParameterizedTypeReference<WinitResponse<InventoryStatementResp>>() {
         });
     }
 
@@ -105,12 +113,13 @@ public class OswhClient extends WinitClient {
     }
 
     /**
-     * <a href="https://developer.winit.com.cn/document/detail/id/254.html">库存流水查询</a>
+     * <a href="https://developer.winit.com.cn/document/detail/id/308.html">创建库存调整单</a>
      */
-    public WinitResponse<InventoryStatementResp> queryInventoryStatement(QueryInventoryStatement payload) {
-        return postWinit("winit.inventory.pageInvInouts", payload, new ParameterizedTypeReference<WinitResponse<InventoryStatementResp>>() {
+    public WinitResponse<OrderNoPayload> createInventoryAdjustment(InventoryAdjustmentPayload payload) {
+        return postWinit("wh.inventoryAdjustment.createOrder", payload, new ParameterizedTypeReference<WinitResponse<OrderNoPayload>>() {
         });
     }
+
 
     /**
      * <a href="https://developer.winit.com.cn/document/detail/id/43.html">查询仓库代码</a>
