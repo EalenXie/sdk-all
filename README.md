@@ -1,10 +1,12 @@
 <div align="center">
-<h1  style="color:#5BAC6E">SDK ALL</h1>
+<h1 align="center"><a href="https://github.com/ealenxie/sdk-all" target="_blank">SDK ALL</a></h1>
 
 ![license](https://img.shields.io/github/license/ealenxie/sdk-all)
 ![java version](https://img.shields.io/badge/JAVA-1.8+-green.svg)
 ![code size](https://img.shields.io/github/languages/code-size/ealenxie/sdk-all)
 </div>
+
+$\color{red}{天之道，损有余而补不足。 人之道则不然，损不足以奉有余。 孰能有余以奉天下？ 唯有道者。 -- 道德经 }$
 
 此项目为个人研发总结的所有第三方请求接口SDK的封装整合项目。
 
