@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.math.BigDecimal;
+
 /**
  * @author create by sch  2023/4/21 13:23
  * @version 1.0
@@ -50,12 +52,12 @@ public class IncomeSettlementLine {
      * 金额（原币）
      */
     @JsonProperty("sourceAmt")
-    private Double sourceAmt;
+    private BigDecimal sourceAmt;
     /**
      * 结算金额（结算币）
      */
     @JsonProperty("acctAmt")
-    private Double acctAmt;
+    private BigDecimal acctAmt;
     /**
      * 币种（原币币种）
      */
@@ -70,7 +72,7 @@ public class IncomeSettlementLine {
      * 汇率（本币兑美元汇率）
      */
     @JsonProperty("exchangeRate")
-    private Double exchangeRate;
+    private BigDecimal exchangeRate;
     /**
      * 记账时间（精确至秒）
      */
@@ -80,25 +82,25 @@ public class IncomeSettlementLine {
      * 重量（Kg）
      */
     @JsonProperty("weight")
-    private Double weight;
+    private BigDecimal weight;
     /**
      * 体积（m3）
      */
     @JsonProperty("volume")
-    private Double volume;
+    private BigDecimal volume;
     /**
      * 体积重（CBM）
      */
     @JsonProperty("volumeWeight")
-    private Double volumeWeight;
+    private BigDecimal volumeWeight;
     /**
      * 计费重（Kg）
      */
     @JsonProperty("chargeWeight")
-    private Double chargeWeight;
+    private BigDecimal chargeWeight;
     /**
      * 备注
      */
     @JsonProperty("description")
-    private Double description;
+    private BigDecimal description;
 }

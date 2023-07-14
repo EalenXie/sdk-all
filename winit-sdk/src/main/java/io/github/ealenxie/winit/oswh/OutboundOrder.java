@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -53,7 +54,7 @@ public class OutboundOrder {
      * 重量（kg）
      */
     @JsonProperty("weight")
-    private Double weight;
+    private BigDecimal weight;
     /**
      * 国家
      */
@@ -170,14 +171,14 @@ public class OutboundOrder {
     @JsonProperty("isEBayOrder")
     private String isEBayOrder;
     @JsonProperty("estimateFees")
-    private Double estimateFees;
+    private BigDecimal estimateFees;
     /**
      * 卖方重量
      */
     @JsonProperty("sellerWeight")
-    private Double sellerWeight;
+    private BigDecimal sellerWeight;
     @JsonProperty("estimateVolume")
-    private Double estimateVolume;
+    private BigDecimal estimateVolume;
     /**
      * 包裹列表
      */
@@ -189,7 +190,7 @@ public class OutboundOrder {
     @JsonProperty("errorMsg")
     private String errorMsg;
     @JsonProperty("estimateWeight")
-    private Double estimateWeight;
+    private BigDecimal estimateWeight;
     @JsonProperty("volume")
     private String volume;
     @JsonProperty("ontimeTrack")

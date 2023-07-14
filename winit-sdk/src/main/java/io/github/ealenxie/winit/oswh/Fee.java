@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.math.BigDecimal;
+
 /**
  * @author create by sch  2023/4/20 16:49
  * @version 1.0
@@ -25,7 +27,7 @@ public class Fee {
      * 总费用
      */
     @JsonProperty("feeNumber")
-    private Double feeNumber;
+    private BigDecimal feeNumber;
     /**
      * 币种
      */
@@ -35,15 +37,15 @@ public class Fee {
      * 返利
      */
     @JsonProperty("rebate")
-    private Double rebate;
+    private BigDecimal rebate;
     /**
      * 折扣
      */
     @JsonProperty("discount")
-    private Double discount;
+    private BigDecimal discount;
     /**
      * 应收
      */
     @JsonProperty("paid-up")
-    private Double paidup;
+    private BigDecimal paidup;
 }

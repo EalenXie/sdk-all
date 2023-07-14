@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -33,12 +34,12 @@ public class CalcDeliveryFeeResponse {
      * 派送时效天数
      */
     @JsonProperty("logisticsTime")
-    private Double logisticsTime;
+    private BigDecimal logisticsTime;
     /**
      * 总费用，加上增值费用的总费用
      */
     @JsonProperty("totalFeeUSD")
-    private Double totalFeeUSD;
+    private BigDecimal totalFeeUSD;
     /**
      * 出库方式
      */
@@ -48,7 +49,7 @@ public class CalcDeliveryFeeResponse {
      * 托盘数
      */
     @JsonProperty("palletNum")
-    private Double palletNum;
+    private BigDecimal palletNum;
     /**
      * 费用列表
      */

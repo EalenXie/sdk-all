@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -110,7 +111,7 @@ public class OutboundOrderInfoResponse {
      * 重量
      */
     @JsonProperty("weight")
-    private Double weight;
+    private BigDecimal weight;
     /**
      * 返利
      */
@@ -126,9 +127,9 @@ public class OutboundOrderInfoResponse {
     @JsonProperty("storageOntime")
     private String storageOntime;
     @JsonProperty("estimateWeight")
-    private Double estimateWeight;
+    private BigDecimal estimateWeight;
     @JsonProperty("volume")
-    private Double volume;
+    private BigDecimal volume;
     /*--------------以下字段与packageList重复---------*/
     /**
      * 计划完成时间
@@ -187,7 +188,7 @@ public class OutboundOrderInfoResponse {
      * 单位为USD
      */
     @JsonProperty("totalCost")
-    private Double totalCost;
+    private BigDecimal totalCost;
     /**
      * 出库单状态
      */
@@ -218,7 +219,7 @@ public class OutboundOrderInfoResponse {
      * 以海外仓当地币种结算
      */
     @JsonProperty("handlingFee")
-    private Double handlingFee;
+    private BigDecimal handlingFee;
     /**
      * 城市
      */

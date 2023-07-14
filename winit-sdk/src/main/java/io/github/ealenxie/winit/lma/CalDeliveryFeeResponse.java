@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -33,7 +34,7 @@ public class CalDeliveryFeeResponse {
      * 总金额
      */
     @JsonProperty("totalAmount")
-    private Double totalAmount;
+    private BigDecimal totalAmount;
     /**
      * 费用明细列表
      */

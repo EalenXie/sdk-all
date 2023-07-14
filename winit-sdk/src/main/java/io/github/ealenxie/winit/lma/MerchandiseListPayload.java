@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.math.BigDecimal;
+
 /**
  * @author create by sch  2023/4/21 14:39
  * @version 1.0
@@ -53,7 +55,7 @@ public class MerchandiseListPayload {
      */
     @JsonProperty("salePrice")
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    private Double salePrice;
+    private BigDecimal salePrice;
     /**
      * 销售币种
      */
@@ -65,7 +67,7 @@ public class MerchandiseListPayload {
      */
     @JsonProperty("declaredValue")
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    private Double declaredValue;
+    private BigDecimal declaredValue;
     /**
      * 申报币种
      */

@@ -11,6 +11,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
+import org.springframework.lang.Nullable;
 import org.springframework.web.client.RestOperations;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -87,22 +88,10 @@ public abstract class WinitClient {
     /**
      * 构建万邑通请求参数
      *
-     * @param action 行为
-     * @param data   请求的data数据
-     */
-    protected WinitRequest<Object> getRequest(String action, Object data) {
-        RequireArgs requireArgs = new RequireArgs(action);
-        BeanUtils.copyProperties(winitConfig, requireArgs);
-        return getRequest(requireArgs, data);
-    }
-
-    /**
-     * 构建万邑通请求参数
-     *
      * @param require 必要请求参数
      * @param data    请求的data数据
      */
-    protected WinitRequest<Object> getRequest(RequireArgs require, Object data) {
+    protected WinitRequest<Object> getRequest(RequireArgs require, @Nullable Object data) {
         WinitRequest<Object> request = new WinitRequest<>(require.getAction(), require.getAppKey(), require.getClientId(), require.getPlatform());
         request.setData(data);
         try {
@@ -126,12 +115,14 @@ public abstract class WinitClient {
      * @param data         请求的data数据
      * @param responseType 响应类型
      */
-    protected <R, D> R postWinit(String action, D data, ParameterizedTypeReference<R> responseType) {
+    protected <R, D> R postWinit(String action, @Nullable D data, ParameterizedTypeReference<R> responseType) {
+        RequireArgs requireArgs = new RequireArgs(action);
+        BeanUtils.copyProperties(winitConfig, requireArgs);
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(String.format("%s", sandBox ? HOST_SANDBOX : HOST));
         URI uri = builder.build().encode().toUri();
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
-        return restOperations.exchange(uri, HttpMethod.POST, new HttpEntity<>(getRequest(action, data), headers), responseType).getBody();
+        return restOperations.exchange(uri, HttpMethod.POST, new HttpEntity<>(getRequest(requireArgs, data), headers), responseType).getBody();
     }
 }

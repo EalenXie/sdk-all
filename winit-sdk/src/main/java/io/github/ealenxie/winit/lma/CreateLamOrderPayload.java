@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -66,13 +67,13 @@ public class CreateLamOrderPayload {
      */
     @JsonProperty("totalParcelsNumber")
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    private Double totalParcelsNumber;
+    private BigDecimal totalParcelsNumber;
     /**
      * 总包裹重量
      */
     @JsonProperty("totalParcelsWeight")
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    private Double totalParcelsWeight;
+    private BigDecimal totalParcelsWeight;
     /**
      * 产品信息
      */

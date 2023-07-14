@@ -1,4 +1,4 @@
-package io.github.ealenxie.winit.lma;
+package io.github.ealenxie.winit.isp;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
@@ -7,24 +7,24 @@ import lombok.Setter;
 import java.math.BigDecimal;
 
 /**
- * @author create by sch  2023/4/21 15:51
- * @version 1.0
+ * @author EalenXie created on 2023/7/14 17:22
  */
 @Getter
 @Setter
-public class ChargePayload {
+public class ChargeItem {
+    
     /**
-     * 费用金额
+     * amount
      */
     @JsonProperty("amount")
     private BigDecimal amount;
     /**
-     * 币种
+     * currencyCode
      */
-    @JsonProperty("currency")
-    private String currency;
+    @JsonProperty("currencyCode")
+    private String currencyCode;
     /**
-     * 费用名称
+     * chargeName
      */
     @JsonProperty("chargeName")
     private String chargeName;

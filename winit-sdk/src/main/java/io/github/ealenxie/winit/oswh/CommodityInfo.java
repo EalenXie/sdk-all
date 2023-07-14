@@ -56,27 +56,27 @@ public class CommodityInfo {
      * 注册重量(千克)
      */
     @JsonProperty("registerWeight")
-    private Double registerWeight;
+    private BigDecimal registerWeight;
     /**
      * 注册长度(厘米)
      */
     @JsonProperty("registerLength")
-    private Double registerLength;
+    private BigDecimal registerLength;
     /**
      * 注册宽度(厘米)
      */
     @JsonProperty("registerWidth")
-    private Double registerWidth;
+    private BigDecimal registerWidth;
     /**
      * 注册高度(厘米)
      */
     @JsonProperty("registerHeight")
-    private Double registerHeight;
+    private BigDecimal registerHeight;
     /**
      * 注册体积(CBM)
      */
     @JsonProperty("registerVolume")
-    private Double registerVolume;
+    private BigDecimal registerVolume;
     /**
      * 商品管理模式，SI:单品管理模式，SKU:商品管理模式
      */

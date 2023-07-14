@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -32,7 +33,7 @@ public class VASFee {
      * 费用金额
      */
     @JsonProperty("FeeNumber")
-    private Double feeNumber;
+    private BigDecimal feeNumber;
     /**
      * 费用项名称
      */

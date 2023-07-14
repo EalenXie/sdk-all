@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -37,7 +38,7 @@ public class Package {
      * 包裹重量Kg
      */
     @JsonProperty("weight")
-    private Double weight;
+    private BigDecimal weight;
     /**
      * 订单处理标准时间（天）
      */

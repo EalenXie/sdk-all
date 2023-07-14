@@ -20,7 +20,7 @@ winit-sdk
 </dependency>
 ```
 
-#### 海外仓API(OSWH) [OswhClient](https://github.com/EalenXie/sdk-all/blob/main/winit-sdk/src/main/java/io/github/ealenxie/winit/oswh/OswhClient.java) 已支持的接口列表
+#### 海外仓API(OSWH) [OswhClient](https://github.com/EalenXie/sdk-all/blob/main/winit-sdk/src/main/java/io/github/ealenxie/winit/OswhClient.java) 已支持的接口列表
 
 ##### 商品
 
@@ -77,7 +77,27 @@ winit-sdk
 | queryOutboundOrderFee          | [查询派送费用](https://developer.winit.com.cn/document/detail/id/145.html)     | ✔️  |
 | cancelOutboundOrder            | [作废出库单](https://developer.winit.com.cn/document/detail/id/276.html)      | ✔️  |
 
-#### 海外仓API(LAM) [LamClient](https://github.com/EalenXie/sdk-all/blob/main/winit-sdk/src/main/java/io/github/ealenxie/winit/lam/LamClient.java) 已支持的接口列表
+#### 全球直发API（ISP) [IspClient](https://github.com/EalenXie/sdk-all/blob/main/winit-sdk/src/main/java/io/github/ealenxie/winit/IspClient.java) 已支持的接口列表
+
+| 方法                  | 官方文档地址                                                                    | 状态  |
+|:--------------------|:--------------------------------------------------------------------------|:----|
+| createOrder         | [创建国内直发小包订单](https://developer.winit.com.cn/document/detail/id/65.html)   | ✔️  |
+| getPackingList      | [预分拣-获取装箱面单](https://developer.winit.com.cn/document/detail/id/316.html)  | ✔️  |
+| getBigPackageNumber | [预分拣-获取装箱面单号](https://developer.winit.com.cn/document/detail/id/315.html) | ✔️  |
+| invoiceQuery        | [打印发票](https://developer.winit.com.cn/document/detail/id/73.html)         | ✔️  |
+| labelQuery          | [打印面单](https://developer.winit.com.cn/document/detail/id/67.html)         | ✔️  |
+| deliveryConfirm     | [确认发货](https://developer.winit.com.cn/document/detail/id/68.html)         | ✔️  |
+| orderQuery          | [查询ISP订单详情](https://developer.winit.com.cn/document/detail/id/70.html)    | ✔️  |
+| getOrderRevenue     | [查询物流费用](https://developer.winit.com.cn/document/detail/id/72.html)       | ✔️  |
+| getOrderTracking    | [查询轨迹](https://developer.winit.com.cn/document/detail/id/71.html)         | ✔️  |
+| orderDisable        | [作废订单](https://developer.winit.com.cn/document/detail/id/69.html)         | ✔️  |
+| feeCalcEstimate     | [预估物流费用](https://developer.winit.com.cn/document/detail/id/66.html)       | ✔️  |
+| getIspWarehouseList | [查询国内验货仓](https://developer.winit.com.cn/document/detail/id/64.html)      | ✔️  |
+| productList         | [查询小包物流产品/渠道](https://developer.winit.com.cn/document/detail/id/62.html)  | ✔️  |
+| getUmsPickupAddress | [查询提货地址](https://developer.winit.com.cn/document/detail/id/63.html)       | ✔️  |
+| addUmsPickupAddress | [新增提货地址](https://developer.winit.com.cn/document/detail/id/61.html)       | ✔️  |
+
+#### 海外仓API(LAM) [LamClient](https://github.com/EalenXie/sdk-all/blob/main/winit-sdk/src/main/java/io/github/ealenxie/winit/LamClient.java) 已支持的接口列表
 
 | 方法               | 官方文档地址                                                                     | 状态  |
 |:-----------------|:---------------------------------------------------------------------------|:----|
