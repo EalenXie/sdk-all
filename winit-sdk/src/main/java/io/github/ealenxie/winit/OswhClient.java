@@ -120,15 +120,6 @@ public class OswhClient extends WinitClient {
         });
     }
 
-
-    /**
-     * <a href="https://developer.winit.com.cn/document/detail/id/43.html">查询仓库代码</a>
-     */
-    public WinitResponse<List<WarehousePayload>> queryWarehouse() {
-        return postWinit("queryWarehouse", null, new ParameterizedTypeReference<WinitResponse<List<WarehousePayload>>>() {
-        });
-    }
-
     /**
      * <a href="https://developer.winit.com.cn/document/detail/id/141.html">创建入库单</a>
      */
@@ -138,26 +129,82 @@ public class OswhClient extends WinitClient {
     }
 
     /**
-     * <a href="https://developer.winit.com.cn/document/detail/id/28.html">查询头程服务</a>
+     * <a href="https://developer.winit.com.cn/document/detail/id/31.html">打印包裹标签</a>
      */
-    public WinitResponse<List<WinitProducts>> getWinItProducts(QueryWinItProducts payload) {
-        return postWinit("winit.wh.pms.getWinitProducts", payload, new ParameterizedTypeReference<WinitResponse<List<WinitProducts>>>() {
+    public WinitResponse<LabelPayload> printPackageLabel(PrintPackageLabelPayload payload) {
+        return postWinit("winit.wh.inbound.printPackageLabel", payload, new ParameterizedTypeReference<WinitResponse<LabelPayload>>() {
         });
     }
 
     /**
-     * <a href="https://developer.winit.com.cn/document/detail/id/285.html">作废入库单</a>
+     * <a href="https://developer.winit.com.cn/document/detail/id/36.html">预估入库费用</a>
      */
-    public WinitResponse<Void> cancelOrder(CancelOrderPayload payload) {
-        return postWinit("winit.wh.inbound.voidOrder", payload, new ParameterizedTypeReference<WinitResponse<Void>>() {
+    public WinitResponse<EstimateOrderFeeResponse> estimateOrderFee(OrderNoPayload payload) {
+        return postWinit("winit.wh.inbound.estimateOrderFee", payload, new ParameterizedTypeReference<WinitResponse<EstimateOrderFeeResponse>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.winit.com.cn/document/detail/id/38.html">查询入库单列表</a>
+     */
+    public WinitResponse<InboundOrderResponse> getInBoundOrders(InboundOrderQueryParams queryParams) {
+        return postWinit("winit.wh.inbound.getOrderList", queryParams, new ParameterizedTypeReference<WinitResponse<InboundOrderResponse>>() {
         });
     }
 
     /**
      * <a href="https://developer.winit.com.cn/document/detail/id/39.html">查询入库单详情</a>
      */
-    public WinitResponse<OrderResponse> getOrderDetail(QueryOrderDetail payload) {
+    public WinitResponse<OrderResponse> getOrderDetail(OrderDetailQueryParams payload) {
         return postWinit("winit.wh.inbound.getOrderDetail", payload, new ParameterizedTypeReference<WinitResponse<OrderResponse>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.winit.com.cn/document/detail/id/94.html">查询入库轨迹</a>
+     */
+    public WinitResponse<OrderTrackResponse> getOrderTracking(OrderNoPayload payload) {
+        return postWinit("wh.tracking.queryOrderTracking", payload, new ParameterizedTypeReference<WinitResponse<OrderTrackResponse>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.winit.com.cn/document/detail/id/138.html">查询入库单费用</a>
+     */
+    public WinitResponse<OrderFeeResponse> getInboundOrderFee(OrderFeeQueryParams queryParams) {
+        return postWinit("sms.incomeSettlement.pageInboundLine", queryParams, new ParameterizedTypeReference<WinitResponse<OrderFeeResponse>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.winit.com.cn/document/detail/id/306.html">新增子包裹条码</a>
+     */
+    public WinitResponse<SubPackageResponse> generateSubPackageBarcode(SubPackagePayload payload) {
+        return postWinit("csi.seller.generateSubPackageBarcode", payload, new ParameterizedTypeReference<WinitResponse<SubPackageResponse>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.winit.com.cn/document/detail/id/304.html">自验货数据导入</a>
+     */
+    public WinitResponse<Object> importPacking(ImportPackPayload payload) {
+        return postWinit("winit.wh.inbound.selfinspection.importpackinglist", payload, new ParameterizedTypeReference<WinitResponse<Object>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.winit.com.cn/document/detail/id/305.html">自验货确认完成</a>
+     */
+    public WinitResponse<Object> importPackingConfirm(ConfirmPayload payload) {
+        return postWinit("winit.wh.inbound.selfinspection.confirm", payload, new ParameterizedTypeReference<WinitResponse<Object>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.winit.com.cn/document/detail/id/301.html">直发入库-上传快递单号</a>
+     */
+    public WinitResponse<Void> uploadExpressNo(UploadExpressPayload payload) {
+        return postWinit("wh.inboundOrder.uploadExpressNo", payload, new ParameterizedTypeReference<WinitResponse<Void>>() {
         });
     }
 
@@ -170,10 +217,43 @@ public class OswhClient extends WinitClient {
     }
 
     /**
-     * <a href="https://developer.winit.com.cn/document/detail/id/31.html">打印包裹标签</a>
+     * <a href="https://developer.winit.com.cn/document/detail/id/285.html">作废入库单</a>
      */
-    public WinitResponse<LabelPayload> printPackageLabel(PrintPackageLabelPayload payload) {
-        return postWinit("winit.wh.inbound.printPackageLabel", payload, new ParameterizedTypeReference<WinitResponse<LabelPayload>>() {
+    public WinitResponse<Void> cancelOrder(CancelOrderPayload payload) {
+        return postWinit("winit.wh.inbound.voidOrder", payload, new ParameterizedTypeReference<WinitResponse<Void>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.winit.com.cn/document/detail/id/28.html">查询头程服务</a>
+     */
+    public WinitResponse<List<WinitProducts>> getWinItProducts(QueryWinItProducts payload) {
+        return postWinit("winit.wh.pms.getWinitProducts", payload, new ParameterizedTypeReference<WinitResponse<List<WinitProducts>>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.winit.com.cn/document/detail/id/29.html">查询验货/目的仓</a>
+     */
+    public WinitResponse<WarehouseResponse> getWarehouse(WarehouseQueryParams queryParams) {
+        return postWinit("winit.pms.getWarehouseList", queryParams, new ParameterizedTypeReference<WinitResponse<WarehouseResponse>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.winit.com.cn/document/detail/id/30.html">查询入库可选商品</a>
+     */
+    public WinitResponse<List<AvailableResponse>> getAvailableMerchandise(AvailableMerchandisePayload payload) {
+        return postWinit("winit.wh.mms.getAvailableMerchandise", payload, new ParameterizedTypeReference<WinitResponse<List<AvailableResponse>>>() {
+        });
+    }
+
+
+    /**
+     * <a href="https://developer.winit.com.cn/document/detail/id/43.html">查询仓库代码</a>
+     */
+    public WinitResponse<List<WarehousePayload>> queryWarehouse() {
+        return postWinit("queryWarehouse", null, new ParameterizedTypeReference<WinitResponse<List<WarehousePayload>>>() {
         });
     }
 

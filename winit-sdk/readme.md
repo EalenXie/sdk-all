@@ -44,15 +44,31 @@ winit-sdk
 | queryWarehouseReceiptDetails   | [查询仓租单明细](https://developer.winit.com.cn/document/detail/id/231.html)    | ✔️  |
 | createInventoryAdjustment      | [创建库存调整单](https://developer.winit.com.cn/document/detail/id/308.html)    | ✔️  |
 
+##### 入库
+
+| 方法                        | 官方文档地址                                                                    | 状态  |
+|:--------------------------|:--------------------------------------------------------------------------|:----|
+| createOrder               | [创建入库单](https://developer.winit.com.cn/document/detail/id/141.html)       | ✔️  |
+| printPackageLabel         | [打印包裹标签](https://developer.winit.com.cn/document/detail/id/31.html)       | ✔️  |
+| estimateOrderFee          | [预估入库费用](https://developer.winit.com.cn/document/detail/id/36.html)       | ✔️  |
+| getInBoundOrders          | [预估入库费用](https://developer.winit.com.cn/document/detail/id/38.html)       | ✔️  |
+| getOrderDetail            | [查询入库单详情](https://developer.winit.com.cn/document/detail/id/39.html)      | ✔️  |
+| getOrderTracking          | [查询入库轨迹](https://developer.winit.com.cn/document/detail/id/94.html)       | ✔️  |
+| getInboundOrderFee        | [查询入库单费用](https://developer.winit.com.cn/document/detail/id/138.html)     | ✔️  |
+| generateSubPackageBarcode | [新增子包裹条码](https://developer.winit.com.cn/document/detail/id/306.html)     | ✔️  |
+| importPacking             | [自验货数据导入](https://developer.winit.com.cn/document/detail/id/304.html)     | ✔️  |
+| importPackingConfirm      | [自验货确认完成](https://developer.winit.com.cn/document/detail/id/305.html)     | ✔️  |
+| uploadExpressNo           | [直发入库-上传快递单号](https://developer.winit.com.cn/document/detail/id/301.html) | ✔️  |
+| confirmShipment           | [直发入库-确认发货](https://developer.winit.com.cn/document/detail/id/300.html)   | ✔️  |
+| cancelOrder               | [作废入库单](https://developer.winit.com.cn/document/detail/id/285.html)       | ✔️  |
+| getWinItProducts          | [查询头程服务](https://developer.winit.com.cn/document/detail/id/28.html)       | ✔️  |
+| getWarehouse              | [查询验货/目的仓](https://developer.winit.com.cn/document/detail/id/29.html)     | ✔️  |
+| getAvailableMerchandise   | [查询入库可选商品](https://developer.winit.com.cn/document/detail/id/30.html)     | ✔️  |
+
+
 
 
 | queryWarehouse                 | [查询仓库代码](https://developer.winit.com.cn/document/detail/id/43.html)      | ✔️  |
-| createOrder                    | [创建入库单](https://developer.winit.com.cn/document/detail/id/141.html)      | ✔️  |
-| getWinItProducts               | [查询头程服务](https://developer.winit.com.cn/document/detail/id/28.html)      | ✔️  |
-| cancelOrder                    | [作废入库单](https://developer.winit.com.cn/document/detail/id/285.html)      | ✔️  |
-| getOrderDetail                 | [查询入库单详情](https://developer.winit.com.cn/document/detail/id/39.html)     | ✔️  |
-| printPackageLabel              | [打印包裹标签](https://developer.winit.com.cn/document/detail/id/31.html)      | ✔️  |
-| confirmShipment                | [直发入库-确认发货](https://developer.winit.com.cn/document/detail/id/300.html)  | ✔️  |
 | createSubmittedOrder           | [创建出库单-新](https://developer.winit.com.cn/document/detail/id/247.html)    | ✔️  |
 | calcDeliveryFee                | [预估派送运费-3](https://developer.winit.com.cn/document/detail/id/96.html)    | ✔️  |
 | uploadLabel                    | [出库上传附件](https://developer.winit.com.cn/document/detail/id/299.html)     | ✔️  |

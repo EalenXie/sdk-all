@@ -10,7 +10,7 @@ import lombok.Setter;
  **/
 @Getter
 @Setter
-public class QueryOrderDetail {
+public class OrderDetailQueryParams {
     /**
      * WINIT订单号
      */
