@@ -14,44 +14,10 @@ SDK-ALL是我在工作中总结的一个封装和整合第三方请求SDK的项�
 
 > 💾 设计目标和应用场景
 >
-> - 节省接口对接成本，节省接口对接成本，根据具体场景和业务需求按需引入使用。。
+> - 节省接口对接成本，节省接口对接成本，根据具体场景和业务需求按需引入使用。
 > - 让开发者专注于业务开发，将底层SDK与业务代码解耦。
 > - 开源此项目，希望社区的关注与支持，与开发者共同维护，实现项目的可持续迭代发展。
 > - 本项目所有源码均针对平台的官方文档编写，源码中都附有相关地址，请使用时对照官方文档说明，如有疑问，一切以官方文档为准。
-
-## Release Version
-
-> ⚠️ 鉴于**第三方接口本身会进行无法预测的迭代更新**，本SDK遵循以下基本发布原则，请注意：
-> - _**本项目维护者将尽最大努力维护所有SDK的基本稳定性，但无法保证SDK中的所有接口和文档注释的及时性、准确性和稳定性。**_
-> - _**本项目仅参考官方文档提供的样例编写接口。鉴于平台授权认证等原因，我们未对所有接口进行单元测试。**_
-> - 所有的SDK版本均采用快照版本进行迭代开发。只有当SDK完成度达到80%以上时，我们才会定期发布正式版本，其他版本均为快照版本。
-> - 我们会定期对主分支上的代码进行打包，并将其部署到中央Maven库。
-
-## Contributing
-
-欢迎参与项目贡献，例如提交PR、修复bug或者新建Issue讨论新的或者变更。
-
-> - 🔁 项目同步地址：[https://github.com/EalenXie/sdk-all](https://github.com/EalenXie/sdk-all)
-> - 📖 代码贡献指南：[CONTRIBUTING.md](https://github.com/EalenXie/sdk-all/blob/main/CONTRIBUTING.md)
-> - 💬 如果你有任何问题或疑问，请在项目的[Issues](https://github.com/EalenXie/sdk-all/issues)页面提问。
-
-## License
-
-Copyright (c) 2023 EalenXie. All rights reserved.
-
-Licensed under the [MIT](https://github.com/EalenXie/sdk-all/blob/main/LICENSE) license.
-
-For inquiries and support, please contact us at [ealenxie@outlook.com](mailto:ealenxie@outlook.com)
-
-## Declare
-
-本项目的源代码均基于官方接口文档编写。
-
-项目中使用的Markdown链接仅用于非商业用途，仅用于展示、描述或表达与之相关的信息。
-
-如果您认为本项目存在侵权内容，请及时告知，我们将积极删除相关内容。
-
-我们尊重知识产权，如有疑问或建议，请随时联系我们。
 
 ## SDK 列表
 
@@ -84,5 +50,44 @@ For inquiries and support, please contact us at [ealenxie@outlook.com](mailto:ea
 | [dingtalk-sdk](https://github.com/EalenXie/sdk-all/tree/main/dingtalk-sdk)                   | 钉钉机器人               | [钉钉开放平台](https://open.dingtalk.com/document/robots/custom-robot-access)                                            |  ![](https://img.shields.io/badge/-1%25-red.svg)  |
 | [feishu-sdk](https://github.com/EalenXie/sdk-all/tree/main/feishu-sdk)                       | 飞书机器人               | [飞书开放平台](https://open.feishu.cn/document/ukTMukTMukTM/ucTM5YjL3ETO24yNxkjN)                                        |  ![](https://img.shields.io/badge/-1%25-red.svg)  |
 | [enterprise-wechat-sdk](https://github.com/EalenXie/sdk-all/tree/main/enterprise-wechat-sdk) | 企业微信机器人             | [企业微信-开发者中心](https://developer.work.weixin.qq.com/document/path/91770)                                             |  ![](https://img.shields.io/badge/-1%25-red.svg)  |
+
+## Release Version
+
+> ⚠️ 鉴于**第三方接口本身会进行无法预测的迭代更新**，本SDK遵循以下基本发布原则，请注意：
+> - _**本项目维护者将尽最大努力维护所有SDK的基本稳定性，但无法保证SDK中的所有接口和文档注释的及时性、准确性和稳定性。**_
+> - _**本项目仅参考官方文档提供的样例编写接口。鉴于平台授权认证等原因，我们未对所有接口进行单元测试。**_
+> - 所有的SDK版本均采用快照版本进行迭代开发。只有当SDK完成度达到80%以上时，我们才会定期发布正式版本，其他版本均为快照版本。
+> - 我们会定期对主分支上的代码进行打包，并将其部署到中央Maven库。
+
+## License
+
+Copyright (c) 2023 EalenXie. All rights reserved.
+
+Licensed under the [MIT](https://github.com/EalenXie/sdk-all/blob/main/LICENSE) license.
+
+For inquiries and support, please contact us at [ealenxie@outlook.com](mailto:ealenxie@outlook.com)
+
+## Declare
+
+本项目的源代码均基于官方接口文档编写。
+
+项目中使用的Markdown链接仅用于非商业用途，仅用于展示、描述或表达与之相关的信息。
+
+如果您认为本项目存在侵权内容，请及时告知，我们将积极删除相关内容。
+
+我们尊重知识产权，如有疑问或建议，请随时联系我们。
+
+## Contributing
+
+欢迎参与项目贡献，例如提交PR、修复bug或者新建Issue讨论新的或者变更，特别感谢为此项目做出贡献的人
+
+> - 🔁 项目同步地址：[https://github.com/EalenXie/sdk-all](https://github.com/EalenXie/sdk-all)
+> - 📖 代码贡献指南：[CONTRIBUTING.md](https://github.com/EalenXie/sdk-all/blob/main/CONTRIBUTING.md)
+> - 💬 如果你有任何问题或疑问，请在项目的[Issues](https://github.com/EalenXie/sdk-all/issues)页面提问。
+
+<a href="https://github.com/ealenxie/aop-log/graphs/contributors">
+<img src="https://contrib.rocks/image?repo=ealenxie/sdk-all"  alt=""/>
+</a>
+
 
 持续更新中，太多了根本写不完😂...
