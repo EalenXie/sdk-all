@@ -64,5 +64,4 @@ public class IspOrderMerchandise {
     private Integer ebayItemPrice;
 
 
-
 }
