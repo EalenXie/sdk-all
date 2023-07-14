@@ -6,7 +6,7 @@
 ![code size](https://img.shields.io/github/languages/code-size/ealenxie/sdk-all)
 </div>
 
-$\color{red}{天之道，损有余而补不足。 人之道则不然，损不足以奉有余。 孰能有余以奉天下？ 唯有道者。 -- 道德经 }$
+$\color{＃006400}{天之道，损有余而补不足。 人之道则不然，损不足以奉有余。 孰能有余以奉天下？ 唯有道者。 -- 道德经 }$
 
 此项目为个人研发总结的所有第三方请求接口SDK的封装整合项目。
 
