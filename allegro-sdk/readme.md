@@ -9,18 +9,22 @@ Allegro开发平台: https://developer.allegro.pl/documentation/
 
 ### 快速开始
 
-![](https://img.shields.io/maven-central/v/io.github.ealenxie/allegro-sdk)
+#### [Maven Central](https://mvnrepository.com/artifact/io.github.ealenxie/allegro-sdk)
 
-#### `pom.xml`配置
+引入依赖, 可在`pom.xml` 的 `<dependencies>`选项中配置
 
 ```xml
 
 <dependency>
     <groupId>io.github.ealenxie</groupId>
     <artifactId>allegro-sdk</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>${latest.version}</version>
 </dependency>
 ```
+
+> `${latest.version}`
+>
+> ![](https://img.shields.io/maven-central/v/io.github.ealenxie/allegro-sdk)
 
 #### 代码示例
 

@@ -33,8 +33,6 @@ winit-sdk
 | printProductLabel                | [打印商品条码标签](https://developer.winit.com.cn/document/detail/id/19.html)           | ✔️  |
 | getProductLabelInfo              | [打印商品条码标签](https://developer.winit.com.cn/document/detail/id/241.html)          | ✔️  |
 
-
-
 | 方法                             | 官方文档地址                                                                   | 状态  |
 |:-------------------------------|:-------------------------------------------------------------------------|:----|
 | queryWarehouseStorage          | [查询总库存](https://developer.winit.com.cn/document/detail/id/44.html)       | ✔️  |
