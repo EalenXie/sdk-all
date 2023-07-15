@@ -79,6 +79,6 @@ For inquiries and support, please contact us at [ealenxie@outlook.com](mailto:ea
 
 ## Contacts
 
-<img src="https://github.com/EalenXie/sdk-all/blob/main/docs/image/ding_talk_group.png" alt="ding_talk_group.png" width="500" height="300">
+<img src="https://github.com/EalenXie/sdk-all/blob/main/docs/image/ding_talk_group.png" alt="ding_talk_group.png" width="1000" height="1000">
 
 持续更新中，太多了根本写不完😂...
