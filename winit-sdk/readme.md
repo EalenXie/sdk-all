@@ -34,9 +34,9 @@ import io.github.ealenxie.winit.oswh.WarehouseResponse;
 
 import java.util.List;
 
-class MarketplaceClientTest {
+class OswhClientTest {
     @Test
-    void getCarriers() {
+    void queryWarehouse() {
         WinitConfig config = new WinitConfig();
         config.setClientId("your clientId");
         config.setClientSecret("your clientSecret");
