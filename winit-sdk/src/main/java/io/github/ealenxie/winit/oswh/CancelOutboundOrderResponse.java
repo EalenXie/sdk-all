@@ -1,16 +1,16 @@
 package io.github.ealenxie.winit.oswh;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 
 /**
  * @author EalenXie created on 2023/7/15 13:58
  */
-@NoArgsConstructor
-@Data
+@Getter
+@Setter
 public class CancelOutboundOrderResponse {
 
     /**
