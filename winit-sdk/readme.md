@@ -20,6 +20,40 @@ winit-sdk
 </dependency>
 ```
 
+#### 代码示例
+
+```java
+
+
+
+import io.github.ealenxie.winit.OswhClient;
+import io.github.ealenxie.winit.WinitConfig;
+import io.github.ealenxie.winit.WinitResponse;
+import io.github.ealenxie.winit.oswh.WarehousePayload;
+import io.github.ealenxie.winit.oswh.WarehouseResponse;
+
+import java.util.List;
+
+class MarketplaceClientTest {
+    @Test
+    void getCarriers() {
+        WinitConfig config = new WinitConfig();
+        config.setClientId("your clientId");
+        config.setClientSecret("your clientSecret");
+        config.setPlatform("your platform");
+        config.setAppKey("your appKey");
+        config.setToken("your token");
+        OswhClient oswhClient = new OswhClient(config);
+        // call api
+        WinitResponse<List<WarehousePayload>> response = oswhClient.queryWarehouse();
+        List<WarehousePayload> data = response.getData();
+        System.out.println(data);
+    }
+}
+
+```
+
+
 #### 海外仓API(OSWH) [OswhClient](https://github.com/EalenXie/sdk-all/blob/main/winit-sdk/src/main/java/io/github/ealenxie/winit/OswhClient.java) 已支持的接口列表
 
 ##### 商品

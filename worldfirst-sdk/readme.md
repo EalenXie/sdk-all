@@ -1,4 +1,4 @@
-wish-sdk
+worldfirst-sdk
 ======
 
 主要是封装了
