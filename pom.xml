@@ -12,31 +12,18 @@
     <modules>
         <module>fop-sdk</module>
         <module>allegro-sdk</module>
-        <module>amazon-sdk</module>
         <module>wish-sdk</module>
         <module>walmart-sdk</module>
         <module>paypal-sdk</module>
-        <module>pingpong-sdk</module>
         <module>shopify-sdk</module>
-        <module>ebay-sdk</module>
         <module>lianlian-sdk</module>
-        <module>manomano-sdk</module>
-        <module>fruugo-sdk</module>
         <module>payoneer-sdk</module>
-        <module>kaufland-sdk</module>
         <module>dingtalk-sdk</module>
-        <module>feishu-sdk</module>
-        <module>enterprise-wechat-sdk</module>
-        <module>eccang-sdk</module>
         <module>goodcang-sdk</module>
-        <module>cne-sdk</module>
         <module>tianyancha-sdk</module>
         <module>aliyun-ocr-sdk</module>
         <module>alibaba-1688-sdk</module>
-        <module>edayun-sdk</module>
         <module>winit-sdk</module>
-        <module>alyunwms-sdk</module>
-        <module>armlogi-sdk</module>
         <module>worldfirst-sdk</module>
     </modules>
     <properties>
@@ -58,7 +45,7 @@
     <licenses>
         <license>
             <name>The MIT License</name>
-            <url>https://github.com/EalenXie/sdk-all/blob/master/LICENSE</url>
+            <url>https://github.com/EalenXie/sdk-all/blob/main/LICENSE</url>
             <distribution>repo</distribution>
         </license>
     </licenses>
