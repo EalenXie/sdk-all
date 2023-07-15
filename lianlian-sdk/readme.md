@@ -18,7 +18,7 @@ lianlian-sdk
 
 #### [LianLianClient](https://github.com/EalenXie/sdk-all/blob/main/lianlian-sdk/src/main/java/io/github/ealenxie/lianlian/LianLianClient.java) 已支持的接口列表
 
-| 方法名              | 官方文档地址                                                                         | 状态  |
+| 🏷️方法名           | 📚 官方文档地址                                                                      | 状态  |
 |:-----------------|:-------------------------------------------------------------------------------|:----|
 | accountBalance   | [查询用户收款账户余额](https://developer.lianlianglobal.com/docs/llp-api/6e3c95aa7b658-) | ✔️  |
 | account          | [用户账户详情查询](https://developer.lianlianglobal.com/docs/llp-api/5f2e875a7a8d2-)   | ✔️  |

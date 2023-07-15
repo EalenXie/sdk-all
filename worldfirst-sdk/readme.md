@@ -2,7 +2,7 @@ wish-sdk
 ======
 
 主要是封装了
-跨境电商 [worldfirst 商户平台](https://developers.worldfirst.com.cn/docs/alipay-worldfirst/worldfirst_enterprise_solution_zh/overview)
+[worldfirst 商户平台](https://developers.worldfirst.com.cn/docs/alipay-worldfirst/worldfirst_enterprise_solution_zh/overview)
 接口
 
 ### 快速开始

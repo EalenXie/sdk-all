@@ -1,6 +1,6 @@
 wish-sdk
 ======
-<img src="https://d2ujdsqe3ri19m.cloudfront.net/77b19223edb1/dist/js/5fae4ff29cf989507838ee0e55a17490.svg" alt="Goodcang Logo" width="200">
+<img src="https://d2ujdsqe3ri19m.cloudfront.net/77b19223edb1/dist/js/5fae4ff29cf989507838ee0e55a17490.svg" alt="Wish Logo" width="200">
 
 主要是封装了 [wish 商户平台](https://china-merchant.wish.com/documentation/api/v3/explorer) 接口
 
