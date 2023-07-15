@@ -6,7 +6,7 @@
 
 为了使您的代码更容易被接受，请遵循以下原则和规范提交代码：
 
-> - 代码提交需遵守[Git提交规范](https://github.com/EalenXie/sdk-all//blob/main/GIT_PR.md)。
+> - 代码提交需遵守[Git提交规范](https://github.com/EalenXie/sdk-all/blob/main/GIT_PR.md)。
 > - 安装`SonarLint`插件并对代码进行扫描分析，在提交代码前确保无`issue`。
 > - 使用`spring-web`框架中的`RestOperations`作为基本调用组件。
 > - 使用`com.fasterxml.jackson`框架作为主要的序列化/反序列化依赖。
