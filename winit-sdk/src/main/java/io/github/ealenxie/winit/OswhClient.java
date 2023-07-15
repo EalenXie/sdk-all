@@ -250,19 +250,18 @@ public class OswhClient extends WinitClient {
 
 
     /**
-     * <a href="https://developer.winit.com.cn/document/detail/id/43.html">查询仓库代码</a>
+     * <a href="https://developer.winit.com.cn/document/detail/id/247.html">创建出库单-新</a>
      */
-    public WinitResponse<List<WarehousePayload>> queryWarehouse() {
-        return postWinit("queryWarehouse", null, new ParameterizedTypeReference<WinitResponse<List<WarehousePayload>>>() {
+    public WinitResponse<CreateOutboundOrderResponse> createSubmittedOrder(CreateSubmittedOrderPayload payload) {
+        return postWinit("wh.outbound.createSubmittedOrder", payload, new ParameterizedTypeReference<WinitResponse<CreateOutboundOrderResponse>>() {
         });
     }
 
-
     /**
-     * <a href="https://developer.winit.com.cn/document/detail/id/247.html">创建出库单-新</a>
+     * <a href="https://developer.winit.com.cn/document/detail/id/49.html">创建出库单</a>
      */
-    public WinitResponse<CreateOutboundOrderResponse> createSubmittedOrder(CreateOutboundOrderPayload payload) {
-        return postWinit("wh.outbound.createSubmittedOrder", payload, new ParameterizedTypeReference<WinitResponse<CreateOutboundOrderResponse>>() {
+    public WinitResponse<CreateOutboundOrderResponse> createOutboundOrder(CreateOutboundOrderPayload payload) {
+        return postWinit("createOutboundOrder", payload, new ParameterizedTypeReference<WinitResponse<CreateOutboundOrderResponse>>() {
         });
     }
 
@@ -307,11 +306,51 @@ public class OswhClient extends WinitClient {
     }
 
     /**
+     * <a href="https://developer.winit.com.cn/document/detail/id/57.html">查询轨迹（库内）</a>
+     */
+    public WinitResponse<List<Track>> queryTrack(TrackQueryData payload) {
+        return postWinit("queryTrack", payload, new ParameterizedTypeReference<WinitResponse<List<Track>>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.winit.com.cn/document/detail/id/56.html">查询轨迹（库内+派送）</a>
+     */
+    public WinitResponse<List<OrderVerdorTracking>> getOrderVerdorTracking(OrderVerdorTrackingData data) {
+        return postWinit("tracking.getOrderVerdorTracking", data, new ParameterizedTypeReference<WinitResponse<List<OrderVerdorTracking>>>() {
+        });
+    }
+
+    /**
      * <a href="https://developer.winit.com.cn/document/detail/id/276.html">作废出库单</a>
      */
     public WinitResponse<String> cancelOutboundOrder(OutboundOrderNumPayload payload) {
         return postWinit("voidOutboundOrder", payload, new ParameterizedTypeReference<WinitResponse<String>>() {
         });
     }
+
+    /**
+     * <a href="https://developer.winit.com.cn/document/detail/id/248.html">批量作废出库单</a>
+     */
+    public WinitResponse<CancelOutboundOrderResponse> batchCancelOutboundOrder(OrderCancelListData data) {
+        return postWinit("wh.outbound.batchVoidOrder", data, new ParameterizedTypeReference<WinitResponse<CancelOutboundOrderResponse>>() {
+        });
+    }
+    /**
+     * <a href="https://developer.winit.com.cn/document/detail/id/45.html">查询派送方式</a>
+     */
+    public WinitResponse<List<DeliveryWayResponse>> queryDeliveryWay(String warehouseID) {
+        return postWinit("queryDeliveryWay", new WarehouseIdData(warehouseID), new ParameterizedTypeReference<WinitResponse<List<DeliveryWayResponse>>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.winit.com.cn/document/detail/id/43.html">查询仓库代码</a>
+     */
+    public WinitResponse<List<WarehousePayload>> queryWarehouse() {
+        return postWinit("queryWarehouse", null, new ParameterizedTypeReference<WinitResponse<List<WarehousePayload>>>() {
+        });
+    }
+
 
 }

@@ -65,17 +65,23 @@ winit-sdk
 | getWarehouse              | [查询验货/目的仓](https://developer.winit.com.cn/document/detail/id/29.html)     | ✔️  |
 | getAvailableMerchandise   | [查询入库可选商品](https://developer.winit.com.cn/document/detail/id/30.html)     | ✔️  |
 
+##### 出库
 
-
-
-| queryWarehouse                 | [查询仓库代码](https://developer.winit.com.cn/document/detail/id/43.html)      | ✔️  |
-| createSubmittedOrder           | [创建出库单-新](https://developer.winit.com.cn/document/detail/id/247.html)    | ✔️  |
-| calcDeliveryFee                | [预估派送运费-3](https://developer.winit.com.cn/document/detail/id/96.html)    | ✔️  |
-| uploadLabel                    | [出库上传附件](https://developer.winit.com.cn/document/detail/id/299.html)     | ✔️  |
-| queryOutboundOrderList         | [查询出库单（列表）](https://developer.winit.com.cn/document/detail/id/54.htm)    | ✔️  |
-| queryOutboundOrder             | [查询出库单](https://developer.winit.com.cn/document/detail/id/55.html)       | ✔️  |
-| queryOutboundOrderFee          | [查询派送费用](https://developer.winit.com.cn/document/detail/id/145.html)     | ✔️  |
-| cancelOutboundOrder            | [作废出库单](https://developer.winit.com.cn/document/detail/id/276.html)      | ✔️  |
+| 方法                       | 官方文档地址                                                                   | 状态  |
+|:-------------------------|:-------------------------------------------------------------------------|:----|
+| createSubmittedOrder     | [创建出库单-新](https://developer.winit.com.cn/document/detail/id/247.html)    | ✔️  |
+| createOutboundOrder      | [创建出库单](https://developer.winit.com.cn/document/detail/id/49.html)       | ✔️  |
+| calcDeliveryFee          | [预估派送运费-3](https://developer.winit.com.cn/document/detail/id/96.html)    | ✔️  |
+| uploadLabel              | [出库上传附件](https://developer.winit.com.cn/document/detail/id/299.html)     | ✔️  |
+| queryOutboundOrderList   | [查询出库单（列表）](https://developer.winit.com.cn/document/detail/id/54.htm)    | ✔️  |
+| queryOutboundOrder       | [查询出库单](https://developer.winit.com.cn/document/detail/id/55.html)       | ✔️  |
+| queryOutboundOrderFee    | [查询派送费用](https://developer.winit.com.cn/document/detail/id/145.html)     | ✔️  |
+| queryTrack               | [查询轨迹（库内）](https://developer.winit.com.cn/document/detail/id/57.html)    | ✔️  |
+| getOrderVerdorTracking   | [查询轨迹（库内+派送）](https://developer.winit.com.cn/document/detail/id/56.html) | ✔️  |
+| cancelOutboundOrder      | [作废出库单](https://developer.winit.com.cn/document/detail/id/276.html)      | ✔️  |
+| batchCancelOutboundOrder | [批量作废出库单](https://developer.winit.com.cn/document/detail/id/248.html)    | ✔️  |
+| queryDeliveryWay         | [查询派送方式](https://developer.winit.com.cn/document/detail/id/45.html)      | ✔️  |
+| queryWarehouse           | [查询仓库代码](https://developer.winit.com.cn/document/detail/id/43.html)      | ✔️  |
 
 #### 全球直发API（ISP) [IspClient](https://github.com/EalenXie/sdk-all/blob/main/winit-sdk/src/main/java/io/github/ealenxie/winit/IspClient.java) 已支持的接口列表
 

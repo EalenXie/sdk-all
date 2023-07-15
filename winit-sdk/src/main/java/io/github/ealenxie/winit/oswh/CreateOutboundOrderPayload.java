@@ -1,217 +1,96 @@
 package io.github.ealenxie.winit.oswh;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 /**
- * 创建出库单请求实体
- *
- * @author create by sch  2023/4/20 16:01
- * @version 1.0
+ * @author EalenXie created on 2023/7/15 13:39
  */
-@Getter
-@Setter
+@NoArgsConstructor
+@Data
 public class CreateOutboundOrderPayload {
+
     /**
-     * 最后一公里派送方式编码
-     */
-    @JsonProperty("winitProductCode")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String winitProductCode;
-    /**
-     * 仓库编码
-     */
-    @JsonProperty("warehouseCode")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String warehouseCode;
-    /**
-     * 收货人类型，仅自提出库必填
-     * OTHER：其他
-     * FBA_NONVC：FBA转仓-非VC
-     * FBA_VC：FBA转仓-VC
-     * OTHER_TRANSFER：转第三方仓
-     */
-    @JsonProperty("consigneeType")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String consigneeType;
-    /**
-     * 卖家订单号
-     */
-    @JsonProperty("shipperOrderNo")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String shipperOrderNo;
-    /**
-     * shipperOrderNo是否允许重复
-     * Y:允许重复
-     * N:不允许重复
-     * 推荐填写N，可避免操作失误重复发货
-     */
-    @JsonProperty("isRepeat")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String isRepeat;
-    /**
-     * 库存类型
-     * 2B：ToB整箱出库(必须大写)
-     * 2C：ToC销售出库(必须大写)
-     * 当为空时，默认为2C销售出库
-     */
-    @JsonProperty("inventoryServiceType")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String inventoryServiceType;
-    /**
-     * 电商平台类型
-     * ebay，Amazon，wish，tiktok， Other
+     * storeType
      */
     @JsonProperty("storeType")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String storeType;
     /**
-     * 电商平台订单ID
+     * doorplateNumbers
      */
-    @JsonProperty("platformOrderId")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String platformOrderId;
+    @JsonProperty("doorplateNumbers")
+    private String doorplateNumbers;
     /**
-     * 平台账号ID（电商平台账号）
+     * address1
      */
-    @JsonProperty("platformAccount")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String platformAccount;
+    @JsonProperty("address1")
+    private String address1;
     /**
-     * 卖家VAT
+     * address2
      */
-    @JsonProperty("VATNo")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String vATNo;
+    @JsonProperty("address2")
+    private String address2;
     /**
-     * IOSS编码
+     * city
      */
-    @JsonProperty("iossNo")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String iossNo;
+    @JsonProperty("city")
+    private String city;
     /**
-     * 收件人公司名称
+     * deliveryWayID
      */
-    @JsonProperty("buyerCompany")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String buyerCompany;
+    @JsonProperty("deliveryWayID")
+    private String deliveryWayID;
     /**
-     * 收件人国家名称
-     * 1.可填写英文全称
-     * 2.可填写ISO国家二字码
+     * emailAddress
      */
-    @JsonProperty("receiverCountry")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String receiverCountry;
+    @JsonProperty("emailAddress")
+    private String emailAddress;
     /**
-     * 城市
+     * phoneNum
      */
-    @JsonProperty("receiverCity")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String receiverCity;
+    @JsonProperty("phoneNum")
+    private String phoneNum;
     /**
-     * 收件人州名称
+     * productList
      */
-    @JsonProperty("receiverState")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String receiverState;
+    @JsonProperty("productList")
+    private List<OutboundOrderProduct> productList;
     /**
-     * 收件人姓名
+     * recipientName
      */
-    @JsonProperty("receiverName")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String receiverName;
+    @JsonProperty("recipientName")
+    private String recipientName;
     /**
-     * 邮政编码
+     * region
      */
-    @JsonProperty("receiverPostcode")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String receiverPostcode;
+    @JsonProperty("region")
+    private String region;
     /**
-     * 门牌号
+     * repeatable
      */
-    @JsonProperty("receiverHouseNo")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String receiverHouseNo;
+    @JsonProperty("repeatable")
+    private String repeatable;
     /**
-     * 收件人街道1
+     * sellerOrderNo
      */
-    @JsonProperty("receiverAddressLine1")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String receiverAddressLine1;
+    @JsonProperty("sellerOrderNo")
+    private String sellerOrderNo;
     /**
-     * 收件人街道2
+     * state
      */
-    @JsonProperty("receiverAddressLine2")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String receiverAddressLine2;
+    @JsonProperty("state")
+    private String state;
     /**
-     * 收件人电话
+     * warehouseID
      */
-    @JsonProperty("receiverPhone")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String receiverPhone;
+    @JsonProperty("warehouseID")
+    private String warehouseID;
     /**
-     * 收件人电子邮箱
+     * zipCode
      */
-    @JsonProperty("receiverEmail")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String receiverEmail;
-    /**
-     * 销售金额
-     */
-    @JsonProperty("salesAmount")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private BigDecimal salesAmount;
-    /**
-     * 销售金额币种
-     */
-    @JsonProperty("currency")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String currency;
-    /**
-     * 收件人VAT/EORI
-     */
-    @JsonProperty("receiverVATEORINo")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String receiverVATEORINo;
-    /**
-     * 商品明细
-     */
-    @JsonProperty("merchandiseList")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private List<Merchandise> merchandiseList;
-    /**
-     * 提货方,PL代表卖家自提 CY代表第三方物流公司自提
-     */
-    @JsonProperty("pickUpSupplier")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String pickUpSupplier;
-    /**
-     * 第三方物流公司名称
-     * 当提货方（pickUpSupplier）为：CY时必填
-     * 当提货方为（pickUpSupplier）：PL时去除该字段
-     */
-    @JsonProperty("logisticsSupplierName")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String logisticsSupplierName;
-    /**
-     * 第三方物流公司快递单号或BOL
-     * 当提货方（pickUpSupplier）为：CY时选填
-     * 当提货方（pickUpSupplier）为：PL时去除该字段
-     */
-    @JsonProperty("selfPickTrackingOrBOLNo")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String selfPickTrackingOrBOLNo;
-    /**
-     * 增值服务列表
-     */
-    @JsonProperty("VASList")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private List<Vas> vASList;
+    @JsonProperty("zipCode")
+    private String zipCode;
 }
