@@ -336,6 +336,7 @@ public class OswhClient extends WinitClient {
         return postWinit("wh.outbound.batchVoidOrder", data, new ParameterizedTypeReference<WinitResponse<CancelOutboundOrderResponse>>() {
         });
     }
+
     /**
      * <a href="https://developer.winit.com.cn/document/detail/id/45.html">查询派送方式</a>
      */
@@ -349,6 +350,78 @@ public class OswhClient extends WinitClient {
      */
     public WinitResponse<List<WarehousePayload>> queryWarehouse() {
         return postWinit("queryWarehouse", null, new ParameterizedTypeReference<WinitResponse<List<WarehousePayload>>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.winit.com.cn/document/detail/id/151.html">创建退货订单</a>
+     */
+    public WinitResponse<Object> createReturnGoodsOrder(ReturnGoodsOrderCreateData data) {
+        return postWinit("rma.returnGoodsOrder.createReturnGoodsOrder", data, new ParameterizedTypeReference<WinitResponse<Object>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.winit.com.cn/document/detail/id/265.html">更新退货单商品信息</a>
+     */
+    public WinitResponse<MerchandiesInfoResponse> updateMerchandise(MerchandiseUpdateData data) {
+        return postWinit("rma.returnGoodsOrder.updateMerchandise", data, new ParameterizedTypeReference<WinitResponse<MerchandiesInfoResponse>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.winit.com.cn/document/detail/id/310.html">查询Returnlabel面单</a>
+     */
+    public WinitResponse<List<ReturnLabel>> queryReturnLabel(ReturnGoodsOrderNosData data) {
+        return postWinit("rma.returnGoodsOrder.queryReturnLabel", data, new ParameterizedTypeReference<WinitResponse<List<ReturnLabel>>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.winit.com.cn/document/detail/id/146.html">查询退货订单</a>
+     */
+    public WinitResponse<ReturnOrderListResponse> queryReturnOrderList(ReturnOderListQueryData data) {
+        return postWinit("rma.returnGoodsOrder.queryReturnOderList", data, new ParameterizedTypeReference<WinitResponse<ReturnOrderListResponse>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.winit.com.cn/document/detail/id/152.html">取消退货订单</a>
+     */
+    public WinitResponse<ReturnOrderVoidResponse> voidReturnOrder(ReturnGoodsOrderNosData data) {
+        return postWinit("rma.returnGoodsOrder.voidOrder", data, new ParameterizedTypeReference<WinitResponse<ReturnOrderVoidResponse>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.winit.com.cn/document/detail/id/282.html">查询退货派送方式</a>
+     */
+    public WinitResponse<PSCListResponse> queryPSCList() {
+        return postWinit("rma.returnGoodsOrder.queryPSCList", null, new ParameterizedTypeReference<WinitResponse<PSCListResponse>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.winit.com.cn/document/detail/id/137.html">查询退货商品</a>
+     */
+    public WinitResponse<ReturnItemListResponse> returnItemList(ReturnItemListData data) {
+        return postWinit("winit.mms.item.return.list", data, new ParameterizedTypeReference<WinitResponse<ReturnItemListResponse>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.winit.com.cn/document/detail/id/48.html">德国地址校验</a>
+     */
+    public WinitResponse<AddressIsValidResponse> addressIsValid(AddressIsValidData data) {
+        return postWinit("winit.tools.address.isValid", data, new ParameterizedTypeReference<WinitResponse<AddressIsValidResponse>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.winit.com.cn/document/detail/id/97.html">订单EGD担保校验</a>
+     */
+    public WinitResponse<ProductRecommendResponse> productRecommend(ProductRecommendData data) {
+        return postWinit("winit.tools.product.recommend", data, new ParameterizedTypeReference<WinitResponse<ProductRecommendResponse>>() {
         });
     }
 

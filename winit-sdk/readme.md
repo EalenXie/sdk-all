@@ -53,7 +53,6 @@ class OswhClientTest {
 
 ```
 
-
 #### 海外仓API(OSWH) [OswhClient](https://github.com/EalenXie/sdk-all/blob/main/winit-sdk/src/main/java/io/github/ealenxie/winit/OswhClient.java) 已支持的接口列表
 
 ##### 商品
@@ -116,6 +115,25 @@ class OswhClientTest {
 | batchCancelOutboundOrder | [批量作废出库单](https://developer.winit.com.cn/document/detail/id/248.html)    | ✔️  |
 | queryDeliveryWay         | [查询派送方式](https://developer.winit.com.cn/document/detail/id/45.html)      | ✔️  |
 | queryWarehouse           | [查询仓库代码](https://developer.winit.com.cn/document/detail/id/43.html)      | ✔️  |
+
+##### 退货
+
+| 方法                     | 官方文档地址                                                                        | 状态  |
+|:-----------------------|:------------------------------------------------------------------------------|:----|
+| createReturnGoodsOrder | [创建退货订单](https://developer.winit.com.cn/document/detail/id/151.html)          | ✔️  |
+| updateMerchandise      | [更新退货单商品信息](https://developer.winit.com.cn/document/detail/id/265.html)       | ✔️  |
+| queryReturnLabel       | [查询Returnlabel面单](https://developer.winit.com.cn/document/detail/id/310.html) | ✔️  |
+| queryReturnOrderList   | [查询退货订单](https://developer.winit.com.cn/document/detail/id/146.html)          | ✔️  |
+| voidReturnOrder        | [取消退货订单](https://developer.winit.com.cn/document/detail/id/152.htm)           | ✔️  |
+| queryPSCList           | [查询退货派送方式](https://developer.winit.com.cn/document/detail/id/282.html)        | ✔️  |
+| returnItemList         | [查询退货商品](https://developer.winit.com.cn/document/detail/id/137.html)          | ✔️  |
+
+##### 辅助接口
+
+| 方法               | 官方文档地址                                                                 | 状态  |
+|:-----------------|:-----------------------------------------------------------------------|:----|
+| addressIsValid   | [德国地址校验](https://developer.winit.com.cn/document/detail/id/48.html)    | ✔️  |
+| productRecommend | [订单EGD担保校验](https://developer.winit.com.cn/document/detail/id/97.html) | ✔️  |
 
 #### 全球直发API（ISP) [IspClient](https://github.com/EalenXie/sdk-all/blob/main/winit-sdk/src/main/java/io/github/ealenxie/winit/IspClient.java) 已支持的接口列表
 
