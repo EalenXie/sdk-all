@@ -79,24 +79,30 @@ class OswhClientTest {
 
 ##### 入库
 
-| 🏷️方法名                    | 📚 官方文档地址                                                                 | 状态  |
-|:--------------------------|:--------------------------------------------------------------------------|:----|
-| createOrder               | [创建入库单](https://developer.winit.com.cn/document/detail/id/141.html)       | ✔️  |
-| printPackageLabel         | [打印包裹标签](https://developer.winit.com.cn/document/detail/id/31.html)       | ✔️  |
-| estimateOrderFee          | [预估入库费用](https://developer.winit.com.cn/document/detail/id/36.html)       | ✔️  |
-| getInBoundOrders          | [预估入库费用](https://developer.winit.com.cn/document/detail/id/38.html)       | ✔️  |
-| getOrderDetail            | [查询入库单详情](https://developer.winit.com.cn/document/detail/id/39.html)      | ✔️  |
-| getOrderTracking          | [查询入库轨迹](https://developer.winit.com.cn/document/detail/id/94.html)       | ✔️  |
-| getInboundOrderFee        | [查询入库单费用](https://developer.winit.com.cn/document/detail/id/138.html)     | ✔️  |
-| generateSubPackageBarcode | [新增子包裹条码](https://developer.winit.com.cn/document/detail/id/306.html)     | ✔️  |
-| importPacking             | [自验货数据导入](https://developer.winit.com.cn/document/detail/id/304.html)     | ✔️  |
-| importPackingConfirm      | [自验货确认完成](https://developer.winit.com.cn/document/detail/id/305.html)     | ✔️  |
-| uploadExpressNo           | [直发入库-上传快递单号](https://developer.winit.com.cn/document/detail/id/301.html) | ✔️  |
-| confirmShipment           | [直发入库-确认发货](https://developer.winit.com.cn/document/detail/id/300.html)   | ✔️  |
-| cancelOrder               | [作废入库单](https://developer.winit.com.cn/document/detail/id/285.html)       | ✔️  |
-| getWinItProducts          | [查询头程服务](https://developer.winit.com.cn/document/detail/id/28.html)       | ✔️  |
-| getWarehouse              | [查询验货/目的仓](https://developer.winit.com.cn/document/detail/id/29.html)     | ✔️  |
-| getAvailableMerchandise   | [查询入库可选商品](https://developer.winit.com.cn/document/detail/id/30.html)     | ✔️  |
+| 🏷️方法名                    | 📚 官方文档地址                                                                  | 状态  |
+|:--------------------------|:---------------------------------------------------------------------------|:----|
+| createOrder               | [创建入库单](https://developer.winit.com.cn/document/detail/id/141.html)        | ✔️  |
+| printPackageLabel         | [打印包裹标签](https://developer.winit.com.cn/document/detail/id/31.html)        | ✔️  |
+| estimateOrderFee          | [预估入库费用](https://developer.winit.com.cn/document/detail/id/36.html)        | ✔️  |
+| getInBoundOrders          | [预估入库费用](https://developer.winit.com.cn/document/detail/id/38.html)        | ✔️  |
+| getOrderDetail            | [查询入库单详情](https://developer.winit.com.cn/document/detail/id/39.html)       | ✔️  |
+| getOrderTracking          | [查询入库轨迹](https://developer.winit.com.cn/document/detail/id/94.html)        | ✔️  |
+| getInboundOrderFee        | [查询入库单费用](https://developer.winit.com.cn/document/detail/id/138.html)      | ✔️  |
+| generateSubPackageBarcode | [新增子包裹条码](https://developer.winit.com.cn/document/detail/id/306.html)      | ✔️  |
+| importPacking             | [自验货数据导入](https://developer.winit.com.cn/document/detail/id/304.html)      | ✔️  |
+| importPackingConfirm      | [自验货确认完成](https://developer.winit.com.cn/document/detail/id/305.html)      | ✔️  |
+| uploadExpressNo           | [直发入库-上传快递单号](https://developer.winit.com.cn/document/detail/id/301.html)  | ✔️  |
+| confirmShipment           | [直发入库-确认发货](https://developer.winit.com.cn/document/detail/id/300.html)    | ✔️  |
+| cancelOrder               | [作废入库单](https://developer.winit.com.cn/document/detail/id/285.html)        | ✔️  |
+| getWinItProducts          | [查询头程服务](https://developer.winit.com.cn/document/detail/id/28.html)        | ✔️  |
+| getWarehouse              | [查询验货/目的仓](https://developer.winit.com.cn/document/detail/id/29.html)      | ✔️  |
+| getAvailableMerchandise   | [查询入库可选商品](https://developer.winit.com.cn/document/detail/id/30.html)      | ✔️  |
+| queryEorList              | [查询出口报关-EOR类型](https://developer.winit.com.cn/document/detail/id/140.html) | ✔️  |
+| declarationRuleList       | [查询进口报关-IOR规则](https://developer.winit.com.cn/document/detail/id/139.html) | ✔️  |
+| getPickupAddress          | [查询提货地址](https://developer.winit.com.cn/document/detail/id/35.html)        | ✔️  |
+| getCarriers               | [查询发货供应商](https://developer.winit.com.cn/document/detail/id/34.html)       | ✔️  |
+| getVendorInfo             | [查询进/出口供应商](https://developer.winit.com.cn/document/detail/id/33.html)     | ✔️  |
+| getLogisticsPlan          | [查询物流计划](https://developer.winit.com.cn/document/detail/id/32.html)        | ✔️  |
 
 ##### 出库
 
@@ -173,7 +179,7 @@ class OswhClientTest {
 
 #### 查询费用
 
-| 🏷️方法名                    | 📚 官方文档地址                                                               | 状态  |
+| 🏷️方法名               | 📚 官方文档地址                                                            | 状态  |
 |:---------------------|:---------------------------------------------------------------------|:----|
 | getTransactionCharge | [查询单据费用](https://developer.winit.com.cn/document/detail/id/204.html) | ✔️  |
 | pageChargeDetails    | [查询费用-新](https://developer.winit.com.cn/document/detail/id/255.html) | ✔️  |

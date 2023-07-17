@@ -1,16 +1,16 @@
 package io.github.ealenxie.winit.oswh;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 
 /**
  * @author EalenXie created on 2023/7/17 10:53
  */
-@NoArgsConstructor
-@Data
+@Getter
+@Setter
 public class ReturnItem {
     /**
      * customerName

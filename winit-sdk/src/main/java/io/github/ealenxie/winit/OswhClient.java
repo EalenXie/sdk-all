@@ -248,6 +248,53 @@ public class OswhClient extends WinitClient {
         });
     }
 
+    /**
+     * <a href="https://developer.winit.com.cn/document/detail/id/140.html">查询出口报关-EOR类型</a>
+     */
+    public WinitResponse<List<CodeName>> queryEorList() {
+        return postWinit("winit.ups.eorType.queryEorList", null, new ParameterizedTypeReference<WinitResponse<List<CodeName>>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.winit.com.cn/document/detail/id/139.html">查询进口报关-IOR规则</a>
+     */
+    public WinitResponse<List<DeclarationRule>> declarationRuleList(DeclarationRuleListData data) {
+        return postWinit("winit.ups.importDeclarationRule.queryList", data, new ParameterizedTypeReference<WinitResponse<List<DeclarationRule>>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.winit.com.cn/document/detail/id/35.html">查询提货地址</a>
+     */
+    public WinitResponse<PickupAddressList> getPickupAddress(PageParams pageParams) {
+        return postWinit("winit.ums.getPickupAddress", new PageParamsData(pageParams), new ParameterizedTypeReference<WinitResponse<PickupAddressList>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.winit.com.cn/document/detail/id/34.html">查询发货供应商</a>
+     */
+    public WinitResponse<Carriers> getCarriers(String shipperType) {
+        return postWinit("winit.ups.carrier.getCarriers", new ShipperTypeData(shipperType), new ParameterizedTypeReference<WinitResponse<Carriers>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.winit.com.cn/document/detail/id/33.html">查询进/出口供应商</a>
+     */
+    public WinitResponse<List<VendorInfo>> getVendorInfo(VendorInfoGetData data) {
+        return postWinit("winit.ums.getVendorInfo", data, new ParameterizedTypeReference<WinitResponse<List<VendorInfo>>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.winit.com.cn/document/detail/id/32.html">查询物流计划</a>
+     */
+    public WinitResponse<PlanListResponse> getLogisticsPlan(LogisticsPlanGetData data) {
+        return postWinit("winit.tms.getLogisticsPlan", data, new ParameterizedTypeReference<WinitResponse<PlanListResponse>>() {
+        });
+    }
 
     /**
      * <a href="https://developer.winit.com.cn/document/detail/id/247.html">创建出库单-新</a>

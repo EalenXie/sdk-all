@@ -7,15 +7,14 @@ import lombok.Setter;
 import java.util.List;
 
 /**
- * @author EalenXie created on 2023/7/17 10:27
+ * @author EalenXie created on 2023/7/17 14:27
  */
 @Getter
 @Setter
-public class ReturnGoodsOrderNosData {
-
+public class Carriers {
     /**
-     * returnGoodsOrderNos
+     * carrierList
      */
-    @JsonProperty("returnGoodsOrderNos")
-    private List<String> returnGoodsOrderNos;
+    @JsonProperty("carrierList")
+    private List<Carrier> carrierList;
 }
