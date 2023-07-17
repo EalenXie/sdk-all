@@ -132,8 +132,8 @@ public class IspClient extends WinitClient {
     /**
      * <a href="https://developer.winit.com.cn/document/detail/id/63.html">查询提货地址</a>
      */
-    public WinitResponse<UmsAddressPickupResponse> getUmsPickupAddress(@Nullable UmsAddressGetData data) {
-        return postWinit("ums.address.getByPickupService", data, new ParameterizedTypeReference<WinitResponse<UmsAddressPickupResponse>>() {
+    public WinitResponse<ListResponse<PickupService>> getUmsPickupAddress(@Nullable UmsAddressGetData data) {
+        return postWinit("ums.address.getByPickupService", data, new ParameterizedTypeReference<WinitResponse<ListResponse<PickupService>>>() {
         });
     }
 

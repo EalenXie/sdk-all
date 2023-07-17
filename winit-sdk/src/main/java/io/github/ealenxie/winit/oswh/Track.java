@@ -15,7 +15,7 @@ public class Track {
      * scanlocation
      */
     @JsonProperty("scanlocation")
-    private Object scanlocation;
+    private String scanlocation;
     /**
      * scandateTime
      */

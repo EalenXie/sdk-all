@@ -2,6 +2,7 @@ package io.github.ealenxie.winit.oswh;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.ealenxie.winit.PageParams;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,7 +12,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class QueryWarehouseReceiptDetails extends PagePayload {
+public class QueryWarehouseReceiptDetails extends PageParams {
     /**
      * 商品编码
      */

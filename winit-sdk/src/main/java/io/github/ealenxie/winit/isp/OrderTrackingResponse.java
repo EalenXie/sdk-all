@@ -17,7 +17,7 @@ public class OrderTrackingResponse {
      * masterOrderNo
      */
     @JsonProperty("masterOrderNo")
-    private Object masterOrderNo;
+    private String masterOrderNo;
     /**
      * orderNo
      */
@@ -52,7 +52,7 @@ public class OrderTrackingResponse {
      * vendorName
      */
     @JsonProperty("vendorName")
-    private Object vendorName;
+    private String vendorName;
     /**
      * trace
      */
@@ -62,37 +62,37 @@ public class OrderTrackingResponse {
      * occurTime
      */
     @JsonProperty("occurTime")
-    private Object occurTime;
+    private String occurTime;
     /**
      * logisticsStatus
      */
     @JsonProperty("logisticsStatus")
-    private Object logisticsStatus;
+    private String logisticsStatus;
     /**
      * logisticsMess
      */
     @JsonProperty("logisticsMess")
-    private Object logisticsMess;
+    private String logisticsMess;
     /**
      * airLines
      */
     @JsonProperty("airLines")
-    private Object airLines;
+    private String airLines;
     /**
      * flight
      */
     @JsonProperty("flight")
-    private Object flight;
+    private String flight;
     /**
      * expressCompany
      */
     @JsonProperty("expressCompany")
-    private Object expressCompany;
+    private String expressCompany;
     /**
      * carrier
      */
     @JsonProperty("carrier")
-    private Object carrier;
+    private String carrier;
     /**
      * carrierCode
      */

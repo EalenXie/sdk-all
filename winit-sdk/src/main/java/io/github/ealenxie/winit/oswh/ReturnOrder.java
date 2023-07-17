@@ -11,7 +11,7 @@ import java.util.List;
  */
 @NoArgsConstructor
 @Data
-public class ReturnOrderList {
+public class ReturnOrder {
     /**
      * outboundOrderNo
      */
@@ -21,7 +21,7 @@ public class ReturnOrderList {
      * orderGoodsList
      */
     @JsonProperty("orderGoodsList")
-    private List<OrderGoodsList> orderGoodsList;
+    private List<ReturnOrderGood> orderGoodsList;
     /**
      * sellerOrderNo
      */
@@ -36,7 +36,7 @@ public class ReturnOrderList {
      * mdImageList
      */
     @JsonProperty("mdImageList")
-    private Object mdImageList;
+    private String mdImageList;
     /**
      * customerExpressNo
      */
@@ -66,7 +66,7 @@ public class ReturnOrderList {
      * destroyOutboundOrder
      */
     @JsonProperty("destroyOutboundOrder")
-    private Object destroyOutboundOrder;
+    private String destroyOutboundOrder;
     /**
      * retrunReason
      */

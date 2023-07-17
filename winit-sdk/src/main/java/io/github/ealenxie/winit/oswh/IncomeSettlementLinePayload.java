@@ -110,7 +110,7 @@ public class IncomeSettlementLinePayload {
      * revenueAdjustLineId
      */
     @JsonProperty("revenueAdjustLineId")
-    private Object revenueAdjustLineId;
+    private String revenueAdjustLineId;
     /**
      * invoicelineId
      */
@@ -160,12 +160,12 @@ public class IncomeSettlementLinePayload {
      * warehouse
      */
     @JsonProperty("warehouse")
-    private Object warehouse;
+    private String warehouse;
     /**
      * warehouseCode
      */
     @JsonProperty("warehouseCode")
-    private Object warehouseCode;
+    private String warehouseCode;
     /**
      * productLine
      */
@@ -175,7 +175,7 @@ public class IncomeSettlementLinePayload {
      * arrearsAmt
      */
     @JsonProperty("arrearsAmt")
-    private Object arrearsAmt;
+    private String arrearsAmt;
     /**
      * isInvoice
      */
@@ -185,17 +185,17 @@ public class IncomeSettlementLinePayload {
      * logisticsDist
      */
     @JsonProperty("logisticsDist")
-    private Object logisticsDist;
+    private String logisticsDist;
     /**
      * accountCurrency
      */
     @JsonProperty("accountCurrency")
-    private Object accountCurrency;
+    private String accountCurrency;
     /**
      * settlementAmount
      */
     @JsonProperty("settlementAmount")
-    private Object settlementAmount;
+    private String settlementAmount;
     /**
      * isUsedCoupon
      */
@@ -205,7 +205,7 @@ public class IncomeSettlementLinePayload {
      * ispIsEbayRebate
      */
     @JsonProperty("ispIsEbayRebate")
-    private Object ispIsEbayRebate;
+    private String ispIsEbayRebate;
     /**
      * isConformGift
      */
@@ -225,12 +225,12 @@ public class IncomeSettlementLinePayload {
      * transactionType
      */
     @JsonProperty("transactionType")
-    private Object transactionType;
+    private String transactionType;
     /**
      * priceVersion
      */
     @JsonProperty("priceVersion")
-    private Object priceVersion;
+    private String priceVersion;
     /**
      * partnerName
      */
@@ -270,7 +270,7 @@ public class IncomeSettlementLinePayload {
      * volumeWeight
      */
     @JsonProperty("volumeWeight")
-    private Object volumeWeight;
+    private String volumeWeight;
     /**
      * chargeWeight
      */
@@ -285,7 +285,7 @@ public class IncomeSettlementLinePayload {
      * stockDate
      */
     @JsonProperty("stockDate")
-    private Object stockDate;
+    private String stockDate;
     /**
      * totalDeclarePrice
      */
@@ -305,7 +305,7 @@ public class IncomeSettlementLinePayload {
      * fistLegPrice
      */
     @JsonProperty("fistLegPrice")
-    private Object fistLegPrice;
+    private String fistLegPrice;
     /**
      * sellerNo
      */
@@ -315,27 +315,27 @@ public class IncomeSettlementLinePayload {
      * sellerId
      */
     @JsonProperty("sellerId")
-    private Object sellerId;
+    private String sellerId;
     /**
      * buyerId
      */
     @JsonProperty("buyerId")
-    private Object buyerId;
+    private String buyerId;
     /**
      * buyerCountry
      */
     @JsonProperty("buyerCountry")
-    private Object buyerCountry;
+    private String buyerCountry;
     /**
      * declareWeight
      */
     @JsonProperty("declareWeight")
-    private Object declareWeight;
+    private String declareWeight;
     /**
      * mainDocumentNo
      */
     @JsonProperty("mainDocumentNo")
-    private Object mainDocumentNo;
+    private String mainDocumentNo;
     /**
      * onwardVoyageType
      */
@@ -350,52 +350,52 @@ public class IncomeSettlementLinePayload {
      * postalCode
      */
     @JsonProperty("postalCode")
-    private Object postalCode;
+    private String postalCode;
     /**
      * firstDateAdded
      */
     @JsonProperty("firstDateAdded")
-    private Object firstDateAdded;
+    private String firstDateAdded;
     /**
      * ascanDate
      */
     @JsonProperty("ascanDate")
-    private Object ascanDate;
+    private String ascanDate;
     /**
      * warehouseEntryType
      */
     @JsonProperty("warehouseEntryType")
-    private Object warehouseEntryType;
+    private String warehouseEntryType;
     /**
      * wide
      */
     @JsonProperty("wide")
-    private Object wide;
+    private String wide;
     /**
      * high
      */
     @JsonProperty("high")
-    private Object high;
+    private String high;
     /**
      * lenth
      */
     @JsonProperty("lenth")
-    private Object lenth;
+    private String lenth;
     /**
      * masterBillNumber
      */
     @JsonProperty("masterBillNumber")
-    private Object masterBillNumber;
+    private String masterBillNumber;
     /**
      * conversionRate
      */
     @JsonProperty("conversionRate")
-    private Object conversionRate;
+    private String conversionRate;
     /**
      * trackingNo
      */
     @JsonProperty("trackingNo")
-    private Object trackingNo;
+    private String trackingNo;
     /**
      * entryWhType
      */

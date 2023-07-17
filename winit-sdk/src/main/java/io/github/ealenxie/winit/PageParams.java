@@ -1,4 +1,4 @@
-package io.github.ealenxie.winit.oswh;
+package io.github.ealenxie.winit;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
@@ -10,18 +10,15 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class PageParamsTotal {
+public class PageParams {
     /**
      * 每页显示数量，默认和最大200
      */
     @JsonProperty("pageSize")
-    private Integer pageSize;
+    private Integer pageSize = 200;
     /**
      * 页码，第几页，默认1
      */
     @JsonProperty("pageNo")
-    private Integer pageNo;
-
-    @JsonProperty("totalCount")
-    private Integer totalCount;
+    private Integer pageNo = 1;
 }

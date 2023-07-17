@@ -17,57 +17,57 @@ public class FeeData {
      * id
      */
     @JsonProperty("id")
-    private Object id;
+    private String id;
     /**
      * orgId
      */
     @JsonProperty("orgId")
-    private Object orgId;
+    private String orgId;
     /**
      * isDelete
      */
     @JsonProperty("isDelete")
-    private Object isDelete;
+    private String isDelete;
     /**
      * isActive
      */
     @JsonProperty("isActive")
-    private Object isActive;
+    private String isActive;
     /**
      * created
      */
     @JsonProperty("created")
-    private Object created;
+    private String created;
     /**
      * createdby
      */
     @JsonProperty("createdby")
-    private Object createdby;
+    private String createdby;
     /**
      * updated
      */
     @JsonProperty("updated")
-    private Object updated;
+    private String updated;
     /**
      * updatedby
      */
     @JsonProperty("updatedby")
-    private Object updatedby;
+    private String updatedby;
     /**
      * orgName
      */
     @JsonProperty("orgName")
-    private Object orgName;
+    private String orgName;
     /**
      * incomeSettlementNo
      */
     @JsonProperty("incomeSettlementNo")
-    private Object incomeSettlementNo;
+    private String incomeSettlementNo;
     /**
      * settlementDate
      */
     @JsonProperty("settlementDate")
-    private Object settlementDate;
+    private String settlementDate;
     /**
      * businessDocumentNo
      */
@@ -77,32 +77,32 @@ public class FeeData {
      * docType
      */
     @JsonProperty("docType")
-    private Object docType;
+    private String docType;
     /**
      * partnerCode
      */
     @JsonProperty("partnerCode")
-    private Object partnerCode;
+    private String partnerCode;
     /**
      * partnerName
      */
     @JsonProperty("partnerName")
-    private Object partnerName;
+    private String partnerName;
     /**
      * orderDate
      */
     @JsonProperty("orderDate")
-    private Object orderDate;
+    private String orderDate;
     /**
      * dateAcct
      */
     @JsonProperty("dateAcct")
-    private Object dateAcct;
+    private String dateAcct;
     /**
      * originatingWarehouse
      */
     @JsonProperty("originatingWarehouse")
-    private Object originatingWarehouse;
+    private String originatingWarehouse;
     /**
      * destinationWarehouse
      */
@@ -117,107 +117,107 @@ public class FeeData {
      * weight
      */
     @JsonProperty("weight")
-    private Object weight;
+    private String weight;
     /**
      * volume
      */
     @JsonProperty("volume")
-    private Object volume;
+    private String volume;
     /**
      * volumeWeight
      */
     @JsonProperty("volumeWeight")
-    private Object volumeWeight;
+    private String volumeWeight;
     /**
      * chargeWeight
      */
     @JsonProperty("chargeWeight")
-    private Object chargeWeight;
+    private String chargeWeight;
     /**
      * sourceCurrency
      */
     @JsonProperty("sourceCurrency")
-    private Object sourceCurrency;
+    private String sourceCurrency;
     /**
      * sourceTotalAmt
      */
     @JsonProperty("sourceTotalAmt")
-    private Object sourceTotalAmt;
+    private String sourceTotalAmt;
     /**
      * acctCurrency
      */
     @JsonProperty("acctCurrency")
-    private Object acctCurrency;
+    private String acctCurrency;
     /**
      * acctTotalAmt
      */
     @JsonProperty("acctTotalAmt")
-    private Object acctTotalAmt;
+    private String acctTotalAmt;
     /**
      * isInvoice
      */
     @JsonProperty("isInvoice")
-    private Object isInvoice;
+    private String isInvoice;
     /**
      * invoiceNo
      */
     @JsonProperty("invoiceNo")
-    private Object invoiceNo;
+    private String invoiceNo;
     /**
      * invoiceDate
      */
     @JsonProperty("invoiceDate")
-    private Object invoiceDate;
+    private String invoiceDate;
     /**
      * isReconciled
      */
     @JsonProperty("isReconciled")
-    private Object isReconciled;
+    private String isReconciled;
     /**
      * isAdjust
      */
     @JsonProperty("isAdjust")
-    private Object isAdjust;
+    private String isAdjust;
     /**
      * adjustNo
      */
     @JsonProperty("adjustNo")
-    private Object adjustNo;
+    private String adjustNo;
     /**
      * isRebate
      */
     @JsonProperty("isRebate")
-    private Object isRebate;
+    private String isRebate;
     /**
      * deliveryDate
      */
     @JsonProperty("deliveryDate")
-    private Object deliveryDate;
+    private String deliveryDate;
     /**
      * stockDate
      */
     @JsonProperty("stockDate")
-    private Object stockDate;
+    private String stockDate;
     /**
      * totalDeclarePrice
      */
     @JsonProperty("totalDeclarePrice")
-    private Object totalDeclarePrice;
+    private String totalDeclarePrice;
     /**
      * itemCodeNum
      */
     @JsonProperty("itemCodeNum")
-    private Object itemCodeNum;
+    private String itemCodeNum;
     /**
      * totalItemQty
      */
     @JsonProperty("totalItemQty")
-    private Object totalItemQty;
+    private String totalItemQty;
     /**
      * fistLegPrice
      */
     @JsonProperty("fistLegPrice")
-    private Object fistLegPrice;
+    private String fistLegPrice;
     /**
      * sellerNo
      */
@@ -227,102 +227,102 @@ public class FeeData {
      * sellerId
      */
     @JsonProperty("sellerId")
-    private Object sellerId;
+    private String sellerId;
     /**
      * buyerId
      */
     @JsonProperty("buyerId")
-    private Object buyerId;
+    private String buyerId;
     /**
      * buyerCountry
      */
     @JsonProperty("buyerCountry")
-    private Object buyerCountry;
+    private String buyerCountry;
     /**
      * declareWeight
      */
     @JsonProperty("declareWeight")
-    private Object declareWeight;
+    private String declareWeight;
     /**
      * mainDocumentNo
      */
     @JsonProperty("mainDocumentNo")
-    private Object mainDocumentNo;
+    private String mainDocumentNo;
     /**
      * onwardVoyageType
      */
     @JsonProperty("onwardVoyageType")
-    private Object onwardVoyageType;
+    private String onwardVoyageType;
     /**
      * unit
      */
     @JsonProperty("unit")
-    private Object unit;
+    private String unit;
     /**
      * exchangeRate
      */
     @JsonProperty("exchangeRate")
-    private Object exchangeRate;
+    private String exchangeRate;
     /**
      * conversionTypeCode
      */
     @JsonProperty("conversionTypeCode")
-    private Object conversionTypeCode;
+    private String conversionTypeCode;
     /**
      * postalCode
      */
     @JsonProperty("postalCode")
-    private Object postalCode;
+    private String postalCode;
     /**
      * firstDateAdded
      */
     @JsonProperty("firstDateAdded")
-    private Object firstDateAdded;
+    private String firstDateAdded;
     /**
      * wide
      */
     @JsonProperty("wide")
-    private Object wide;
+    private String wide;
     /**
      * high
      */
     @JsonProperty("high")
-    private Object high;
+    private String high;
     /**
      * lenth
      */
     @JsonProperty("lenth")
-    private Object lenth;
+    private String lenth;
     /**
      * masterBillNumber
      */
     @JsonProperty("masterBillNumber")
-    private Object masterBillNumber;
+    private String masterBillNumber;
     /**
      * conversionRate
      */
     @JsonProperty("conversionRate")
-    private Object conversionRate;
+    private String conversionRate;
     /**
      * ascanDate
      */
     @JsonProperty("ascanDate")
-    private Object ascanDate;
+    private String ascanDate;
     /**
      * warehouseEntryType
      */
     @JsonProperty("warehouseEntryType")
-    private Object warehouseEntryType;
+    private String warehouseEntryType;
     /**
      * productCode
      */
     @JsonProperty("productCode")
-    private Object productCode;
+    private String productCode;
     /**
      * productName
      */
     @JsonProperty("productName")
-    private Object productName;
+    private String productName;
     /**
      * incomeSettlementLineVos
      */

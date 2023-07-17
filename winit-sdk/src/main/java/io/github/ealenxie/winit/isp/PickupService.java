@@ -29,12 +29,12 @@ public class PickupService {
      * address
      */
     @JsonProperty("address")
-    private Object address;
+    private String address;
     /**
      * isdefault
      */
     @JsonProperty("isdefault")
-    private Object isdefault;
+    private String isdefault;
     /**
      * countryName
      */
@@ -109,7 +109,7 @@ public class PickupService {
      * city
      */
     @JsonProperty("city")
-    private Object city;
+    private String city;
     /**
      * doorplate
      */
@@ -129,22 +129,22 @@ public class PickupService {
      * charge
      */
     @JsonProperty("charge")
-    private Object charge;
+    private String charge;
     /**
      * serviceCode
      */
     @JsonProperty("serviceCode")
-    private Object serviceCode;
+    private String serviceCode;
     /**
      * serviceName
      */
     @JsonProperty("serviceName")
-    private Object serviceName;
+    private String serviceName;
     /**
      * vendorCode
      */
     @JsonProperty("vendorCode")
-    private Object vendorCode;
+    private String vendorCode;
     /**
      * addressServiceId
      */
@@ -154,12 +154,12 @@ public class PickupService {
      * vendorServiceCode
      */
     @JsonProperty("vendorServiceCode")
-    private Object vendorServiceCode;
+    private String vendorServiceCode;
     /**
      * vendorServiceName
      */
     @JsonProperty("vendorServiceName")
-    private Object vendorServiceName;
+    private String vendorServiceName;
     /**
      * contactPersonEn
      */
@@ -174,12 +174,12 @@ public class PickupService {
      * receiveWarehouseCode
      */
     @JsonProperty("receiveWarehouseCode")
-    private Object receiveWarehouseCode;
+    private String receiveWarehouseCode;
     /**
      * receiveWarehouseName
      */
     @JsonProperty("receiveWarehouseName")
-    private Object receiveWarehouseName;
+    private String receiveWarehouseName;
     /**
      * winitProductLineName
      */
@@ -189,7 +189,7 @@ public class PickupService {
      * returnCode
      */
     @JsonProperty("returnCode")
-    private Object returnCode;
+    private String returnCode;
     /**
      * created
      */

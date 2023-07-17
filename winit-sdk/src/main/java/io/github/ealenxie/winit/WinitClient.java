@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.github.ealenxie.winit.lma.PrintShipmentResponse;
 import org.apache.commons.codec.binary.Hex;
 import org.springframework.beans.BeanUtils;
 import org.springframework.core.ParameterizedTypeReference;
@@ -82,6 +83,16 @@ public abstract class WinitClient {
         } catch (NoSuchAlgorithmException e) {
             throw new UnsupportedOperationException(e);
         }
+    }
+
+
+    /**
+     * <a href="https://developer.winit.com.cn/document/detail/id/202.html">获取面单</a>
+     */
+    public WinitResponse<PrintShipmentResponse> getTransactionCharge(TransactionChargeGetData data) {
+        return postWinit("sms.incomeSettlement.getTransactionCharge", data, new ParameterizedTypeReference<WinitResponse<PrintShipmentResponse>>() {
+        });
+
     }
 
 

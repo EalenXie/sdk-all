@@ -10,7 +10,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class ProductList {
+public class ProductAuditStatus {
     /**
      * id
      */
@@ -40,12 +40,12 @@ public class ProductList {
      * isActive
      */
     @JsonProperty("isActive")
-    private Object isActive;
+    private String isActive;
     /**
      * isDelete
      */
     @JsonProperty("isDelete")
-    private Object isDelete;
+    private String isDelete;
     /**
      * skuCode
      */
@@ -100,7 +100,7 @@ public class ProductList {
      * pageVo
      */
     @JsonProperty("pageVo")
-    private Object pageVo;
+    private String pageVo;
     /**
      * isManageSizeByCountry
      */

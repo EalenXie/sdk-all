@@ -42,7 +42,7 @@ public class OrderVerdorTracking {
      * pickupMode
      */
     @JsonProperty("pickupMode")
-    private Object pickupMode;
+    private String pickupMode;
     /**
      * status
      */
@@ -52,7 +52,7 @@ public class OrderVerdorTracking {
      * vendorName
      */
     @JsonProperty("vendorName")
-    private Object vendorName;
+    private String vendorName;
     /**
      * trace
      */
@@ -77,12 +77,12 @@ public class OrderVerdorTracking {
      * airLines
      */
     @JsonProperty("airLines")
-    private Object airLines;
+    private String airLines;
     /**
      * flight
      */
     @JsonProperty("flight")
-    private Object flight;
+    private String flight;
     /**
      * expressCompany
      */
@@ -112,7 +112,7 @@ public class OrderVerdorTracking {
      * isTracked
      */
     @JsonProperty("isTracked")
-    private Object isTracked;
+    private String isTracked;
     /**
      * podInfo
      */

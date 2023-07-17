@@ -20,7 +20,7 @@ public class OrderPayload {
      * inspectionVolume
      */
     @JsonProperty("inspectionVolume")
-    private Object inspectionVolume;
+    private String inspectionVolume;
     /**
      * orderCreateDate
      */
@@ -30,7 +30,7 @@ public class OrderPayload {
      * inspectionTotalItemQty
      */
     @JsonProperty("inspectionTotalItemQty")
-    private Object inspectionTotalItemQty;
+    private String inspectionTotalItemQty;
     /**
      * orderNo
      */
@@ -45,7 +45,7 @@ public class OrderPayload {
      * inspectionTotalPackageQty
      */
     @JsonProperty("inspectionTotalPackageQty")
-    private Object inspectionTotalPackageQty;
+    private String inspectionTotalPackageQty;
     /**
      * totalItemQty
      */
@@ -60,7 +60,7 @@ public class OrderPayload {
      * inspectionWeight
      */
     @JsonProperty("inspectionWeight")
-    private Object inspectionWeight;
+    private String inspectionWeight;
     /**
      * status
      */

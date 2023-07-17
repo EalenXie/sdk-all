@@ -1,4 +1,4 @@
-package io.github.ealenxie.winit.oswh;
+package io.github.ealenxie.winit;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
@@ -10,7 +10,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class PageParamsResponse {
+public class PageParamsCurrentResponse {
     /**
      * 当前每页记录数
      */

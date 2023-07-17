@@ -282,7 +282,7 @@ public class OutboundOrderInfoResponse {
      * 收件人街道2
      */
     @JsonProperty("address2")
-    private Object address2;
+    private String address2;
     /**
      * 派关费用编码
      * 派送费货币

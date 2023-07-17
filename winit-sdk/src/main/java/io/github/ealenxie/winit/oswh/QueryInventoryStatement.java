@@ -1,6 +1,7 @@
 package io.github.ealenxie.winit.oswh;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.ealenxie.winit.PageParams;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -49,5 +50,5 @@ public class QueryInventoryStatement {
     @JsonProperty("endDate")
     private String endDate;
     @JsonProperty("pageVo")
-    private PagePayload pageVo;
+    private PageParams pageVo;
 }

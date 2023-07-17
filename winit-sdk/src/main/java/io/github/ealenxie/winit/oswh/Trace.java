@@ -54,5 +54,5 @@ public class Trace {
      * trackingType
      */
     @JsonProperty("trackingType")
-    private Object trackingType;
+    private String trackingType;
 }

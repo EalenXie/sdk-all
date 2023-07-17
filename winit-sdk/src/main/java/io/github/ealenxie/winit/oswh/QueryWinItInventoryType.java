@@ -2,6 +2,7 @@ package io.github.ealenxie.winit.oswh;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.ealenxie.winit.PageParams;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -78,5 +79,5 @@ public class QueryWinItInventoryType {
 
     @JsonProperty("pageVo")
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    private PagePayload pageVo;
+    private PageParams pageVo;
 }

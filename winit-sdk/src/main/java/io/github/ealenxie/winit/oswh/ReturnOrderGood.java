@@ -11,27 +11,27 @@ import java.util.List;
  */
 @NoArgsConstructor
 @Data
-public class OrderGoodsList {
+public class ReturnOrderGood {
     /**
      * originalMerchandiseSerno
      */
     @JsonProperty("originalMerchandiseSerno")
-    private Object originalMerchandiseSerno;
+    private String originalMerchandiseSerno;
     /**
      * merchandiseGrade
      */
     @JsonProperty("merchandiseGrade")
-    private Object merchandiseGrade;
+    private String merchandiseGrade;
     /**
      * confirmQty
      */
     @JsonProperty("confirmQty")
-    private Integer confirmQty;
+    private Double confirmQty;
     /**
      * skuCodeThird
      */
     @JsonProperty("skuCodeThird")
-    private Object skuCodeThird;
+    private String skuCodeThird;
     /**
      * merchandiseSerno
      */
@@ -41,7 +41,7 @@ public class OrderGoodsList {
      * ownerCode
      */
     @JsonProperty("ownerCode")
-    private Object ownerCode;
+    private String ownerCode;
     /**
      * specification
      */
@@ -56,7 +56,7 @@ public class OrderGoodsList {
      * confirmWidth
      */
     @JsonProperty("confirmWidth")
-    private Integer confirmWidth;
+    private Double confirmWidth;
     /**
      * nameEn
      */
@@ -66,7 +66,7 @@ public class OrderGoodsList {
      * confirmLength
      */
     @JsonProperty("confirmLength")
-    private Integer confirmLength;
+    private Double confirmLength;
     /**
      * managementType
      */
@@ -76,7 +76,7 @@ public class OrderGoodsList {
      * confirmHeight
      */
     @JsonProperty("confirmHeight")
-    private Integer confirmHeight;
+    private Double confirmHeight;
     /**
      * confirmVolume
      */
@@ -111,5 +111,5 @@ public class OrderGoodsList {
      * originalMerchandiseCode
      */
     @JsonProperty("originalMerchandiseCode")
-    private Object originalMerchandiseCode;
+    private String originalMerchandiseCode;
 }
