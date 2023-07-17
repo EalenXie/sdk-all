@@ -4,7 +4,10 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.github.ealenxie.winit.lma.PrintShipmentResponse;
+import io.github.ealenxie.winit.oswh.ChargeDetail;
+import io.github.ealenxie.winit.oswh.ChargeDetailsPageData;
+import io.github.ealenxie.winit.oswh.TransactionCharge;
+import io.github.ealenxie.winit.oswh.TransactionChargeGetData;
 import org.apache.commons.codec.binary.Hex;
 import org.springframework.beans.BeanUtils;
 import org.springframework.core.ParameterizedTypeReference;
@@ -87,14 +90,20 @@ public abstract class WinitClient {
 
 
     /**
-     * <a href="https://developer.winit.com.cn/document/detail/id/202.html">获取面单</a>
+     * <a href="https://developer.winit.com.cn/document/detail/id/204.html">查询单据费用</a>
      */
-    public WinitResponse<PrintShipmentResponse> getTransactionCharge(TransactionChargeGetData data) {
-        return postWinit("sms.incomeSettlement.getTransactionCharge", data, new ParameterizedTypeReference<WinitResponse<PrintShipmentResponse>>() {
+    public WinitResponse<PageCurrentTotalListResponse<TransactionCharge>> getTransactionCharge(TransactionChargeGetData data) {
+        return postWinit("sms.incomeSettlement.getTransactionCharge", data, new ParameterizedTypeReference<WinitResponse<PageCurrentTotalListResponse<TransactionCharge>>>() {
         });
-
     }
 
+    /**
+     * <a href="https://developer.winit.com.cn/document/detail/id/255.html">查询费用-新</a>
+     */
+    public WinitResponse<PageCurrentTotalListResponse<ChargeDetail>> pageChargeDetails(ChargeDetailsPageData data) {
+        return postWinit("sms.incomeSettlement.pageChargeDetails", data, new ParameterizedTypeReference<WinitResponse<PageCurrentTotalListResponse<ChargeDetail>>>() {
+        });
+    }
 
     /**
      * 构建万邑通请求参数

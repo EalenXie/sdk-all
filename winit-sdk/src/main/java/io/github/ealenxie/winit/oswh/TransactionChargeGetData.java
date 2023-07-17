@@ -1,6 +1,7 @@
-package io.github.ealenxie.winit;
+package io.github.ealenxie.winit.oswh;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.ealenxie.winit.PageParams;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

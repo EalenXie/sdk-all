@@ -57,7 +57,7 @@ class OswhClientTest {
 
 ##### 商品
 
-| 方法                               | 官方文档地址                                                                          | 状态  |
+| 🏷️方法名                           | 📚 官方文档地址                                                                       | 状态  |
 |:---------------------------------|:--------------------------------------------------------------------------------|:----|
 | registerProduct                  | [注册/编辑商品](https://developer.winit.com.cn/document/detail/id/15.html)            | ✔️  |
 | getCommodityInfo                 | [查询商品信息](https://developer.winit.com.cn/document/detail/id/17.html)             | ✔️  |
@@ -68,7 +68,7 @@ class OswhClientTest {
 
 ##### 库存
 
-| 方法                             | 官方文档地址                                                                   | 状态  |
+| 🏷️方法名                         | 📚 官方文档地址                                                                | 状态  |
 |:-------------------------------|:-------------------------------------------------------------------------|:----|
 | queryWarehouseStorage          | [查询总库存](https://developer.winit.com.cn/document/detail/id/44.html)       | ✔️  |
 | queryProductInventoryList4Page | [查询总库存（含DOI）](https://developer.winit.com.cn/document/detail/id/58.html) | ✔️  |
@@ -79,7 +79,7 @@ class OswhClientTest {
 
 ##### 入库
 
-| 方法                        | 官方文档地址                                                                    | 状态  |
+| 🏷️方法名                    | 📚 官方文档地址                                                                 | 状态  |
 |:--------------------------|:--------------------------------------------------------------------------|:----|
 | createOrder               | [创建入库单](https://developer.winit.com.cn/document/detail/id/141.html)       | ✔️  |
 | printPackageLabel         | [打印包裹标签](https://developer.winit.com.cn/document/detail/id/31.html)       | ✔️  |
@@ -100,7 +100,7 @@ class OswhClientTest {
 
 ##### 出库
 
-| 方法                       | 官方文档地址                                                                   | 状态  |
+| 🏷️方法名                   | 📚 官方文档地址                                                                | 状态  |
 |:-------------------------|:-------------------------------------------------------------------------|:----|
 | createSubmittedOrder     | [创建出库单-新](https://developer.winit.com.cn/document/detail/id/247.html)    | ✔️  |
 | createOutboundOrder      | [创建出库单](https://developer.winit.com.cn/document/detail/id/49.html)       | ✔️  |
@@ -118,7 +118,7 @@ class OswhClientTest {
 
 ##### 退货
 
-| 方法                     | 官方文档地址                                                                        | 状态  |
+| 🏷️方法名                 | 📚 官方文档地址                                                                     | 状态  |
 |:-----------------------|:------------------------------------------------------------------------------|:----|
 | createReturnGoodsOrder | [创建退货订单](https://developer.winit.com.cn/document/detail/id/151.html)          | ✔️  |
 | updateMerchandise      | [更新退货单商品信息](https://developer.winit.com.cn/document/detail/id/265.html)       | ✔️  |
@@ -130,14 +130,14 @@ class OswhClientTest {
 
 ##### 辅助接口
 
-| 方法               | 官方文档地址                                                                 | 状态  |
+| 🏷️方法名           | 📚 官方文档地址                                                              | 状态  |
 |:-----------------|:-----------------------------------------------------------------------|:----|
 | addressIsValid   | [德国地址校验](https://developer.winit.com.cn/document/detail/id/48.html)    | ✔️  |
 | productRecommend | [订单EGD担保校验](https://developer.winit.com.cn/document/detail/id/97.html) | ✔️  |
 
 #### 全球直发API（ISP) [IspClient](https://github.com/EalenXie/sdk-all/blob/main/winit-sdk/src/main/java/io/github/ealenxie/winit/IspClient.java) 已支持的接口列表
 
-| 方法                  | 官方文档地址                                                                    | 状态  |
+| 🏷️方法名              | 📚 官方文档地址                                                                 | 状态  |
 |:--------------------|:--------------------------------------------------------------------------|:----|
 | createOrder         | [创建国内直发小包订单](https://developer.winit.com.cn/document/detail/id/65.html)   | ✔️  |
 | getPackingList      | [预分拣-获取装箱面单](https://developer.winit.com.cn/document/detail/id/316.html)  | ✔️  |
@@ -157,7 +157,7 @@ class OswhClientTest {
 
 #### 海外仓API(LAM) [LamClient](https://github.com/EalenXie/sdk-all/blob/main/winit-sdk/src/main/java/io/github/ealenxie/winit/LamClient.java) 已支持的接口列表
 
-| 方法               | 官方文档地址                                                                     | 状态  |
+| 🏷️方法名           | 📚 官方文档地址                                                                  | 状态  |
 |:-----------------|:---------------------------------------------------------------------------|:----|
 | createOrder      | [创建LMA订单](https://developer.winit.com.cn/document/detail/id/201.html)      | ✔️  |
 | createOrderSync  | [创建LMA订单-sync](https://developer.winit.com.cn/document/detail/id/309.html) | ✔️  |
@@ -170,3 +170,10 @@ class OswhClientTest {
 | cancelShipment   | [取消LMA订单](https://developer.winit.com.cn/document/detail/id/170.html)      | ✔️  |
 | batchPrint       | [批量获取面单](https://developer.winit.com.cn/document/detail/id/203.html)       | ✔️  |
 | manifestPrint    | [获取发货单](https://developer.winit.com.cn/document/detail/id/173.html)        | ✔️  |
+
+#### 查询费用
+
+| 🏷️方法名                    | 📚 官方文档地址                                                               | 状态  |
+|:---------------------|:---------------------------------------------------------------------|:----|
+| getTransactionCharge | [查询单据费用](https://developer.winit.com.cn/document/detail/id/204.html) | ✔️  |
+| pageChargeDetails    | [查询费用-新](https://developer.winit.com.cn/document/detail/id/255.html) | ✔️  |
