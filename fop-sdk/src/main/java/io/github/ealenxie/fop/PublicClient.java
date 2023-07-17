@@ -18,6 +18,9 @@ public class PublicClient extends FopClient {
         super(appKey, appSecret);
     }
 
+    public PublicClient(String appKey, String appSecret, boolean isFop) {
+        super(appKey, appSecret, isFop);
+    }
 
     public PublicClient(String appKey, String appSecret, RestOperations restOperations) {
         super(appKey, appSecret, restOperations);

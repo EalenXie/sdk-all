@@ -45,11 +45,14 @@ class PublicClientTest {
     void measureUnitList() {
         String appKey = "your appKey";
         String appSecret = "your appSecret";
-        PublicClient publicClient = new PublicClient(appKey, appSecret);
+        // 递四方Client
+        PublicClient fopPublicClient = new PublicClient(appKey, appSecret);
+        // 菜鸟Client
+        PublicClient cainiaoPublicClient = new PublicClient(appKey,appSecret,false);
         // 通过OAuth授权方式获得，要求平台服务商、第三方软件商必须传入，4PX客户（B类客户）可不传
-        publicClient.setAccessToken(null);
-        publicClient.setSandBox(false);
-        FopResp<List<MeasureUnit>> measureUnitList = publicClient.measureUnitList();
+        fopPublicClient.setAccessToken(null);
+        fopPublicClient.setSandBox(false);
+        FopResp<List<MeasureUnit>> measureUnitList = fopPublicClient.measureUnitList();
         System.out.println(measureUnitList);
     }
 }
