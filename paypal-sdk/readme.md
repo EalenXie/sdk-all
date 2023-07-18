@@ -43,6 +43,26 @@ wish-sdk
 | productDetail | [Show product details](https://developer.paypal.com/docs/api/catalog-products/v1/#products_get) | ✔️  |
 | updateProduct | [Update product](https://developer.paypal.com/docs/api/catalog-products/v1/#products_patch)     | ✔️  |
 
+##### Disputes
+
+| 方法名                    | 官方文档地址                                                                                                                                     | 状态  |
+|:-----------------------|:-------------------------------------------------------------------------------------------------------------------------------------------|:----|
+| listDisputes           | [List disputes](https://developer.paypal.com/docs/api/customer-disputes/v1/#disputes_list)                                                 | ✔️  |
+| disputeDetails         | [Show dispute details](https://developer.paypal.com/docs/api/customer-disputes/v1/#disputes_get)                                           | ✔️  |
+| partiallyUpdateDispute | [Partially update dispute](https://developer.paypal.com/docs/api/customer-disputes/v1/#disputes_patch)                                     | ✔️  |
+| provideEvidence        | [Provide evidence](https://developer.paypal.com/docs/api/customer-disputes/v1/#disputes_provide-evidence)                                  | ✔️  |
+| appealDispute          | [Appeal dispute](https://developer.paypal.com/docs/api/customer-disputes/v1/#disputes_appeal)                                              | ✔️  |
+| acceptClaim            | [Accept claim](https://developer.paypal.com/docs/api/customer-disputes/v1/#disputes_accept-claim)                                          | ✔️  |
+| settleDispute          | [Settle dispute](https://developer.paypal.com/docs/api/customer-disputes/v1/#disputes_adjudicate)                                          | ✔️  |
+| updateDisputeStatus    | [Update dispute status](https://developer.paypal.com/docs/api/customer-disputes/v1/#disputes_require-evidence)                             | ✔️  |
+| escalateDispute        | [Escalate dispute to claim](https://developer.paypal.com/docs/api/customer-disputes/v1/#disputes_escalate)                                 | ✔️  |
+| disputesSendMessage    | [Send message about dispute to other party](https://developer.paypal.com/docs/api/customer-disputes/v1/#disputes_send-message)             | ✔️  |
+| disputesMakeOffer      | [Make offer to resolve dispute](https://developer.paypal.com/docs/api/customer-disputes/v1/#disputes_make-offer)                           | ✔️  |
+| disputesAcceptOffer    | [Accept offer to resolve dispute](https://developer.paypal.com/docs/api/customer-disputes/v1/#disputes_accept-offer)                       | ✔️  |
+| disputesDenyOffer      | [Deny offer to resolve dispute](https://developer.paypal.com/docs/api/customer-disputes/v1/#disputes_deny-offer)                           | ✔️  |
+| acknowledgeReturnItem  | [Acknowledge returned item](https://developer.paypal.com/docs/api/customer-disputes/v1/#disputes_acknowledge-return-item)                  | ✔️  |
+| provideSupportingInfo  | [Provide supporting information for dispute](https://developer.paypal.com/docs/api/customer-disputes/v1/#disputes_provide-supporting-info) | ✔️  |
+
 ##### Identity
 
 | 方法名         | 官方文档地址                                                                              | 状态  |

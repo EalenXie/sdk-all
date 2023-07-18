@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
  */
 @NoArgsConstructor
 @Data
-public class OpValuePayload {
+public class OpValuePayload<T> {
     /**
      * op
      */
@@ -25,7 +25,7 @@ public class OpValuePayload {
      * value
      */
     @JsonProperty("value")
-    private String value;
+    private T value;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("from")

@@ -7,6 +7,7 @@ import io.github.ealenxie.paypal.catalogproducts.CreateProductPayload;
 import io.github.ealenxie.paypal.catalogproducts.ProductDetailResponse;
 import io.github.ealenxie.paypal.catalogproducts.ProductListResponse;
 import io.github.ealenxie.paypal.catalogproducts.ProductResponse;
+import io.github.ealenxie.paypal.disputes.*;
 import io.github.ealenxie.paypal.identity.UserInfo;
 import io.github.ealenxie.paypal.payments.CapturePayload;
 import io.github.ealenxie.paypal.payments.PaymentDetails;
@@ -179,10 +180,114 @@ public class PayPalClient {
     /**
      * <a href="https://developer.paypal.com/docs/api/catalog-products/v1/#products_patch">Update product</a>
      */
-    public void updateProduct(String accessToken, String productId, List<OpValuePayload> payloads) {
-        exchange(String.format("/catalogs/products/%s", productId), HttpMethod.PATCH, accessToken, null,payloads, Object.class);
+    public void updateProduct(String accessToken, String productId, List<OpValuePayload<String>> payloads) {
+        exchange(String.format("/catalogs/products/%s", productId), HttpMethod.PATCH, accessToken, null, payloads, Object.class);
     }
 
+    /**
+     * <a href="https://developer.paypal.com/docs/api/customer-disputes/v1/#disputes_list">List disputes</a>
+     */
+    public DisputesResponse listDisputes(String accessToken, DisputesQueryParams queryParams) {
+        return get("/customer/disputes", accessToken, queryParams, DisputesResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/customer-disputes/v1/#disputes_get">Show dispute details</a>
+     */
+    public DisputeDetailsResponse disputeDetails(String accessToken, String id) {
+        return get(String.format("/customer/disputes/%s", id), accessToken, null, DisputeDetailsResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/customer-disputes/v1/#disputes_patch">Partially update dispute</a>
+     */
+    public void partiallyUpdateDispute(String accessToken, String id, List<OpValuePayload<UpdateDisputePayload>> payloads) {
+        exchange(String.format("/customer/disputes/%s", id), HttpMethod.PATCH, accessToken, null, payloads, Object.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/customer-disputes/v1/#disputes_provide-evidence">Provide evidence</a>
+     */
+    public LinksResponse provideEvidence(String accessToken, String id, byte files) {
+        return exchange(String.format("/customer/disputes/%s/provide-evidence", id), HttpMethod.POST, null, new HttpEntity<>(files, getBearerHeaders(accessToken, MediaType.MULTIPART_FORM_DATA)), LinksResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/customer-disputes/v1/#disputes_appeal">Appeal dispute</a>
+     */
+    public LinksResponse appealDispute(String accessToken, String id, byte files) {
+        return exchange(String.format("/customer/disputes/%s/appeal", id), HttpMethod.POST, null, new HttpEntity<>(files, getBearerHeaders(accessToken, MediaType.MULTIPART_FORM_DATA)), LinksResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/customer-disputes/v1/#disputes_accept-claim">Accept claim</a>
+     */
+    public LinksResponse acceptClaim(String accessToken, String id, byte files) {
+        return exchange(String.format("/customer/disputes/%s/accept-claim", id), HttpMethod.POST, null, new HttpEntity<>(files, getBearerHeaders(accessToken, MediaType.MULTIPART_FORM_DATA)), LinksResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/customer-disputes/v1/#disputes_adjudicate">Settle dispute</a>
+     */
+    public LinksResponse settleDispute(String accessToken, String id, String adjudicationOutcome) {
+        return post(String.format("/customer/disputes/%s/adjudicate", id), accessToken, new AdjudicatePayload(adjudicationOutcome), LinksResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/customer-disputes/v1/#disputes_require-evidence">Update dispute status</a>
+     */
+    public LinksResponse updateDisputeStatus(String accessToken, String id, String action) {
+        return post(String.format("/customer/disputes/%s/require-evidence", id), accessToken, new ActionPayload(action), LinksResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/customer-disputes/v1/#disputes_escalate">Escalate dispute to claim</a>
+     */
+    public LinksResponse escalateDispute(String accessToken, String id, String note) {
+        return post(String.format("/customer/disputes/%s/escalate", id), accessToken, new NotePayload(note), LinksResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/customer-disputes/v1/#disputes_send-message">Send message about dispute to other party</a>
+     */
+    public LinksResponse disputesSendMessage(String accessToken, String id, String message) {
+        return post(String.format("/customer/disputes/%s/send-message", id), accessToken, new MessagePayload(message), LinksResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/customer-disputes/v1/#disputes_make-offer">Make offer to resolve dispute</a>
+     */
+    public LinksResponse disputesMakeOffer(String accessToken, String id, DisputesMakeOfferPayload payload) {
+        return post(String.format("/customer/disputes/%s/make-offer", id), accessToken, payload, LinksResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/customer-disputes/v1/#disputes_accept-offer">Accept offer to resolve dispute</a>
+     */
+    public LinksResponse disputesAcceptOffer(String accessToken, String id, String note) {
+        return post(String.format("/customer/disputes/%s/accept-offer", id), accessToken, new NotePayload(note), LinksResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/customer-disputes/v1/#disputes_deny-offer">Deny offer to resolve dispute</a>
+     */
+    public LinksResponse disputesDenyOffer(String accessToken, String id, String note) {
+        return post(String.format("/customer/disputes/%s/deny-offer", id), accessToken, new NotePayload(note), LinksResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/customer-disputes/v1/#disputes_acknowledge-return-item">Acknowledge returned item</a>
+     */
+    public LinksResponse acknowledgeReturnItem(String accessToken, String id, AcknowledgementNotePayload payload) {
+        return post(String.format("/customer/disputes/%s/acknowledge-return-item", id), accessToken, payload, LinksResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/customer-disputes/v1/#disputes_provide-supporting-info">Provide supporting information for dispute</a>
+     */
+    public LinksResponse provideSupportingInfo(String accessToken, String id, String notes) {
+        return post(String.format("/customer/disputes/%s/provide-supporting-info", id), accessToken, new NotesPayload(notes), LinksResponse.class);
+    }
 
     /**
      * <a href="https://developer.paypal.com/docs/api/referenced-payouts/v1/#referenced-payouts-items_get">显示付款项目的详细信息</a>
@@ -444,6 +549,14 @@ public class PayPalClient {
         Set<Map.Entry<String, Object>> entries = args.entrySet();
         for (Map.Entry<String, Object> entry : entries) {
             Object value = entry.getValue();
+            if (value instanceof Map) {
+                @SuppressWarnings("unchecked")
+                Map<String, Object> valueMap = (Map<String, Object>) value;
+                Set<Map.Entry<String, Object>> entrySet = valueMap.entrySet();
+                for (Map.Entry<String, Object> e : entrySet) {
+                    builder.queryParam(e.getKey(), e.getValue());
+                }
+            }
             if (value instanceof Collection) {
                 builder.queryParam(entry.getKey(), (Collection<?>) value);
             } else {
