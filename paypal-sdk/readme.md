@@ -68,6 +68,20 @@ wish-sdk
 | referencedPayoutsItems | [Show referenced payout item details](https://developer.paypal.com/docs/api/referenced-payouts/v1/#referenced-payouts-items_get)           | ✔️  |
 | referencedPayouts      | [List items in referenced batch payout](https://developer.paypal.com/docs/api/referenced-payouts/v1/#referenced-payouts_get_batch_details) | ✔️  |
 
+
+##### Subscriptions
+
+| 方法名                | 官方文档地址                                                                                                 | 状态  |
+|:-------------------|:-------------------------------------------------------------------------------------------------------|:----|
+| createPlan         | [Create plan](https://developer.paypal.com/docs/api/subscriptions/v1/#plans_create)                    | ✔️  |
+| getPlans           | [List plans](https://developer.paypal.com/docs/api/subscriptions/v1/#plans_list)                       | ✔️  |
+| getPlanDetails     | [Show plan details](https://developer.paypal.com/docs/api/subscriptions/v1/#plans_get)                 | ✔️  |
+| updatePlan         | [Update plan](https://developer.paypal.com/docs/api/subscriptions/v1/#plans_patch)                     | ✔️  |
+| activatePlan       | [Activate plan](https://developer.paypal.com/docs/api/subscriptions/v1/#plans_activate)                | ✔️  |
+| deactivatePlan     | [Deactivate plan](https://developer.paypal.com/docs/api/subscriptions/v1/#plans_deactivate)            | ✔️  |
+| updatePricing      | [Update pricing](https://developer.paypal.com/docs/api/subscriptions/v1/#plans_update-pricing-schemes) | ✔️  |
+| createSubscription | [Create subscription](https://developer.paypal.com/docs/api/subscriptions/v1/#subscriptions_create)    | ✔️  |
+
 ##### Transaction Search
 
 | 方法名          | 官方文档地址                                                                                             | 状态  |
