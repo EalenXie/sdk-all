@@ -19,10 +19,7 @@ import io.github.ealenxie.paypal.transaction.BalancesQueryParams;
 import io.github.ealenxie.paypal.transaction.BalancesResponse;
 import io.github.ealenxie.paypal.transaction.TransactionDetailsResponse;
 import io.github.ealenxie.paypal.transaction.TransactionsQueryParams;
-import io.github.ealenxie.paypal.webhooks.CreateWebhookPayload;
-import io.github.ealenxie.paypal.webhooks.WebhookQueryParam;
-import io.github.ealenxie.paypal.webhooks.WebhookResponse;
-import io.github.ealenxie.paypal.webhooks.WebhooksResponse;
+import io.github.ealenxie.paypal.webhooks.*;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -52,11 +49,11 @@ public class PayPalClient {
     /**
      * 正式环境接口地址
      */
-    private static final String HOST = "https://api-m.paypal.com/v1";
+    private static final String HOST = "https://api-m.paypal.com";
     /**
      * 沙箱环境认证接口地址
      */
-    private static final String HOST_SANDBOX = "https://api-m.sandbox.paypal.com/v1";
+    private static final String HOST_SANDBOX = "https://api-m.sandbox.paypal.com";
 
 
     public PayPalClient() {
@@ -122,175 +119,175 @@ public class PayPalClient {
      * <a href="https://developer.paypal.com/docs/api/identity/v1/">获取用户信息</a>
      */
     public UserInfo getUserInfo(String accessToken) {
-        return get("/identity/oauth2/userinfo?schema=paypalv1.1", accessToken, null, UserInfo.class);
+        return get("/v1/identity/oauth2/userinfo?schema=paypalv1.1", accessToken, null, UserInfo.class);
     }
 
     /**
      * <a href="https://developer.paypal.com/docs/api/tracking/v1/#trackers-batch_post">Add tracking information for multiple PayPal transactions</a>
      */
     public TrackersResponse trackersBatch(String accessToken, TrackersPayload payload) {
-        return post("/shipping/trackers-batch", accessToken, payload, TrackersResponse.class);
+        return post("/v1/shipping/trackers-batch", accessToken, payload, TrackersResponse.class);
     }
 
     /**
      * <a href="https://developer.paypal.com/docs/api/tracking/v1/#trackers_post">Add tracking information for PayPal transaction</a>
      */
     public TrackersResponse trackers(String accessToken, TrackersPayload payload) {
-        return post("/shipping/trackers", accessToken, payload, TrackersResponse.class);
+        return post("/v1/shipping/trackers", accessToken, payload, TrackersResponse.class);
     }
 
     /**
      * <a href="https://developer.paypal.com/docs/api/tracking/v1/#trackers-batch_get">List tracking information</a>
      */
     public TrackersResponse trackersInfo(String accessToken, TrackersInfoQueryParams queryParams) {
-        return get("/shipping/trackers", accessToken, queryParams, TrackersResponse.class);
+        return get("/v1/shipping/trackers", accessToken, queryParams, TrackersResponse.class);
     }
 
     /**
      * <a href="https://developer.paypal.com/docs/api/tracking/v1/#trackers_put">Update or cancel tracking information for PayPal transaction</a>
      */
     public void updateTracker(String accessToken, TrackerPayload payload) {
-        exchange(String.format("/shipping/trackers/%s-%s", payload.getTransactionId(), payload.getTrackingNumber()), HttpMethod.PUT, accessToken, null, payload, Object.class);
+        exchange(String.format("/v1/shipping/trackers/%s-%s", payload.getTransactionId(), payload.getTrackingNumber()), HttpMethod.PUT, accessToken, null, payload, Object.class);
     }
 
     /**
      * <a href="https://developer.paypal.com/docs/api/tracking/v1/#trackers_get">Show tracking information</a>
      */
     public TrackerIdentifier trackerInfo(String accessToken, String transactionId, String trackingNumber) {
-        return get(String.format("/shipping/trackers/%s-%s", transactionId, trackingNumber), accessToken, null, TrackerIdentifier.class);
+        return get(String.format("/v1/shipping/trackers/%s-%s", transactionId, trackingNumber), accessToken, null, TrackerIdentifier.class);
     }
 
     /**
      * <a href="https://developer.paypal.com/docs/api/catalog-products/v1/#products_create">Create product</a>
      */
     public ProductResponse createProduct(String accessToken, CreateProductPayload payload) {
-        return post("/catalogs/products", accessToken, payload, ProductResponse.class);
+        return post("/v1/catalogs/products", accessToken, payload, ProductResponse.class);
     }
 
     /**
      * <a href="https://developer.paypal.com/docs/api/catalog-products/v1/#products_list">List products</a>
      */
     public ProductListResponse productList(String accessToken, PageQueryParams queryParams) {
-        return get("/catalogs/products", accessToken, queryParams, ProductListResponse.class);
+        return get("/v1/catalogs/products", accessToken, queryParams, ProductListResponse.class);
     }
 
     /**
      * <a href="https://developer.paypal.com/docs/api/catalog-products/v1/#products_get">Show product details</a>
      */
     public ProductDetailResponse productDetail(String accessToken, String productId) {
-        return get(String.format("/catalogs/products/%s", productId), accessToken, null, ProductDetailResponse.class);
+        return get(String.format("/v1/catalogs/products/%s", productId), accessToken, null, ProductDetailResponse.class);
     }
 
     /**
      * <a href="https://developer.paypal.com/docs/api/catalog-products/v1/#products_patch">Update product</a>
      */
     public void updateProduct(String accessToken, String productId, List<OpValuePayload<String>> payloads) {
-        exchange(String.format("/catalogs/products/%s", productId), HttpMethod.PATCH, accessToken, null, payloads, Object.class);
+        exchange(String.format("/v1/catalogs/products/%s", productId), HttpMethod.PATCH, accessToken, null, payloads, Object.class);
     }
 
     /**
      * <a href="https://developer.paypal.com/docs/api/customer-disputes/v1/#disputes_list">List disputes</a>
      */
     public DisputesResponse listDisputes(String accessToken, DisputesQueryParams queryParams) {
-        return get("/customer/disputes", accessToken, queryParams, DisputesResponse.class);
+        return get("/v1/customer/disputes", accessToken, queryParams, DisputesResponse.class);
     }
 
     /**
      * <a href="https://developer.paypal.com/docs/api/customer-disputes/v1/#disputes_get">Show dispute details</a>
      */
     public DisputeDetailsResponse disputeDetails(String accessToken, String id) {
-        return get(String.format("/customer/disputes/%s", id), accessToken, null, DisputeDetailsResponse.class);
+        return get(String.format("/v1/customer/disputes/%s", id), accessToken, null, DisputeDetailsResponse.class);
     }
 
     /**
      * <a href="https://developer.paypal.com/docs/api/customer-disputes/v1/#disputes_patch">Partially update dispute</a>
      */
     public void partiallyUpdateDispute(String accessToken, String id, List<OpValuePayload<UpdateDisputePayload>> payloads) {
-        exchange(String.format("/customer/disputes/%s", id), HttpMethod.PATCH, accessToken, null, payloads, Object.class);
+        exchange(String.format("/v1/customer/disputes/%s", id), HttpMethod.PATCH, accessToken, null, payloads, Object.class);
     }
 
     /**
      * <a href="https://developer.paypal.com/docs/api/customer-disputes/v1/#disputes_provide-evidence">Provide evidence</a>
      */
     public LinksResponse provideEvidence(String accessToken, String id, byte files) {
-        return exchange(String.format("/customer/disputes/%s/provide-evidence", id), HttpMethod.POST, null, new HttpEntity<>(files, getBearerHeaders(accessToken, MediaType.MULTIPART_FORM_DATA)), LinksResponse.class);
+        return exchange(String.format("/v1/customer/disputes/%s/provide-evidence", id), HttpMethod.POST, null, new HttpEntity<>(files, getBearerHeaders(accessToken, MediaType.MULTIPART_FORM_DATA)), LinksResponse.class);
     }
 
     /**
      * <a href="https://developer.paypal.com/docs/api/customer-disputes/v1/#disputes_appeal">Appeal dispute</a>
      */
     public LinksResponse appealDispute(String accessToken, String id, byte files) {
-        return exchange(String.format("/customer/disputes/%s/appeal", id), HttpMethod.POST, null, new HttpEntity<>(files, getBearerHeaders(accessToken, MediaType.MULTIPART_FORM_DATA)), LinksResponse.class);
+        return exchange(String.format("/v1/customer/disputes/%s/appeal", id), HttpMethod.POST, null, new HttpEntity<>(files, getBearerHeaders(accessToken, MediaType.MULTIPART_FORM_DATA)), LinksResponse.class);
     }
 
     /**
      * <a href="https://developer.paypal.com/docs/api/customer-disputes/v1/#disputes_accept-claim">Accept claim</a>
      */
     public LinksResponse acceptClaim(String accessToken, String id, byte files) {
-        return exchange(String.format("/customer/disputes/%s/accept-claim", id), HttpMethod.POST, null, new HttpEntity<>(files, getBearerHeaders(accessToken, MediaType.MULTIPART_FORM_DATA)), LinksResponse.class);
+        return exchange(String.format("/v1/customer/disputes/%s/accept-claim", id), HttpMethod.POST, null, new HttpEntity<>(files, getBearerHeaders(accessToken, MediaType.MULTIPART_FORM_DATA)), LinksResponse.class);
     }
 
     /**
      * <a href="https://developer.paypal.com/docs/api/customer-disputes/v1/#disputes_adjudicate">Settle dispute</a>
      */
     public LinksResponse settleDispute(String accessToken, String id, String adjudicationOutcome) {
-        return post(String.format("/customer/disputes/%s/adjudicate", id), accessToken, new AdjudicatePayload(adjudicationOutcome), LinksResponse.class);
+        return post(String.format("/v1/customer/disputes/%s/adjudicate", id), accessToken, new AdjudicatePayload(adjudicationOutcome), LinksResponse.class);
     }
 
     /**
      * <a href="https://developer.paypal.com/docs/api/customer-disputes/v1/#disputes_require-evidence">Update dispute status</a>
      */
     public LinksResponse updateDisputeStatus(String accessToken, String id, String action) {
-        return post(String.format("/customer/disputes/%s/require-evidence", id), accessToken, new ActionPayload(action), LinksResponse.class);
+        return post(String.format("/v1/customer/disputes/%s/require-evidence", id), accessToken, new ActionPayload(action), LinksResponse.class);
     }
 
     /**
      * <a href="https://developer.paypal.com/docs/api/customer-disputes/v1/#disputes_escalate">Escalate dispute to claim</a>
      */
     public LinksResponse escalateDispute(String accessToken, String id, String note) {
-        return post(String.format("/customer/disputes/%s/escalate", id), accessToken, new NotePayload(note), LinksResponse.class);
+        return post(String.format("/v1/customer/disputes/%s/escalate", id), accessToken, new NotePayload(note), LinksResponse.class);
     }
 
     /**
      * <a href="https://developer.paypal.com/docs/api/customer-disputes/v1/#disputes_send-message">Send message about dispute to other party</a>
      */
     public LinksResponse disputesSendMessage(String accessToken, String id, String message) {
-        return post(String.format("/customer/disputes/%s/send-message", id), accessToken, new MessagePayload(message), LinksResponse.class);
+        return post(String.format("/v1/customer/disputes/%s/send-message", id), accessToken, new MessagePayload(message), LinksResponse.class);
     }
 
     /**
      * <a href="https://developer.paypal.com/docs/api/customer-disputes/v1/#disputes_make-offer">Make offer to resolve dispute</a>
      */
     public LinksResponse disputesMakeOffer(String accessToken, String id, DisputesMakeOfferPayload payload) {
-        return post(String.format("/customer/disputes/%s/make-offer", id), accessToken, payload, LinksResponse.class);
+        return post(String.format("/v1/customer/disputes/%s/make-offer", id), accessToken, payload, LinksResponse.class);
     }
 
     /**
      * <a href="https://developer.paypal.com/docs/api/customer-disputes/v1/#disputes_accept-offer">Accept offer to resolve dispute</a>
      */
     public LinksResponse disputesAcceptOffer(String accessToken, String id, String note) {
-        return post(String.format("/customer/disputes/%s/accept-offer", id), accessToken, new NotePayload(note), LinksResponse.class);
+        return post(String.format("/v1/customer/disputes/%s/accept-offer", id), accessToken, new NotePayload(note), LinksResponse.class);
     }
 
     /**
      * <a href="https://developer.paypal.com/docs/api/customer-disputes/v1/#disputes_deny-offer">Deny offer to resolve dispute</a>
      */
     public LinksResponse disputesDenyOffer(String accessToken, String id, String note) {
-        return post(String.format("/customer/disputes/%s/deny-offer", id), accessToken, new NotePayload(note), LinksResponse.class);
+        return post(String.format("/v1/customer/disputes/%s/deny-offer", id), accessToken, new NotePayload(note), LinksResponse.class);
     }
 
     /**
      * <a href="https://developer.paypal.com/docs/api/customer-disputes/v1/#disputes_acknowledge-return-item">Acknowledge returned item</a>
      */
     public LinksResponse acknowledgeReturnItem(String accessToken, String id, AcknowledgementNotePayload payload) {
-        return post(String.format("/customer/disputes/%s/acknowledge-return-item", id), accessToken, payload, LinksResponse.class);
+        return post(String.format("/v1/customer/disputes/%s/acknowledge-return-item", id), accessToken, payload, LinksResponse.class);
     }
 
     /**
      * <a href="https://developer.paypal.com/docs/api/customer-disputes/v1/#disputes_provide-supporting-info">Provide supporting information for dispute</a>
      */
     public LinksResponse provideSupportingInfo(String accessToken, String id, String notes) {
-        return post(String.format("/customer/disputes/%s/provide-supporting-info", id), accessToken, new NotesPayload(notes), LinksResponse.class);
+        return post(String.format("/v1/customer/disputes/%s/provide-supporting-info", id), accessToken, new NotesPayload(notes), LinksResponse.class);
     }
 
     /**
@@ -300,14 +297,14 @@ public class PayPalClient {
      * @param payoutsItemId 付款批次id
      */
     public ReferencedPayoutsItems referencedPayoutsItems(String accessToken, String payoutsItemId) {
-        return get(String.format("/payments/referenced-payouts-items/%s", payoutsItemId), accessToken, null, ReferencedPayoutsItems.class);
+        return get(String.format("/v1/payments/referenced-payouts-items/%s", payoutsItemId), accessToken, null, ReferencedPayoutsItems.class);
     }
 
     /**
      * <a href="https://developer.paypal.com/docs/api/referenced-payouts/v1/#referenced-payouts_get_batch_details">列出参考批次付款中的项目</a>
      */
     public Payouts referencedPayouts(String accessToken, String payoutsBatchId) {
-        return get(String.format("/payments/referenced-payouts/%s", payoutsBatchId), accessToken, null, Payouts.class);
+        return get(String.format("/v1/payments/referenced-payouts/%s", payoutsBatchId), accessToken, null, Payouts.class);
     }
 
     /**
@@ -317,7 +314,7 @@ public class PayPalClient {
      * @param queryParams 查询参数
      */
     public TransactionDetailsResponse transactions(String accessToken, TransactionsQueryParams queryParams) {
-        return get("/reporting/transactions", accessToken, queryParams, TransactionDetailsResponse.class);
+        return get("/v1/reporting/transactions", accessToken, queryParams, TransactionDetailsResponse.class);
     }
 
     /**
@@ -327,7 +324,7 @@ public class PayPalClient {
      * @param queryParams 请求参数对象
      */
     public BalancesResponse balances(String accessToken, BalancesQueryParams queryParams) {
-        return get("/reporting/balances", accessToken, queryParams, BalancesResponse.class);
+        return get("/v1/reporting/balances", accessToken, queryParams, BalancesResponse.class);
     }
 
     /**
@@ -385,36 +382,37 @@ public class PayPalClient {
      * <a href="https://developer.paypal.com/docs/api/webhooks/v1/#webhooks_post">Create webhook</a>
      */
     public WebhookResponse createWebhook(String accessToken, CreateWebhookPayload payload) {
-        return post("notifications/webhooks", accessToken, payload, WebhookResponse.class);
+        return post("/v1/notifications/webhooks", accessToken, payload, WebhookResponse.class);
     }
 
     /**
      * <a href="https://developer.paypal.com/docs/api/webhooks/v1/#webhooks_list">List webhooks</a>
      */
     public WebhooksResponse webhookList(String accessToken, WebhookQueryParam queryParam) {
-        return get("notifications/webhooks", accessToken, queryParam, WebhooksResponse.class);
+        return get("/v1/notifications/webhooks", accessToken, queryParam, WebhooksResponse.class);
     }
 
     /**
      * <a href="https://developer.paypal.com/docs/api/webhooks/v1/#webhooks_get">Show webhook details</a>
      */
     public WebhookResponse webhookDetails(String accessToken, String webhookId) {
-        return get(String.format("notifications/webhooks/%s", webhookId), accessToken, null, WebhookResponse.class);
+        return get(String.format("/v1/notifications/webhooks/%s", webhookId), accessToken, null, WebhookResponse.class);
     }
 
     /**
      * <a href="https://developer.paypal.com/docs/api/webhooks/v1/#webhooks_update">Update webhook</a>
      */
-    public WebhookResponse updateWebhook(String accessToken, String webhookId, List<OpValuePayload> payloads) {
-        return exchange(String.format("notifications/webhooks/%s", webhookId), HttpMethod.PATCH, accessToken, null, payloads, WebhookResponse.class);
+    public WebhookResponse updateWebhook(String accessToken, String webhookId, List<OpValuePayload<List<NamePayload>>> payloads) {
+        return exchange(String.format("/v1/notifications/webhooks/%s", webhookId), HttpMethod.PATCH, accessToken, null, payloads, WebhookResponse.class);
     }
 
     /**
      * <a href="https://developer.paypal.com/docs/api/webhooks/v1/#webhooks_delete">Delete webhook</a>
      */
     public Void deleteWebhook(String accessToken, String webhookId) {
-        return exchange(String.format("notifications/webhooks/%s", webhookId), HttpMethod.DELETE, accessToken, null, null, Void.class);
+        return exchange(String.format("/v1/notifications/webhooks/%s", webhookId), HttpMethod.DELETE, accessToken, null, null, Void.class);
     }
+
     /**
      * GET 调用 API
      *
