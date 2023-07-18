@@ -291,81 +291,70 @@ public class PayPalClient {
     }
 
     /**
-     * <a href="https://developer.paypal.com/docs/api/referenced-payouts/v1/#referenced-payouts-items_get">显示付款项目的详细信息</a>
-     *
-     * @param accessToken   访问令牌
-     * @param payoutsItemId 付款批次id
+     * <a href="https://developer.paypal.com/docs/api/referenced-payouts/v1/#referenced-payouts-items_get">Show referenced payout item details</a>
      */
     public ReferencedPayoutsItems referencedPayoutsItems(String accessToken, String payoutsItemId) {
         return get(String.format("/v1/payments/referenced-payouts-items/%s", payoutsItemId), accessToken, null, ReferencedPayoutsItems.class);
     }
 
     /**
-     * <a href="https://developer.paypal.com/docs/api/referenced-payouts/v1/#referenced-payouts_get_batch_details">列出参考批次付款中的项目</a>
+     * <a href="https://developer.paypal.com/docs/api/referenced-payouts/v1/#referenced-payouts_get_batch_details">List items in referenced batch payout</a>
      */
     public Payouts referencedPayouts(String accessToken, String payoutsBatchId) {
         return get(String.format("/v1/payments/referenced-payouts/%s", payoutsBatchId), accessToken, null, Payouts.class);
     }
 
     /**
-     * <a href="https://developer.paypal.com/docs/api/transaction-search/v1/#transactions_get">列出交易</a>
-     *
-     * @param accessToken 访问令牌
-     * @param queryParams 查询参数
+     * <a href="https://developer.paypal.com/docs/api/transaction-search/v1/#transactions_get">List transactions</a>
      */
     public TransactionDetailsResponse transactions(String accessToken, TransactionsQueryParams queryParams) {
         return get("/v1/reporting/transactions", accessToken, queryParams, TransactionDetailsResponse.class);
     }
 
     /**
-     * <a href="https://developer.paypal.com/docs/api/transaction-search/v1/#balances_get">列出所有余额</a>
-     *
-     * @param accessToken 访问令牌
-     * @param queryParams 请求参数对象
+     * <a href="https://developer.paypal.com/docs/api/transaction-search/v1/#balances_get">List all balances</a>
      */
     public BalancesResponse balances(String accessToken, BalancesQueryParams queryParams) {
         return get("/v1/reporting/balances", accessToken, queryParams, BalancesResponse.class);
     }
 
     /**
-     * <a href="https://developer.paypal.com/docs/api/payments/v2/#authorizations_get">显示授权付款的详细信息</a>
+     * <a href="https://developer.paypal.com/docs/api/payments/v2/#authorizations_get">Show details for authorized payment</a>
      */
     public PaymentDetails showAuthorizedPaymentDetails(String accessToken, String authorizationId) {
         return get(String.format("/v2/payments/authorizations/%s", authorizationId), accessToken, null, PaymentDetails.class);
     }
 
     /**
-     * <a href="https://developer.paypal.com/docs/api/payments/v2/#authorizations_capture">捕获授权支付</a>
+     * <a href="https://developer.paypal.com/docs/api/payments/v2/#authorizations_capture">Capture authorized payment</a>
      */
     public PaymentDetails captureAuthorizedPayment(String accessToken, String authorizationId, CapturePayload payload) {
         return post(String.format("/v2/payments/authorizations/%s/capture", authorizationId), accessToken, payload, PaymentDetails.class);
     }
 
     /**
-     * <a href="https://developer.paypal.com/docs/api/payments/v2/#authorizations_reauthorize">通过ID重新授权已授权的PayPal账户支付</a>
+     * <a href="https://developer.paypal.com/docs/api/payments/v2/#authorizations_reauthorize">Reauthorize authorized payment</a>
      */
     public PaymentDetails reauthorizePayment(String accessToken, String authorizationId, ReauthorizePayload payload) {
         return post(String.format("/v2/payments/authorizations/%s/reauthorize", authorizationId), accessToken, payload, PaymentDetails.class);
     }
 
     /**
-     * <a href="https://developer.paypal.com/docs/api/payments/v2/#authorizations_void">通过ID取消或取消已授权的付款</a>
-     * <p>您不能取消已完全捕获的授权付款。</p>
+     * <a href="https://developer.paypal.com/docs/api/payments/v2/#authorizations_void">Void authorized payment</a>
      */
     public void voidAuthorizedPayment(String accessToken, String authorizationId) {
         post(String.format("/v2/payments/authorizations/%s/void", authorizationId), accessToken, null, Object.class);
     }
 
     /**
-     * <a href="https://developer.paypal.com/docs/api/payments/v2/#captures_get">显示捕获付款的详细信息</a>
+     * <a href="https://developer.paypal.com/docs/api/payments/v2/#captures_get">Show captured payment details</a>
      */
     public PaymentDetails capturedPaymentDetails(String accessToken, String captureId) {
         return get(String.format("/v2/payments/captures/%s", captureId), accessToken, null, PaymentDetails.class);
     }
 
     /**
-     * <a href="https://developer.paypal.com/docs/api/payments/v2/#captures_refund">通过ID退还捕获的付款</a>
-     * <p>通过ID退还捕获的付款。要获得全额退款，请在JSON请求体中包含一个空有效负载。对于部分退款，在JSON请求体中包含一个金额对象。</p>
+     * <a href="https://developer.paypal.com/docs/api/payments/v2/#captures_refund">Refund captured payment</a>
      */
     public PaymentDetails refundCapturedPayment(String accessToken, String captureId, CapturePayload payload) {
         return post(String.format("/v2/payments/captures/%s/refund", captureId), accessToken, payload, PaymentDetails.class);
