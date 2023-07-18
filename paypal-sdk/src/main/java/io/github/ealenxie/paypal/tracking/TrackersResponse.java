@@ -1,7 +1,7 @@
 package io.github.ealenxie.paypal.tracking;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.github.ealenxie.paypal.vo.Link;
+import io.github.ealenxie.paypal.Link;
 import lombok.Getter;
 import lombok.Setter;
 

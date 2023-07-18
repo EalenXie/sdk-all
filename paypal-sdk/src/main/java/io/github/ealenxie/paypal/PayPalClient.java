@@ -2,14 +2,20 @@ package io.github.ealenxie.paypal;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.github.ealenxie.paypal.dto.BalancesQueryParams;
-import io.github.ealenxie.paypal.dto.CapturePayload;
-import io.github.ealenxie.paypal.dto.ReauthorizePayload;
-import io.github.ealenxie.paypal.dto.TransactionsQueryParams;
-import io.github.ealenxie.paypal.products.CreateProductPayload;
-import io.github.ealenxie.paypal.products.ProductResponse;
+import io.github.ealenxie.paypal.authentication.PayPalAccessToken;
+import io.github.ealenxie.paypal.catalogproducts.CreateProductPayload;
+import io.github.ealenxie.paypal.catalogproducts.ProductResponse;
+import io.github.ealenxie.paypal.identity.UserInfo;
+import io.github.ealenxie.paypal.payments.CapturePayload;
+import io.github.ealenxie.paypal.payments.PaymentDetails;
+import io.github.ealenxie.paypal.payments.Payouts;
+import io.github.ealenxie.paypal.payments.ReauthorizePayload;
+import io.github.ealenxie.paypal.referencedpayouts.ReferencedPayoutsItems;
 import io.github.ealenxie.paypal.tracking.*;
-import io.github.ealenxie.paypal.vo.*;
+import io.github.ealenxie.paypal.transaction.BalancesQueryParams;
+import io.github.ealenxie.paypal.transaction.BalancesResponse;
+import io.github.ealenxie.paypal.transaction.TransactionDetailsResponse;
+import io.github.ealenxie.paypal.transaction.TransactionsQueryParams;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -158,6 +164,14 @@ public class PayPalClient {
     }
 
     /**
+     * <a href="https://developer.paypal.com/docs/api/catalog-products/v1/#products_list">List products</a>
+     */
+    public ProductResponse productList(String accessToken, PageQueryParams queryParams) {
+        return get("/catalogs/products", accessToken, queryParams, ProductResponse.class);
+    }
+
+
+    /**
      * <a href="https://developer.paypal.com/docs/api/referenced-payouts/v1/#referenced-payouts-items_get">显示付款项目的详细信息</a>
      *
      * @param accessToken   访问令牌
@@ -165,6 +179,13 @@ public class PayPalClient {
      */
     public ReferencedPayoutsItems referencedPayoutsItems(String accessToken, String payoutsItemId) {
         return get(String.format("/payments/referenced-payouts-items/%s", payoutsItemId), accessToken, null, ReferencedPayoutsItems.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/referenced-payouts/v1/#referenced-payouts_get_batch_details">列出参考批次付款中的项目</a>
+     */
+    public Payouts referencedPayouts(String accessToken, String payoutsBatchId) {
+        return get(String.format("/payments/referenced-payouts/%s", payoutsBatchId), accessToken, null, Payouts.class);
     }
 
     /**
@@ -185,13 +206,6 @@ public class PayPalClient {
      */
     public BalancesResponse balances(String accessToken, BalancesQueryParams queryParams) {
         return get("/reporting/balances", accessToken, queryParams, BalancesResponse.class);
-    }
-
-    /**
-     * <a href="https://developer.paypal.com/docs/api/referenced-payouts/v1/#referenced-payouts_get_batch_details">列出参考批次付款中的项目</a>
-     */
-    public Payouts referencedPayouts(String accessToken, String payoutsBatchId) {
-        return get(String.format("/payments/referenced-payouts/%s", payoutsBatchId), accessToken, null, Payouts.class);
     }
 
     /**
