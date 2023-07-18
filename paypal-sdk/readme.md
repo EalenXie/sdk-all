@@ -36,9 +36,12 @@ wish-sdk
 
 ##### Catalog Products
 
-| 方法名           | 官方文档地址                                                                                       | 状态  |
-|:--------------|:---------------------------------------------------------------------------------------------|:----|
-| createProduct | [Create product](https://developer.paypal.com/docs/api/catalog-products/v1/#products_create) | ✔️  |
+| 方法名           | 官方文档地址                                                                                          | 状态  |
+|:--------------|:------------------------------------------------------------------------------------------------|:----|
+| createProduct | [Create product](https://developer.paypal.com/docs/api/catalog-products/v1/#products_create)    | ✔️  |
+| productList   | [List products](https://developer.paypal.com/docs/api/catalog-products/v1/#products_list)       | ✔️  |
+| productDetail | [Show product details](https://developer.paypal.com/docs/api/catalog-products/v1/#products_get) | ✔️  |
+| updateProduct | [Update product](https://developer.paypal.com/docs/api/catalog-products/v1/#products_patch)     | ✔️  |
 
 ##### Identity
 

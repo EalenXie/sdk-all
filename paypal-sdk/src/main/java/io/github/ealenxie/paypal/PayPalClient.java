@@ -4,6 +4,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.ealenxie.paypal.authentication.PayPalAccessToken;
 import io.github.ealenxie.paypal.catalogproducts.CreateProductPayload;
+import io.github.ealenxie.paypal.catalogproducts.ProductDetailResponse;
+import io.github.ealenxie.paypal.catalogproducts.ProductListResponse;
 import io.github.ealenxie.paypal.catalogproducts.ProductResponse;
 import io.github.ealenxie.paypal.identity.UserInfo;
 import io.github.ealenxie.paypal.payments.CapturePayload;
@@ -27,10 +29,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by EalenXie on 2022/3/29 11:36
@@ -166,8 +165,22 @@ public class PayPalClient {
     /**
      * <a href="https://developer.paypal.com/docs/api/catalog-products/v1/#products_list">List products</a>
      */
-    public ProductResponse productList(String accessToken, PageQueryParams queryParams) {
-        return get("/catalogs/products", accessToken, queryParams, ProductResponse.class);
+    public ProductListResponse productList(String accessToken, PageQueryParams queryParams) {
+        return get("/catalogs/products", accessToken, queryParams, ProductListResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/catalog-products/v1/#products_get">Show product details</a>
+     */
+    public ProductDetailResponse productDetail(String accessToken, String productId) {
+        return get(String.format("/catalogs/products/%s", productId), accessToken, null, ProductDetailResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/catalog-products/v1/#products_patch">Update product</a>
+     */
+    public void updateProduct(String accessToken, String productId, List<OpValuePayload> payloads) {
+        exchange(String.format("/catalogs/products/%s", productId), HttpMethod.PATCH, accessToken, null,payloads, Object.class);
     }
 
 
