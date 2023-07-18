@@ -18,6 +18,10 @@ import io.github.ealenxie.paypal.transaction.BalancesQueryParams;
 import io.github.ealenxie.paypal.transaction.BalancesResponse;
 import io.github.ealenxie.paypal.transaction.TransactionDetailsResponse;
 import io.github.ealenxie.paypal.transaction.TransactionsQueryParams;
+import io.github.ealenxie.paypal.webhooks.CreateWebhookPayload;
+import io.github.ealenxie.paypal.webhooks.WebhookQueryParam;
+import io.github.ealenxie.paypal.webhooks.WebhookResponse;
+import io.github.ealenxie.paypal.webhooks.WebhooksResponse;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -272,6 +276,40 @@ public class PayPalClient {
         return post(String.format("/v2/payments/refunds/%s", refundId), accessToken, payload, PaymentDetails.class);
     }
 
+    /**
+     * <a href="https://developer.paypal.com/docs/api/webhooks/v1/#webhooks_post">Create webhook</a>
+     */
+    public WebhookResponse createWebhook(String accessToken, CreateWebhookPayload payload) {
+        return post("notifications/webhooks", accessToken, payload, WebhookResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/webhooks/v1/#webhooks_list">List webhooks</a>
+     */
+    public WebhooksResponse webhookList(String accessToken, WebhookQueryParam queryParam) {
+        return get("notifications/webhooks", accessToken, queryParam, WebhooksResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/webhooks/v1/#webhooks_get">Show webhook details</a>
+     */
+    public WebhookResponse webhookDetails(String accessToken, String webhookId) {
+        return get(String.format("notifications/webhooks/%s", webhookId), accessToken, null, WebhookResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/webhooks/v1/#webhooks_update">Update webhook</a>
+     */
+    public WebhookResponse updateWebhook(String accessToken, String webhookId, List<OpValuePayload> payloads) {
+        return exchange(String.format("notifications/webhooks/%s", webhookId), HttpMethod.PATCH, accessToken, null, payloads, WebhookResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/webhooks/v1/#webhooks_delete">Delete webhook</a>
+     */
+    public Void deleteWebhook(String accessToken, String webhookId) {
+        return exchange(String.format("notifications/webhooks/%s", webhookId), HttpMethod.DELETE, accessToken, null, null, Void.class);
+    }
     /**
      * GET 调用 API
      *
