@@ -404,6 +404,41 @@ public class PayPalClient {
     }
 
     /**
+     * <a href="https://developer.paypal.com/docs/api/webhooks/v1/#event-types_list">List event subscriptions for webhook</a>
+     */
+    public EventTypePayload eventTypesList(String accessToken, String webhookId) {
+        return get(String.format("/v1/notifications/webhooks/%s/event-types", webhookId), accessToken, null, EventTypePayload.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/webhooks/v1/#webhooks-lookup_post">Create webhook lookup</a>
+     */
+    public WebhookLookupResponse createWebhookLookup(String accessToken) {
+        return post("/v1/notifications/webhooks-lookup", accessToken, null, WebhookLookupResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/webhooks/v1/#event-types_list">List event subscriptions for webhook</a>
+     */
+    public WebhookLookupsResponse webhookLookupList(String accessToken) {
+        return get("v1/notifications/webhooks-lookup", accessToken, null, WebhookLookupsResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/webhooks/v1/#webhooks-lookup_get">Show webhook lookup details</a>
+     */
+    public WebhookLookupResponse webhookLookupDetails(String accessToken, String webhookLookupId) {
+        return get(String.format("notifications/webhooks-lookup/%s", webhookLookupId), accessToken, null, WebhookLookupResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/webhooks/v1/#webhooks-lookup_delete">Delete webhook lookup</a>
+     */
+    public Void deleteWebhookLookup(String accessToken, String webhookLookupId) {
+        return exchange(String.format("/v1/notifications/webhooks-lookup/%s", webhookLookupId), HttpMethod.DELETE, accessToken, null, null, Void.class);
+    }
+
+    /**
      * GET 调用 API
      *
      * @param urlNotHost   不带host的请求url
