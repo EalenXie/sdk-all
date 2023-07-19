@@ -105,7 +105,7 @@ public class PayPalClient {
         headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
         headers.set("Accept-Language", "en_US");
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(String.format("%s/oauth2/accessToken", sandBox ? HOST_SANDBOX : HOST));
+        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(String.format("%s/v1/oauth2/token", sandBox ? HOST_SANDBOX : HOST));
         builder.queryParam("grant_type", "client_credentials");
         URI uri = builder.build().encode().toUri();
         return restOperations.exchange(uri, HttpMethod.POST, new HttpEntity<>(null, headers), PayPalAccessToken.class).getBody();
@@ -113,13 +113,6 @@ public class PayPalClient {
 
     private String getApiHost() {
         return sandBox ? HOST_SANDBOX : HOST;
-    }
-
-    /**
-     * <a href="https://developer.paypal.com/docs/api/identity/v1/">获取用户信息</a>
-     */
-    public UserInfo getUserInfo(String accessToken) {
-        return get("/v1/identity/oauth2/userinfo?schema=paypalv1.1", accessToken, null, UserInfo.class);
     }
 
     /**
@@ -289,6 +282,14 @@ public class PayPalClient {
     public LinksResponse provideSupportingInfo(String accessToken, String id, String notes) {
         return post(String.format("/v1/customer/disputes/%s/provide-supporting-info", id), accessToken, new NotesPayload(notes), LinksResponse.class);
     }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/identity/v1/">获取用户信息</a>
+     */
+    public UserInfo getUserInfo(String accessToken) {
+        return get("/v1/identity/oauth2/userinfo?schema=paypalv1.1", accessToken, null, UserInfo.class);
+    }
+
 
     /**
      * <a href="https://developer.paypal.com/docs/api/referenced-payouts/v1/#referenced-payouts-items_get">Show referenced payout item details</a>

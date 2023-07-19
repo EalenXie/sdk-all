@@ -15,12 +15,16 @@ import java.util.List;
 public class UserInfo {
     @JsonProperty("user_id")
     private String userId;
+    @JsonProperty("sub")
+    private String sub;
     @JsonProperty("name")
     private String name;
     @JsonProperty("given_name")
     private String givenName;
     @JsonProperty("family_name")
     private String familyName;
+    @JsonProperty("middle_name")
+    private String middleName;
     @JsonProperty("payer_id")
     private String payerId;
     @JsonProperty("address")
