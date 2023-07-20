@@ -3,16 +3,16 @@ package io.github.ealenxie.paypal.invoices;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.ealenxie.paypal.Link;
 import io.github.ealenxie.paypal.Money;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 
 /**
  * @author EalenXie created on 2023/7/20 16:16
  */
-@NoArgsConstructor
-@Data
+@Getter
+@Setter
 public class DraftInvoiceResponse {
 
 

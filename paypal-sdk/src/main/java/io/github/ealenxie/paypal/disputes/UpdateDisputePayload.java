@@ -1,14 +1,14 @@
 package io.github.ealenxie.paypal.disputes;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * @author EalenXie created on 2023/7/18 14:03
  */
-@NoArgsConstructor
-@Data
+@Getter
+@Setter
 public class UpdateDisputePayload {
 
     /**

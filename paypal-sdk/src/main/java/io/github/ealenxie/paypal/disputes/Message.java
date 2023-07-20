@@ -1,16 +1,16 @@
 package io.github.ealenxie.paypal.disputes;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 
 /**
  * @author EalenXie created on 2023/7/18 13:55
  */
-@NoArgsConstructor
-@Data
+@Getter
+@Setter
 public class Message {
     /**
      * postedBy

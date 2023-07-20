@@ -2,9 +2,7 @@ package io.github.ealenxie.paypal.webhooks;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.ealenxie.paypal.Link;
-import lombok.Data;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
@@ -13,8 +11,6 @@ import java.util.List;
  * @author lanzhi
  * Created on 2023/7/20 13:40
  **/
-@NoArgsConstructor
-@Data
 @Getter
 @Setter
 public class EventResponse {
