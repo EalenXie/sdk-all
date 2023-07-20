@@ -29,5 +29,11 @@ public class EventType {
      */
     @JsonProperty("resource_versions")
     private List<String> resourceVersions;
+
+    /**
+     * The status of a webhook event.
+     */
+    @JsonProperty("status")
+    private String status;
 }
 
