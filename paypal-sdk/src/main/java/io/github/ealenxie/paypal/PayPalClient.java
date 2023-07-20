@@ -9,6 +9,8 @@ import io.github.ealenxie.paypal.catalogproducts.ProductListResponse;
 import io.github.ealenxie.paypal.catalogproducts.ProductResponse;
 import io.github.ealenxie.paypal.disputes.*;
 import io.github.ealenxie.paypal.identity.UserInfo;
+import io.github.ealenxie.paypal.invoices.DraftInvoiceCreatePayload;
+import io.github.ealenxie.paypal.invoices.DraftInvoiceResponse;
 import io.github.ealenxie.paypal.payments.CapturePayload;
 import io.github.ealenxie.paypal.payments.PaymentDetails;
 import io.github.ealenxie.paypal.payments.Payouts;
@@ -288,6 +290,14 @@ public class PayPalClient {
      */
     public UserInfo getUserInfo(String accessToken) {
         return get("/v1/identity/oauth2/userinfo?schema=paypalv1.1", accessToken, null, UserInfo.class);
+    }
+
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/invoicing/v2/#invoices_create">Create draft invoice</a>
+     */
+    public DraftInvoiceResponse createDraftInvoice(String accessToken, DraftInvoiceCreatePayload payload) {
+        return post("/v2/invoicing/invoices", accessToken, payload, DraftInvoiceResponse.class);
     }
 
 
