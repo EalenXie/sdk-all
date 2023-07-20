@@ -15,42 +15,42 @@ import java.util.List;
 public class IspOrderRevenue {
 
     /**
-     * standardCurrencyCode
+     * 币种（USD）
      */
     @JsonProperty("standardCurrencyCode")
     private String standardCurrencyCode;
     /**
-     * totalEbayItemPriceAmount
+     * ebay总申报价值
      */
     @JsonProperty("totalEbayItemPriceAmount")
     private BigDecimal totalEbayItemPriceAmount;
     /**
-     * totalAmount
+     * 总额
      */
     @JsonProperty("totalAmount")
     private BigDecimal totalAmount;
     /**
-     * cfmGrossWeight
+     * 核实重量(kg)
      */
     @JsonProperty("cfmGrossWeight")
     private BigDecimal cfmGrossWeight;
     /**
-     * cfmHeight
+     * 核实长(cm)
      */
     @JsonProperty("cfmHeight")
     private BigDecimal cfmHeight;
     /**
-     * cfmLength
+     * 核实宽(cm)
      */
     @JsonProperty("cfmLength")
     private BigDecimal cfmLength;
     /**
-     * cfmWidth
+     * 核实高(cm)
      */
     @JsonProperty("cfmWidth")
     private BigDecimal cfmWidth;
     /**
-     * chargeItemList
+     * 费用明细列表
      */
     @JsonProperty("chargeItemList")
     private List<ChargeItem> chargeItemList;

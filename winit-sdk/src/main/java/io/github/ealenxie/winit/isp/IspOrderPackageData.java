@@ -13,27 +13,27 @@ import java.util.List;
 @Setter
 public class IspOrderPackageData {
     /**
-     * length
+     * 长(CM)
      */
     @JsonProperty("length")
     private String length;
     /**
-     * width
+     * 宽(CM)
      */
     @JsonProperty("width")
     private String width;
     /**
-     * height
+     * 高(CM)
      */
     @JsonProperty("height")
     private String height;
     /**
-     * weight
+     * 总重量（KG）
      */
     @JsonProperty("weight")
     private String weight;
     /**
-     * merchandiseList
+     * 商品列表(配货单明细)
      */
     @JsonProperty("merchandiseList")
     private List<IspOrderMerchandiseData> merchandiseList;

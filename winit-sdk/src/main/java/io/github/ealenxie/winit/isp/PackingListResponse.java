@@ -12,22 +12,22 @@ import lombok.Setter;
 public class PackingListResponse {
 
     /**
-     * bigPackageNo
+     * 装箱单号
      */
     @JsonProperty("bigPackageNo")
     private String bigPackageNo;
     /**
-     * packingList
+     * 装箱单Base64字符串
      */
     @JsonProperty("packingList")
     private String packingList;
     /**
-     * format
+     * PDF
      */
     @JsonProperty("format")
     private String format;
     /**
-     * size
+     * 装箱单尺寸
      */
     @JsonProperty("size")
     private String size;

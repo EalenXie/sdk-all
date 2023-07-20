@@ -12,12 +12,12 @@ import lombok.Setter;
 public class VendorQtyData {
 
     /**
-     * quantity
+     * 数量
      */
     @JsonProperty("quantity")
     private Integer quantity;
     /**
-     * vendorCode
+     * 供应商编码
      */
     @JsonProperty("vendorCode")
     private String vendorCode;

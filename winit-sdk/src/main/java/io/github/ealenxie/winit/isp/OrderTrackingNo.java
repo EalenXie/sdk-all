@@ -12,12 +12,12 @@ import lombok.Setter;
 public class OrderTrackingNo {
 
     /**
-     * orderNo
+     * winit订单号
      */
     @JsonProperty("orderNo")
     private String orderNo;
     /**
-     * trackingNo
+     * 跟踪号
      */
     @JsonProperty("trackingNo")
     private String trackingNo;
