@@ -95,3 +95,23 @@ wish-sdk
 | transactions | [List transactions](https://developer.paypal.com/docs/api/transaction-search/v1/#transactions_get) | ✔️  |
 | balances     | [List all balances](https://developer.paypal.com/docs/api/transaction-search/v1/#balances_get)     | ✔️  |
 
+##### Webhooks Management
+
+| 方法名          | 官方文档地址                                                                                                                      | 状态  |
+|:---------------------------|:--------------------------------------------------------------------------------------------------------------|:----|
+| createWebhook              | [Create webhook](https://developer.paypal.com/docs/api/webhooks/v1/#webhooks_post)                            | ✔️  |
+| webhookList                | [List webhooks](https://developer.paypal.com/docs/api/webhooks/v1/#webhooks_list)                             | ✔️  |
+| webhookDetails             | [Show webhook details](https://developer.paypal.com/docs/api/webhooks/v1/#webhooks_get)                       | ✔️  |
+| updateWebhook              | [Update webhook](https://developer.paypal.com/docs/api/webhooks/v1/#webhooks_update)                          | ✔️  |
+| deleteWebhook              | [Delete webhook](https://developer.paypal.com/docs/api/webhooks/v1/#webhooks_delete)                          | ✔️  |
+| eventTypesList             | [List event subscriptions for webhook](https://developer.paypal.com/docs/api/webhooks/v1/#event-types_list)   | ✔️  |
+| createWebhookLookup        | [Create webhook lookup](https://developer.paypal.com/docs/api/webhooks/v1/#webhooks-lookup_post)              | ✔️  |
+| webhookLookupList          | [List webhook lookups](https://developer.paypal.com/docs/api/webhooks/v1/#webhooks-lookup_list)               | ✔️  |
+| webhookLookupDetails       | [Show webhook lookup details](https://developer.paypal.com/docs/api/webhooks/v1/#webhooks-lookup_get)         | ✔️  |
+| deleteWebhookLookup        | [Delete webhook lookup](https://developer.paypal.com/docs/api/webhooks/v1/#webhooks-lookup_delete)            | ✔️  |
+| verifyWebhookSignature     | [Verify webhook signature](https://developer.paypal.com/docs/api/webhooks/v1/#verify-webhook-signature_post)  | ✔️  |
+| availableEventsList        | [List available events](https://developer.paypal.com/docs/api/webhooks/v1/#webhooks-event-types_list)         | ✔️  |
+| eventNotificationsList     | [List event notifications](https://developer.paypal.com/docs/api/webhooks/v1/#webhooks-events_list)           | ✔️  |
+| eventNotificationsDetails  | [Show event notification details](https://developer.paypal.com/docs/api/webhooks/v1/#webhooks-events_get)     | ✔️  |
+| resendEventNotification    | [Resend event notification](https://developer.paypal.com/docs/api/webhooks/v1/#webhooks-events_resend)        | ✔️  |
+| simulateEvent              | [Simulate webhook event](https://developer.paypal.com/docs/api/webhooks/v1/#simulate-event_post)              | ✔️  |
