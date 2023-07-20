@@ -12,32 +12,33 @@ import lombok.Setter;
 public class PackingListData {
 
     /**
-     * bigPackageNo
+     * 装箱单号
      */
     @JsonProperty("bigPackageNo")
     private String bigPackageNo;
     /**
-     * depotCode
+     * 分拣码
      */
     @JsonProperty("depotCode")
     private String depotCode;
     /**
-     * packageType
+     * 0，非混装
+     * 1，混装
      */
     @JsonProperty("packageType")
     private String packageType;
     /**
-     * vendorCode
+     * 供应商编码
      */
     @JsonProperty("vendorCode")
     private String vendorCode;
     /**
-     * totalWeight
+     * 总重量
      */
     @JsonProperty("totalWeight")
     private String totalWeight;
     /**
-     * refNo
+     * 客户参考号
      */
     @JsonProperty("refNo")
     private String refNo;

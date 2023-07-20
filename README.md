@@ -67,7 +67,7 @@ For inquiries and support, please contact us at [ealenxie@outlook.com](mailto:ea
 
 ## Contributing
 
-欢迎参与项目贡献，例如提交PR、修复bug或者新建Issue讨论新的或者变更，特别感谢为此项目做出贡献的人。
+欢迎参与项目贡献，例如提交PR、修复bug或者新建Issue讨论新的或者变更，特别感谢为此项目做出贡献的人🙏。
 
 > - 🔁 项目同步地址：[https://github.com/EalenXie/sdk-all](https://github.com/EalenXie/sdk-all)
 > - 📖 代码贡献指南：[CONTRIBUTING.md](https://github.com/EalenXie/sdk-all/blob/main/CONTRIBUTING.md)

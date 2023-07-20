@@ -14,17 +14,17 @@ import java.math.BigDecimal;
 public class ChargeItem {
 
     /**
-     * amount
+     * 费用金额
      */
     @JsonProperty("amount")
     private BigDecimal amount;
     /**
-     * currencyCode
+     * 币种
      */
     @JsonProperty("currencyCode")
     private String currencyCode;
     /**
-     * chargeName
+     * 费用名称
      */
     @JsonProperty("chargeName")
     private String chargeName;

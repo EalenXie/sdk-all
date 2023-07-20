@@ -11,47 +11,47 @@ import lombok.Setter;
 @Setter
 public class IspOrderMerchandiseData {
     /**
-     * merchandiseCode
+     * 商品sku
      */
     @JsonProperty("merchandiseCode")
     private String merchandiseCode;
     /**
-     * declaredNameCn
+     * 申报品名(中文)
      */
     @JsonProperty("declaredNameCn")
     private String declaredNameCn;
     /**
-     * declaredNameEn
+     * 申报品名(英文)
      */
     @JsonProperty("declaredNameEn")
     private String declaredNameEn;
     /**
-     * declaredValue
+     * 申报品名(英文)
      */
     @JsonProperty("declaredValue")
     private String declaredValue;
     /**
-     * hsCode
+     * 海关申报编码
      */
     @JsonProperty("hsCode")
     private String hsCode;
     /**
-     * itemID
+     * ebayItemID
      */
     @JsonProperty("itemID")
     private String itemID;
     /**
-     * transactionID
+     * ebay交易ID
      */
     @JsonProperty("transactionID")
     private String transactionID;
     /**
-     * merchandiseQuantity
+     * 商品数量
      */
     @JsonProperty("merchandiseQuantity")
     private String merchandiseQuantity;
     /**
-     * goodsLocation
+     * 库位
      */
     @JsonProperty("goodsLocation")
     private String goodsLocation;

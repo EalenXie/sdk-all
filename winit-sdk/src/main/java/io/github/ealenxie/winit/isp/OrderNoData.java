@@ -15,7 +15,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class OrderNoData {
     /**
-     * orderNo
+     * ISP 订单号
      */
     @JsonProperty("orderNo")
     private String orderNo;
