@@ -428,7 +428,7 @@ public class PayPalClient {
      * <a href="https://developer.paypal.com/docs/api/webhooks/v1/#webhooks-lookup_get">Show webhook lookup details</a>
      */
     public WebhookLookupResponse webhookLookupDetails(String accessToken, String webhookLookupId) {
-        return get(String.format("notifications/webhooks-lookup/%s", webhookLookupId), accessToken, null, WebhookLookupResponse.class);
+        return get(String.format("v1/notifications/webhooks-lookup/%s", webhookLookupId), accessToken, null, WebhookLookupResponse.class);
     }
 
     /**
@@ -436,6 +436,48 @@ public class PayPalClient {
      */
     public Void deleteWebhookLookup(String accessToken, String webhookLookupId) {
         return exchange(String.format("/v1/notifications/webhooks-lookup/%s", webhookLookupId), HttpMethod.DELETE, accessToken, null, null, Void.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/webhooks/v1/#verify-webhook-signature_post">Verify webhook signature</a>
+     */
+    public WebhookSignatureResponse verifyWebhookSignature(String accessToken, WebhookSignaturePayload payload) {
+        return post("/v1/notifications/verify-webhook-signature", accessToken, payload, WebhookSignatureResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/webhooks/v1/#webhooks-event-types_list">List available events</a>
+     */
+    public EventTypePayload availableEventsList(String accessToken) {
+        return get("/v1/notifications/webhooks-event-types", accessToken, null, EventTypePayload.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/webhooks/v1/#webhooks-events_list">List event notifications</a>
+     */
+    public EventResponse eventNotificationsList(String accessToken, EventNotificationsQueryParams params) {
+        return get("/v1/notifications/webhooks-events", accessToken, params, EventResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/webhooks/v1/#webhooks-events_get">Show event notification details</a>
+     */
+    public WebhookEvent eventNotificationsDetails(String accessToken, String eventId) {
+        return get(String.format("/v1/notifications/webhooks-events/%s", eventId), accessToken, null, WebhookEvent.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/webhooks/v1/#webhooks-events_resend">Resend event notification</a>
+     */
+    public WebhookEvent resendEventNotification(String accessToken, String eventId, EventNotificationPayload payload) {
+        return post(String.format("/v1/notifications/webhooks-events/%s/resend", eventId), accessToken, payload, WebhookEvent.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/webhooks/v1/#simulate-event_post">Simulate webhook event</a>
+     */
+    public WebhookEvent simulateEvent(String accessToken, SimulateEventPayload payload) {
+        return post("/v1/notifications/simulate-event", accessToken, payload, WebhookEvent.class);
     }
 
     /**
