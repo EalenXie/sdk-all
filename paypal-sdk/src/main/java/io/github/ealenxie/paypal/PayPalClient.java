@@ -9,8 +9,7 @@ import io.github.ealenxie.paypal.catalogproducts.ProductListResponse;
 import io.github.ealenxie.paypal.catalogproducts.ProductResponse;
 import io.github.ealenxie.paypal.disputes.*;
 import io.github.ealenxie.paypal.identity.UserInfo;
-import io.github.ealenxie.paypal.invoices.DraftInvoiceCreatePayload;
-import io.github.ealenxie.paypal.invoices.DraftInvoiceResponse;
+import io.github.ealenxie.paypal.invoices.*;
 import io.github.ealenxie.paypal.payments.CapturePayload;
 import io.github.ealenxie.paypal.payments.PaymentDetails;
 import io.github.ealenxie.paypal.payments.Payouts;
@@ -300,6 +299,54 @@ public class PayPalClient {
         return post("/v2/invoicing/invoices", accessToken, payload, DraftInvoiceResponse.class);
     }
 
+    /**
+     * <a href="https://developer.paypal.com/docs/api/invoicing/v2/#invoices_list">List invoices</a>
+     */
+    public InvoicesListResponse invoicesList(String accessToken, InvoicesQueryParams queryParams) {
+        return get("/v2/invoicing/invoices", accessToken, queryParams, InvoicesListResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/invoicing/v2/#invoices_send">Send invoice</a>
+     */
+    public LinksResponse sendInvoice(String accessToken, String invoiceId, InvoiceSendPayload payload) {
+        return post(String.format("/v2/invoicing/invoices/%s/send", invoiceId), accessToken, payload, LinksResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/invoicing/v2/#invoices_remind">Send invoice reminder</a>
+     */
+    public void sendInvoiceReminder(String accessToken, String invoiceId, InvoiceSendPayload payload) {
+        post(String.format("/v2/invoicing/invoices/%s/remind", invoiceId), accessToken, payload, Object.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/invoicing/v2/#invoices_cancel">Cancel sent invoice</a>
+     */
+    public void cancelSentInvoice(String accessToken, String invoiceId, InvoiceSendPayload payload) {
+        post(String.format("/v2/invoicing/invoices/%s/cancel", invoiceId), accessToken, payload, Object.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/invoicing/v2/#invoices_payments">Record payment for invoice</a>
+     */
+    public PaymentIdPayload invoicesPayments(String accessToken, String invoiceId, InvoicesPaymentsPayload payload) {
+        return post(String.format("/v2/invoicing/invoices/%s/payments", invoiceId), accessToken, payload, PaymentIdPayload.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/invoicing/v2/#invoices_payments-delete">Delete external payment</a>
+     */
+    public void deleteExternalPayment(String accessToken, String invoiceId, String transactionId) {
+        exchange(String.format("/v2/invoicing/invoices/%s/payments/%s", invoiceId, transactionId), HttpMethod.DELETE, accessToken, null, null, Object.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/invoicing/v2/#invoices_refunds">Record refund for invoice</a>
+     */
+    public RefundIdPayload invoicesRefunds(String accessToken, String invoiceId, InvoicesRefundsPayload payload) {
+        return post(String.format("/v2/invoicing/invoices/%s/refunds", invoiceId), accessToken, payload, RefundIdPayload.class);
+    }
 
     /**
      * <a href="https://developer.paypal.com/docs/api/referenced-payouts/v1/#referenced-payouts-items_get">Show referenced payout item details</a>
