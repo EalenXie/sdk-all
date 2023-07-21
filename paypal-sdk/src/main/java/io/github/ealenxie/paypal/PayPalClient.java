@@ -57,6 +57,9 @@ public class PayPalClient {
     private static final String HOST_SANDBOX = "https://api-m.sandbox.paypal.com";
 
 
+    private static final String NOTIFICATIONS_WEBHOOKS = "/v1/notifications/webhooks/%s";
+
+
     public PayPalClient() {
         this(new RestTemplate(), new ObjectMapper());
     }
@@ -295,8 +298,8 @@ public class PayPalClient {
     /**
      * <a href="https://developer.paypal.com/docs/api/invoicing/v2/#invoices_create">Create draft invoice</a>
      */
-    public DraftInvoiceResponse createDraftInvoice(String accessToken, DraftInvoiceCreatePayload payload) {
-        return post("/v2/invoicing/invoices", accessToken, payload, DraftInvoiceResponse.class);
+    public InvoiceResponse createDraftInvoice(String accessToken, DraftInvoiceCreatePayload payload) {
+        return post("/v2/invoicing/invoices", accessToken, payload, InvoiceResponse.class);
     }
 
     /**
@@ -346,6 +349,34 @@ public class PayPalClient {
      */
     public RefundIdPayload invoicesRefunds(String accessToken, String invoiceId, InvoicesRefundsPayload payload) {
         return post(String.format("/v2/invoicing/invoices/%s/refunds", invoiceId), accessToken, payload, RefundIdPayload.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/invoicing/v2/#invoices_refunds-delete">Delete external refund</a>
+     */
+    public void deleteExternalRefund(String accessToken, String invoiceId, String transactionId) {
+        exchange(String.format("/v2/invoicing/invoices/%s/refunds/%s", invoiceId, transactionId), HttpMethod.DELETE, accessToken, null, null, Object.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/invoicing/v2/#invoices_generate-qr-code">Generate QR code</a>
+     */
+    public byte[] generateQrCode(String accessToken, String invoiceId, GenerateQrCodePayload payload) {
+        return post(String.format("/v2/invoicing/invoices/%s/generate-qr-code", invoiceId), accessToken, payload, byte[].class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/invoicing/v2/#invoicing_generate-next-invoice-number">Generate invoice number</a>
+     */
+    public InvoiceNumberPayload generateInvoiceNumber(String accessToken) {
+        return post("/v2/invoicing/generate-next-invoice-number", accessToken, null, InvoiceNumberPayload.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/invoicing/v2/#invoices_get">Show invoice details</a>
+     */
+    public InvoiceResponse invoiceDetails(String accessToken, String invoiceId) {
+        return post(String.format("/v2/invoicing/%s", invoiceId), accessToken, null, InvoiceResponse.class);
     }
 
     /**
@@ -443,21 +474,21 @@ public class PayPalClient {
      * <a href="https://developer.paypal.com/docs/api/webhooks/v1/#webhooks_get">Show webhook details</a>
      */
     public WebhookResponse webhookDetails(String accessToken, String webhookId) {
-        return get(String.format("/v1/notifications/webhooks/%s", webhookId), accessToken, null, WebhookResponse.class);
+        return get(String.format(NOTIFICATIONS_WEBHOOKS, webhookId), accessToken, null, WebhookResponse.class);
     }
 
     /**
      * <a href="https://developer.paypal.com/docs/api/webhooks/v1/#webhooks_update">Update webhook</a>
      */
     public WebhookResponse updateWebhook(String accessToken, String webhookId, List<OpValuePayload<List<NamePayload>>> payloads) {
-        return exchange(String.format("/v1/notifications/webhooks/%s", webhookId), HttpMethod.PATCH, accessToken, null, payloads, WebhookResponse.class);
+        return exchange(String.format(NOTIFICATIONS_WEBHOOKS, webhookId), HttpMethod.PATCH, accessToken, null, payloads, WebhookResponse.class);
     }
 
     /**
      * <a href="https://developer.paypal.com/docs/api/webhooks/v1/#webhooks_delete">Delete webhook</a>
      */
     public Void deleteWebhook(String accessToken, String webhookId) {
-        return exchange(String.format("/v1/notifications/webhooks/%s", webhookId), HttpMethod.DELETE, accessToken, null, null, Void.class);
+        return exchange(String.format(NOTIFICATIONS_WEBHOOKS, webhookId), HttpMethod.DELETE, accessToken, null, null, Void.class);
     }
 
     /**
@@ -689,8 +720,7 @@ public class PayPalClient {
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(String.format("%s%s", host, urlNotHost));
         if (queryParams != null) {
             if (queryParams instanceof Map) {
-                @SuppressWarnings("unchecked")
-                Map<String, Object> valueMap = (Map<String, Object>) queryParams;
+                @SuppressWarnings("unchecked") Map<String, Object> valueMap = (Map<String, Object>) queryParams;
                 Set<Map.Entry<String, Object>> entrySet = valueMap.entrySet();
                 for (Map.Entry<String, Object> e : entrySet) {
                     builder.queryParam(e.getKey(), e.getValue());
@@ -710,8 +740,7 @@ public class PayPalClient {
         for (Map.Entry<String, Object> entry : entries) {
             Object value = entry.getValue();
             if (value instanceof Map) {
-                @SuppressWarnings("unchecked")
-                Map<String, Object> valueMap = (Map<String, Object>) value;
+                @SuppressWarnings("unchecked") Map<String, Object> valueMap = (Map<String, Object>) value;
                 Set<Map.Entry<String, Object>> entrySet = valueMap.entrySet();
                 for (Map.Entry<String, Object> e : entrySet) {
                     builder.queryParam(e.getKey(), e.getValue());

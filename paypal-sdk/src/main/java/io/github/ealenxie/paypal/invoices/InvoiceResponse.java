@@ -13,8 +13,7 @@ import java.util.List;
  */
 @Getter
 @Setter
-public class DraftInvoiceResponse {
-
+public class InvoiceResponse {
 
     /**
      * id

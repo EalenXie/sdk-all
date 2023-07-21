@@ -74,16 +74,20 @@ paypal-sdk
 
 ##### Invoices
 
-| 方法名                   | 官方文档地址                                                                                                  | 状态  |
-|:----------------------|:--------------------------------------------------------------------------------------------------------|:----|
-| createDraftInvoice    | [Create draft invoice](https://developer.paypal.com/docs/api/invoicing/v2/#invoices_create)             | ✔️  |
-| invoicesList          | [List invoices](https://developer.paypal.com/docs/api/invoicing/v2/#invoices_list)                      | ✔️  |
-| sendInvoice           | [Send invoice](https://developer.paypal.com/docs/api/invoicing/v2/#invoices_send)                       | ✔️  |
-| sendInvoiceReminder   | [Send invoice reminder](https://developer.paypal.com/docs/api/invoicing/v2/#invoices_remind)            | ✔️  |
-| cancelSentInvoice     | [Cancel sent invoice](https://developer.paypal.com/docs/api/invoicing/v2/#invoices_cancel)              | ✔️  |
-| invoicesPayments      | [Record payment for invoice](https://developer.paypal.com/docs/api/invoicing/v2/#invoices_payments)     | ✔️  |
-| deleteExternalPayment | [Delete external payment](https://developer.paypal.com/docs/api/invoicing/v2/#invoices_payments-delete) | ✔️  |
-| invoicesRefunds       | [Record refund for invoice](https://developer.paypal.com/docs/api/invoicing/v2/#invoices_refunds)       | ✔️  |
+| 方法名                   | 官方文档地址                                                                                                                | 状态  |
+|:----------------------|:----------------------------------------------------------------------------------------------------------------------|:----|
+| createDraftInvoice    | [Create draft invoice](https://developer.paypal.com/docs/api/invoicing/v2/#invoices_create)                           | ✔️  |
+| invoicesList          | [List invoices](https://developer.paypal.com/docs/api/invoicing/v2/#invoices_list)                                    | ✔️  |
+| sendInvoice           | [Send invoice](https://developer.paypal.com/docs/api/invoicing/v2/#invoices_send)                                     | ✔️  |
+| sendInvoiceReminder   | [Send invoice reminder](https://developer.paypal.com/docs/api/invoicing/v2/#invoices_remind)                          | ✔️  |
+| cancelSentInvoice     | [Cancel sent invoice](https://developer.paypal.com/docs/api/invoicing/v2/#invoices_cancel)                            | ✔️  |
+| invoicesPayments      | [Record payment for invoice](https://developer.paypal.com/docs/api/invoicing/v2/#invoices_payments)                   | ✔️  |
+| deleteExternalPayment | [Delete external payment](https://developer.paypal.com/docs/api/invoicing/v2/#invoices_payments-delete)               | ✔️  |
+| invoicesRefunds       | [Record refund for invoice](https://developer.paypal.com/docs/api/invoicing/v2/#invoices_refunds)                     | ✔️  |
+| deleteExternalRefund  | [Delete external refund](https://developer.paypal.com/docs/api/invoicing/v2/#invoices_refunds-delete)                 | ✔️  |
+| generateQrCode        | [Generate QR code](https://developer.paypal.com/docs/api/invoicing/v2/#invoices_generate-qr-code)                     | ✔️  |
+| generateInvoiceNumber | [Generate invoice number](https://developer.paypal.com/docs/api/invoicing/v2/#invoicing_generate-next-invoice-number) | ✔️  |
+| invoiceDetails        | [Show invoice details](https://developer.paypal.com/docs/api/invoicing/v2/#invoices_get)                              | ✔️  |
 
 ##### Payments
 
