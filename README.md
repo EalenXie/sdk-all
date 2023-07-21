@@ -4,6 +4,11 @@
 ![license](https://img.shields.io/github/license/ealenxie/sdk-all)
 ![java version](https://img.shields.io/badge/JAVA-1.8+-green.svg)
 ![code size](https://img.shields.io/github/languages/code-size/ealenxie/sdk-all)
+
+![last commit](https://img.shields.io/github/last-commit/ealenxie/sdk-all)
+![issues pr](https://img.shields.io/github/issues-pr/ealenxie/sdk-all)
+![issues pr](https://img.shields.io/github/issues/ealenxie/sdk-all)
+
 </div>
 
 $\color{＃4AEE45}{天之道，损有余而补不足。人之道则不然，损不足以奉有余。孰能有余以奉天下？唯有道者。--《道德经》第七十七章 }$
