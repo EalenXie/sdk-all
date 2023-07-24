@@ -1,20 +1,24 @@
 package io.github.ealenxie.paypal.invoices;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.github.ealenxie.paypal.Link;
-import io.github.ealenxie.paypal.Money;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 /**
- * @author EalenXie created on 2023/7/20 16:16
+ * @author EalenXie created on 2023/7/24 10:00
  */
-@Getter
-@Setter
-public class InvoiceResponse {
+@NoArgsConstructor
+@Data
+public class InvoiceUpdatePayload {
 
+
+    /**
+     * detail
+     */
+    @JsonProperty("detail")
+    private InvoiceDetailPayload detail;
     /**
      * id
      */
@@ -25,11 +29,6 @@ public class InvoiceResponse {
      */
     @JsonProperty("status")
     private String status;
-    /**
-     * detail
-     */
-    @JsonProperty("detail")
-    private InvoiceDetail detail;
     /**
      * invoicer
      */
@@ -55,14 +54,4 @@ public class InvoiceResponse {
      */
     @JsonProperty("amount")
     private Amount amount;
-    /**
-     * dueAmount
-     */
-    @JsonProperty("due_amount")
-    private Money dueAmount;
-    /**
-     * links
-     */
-    @JsonProperty("links")
-    private List<Link> links;
 }

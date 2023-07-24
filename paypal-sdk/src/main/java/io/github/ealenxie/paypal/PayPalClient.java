@@ -58,6 +58,7 @@ public class PayPalClient {
 
 
     private static final String NOTIFICATIONS_WEBHOOKS = "/v1/notifications/webhooks/%s";
+    private static final String INVOICING_INVOICES = "/v2/invoicing/invoices/%s";
 
 
     public PayPalClient() {
@@ -376,7 +377,21 @@ public class PayPalClient {
      * <a href="https://developer.paypal.com/docs/api/invoicing/v2/#invoices_get">Show invoice details</a>
      */
     public InvoiceResponse invoiceDetails(String accessToken, String invoiceId) {
-        return post(String.format("/v2/invoicing/%s", invoiceId), accessToken, null, InvoiceResponse.class);
+        return get(String.format(INVOICING_INVOICES, invoiceId), accessToken, null, InvoiceResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/invoicing/v2/#invoices_update">Fully update invoice</a>
+     */
+    public InvoiceResponse updateInvoice(String accessToken, String invoiceId, InvoiceUpdatePayload payload) {
+        return post(String.format(INVOICING_INVOICES, invoiceId), accessToken, payload, InvoiceResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/invoicing/v2/#invoices_delete">Delete invoice</a>
+     */
+    public void deleteInvoice(String accessToken, String invoiceId) {
+        exchange(String.format(INVOICING_INVOICES, invoiceId), HttpMethod.DELETE, accessToken, null, null, Object.class);
     }
 
     /**

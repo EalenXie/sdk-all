@@ -1,20 +1,15 @@
 package io.github.ealenxie.paypal.invoices;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
- * @author EalenXie created on 2023/7/20 16:15
+ * @author EalenXie created on 2023/7/21 10:22
  */
-@Getter
-@Setter
-public class DraftInvoiceDetailPayload {
-    /**
-     * currencyCode
-     */
-    @JsonProperty("currency_code")
-    private String currencyCode;
+@NoArgsConstructor
+@Data
+public class InvoiceDetail {
     /**
      * invoiceNumber
      */
@@ -30,6 +25,11 @@ public class DraftInvoiceDetailPayload {
      */
     @JsonProperty("invoice_date")
     private String invoiceDate;
+    /**
+     * currencyCode
+     */
+    @JsonProperty("currency_code")
+    private String currencyCode;
     /**
      * note
      */
@@ -50,4 +50,9 @@ public class DraftInvoiceDetailPayload {
      */
     @JsonProperty("payment_term")
     private PaymentTerm paymentTerm;
+    /**
+     * metadata
+     */
+    @JsonProperty("metadata")
+    private Metadata metadata;
 }

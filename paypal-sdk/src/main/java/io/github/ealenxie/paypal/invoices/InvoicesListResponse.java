@@ -28,7 +28,7 @@ public class InvoicesListResponse {
      * items
      */
     @JsonProperty("items")
-    private List<InvoiceItem> items;
+    private List<InvoicesItem> items;
     /**
      * links
      */

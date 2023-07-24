@@ -88,6 +88,8 @@ paypal-sdk
 | generateQrCode        | [Generate QR code](https://developer.paypal.com/docs/api/invoicing/v2/#invoices_generate-qr-code)                     | ✔️  |
 | generateInvoiceNumber | [Generate invoice number](https://developer.paypal.com/docs/api/invoicing/v2/#invoicing_generate-next-invoice-number) | ✔️  |
 | invoiceDetails        | [Show invoice details](https://developer.paypal.com/docs/api/invoicing/v2/#invoices_get)                              | ✔️  |
+| updateInvoice         | [Fully update invoice](https://developer.paypal.com/docs/api/invoicing/v2/#invoices_update)                           | ✔️  |
+| deleteInvoice         | [Delete invoice](https://developer.paypal.com/docs/api/invoicing/v2/invoices_delete)                                  | ✔️  |
 
 ##### Payments
 

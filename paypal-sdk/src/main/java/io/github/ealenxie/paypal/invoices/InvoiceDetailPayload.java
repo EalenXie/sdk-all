@@ -5,11 +5,16 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * @author EalenXie created on 2023/7/21 10:22
+ * @author EalenXie created on 2023/7/24 10:00
  */
 @NoArgsConstructor
 @Data
-public class InvoiceItemDetail {
+public class InvoiceDetailPayload {
+    /**
+     * currencyCode
+     */
+    @JsonProperty("currency_code")
+    private String currencyCode;
     /**
      * invoiceNumber
      */
@@ -25,11 +30,6 @@ public class InvoiceItemDetail {
      */
     @JsonProperty("invoice_date")
     private String invoiceDate;
-    /**
-     * currencyCode
-     */
-    @JsonProperty("currency_code")
-    private String currencyCode;
     /**
      * note
      */
@@ -50,9 +50,4 @@ public class InvoiceItemDetail {
      */
     @JsonProperty("payment_term")
     private PaymentTerm paymentTerm;
-    /**
-     * metadata
-     */
-    @JsonProperty("metadata")
-    private Metadata metadata;
 }

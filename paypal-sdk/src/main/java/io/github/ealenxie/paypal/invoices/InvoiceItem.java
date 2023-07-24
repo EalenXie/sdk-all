@@ -1,52 +1,49 @@
 package io.github.ealenxie.paypal.invoices;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.github.ealenxie.paypal.Link;
 import io.github.ealenxie.paypal.Money;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-import java.util.List;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
- * @author EalenXie created on 2023/7/21 10:22
+ * @author EalenXie created on 2023/7/20 16:17
  */
-@NoArgsConstructor
-@Data
+@Getter
+@Setter
 public class InvoiceItem {
     /**
-     * id
+     * name
      */
-    @JsonProperty("id")
-    private String id;
+    @JsonProperty("name")
+    private String name;
     /**
-     * status
+     * description
      */
-    @JsonProperty("status")
-    private String status;
+    @JsonProperty("description")
+    private String description;
     /**
-     * detail
+     * quantity
      */
-    @JsonProperty("detail")
-    private InvoiceItemDetail detail;
+    @JsonProperty("quantity")
+    private String quantity;
     /**
-     * invoicer
+     * unitAmount
      */
-    @JsonProperty("invoicer")
-    private Invoicer invoicer;
+    @JsonProperty("unit_amount")
+    private Money unitAmount;
     /**
-     * primaryRecipients
+     * tax
      */
-    @JsonProperty("primary_recipients")
-    private List<PrimaryRecipients> primaryRecipients;
+    @JsonProperty("tax")
+    private TaxAmount tax;
     /**
-     * amount
+     * discount
      */
-    @JsonProperty("amount")
-    private Money amount;
+    @JsonProperty("discount")
+    private PercentMoney discount;
     /**
-     * links
+     * unitOfMeasure
      */
-    @JsonProperty("links")
-    private List<Link> links;
+    @JsonProperty("unit_of_measure")
+    private String unitOfMeasure;
 }

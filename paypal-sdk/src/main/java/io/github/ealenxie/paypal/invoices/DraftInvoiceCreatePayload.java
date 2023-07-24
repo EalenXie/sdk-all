@@ -17,7 +17,7 @@ public class DraftInvoiceCreatePayload {
      * detail
      */
     @JsonProperty("detail")
-    private DraftInvoiceDetailPayload detail;
+    private InvoiceDetailPayload detail;
     /**
      * invoicer
      */
