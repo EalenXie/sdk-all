@@ -5,15 +5,14 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * @author EalenXie created on 2023/7/21 11:06
+ * @author EalenXie created on 2023/7/24 10:51
  */
 @Getter
 @Setter
-public class RefundIdPayload {
-
+public class DisplayPreference {
     /**
-     * refundId
+     * hidden
      */
-    @JsonProperty("refund_id")
-    private String refundId;
+    @JsonProperty("hidden")
+    private Boolean hidden;
 }

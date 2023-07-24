@@ -8,11 +8,11 @@ import lombok.Setter;
 import java.util.List;
 
 /**
- * @author EalenXie created on 2023/7/21 10:21
+ * @author EalenXie created on 2023/7/24 10:42
  */
 @Getter
 @Setter
-public class InvoicesListResponse {
+public class SearchInvoicesResponse {
 
     /**
      * totalItems

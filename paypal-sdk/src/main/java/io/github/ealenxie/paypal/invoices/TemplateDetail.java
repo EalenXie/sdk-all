@@ -4,27 +4,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 /**
- * @author EalenXie created on 2023/7/21 10:22
+ * @author EalenXie created on 2023/7/24 10:51
  */
 @Getter
 @Setter
-public class InvoiceDetail {
-    /**
-     * invoiceNumber
-     */
-    @JsonProperty("invoice_number")
-    private String invoiceNumber;
+public class TemplateDetail {
     /**
      * reference
      */
     @JsonProperty("reference")
     private String reference;
-    /**
-     * invoiceDate
-     */
-    @JsonProperty("invoice_date")
-    private String invoiceDate;
     /**
      * currencyCode
      */
@@ -36,15 +28,20 @@ public class InvoiceDetail {
     @JsonProperty("note")
     private String note;
     /**
-     * term
+     * termsAndConditions
      */
-    @JsonProperty("term")
-    private String term;
+    @JsonProperty("terms_and_conditions")
+    private String termsAndConditions;
     /**
      * memo
      */
     @JsonProperty("memo")
     private String memo;
+    /**
+     * attachments
+     */
+    @JsonProperty("attachments")
+    private List<Attachment> attachments;
     /**
      * paymentTerm
      */

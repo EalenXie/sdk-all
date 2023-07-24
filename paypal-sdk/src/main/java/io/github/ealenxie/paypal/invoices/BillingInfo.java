@@ -35,6 +35,6 @@ public class BillingInfo {
     /**
      * additionalInfoValue
      */
-    @JsonProperty("additional_info_value")
-    private String additionalInfoValue;
+    @JsonProperty("additional_info")
+    private String additionalInfo;
 }

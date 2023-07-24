@@ -8,5 +8,5 @@ import lombok.Getter;
  **/
 @Getter
 public enum AnchorType {
-    APPLICATION,ACCOUNT
+    APPLICATION, ACCOUNT
 }

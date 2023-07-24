@@ -1,6 +1,5 @@
 package io.github.ealenxie.paypal.webhooks;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;

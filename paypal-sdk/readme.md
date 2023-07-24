@@ -90,6 +90,12 @@ paypal-sdk
 | invoiceDetails        | [Show invoice details](https://developer.paypal.com/docs/api/invoicing/v2/#invoices_get)                              | ✔️  |
 | updateInvoice         | [Fully update invoice](https://developer.paypal.com/docs/api/invoicing/v2/#invoices_update)                           | ✔️  |
 | deleteInvoice         | [Delete invoice](https://developer.paypal.com/docs/api/invoicing/v2/invoices_delete)                                  | ✔️  |
+| searchInvoices        | [Search for invoices](https://developer.paypal.com/docs/api/invoicing/v2/#invoices_search-invoices)                   | ✔️  |
+| listTemplates         | [List templates](https://developer.paypal.com/docs/api/invoicing/v2/#templates_list)                                  | ✔️  |
+| createTemplate        | [Create template](https://developer.paypal.com/docs/api/invoicing/v2/#templates_create)                               | ✔️  |
+| templateDetails       | [Show template details](https://developer.paypal.com/docs/api/invoicing/v2/#templates_get)                            | ✔️  |
+| updateTemplate        | [Fully update template](https://developer.paypal.com/docs/api/invoicing/v2/#templates_update)                         | ✔️  |
+| deleteTemplate        | [Delete template](https://developer.paypal.com/docs/api/invoicing/v2/templates_delete)                                | ✔️  |
 
 ##### Payments
 

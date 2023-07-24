@@ -13,7 +13,7 @@ import java.util.List;
 @Getter
 @Setter
 public class CreateWebhookPayload {
-    
+
     /**
      * The URL that is configured to listen on localhost for incoming POST
      * notification messages that contain event information.

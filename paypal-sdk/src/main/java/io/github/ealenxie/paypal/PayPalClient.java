@@ -59,6 +59,7 @@ public class PayPalClient {
 
     private static final String NOTIFICATIONS_WEBHOOKS = "/v1/notifications/webhooks/%s";
     private static final String INVOICING_INVOICES = "/v2/invoicing/invoices/%s";
+    private static final String INVOICING_TEMPLATES = "/v2/invoicing/templates/%s";
 
 
     public PayPalClient() {
@@ -295,7 +296,6 @@ public class PayPalClient {
         return get("/v1/identity/oauth2/userinfo?schema=paypalv1.1", accessToken, null, UserInfo.class);
     }
 
-
     /**
      * <a href="https://developer.paypal.com/docs/api/invoicing/v2/#invoices_create">Create draft invoice</a>
      */
@@ -384,7 +384,7 @@ public class PayPalClient {
      * <a href="https://developer.paypal.com/docs/api/invoicing/v2/#invoices_update">Fully update invoice</a>
      */
     public InvoiceResponse updateInvoice(String accessToken, String invoiceId, InvoiceUpdatePayload payload) {
-        return post(String.format(INVOICING_INVOICES, invoiceId), accessToken, payload, InvoiceResponse.class);
+        return exchange(String.format(INVOICING_INVOICES, invoiceId), HttpMethod.PUT, accessToken, null, payload, InvoiceResponse.class);
     }
 
     /**
@@ -393,6 +393,49 @@ public class PayPalClient {
     public void deleteInvoice(String accessToken, String invoiceId) {
         exchange(String.format(INVOICING_INVOICES, invoiceId), HttpMethod.DELETE, accessToken, null, null, Object.class);
     }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/invoicing/v2/#invoices_search-invoices">Search for invoices</a>
+     */
+    public SearchInvoicesResponse searchInvoices(String accessToken, PageQueryParams queryParams, SearchInvoicesPayload payload) {
+        return exchange("/v2/invoicing/search-invoices", HttpMethod.POST, accessToken, queryParams, payload, SearchInvoicesResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/invoicing/v2/#templates_list">List templates</a>
+     */
+    public TemplatesResponse listTemplates(String accessToken, PageParams pageParams) {
+        return get("/v2/invoicing/templates", accessToken, pageParams, TemplatesResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/invoicing/v2/#templates_create">Create template</a>
+     */
+    public Template createTemplate(String accessToken, CreateTemplatePayload payload) {
+        return post("/v2/invoicing/templates", accessToken, payload, Template.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/invoicing/v2/#templates_get">Show template details</a>
+     */
+    public Template templateDetails(String accessToken, String templateId) {
+        return get(String.format(INVOICING_TEMPLATES, templateId), accessToken, null, Template.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/invoicing/v2/#templates_update">Fully update template</a>
+     */
+    public Template updateTemplate(String accessToken, String templateId, TemplateUpdatePayload payload) {
+        return exchange(String.format(INVOICING_TEMPLATES, templateId), HttpMethod.PUT, accessToken, null, payload, Template.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/invoicing/v2/#templates_delete">Delete template</a>
+     */
+    public void deleteTemplate(String accessToken, String templateId) {
+        exchange(String.format(INVOICING_TEMPLATES, templateId), HttpMethod.DELETE, accessToken, null, null, Object.class);
+    }
+
 
     /**
      * <a href="https://developer.paypal.com/docs/api/referenced-payouts/v1/#referenced-payouts-items_get">Show referenced payout item details</a>
