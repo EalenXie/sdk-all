@@ -456,56 +456,56 @@ public class PayPalClient {
      * <a href="https://developer.paypal.com/docs/api/subscriptions/v1/#plans_create">Create plan</a>
      */
     public PlanResponse createPlan(String accessToken, CreatePlanPayload payload) {
-        return post("/billing/plans", accessToken, payload, PlanResponse.class);
+        return post("/v1/billing/plans", accessToken, payload, PlanResponse.class);
     }
 
     /**
      * <a href="https://developer.paypal.com/docs/api/subscriptions/v1/#plans_list">List plans</a>
      */
     public PlanPayload getPlans(String accessToken, PlanQueryParams queryParams) {
-        return get("/billing/plans", accessToken, queryParams, PlanPayload.class);
+        return get("/v1/billing/plans", accessToken, queryParams, PlanPayload.class);
     }
 
     /**
      * <a href="https://developer.paypal.com/docs/api/subscriptions/v1/#plans_get">Show plan details</a>
      */
     public PlanDetailPayload getPlanDetails(String accessToken, String id) {
-        return get(String.format("/billing/plans/{%s}", id), accessToken, null, PlanDetailPayload.class);
+        return get(String.format("/v1/billing/plans/{%s}", id), accessToken, null, PlanDetailPayload.class);
     }
 
     /**
      * <a href="https://developer.paypal.com/docs/api/subscriptions/v1/#plans_patch">Update plan</a>
      */
     public void updatePlan(String accessToken, String id, List<UpdatePlanPayload> payload) {
-        exchange(String.format("/billing/plans/{%s}", id), HttpMethod.PATCH, accessToken, null, payload, Object.class);
+        exchange(String.format("/v1/billing/plans/{%s}", id), HttpMethod.PATCH, accessToken, null, payload, Object.class);
     }
 
     /**
      * <a href="https://developer.paypal.com/docs/api/subscriptions/v1/#plans_activate">Activate plan</a>
      */
     public void activatePlan(String accessToken, String id) {
-        post(String.format("/billing/plans/{%s}/activate", id), accessToken, null, Object.class);
+        post(String.format("/v1/billing/plans/{%s}/activate", id), accessToken, null, Object.class);
     }
 
     /**
      * <a href="https://developer.paypal.com/docs/api/subscriptions/v1/#plans_deactivate">Deactivate plan</a>
      */
     public void deactivatePlan(String accessToken, String id) {
-        post(String.format("/billing/plans/%s/deactivate", id), accessToken, null, Object.class);
+        post(String.format("/v1/billing/plans/%s/deactivate", id), accessToken, null, Object.class);
     }
 
     /**
      * <a href="https://developer.paypal.com/docs/api/subscriptions/v1/#plans_update-pricing-schemes">Update pricing</a>
      */
     public void updatePricing(String accessToken, String id, UpdatePricingPayload payload) {
-        post(String.format("/billing/plans/%s/update-pricing-schemes", id), accessToken, payload, Object.class);
+        post(String.format("/v1/billing/plans/%s/update-pricing-schemes", id), accessToken, payload, Object.class);
     }
 
     /**
      * <a href="https://developer.paypal.com/docs/api/subscriptions/v1/#subscriptions_create">Create subscription</a>
      */
     public void createSubscription(String accessToken, SubscriptionPayload payload) {
-        post("/billing/subscriptions", accessToken, payload, Object.class);
+        post("/v1/billing/subscriptions", accessToken, payload, Object.class);
     }
 
 
