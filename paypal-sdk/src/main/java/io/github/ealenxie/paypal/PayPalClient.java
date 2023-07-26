@@ -508,6 +508,61 @@ public class PayPalClient {
         post("/v1/billing/subscriptions", accessToken, payload, Object.class);
     }
 
+    /**
+     * <a href="https://developer.paypal.com/docs/api/subscriptions/v1/#subscriptions_get">Show subscription details</a>
+     */
+    public SubscriptionResponse getSubscriptions(String accessToken, String id, FiledQueryParams queryParams) {
+        return get(String.format("/v1/billing/subscriptions/%s", id), accessToken, queryParams, SubscriptionResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/subscriptions/v1/#subscriptions_patch">Update subscription</a>
+     */
+    public void updateSubscription(String accessToken, String id, List<UpdateSubscriptionPayload> payloads) {
+        exchange(String.format("/v1/billing/subscriptions/%s", id), HttpMethod.PATCH, accessToken, null, payloads, Object.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/subscriptions/v1/#subscriptions_revise">Revise plan or quantity of subscription</a>
+     */
+    public void reviseSubscription(String accessToken, String id, ReviseSubscriptionPayload payload) {
+        post(String.format("/v1/billing/subscriptions/%s/revise", id), accessToken, payload, Object.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/subscriptions/v1/#subscriptions_suspend">Suspend subscription</a>
+     */
+    public void suspendSubscription(String accessToken, String id, ReasonPayload payload) {
+        post(String.format("/v1/billing/subscriptions/%s/suspend", id), accessToken, payload, Object.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/subscriptions/v1/#subscriptions_cancel">Cancel subscription</a>
+     */
+    public void cancelSubscription(String accessToken, String id, ReasonPayload payload) {
+        post(String.format("/v1/billing/subscriptions/%s/cancel", id), accessToken, payload, Object.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/subscriptions/v1/#subscriptions_activate">Activate subscription</a>
+     */
+    public void activateSubscription(String accessToken, String id, ReasonPayload payload) {
+        post(String.format("/v1/billing/subscriptions/%s/activate", id), accessToken, payload, Object.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/subscriptions/v1/#subscriptions_capture">Capture authorized payment on subscription</a>
+     */
+    public void captureSubscription(String accessToken, String id, CaptureSubscriptionPayload payload) {
+        post(String.format("/v1/billing/subscriptions/%s/capture", id), accessToken, payload, Object.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/subscriptions/v1/#subscriptions_transactions">List transactions for subscription</a>
+     */
+    public SubscriptionTransactionResponse getSubscriptionTransactions(String accessToken, String id, DateQueryParams queryParams) {
+        return get(String.format("/v1/billing/subscriptions/%s/transactions", id), accessToken, queryParams, SubscriptionTransactionResponse.class);
+    }
 
     /**
      * <a href="https://developer.paypal.com/docs/api/transaction-search/v1/#transactions_get">List transactions</a>

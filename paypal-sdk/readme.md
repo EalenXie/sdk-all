@@ -119,16 +119,24 @@ paypal-sdk
 
 ##### Subscriptions
 
-| 方法名                | 官方文档地址                                                                                                 | 状态  |
-|:-------------------|:-------------------------------------------------------------------------------------------------------|:----|
-| createPlan         | [Create plan](https://developer.paypal.com/docs/api/subscriptions/v1/#plans_create)                    | ✔️  |
-| getPlans           | [List plans](https://developer.paypal.com/docs/api/subscriptions/v1/#plans_list)                       | ✔️  |
-| getPlanDetails     | [Show plan details](https://developer.paypal.com/docs/api/subscriptions/v1/#plans_get)                 | ✔️  |
-| updatePlan         | [Update plan](https://developer.paypal.com/docs/api/subscriptions/v1/#plans_patch)                     | ✔️  |
-| activatePlan       | [Activate plan](https://developer.paypal.com/docs/api/subscriptions/v1/#plans_activate)                | ✔️  |
-| deactivatePlan     | [Deactivate plan](https://developer.paypal.com/docs/api/subscriptions/v1/#plans_deactivate)            | ✔️  |
-| updatePricing      | [Update pricing](https://developer.paypal.com/docs/api/subscriptions/v1/#plans_update-pricing-schemes) | ✔️  |
-| createSubscription | [Create subscription](https://developer.paypal.com/docs/api/subscriptions/v1/#subscriptions_create)    | ✔️  |
+| 方法名                         | 官方文档地址                                                                                                                      | 状态  |
+|:----------------------------|:----------------------------------------------------------------------------------------------------------------------------|:----|
+| createPlan                  | [Create plan](https://developer.paypal.com/docs/api/subscriptions/v1/#plans_create)                                         | ✔️  |
+| getPlans                    | [List plans](https://developer.paypal.com/docs/api/subscriptions/v1/#plans_list)                                            | ✔️  |
+| getPlanDetails              | [Show plan details](https://developer.paypal.com/docs/api/subscriptions/v1/#plans_get)                                      | ✔️  |
+| updatePlan                  | [Update plan](https://developer.paypal.com/docs/api/subscriptions/v1/#plans_patch)                                          | ✔️  |
+| activatePlan                | [Activate plan](https://developer.paypal.com/docs/api/subscriptions/v1/#plans_activate)                                     | ✔️  |
+| deactivatePlan              | [Deactivate plan](https://developer.paypal.com/docs/api/subscriptions/v1/#plans_deactivate)                                 | ✔️  |
+| updatePricing               | [Update pricing](https://developer.paypal.com/docs/api/subscriptions/v1/#plans_update-pricing-schemes)                      | ✔️  |
+| createSubscription          | [Create subscription](https://developer.paypal.com/docs/api/subscriptions/v1/#subscriptions_create)                         | ✔️  |
+| getSubscriptions            | [Show subscription details](https://developer.paypal.com/docs/api/subscriptions/v1/#subscriptions_get)                      | ✔️  |
+| updateSubscription          | [Update subscription](https://developer.paypal.com/docs/api/subscriptions/v1/#subscriptions_patch)                          | ✔️  |
+| reviseSubscription          | [Revise plan or quantity of subscription](https://developer.paypal.com/docs/api/subscriptions/v1/#subscriptions_revise)     | ✔️  |
+| suspendSubscription         | [Suspend subscription](https://developer.paypal.com/docs/api/subscriptions/v1/#subscriptions_suspend)                       | ✔️  |
+| cancelSubscription          | [Cancel subscription](https://developer.paypal.com/docs/api/subscriptions/v1/#subscriptions_cancel)                         | ✔️  |
+| activateSubscription        | [Activate subscription](https://developer.paypal.com/docs/api/subscriptions/v1/#subscriptions_activate)                     | ✔️  |
+| captureSubscription         | [Capture authorized payment on subscription](https://developer.paypal.com/docs/api/subscriptions/v1/#subscriptions_capture) | ✔️  |
+| getSubscriptionTransactions | [List transactions for subscription](https://developer.paypal.com/docs/api/subscriptions/v1/#subscriptions_transactions)    | ✔️  |
 
 ##### Transaction Search
 
