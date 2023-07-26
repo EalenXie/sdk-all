@@ -10,6 +10,10 @@ import io.github.ealenxie.paypal.catalogproducts.ProductResponse;
 import io.github.ealenxie.paypal.disputes.*;
 import io.github.ealenxie.paypal.identity.UserInfo;
 import io.github.ealenxie.paypal.invoices.*;
+import io.github.ealenxie.paypal.orders.CreateOrderPayload;
+import io.github.ealenxie.paypal.orders.CreateOrderResponse;
+import io.github.ealenxie.paypal.orders.OrderDetailsQueryParams;
+import io.github.ealenxie.paypal.orders.OrderDetailsResponse;
 import io.github.ealenxie.paypal.paymentmethodtokens.*;
 import io.github.ealenxie.paypal.payments.CapturePayload;
 import io.github.ealenxie.paypal.payments.PaymentDetails;
@@ -436,6 +440,20 @@ public class PayPalClient {
      */
     public void deleteTemplate(String accessToken, String templateId) {
         exchange(String.format(INVOICING_TEMPLATES, templateId), HttpMethod.DELETE, accessToken, null, null, Object.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/orders/v2/#orders_create">Create order</a>
+     */
+    public CreateOrderResponse createOrder(String accessToken, CreateOrderPayload payload) {
+        return post("/v2/checkout/orders", accessToken, payload, CreateOrderResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/orders/v2/#orders_get">Show order details</a>
+     */
+    public OrderDetailsResponse orderDetails(String accessToken, String id, @Nullable String fields) {
+        return get(String.format("/v2/checkout/orders/%s", id), accessToken, new OrderDetailsQueryParams(fields), OrderDetailsResponse.class);
     }
 
 

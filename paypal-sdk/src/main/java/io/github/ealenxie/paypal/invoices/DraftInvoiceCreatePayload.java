@@ -32,7 +32,7 @@ public class DraftInvoiceCreatePayload {
      * items
      */
     @JsonProperty("items")
-    private List<DraftInvoiceItemPayload> items;
+    private List<InvoiceItemPayload> items;
     /**
      * configuration
      */

@@ -97,6 +97,13 @@ paypal-sdk
 | updateTemplate        | [Fully update template](https://developer.paypal.com/docs/api/invoicing/v2/#templates_update)                         | ✔️  |
 | deleteTemplate        | [Delete template](https://developer.paypal.com/docs/api/invoicing/v2/templates_delete)                                | ✔️  |
 
+##### Orders
+
+| 方法名          | 官方文档地址                                                                            | 状态  |
+|:-------------|:----------------------------------------------------------------------------------|:----|
+| createOrder  | [Create order](https://developer.paypal.com/docs/api/orders/v2/#orders_create)    | ✔️  |
+| orderDetails | [Show order details](https://developer.paypal.com/docs/api/orders/v2/#orders_get) | ✔️  |
+
 ##### Payment Method Tokens
 
 | 方法名                      | 官方文档地址                                                                                                                            | 状态  |
@@ -126,7 +133,6 @@ paypal-sdk
 |:-----------------------|:-------------------------------------------------------------------------------------------------------------------------------------------|:----|
 | referencedPayoutsItems | [Show referenced payout item details](https://developer.paypal.com/docs/api/referenced-payouts/v1/#referenced-payouts-items_get)           | ✔️  |
 | referencedPayouts      | [List items in referenced batch payout](https://developer.paypal.com/docs/api/referenced-payouts/v1/#referenced-payouts_get_batch_details) | ✔️  |
-
 
 ##### Subscriptions
 
