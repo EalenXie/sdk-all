@@ -19,32 +19,32 @@ public class OrderTrackingResponse {
     @JsonProperty("masterOrderNo")
     private String masterOrderNo;
     /**
-     * orderNo
+     * 订单号
      */
     @JsonProperty("orderNo")
     private String orderNo;
     /**
-     * trackingNo
+     * 追踪号
      */
     @JsonProperty("trackingNo")
     private String trackingNo;
     /**
-     * origin
+     * 起始地
      */
     @JsonProperty("origin")
     private String origin;
     /**
-     * destination
+     * 目的地
      */
     @JsonProperty("destination")
     private String destination;
     /**
-     * pickupMode
+     * 揽收方式
      */
     @JsonProperty("pickupMode")
     private String pickupMode;
     /**
-     * status
+     * 最新轨迹状态
      */
     @JsonProperty("status")
     private String status;
@@ -54,7 +54,7 @@ public class OrderTrackingResponse {
     @JsonProperty("vendorName")
     private String vendorName;
     /**
-     * trace
+     * 轨迹详情列表
      */
     @JsonProperty("trace")
     private List<Trace> trace;

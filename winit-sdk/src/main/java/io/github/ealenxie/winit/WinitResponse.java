@@ -22,7 +22,7 @@ public class WinitResponse<T> {
     @JsonDeserialize(using = WinitResponseDeserializer.class)
     private T data;
 
-    private boolean isOk() {
+    public boolean isOk() {
         return "0".equals(code) || "操作成功".equals(msg);
     }
 

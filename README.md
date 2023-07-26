@@ -4,6 +4,11 @@
 ![license](https://img.shields.io/github/license/ealenxie/sdk-all)
 ![java version](https://img.shields.io/badge/JAVA-1.8+-green.svg)
 ![code size](https://img.shields.io/github/languages/code-size/ealenxie/sdk-all)
+
+![last commit](https://img.shields.io/github/last-commit/ealenxie/sdk-all)
+![issues pr](https://img.shields.io/github/issues-pr/ealenxie/sdk-all)
+![issues pr](https://img.shields.io/github/issues/ealenxie/sdk-all)
+
 </div>
 
 $\color{＃4AEE45}{天之道，损有余而补不足。人之道则不然，损不足以奉有余。孰能有余以奉天下？唯有道者。--《道德经》第七十七章 }$
@@ -14,7 +19,7 @@ SDK-ALL是我在工作中总结的一个封装和整合第三方请求SDK的项�
 
 > 💾 设计目标和应用场景
 >
-> - 节省接口对接成本，节省接口对接成本，根据具体场景和业务需求按需引入使用。
+> - 节省接口对接成本，根据具体场景和业务需求按需引入使用。
 > - 让开发者专注于业务开发，将底层SDK与业务代码解耦。
 > - 开源此项目，希望社区的关注与支持，与开发者共同维护，实现项目的可持续迭代发展。
 > - 本项目所有源码均针对平台的官方文档编写，源码中都附有相关地址，请使用时对照官方文档说明，如有疑问，一切以官方文档为准。
@@ -67,7 +72,7 @@ For inquiries and support, please contact us at [ealenxie@outlook.com](mailto:ea
 
 ## Contributing
 
-欢迎参与项目贡献，例如提交PR、修复bug或者新建Issue讨论新的或者变更，特别感谢为此项目做出贡献的人。
+欢迎参与项目贡献，例如提交PR、修复bug或者新建Issue讨论新的或者变更，特别感谢为此项目做出贡献的人🙏。
 
 > - 🔁 项目同步地址：[https://github.com/EalenXie/sdk-all](https://github.com/EalenXie/sdk-all)
 > - 📖 代码贡献指南：[CONTRIBUTING.md](https://github.com/EalenXie/sdk-all/blob/main/CONTRIBUTING.md)

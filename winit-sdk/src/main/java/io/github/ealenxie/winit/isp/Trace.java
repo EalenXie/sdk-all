@@ -16,32 +16,33 @@ public class Trace {
     @JsonProperty("type")
     private String type;
     /**
-     * date
+     * 日期
      */
     @JsonProperty("date")
     private String date;
     /**
-     * location
+     * 地点
      */
     @JsonProperty("location")
     private String location;
     /**
-     * lastEvent
+     * 是否最后轨迹
+     * Y是 N否
      */
     @JsonProperty("lastEvent")
     private String lastEvent;
     /**
-     * eventCode
+     * 轨迹编码
      */
     @JsonProperty("eventCode")
     private String eventCode;
     /**
-     * eventStatus
+     * 轨迹状态
      */
     @JsonProperty("eventStatus")
     private String eventStatus;
     /**
-     * eventDescription
+     * 轨迹描述
      */
     @JsonProperty("eventDescription")
     private String eventDescription;

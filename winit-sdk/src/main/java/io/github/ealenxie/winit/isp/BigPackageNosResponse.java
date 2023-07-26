@@ -14,7 +14,7 @@ import java.util.List;
 public class BigPackageNosResponse {
 
     /**
-     * bigPackageNos
+     * 装箱单号
      */
     @JsonProperty("bigPackageNos")
     private List<String> bigPackageNos;
