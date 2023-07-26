@@ -10,6 +10,7 @@ import io.github.ealenxie.paypal.catalogproducts.ProductResponse;
 import io.github.ealenxie.paypal.disputes.*;
 import io.github.ealenxie.paypal.identity.UserInfo;
 import io.github.ealenxie.paypal.invoices.*;
+import io.github.ealenxie.paypal.paymentmethodtokens.*;
 import io.github.ealenxie.paypal.payments.CapturePayload;
 import io.github.ealenxie.paypal.payments.PaymentDetails;
 import io.github.ealenxie.paypal.payments.Payouts;
@@ -576,6 +577,48 @@ public class PayPalClient {
      */
     public BalancesResponse balances(String accessToken, BalancesQueryParams queryParams) {
         return get("/v1/reporting/balances", accessToken, queryParams, BalancesResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/payment-tokens/v3/#payment-tokens_create">Create payment token for a given payment source</a>
+     */
+    public PaymentDetails createPaymentToken(String accessToken, PaymentSourcePayload payload) {
+        return post("/v3/vault/payment-tokens", accessToken, payload, PaymentDetails.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/payment-tokens/v3/#customer_payment-tokens_get">List all payment tokens</a>
+     */
+    public CustomerPaymentTokenResponse getCustomerPaymentTokens(String accessToken, PaymentQueryParams queryParams) {
+        return get("/v3/vault/payment-tokens", accessToken, queryParams, CustomerPaymentTokenResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/payment-tokens/v3/#payment-tokens_get">Retrieve a payment token</a>
+     */
+    public PaymentTokenResponse getPaymentToken(String accessToken, String id) {
+        return get(String.format("/v3/vault/payment-tokens/%s", id), accessToken, null, PaymentTokenResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/payment-tokens/v3/#payment-tokens_delete">Delete payment token</a>
+     */
+    public void deletePaymentToken(String accessToken, String id) {
+        exchange(String.format("/v3/vault/payment-tokens/%s", id), HttpMethod.DELETE, accessToken, null, null, PaymentTokenResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/payment-tokens/v3/#setup-tokens_create">Create a setup token</a>
+     */
+    public void createSetUpToken(String accessToken, TokenPayload payload) {
+        post("/v3/vault/setup-tokens", accessToken, payload, Object.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/payment-tokens/v3/#setup-tokens_get">Retrieve a setup token</a>
+     */
+    public TokenResponse getSetUpToken(String accessToken, String id) {
+        return get(String.format("/v3/vault/payment-tokens/%s", id), accessToken, null, TokenResponse.class);
     }
 
     /**

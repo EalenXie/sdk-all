@@ -97,6 +97,17 @@ paypal-sdk
 | updateTemplate        | [Fully update template](https://developer.paypal.com/docs/api/invoicing/v2/#templates_update)                         | ✔️  |
 | deleteTemplate        | [Delete template](https://developer.paypal.com/docs/api/invoicing/v2/templates_delete)                                | ✔️  |
 
+##### Payment Method Tokens
+
+| 方法名                      | 官方文档地址                                                                                                                            | 状态  |
+|:-------------------------|:----------------------------------------------------------------------------------------------------------------------------------|:----|
+| createPaymentToken       | [Create payment token for a given payment source](https://developer.paypal.com/docs/api/payment-tokens/v3/#payment-tokens_create) | ✔️  |
+| getCustomerPaymentTokens | [List all payment tokens](https://developer.paypal.com/docs/api/payment-tokens/v3/#customer_payment-tokens_get)                   | ✔️  |
+| getPaymentToken          | [Retrieve a payment token](https://developer.paypal.com/docs/api/payment-tokens/v3/#payment-tokens_get)                           | ✔️  |
+| deletePaymentToken       | [Delete payment token](https://developer.paypal.com/docs/api/payment-tokens/v3/#payment-tokens_delete)                            | ✔️  |
+| createSetUpToken         | [Create a setup token](https://developer.paypal.com/docs/api/payment-tokens/v3/#setup-tokens_create)                              | ✔️  |
+| getSetUpToken            | [Retrieve a setup token](https://developer.paypal.com/docs/api/payment-tokens/v3/#setup-tokens_get)                               | ✔️  |
+
 ##### Payments
 
 | 方法名                          | 官方文档地址                                                                                                          | 状态  |
