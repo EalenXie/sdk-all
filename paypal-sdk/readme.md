@@ -127,12 +127,23 @@ paypal-sdk
 | refundCapturedPayment        | [Refund captured payment](https://developer.paypal.com/docs/api/payments/v2/#captures_refund)                   | ✔️  |
 | showRefundDetails            | [Show refund details](https://developer.paypal.com/docs/api/payments/v2/#refunds_get)                           | ✔️  |
 
+##### Payouts
+
+| 方法名                          | 官方文档地址                                                                                                               | 状态  |
+|:-----------------------------|:---------------------------------------------------------------------------------------------------------------------|:----|
+| batchCreatePayout            | [Create batch payout](https://developer.paypal.com/docs/api/payments.payouts-batch/v1/#payouts_post)                 | ✔️  |
+| payoutBatchDetails           | [Show payout batch details](https://developer.paypal.com/docs/api/payments.payouts-batch/v1/#payouts_get)            | ✔️  |
+| payoutItemDetails            | [Show payout item details](https://developer.paypal.com/docs/api/payments.payouts-batch/v1/#payouts-item_get)        | ✔️  |
+| cancelUnclaimedPayoutItem    | [Cancel unclaimed payout item](https://developer.paypal.com/docs/api/payments.payouts-batch/v1/#payouts-item_cancel) | ✔️  |
+
 ##### Referenced Payouts
 
-| 方法名                    | 官方文档地址                                                                                                                                     | 状态  |
-|:-----------------------|:-------------------------------------------------------------------------------------------------------------------------------------------|:----|
-| referencedPayoutsItems | [Show referenced payout item details](https://developer.paypal.com/docs/api/referenced-payouts/v1/#referenced-payouts-items_get)           | ✔️  |
-| referencedPayouts      | [List items in referenced batch payout](https://developer.paypal.com/docs/api/referenced-payouts/v1/#referenced-payouts_get_batch_details) | ✔️  |
+| 方法名                    | 官方文档地址                                                                                                                                              | 状态  |
+|:--------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------|:----|
+| batchCreateReferencedPayout     | [Create referenced batch payout](https://developer.paypal.com/docs/api/referenced-payouts/v1/#referenced-payouts_create_batch)             | ✔️  |
+| referencedPayoutsItems          | [Show referenced payout item details](https://developer.paypal.com/docs/api/referenced-payouts/v1/#referenced-payouts-items_get)           | ✔️  |
+| createReferencedPayoutItem      | [Create referenced payout item](https://developer.paypal.com/docs/api/referenced-payouts/v1/#referenced-payouts-items_create)              | ✔️  |
+| referencedPayouts               | [List items in referenced batch payout](https://developer.paypal.com/docs/api/referenced-payouts/v1/#referenced-payouts_get_batch_details) | ✔️  |
 
 ##### Subscriptions
 
