@@ -1,6 +1,7 @@
-package io.github.ealenxie.payoneer.vo;
+package io.github.ealenxie.payoneer.transaction;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.ealenxie.payoneer.PayoneerPage;
 import lombok.Getter;
 import lombok.Setter;
 

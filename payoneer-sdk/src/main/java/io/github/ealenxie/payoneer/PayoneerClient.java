@@ -2,8 +2,11 @@ package io.github.ealenxie.payoneer;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.github.ealenxie.payoneer.dto.TransactionsDTO;
-import io.github.ealenxie.payoneer.vo.*;
+import io.github.ealenxie.payoneer.account.AccountBalance;
+import io.github.ealenxie.payoneer.account.ReceiveAccount;
+import io.github.ealenxie.payoneer.oauth.*;
+import io.github.ealenxie.payoneer.transaction.Transaction;
+import io.github.ealenxie.payoneer.transaction.TransactionsQueryParams;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
 import org.springframework.lang.Nullable;
@@ -13,7 +16,9 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
-import java.util.SortedMap;
+import java.util.Collection;
+import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 
 /**
@@ -21,6 +26,8 @@ import java.util.UUID;
  * <a href="https://developer.payoneer.com/">派安盈 跨境收款</a>
  */
 public class PayoneerClient {
+    private final String clientId;
+    private final String clientSecret;
 
     private final RestOperations restOperations;
 
@@ -30,10 +37,6 @@ public class PayoneerClient {
      */
     private boolean sandBox = true;
     /**
-     * 沙箱环境接口地址
-     */
-    private static final String HOST_SANDBOX = "https://api.sandbox.payoneer.com";
-    /**
      * 沙箱环境认证接口地址
      */
     private static final String HOST_AUTH_SANDBOX = "https://login.sandbox.payoneer.com";
@@ -42,18 +45,27 @@ public class PayoneerClient {
      */
     private static final String HOST_AUTH = "https://login.payoneer.com";
     /**
+     * 沙箱环境接口地址
+     */
+    private static final String HOST_SANDBOX = "https://api.sandbox.payoneer.com";
+    /**
      * 正式环境接口地址
      */
     private static final String HOST = "https://api.payoneer.com";
 
-    public PayoneerClient() {
-        this(new RestTemplate());
+    public PayoneerClient(String clientId, String clientSecret) {
+        this(clientId, clientSecret, new RestTemplate());
     }
 
-    public PayoneerClient(RestOperations restOperations) {
+    public PayoneerClient(String clientId, String clientSecret, RestOperations restOperations) {
+        this.clientId = clientId;
+        this.clientSecret = clientSecret;
         this.restOperations = restOperations;
     }
 
+    public RestOperations getRestOperations() {
+        return restOperations;
+    }
 
     public boolean isSandBox() {
         return sandBox;
@@ -63,10 +75,10 @@ public class PayoneerClient {
         this.sandBox = sandBox;
     }
 
-    private static final String GRANT_TYPE = "grant_type";
 
-    public HttpHeaders getBearerHeader(String accessToken) {
+    public HttpHeaders getBearerHeaders(String accessToken) {
         HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
         headers.setBearerAuth(accessToken);
         return headers;
     }
@@ -86,66 +98,55 @@ public class PayoneerClient {
     /**
      * <a href="https://developer.payoneer.com/docs/mass-payouts-and-services.html#/ZG9jOjM1Njc3Mzcz-requesting-an-application-token">客户端模式 获取应用令牌</a>
      */
-    public PayoneerAccessToken applicationToken(String clientId, String clientSecret) {
-        HttpHeaders headers = getBasicHeader(clientId, clientSecret);
-        LinkedMultiValueMap<String, String> queryParams = new LinkedMultiValueMap<>();
-        queryParams.add(GRANT_TYPE, "client_credentials");
-        queryParams.add("scope", "read write openid");
-        return getPayoneerAccessToken(queryParams, headers);
+    public PayoneerAccessToken applicationToken(ApplicationTokenQueryParams queryParams) {
+        return getPayoneerAccessToken(queryParams);
     }
 
     /**
      * <a href="https://developer.payoneer.com/docs/mass-payouts-and-services.html#/165d55c0063ef-requesting-an-access-token">授权码模式 获取访问令牌</a>
      */
-    public PayoneerAccessToken accessToken(String clientId, String clientSecret, String code, String redirectUri) {
-        LinkedMultiValueMap<String, String> queryParams = new LinkedMultiValueMap<>();
-        queryParams.add(GRANT_TYPE, "authorization_code");
-        queryParams.add("client_id", clientId);
-        queryParams.add("client_secret", clientSecret);
-        queryParams.add("code", code);
-        queryParams.add("redirect_uri", redirectUri);
-        return getPayoneerAccessToken(queryParams, new HttpHeaders());
+    public PayoneerAccessToken accessToken(String code, String redirectUri) {
+        AccessTokenPayload payload = new AccessTokenPayload();
+        payload.setClientId(clientId);
+        payload.setClientSecret(clientSecret);
+        payload.setCode(code);
+        payload.setRedirectUri(redirectUri);
+        return getPayoneerAccessToken(payload);
     }
 
     /**
      * <a href="https://developer.payoneer.com/docs/mass-payouts-and-services.html#/d568eb67b0d74-refreshing-an-access-token">刷新访问令牌</a>
      */
-    public PayoneerAccessToken refreshAccessToken(String clientId, String clientSecret, String refreshToken) {
-        HttpHeaders headers = getBasicHeader(clientId, clientSecret);
-        LinkedMultiValueMap<String, String> queryParams = new LinkedMultiValueMap<>();
-        queryParams.add(GRANT_TYPE, "refresh_token");
-        queryParams.add("refresh_token", refreshToken);
-        return getPayoneerAccessToken(queryParams, headers);
+    public PayoneerAccessToken refreshAccessToken(String refreshToken) {
+        return getPayoneerAccessToken(new RefreshTokenPayload(refreshToken));
     }
 
 
     /**
      * <a href="https://developer.payoneer.com/docs/mass-payouts-and-services.html#/8b1ba91980ea6-revoking-a-refresh-token">撤销令牌</a>
      *
-     * @param clientId      客户端ID
-     * @param clientSecret  客户端密钥
      * @param tokenTypeHint 令牌类型 "access_token" "refresh_token"
      * @param token         令牌值
      */
-    public RevokeToken revokeToken(String clientId, String clientSecret, String tokenTypeHint, String token) {
+    public RevokeToken revokeToken(String tokenTypeHint, String token) {
         HttpHeaders headers = getBasicHeader(clientId, clientSecret);
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(String.format("%s/api/v2/oauth2/revoke", sandBox ? HOST_AUTH_SANDBOX : HOST_AUTH));
-        URI uri = builder.build().encode().toUri();
+        URI uri = buildUri(getAuthHost(), "/api/v2/oauth2/revoke", null);
         LinkedMultiValueMap<String, String> queryParams = new LinkedMultiValueMap<>();
         queryParams.add("token_type_hint", tokenTypeHint);
         queryParams.add("token", token);
-        HttpEntity<LinkedMultiValueMap<String, String>> httpEntity = new HttpEntity<>(queryParams, headers);
-        return restOperations.exchange(uri, HttpMethod.POST, httpEntity, RevokeToken.class).getBody();
+        return restOperations.exchange(uri, HttpMethod.POST, new HttpEntity<>(queryParams, headers), RevokeToken.class).getBody();
     }
 
     @Nullable
-    private PayoneerAccessToken getPayoneerAccessToken(LinkedMultiValueMap<String, String> queryParams, HttpHeaders headers) {
+    private PayoneerAccessToken getPayoneerAccessToken(Object authRequest) {
+        HttpHeaders headers = getBasicHeader(clientId, clientSecret);
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(String.format("%s/api/v2/oauth2/token", sandBox ? HOST_AUTH_SANDBOX : HOST_AUTH));
-        HttpEntity<LinkedMultiValueMap<String, String>> httpEntity = new HttpEntity<>(queryParams, headers);
-        URI uri = builder.build().encode().toUri();
-        ResponseEntity<PayoneerAccessToken> exchange = restOperations.exchange(uri, HttpMethod.POST, httpEntity, PayoneerAccessToken.class);
+        URI uri = buildUri(getAuthHost(), "/api/v2/oauth2/token", null);
+        LinkedMultiValueMap<String, String> queryParams = new LinkedMultiValueMap<>();
+        queryParams.setAll(mapper.convertValue(authRequest, new TypeReference<Map<String, String>>() {
+        }));
+        ResponseEntity<PayoneerAccessToken> exchange = restOperations.exchange(uri, HttpMethod.POST, new HttpEntity<>(queryParams, headers), PayoneerAccessToken.class);
         return exchange.getBody();
     }
 
@@ -155,14 +156,9 @@ public class PayoneerClient {
      * @param accessToken 访问令牌
      * @param accountId   账户Id
      */
-    public AccountBalance accountBalances(String accessToken, String accountId) {
-        HttpHeaders headers = getBearerHeader(accessToken);
-        headers.setContentType(MediaType.APPLICATION_JSON);
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(String.format("%s/v4/accounts/%s/balances", sandBox ? HOST_SANDBOX : HOST, accountId));
-        URI uri = builder.build().encode().toUri();
-        ResponseEntity<PayoneerResult<AccountBalance>> exchange = restOperations.exchange(uri, HttpMethod.GET, new HttpEntity<>(null, headers), new ParameterizedTypeReference<PayoneerResult<AccountBalance>>() {
+    public PayoneerResult<AccountBalance> accountBalances(String accessToken, String accountId) {
+        return get(String.format("/v4/accounts/%s/balances", accountId), accessToken, null, new ParameterizedTypeReference<PayoneerResult<AccountBalance>>() {
         });
-        return payoneerResult(exchange);
     }
 
     /**
@@ -171,14 +167,9 @@ public class PayoneerClient {
      * @param accessToken 访问令牌
      * @param accountId   账户Id
      */
-    public ReceiveAccount receivingAccounts(String accessToken, String accountId) {
-        HttpHeaders headers = getBearerHeader(accessToken);
-        headers.setContentType(MediaType.APPLICATION_JSON);
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(String.format("%s/v4/accounts/%s/receiving_accounts", sandBox ? HOST_SANDBOX : HOST, accountId));
-        URI uri = builder.build().encode().toUri();
-        ResponseEntity<PayoneerResult<ReceiveAccount>> exchange = restOperations.exchange(uri, HttpMethod.GET, new HttpEntity<>(null, headers), new ParameterizedTypeReference<PayoneerResult<ReceiveAccount>>() {
+    public PayoneerResult<ReceiveAccount> receivingAccounts(String accessToken, String accountId) {
+        return get(String.format("/v4/accounts/%s/receiving_accounts", accountId), accessToken, null, new ParameterizedTypeReference<PayoneerResult<ReceiveAccount>>() {
         });
-        return payoneerResult(exchange);
     }
 
 
@@ -188,42 +179,213 @@ public class PayoneerClient {
      *
      * @param accessToken 访问令牌
      * @param accountId   账号id
-     * @param dto         请求参数
      */
-    public Transaction transactions(String accessToken, String accountId, TransactionsDTO dto) {
-        HttpHeaders headers = getBearerHeader(accessToken);
-        headers.setContentType(MediaType.APPLICATION_JSON);
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(String.format("%s/v4/accounts/%s/transactions", sandBox ? HOST_SANDBOX : HOST, accountId));
-        SortedMap<String, String> sortedMap = mapper.convertValue(dto, new TypeReference<SortedMap<String, String>>() {
+    public PayoneerResult<Transaction> transactions(String accessToken, String accountId, TransactionsQueryParams queryParams) {
+        return get(String.format("/v4/accounts/%s/transactions", accountId), accessToken, queryParams, new ParameterizedTypeReference<PayoneerResult<Transaction>>() {
         });
-        LinkedMultiValueMap<String, String> queryParams = new LinkedMultiValueMap<>();
-        queryParams.setAll(sortedMap);
-        builder.queryParams(queryParams);
-        URI uri = builder.build().encode().toUri();
-        ResponseEntity<PayoneerResult<Transaction>> exchange = restOperations.exchange(uri, HttpMethod.GET, new HttpEntity<>(null, headers), new ParameterizedTypeReference<PayoneerResult<Transaction>>() {
-        });
-        return payoneerResult(exchange);
+    }
+
+
+    /**
+     * GET 调用 API
+     *
+     * @param urlNotHost   不带host的请求url
+     * @param accessToken  访问令牌
+     * @param queryParams  url请求参数
+     * @param responseType 响应类型
+     */
+    protected <T> T get(String urlNotHost, String accessToken, @Nullable Object queryParams, Class<T> responseType) {
+        return exchange(urlNotHost, HttpMethod.GET, accessToken, queryParams, null, responseType);
     }
 
     /**
-     * <a href="https://developer.payoneer.com/docs/get-transactions-v4.html#/b3A6MzU2Nzc0MTI-get-transactions">Get Transactions</a>
-     * <p>获取与 account_id 关联的所有收款帐户在一定日期范围内的交易流水。返回的事务数由 page_size 参数指定。后续调用会检索额外的交易数据页面。</p>
+     * GET 调用 API
      *
-     * @param accessToken 访问令牌
-     * @param next        下一页
+     * @param urlNotHost   不带host的请求url
+     * @param accessToken  访问令牌
+     * @param queryParams  url请求参数
+     * @param responseType 响应类型
      */
-    public Transaction transactions(String accessToken, String next) {
-        HttpHeaders headers = getBearerHeader(accessToken);
-        headers.setContentType(MediaType.APPLICATION_JSON);
-        ResponseEntity<PayoneerResult<Transaction>> exchange = restOperations.exchange(URI.create(String.format("%s%s", sandBox ? HOST_SANDBOX : HOST, next)), HttpMethod.GET, new HttpEntity<>(null, headers), new ParameterizedTypeReference<PayoneerResult<Transaction>>() {
-        });
-        return payoneerResult(exchange);
+    protected <T> T get(String urlNotHost, String accessToken, @Nullable Object queryParams, ParameterizedTypeReference<T> responseType) {
+        return exchange(urlNotHost, HttpMethod.GET, accessToken, queryParams, null, responseType);
+    }
+
+    /**
+     * POST 调用 API
+     *
+     * @param urlNotHost   不带host的请求url
+     * @param accessToken  访问令牌
+     * @param payload      请求参数
+     * @param responseType 响应类型
+     */
+    protected <T> T post(String urlNotHost, String accessToken, @Nullable Object payload, Class<T> responseType) {
+        return exchange(urlNotHost, HttpMethod.POST, accessToken, null, payload, responseType);
+    }
+
+    /**
+     * POST 调用 API
+     *
+     * @param urlNotHost   不带host的请求url
+     * @param accessToken  访问令牌
+     * @param payload      请求参数
+     * @param responseType 响应类型
+     */
+    protected <T> T post(String urlNotHost, String accessToken, @Nullable Object payload, ParameterizedTypeReference<T> responseType) {
+        return exchange(urlNotHost, HttpMethod.POST, accessToken, null, payload, responseType);
+    }
+
+    /**
+     * 调用 API
+     *
+     * @param urlNotHost   不带host的请求url
+     * @param httpMethod   HttpMethod
+     * @param accessToken  访问令牌
+     * @param queryParams  url请求参数
+     * @param payload      请求body
+     * @param responseType 响应类型
+     * @return 响应结果对象
+     */
+    protected <T> T exchange(String urlNotHost, HttpMethod httpMethod, String accessToken, @Nullable Object queryParams, @Nullable Object payload, Class<T> responseType) {
+        return exchange(urlNotHost, httpMethod, queryParams, new HttpEntity<>(payload, getBearerHeaders(accessToken)), responseType);
+    }
+
+    /**
+     * 调用 API
+     *
+     * @param urlNotHost   不带host的请求url
+     * @param httpMethod   HttpMethod
+     * @param queryParams  url请求参数
+     * @param httpEntity   httpEntity
+     * @param responseType 响应类型
+     * @return 响应结果对象
+     */
+    protected <T> T exchange(String urlNotHost, HttpMethod httpMethod, @Nullable Object queryParams, HttpEntity<?> httpEntity, Class<T> responseType) {
+        return getRestOperations().exchange(buildUri(urlNotHost, queryParams), httpMethod, httpEntity, responseType).getBody();
+    }
+
+    /**
+     * 调用 API
+     *
+     * @param urlNotHost   不带host的请求url
+     * @param httpMethod   HttpMethod
+     * @param accessToken  访问令牌
+     * @param queryParams  url请求参数
+     * @param payload      请求body
+     * @param responseType 响应类型
+     * @return 响应结果对象
+     */
+    protected <T> T exchange(String urlNotHost, HttpMethod httpMethod, String accessToken, @Nullable Object queryParams, @Nullable Object payload, ParameterizedTypeReference<T> responseType) {
+        return exchange(buildUri(urlNotHost, queryParams), httpMethod, new HttpEntity<>(payload, getBearerHeaders(accessToken)), responseType);
+    }
+
+    /**
+     * 调用 API
+     *
+     * @param urlNotHost   不带host的请求url
+     * @param httpMethod   HttpMethod
+     * @param queryParams  url请求参数
+     * @param httpEntity   httpEntity
+     * @param responseType 响应类型
+     * @return 响应结果对象
+     */
+    protected <T> T exchange(String urlNotHost, HttpMethod httpMethod, @Nullable Object queryParams, HttpEntity<?> httpEntity, ParameterizedTypeReference<T> responseType) {
+        return exchange(buildUri(urlNotHost, queryParams), httpMethod, httpEntity, responseType);
+    }
+
+    /**
+     * 调用 API
+     *
+     * @param uri          uri
+     * @param httpMethod   HttpMethod
+     * @param httpEntity   httpEntity
+     * @param responseType 响应类型
+     * @return 响应结果对象
+     */
+    protected <T> T exchange(URI uri, HttpMethod httpMethod, HttpEntity<?> httpEntity, Class<T> responseType) {
+        return getRestOperations().exchange(uri, httpMethod, httpEntity, responseType).getBody();
+    }
+
+    /**
+     * 调用 API
+     *
+     * @param uri          uri
+     * @param httpMethod   HttpMethod
+     * @param httpEntity   httpEntity
+     * @param responseType 响应类型
+     * @return 响应结果对象
+     */
+    protected <T> T exchange(URI uri, HttpMethod httpMethod, HttpEntity<?> httpEntity, ParameterizedTypeReference<T> responseType) {
+        return getRestOperations().exchange(uri, httpMethod, httpEntity, responseType).getBody();
+    }
+
+    /**
+     * 构建请求URI
+     *
+     * @param urlNotHost  不带host的请求url
+     * @param queryParams url请求参数
+     */
+    protected URI buildUri(String urlNotHost, @Nullable Object queryParams) {
+        return buildUri(getApiHost(), urlNotHost, queryParams);
+    }
+
+    protected String getApiHost() {
+        return isSandBox() ? HOST_SANDBOX : HOST;
+    }
+
+    protected String getAuthHost() {
+        return isSandBox() ? HOST_AUTH_SANDBOX : HOST_AUTH;
+    }
+
+    /**
+     * 构建请求URI
+     *
+     * @param urlNotHost  不带host的请求url
+     * @param queryParams url请求参数
+     */
+    protected URI buildUri(String host, String urlNotHost, @Nullable Object queryParams) {
+        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(String.format("%s%s", host, urlNotHost));
+        if (queryParams != null) {
+            if (queryParams instanceof Map) {
+                @SuppressWarnings("unchecked") Map<String, Object> valueMap = (Map<String, Object>) queryParams;
+                Set<Map.Entry<String, Object>> entrySet = valueMap.entrySet();
+                for (Map.Entry<String, Object> e : entrySet) {
+                    builder.queryParam(e.getKey(), e.getValue());
+                }
+            } else if (queryParams instanceof String) {
+                builder = UriComponentsBuilder.fromHttpUrl(String.format("%s%s?%s", host, urlNotHost, queryParams));
+            } else {
+                builderQueryParam(builder, mapper.convertValue(queryParams, new TypeReference<Map<String, Object>>() {
+                }));
+            }
+        }
+        return builder.build().encode().toUri();
+    }
+
+
+    @SuppressWarnings("all")
+    private void builderQueryParam(UriComponentsBuilder builder, Map<String, Object> args) {
+        Set<Map.Entry<String, Object>> entries = args.entrySet();
+        for (Map.Entry<String, Object> entry : entries) {
+            Object value = entry.getValue();
+            if (value instanceof Map) {
+                Map<String, Object> valueMap = (Map<String, Object>) value;
+                Set<Map.Entry<String, Object>> entrySet = valueMap.entrySet();
+                for (Map.Entry<String, Object> e : entrySet) {
+                    builder.queryParam(e.getKey(), e.getValue());
+                }
+            }
+            if (value instanceof Collection) {
+                builder.queryParam(entry.getKey(), (Collection<?>) value);
+            } else {
+                builder.queryParam(entry.getKey(), value);
+            }
+        }
     }
 
     /**
      * 获取Payoneer接口返回消息体
      */
-    public <T> T payoneerResult(ResponseEntity<PayoneerResult<T>> response) {
+    public <T> T getNonNullResult(ResponseEntity<PayoneerResult<T>> response) {
         PayoneerResult<T> body = response.getBody();
         if (body == null || body.getResult() == null) {
             throw new UnsupportedOperationException("call Payoneer is null");
