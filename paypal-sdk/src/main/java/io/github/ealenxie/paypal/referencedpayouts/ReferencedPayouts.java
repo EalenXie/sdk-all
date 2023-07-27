@@ -30,6 +30,16 @@ public class ReferencedPayouts {
     private String payoutTransactionId;
     @JsonProperty("disbursement_transaction_id")
     private String disbursementTransactionId;
+    @JsonProperty("external_merchant_id")
+    private String externalMerchantId;
+    @JsonProperty("external_reference_id")
+    private String externalReferenceId;
+    @JsonProperty("invoice_id")
+    private String invoiceId;
+    @JsonProperty("custom")
+    private String custom;
+    @JsonProperty("payee_email")
+    private String payeeEmail;
     @JsonProperty("links")
     private List<Link> links;
 }

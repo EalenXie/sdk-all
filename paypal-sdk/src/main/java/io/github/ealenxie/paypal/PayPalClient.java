@@ -21,7 +21,11 @@ import io.github.ealenxie.paypal.payments.CapturePayload;
 import io.github.ealenxie.paypal.payments.PaymentDetails;
 import io.github.ealenxie.paypal.payments.Payouts;
 import io.github.ealenxie.paypal.payments.ReauthorizePayload;
+import io.github.ealenxie.paypal.payouts.*;
+import io.github.ealenxie.paypal.referencedpayouts.ReferencedPayouts;
 import io.github.ealenxie.paypal.referencedpayouts.ReferencedPayoutsItems;
+import io.github.ealenxie.paypal.referencedpayouts.ReferencedPayoutsPayload;
+import io.github.ealenxie.paypal.referencedpayouts.ReferencedPayoutsResponse;
 import io.github.ealenxie.paypal.subscriptions.*;
 import io.github.ealenxie.paypal.tracking.*;
 import io.github.ealenxie.paypal.transaction.BalancesQueryParams;
@@ -445,6 +449,12 @@ public class PayPalClient {
     }
 
     /**
+     * <a href="https://developer.paypal.com/docs/api/referenced-payouts/v1/#referenced-payouts_create_batch">Create referenced batch payout</a>
+     */
+    public ReferencedPayoutsResponse batchCreateReferencedPayout(String accessToken, ReferencedPayoutsPayload payload) {
+        return post("/v1/payments/referenced-payouts", accessToken, payload, ReferencedPayoutsResponse.class);
+    }
+    /**
      * <a href="https://developer.paypal.com/docs/api/orders/v2/#orders_create">Create order</a>
      */
     public CreateOrderResponse createOrder(String accessToken, CreateOrderPayload payload) {
@@ -472,6 +482,12 @@ public class PayPalClient {
         return get(String.format("/v2/customer/partner-referrals/%s", referralId), accessToken, null, ReferralResponse.class);
     }
 
+    /**
+     * <a href="https://developer.paypal.com/docs/api/referenced-payouts/v1/#referenced-payouts-items_create">Create referenced payout item</a>
+     */
+    public ReferencedPayouts createReferencedPayoutItem(String accessToken, ReferencedPayouts payload) {
+        return post("/v1/payments/referenced-payouts", accessToken, payload, ReferencedPayouts.class);
+    }
     /**
      * <a href="https://developer.paypal.com/docs/api/referenced-payouts/v1/#referenced-payouts-items_get">Show referenced payout item details</a>
      */
@@ -813,6 +829,34 @@ public class PayPalClient {
      */
     public WebhookEvent simulateEvent(String accessToken, SimulateEventPayload payload) {
         return post("/v1/notifications/simulate-event", accessToken, payload, WebhookEvent.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/payments.payouts-batch/v1/#payouts_post">Create batch payout</a>
+     */
+    public PayoutResponse batchCreatePayout(String accessToken, PayoutPayload payload) {
+        return post("/v1/payments/payouts", accessToken, payload, PayoutResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/payments.payouts-batch/v1/#payouts_get">Show payout batch details</a>
+     */
+    public PayoutBatchDetails payoutBatchDetails(String accessToken, String payoutBatchId, PayoutQueryParams queryParams) {
+        return get(String.format("/v1/payments/payouts/%s", payoutBatchId), accessToken, queryParams, PayoutBatchDetails.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/payments.payouts-batch/v1/#payouts-item_get">Show payout item details</a>
+     */
+    public PayoutItems payoutItemDetails(String accessToken, String payoutItemId) {
+        return get(String.format("/v1/payments/payouts-item/%s", payoutItemId), accessToken, null, PayoutItems.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/payments.payouts-batch/v1/#payouts-item_cancel">Cancel unclaimed payout item</a>
+     */
+    public PayoutItems cancelUnclaimedPayoutItem(String accessToken, String payoutItemId) {
+        return get(String.format("/v1/payments/payouts-item/%s/cancel", payoutItemId), accessToken, null, PayoutItems.class);
     }
 
     /**
