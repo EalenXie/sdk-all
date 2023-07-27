@@ -10,6 +10,11 @@ import io.github.ealenxie.paypal.catalogproducts.ProductResponse;
 import io.github.ealenxie.paypal.disputes.*;
 import io.github.ealenxie.paypal.identity.UserInfo;
 import io.github.ealenxie.paypal.invoices.*;
+import io.github.ealenxie.paypal.orders.CreateOrderPayload;
+import io.github.ealenxie.paypal.orders.CreateOrderResponse;
+import io.github.ealenxie.paypal.orders.OrderDetailsQueryParams;
+import io.github.ealenxie.paypal.orders.OrderDetailsResponse;
+import io.github.ealenxie.paypal.paymentmethodtokens.*;
 import io.github.ealenxie.paypal.payments.CapturePayload;
 import io.github.ealenxie.paypal.payments.PaymentDetails;
 import io.github.ealenxie.paypal.payments.Payouts;
@@ -19,6 +24,7 @@ import io.github.ealenxie.paypal.referencedpayouts.ReferencedPayouts;
 import io.github.ealenxie.paypal.referencedpayouts.ReferencedPayoutsItems;
 import io.github.ealenxie.paypal.referencedpayouts.ReferencedPayoutsPayload;
 import io.github.ealenxie.paypal.referencedpayouts.ReferencedPayoutsResponse;
+import io.github.ealenxie.paypal.subscriptions.*;
 import io.github.ealenxie.paypal.tracking.*;
 import io.github.ealenxie.paypal.transaction.BalancesQueryParams;
 import io.github.ealenxie.paypal.transaction.BalancesResponse;
@@ -446,6 +452,20 @@ public class PayPalClient {
     public ReferencedPayoutsResponse batchCreateReferencedPayout(String accessToken, ReferencedPayoutsPayload payload) {
         return post("/v1/payments/referenced-payouts", accessToken, payload, ReferencedPayoutsResponse.class);
     }
+    /**
+     * <a href="https://developer.paypal.com/docs/api/orders/v2/#orders_create">Create order</a>
+     */
+    public CreateOrderResponse createOrder(String accessToken, CreateOrderPayload payload) {
+        return post("/v2/checkout/orders", accessToken, payload, CreateOrderResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/orders/v2/#orders_get">Show order details</a>
+     */
+    public OrderDetailsResponse orderDetails(String accessToken, String id, @Nullable String fields) {
+        return get(String.format("/v2/checkout/orders/%s", id), accessToken, new OrderDetailsQueryParams(fields), OrderDetailsResponse.class);
+    }
+
 
     /**
      * <a href="https://developer.paypal.com/docs/api/referenced-payouts/v1/#referenced-payouts-items_create">Create referenced payout item</a>
@@ -468,6 +488,118 @@ public class PayPalClient {
     }
 
     /**
+     * <a href="https://developer.paypal.com/docs/api/subscriptions/v1/#plans_create">Create plan</a>
+     */
+    public PlanResponse createPlan(String accessToken, CreatePlanPayload payload) {
+        return post("/v1/billing/plans", accessToken, payload, PlanResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/subscriptions/v1/#plans_list">List plans</a>
+     */
+    public PlanPayload getPlans(String accessToken, PlanQueryParams queryParams) {
+        return get("/v1/billing/plans", accessToken, queryParams, PlanPayload.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/subscriptions/v1/#plans_get">Show plan details</a>
+     */
+    public PlanDetailPayload getPlanDetails(String accessToken, String id) {
+        return get(String.format("/v1/billing/plans/{%s}", id), accessToken, null, PlanDetailPayload.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/subscriptions/v1/#plans_patch">Update plan</a>
+     */
+    public void updatePlan(String accessToken, String id, List<UpdatePlanPayload> payload) {
+        exchange(String.format("/v1/billing/plans/{%s}", id), HttpMethod.PATCH, accessToken, null, payload, Object.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/subscriptions/v1/#plans_activate">Activate plan</a>
+     */
+    public void activatePlan(String accessToken, String id) {
+        post(String.format("/v1/billing/plans/{%s}/activate", id), accessToken, null, Object.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/subscriptions/v1/#plans_deactivate">Deactivate plan</a>
+     */
+    public void deactivatePlan(String accessToken, String id) {
+        post(String.format("/v1/billing/plans/%s/deactivate", id), accessToken, null, Object.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/subscriptions/v1/#plans_update-pricing-schemes">Update pricing</a>
+     */
+    public void updatePricing(String accessToken, String id, UpdatePricingPayload payload) {
+        post(String.format("/v1/billing/plans/%s/update-pricing-schemes", id), accessToken, payload, Object.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/subscriptions/v1/#subscriptions_create">Create subscription</a>
+     */
+    public void createSubscription(String accessToken, SubscriptionPayload payload) {
+        post("/v1/billing/subscriptions", accessToken, payload, Object.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/subscriptions/v1/#subscriptions_get">Show subscription details</a>
+     */
+    public SubscriptionResponse getSubscriptions(String accessToken, String id, FiledQueryParams queryParams) {
+        return get(String.format("/v1/billing/subscriptions/%s", id), accessToken, queryParams, SubscriptionResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/subscriptions/v1/#subscriptions_patch">Update subscription</a>
+     */
+    public void updateSubscription(String accessToken, String id, List<UpdateSubscriptionPayload> payloads) {
+        exchange(String.format("/v1/billing/subscriptions/%s", id), HttpMethod.PATCH, accessToken, null, payloads, Object.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/subscriptions/v1/#subscriptions_revise">Revise plan or quantity of subscription</a>
+     */
+    public void reviseSubscription(String accessToken, String id, ReviseSubscriptionPayload payload) {
+        post(String.format("/v1/billing/subscriptions/%s/revise", id), accessToken, payload, Object.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/subscriptions/v1/#subscriptions_suspend">Suspend subscription</a>
+     */
+    public void suspendSubscription(String accessToken, String id, ReasonPayload payload) {
+        post(String.format("/v1/billing/subscriptions/%s/suspend", id), accessToken, payload, Object.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/subscriptions/v1/#subscriptions_cancel">Cancel subscription</a>
+     */
+    public void cancelSubscription(String accessToken, String id, ReasonPayload payload) {
+        post(String.format("/v1/billing/subscriptions/%s/cancel", id), accessToken, payload, Object.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/subscriptions/v1/#subscriptions_activate">Activate subscription</a>
+     */
+    public void activateSubscription(String accessToken, String id, ReasonPayload payload) {
+        post(String.format("/v1/billing/subscriptions/%s/activate", id), accessToken, payload, Object.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/subscriptions/v1/#subscriptions_capture">Capture authorized payment on subscription</a>
+     */
+    public void captureSubscription(String accessToken, String id, CaptureSubscriptionPayload payload) {
+        post(String.format("/v1/billing/subscriptions/%s/capture", id), accessToken, payload, Object.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/subscriptions/v1/#subscriptions_transactions">List transactions for subscription</a>
+     */
+    public SubscriptionTransactionResponse getSubscriptionTransactions(String accessToken, String id, DateQueryParams queryParams) {
+        return get(String.format("/v1/billing/subscriptions/%s/transactions", id), accessToken, queryParams, SubscriptionTransactionResponse.class);
+    }
+
+    /**
      * <a href="https://developer.paypal.com/docs/api/transaction-search/v1/#transactions_get">List transactions</a>
      */
     public TransactionDetailsResponse transactions(String accessToken, TransactionsQueryParams queryParams) {
@@ -479,6 +611,48 @@ public class PayPalClient {
      */
     public BalancesResponse balances(String accessToken, BalancesQueryParams queryParams) {
         return get("/v1/reporting/balances", accessToken, queryParams, BalancesResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/payment-tokens/v3/#payment-tokens_create">Create payment token for a given payment source</a>
+     */
+    public PaymentDetails createPaymentToken(String accessToken, PaymentSourcePayload payload) {
+        return post("/v3/vault/payment-tokens", accessToken, payload, PaymentDetails.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/payment-tokens/v3/#customer_payment-tokens_get">List all payment tokens</a>
+     */
+    public CustomerPaymentTokenResponse getCustomerPaymentTokens(String accessToken, PaymentQueryParams queryParams) {
+        return get("/v3/vault/payment-tokens", accessToken, queryParams, CustomerPaymentTokenResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/payment-tokens/v3/#payment-tokens_get">Retrieve a payment token</a>
+     */
+    public PaymentTokenResponse getPaymentToken(String accessToken, String id) {
+        return get(String.format("/v3/vault/payment-tokens/%s", id), accessToken, null, PaymentTokenResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/payment-tokens/v3/#payment-tokens_delete">Delete payment token</a>
+     */
+    public void deletePaymentToken(String accessToken, String id) {
+        exchange(String.format("/v3/vault/payment-tokens/%s", id), HttpMethod.DELETE, accessToken, null, null, PaymentTokenResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/payment-tokens/v3/#setup-tokens_create">Create a setup token</a>
+     */
+    public void createSetUpToken(String accessToken, TokenPayload payload) {
+        post("/v3/vault/setup-tokens", accessToken, payload, Object.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/payment-tokens/v3/#setup-tokens_get">Retrieve a setup token</a>
+     */
+    public TokenResponse getSetUpToken(String accessToken, String id) {
+        return get(String.format("/v3/vault/payment-tokens/%s", id), accessToken, null, TokenResponse.class);
     }
 
     /**

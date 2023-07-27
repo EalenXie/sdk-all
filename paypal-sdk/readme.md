@@ -97,6 +97,24 @@ paypal-sdk
 | updateTemplate        | [Fully update template](https://developer.paypal.com/docs/api/invoicing/v2/#templates_update)                         | ✔️  |
 | deleteTemplate        | [Delete template](https://developer.paypal.com/docs/api/invoicing/v2/templates_delete)                                | ✔️  |
 
+##### Orders
+
+| 方法名          | 官方文档地址                                                                            | 状态  |
+|:-------------|:----------------------------------------------------------------------------------|:----|
+| createOrder  | [Create order](https://developer.paypal.com/docs/api/orders/v2/#orders_create)    | ✔️  |
+| orderDetails | [Show order details](https://developer.paypal.com/docs/api/orders/v2/#orders_get) | ✔️  |
+
+##### Payment Method Tokens
+
+| 方法名                      | 官方文档地址                                                                                                                            | 状态  |
+|:-------------------------|:----------------------------------------------------------------------------------------------------------------------------------|:----|
+| createPaymentToken       | [Create payment token for a given payment source](https://developer.paypal.com/docs/api/payment-tokens/v3/#payment-tokens_create) | ✔️  |
+| getCustomerPaymentTokens | [List all payment tokens](https://developer.paypal.com/docs/api/payment-tokens/v3/#customer_payment-tokens_get)                   | ✔️  |
+| getPaymentToken          | [Retrieve a payment token](https://developer.paypal.com/docs/api/payment-tokens/v3/#payment-tokens_get)                           | ✔️  |
+| deletePaymentToken       | [Delete payment token](https://developer.paypal.com/docs/api/payment-tokens/v3/#payment-tokens_delete)                            | ✔️  |
+| createSetUpToken         | [Create a setup token](https://developer.paypal.com/docs/api/payment-tokens/v3/#setup-tokens_create)                              | ✔️  |
+| getSetUpToken            | [Retrieve a setup token](https://developer.paypal.com/docs/api/payment-tokens/v3/#setup-tokens_get)                               | ✔️  |
+
 ##### Payments
 
 | 方法名                          | 官方文档地址                                                                                                          | 状态  |
@@ -115,6 +133,27 @@ paypal-sdk
 |:-----------------------|:-------------------------------------------------------------------------------------------------------------------------------------------|:----|
 | referencedPayoutsItems | [Show referenced payout item details](https://developer.paypal.com/docs/api/referenced-payouts/v1/#referenced-payouts-items_get)           | ✔️  |
 | referencedPayouts      | [List items in referenced batch payout](https://developer.paypal.com/docs/api/referenced-payouts/v1/#referenced-payouts_get_batch_details) | ✔️  |
+
+##### Subscriptions
+
+| 方法名                         | 官方文档地址                                                                                                                      | 状态  |
+|:----------------------------|:----------------------------------------------------------------------------------------------------------------------------|:----|
+| createPlan                  | [Create plan](https://developer.paypal.com/docs/api/subscriptions/v1/#plans_create)                                         | ✔️  |
+| getPlans                    | [List plans](https://developer.paypal.com/docs/api/subscriptions/v1/#plans_list)                                            | ✔️  |
+| getPlanDetails              | [Show plan details](https://developer.paypal.com/docs/api/subscriptions/v1/#plans_get)                                      | ✔️  |
+| updatePlan                  | [Update plan](https://developer.paypal.com/docs/api/subscriptions/v1/#plans_patch)                                          | ✔️  |
+| activatePlan                | [Activate plan](https://developer.paypal.com/docs/api/subscriptions/v1/#plans_activate)                                     | ✔️  |
+| deactivatePlan              | [Deactivate plan](https://developer.paypal.com/docs/api/subscriptions/v1/#plans_deactivate)                                 | ✔️  |
+| updatePricing               | [Update pricing](https://developer.paypal.com/docs/api/subscriptions/v1/#plans_update-pricing-schemes)                      | ✔️  |
+| createSubscription          | [Create subscription](https://developer.paypal.com/docs/api/subscriptions/v1/#subscriptions_create)                         | ✔️  |
+| getSubscriptions            | [Show subscription details](https://developer.paypal.com/docs/api/subscriptions/v1/#subscriptions_get)                      | ✔️  |
+| updateSubscription          | [Update subscription](https://developer.paypal.com/docs/api/subscriptions/v1/#subscriptions_patch)                          | ✔️  |
+| reviseSubscription          | [Revise plan or quantity of subscription](https://developer.paypal.com/docs/api/subscriptions/v1/#subscriptions_revise)     | ✔️  |
+| suspendSubscription         | [Suspend subscription](https://developer.paypal.com/docs/api/subscriptions/v1/#subscriptions_suspend)                       | ✔️  |
+| cancelSubscription          | [Cancel subscription](https://developer.paypal.com/docs/api/subscriptions/v1/#subscriptions_cancel)                         | ✔️  |
+| activateSubscription        | [Activate subscription](https://developer.paypal.com/docs/api/subscriptions/v1/#subscriptions_activate)                     | ✔️  |
+| captureSubscription         | [Capture authorized payment on subscription](https://developer.paypal.com/docs/api/subscriptions/v1/#subscriptions_capture) | ✔️  |
+| getSubscriptionTransactions | [List transactions for subscription](https://developer.paypal.com/docs/api/subscriptions/v1/#subscriptions_transactions)    | ✔️  |
 
 ##### Transaction Search
 
