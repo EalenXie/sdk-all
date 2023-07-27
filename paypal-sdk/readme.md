@@ -104,6 +104,14 @@ paypal-sdk
 | createOrder  | [Create order](https://developer.paypal.com/docs/api/orders/v2/#orders_create)    | ✔️  |
 | orderDetails | [Show order details](https://developer.paypal.com/docs/api/orders/v2/#orders_get) | ✔️  |
 
+##### Partner Referrals
+
+| 方法名            | 官方文档地址                                                                                                          | 状态  |
+|:---------------|:----------------------------------------------------------------------------------------------------------------|:----|
+| createReferral | [Create partner referral](https://developer.paypal.com/docs/api/partner-referrals/v2/#partner-referrals_create) | ✔️  |
+| getReferral    | [Show referral data](https://developer.paypal.com/docs/api/referenced-payouts/v1/#referenced-payouts-items_get) | ✔️  |
+
+
 ##### Payment Method Tokens
 
 | 方法名                      | 官方文档地址                                                                                                                            | 状态  |

@@ -14,6 +14,8 @@ import io.github.ealenxie.paypal.orders.CreateOrderPayload;
 import io.github.ealenxie.paypal.orders.CreateOrderResponse;
 import io.github.ealenxie.paypal.orders.OrderDetailsQueryParams;
 import io.github.ealenxie.paypal.orders.OrderDetailsResponse;
+import io.github.ealenxie.paypal.partnerreferrals.ReferralPayload;
+import io.github.ealenxie.paypal.partnerreferrals.ReferralResponse;
 import io.github.ealenxie.paypal.paymentmethodtokens.*;
 import io.github.ealenxie.paypal.payments.CapturePayload;
 import io.github.ealenxie.paypal.payments.PaymentDetails;
@@ -466,6 +468,19 @@ public class PayPalClient {
         return get(String.format("/v2/checkout/orders/%s", id), accessToken, new OrderDetailsQueryParams(fields), OrderDetailsResponse.class);
     }
 
+    /**
+     * <a href="https://developer.paypal.com/docs/api/partner-referrals/v2/#partner-referrals_create">Create partner referral</a>
+     */
+    public LinksResponse createReferral(String accessToken, ReferralPayload payload) {
+        return post("/v2/customer/partner-referrals", accessToken, payload, LinksResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/partner-referrals/v2/#partner-referrals_read">Show referral data</a>
+     */
+    public ReferralResponse getReferral(String accessToken, String referralId) {
+        return get(String.format("/v2/customer/partner-referrals/%s", referralId), accessToken, null, ReferralResponse.class);
+    }
 
     /**
      * <a href="https://developer.paypal.com/docs/api/referenced-payouts/v1/#referenced-payouts-items_create">Create referenced payout item</a>
