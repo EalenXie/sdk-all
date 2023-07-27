@@ -13,7 +13,7 @@ import java.util.List;
  */
 @Getter
 @Setter
-public class StatementList {
+public class Statement {
     /**
      * 转账的创建时间
      * 更多信息：
@@ -55,8 +55,7 @@ public class StatementList {
 
     /**
      * 转账金额
-     * <p>
-     * 更多信息：
+     *
      * <p>
      * 此金额在出账时为负数，入账时为正数。
      */
@@ -114,8 +113,7 @@ public class StatementList {
     private String transactionId;
     /**
      * 由集成商定义、每笔转账的唯一ID
-     * <p>
-     * 更多信息：
+     *
      * <p>
      * 字段最大长度：256
      */

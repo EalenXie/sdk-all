@@ -9,7 +9,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class ConsultPayoutDTO {
+public class ConsultPayoutPayload {
     /**
      * 转账到卡业务类型码。当 transferToDetail.transferToAmount.currency = CNY 时，此字段为必填。
      * <p>

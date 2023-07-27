@@ -21,8 +21,7 @@ public class TransferBeneficiary {
     private UserName beneficiaryName;
     /**
      * 代表收款人所在国家/地区的二字母ISO-3166 代码
-     * <p>
-     * 更多信息：
+     *
      * <p>
      * 字段最大长度：3
      */
@@ -33,8 +32,7 @@ public class TransferBeneficiary {
     private Address beneficiaryAddress;
     /**
      * 收款人联系电话
-     * <p>
-     * 更多信息：
+     *
      * <p>
      * 字段最大长度：24
      */
@@ -45,24 +43,21 @@ public class TransferBeneficiary {
     private String beneficiaryEmail;
     /**
      * 收款人注册时间
-     * <p>
-     * 更多信息：
+     *
      * <p>
      * 此字段采用ISO 8601 标准时间戳。如：2018-09-03T00:00:00+08:00，或2019-01-01T01:01:01Z（UTC时间）
      */
     private String beneficiaryRegistrationTime;
     /**
      * 收款人最后登录时间
-     * <p>
-     * 更多信息：
+     *
      * <p>
      * 此字段采用ISO 8601 标准时间戳。如：2018-09-03T00:00:00+08:00，或2019-01-01T01:01:01Z（UTC时间）
      */
     private String beneficiaryLastLoginTime;
     /**
      * 收款人更多信息
-     * <p>
-     * 更多信息：
+     *
      * <p>
      * 字段最大长度：2048
      */

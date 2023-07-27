@@ -13,7 +13,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class ConsultPayoutVO {
+public class ConsultPayoutResponse {
     @JsonProperty("result")
     private Result result;
     /**

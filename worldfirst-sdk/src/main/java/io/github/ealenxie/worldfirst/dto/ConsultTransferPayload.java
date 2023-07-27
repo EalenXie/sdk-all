@@ -13,7 +13,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ConsultTransferDTO {
+public class ConsultTransferPayload {
     /**
      * 支付方需要支付的转账到卡金额
      */

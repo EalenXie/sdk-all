@@ -1,6 +1,8 @@
 package io.github.ealenxie.worldfirst.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
@@ -9,6 +11,8 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class InquiryPayoutDTO {
+@AllArgsConstructor
+@NoArgsConstructor
+public class TransferRequestIdPayload {
     private String transferRequestId;
 }

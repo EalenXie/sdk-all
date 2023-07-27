@@ -12,8 +12,7 @@ import lombok.Setter;
 public class TransferPayer {
     /**
      * 由集成商定义的唯一付款人ID
-     * <p>
-     * 更多信息：
+     *
      * <p>
      * 字段最大长度：64
      */
@@ -32,8 +31,7 @@ public class TransferPayer {
     private Address payerAddress;
     /**
      * 付款人的手机号码
-     * <p>
-     * 更多信息：
+     *
      * <p>
      * 字段最大长度：24
      */
@@ -44,24 +42,21 @@ public class TransferPayer {
     private String payerEmail;
     /**
      * 付款人注册时间
-     * <p>
-     * 更多信息：
+     *
      * <p>
      * 此字段采用ISO 8601 标准时间戳。如：2018-09-03T00:00:00+08:00，或2019-01-01T01:01:01Z（UTC时间）
      */
     private String payerRegistrationTime;
     /**
      * 付款人最后登录时间
-     * <p>
-     * 更多信息：
+     *
      * <p>
      * 此字段采用ISO 8601 标准时间戳。如：2018-09-03T00:00:00+08:00，或2019-01-01T01:01:01Z（UTC时间）
      */
     private String payerLastLoginTime;
     /**
      * 付款人更多信息
-     * <p>
-     * 更多信息：
+     *
      * <p>
      * 字段最大长度：2048
      */

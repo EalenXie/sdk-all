@@ -13,13 +13,12 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class CreatePayoutVO {
+public class CreatePayoutResponse {
     @JsonProperty("result")
     private Result result;
     /**
      * 由集成商定义的唯一转账代发识别ID
-     * <p>
-     * 更多信息：
+     *
      * <p>
      * 此字段为幂等字段
      * 字段最大长度：64
@@ -28,8 +27,7 @@ public class CreatePayoutVO {
     private String transferRequestId;
     /**
      * 由万里汇定义的转账代发识别ID
-     * <p>
-     * 更多信息：
+     *
      * <p>
      * 字段最大长度：64
      */

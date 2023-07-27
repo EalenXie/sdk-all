@@ -12,7 +12,7 @@ import java.util.List;
  */
 @Getter
 @Setter
-public class InquiryStatementVO {
+public class InquiryStatementResponse {
     @JsonProperty("result")
     private Result result;
     /**
@@ -24,7 +24,7 @@ public class InquiryStatementVO {
      * 对账单列表。
      */
     @JsonProperty("statementList")
-    private List<StatementList> statementList;
+    private List<Statement> statementList;
 
     /**
      * 本次查询结果的总条目数。

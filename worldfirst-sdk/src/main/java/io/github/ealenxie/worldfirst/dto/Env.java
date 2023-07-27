@@ -12,24 +12,21 @@ import lombok.Setter;
 public class Env {
     /**
      * 客户端IP地址
-     * <p>
-     * 更多信息：
+     *
      * <p>
      * 字段最大长度：64
      */
     private String clientIp;
     /**
      * 会话ID
-     * <p>
-     * 更多信息：
+     *
      * <p>
      * 字段最大长度：64
      */
     private String sessionId;
     /**
      * 设备令牌ID，用于查询所有apdid sdk的设备数据
-     * <p>
-     * 更多信息：
+     *
      * <p>
      * 字段最大长度：128
      */
@@ -40,40 +37,35 @@ public class Env {
     private String terminalType;
     /**
      * 用户正在使用的界面语言
-     * <p>
-     * 更多信息：
+     *
      * <p>
      * 字段最大长度：8
      */
     private String language;
     /**
      * 阿里巴巴集团的umid sdk生成的deviceId。
-     * <p>
-     * 更多信息：
+     *
      * <p>
      * 字段最大长度：128
      */
     private String clientUmid;
     /**
      * 用于关联集团umid上报数据的token。
-     * <p>
-     * 更多信息：
+     *
      * <p>
      * 字段最大长度：64
      */
     private String umidTokenId;
     /**
      * 用户代理
-     * <p>
-     * 更多信息：
+     *
      * <p>
      * 字段最大长度：1024
      */
     private String userAgent;
     /**
      * 用户上网跟踪记录ID
-     * <p>
-     * 更多信息：
+     *
      * <p>
      * 字段最大长度：64
      */
@@ -102,24 +94,21 @@ public class Env {
     private String osVersion;
     /**
      * 设备信息
-     * <p>
-     * 更多信息：
+     *
      * <p>
      * 字段最大长度：32
      */
     private String deviceModel;
     /**
      * 设备品牌及型号
-     * <p>
-     * 更多信息：
+     *
      * <p>
      * 字段最大长度：32
      */
     private String deviceVersion;
     /**
      * 软件版本
-     * <p>
-     * 更多信息：
+     *
      * <p>
      * 字段最大长度：32
      */
@@ -163,8 +152,7 @@ public class Env {
     private String browserTimeZone;
     /**
      * 请求操作入口，可用于区分如商户直接请求和第三方小程序请求，例如LZD场景下区分小程序入口operateEntrance:对于GCash，标记值为"GCash-Mini", 对于TNG，值为"TNG-Mini"
-     * <p>
-     * 更多信息：
+     *
      * <p>
      * 字段最大长度：64
      */

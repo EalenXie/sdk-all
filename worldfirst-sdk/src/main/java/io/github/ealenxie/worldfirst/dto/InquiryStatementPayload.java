@@ -14,7 +14,7 @@ import java.util.List;
  */
 @Getter
 @Setter
-public class InquiryStatementDTO {
+public class InquiryStatementPayload {
 
     /**
      * 账单开始时间。

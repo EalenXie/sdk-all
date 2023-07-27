@@ -14,8 +14,7 @@ import java.util.List;
 public class TransferOrderAddition {
     /**
      * 商户端的订单ID，用于用户消费记录展示，支付后续操作如客诉、争议等追踪使用。
-     * <p>
-     * 更多信息：
+     *
      * <p>
      * 字段最大长度：64
      */
@@ -34,8 +33,7 @@ public class TransferOrderAddition {
     private List<TransferToAddition> transferToAddition;
     /**
      * 额外的信息。
-     * <p>
-     * 更多信息：
+     *
      * <p>
      * 字段最大长度：2048
      */

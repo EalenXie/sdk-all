@@ -13,13 +13,12 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class CreateTransferVO {
+public class CreateTransferResponse {
     @JsonProperty("result")
     private Result result;
     /**
      * 由集成商定义的唯一转账代发识别ID
-     * <p>
-     * 更多信息：
+     *
      * <p>
      * 此字段为幂等字段
      * 字段最大长度：64
@@ -28,8 +27,7 @@ public class CreateTransferVO {
     private String transferRequestId;
     /**
      * 由万里汇定义的转账代发识别ID
-     * <p>
-     * 更多信息：
+     *
      * <p>
      * 字段最大长度：64
      */
@@ -37,8 +35,7 @@ public class CreateTransferVO {
     private String transferId;
     /**
      * 本次转账代发请求的结束时间。万里汇只在用户发送重复请求的时候返回此传参，以表明实际上的结束时间。
-     * <p>
-     * 更多信息：
+     *
      * <p>
      * 此字段采用ISO 8601 标准时间戳。如：2018-09-03T00:00:00+08:00，或2019-01-01T01:01:01Z（UTC时间）
      */

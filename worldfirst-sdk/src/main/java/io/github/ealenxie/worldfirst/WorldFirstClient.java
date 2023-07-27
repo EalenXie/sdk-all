@@ -34,6 +34,7 @@ public abstract class WorldFirstClient {
 
     private final RestOperations restOperations;
     private final ObjectMapper objectMapper;
+    private final RequireArgs requireArgs;
     /**
      * 是否是沙箱环境
      */
@@ -47,17 +48,22 @@ public abstract class WorldFirstClient {
         this.sandbox = sandbox;
     }
 
-    protected WorldFirstClient() {
-        this(new RestTemplate(), new ObjectMapper());
+    protected WorldFirstClient(RequireArgs requireArgs) {
+        this(new RestTemplate(), new ObjectMapper(), requireArgs);
     }
 
-    protected WorldFirstClient(RestOperations restOperations, ObjectMapper objectMapper) {
+    protected WorldFirstClient(RestOperations restOperations, ObjectMapper objectMapper, RequireArgs requireArgs) {
         this.restOperations = restOperations;
         this.objectMapper = objectMapper;
+        this.requireArgs = requireArgs;
     }
 
     public RestOperations getRestOperations() {
         return restOperations;
+    }
+
+    public RequireArgs getRequireArgs() {
+        return requireArgs;
     }
 
     /**
@@ -85,29 +91,22 @@ public abstract class WorldFirstClient {
     public static final ZoneId DEFAULT_ZONEID = ZoneId.of("Asia/Shanghai");
 
 
-    /**
-     * 调用万里汇接口
-     *
-     * @param serviceName   服务名
-     * @param requireArgs   系统级必填参数
-     * @param dto           业务请求参数
-     * @param typeReference 响应结果类型
-     */
-    public <T> T postWorldfirst(String serviceName, RequireArgs requireArgs, Object dto, String customerId, ParameterizedTypeReference<T> typeReference) {
+
+    public <T> T postWorldfirst(String serviceName ,Object payload, ParameterizedTypeReference<T> typeReference) {
         String url = getUrlNotHost(serviceName);
         // 时间戳
         String timeString = LocalDateTime.now().atZone(DEFAULT_ZONEID).format(DEFAULT_FORMATTER);
         // 签名过后的字符串
-        String signature = sign(HttpMethod.POST.name(), serviceName, requireArgs.getClientId(), timeString, getReqBody(dto), requireArgs.getPrivateKey());
-        HttpHeaders headers = getHeaders(requireArgs.getClientId(), requireArgs.getPrivateKey(), signature, timeString, customerId);
-        return getRestOperations().exchange(URI.create(String.format("%s%s", HOST, url)), HttpMethod.POST, new HttpEntity<>(dto, headers), typeReference).getBody();
+        String signature = sign(HttpMethod.POST.name(), serviceName, requireArgs.getClientId(), timeString, getReqBody(payload), requireArgs.getPrivateKey());
+        HttpHeaders headers = getHeaders(requireArgs.getClientId(), requireArgs.getCustomerId(), signature, timeString);
+        return getRestOperations().exchange(URI.create(String.format("%s%s", HOST, url)), HttpMethod.POST, new HttpEntity<>(payload, headers), typeReference).getBody();
     }
 
     /**
      * @param clientId 客户端id
      */
     @SuppressWarnings("all")
-    public HttpHeaders getHeaders(String clientId, String privateKey, String signature, String timeString, String customerId) {
+    public HttpHeaders getHeaders(String clientId, String customerId, String signature, String timeString) {
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.set("Client-Id", clientId);
         httpHeaders.set("Signature", signature);

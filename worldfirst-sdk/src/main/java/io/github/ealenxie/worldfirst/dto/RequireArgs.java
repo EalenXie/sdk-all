@@ -16,4 +16,5 @@ import lombok.Setter;
 public class RequireArgs {
     private String clientId;
     private String privateKey;
+    private String customerId;
 }

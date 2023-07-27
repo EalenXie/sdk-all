@@ -184,32 +184,28 @@ public class FundMoveDetail {
     private String beneficiaryBankName;
     /**
      * 收款人店铺名。当StatementList.transactionType 字段取值为 COLLECTION时，此字段有可能透出。
-     * <p>
-     * 更多信息：
+     *
      * <p>
      * 字段最大长度：512
      */
     private String beneficiaryStoreName;
     /**
      * 集成商在Marketplace上的注册名。当StatementList.transactionType 字段取值为 COLLECTION时，此字段有可能透出。
-     * <p>
-     * 更多信息：
+     *
      * <p>
      * 字段最大长度：512
      */
     private String beneficiaryMarketplaceName;
     /**
      * 转账附言
-     * <p>
-     * 更多信息：
+     *
      * <p>
      * 字段最大长度：512
      */
     private String remarks;
     /**
      * 由用户提供的交易描述信息
-     * <p>
-     * 更多信息：
+     *
      * <p>
      * 字段最大长度：512
      */
@@ -218,8 +214,7 @@ public class FundMoveDetail {
      * RA或VA账号。
      * <p>
      * 当StatementList.transactionType 字段取值为 COLLECTION时，此字段有可能透出。
-     * <p>
-     * 更多信息：
+     *
      * <p>
      * 字段最大长度：128
      */

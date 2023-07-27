@@ -11,7 +11,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class ConsultTransferVO {
+public class ConsultTransferResponse {
     /**
      * 代表API调用结果
      */
