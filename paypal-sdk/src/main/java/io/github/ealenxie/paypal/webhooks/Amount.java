@@ -18,7 +18,7 @@ public class Amount {
     @JsonProperty("total")
     private String total;
     /**
-     * currency
+     * The three-character ISO-4217 currency code.
      */
     @JsonProperty("currency")
     private String currency;
