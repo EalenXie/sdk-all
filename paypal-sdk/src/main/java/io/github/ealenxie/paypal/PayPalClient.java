@@ -1,7 +1,6 @@
 package io.github.ealenxie.paypal;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.github.ealenxie.paypal.authentication.PayPalAccessToken;
 import io.github.ealenxie.paypal.catalogproducts.CreateProductPayload;
 import io.github.ealenxie.paypal.catalogproducts.ProductDetailResponse;
 import io.github.ealenxie.paypal.catalogproducts.ProductListResponse;
@@ -12,6 +11,9 @@ import io.github.ealenxie.paypal.invoices.*;
 import io.github.ealenxie.paypal.orders.*;
 import io.github.ealenxie.paypal.partnerreferrals.ReferralPayload;
 import io.github.ealenxie.paypal.partnerreferrals.ReferralResponse;
+import io.github.ealenxie.paypal.paymentexperience.WebProfile;
+import io.github.ealenxie.paypal.paymentexperience.WebProfilePayload;
+import io.github.ealenxie.paypal.paymentexperience.WebProfileResponse;
 import io.github.ealenxie.paypal.paymentmethodtokens.*;
 import io.github.ealenxie.paypal.payments.CapturePayload;
 import io.github.ealenxie.paypal.payments.PaymentDetails;
@@ -29,16 +31,13 @@ import io.github.ealenxie.paypal.transaction.BalancesResponse;
 import io.github.ealenxie.paypal.transaction.TransactionDetailsResponse;
 import io.github.ealenxie.paypal.transaction.TransactionsQueryParams;
 import io.github.ealenxie.paypal.webhooks.*;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.lang.Nullable;
 import org.springframework.web.client.RestOperations;
-import org.springframework.web.util.UriComponentsBuilder;
 
-import java.net.URI;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -51,6 +50,7 @@ public class PayPalClient extends RestClient {
     private static final String INVOICING_INVOICES = "/v2/invoicing/invoices/%s";
     private static final String INVOICING_TEMPLATES = "/v2/invoicing/templates/%s";
     private static final String PAYMENT_TOKENS = "/v3/vault/payment-tokens/%s";
+    private static final String WEB_PROFILES = "/v1/payment-experience/web-profiles/%s";
 
     public PayPalClient() {
     }
@@ -61,24 +61,6 @@ public class PayPalClient extends RestClient {
 
     public PayPalClient(RestOperations restOperations, ObjectMapper objectMapper) {
         super(restOperations, objectMapper);
-    }
-
-    /**
-     * <a href="https://developer.paypal.com/api/rest/authentication/">客户端模式获取访问令牌</a>
-     *
-     * @param clientId     客户端ID
-     * @param clientSecret 密钥
-     */
-    public PayPalAccessToken accessToken(String clientId, String clientSecret) {
-        HttpHeaders headers = new HttpHeaders();
-        headers.setBasicAuth(clientId, clientSecret);
-        headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
-        headers.set("Accept-Language", "en_US");
-        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(String.format("%s/v1/oauth2/token", isSandBox() ? HOST_SANDBOX : HOST));
-        builder.queryParam("grant_type", "client_credentials");
-        URI uri = builder.build().encode().toUri();
-        return getRestOperations().exchange(uri, HttpMethod.POST, new HttpEntity<>(null, headers), PayPalAccessToken.class).getBody();
     }
 
     /**
@@ -460,6 +442,92 @@ public class PayPalClient extends RestClient {
     }
 
     /**
+     * <a href="https://developer.paypal.com/docs/api/payment-experience/v1/#web-profile_create">Create web experience profile</a>
+     */
+    public WebProfileResponse createWebProfile(PayPalHeaders headers, WebProfilePayload payload) {
+        return post("/v1/payment-experience/web-profiles", headers, payload, WebProfileResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/payment-experience/v1/#web-profile_get-list">List web experience profiles</a>
+     */
+    public List<WebProfile> listWebProfiles(String accessToken) {
+        return get("/v1/payment-experience/web-profiles", accessToken, null, new ParameterizedTypeReference<List<WebProfile>>() {
+        });
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/payment-experience/v1/#web-profile_update">Update web experience profile</a>
+     */
+    public void updateWebProfile(String accessToken, String id, WebProfilePayload payload) {
+        exchange(String.format(WEB_PROFILES, id), HttpMethod.PUT, accessToken, null, payload, Object.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/payment-experience/v1/#web-profile_partial-update">Partially update web experience profile</a>
+     */
+    public void partialUpdateWebProfile(String accessToken, String id, List<OpValuePayload<Object>> payload) {
+        exchange(String.format(WEB_PROFILES, id), HttpMethod.PATCH, accessToken, null, payload, Object.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/payment-experience/v1/#web-profile_get">Show web experience profile details by ID</a>
+     */
+    public WebProfileResponse getWebProfile(String accessToken, String id) {
+        return get(String.format(WEB_PROFILES, id), accessToken, null, WebProfileResponse.class);
+    }
+
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/payment-experience/v1/#web-profile_delete">Delete web experience profile</a>
+     */
+    public void deleteWebProfile(String accessToken, String id) {
+        exchange(String.format(WEB_PROFILES, id), HttpMethod.DELETE, accessToken, null, null, Object.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/payment-tokens/v3/#payment-tokens_create">Create payment token for a given payment source</a>
+     */
+    public PaymentDetails createPaymentToken(String accessToken, PaymentSourcePayload payload) {
+        return post("/v3/vault/payment-tokens", accessToken, payload, PaymentDetails.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/payment-tokens/v3/#customer_payment-tokens_get">List all payment tokens</a>
+     */
+    public CustomerPaymentTokenResponse getCustomerPaymentTokens(String accessToken, PaymentQueryParams queryParams) {
+        return get("/v3/vault/payment-tokens", accessToken, queryParams, CustomerPaymentTokenResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/payment-tokens/v3/#payment-tokens_get">Retrieve a payment token</a>
+     */
+    public PaymentTokenResponse getPaymentToken(String accessToken, String id) {
+        return get(String.format(PAYMENT_TOKENS, id), accessToken, null, PaymentTokenResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/payment-tokens/v3/#payment-tokens_delete">Delete payment token</a>
+     */
+    public void deletePaymentToken(String accessToken, String id) {
+        exchange(String.format(PAYMENT_TOKENS, id), HttpMethod.DELETE, accessToken, null, null, PaymentTokenResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/payment-tokens/v3/#setup-tokens_create">Create a setup token</a>
+     */
+    public void createSetUpToken(String accessToken, TokenPayload payload) {
+        post("/v3/vault/setup-tokens", accessToken, payload, Object.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/payment-tokens/v3/#setup-tokens_get">Retrieve a setup token</a>
+     */
+    public TokenResponse getSetUpToken(String accessToken, String id) {
+        return get(String.format(PAYMENT_TOKENS, id), accessToken, null, TokenResponse.class);
+    }
+
+    /**
      * <a href="https://developer.paypal.com/docs/api/referenced-payouts/v1/#referenced-payouts-items_create">Create referenced payout item</a>
      */
     public ReferencedPayouts createReferencedPayoutItem(String accessToken, ReferencedPayouts payload) {
@@ -606,47 +674,6 @@ public class PayPalClient extends RestClient {
         return get("/v1/reporting/balances", accessToken, queryParams, BalancesResponse.class);
     }
 
-    /**
-     * <a href="https://developer.paypal.com/docs/api/payment-tokens/v3/#payment-tokens_create">Create payment token for a given payment source</a>
-     */
-    public PaymentDetails createPaymentToken(String accessToken, PaymentSourcePayload payload) {
-        return post("/v3/vault/payment-tokens", accessToken, payload, PaymentDetails.class);
-    }
-
-    /**
-     * <a href="https://developer.paypal.com/docs/api/payment-tokens/v3/#customer_payment-tokens_get">List all payment tokens</a>
-     */
-    public CustomerPaymentTokenResponse getCustomerPaymentTokens(String accessToken, PaymentQueryParams queryParams) {
-        return get("/v3/vault/payment-tokens", accessToken, queryParams, CustomerPaymentTokenResponse.class);
-    }
-
-    /**
-     * <a href="https://developer.paypal.com/docs/api/payment-tokens/v3/#payment-tokens_get">Retrieve a payment token</a>
-     */
-    public PaymentTokenResponse getPaymentToken(String accessToken, String id) {
-        return get(String.format(PAYMENT_TOKENS, id), accessToken, null, PaymentTokenResponse.class);
-    }
-
-    /**
-     * <a href="https://developer.paypal.com/docs/api/payment-tokens/v3/#payment-tokens_delete">Delete payment token</a>
-     */
-    public void deletePaymentToken(String accessToken, String id) {
-        exchange(String.format(PAYMENT_TOKENS, id), HttpMethod.DELETE, accessToken, null, null, PaymentTokenResponse.class);
-    }
-
-    /**
-     * <a href="https://developer.paypal.com/docs/api/payment-tokens/v3/#setup-tokens_create">Create a setup token</a>
-     */
-    public void createSetUpToken(String accessToken, TokenPayload payload) {
-        post("/v3/vault/setup-tokens", accessToken, payload, Object.class);
-    }
-
-    /**
-     * <a href="https://developer.paypal.com/docs/api/payment-tokens/v3/#setup-tokens_get">Retrieve a setup token</a>
-     */
-    public TokenResponse getSetUpToken(String accessToken, String id) {
-        return get(String.format(PAYMENT_TOKENS, id), accessToken, null, TokenResponse.class);
-    }
 
     /**
      * <a href="https://developer.paypal.com/docs/api/payments/v2/#authorizations_get">Show details for authorized payment</a>

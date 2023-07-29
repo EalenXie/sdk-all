@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.http.MediaType;
 
@@ -13,6 +14,7 @@ import org.springframework.http.MediaType;
  */
 @Getter
 @Setter
+@NoArgsConstructor
 public class PayPalHeaders {
     @JsonIgnore
     private String accessToken;
@@ -33,4 +35,11 @@ public class PayPalHeaders {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("Prefer")
     private String prefer;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonProperty("Accept-Language")
+    private String acceptLanguage;
+
+    public PayPalHeaders(String accessToken) {
+        this.accessToken = accessToken;
+    }
 }

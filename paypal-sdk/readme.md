@@ -6,17 +6,55 @@ paypal-sdk
 
 <img src="https://www.paypalobjects.com/digitalassets/c/website/logo/full-text/pp_fc_hl.svg" alt="PayPal Logo" width="200">
 
-### 快速开始
+## 快速开始
 
-#### `pom.xml`配置
+#### [Maven Central](https://mvnrepository.com/artifact/io.github.ealenxie/paypal-sdk)
+
+引入依赖, 可在`pom.xml` 的 `<dependencies>`选项中配置
 
 ```xml
 
 <dependency>
     <groupId>io.github.ealenxie</groupId>
     <artifactId>paypal-sdk</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>${latest.version}</version>
 </dependency>
+```
+
+> `${latest.version}`
+>
+> ![](https://img.shields.io/maven-central/v/io.github.ealenxie/paypal-sdk)
+
+## 代码示例
+
+```java
+
+
+
+import io.github.ealenxie.paypal.PayPalClient;
+import io.github.ealenxie.paypal.authentication.PayPalAccessToken;
+import io.github.ealenxie.paypal.transaction.BalancesQueryParams;
+import io.github.ealenxie.paypal.transaction.BalancesResponse;
+
+import java.util.List;
+
+class PayPalClientTest {
+    @Test
+    void balances() {
+        PayPalClient payPalClient = new PayPalClient();
+        // 设置为正式环境
+        goodCangClient.setSandBox(false);
+        // 获取令牌
+        String clientId = "your clientId";
+        String clientSecret = "your clientSecret";
+        PayPalAccessToken accessToken = payPalClient.accessToken(clientId, clientSecret);
+        // Call api
+        BalancesQueryParams queryParams = new BalancesQueryParams();
+        queryParams.setCurrencyCode("ALL");
+        BalancesResponse balances = payPalClient.balances(accessToken, queryParams);
+        System.out.println(balances);
+    }
+}
 ```
 
 #### [PayPalClient](https://github.com/EalenXie/sdk-all/blob/main/paypal-sdk/src/main/java/io/github/ealenxie/paypal/PayPalClient.java) 已支持的接口列表
@@ -114,6 +152,17 @@ paypal-sdk
 |:---------------|:----------------------------------------------------------------------------------------------------------------|:----|
 | createReferral | [Create partner referral](https://developer.paypal.com/docs/api/partner-referrals/v2/#partner-referrals_create) | ✔️  |
 | getReferral    | [Show referral data](https://developer.paypal.com/docs/api/referenced-payouts/v1/#referenced-payouts-items_get) | ✔️  |
+
+##### Payment Experience
+
+| 方法名                     | 官方文档地址                                                                                                                             | 状态  |
+|:------------------------|:-----------------------------------------------------------------------------------------------------------------------------------|:----|
+| createWebProfile        | [Create web experience profile](https://developer.paypal.com/docs/api/payment-experience/v1/#web-profile_create)                   | ✔️  |
+| listWebProfiles         | [List web experience profiles](https://developer.paypal.com/docs/api/payment-experience/v1/#web-profile_get-list)                  | ✔️  |
+| updateWebProfile        | [Create web experience profile](https://developer.paypal.com/docs/api/payment-experience/v1/#web-profile_create)                   | ✔️  |
+| partialUpdateWebProfile | [Partially update web experience profile](https://developer.paypal.com/docs/api/payment-experience/v1/#web-profile_partial-update) | ✔️  |
+| getWebProfile           | [Show web experience profile details by ID](https://developer.paypal.com/docs/api/payment-experience/v1/#web-profile_get)          | ✔️  |
+| deleteWebProfile        | [Delete web experience profile](https://developer.paypal.com/docs/api/payment-experience/v1/#web-profile_delete)                   | ✔️  |
 
 ##### Payment Method Tokens
 

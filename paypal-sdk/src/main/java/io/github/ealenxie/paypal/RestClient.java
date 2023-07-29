@@ -2,6 +2,7 @@ package io.github.ealenxie.paypal;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.github.ealenxie.paypal.authentication.PayPalAccessToken;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -16,6 +17,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Map;
 import java.util.Set;
 
@@ -27,11 +29,11 @@ public abstract class RestClient {
     /**
      * 正式环境接口地址
      */
-    public static final String HOST = "https://api-m.paypal.com";
+    private static final String HOST = "https://api-m.paypal.com";
     /**
      * 沙箱环境认证接口地址
      */
-    public static final String HOST_SANDBOX = "https://api-m.sandbox.paypal.com";
+    private static final String HOST_SANDBOX = "https://api-m.sandbox.paypal.com";
     private final RestOperations restOperations;
 
     private final ObjectMapper mapper;
@@ -90,6 +92,23 @@ public abstract class RestClient {
         return httpHeaders;
     }
 
+    /**
+     * <a href="https://developer.paypal.com/api/rest/authentication/">客户端模式获取访问令牌</a>
+     *
+     * @param clientId     客户端ID
+     * @param clientSecret 密钥
+     */
+    public PayPalAccessToken accessToken(String clientId, String clientSecret) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setBasicAuth(clientId, clientSecret);
+        headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
+        headers.set("Accept-Language", "en_US");
+        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(String.format("%s/v1/oauth2/token", isSandBox() ? HOST_SANDBOX : HOST));
+        builder.queryParam("grant_type", "client_credentials");
+        URI uri = builder.build().encode().toUri();
+        return getRestOperations().exchange(uri, HttpMethod.POST, new HttpEntity<>(null, headers), PayPalAccessToken.class).getBody();
+    }
 
     /**
      * GET 调用 API
