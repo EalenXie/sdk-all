@@ -10,10 +10,7 @@ import io.github.ealenxie.paypal.catalogproducts.ProductResponse;
 import io.github.ealenxie.paypal.disputes.*;
 import io.github.ealenxie.paypal.identity.UserInfo;
 import io.github.ealenxie.paypal.invoices.*;
-import io.github.ealenxie.paypal.orders.CreateOrderPayload;
-import io.github.ealenxie.paypal.orders.CreateOrderResponse;
-import io.github.ealenxie.paypal.orders.OrderDetailsQueryParams;
-import io.github.ealenxie.paypal.orders.OrderDetailsResponse;
+import io.github.ealenxie.paypal.orders.*;
 import io.github.ealenxie.paypal.partnerreferrals.ReferralPayload;
 import io.github.ealenxie.paypal.partnerreferrals.ReferralResponse;
 import io.github.ealenxie.paypal.paymentmethodtokens.*;
@@ -72,6 +69,7 @@ public class PayPalClient {
     private static final String NOTIFICATIONS_WEBHOOKS = "/v1/notifications/webhooks/%s";
     private static final String INVOICING_INVOICES = "/v2/invoicing/invoices/%s";
     private static final String INVOICING_TEMPLATES = "/v2/invoicing/templates/%s";
+    private static final String PAYMENT_TOKENS = "/v3/vault/payment-tokens/%s";
 
 
     public PayPalClient() {
@@ -454,6 +452,7 @@ public class PayPalClient {
     public ReferencedPayoutsResponse batchCreateReferencedPayout(String accessToken, ReferencedPayoutsPayload payload) {
         return post("/v1/payments/referenced-payouts", accessToken, payload, ReferencedPayoutsResponse.class);
     }
+
     /**
      * <a href="https://developer.paypal.com/docs/api/orders/v2/#orders_create">Create order</a>
      */
@@ -466,6 +465,34 @@ public class PayPalClient {
      */
     public OrderDetailsResponse orderDetails(String accessToken, String id, @Nullable String fields) {
         return get(String.format("/v2/checkout/orders/%s", id), accessToken, new OrderDetailsQueryParams(fields), OrderDetailsResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/orders/v2/#orders_patch">Update order</a>
+     */
+    public void updateOrder(String accessToken, String id, List<OpValuePayload<Object>> payload) {
+        exchange(String.format("/v2/checkout/orders/%s", id), HttpMethod.PATCH, accessToken, null, payload, Object.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/orders/v2/#orders_confirm">Confirm the Order</a>
+     */
+    public ConfirmOrderResponse confirmOrder(String accessToken, String id, OrderConfirmPayload payload) {
+        return post(String.format("/v2/checkout/orders/%s/confirm-payment-source", id), accessToken, payload, ConfirmOrderResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/orders/v2/#orders_authorize">Authorize payment for order</a>
+     */
+    public AuthorizePaymentOrderResponse authorizePaymentOrder(String accessToken, String id) {
+        return post(String.format("/v2/checkout/orders/%s/authorize", id), accessToken, null, AuthorizePaymentOrderResponse.class);
+    }
+
+    /**
+     * <a href="https://developer.paypal.com/docs/api/orders/v2/#orders_capture">Capture payment for order</a>
+     */
+    public CapturePaymentOrderResponse capturePaymentOrder(String accessToken, String id) {
+        return post(String.format("/v2/checkout/orders/%s/authorize", id), accessToken, null, CapturePaymentOrderResponse.class);
     }
 
     /**
@@ -488,6 +515,7 @@ public class PayPalClient {
     public ReferencedPayouts createReferencedPayoutItem(String accessToken, ReferencedPayouts payload) {
         return post("/v1/payments/referenced-payouts", accessToken, payload, ReferencedPayouts.class);
     }
+
     /**
      * <a href="https://developer.paypal.com/docs/api/referenced-payouts/v1/#referenced-payouts-items_get">Show referenced payout item details</a>
      */
@@ -646,14 +674,14 @@ public class PayPalClient {
      * <a href="https://developer.paypal.com/docs/api/payment-tokens/v3/#payment-tokens_get">Retrieve a payment token</a>
      */
     public PaymentTokenResponse getPaymentToken(String accessToken, String id) {
-        return get(String.format("/v3/vault/payment-tokens/%s", id), accessToken, null, PaymentTokenResponse.class);
+        return get(String.format(PAYMENT_TOKENS, id), accessToken, null, PaymentTokenResponse.class);
     }
 
     /**
      * <a href="https://developer.paypal.com/docs/api/payment-tokens/v3/#payment-tokens_delete">Delete payment token</a>
      */
     public void deletePaymentToken(String accessToken, String id) {
-        exchange(String.format("/v3/vault/payment-tokens/%s", id), HttpMethod.DELETE, accessToken, null, null, PaymentTokenResponse.class);
+        exchange(String.format(PAYMENT_TOKENS, id), HttpMethod.DELETE, accessToken, null, null, PaymentTokenResponse.class);
     }
 
     /**
@@ -667,7 +695,7 @@ public class PayPalClient {
      * <a href="https://developer.paypal.com/docs/api/payment-tokens/v3/#setup-tokens_get">Retrieve a setup token</a>
      */
     public TokenResponse getSetUpToken(String accessToken, String id) {
-        return get(String.format("/v3/vault/payment-tokens/%s", id), accessToken, null, TokenResponse.class);
+        return get(String.format(PAYMENT_TOKENS, id), accessToken, null, TokenResponse.class);
     }
 
     /**
