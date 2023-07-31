@@ -1,58 +1,52 @@
 package io.github.ealenxie.tianyancha;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.github.ealenxie.tianyancha.vo.Response;
-import io.github.ealenxie.tianyancha.vo.ResponseJsonNode;
-import io.github.ealenxie.tianyancha.vo.ResultVO;
+import io.github.ealenxie.tianyancha.vo.*;
 import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
 import org.springframework.web.client.RestOperations;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.util.UriComponentsBuilder;
-
-import java.net.URI;
 
 /**
  * Created by EalenXie on 2022/12/14 15:23
  */
-public class TianYanChaClient {
+public class TianYanChaClient extends RestClient {
 
-    private final RestOperations restOperations;
-    private final ObjectMapper objectMapper;
-    private static final String HOST = "http://open.api.tianyancha.com";
-
-    public TianYanChaClient() {
-        this(new RestTemplate(), new ObjectMapper());
+    public TianYanChaClient(String token) {
+        this(new RestTemplate(), new ObjectMapper(), token);
     }
 
-    public TianYanChaClient(RestOperations restOperations) {
-        this.restOperations = restOperations;
-        this.objectMapper = new ObjectMapper();
+    public TianYanChaClient(RestOperations restOperations, String token) {
+        this(restOperations, new ObjectMapper(), token);
     }
 
-
-    public TianYanChaClient(RestOperations restOperations, ObjectMapper objectMapper) {
-        this.restOperations = restOperations;
-        this.objectMapper = objectMapper;
+    public TianYanChaClient(RestOperations restOperations, ObjectMapper objectMapper, String token) {
+        super(restOperations, objectMapper, token);
     }
 
-    public RestOperations getRestOperations() {
-        return restOperations;
+    /**
+     * <a href="http://open.tianyancha.com/open/1139">知识产权</a>
+     * <p>可以通过公司名称或ID获取包含商标、专利、作品著作权、软件著作权、网站备案等维度的相关信息</p>
+     */
+    public Response<CbIpr> cbIpr(String keyword) {
+        return getByKeyword("/services/open/cb/ipr/3.0", keyword, new ParameterizedTypeReference<Response<CbIpr>>() {
+        });
+    }
+
+    /**
+     * <a href="http://open.tianyancha.com/open/1002">司法风险</a>
+     * <p>可以通过公司名称或ID获取包含法律诉讼、法院公告、开庭公告、失信人、被执行人、立案信息、送达公告等维度的相关信息</p>
+     */
+    public Response<CbJudicial> cbJudicial(String keyword) {
+        return getByKeyword("/services/open/cb/judicial/2.0", keyword, new ParameterizedTypeReference<Response<CbJudicial>>() {
+        });
     }
 
     /**
      * <a href="http://open.tianyancha.com/open/1116">企业基本信息查询</a>
      */
-    public Response<ResultVO> icBaseInfoNormal(String token, String keyword) {
-        HttpHeaders headers = getAuthHeader(token);
-        headers.setContentType(MediaType.APPLICATION_JSON);
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(String.format("%s/services/open/ic/baseinfo/normal?keyword=%s", HOST, keyword));
-        URI uri = builder.build().encode().toUri();
-        return getRestOperations().exchange(uri, HttpMethod.GET, new HttpEntity<>(null, headers), new ParameterizedTypeReference<Response<ResultVO>>() {
-        }).getBody();
+    public Response<BaseInfoNormalResponse> icBaseInfoNormal(String keyword) {
+        return getByKeyword("/services/open/ic/baseinfo/normal", keyword, new ParameterizedTypeReference<Response<BaseInfoNormalResponse>>() {
+        });
     }
 
     /**
@@ -61,38 +55,9 @@ public class TianYanChaClient {
      *
      * @return 响应的 ResponseJsonNode
      */
-    public ResponseJsonNode icBaseInfoSpecial(String token, String keyword) {
-        HttpHeaders headers = getAuthHeader(token);
-        headers.setContentType(MediaType.APPLICATION_JSON);
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(String.format("%s/services/open/ic/baseinfo/special?keyword=%s", HOST, keyword));
-        URI uri = builder.build().encode().toUri();
-        return getRestOperations().exchange(uri, HttpMethod.GET, new HttpEntity<>(null, headers), ResponseJsonNode.class).getBody();
-    }
-
-    /**
-     * 获取 Result
-     * <p>当 entityType 为null 则未成功查询到结果信息
-     * <p>当 entityType = 2, 可调用  getResult(response, Result2.class)进行序列化</p>
-     * <p>当 entityType = 3, 可调用  getResult(response, Result3.class)进行序列化</p>
-     * <p>当 entityType = 4, 可调用  getResult(response, Result4.class)进行序列化</p>
-     * <p>当 entityType = 5, 可调用  getResult(response, Result5.class)进行序列化</p>
-     * <p>当 entityType = 6, 可调用  getResult(response, Result6.class)进行序列化</p>
-     * <p>当 entityType = 9, 可调用  getResult(response, Result9.class)进行序列化</p>
-     *
-     * @param response        结果响应
-     * @param entityTypeClass 由 {@link ResponseJsonNode#getEntityType()}返回值 决定
-     * @return 返回值决定实体转换类型
-     */
-
-    public <T> T getResult(ResponseJsonNode response, Class<T> entityTypeClass) {
-        return objectMapper.convertValue(response.getResult(), entityTypeClass);
-    }
-
-
-    private HttpHeaders getAuthHeader(String token) {
-        HttpHeaders headers = new HttpHeaders();
-        headers.set("Authorization", token);
-        return headers;
+    public ResponseJsonNode icBaseInfoSpecial(String keyword) {
+        return getByKeyword("/services/open/ic/baseinfo/special", keyword, new ParameterizedTypeReference<ResponseJsonNode>() {
+        });
     }
 
 

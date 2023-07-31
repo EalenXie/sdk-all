@@ -20,5 +20,7 @@ tianyancha-sdk
 
 | 🏷️方法名            | 📚 官方文档地址                                        | 状态  |
 |:------------------|:-------------------------------------------------|:----|
+| cbIpr             | [知识产权](http://open.tianyancha.com/open/1139)     | ✔️  |
+| cbJudicial        | [司法风险](http://open.tianyancha.com/open/1002)     | ✔️  |
 | icBaseInfoNormal  | [企业基本信息查询](http://open.tianyancha.com/open/1116) | ✔️  |
 | icBaseInfoSpecial | [特殊企业基本信息](http://open.tianyancha.com/open/1117) | ✔️  |
