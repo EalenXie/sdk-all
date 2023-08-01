@@ -6,6 +6,8 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.web.client.RestOperations;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.List;
+
 /**
  * Created by EalenXie on 2022/12/14 15:23
  */
@@ -101,6 +103,15 @@ public class TianYanChaClient extends RestClient {
      */
     public Response<TotalItems<Company>> allCompanys(AllCompanysQueryParams queryParams) {
         return get("/services/v4/open/allCompanys", queryParams, new ParameterizedTypeReference<Response<TotalItems<Company>>>() {
+        });
+    }
+
+    /**
+     * <a href="https://open.tianyancha.com/open/425">企业天眼风险</a>
+     * <p>可以通过关键字（公司名称、公司id、注册号或社会统一信用代码）获取企业相关天眼风险列表，包括企业自身/周边/预警风险信息</p>
+     */
+    public Response<List<RiskInfo>> riskInfo(String keyword) {
+        return getByKeyword("/services/v4/open/riskInfo", keyword, new ParameterizedTypeReference<Response<List<RiskInfo>>>() {
         });
     }
 
