@@ -28,4 +28,5 @@ tianyancha-sdk
 | icHolder          | [企业股东](http://open.tianyancha.com/open/821)      | ✔️  |
 | icBaseInfoNormal  | [企业基本信息查询](http://open.tianyancha.com/open/1116) | ✔️  |
 | search            | [搜索](http://open.tianyancha.com/open/816)        | ✔️  |
+| allCompanys       | [人员所有公司](http://open.tianyancha.com/open/450)    | ✔️  |
 | icBaseInfoSpecial | [特殊企业基本信息](http://open.tianyancha.com/open/1117) | ✔️  |
