@@ -49,7 +49,14 @@ public class TianYanChaClient extends RestClient {
         return getByKeyword("/services/open/cb/judicial/2.0", keyword, new ParameterizedTypeReference<Response<CbIc>>() {
         });
     }
-
+    /**
+     * <a href="http://open.tianyancha.com/open/842">法律诉讼</a>
+     * <p>可以通过公司名称或ID获取包含企业基本信息、主要人员、股东信息、对外投资、分支机构等维度的相关信息</p>
+     */
+    public Response<JrLawSuitItems> jrLawSuit(KeywordPageQuery query) {
+        return get("/services/open/jr/lawSuit/2.0", query, new ParameterizedTypeReference<Response<JrLawSuitItems>>() {
+        });
+    }
     /**
      * <a href="http://open.tianyancha.com/open/1116">企业基本信息查询</a>
      */
