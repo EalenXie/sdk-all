@@ -30,4 +30,5 @@ tianyancha-sdk
 | search            | [搜索](http://open.tianyancha.com/open/816)        | ✔️  |
 | allCompanys       | [人员所有公司](http://open.tianyancha.com/open/450)    | ✔️  |
 | riskInfo          | [企业天眼风险](http://open.tianyancha.com/open/425)    | ✔️  |
+| icVerify          | [企业三要素验证](http://open.tianyancha.com/open/1074)  | ✔️  |
 | icBaseInfoSpecial | [特殊企业基本信息](http://open.tianyancha.com/open/1117) | ✔️  |

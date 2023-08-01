@@ -116,6 +116,16 @@ public class TianYanChaClient extends RestClient {
     }
 
     /**
+     * <a href="https://open.tianyancha.com/open/1074">企业三要素验证</a>
+     * <p>可以通过输入企业名称、法人、注册号 /组织机构代码 /统一社会信用代码，验证三者是否匹配一致</p>
+     */
+    public Response<IcVerify> icVerify(IcVerifyQueryParams queryParams) {
+        return get("/services/open/ic/verify/2.0", queryParams, new ParameterizedTypeReference<Response<IcVerify>>() {
+        });
+    }
+
+
+    /**
      * <a href="https://open.tianyancha.com/open/1117">特殊企业基本信息</a>
      * <p>getResult()返回值 序列化 请参考 ResponseJsonNode#getEntityType()和  getResult(ResponseJsonNode, Class)</p>
      *
