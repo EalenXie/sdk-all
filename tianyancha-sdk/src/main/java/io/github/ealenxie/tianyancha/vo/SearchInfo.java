@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class CompanyInfo {
+public class SearchInfo {
     /**
      * 注册号
      */
