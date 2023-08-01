@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
     <packaging>jar</packaging>
     <artifactId>walmart-sdk</artifactId>
-    <url>https://github.com/EalenXie/sdk-all/walmart-sdk</url>
+    <url>https://github.com/EalenXie/sdk-all/tree/main/walmart-sdk</url>
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
