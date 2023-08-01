@@ -79,6 +79,7 @@ public class TianYanChaClient extends RestClient {
 
     /**
      * <a href="http://open.tianyancha.com/open/1116">企业基本信息查询</a>
+     * <p>可以通过公司名称或ID获取企业基本信息，企业基本信息包括公司名称或ID、类型、成立日期、经营状态、注册资本、法人、工商注册号、统一社会信用代码、组织机构代码、纳税人识别号等字段信息</p>
      */
     public Response<BaseInfoNormal> icBaseInfoNormal(String keyword) {
         return getByKeyword("/services/open/ic/baseinfo/normal", keyword, new ParameterizedTypeReference<Response<BaseInfoNormal>>() {
@@ -91,6 +92,15 @@ public class TianYanChaClient extends RestClient {
      */
     public Response<TotalItems<CompanyInfo>> search(KeywordPageQuery keyword) {
         return get("/services/open/search/2.0", keyword, new ParameterizedTypeReference<Response<TotalItems<CompanyInfo>>>() {
+        });
+    }
+
+    /**
+     * <a href="https://open.tianyancha.com/open/450">人员所有公司</a>
+     * <p>可以通过公司名称或ID和人名获取企业人员的所有相关公司，包括其担任法人、股东、董监高的公司信息</p>
+     */
+    public Response<TotalItems<Company>> allCompanys(AllCompanysQueryParams queryParams) {
+        return get("/services/v4/open/allCompanys", queryParams, new ParameterizedTypeReference<Response<TotalItems<Company>>>() {
         });
     }
 
