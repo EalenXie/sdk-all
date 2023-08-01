@@ -1,16 +1,19 @@
 package io.github.ealenxie.tianyancha.vo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 
 /**
- * @author EalenXie created on 2023/8/1 9:37
+ * @author EalenXie created on 2023/8/1 9:58
  */
-public class JrLawSuitItems {
+@Getter
+@Setter
+public class TotalItems<T> {
     @JsonProperty("total")
     private Integer total;
-
     @JsonProperty("items")
-    private List<JrLawSuit> items;
+    private List<T> items;
 }
