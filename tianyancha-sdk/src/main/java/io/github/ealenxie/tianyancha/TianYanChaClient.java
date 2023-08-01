@@ -69,6 +69,16 @@ public class TianYanChaClient extends RestClient {
     }
 
     /**
+     * <a href="http://open.tianyancha.com/open/821">企业股东</a>
+     * <p>可以通过公司名称或ID获取企业股东信息，股东信息包括股东名、出资比例、出资金额、股东总数等字段的详细信息</p>
+     */
+    public Response<TotalItems<IcHolder>> icHolder(KeywordPageQuery query) {
+        return get("/services/open/ic/holder/2.0", query, new ParameterizedTypeReference<Response<TotalItems<IcHolder>>>() {
+        });
+    }
+
+
+    /**
      * <a href="http://open.tianyancha.com/open/1116">企业基本信息查询</a>
      */
     public Response<BaseInfoNormalResponse> icBaseInfoNormal(String keyword) {
