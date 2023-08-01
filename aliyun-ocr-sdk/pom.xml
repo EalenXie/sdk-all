@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>aliyun-ocr-sdk</artifactId>
-
+    <url>https://github.com/EalenXie/sdk-all/aliyun-ocr-sdk</url>
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
