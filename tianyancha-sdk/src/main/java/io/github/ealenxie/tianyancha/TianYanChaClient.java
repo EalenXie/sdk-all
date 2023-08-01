@@ -77,12 +77,20 @@ public class TianYanChaClient extends RestClient {
         });
     }
 
-
     /**
      * <a href="http://open.tianyancha.com/open/1116">企业基本信息查询</a>
      */
-    public Response<BaseInfoNormalResponse> icBaseInfoNormal(String keyword) {
-        return getByKeyword("/services/open/ic/baseinfo/normal", keyword, new ParameterizedTypeReference<Response<BaseInfoNormalResponse>>() {
+    public Response<BaseInfoNormal> icBaseInfoNormal(String keyword) {
+        return getByKeyword("/services/open/ic/baseinfo/normal", keyword, new ParameterizedTypeReference<Response<BaseInfoNormal>>() {
+        });
+    }
+
+    /**
+     * <a href="https://open.tianyancha.com/open/816">搜索</a>
+     * <p>可以通过关键词获取企业列表，企业列表包括公司名称或ID、类型、成立日期、经营状态、统一社会信用代码等字段的详细信息</p>
+     */
+    public Response<TotalItems<CompanyInfo>> search(KeywordPageQuery keyword) {
+        return get("/services/open/search/2.0", keyword, new ParameterizedTypeReference<Response<TotalItems<CompanyInfo>>>() {
         });
     }
 

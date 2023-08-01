@@ -11,7 +11,7 @@ import java.util.List;
  */
 @Setter
 @Getter
-public class BaseInfoNormalResponse {
+public class BaseInfoNormal {
     /**
      * 曾用名
      */
@@ -183,7 +183,7 @@ public class BaseInfoNormalResponse {
     /**
      * 国民经济行业分类
      */
-    private IndustryAllResponse industryAll;
+    private IndustryAll industryAll;
     /**
      * 是否是小微企业 0不是 1是
      */

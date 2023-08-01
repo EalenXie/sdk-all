@@ -9,7 +9,7 @@ import lombok.Setter;
  */
 @Setter
 @Getter
-public class IndustryAllResponse {
+public class IndustryAll {
     /**
      * 国民经济行业分类中类
      */
