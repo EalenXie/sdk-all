@@ -110,6 +110,16 @@ public class TransferClient extends WorldFirstClient {
     }
 
     /**
+     * <a href="https://developers.worldfirst.com.cn/docs/alipay-worldfirst/worldfirst_enterprise_solution_zh/query_invoice">查询单据支付结果</a>
+     *
+     * @param requireArgs 系统级必填参数
+     */
+    public QueryInvoiceResponse queryInvoice(RequireArgs requireArgs, InvoiceQueryParams queryParams) {
+        return postTransferWorldfirst("/amsin/api/v1/business/fund/queryInvoice", queryParams, new ParameterizedTypeReference<QueryInvoiceResponse>() {
+        });
+    }
+
+    /**
      * 调用万里汇=转账相关接口
      * 转账相关沙箱地址规则于其他接口不一致,转账的是替换域名
      *
