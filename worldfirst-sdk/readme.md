@@ -29,3 +29,4 @@ worldfirst-sdk
 | 集成商调用本接口完成转账到卡 | createPayout    | [createPayout](https://developers.worldfirst.com.cn/docs/alipay-worldfirst/worldfirst_enterprise_solution_zh/create_fund_payout?pageVersion=21)   | ✔️  |
 | 查询转账到卡结果           | inquiryPayout   | [inquiryPayout](https://developers.worldfirst.com.cn/docs/alipay-worldfirst/worldfirst_enterprise_solution_zh/inquiry_fund_payout?pageVersion=15) | ✔️  |
 | 创建单据                  | createInvoice   | [createInvoice](https://developers.worldfirst.com.cn/docs/alipay-worldfirst/worldfirst_enterprise_solution_zh/create_invoice)                     | ✔️  |
+| 查询单据支付结果           | queryInvoice    | [queryInvoice](https://developers.worldfirst.com.cn/docs/alipay-worldfirst/worldfirst_enterprise_solution_zh/query_invoice)                       | ✔️  |
