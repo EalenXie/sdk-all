@@ -124,7 +124,6 @@ public class TianYanChaClient extends RestClient {
         });
     }
 
-
     /**
      * <a href="https://open.tianyancha.com/open/1117">特殊企业基本信息</a>
      * <p>getResult()返回值 序列化 请参考 ResponseJsonNode#getEntityType()和  getResult(ResponseJsonNode, Class)</p>
@@ -136,5 +135,57 @@ public class TianYanChaClient extends RestClient {
         });
     }
 
+    /**
+     * <a href="https://open.tianyancha.com/open/818">企业基本信息（含企业联系方式）</a>
+     * <p>可以通过公司名称或ID或ID称获取企业基本信息和企业联系方式，包括公司名称或ID、类型、成立日期、电话、邮箱、网址等字段的详细信息</p>
+     */
+    public Response<BaseInfoV2> icBaseInfoV2(String keyword) {
+        return getByKeyword("/services/open/ic/baseinfoV2/2.0", keyword, new ParameterizedTypeReference<Response<BaseInfoV2>>() {
+        });
+    }
+
+    /**
+     * <a href="https://open.tianyancha.com/open/819">企业基本信息（含主要人员）</a>
+     * <p>可以通过公司名称或ID获取企业基本信息和主要人员信息，包括公司名称或ID、类型、成立日期、联系方式、主要人员名称、职位等字段的详细信息</p>
+     */
+    public Response<BaseInfoV3> icBaseInfoV3(String keyword) {
+        return getByKeyword("/services/open/ic/baseinfoV3/2.0", keyword, new ParameterizedTypeReference<Response<BaseInfoV3>>() {
+        });
+    }
+
+    /**
+     * <a href="https://open.tianyancha.com/open/1045">工商快照</a>
+     * <p>可以通过公司名称或ID获取工商快照信息，工商快照信息包括工商官网信息快照、营业执照信息、股东及出资信息等</p>
+     */
+    public Response<String> icSnapshot(String keyword) {
+        return getByKeyword("/services/open/ic/snapshot", keyword, new ParameterizedTypeReference<Response<String>>() {
+        });
+    }
+
+    /**
+     * <a href="https://open.tianyancha.com/open/1047">企业类型</a>
+     * <p>可以通过公司名称或ID获取企业类型信息</p>
+     */
+    public Response<String> icCompanyType(String keyword) {
+        return getByKeyword("/services/open/ic/companyType", keyword, new ParameterizedTypeReference<Response<String>>() {
+        });
+    }
+
+    /**
+     * <a href="https://open.tianyancha.com/open/1046">企业联系方式</a>
+     * <p>可以通过公司名称或ID获取企业联系方式信息，企业联系方式信息包括邮箱、网址、电话等字段的详细信息</p>
+     */
+    public Response<IcContact> icContact(String keyword) {
+        return getByKeyword("/services/open/ic/contact", keyword, new ParameterizedTypeReference<Response<IcContact>>() {
+        });
+    }
+    /**
+     * <a href="https://open.tianyancha.com/open/820">主要人员</a>
+     * <p>可以通过公司名称或ID获取企业主要人员信息，主要人员信息包括董事、监事、高级管理人员姓名、职位、主要人员总数等字段的详细信息</p>
+     */
+    public Response<TotalItems<Staff>> icStaff(String keyword) {
+        return getByKeyword("/services/open/ic/staff/2.0", keyword, new ParameterizedTypeReference<Response<TotalItems<Staff>>>() {
+        });
+    }
 
 }
