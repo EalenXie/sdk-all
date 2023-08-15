@@ -179,6 +179,7 @@ public class TianYanChaClient extends RestClient {
         return getByKeyword("/services/open/ic/contact", keyword, new ParameterizedTypeReference<Response<IcContact>>() {
         });
     }
+
     /**
      * <a href="https://open.tianyancha.com/open/820">主要人员</a>
      * <p>可以通过公司名称或ID获取企业主要人员信息，主要人员信息包括董事、监事、高级管理人员姓名、职位、主要人员总数等字段的详细信息</p>

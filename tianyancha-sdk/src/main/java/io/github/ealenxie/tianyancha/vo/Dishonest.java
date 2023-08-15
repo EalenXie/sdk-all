@@ -109,5 +109,5 @@ class Dishonest {
     @JsonProperty("gistid")
     private String gistid;
 
-    
+
 }

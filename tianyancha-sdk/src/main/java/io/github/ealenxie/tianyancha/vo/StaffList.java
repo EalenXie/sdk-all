@@ -12,11 +12,15 @@ import java.util.List;
 @Getter
 @Setter
 public class StaffList {
-    /** 总数 */
+    /**
+     * 总数
+     */
     @JsonProperty("total")
     private Long total;
 
-    /** 主要人员列表 */
+    /**
+     * 主要人员列表
+     */
     @JsonProperty("result")
     private List<StaffInfo> result;
 }
