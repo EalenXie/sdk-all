@@ -64,5 +64,5 @@ public class InventoryFlow {
      * 出入库标识
      */
     @JsonProperty("journal_type")
-    private Long journalType;
+    private String journalType;
 }
