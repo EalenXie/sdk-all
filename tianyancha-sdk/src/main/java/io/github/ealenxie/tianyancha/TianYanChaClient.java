@@ -188,5 +188,13 @@ public class TianYanChaClient extends RestClient {
         return getByKeyword("/services/open/ic/staff/2.0", keyword, new ParameterizedTypeReference<Response<TotalItems<Staff>>>() {
         });
     }
+    /**
+     * <a href="https://open.tianyancha.com/open/1050">历史主要人员</a>
+     * <p>可以通过公司名称或ID获取企业主要人员信息，主要人员信息包括董事、监事、高级管理人员姓名、职位、主要人员总数等字段的详细信息</p>
+     */
+    public Response<HiMember> hiMembers(String keyword) {
+        return getByKeyword("/services/open/hi/members", keyword, new ParameterizedTypeReference<Response<HiMember>>() {
+        });
+    }
 
 }

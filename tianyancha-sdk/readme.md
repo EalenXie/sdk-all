@@ -38,7 +38,7 @@ tianyancha-sdk
 | icCompanyType     | [企业类型](http://open.tianyancha.com/open/1047)           | ✔️  |
 | icContact         | [企业联系方式](http://open.tianyancha.com/open/1046)         | ✔️  |
 | icStaff           | [主要人员](http://open.tianyancha.com/open/820)            | ✔️  |
-
+| hiMembers         | [历史主要人员](http://open.tianyancha.com/open/1050)         | ✔️  |
 
 
 
