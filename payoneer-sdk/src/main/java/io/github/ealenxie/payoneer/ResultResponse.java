@@ -9,7 +9,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class PayoneerResult<T> {
+public class ResultResponse<T> {
     @JsonProperty("result")
     private T result;
 }

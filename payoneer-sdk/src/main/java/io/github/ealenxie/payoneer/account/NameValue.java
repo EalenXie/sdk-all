@@ -9,7 +9,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class AccountItems {
+public class NameValue {
     @JsonProperty("name")
     private String name;
     @JsonProperty("value")

@@ -9,7 +9,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class BalanceItem {
+public class Balance {
     /**
      * 接收账户Id
      */

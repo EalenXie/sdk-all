@@ -11,7 +11,7 @@ import java.util.List;
  */
 @Getter
 @Setter
-public class PayoneerPage<T> {
+public class PageItems<T> {
     @JsonProperty("items")
     private List<T> items;
     @JsonProperty("total")

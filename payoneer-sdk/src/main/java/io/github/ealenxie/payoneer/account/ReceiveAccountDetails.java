@@ -13,7 +13,7 @@ import java.util.List;
 @Setter
 public class ReceiveAccountDetails {
     @JsonProperty("items")
-    private List<AccountItems> items;
+    private List<NameValue> items;
     @JsonProperty("total")
     private Integer total;
 }
