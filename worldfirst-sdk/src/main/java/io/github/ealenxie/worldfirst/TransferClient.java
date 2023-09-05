@@ -20,8 +20,8 @@ import java.time.LocalDateTime;
 public class TransferClient extends WorldFirstClient {
 
 
-    public TransferClient(RestOperations restOperations, ObjectMapper objectMapper, RequireArgs requireArgs) {
-        super(restOperations, objectMapper, requireArgs);
+    public TransferClient(String clientId, String privateKey, RestOperations restOperations, ObjectMapper objectMapper) {
+        super(clientId, privateKey, restOperations, objectMapper);
     }
 
     /**
@@ -35,7 +35,7 @@ public class TransferClient extends WorldFirstClient {
      * @param payload 业务参数
      */
     public ConsultTransferResponse consultTransfer(ConsultTransferPayload payload) {
-        return postTransferWorldfirst("/amsin/api/v1/business/fund/consultTransfer", payload, new ParameterizedTypeReference<ConsultTransferResponse>() {
+        return postTransfer("/amsin/api/v1/business/fund/consultTransfer", payload, new ParameterizedTypeReference<ConsultTransferResponse>() {
         });
     }
 
@@ -46,11 +46,10 @@ public class TransferClient extends WorldFirstClient {
      * 转账代发步骤为异步。调用接口后，万里汇返回给集成商API调用结果。集成商需调用 inquiryTransfer
      * 接口查询转账代发结果，或等待万里汇使用 notifyTransfer 接口发送结果通知。
      *
-     * @param requireArgs 系统级必填参数
-     * @param payload     业务参数
+     * @param payload 业务参数
      */
-    public CreateTransferResponse createTransfer(RequireArgs requireArgs, CreateTransferPayload payload) {
-        return postTransferWorldfirst("/amsin/api/v1/business/fund/createTransfer", payload, new ParameterizedTypeReference<CreateTransferResponse>() {
+    public CreateTransferResponse createTransfer(CreateTransferPayload payload) {
+        return postTransfer("/amsin/api/v1/business/fund/createTransfer", payload, new ParameterizedTypeReference<CreateTransferResponse>() {
         });
     }
 
@@ -60,62 +59,52 @@ public class TransferClient extends WorldFirstClient {
      * 联系万里汇技术支持。
      * 在转账代发结果成功或失败后，集成商需要设定 timeout 机制中断查询。。
      *
-     * @param requireArgs       系统级必填参数
      * @param transferRequestId 由集成商定义的唯一转账代发识别ID
      */
-    public InquiryTransferResponse inquiryTransfer(RequireArgs requireArgs, String transferRequestId) {
-        return postTransferWorldfirst("/amsin/api/v1/business/fund/inquiryTransfer", new TransferRequestIdPayload(transferRequestId), new ParameterizedTypeReference<InquiryTransferResponse>() {
+    public InquiryTransferResponse inquiryTransfer(String transferRequestId) {
+        return postTransfer("/amsin/api/v1/business/fund/inquiryTransfer", new TransferRequestIdPayload(transferRequestId), new ParameterizedTypeReference<InquiryTransferResponse>() {
         });
     }
 
     /**
      * <a href="https://developers.worldfirst.com.cn/docs/alipay-worldfirst/worldfirst_enterprise_solution_zh/consult_fund_payout?pageVersion=5">查询转账相关信息</a>
-     *
-     * @param requireArgs 系统级必填参数
      */
-    public ConsultPayoutResponse consultPayout(RequireArgs requireArgs, ConsultPayoutPayload payload) {
-        return postTransferWorldfirst("/amsin/api/v1/business/fund/consultPayout", payload, new ParameterizedTypeReference<ConsultPayoutResponse>() {
+    public ConsultPayoutResponse consultPayout(ConsultPayoutPayload payload) {
+        return postTransfer("/amsin/api/v1/business/fund/consultPayout", payload, new ParameterizedTypeReference<ConsultPayoutResponse>() {
         });
     }
 
     /**
      * <a href="https://developers.worldfirst.com.cn/docs/alipay-worldfirst/worldfirst_enterprise_solution_zh/create_fund_payout?pageVersion=21">转账到卡</a>
-     *
-     * @param requireArgs 系统级必填参数
      */
-    public CreatePayoutResponse createPayout(RequireArgs requireArgs, CreatePayoutPayload payload) {
-        return postTransferWorldfirst("/amsin/api/v1/business/fund/createPayout", payload, new ParameterizedTypeReference<CreatePayoutResponse>() {
+    public CreatePayoutResponse createPayout(CreatePayoutPayload payload) {
+        return postTransfer("/amsin/api/v1/business/fund/createPayout", payload, new ParameterizedTypeReference<CreatePayoutResponse>() {
         });
     }
 
     /**
      * <a href="https://developers.worldfirst.com.cn/docs/alipay-worldfirst/worldfirst_enterprise_solution_zh/inquiry_fund_payout?pageVersion=15">查询转账到卡结果</a>
      *
-     * @param requireArgs       系统级必填参数
      * @param transferRequestId 由集成商定义的唯一转账到卡识别ID
      */
-    public InquiryTransferResponse inquiryPayout(RequireArgs requireArgs, String transferRequestId) {
-        return postTransferWorldfirst("/amsin/api/v1/business/fund/inquiryPayout", new TransferRequestIdPayload(transferRequestId), new ParameterizedTypeReference<InquiryTransferResponse>() {
+    public InquiryTransferResponse inquiryPayout(String transferRequestId) {
+        return postTransfer("/amsin/api/v1/business/fund/inquiryPayout", new TransferRequestIdPayload(transferRequestId), new ParameterizedTypeReference<InquiryTransferResponse>() {
         });
     }
 
     /**
      * <a href="https://developers.worldfirst.com.cn/docs/alipay-worldfirst/worldfirst_enterprise_solution_zh/create_invoice">创建单据</a>
-     *
-     * @param requireArgs 系统级必填参数
      */
-    public CreateInvoiceResponse createInvoice(RequireArgs requireArgs, CreateInvoicePayload payload) {
-        return postTransferWorldfirst("/amsin/api/v1/business/fund/createInvoice", payload, new ParameterizedTypeReference<CreateInvoiceResponse>() {
+    public CreateInvoiceResponse createInvoice(CreateInvoicePayload payload) {
+        return postTransfer("/amsin/api/v1/business/fund/createInvoice", payload, new ParameterizedTypeReference<CreateInvoiceResponse>() {
         });
     }
 
     /**
      * <a href="https://developers.worldfirst.com.cn/docs/alipay-worldfirst/worldfirst_enterprise_solution_zh/query_invoice">查询单据支付结果</a>
-     *
-     * @param requireArgs 系统级必填参数
      */
-    public QueryInvoiceResponse queryInvoice(RequireArgs requireArgs, InvoiceQueryParams queryParams) {
-        return postTransferWorldfirst("/amsin/api/v1/business/fund/queryInvoice", queryParams, new ParameterizedTypeReference<QueryInvoiceResponse>() {
+    public QueryInvoiceResponse queryInvoice(InvoiceQueryParams queryParams) {
+        return postTransfer("/amsin/api/v1/business/fund/queryInvoice", queryParams, new ParameterizedTypeReference<QueryInvoiceResponse>() {
         });
     }
 
@@ -126,12 +115,12 @@ public class TransferClient extends WorldFirstClient {
      * @param url           服务名
      * @param typeReference 响应结果类型
      */
-    public <T> T postTransferWorldfirst(String url, Object payload, ParameterizedTypeReference<T> typeReference) {
+    public <T> T postTransfer(String url, Object payload, ParameterizedTypeReference<T> typeReference) {
         // 时间戳
         String timeString = LocalDateTime.now().atZone(DEFAULT_ZONEID).format(DEFAULT_FORMATTER);
         // 签名过后的字符串
-        String signature = sign(HttpMethod.POST.name(), url, getRequireArgs().getClientId(), timeString, getReqBody(payload), getRequireArgs().getPrivateKey());
-        HttpHeaders headers = getHeaders(getRequireArgs().getClientId(), getRequireArgs().getCustomerId(), signature, timeString);
+        String signature = sign(HttpMethod.POST.name(), url, getClientId(), timeString, getReqBody(payload), getPrivateKey());
+        HttpHeaders headers = getHeaders(signature, timeString);
         return getRestOperations().exchange(URI.create(String.format("%s%s", isSandbox() ? SANDBOX_HOST : HOST, url)), HttpMethod.POST, new HttpEntity<>(payload, headers), typeReference).getBody();
     }
 

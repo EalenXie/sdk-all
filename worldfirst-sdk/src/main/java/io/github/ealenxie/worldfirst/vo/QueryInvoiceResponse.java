@@ -18,13 +18,13 @@ public class QueryInvoiceResponse {
 
     /**
      * 由万里汇定义的业务单 ID。
-     *
+     * <p>
      * 字段最大长度：32
      */
     private String bizOrderId;
     /**
      * 单据状态。可取值如下：
-     *
+     * <p>
      * INIT：指用户在收银台未发起支付。
      * PROCESSING：指用户在收银台提交支付且支付申请受理成功。
      * FAILED：指单渠道返回失败。
@@ -38,7 +38,7 @@ public class QueryInvoiceResponse {
     private Amount payToAmount;
     /**
      * 由集成商定义的唯一请求 ID。
-     *
+     * <p>
      * 字段最大长度：32
      */
     private String requestId;
