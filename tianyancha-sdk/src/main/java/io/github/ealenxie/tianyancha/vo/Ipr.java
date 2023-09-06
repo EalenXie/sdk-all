@@ -11,7 +11,7 @@ import java.util.List;
  */
 @Getter
 @Setter
-public class CbIpr {
+public class Ipr {
     /**
      * 商标
      */

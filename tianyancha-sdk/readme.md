@@ -39,6 +39,9 @@ tianyancha-sdk
 | icContact         | [企业联系方式](http://open.tianyancha.com/open/1046)         | ✔️  |
 | icStaff           | [主要人员](http://open.tianyancha.com/open/820)            | ✔️  |
 | hiMembers         | [历史主要人员](http://open.tianyancha.com/open/1050)         | ✔️  |
+| hiHolder          | [历史股东信息](http://open.tianyancha.com/open/877)          | ✔️  |
+| icHolderList      | [公司公示-股东出资](http://open.tianyancha.com/open/997)       | ✔️  |
+| icHolderChange    | [公司公示-股权变更](http://open.tianyancha.com/open/998)       | ✔️  |
 
 
 

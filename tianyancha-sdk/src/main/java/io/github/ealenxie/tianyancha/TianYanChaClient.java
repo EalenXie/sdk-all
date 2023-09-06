@@ -29,8 +29,8 @@ public class TianYanChaClient extends RestClient {
      * <a href="http://open.tianyancha.com/open/1139">知识产权</a>
      * <p>可以通过公司名称或ID获取包含商标、专利、作品著作权、软件著作权、网站备案等维度的相关信息</p>
      */
-    public Response<CbIpr> cbIpr(String keyword) {
-        return getByKeyword("/services/open/cb/ipr/3.0", keyword, new ParameterizedTypeReference<Response<CbIpr>>() {
+    public Response<Ipr> cbIpr(String keyword) {
+        return getByKeyword("/services/open/cb/ipr/3.0", keyword, new ParameterizedTypeReference<Response<Ipr>>() {
         });
     }
 
@@ -188,6 +188,7 @@ public class TianYanChaClient extends RestClient {
         return getByKeyword("/services/open/ic/staff/2.0", keyword, new ParameterizedTypeReference<Response<TotalItems<Staff>>>() {
         });
     }
+
     /**
      * <a href="https://open.tianyancha.com/open/1050">历史主要人员</a>
      * <p>可以通过公司名称或ID获取企业主要人员信息，主要人员信息包括董事、监事、高级管理人员姓名、职位、主要人员总数等字段的详细信息</p>
@@ -197,4 +198,30 @@ public class TianYanChaClient extends RestClient {
         });
     }
 
+    /**
+     * <a href="https://open.tianyancha.com/open/877">历史股东信息</a>
+     * <p>可以通过公司名称或ID获取企业历史的股东信息，历史股东信息包括股东名、出资比例、认缴金额、股东总数等字段信息</p>
+     */
+    public Response<TotalItems<HiShareholder>> hiHolder(KeywordPageQuery query) {
+        return get("/services/open/hi/holder/2.0", query, new ParameterizedTypeReference<Response<TotalItems<HiShareholder>>>() {
+        });
+    }
+
+    /**
+     * <a href="https://open.tianyancha.com/open/997">公司公示-股东出资</a>
+     * <p>可以通过公司名称或ID获取股东及出资信息，股东及出资信息包括股东名、出资比例、出资金额、股东总数等字段的详细信息</p>
+     */
+    public Response<TotalItems<ShareHolder>> icHolderList(KeywordPageQuery query) {
+        return get("/services/open/ic/holderList/2.0", query, new ParameterizedTypeReference<Response<TotalItems<ShareHolder>>>() {
+        });
+    }
+
+    /**
+     * <a href="https://open.tianyancha.com/open/998">公司公示-股权变更</a>
+     * <p>可以通过公司名称或ID获取企业股权变更信息，股权变更包括变更前后的股东名、变更时间等字段的详细信息</p>
+     */
+    public Response<TotalItems<HolderChange>> icHolderChange(KeywordPageQuery query) {
+        return get("/services/open/ic/holderChange/2.0", query, new ParameterizedTypeReference<Response<TotalItems<HolderChange>>>() {
+        });
+    }
 }
