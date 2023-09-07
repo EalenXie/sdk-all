@@ -224,4 +224,13 @@ public class TianYanChaClient extends RestClient {
         return get("/services/open/ic/holderChange/2.0", query, new ParameterizedTypeReference<Response<TotalItems<HolderChange>>>() {
         });
     }
+
+    /**
+     * <a href="https://open.tianyancha.com/open/823">对外投资</a>
+     * <p>可以通过公司名称或ID获取企业对外投资信息，对外投资信息包括被投资企业、企业法人、投资占比、对外投资总数等字段的详细信息</p>
+     */
+    public Response<TotalItems<Inverst>> icInverst(KeywordPageQuery query) {
+        return get("/services/open/ic/inverst/2.0", query, new ParameterizedTypeReference<Response<TotalItems<Inverst>>>() {
+        });
+    }
 }

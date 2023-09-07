@@ -42,6 +42,8 @@ tianyancha-sdk
 | hiHolder          | [历史股东信息](http://open.tianyancha.com/open/877)          | ✔️  |
 | icHolderList      | [公司公示-股东出资](http://open.tianyancha.com/open/997)       | ✔️  |
 | icHolderChange    | [公司公示-股权变更](http://open.tianyancha.com/open/998)       | ✔️  |
+| icInverst         | [对外投资](http://open.tianyancha.com/open/823)            | ✔️  |
+
 
 
 
