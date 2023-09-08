@@ -45,7 +45,8 @@ tianyancha-sdk
 | icInverst         | [对外投资](http://open.tianyancha.com/open/823)            | ✔️  |
 | hiInvest          | [历史对外投资](http://open.tianyancha.com/open/876)          | ✔️  |
 | icBranch          | [分支机构](http://open.tianyancha.com/open/824)            | ✔️  |
-
+| icParentCompany   | [总公司](http://open.tianyancha.com/open/963)             | ✔️  |
+| icAnnualReport    | [企业年报](http://open.tianyancha.com/open/825)            | ✔️  |
 
 
 

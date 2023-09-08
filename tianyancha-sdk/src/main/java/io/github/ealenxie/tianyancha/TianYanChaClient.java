@@ -242,6 +242,7 @@ public class TianYanChaClient extends RestClient {
         return get("/services/open/hi/invest/2.0", query, new ParameterizedTypeReference<Response<TotalItems<HiInvest>>>() {
         });
     }
+
     /**
      * <a href="https://open.tianyancha.com/open/824">分支机构</a>
      * <p>可以通过公司名称或ID获取企业分支机构信息，分支机构信息包括分公司名称或ID、企业法人、经营状态、分公司总数等字段的详细信息</p>
@@ -250,4 +251,23 @@ public class TianYanChaClient extends RestClient {
         return get("/services/open/ic/branch/2.0", query, new ParameterizedTypeReference<Response<TotalItems<IcBranch>>>() {
         });
     }
+
+    /**
+     * <a href="https://open.tianyancha.com/open/963">总公司</a>
+     * <p>可以通过公司名称或ID获取企业总公司信息，总公司信息包括总公司名称或ID、企业法人、经营状态、注册资本等字段的详细信息</p>
+     */
+    public Response<IcParentCompany> icParentCompany(String keyword) {
+        return getByKeyword("/services/open/ic/parentCompany/2.0", keyword, new ParameterizedTypeReference<Response<IcParentCompany>>() {
+        });
+    }
+
+    /**
+     * <a href="https://open.tianyancha.com/open/825">企业年报</a>
+     * <p>可以通过公司名称或ID获取企业年报，企业年报包括企业基本信息、股东及出资信息、企业资产状况信息、对外投资信息等字段的详细信息</p>
+     */
+    public Response<TotalItems<IcAnnualReport>> icAnnualReport(String keyword) {
+        return getByKeyword("/services/open/ic/annualreport/2.0", keyword, new ParameterizedTypeReference<Response<TotalItems<IcAnnualReport>>>() {
+        });
+    }
+
 }
