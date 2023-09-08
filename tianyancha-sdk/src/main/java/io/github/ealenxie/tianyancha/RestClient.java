@@ -25,7 +25,15 @@ public abstract class RestClient {
     private final RestOperations restOperations;
     private final ObjectMapper objectMapper;
     private static final String HOST = "http://open.api.tianyancha.com";
-    private final String token;
+    private  String token;
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
 
     protected RestClient(String token) {
         this(new RestTemplate(), new ObjectMapper(), token);
@@ -50,7 +58,7 @@ public abstract class RestClient {
 
     private HttpHeaders getHeader() {
         HttpHeaders headers = new HttpHeaders();
-        headers.set("Authorization", token);
+        headers.set("Authorization", getToken());
         headers.setContentType(MediaType.APPLICATION_JSON);
         return headers;
     }

@@ -26,13 +26,13 @@ public class PayToDetail {
     private Amount feeAmount;
     /**
      * 账单中要求在付款时添加的备注信息。
-     *
+     * <p>
      * 字段最大长度：70
      */
     private String remark;
     /**
      * 用于接收支付结果通知的地址。
-     *
+     * <p>
      * 字段最大长度：128
      */
     private String paymentNotifyUrl;

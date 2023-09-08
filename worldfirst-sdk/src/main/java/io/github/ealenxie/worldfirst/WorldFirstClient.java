@@ -2,7 +2,6 @@ package io.github.ealenxie.worldfirst;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.github.ealenxie.worldfirst.dto.RequireArgs;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -34,7 +33,27 @@ public abstract class WorldFirstClient {
 
     private final RestOperations restOperations;
     private final ObjectMapper objectMapper;
-    private final RequireArgs requireArgs;
+
+    private final String clientId;
+    private final String privateKey;
+    private String customerId;
+
+    public void setCustomerId(String customerId) {
+        this.customerId = customerId;
+    }
+
+    public String getCustomerId() {
+        return customerId;
+    }
+
+    public String getClientId() {
+        return clientId;
+    }
+
+    public String getPrivateKey() {
+        return privateKey;
+    }
+
     /**
      * 是否是沙箱环境
      */
@@ -48,22 +67,19 @@ public abstract class WorldFirstClient {
         this.sandbox = sandbox;
     }
 
-    protected WorldFirstClient(RequireArgs requireArgs) {
-        this(new RestTemplate(), new ObjectMapper(), requireArgs);
+    protected WorldFirstClient(String clientId, String privateKey) {
+        this(clientId, privateKey, new RestTemplate(), new ObjectMapper());
     }
 
-    protected WorldFirstClient(RestOperations restOperations, ObjectMapper objectMapper, RequireArgs requireArgs) {
+    protected WorldFirstClient(String clientId, String privateKey, RestOperations restOperations, ObjectMapper objectMapper) {
         this.restOperations = restOperations;
         this.objectMapper = objectMapper;
-        this.requireArgs = requireArgs;
+        this.clientId = clientId;
+        this.privateKey = privateKey;
     }
 
     public RestOperations getRestOperations() {
         return restOperations;
-    }
-
-    public RequireArgs getRequireArgs() {
-        return requireArgs;
     }
 
     /**
@@ -91,14 +107,13 @@ public abstract class WorldFirstClient {
     public static final ZoneId DEFAULT_ZONEID = ZoneId.of("Asia/Shanghai");
 
 
-
-    public <T> T postWorldfirst(String serviceName ,Object payload, ParameterizedTypeReference<T> typeReference) {
+    public <T> T post(String serviceName, Object payload, ParameterizedTypeReference<T> typeReference) {
         String url = getUrlNotHost(serviceName);
         // 时间戳
         String timeString = LocalDateTime.now().atZone(DEFAULT_ZONEID).format(DEFAULT_FORMATTER);
         // 签名过后的字符串
-        String signature = sign(HttpMethod.POST.name(), serviceName, requireArgs.getClientId(), timeString, getReqBody(payload), requireArgs.getPrivateKey());
-        HttpHeaders headers = getHeaders(requireArgs.getClientId(), requireArgs.getCustomerId(), signature, timeString);
+        String signature = sign(HttpMethod.POST.name(), serviceName, clientId, timeString, getReqBody(payload), privateKey);
+        HttpHeaders headers = getHeaders(signature, timeString);
         return getRestOperations().exchange(URI.create(String.format("%s%s", HOST, url)), HttpMethod.POST, new HttpEntity<>(payload, headers), typeReference).getBody();
     }
 
@@ -106,7 +121,7 @@ public abstract class WorldFirstClient {
      * @param clientId 客户端id
      */
     @SuppressWarnings("all")
-    public HttpHeaders getHeaders(String clientId, String customerId, String signature, String timeString) {
+    public HttpHeaders getHeaders(String signature, String timeString) {
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.set("Client-Id", clientId);
         httpHeaders.set("Signature", signature);
@@ -129,7 +144,7 @@ public abstract class WorldFirstClient {
      * @param reqBody            json format request        e.g., "{"paymentRequestId":"*****","refundRequestId":"*****","refundAmount":{"currency":"USD","value":"123"},"extendInfo":{"":""}}"
      * @param privateKey         your private key
      */
-    public static String sign(String httpMethod, String uriWithQueryString, String clientId, String timeString, String reqBody, String privateKey) {
+    protected static String sign(String httpMethod, String uriWithQueryString, String clientId, String timeString, String reqBody, String privateKey) {
         String reqContent = httpMethod + " " + uriWithQueryString + "\n" + clientId + "." + timeString + "." + reqBody;
         String signature = signature(reqContent, privateKey);
         return String.format("algorithm=RSA256,keyVersion=1,signature=%s", signature);

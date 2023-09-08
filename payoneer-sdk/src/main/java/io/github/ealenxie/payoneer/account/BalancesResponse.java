@@ -1,7 +1,7 @@
 package io.github.ealenxie.payoneer.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.github.ealenxie.payoneer.PayoneerPage;
+import io.github.ealenxie.payoneer.PageItems;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,8 +10,8 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class AccountBalance {
+public class BalancesResponse {
 
     @JsonProperty("balances")
-    private PayoneerPage<BalanceItem> balances;
+    private PageItems<Balance> balances;
 }

@@ -13,7 +13,7 @@ public class InvoiceQueryParams {
 
     /**
      * 由集成商定义的唯一请求 ID。
-     *
+     * <p>
      * 字段最大长度：32
      */
     private String requestId;

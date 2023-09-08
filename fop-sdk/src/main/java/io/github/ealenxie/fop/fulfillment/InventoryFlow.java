@@ -56,6 +56,11 @@ public class InventoryFlow {
     @JsonProperty("stock_quality")
     private String stockQuality;
     /**
+     * 在库库存
+     */
+    @JsonProperty("warehouse_stock")
+    private String warehouseStock;
+    /**
      * 出入库时间
      */
     @JsonProperty("create_time")
@@ -64,5 +69,5 @@ public class InventoryFlow {
      * 出入库标识
      */
     @JsonProperty("journal_type")
-    private Long journalType;
+    private String journalType;
 }

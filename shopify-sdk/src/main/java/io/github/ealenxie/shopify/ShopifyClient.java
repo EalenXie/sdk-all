@@ -16,8 +16,6 @@ public abstract class ShopifyClient {
 
     private final RestOperations restOperations;
 
-    public static final String SHOPIFY_ACCESS_TOKEN = "X-Shopify-Access-Token";
-
 
     protected ShopifyClient(RestOperations restOperations) {
         this.restOperations = restOperations;
@@ -29,7 +27,7 @@ public abstract class ShopifyClient {
 
     public HttpHeaders getPasswordHeader(String password) {
         HttpHeaders headers = new HttpHeaders();
-        headers.set(SHOPIFY_ACCESS_TOKEN, password);
+        headers.set("X-Shopify-Access-Token", password);
         return headers;
     }
 

@@ -29,8 +29,8 @@ public class TianYanChaClient extends RestClient {
      * <a href="http://open.tianyancha.com/open/1139">知识产权</a>
      * <p>可以通过公司名称或ID获取包含商标、专利、作品著作权、软件著作权、网站备案等维度的相关信息</p>
      */
-    public Response<CbIpr> cbIpr(String keyword) {
-        return getByKeyword("/services/open/cb/ipr/3.0", keyword, new ParameterizedTypeReference<Response<CbIpr>>() {
+    public Response<Ipr> cbIpr(String keyword) {
+        return getByKeyword("/services/open/cb/ipr/3.0", keyword, new ParameterizedTypeReference<Response<Ipr>>() {
         });
     }
 
@@ -116,6 +116,15 @@ public class TianYanChaClient extends RestClient {
     }
 
     /**
+     * <a href="https://open.tianyancha.com/open/1074">企业三要素验证</a>
+     * <p>可以通过输入企业名称、法人、注册号 /组织机构代码 /统一社会信用代码，验证三者是否匹配一致</p>
+     */
+    public Response<IcVerify> icVerify(IcVerifyQueryParams queryParams) {
+        return get("/services/open/ic/verify/2.0", queryParams, new ParameterizedTypeReference<Response<IcVerify>>() {
+        });
+    }
+
+    /**
      * <a href="https://open.tianyancha.com/open/1117">特殊企业基本信息</a>
      * <p>getResult()返回值 序列化 请参考 ResponseJsonNode#getEntityType()和  getResult(ResponseJsonNode, Class)</p>
      *
@@ -126,5 +135,102 @@ public class TianYanChaClient extends RestClient {
         });
     }
 
+    /**
+     * <a href="https://open.tianyancha.com/open/818">企业基本信息（含企业联系方式）</a>
+     * <p>可以通过公司名称或ID或ID称获取企业基本信息和企业联系方式，包括公司名称或ID、类型、成立日期、电话、邮箱、网址等字段的详细信息</p>
+     */
+    public Response<BaseInfoV2> icBaseInfoV2(String keyword) {
+        return getByKeyword("/services/open/ic/baseinfoV2/2.0", keyword, new ParameterizedTypeReference<Response<BaseInfoV2>>() {
+        });
+    }
 
+    /**
+     * <a href="https://open.tianyancha.com/open/819">企业基本信息（含主要人员）</a>
+     * <p>可以通过公司名称或ID获取企业基本信息和主要人员信息，包括公司名称或ID、类型、成立日期、联系方式、主要人员名称、职位等字段的详细信息</p>
+     */
+    public Response<BaseInfoV3> icBaseInfoV3(String keyword) {
+        return getByKeyword("/services/open/ic/baseinfoV3/2.0", keyword, new ParameterizedTypeReference<Response<BaseInfoV3>>() {
+        });
+    }
+
+    /**
+     * <a href="https://open.tianyancha.com/open/1045">工商快照</a>
+     * <p>可以通过公司名称或ID获取工商快照信息，工商快照信息包括工商官网信息快照、营业执照信息、股东及出资信息等</p>
+     */
+    public Response<String> icSnapshot(String keyword) {
+        return getByKeyword("/services/open/ic/snapshot", keyword, new ParameterizedTypeReference<Response<String>>() {
+        });
+    }
+
+    /**
+     * <a href="https://open.tianyancha.com/open/1047">企业类型</a>
+     * <p>可以通过公司名称或ID获取企业类型信息</p>
+     */
+    public Response<String> icCompanyType(String keyword) {
+        return getByKeyword("/services/open/ic/companyType", keyword, new ParameterizedTypeReference<Response<String>>() {
+        });
+    }
+
+    /**
+     * <a href="https://open.tianyancha.com/open/1046">企业联系方式</a>
+     * <p>可以通过公司名称或ID获取企业联系方式信息，企业联系方式信息包括邮箱、网址、电话等字段的详细信息</p>
+     */
+    public Response<IcContact> icContact(String keyword) {
+        return getByKeyword("/services/open/ic/contact", keyword, new ParameterizedTypeReference<Response<IcContact>>() {
+        });
+    }
+
+    /**
+     * <a href="https://open.tianyancha.com/open/820">主要人员</a>
+     * <p>可以通过公司名称或ID获取企业主要人员信息，主要人员信息包括董事、监事、高级管理人员姓名、职位、主要人员总数等字段的详细信息</p>
+     */
+    public Response<TotalItems<Staff>> icStaff(String keyword) {
+        return getByKeyword("/services/open/ic/staff/2.0", keyword, new ParameterizedTypeReference<Response<TotalItems<Staff>>>() {
+        });
+    }
+
+    /**
+     * <a href="https://open.tianyancha.com/open/1050">历史主要人员</a>
+     * <p>可以通过公司名称或ID获取企业主要人员信息，主要人员信息包括董事、监事、高级管理人员姓名、职位、主要人员总数等字段的详细信息</p>
+     */
+    public Response<HiMember> hiMembers(String keyword) {
+        return getByKeyword("/services/open/hi/members", keyword, new ParameterizedTypeReference<Response<HiMember>>() {
+        });
+    }
+
+    /**
+     * <a href="https://open.tianyancha.com/open/877">历史股东信息</a>
+     * <p>可以通过公司名称或ID获取企业历史的股东信息，历史股东信息包括股东名、出资比例、认缴金额、股东总数等字段信息</p>
+     */
+    public Response<TotalItems<HiShareholder>> hiHolder(KeywordPageQuery query) {
+        return get("/services/open/hi/holder/2.0", query, new ParameterizedTypeReference<Response<TotalItems<HiShareholder>>>() {
+        });
+    }
+
+    /**
+     * <a href="https://open.tianyancha.com/open/997">公司公示-股东出资</a>
+     * <p>可以通过公司名称或ID获取股东及出资信息，股东及出资信息包括股东名、出资比例、出资金额、股东总数等字段的详细信息</p>
+     */
+    public Response<TotalItems<ShareHolder>> icHolderList(KeywordPageQuery query) {
+        return get("/services/open/ic/holderList/2.0", query, new ParameterizedTypeReference<Response<TotalItems<ShareHolder>>>() {
+        });
+    }
+
+    /**
+     * <a href="https://open.tianyancha.com/open/998">公司公示-股权变更</a>
+     * <p>可以通过公司名称或ID获取企业股权变更信息，股权变更包括变更前后的股东名、变更时间等字段的详细信息</p>
+     */
+    public Response<TotalItems<HolderChange>> icHolderChange(KeywordPageQuery query) {
+        return get("/services/open/ic/holderChange/2.0", query, new ParameterizedTypeReference<Response<TotalItems<HolderChange>>>() {
+        });
+    }
+
+    /**
+     * <a href="https://open.tianyancha.com/open/823">对外投资</a>
+     * <p>可以通过公司名称或ID获取企业对外投资信息，对外投资信息包括被投资企业、企业法人、投资占比、对外投资总数等字段的详细信息</p>
+     */
+    public Response<TotalItems<Inverst>> icInverst(KeywordPageQuery query) {
+        return get("/services/open/ic/inverst/2.0", query, new ParameterizedTypeReference<Response<TotalItems<Inverst>>>() {
+        });
+    }
 }
