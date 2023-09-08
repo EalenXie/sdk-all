@@ -25,6 +25,7 @@
         <module>alibaba-1688-sdk</module>
         <module>winit-sdk</module>
         <module>worldfirst-sdk</module>
+        <module>sellersprite-sdk</module>
     </modules>
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
