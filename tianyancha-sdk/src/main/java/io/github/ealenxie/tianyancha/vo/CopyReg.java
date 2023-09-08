@@ -44,7 +44,7 @@ public class CopyReg {
      * id
      */
     @JsonProperty("id")
-    private Integer id;
+    private Long id;
     /**
      * 分类号
      */

@@ -51,7 +51,7 @@ public class Patent {
      * id
      */
     @JsonProperty("id")
-    private Integer id;
+    private Long id;
     /**
      * 申请公布号
      */

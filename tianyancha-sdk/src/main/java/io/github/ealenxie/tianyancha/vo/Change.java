@@ -29,7 +29,7 @@ public class Change {
      * 表id
      */
     @JsonProperty("id")
-    private Integer id;
+    private Long id;
 
     /**
      * 变更事项

@@ -233,4 +233,21 @@ public class TianYanChaClient extends RestClient {
         return get("/services/open/ic/inverst/2.0", query, new ParameterizedTypeReference<Response<TotalItems<Inverst>>>() {
         });
     }
+
+    /**
+     * <a href="https://open.tianyancha.com/open/876">历史对外投资</a>
+     * <p>历史对外投资</p>
+     */
+    public Response<TotalItems<HiInvest>> hiInvest(KeywordPageQuery query) {
+        return get("/services/open/hi/invest/2.0", query, new ParameterizedTypeReference<Response<TotalItems<HiInvest>>>() {
+        });
+    }
+    /**
+     * <a href="https://open.tianyancha.com/open/824">分支机构</a>
+     * <p>可以通过公司名称或ID获取企业分支机构信息，分支机构信息包括分公司名称或ID、企业法人、经营状态、分公司总数等字段的详细信息</p>
+     */
+    public Response<TotalItems<IcBranch>> icBranch(KeywordPageQuery query) {
+        return get("/services/open/ic/branch/2.0", query, new ParameterizedTypeReference<Response<TotalItems<IcBranch>>>() {
+        });
+    }
 }

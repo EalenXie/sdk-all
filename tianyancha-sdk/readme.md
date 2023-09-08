@@ -43,6 +43,8 @@ tianyancha-sdk
 | icHolderList      | [公司公示-股东出资](http://open.tianyancha.com/open/997)       | ✔️  |
 | icHolderChange    | [公司公示-股权变更](http://open.tianyancha.com/open/998)       | ✔️  |
 | icInverst         | [对外投资](http://open.tianyancha.com/open/823)            | ✔️  |
+| hiInvest          | [历史对外投资](http://open.tianyancha.com/open/876)          | ✔️  |
+| icBranch          | [分支机构](http://open.tianyancha.com/open/824)            | ✔️  |
 
 
 

@@ -39,7 +39,7 @@ public class Tm {
      * id
      */
     @JsonProperty("id")
-    private Integer id;
+    private Long id;
     /**
      * 国际分类
      */

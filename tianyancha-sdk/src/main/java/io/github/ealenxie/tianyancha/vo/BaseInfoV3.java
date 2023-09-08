@@ -41,7 +41,7 @@ public class BaseInfoV3 {
      * 企业id
      */
     @JsonProperty("id")
-    private Integer id;
+    private Long id;
 
     /**
      * 是否是小微企业 0不是 1是

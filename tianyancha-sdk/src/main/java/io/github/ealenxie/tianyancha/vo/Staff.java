@@ -31,7 +31,7 @@ public class Staff {
      * id
      */
     @JsonProperty("id")
-    private Integer id;
+    private Long id;
 
     /**
      * 主要人员类型 1-公司 2-人
