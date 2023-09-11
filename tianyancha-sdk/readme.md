@@ -47,6 +47,7 @@ tianyancha-sdk
 | icBranch          | [分支机构](http://open.tianyancha.com/open/824)            | ✔️  |
 | icParentCompany   | [总公司](http://open.tianyancha.com/open/963)             | ✔️  |
 | icAnnualReport    | [企业年报](http://open.tianyancha.com/open/825)            | ✔️  |
+| hiIc              | [历史工商信息](http://open.tianyancha.com/open/878)          | ✔️  |
 
 
 

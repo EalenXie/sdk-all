@@ -270,4 +270,12 @@ public class TianYanChaClient extends RestClient {
         });
     }
 
+    /**
+     * <a href="https://open.tianyancha.com/open/878">历史工商信息</a>
+     * <p>历史工商信息</p>
+     */
+    public Response<HiIc> hiIc(String keyword) {
+        return getByKeyword("/services/open/hi/ic/2.0", keyword, new ParameterizedTypeReference<Response<HiIc>>() {
+        });
+    }
 }
