@@ -14,9 +14,9 @@ public class KeywordPageQuery extends KeywordQueryParams {
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("pageSize")
-    private String pageSize;
+    private Integer pageSize;
     @JsonProperty("pageNum")
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String pageNum;
+    private Integer pageNum;
 
 }
