@@ -306,4 +306,22 @@ public class TianYanChaClient extends RestClient {
         });
     }
 
+    /**
+     * <a href="http://open.tianyancha.com/open/875">历史开庭公告</a>
+     * <p>可以通过公司名称或ID获取企业历史的开庭公告，历史开庭公告信息包括被告/被上诉人、法院、原告/上诉人、开庭日期、案由、内部ID、案号等字段信息</p>
+     */
+    public Response<TotalItems<HiAnnouncement>> hiAnnouncement(KeywordPageQuery query) {
+        return get("/services/open/hi/announcement/2.0", query, new ParameterizedTypeReference<Response<TotalItems<HiAnnouncement>>>() {
+        });
+    }
+
+    /**
+     * <a href="http://open.tianyancha.com/open/841">法院公告</a>
+     * <p>可以通过公司名称或ID获取企业法院公告，法院公告信息包括执行法院、案件内容、公告类型、刊登日期、公司名、当事人等字段的详细信息</p>
+     */
+    public Response<TotalItems<JrCourtAnnouncement>> jrCourtAnnouncement(KeywordPageQuery query) {
+        return get("/services/open/jr/courtAnnouncement/2.0", query, new ParameterizedTypeReference<Response<TotalItems<JrCourtAnnouncement>>>() {
+        });
+    }
+
 }
