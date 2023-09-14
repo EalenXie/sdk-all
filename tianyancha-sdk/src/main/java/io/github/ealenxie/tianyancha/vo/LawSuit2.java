@@ -9,7 +9,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class JrLawSuit {
+public class LawSuit2 {
 
     /**
      * 相关公司id

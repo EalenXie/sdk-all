@@ -23,7 +23,7 @@ tianyancha-sdk
 | cbIpr             | [知识产权](http://open.tianyancha.com/open/1139)           | ✔️  |
 | cbJudicial        | [司法风险](http://open.tianyancha.com/open/1002)           | ✔️  |
 | cbIc              | [工商信息](http://open.tianyancha.com/open/1001)           | ✔️  |
-| jrLawSuit         | [法律诉讼](http://open.tianyancha.com/open/1114)           | ✔️  |
+| lawSuit2          | [法律诉讼](http://open.tianyancha.com/open/842)            | ✔️  |
 | icChangeInfo      | [变更记录](http://open.tianyancha.com/open/822)            | ✔️  |
 | icHolder          | [企业股东](http://open.tianyancha.com/open/821)            | ✔️  |
 | icBaseInfoNormal  | [企业基本信息查询](http://open.tianyancha.com/open/1116)       | ✔️  |
@@ -48,8 +48,8 @@ tianyancha-sdk
 | icParentCompany   | [总公司](http://open.tianyancha.com/open/963)             | ✔️  |
 | icAnnualReport    | [企业年报](http://open.tianyancha.com/open/825)            | ✔️  |
 | hiIc              | [历史工商信息](http://open.tianyancha.com/open/878)          | ✔️  |
-
-
+| lawSuit3          | [法律诉讼(V3)](http://open.tianyancha.com/open/1114)       | ✔️  |
+| hiLawSuit3        | [历史法律诉讼](http://open.tianyancha.com/open/1115)         | ✔️  |
 
 
 

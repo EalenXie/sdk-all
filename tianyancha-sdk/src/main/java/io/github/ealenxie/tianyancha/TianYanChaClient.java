@@ -56,8 +56,8 @@ public class TianYanChaClient extends RestClient {
      * <a href="http://open.tianyancha.com/open/842">法律诉讼</a>
      * <p>可以通过公司名称或ID获取企业法律诉讼信息，法律诉讼包括案件名称、案由、案件身份、案号等字段的详细信息</p>
      */
-    public Response<TotalItems<JrLawSuit>> jrLawSuit(KeywordPageQuery query) {
-        return get("/services/open/jr/lawSuit/2.0", query, new ParameterizedTypeReference<Response<TotalItems<JrLawSuit>>>() {
+    public Response<TotalItems<LawSuit2>> lawSuit2(KeywordPageQuery query) {
+        return get("/services/open/jr/lawSuit/2.0", query, new ParameterizedTypeReference<Response<TotalItems<LawSuit2>>>() {
         });
     }
 
@@ -278,4 +278,32 @@ public class TianYanChaClient extends RestClient {
         return getByKeyword("/services/open/hi/ic/2.0", keyword, new ParameterizedTypeReference<Response<HiIc>>() {
         });
     }
+
+    /**
+     * <a href="http://open.tianyancha.com/open/1114">法律诉讼</a>
+     * <p>可以通过公司名称或ID获取企业法律诉讼信息，包括案号、案件名称、案由、案件金额、案件身份、裁判结果标签等字段的详细信息</p>
+     */
+    public Response<TotalItems<LawSuit3>> lawSuit3(KeywordPageQuery query) {
+        return get("/services/open/jr/lawSuit/3.0", query, new ParameterizedTypeReference<Response<TotalItems<LawSuit3>>>() {
+        });
+    }
+
+    /**
+     * <a href="http://open.tianyancha.com/open/1115">历史法律诉讼</a>
+     * <p>可以通过公司名称或ID获取企业历史法律诉讼信息，包括案号、案件名称、案由、案件金额、案件身份、裁判结果标签等字段的详细信息</p>
+     */
+    public Response<TotalItems<LawSuit3>> hiLawSuit3(KeywordPageQuery query) {
+        return get("/services/open/hi/lawSuit/3.0", query, new ParameterizedTypeReference<Response<TotalItems<LawSuit3>>>() {
+        });
+    }
+
+    /**
+     * <a href="http://open.tianyancha.com/open/1073">法律诉讼详情</a>
+     * <p>根据法律诉讼ID获取法律诉讼详情，法律诉讼详情包括标题、关联公司、关联律所、审理法院、文书类型、案号、文书内容、本案裁判结果等字段的详细信息</p>
+     */
+    public Response<LawSuitDetail> lawSuitDetail(String uuid) {
+        return get("/services/open/jr/lawSuit/detail", String.format("uuid=%s", uuid), new ParameterizedTypeReference<Response<LawSuitDetail>>() {
+        });
+    }
+
 }
