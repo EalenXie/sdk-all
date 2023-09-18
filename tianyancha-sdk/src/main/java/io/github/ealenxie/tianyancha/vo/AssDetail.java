@@ -4,14 +4,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
-/**
- * @author EalenXie created on 2023/9/18 14:50
- */
 @Getter
 @Setter
-public class JudicialItem {
+public class AssDetail {
     /**
-     * 对应表ID
+     * 对应表id
      */
     @JsonProperty("id")
     private Long id;
@@ -29,10 +26,10 @@ public class JudicialItem {
     private String typeState;
 
     /**
-     * 被执行人HID
+     * 被执行人id
      */
     @JsonProperty("executedPersonHid")
-    private Long executedPersonHid;
+    private String executedPersonHid;
 
     /**
      * 执行法院
@@ -53,34 +50,16 @@ public class JudicialItem {
     private String executeNoticeNum;
 
     /**
-     * 唯一标识符
-     */
-    @JsonProperty("businessId")
-    private String businessId;
-
-    /**
-     * 执行人公司ID
+     * 被执行人公司id
      */
     @JsonProperty("executedPersonCid")
     private Long executedPersonCid;
 
     /**
-     * 司法协助基本信息ID
-     */
-    @JsonProperty("assId")
-    private String assId;
-
-    /**
-     * 执行人类型 (0-无法人, 1-企业, 2-人)
+     * 被执行人类型 1公司，2人
      */
     @JsonProperty("executedPersonType")
     private String executedPersonType;
-
-    /**
-     * 公示日期 (时间戳)
-     */
-    @JsonProperty("publicityDate")
-    private Long publicityDate;
 
     /**
      * 股权被执行的企业
@@ -89,7 +68,7 @@ public class JudicialItem {
     private String stockExecutedCompany;
 
     /**
-     * 股权被执行的企业ID
+     * 股权被执行的企业id
      */
     @JsonProperty("stockExecutedCid")
     private Long stockExecutedCid;

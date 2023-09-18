@@ -355,8 +355,35 @@ public class TianYanChaClient extends RestClient {
      * <a href="http://open.tianyancha.com/open/756">司法协助</a>
      * <p>可以通过公司名称或ID获取司法协助信息，司法协助信息包括执行法院、案件内容、被执行人名称等字段的详细信息</p>
      */
-    public Response<TotalItems<JrCourtRegister>> judicial(KeywordPageQuery query) {
-        return get("/services/v4/open/judicial", query, new ParameterizedTypeReference<Response<TotalItems<JrCourtRegister>>>() {
+    public Response<JudicialV4> judicialV4(KeywordPageQuery query) {
+        return get("/services/v4/open/judicial", query, new ParameterizedTypeReference<Response<JudicialV4>>() {
+        });
+    }
+
+    /**
+     * <a href="http://open.tianyancha.com/open/757">司法协助详情</a>
+     * <p>根据司法协助ID获取司法协助详情，判断司法协助类型，包括股权变更、股权冻结、结解除冻结、司法协助续行、股权数额、司法冻结失效及对应的详细信息</p>
+     */
+    public Response<JudicialDetailV4> getJudicialDetail(String assistanceId) {
+        return get("/services/v4/open/getJudicialDetail", String.format("assistanceId=%s", assistanceId), new ParameterizedTypeReference<Response<JudicialDetailV4>>() {
+        });
+    }
+
+    /**
+     * <a href="http://open.tianyancha.com/open/1015">历史司法协助</a>
+     * <p>可以通过公司名称或ID获取企业历史的司法协助信息，历史司法协助信息包括执行法院、案件内容、被执行人名称等字段信息</p>
+     */
+    public Response<JudicialV4> hiJudicial(KeywordPageQuery query) {
+        return get("/services/open/hi/judicial/2.0", query, new ParameterizedTypeReference<Response<JudicialV4>>() {
+        });
+    }
+
+    /**
+     * <a href="http://open.tianyancha.com/open/1016">历史司法协助详情</a>
+     * <p>根据司法协助ID获取历史的司法协助详情，判断司法协助类型，历史司法协助详情包括股权变更、股权冻结、结解除冻结、司法协助续行、股权数额、司法冻结失效及对应的详细信息</p>
+     */
+    public Response<JudicialDetailV4> hiJudicialDetail(String businessId) {
+        return get("/services/open/hi/judicial/detail/2.0", String.format("businessId=%s", businessId), new ParameterizedTypeReference<Response<JudicialDetailV4>>() {
         });
     }
 

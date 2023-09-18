@@ -55,4 +55,7 @@ tianyancha-sdk
 | hiCourt             | [历史法院公告](http://open.tianyancha.com/open/873)          | ✔️  |
 | sendAnnouncement    | [送达公告](http://open.tianyancha.com/open/962)            | ✔️  |
 | courtRegister       | [立案信息](http://open.tianyancha.com/open/961)            | ✔️  |
-| judicial            | [司法协助](http://open.tianyancha.com/open/756)            | ✔️  |
+| judicialV4          | [司法协助](http://open.tianyancha.com/open/756)            | ✔️  |
+| getJudicialDetail   | [司法协助详情](http://open.tianyancha.com/open/757)          | ✔️  |
+| hiJudicial          | [历史司法协助](http://open.tianyancha.com/open/1015)         | ✔️  |
+| hiJudicialDetail    | [历史司法协助详情](http://open.tianyancha.com/open/1016)       | ✔️  |
