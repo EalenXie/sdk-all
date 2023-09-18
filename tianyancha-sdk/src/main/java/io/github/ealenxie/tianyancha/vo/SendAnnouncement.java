@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-class SendAnnouncement {
+public class SendAnnouncement {
     /**
      * 标题
      */

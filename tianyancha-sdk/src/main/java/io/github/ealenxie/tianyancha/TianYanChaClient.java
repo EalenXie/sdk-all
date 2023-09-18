@@ -324,4 +324,40 @@ public class TianYanChaClient extends RestClient {
         });
     }
 
+    /**
+     * <a href="http://open.tianyancha.com/open/873">历史法院公告</a>
+     * <p>可以通过公司名称或ID获取企业历史的法院公告，历史法院公告信息包括执行法院、案件内容、公告类型、刊登日期、公司名、当事人等字段信息</p>
+     */
+    public Response<TotalItems<HiCourt>> hiCourt(KeywordPageQuery query) {
+        return get("/services/open/hi/court/2.0", query, new ParameterizedTypeReference<Response<TotalItems<HiCourt>>>() {
+        });
+    }
+
+    /**
+     * <a href="http://open.tianyancha.com/open/962">送达公告</a>
+     * <p>可以通过公司名称或ID获取送达公告信息，送达公告信息包括公告名称、法院名称、公告内容、发布日期等字段的详细信息</p>
+     */
+    public Response<TotalItems<SendAnnouncement>> sendAnnouncement(KeywordPageQuery query) {
+        return get("/services/open/jr/sendAnnouncement/2.0", query, new ParameterizedTypeReference<Response<TotalItems<SendAnnouncement>>>() {
+        });
+    }
+
+    /**
+     * <a href="http://open.tianyancha.com/open/961">立案信息</a>
+     * <p>可以通过公司名称或ID获取立案信息，立案信息包括案件编号、案由、立案时间、案件原被告双方信息等字段的详细信息</p>
+     */
+    public Response<TotalItems<JrCourtRegister>> courtRegister(KeywordPageQuery query) {
+        return get("/services/open/jr/courtRegister/2.0", query, new ParameterizedTypeReference<Response<TotalItems<JrCourtRegister>>>() {
+        });
+    }
+
+    /**
+     * <a href="http://open.tianyancha.com/open/756">司法协助</a>
+     * <p>可以通过公司名称或ID获取司法协助信息，司法协助信息包括执行法院、案件内容、被执行人名称等字段的详细信息</p>
+     */
+    public Response<TotalItems<JrCourtRegister>> judicial(KeywordPageQuery query) {
+        return get("/services/v4/open/judicial", query, new ParameterizedTypeReference<Response<TotalItems<JrCourtRegister>>>() {
+        });
+    }
+
 }

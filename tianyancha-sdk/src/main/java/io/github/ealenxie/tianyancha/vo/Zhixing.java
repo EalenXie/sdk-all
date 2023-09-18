@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-class Zhixing {
+public class Zhixing {
     /**
      * 案号
      */

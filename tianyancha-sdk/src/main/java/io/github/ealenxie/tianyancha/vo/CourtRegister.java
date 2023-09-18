@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-class CourtRegister {
+public class CourtRegister {
     /**
      * 地区
      */

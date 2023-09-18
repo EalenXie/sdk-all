@@ -8,7 +8,7 @@ import java.util.List;
 
 @Getter
 @Setter
-class KtAnnouncement {
+public class KtAnnouncement {
     /**
      * 承办部门
      */

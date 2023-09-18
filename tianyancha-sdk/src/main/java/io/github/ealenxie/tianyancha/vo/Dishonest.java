@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-class Dishonest {
+public class Dishonest {
     /**
      * 法人、负责人姓名
      */
