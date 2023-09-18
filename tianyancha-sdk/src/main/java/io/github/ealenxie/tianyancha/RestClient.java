@@ -25,7 +25,7 @@ public abstract class RestClient {
     private final RestOperations restOperations;
     private final ObjectMapper objectMapper;
     private static final String HOST = "http://open.api.tianyancha.com";
-    private  String token;
+    private String token;
 
     public String getToken() {
         return token;

@@ -10,47 +10,69 @@ import lombok.Setter;
 @Getter
 @Setter
 public class IcBranch {
-    /** Logo */
+    /**
+     * Logo
+     */
     @JsonProperty("logo")
     private String logo;
 
-    /** 简称 */
+    /**
+     * 简称
+     */
     @JsonProperty("alias")
     private String alias;
 
-    /** 开业时间（时间戳） */
+    /**
+     * 开业时间（时间戳）
+     */
     @JsonProperty("estiblishTime")
     private Long estiblishTime;
 
-    /** 企业状态 */
+    /**
+     * 企业状态
+     */
     @JsonProperty("regStatus")
     private String regStatus;
 
-    /** 法人 */
+    /**
+     * 法人
+     */
     @JsonProperty("legalPersonName")
     private String legalPersonName;
 
-    /** 公司id */
+    /**
+     * 公司id
+     */
     @JsonProperty("id")
     private Long id;
 
-    /** 行业code */
+    /**
+     * 行业code
+     */
     @JsonProperty("category")
     private String category;
 
-    /** 注册资金 */
+    /**
+     * 注册资金
+     */
     @JsonProperty("regCapital")
     private String regCapital;
 
-    /** 公司名 */
+    /**
+     * 公司名
+     */
     @JsonProperty("name")
     private String name;
 
-    /** 省份简称 */
+    /**
+     * 省份简称
+     */
     @JsonProperty("base")
     private String base;
 
-    /** 法人类型（1-人 2-公司） */
+    /**
+     * 法人类型（1-人 2-公司）
+     */
     @JsonProperty("personType")
     private Integer personType;
 }

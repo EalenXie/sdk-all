@@ -61,16 +61,20 @@ tianyancha-sdk
 
 ##### 司法风险(22)
 
-| 🏷️方法名              | 📚 官方文档地址                                              | 状态  |
-|:--------------------|:-------------------------------------------------------|:----|
-| lawSuit3            | [法律诉讼(V3)](http://open.tianyancha.com/open/1114)       | ✔️  |
-| hiLawSuit3          | [历史法律诉讼](http://open.tianyancha.com/open/1115)         | ✔️  |
-| hiAnnouncement      | [历史开庭公告](http://open.tianyancha.com/open/875)          | ✔️  |
-| jrCourtAnnouncement | [法院公告](http://open.tianyancha.com/open/841)            | ✔️  |
-| hiCourt             | [历史法院公告](http://open.tianyancha.com/open/873)          | ✔️  |
-| sendAnnouncement    | [送达公告](http://open.tianyancha.com/open/962)            | ✔️  |
-| courtRegister       | [立案信息](http://open.tianyancha.com/open/961)            | ✔️  |
-| judicialV4          | [司法协助](http://open.tianyancha.com/open/756)            | ✔️  |
-| getJudicialDetail   | [司法协助详情](http://open.tianyancha.com/open/757)          | ✔️  |
-| hiJudicial          | [历史司法协助](http://open.tianyancha.com/open/1015)         | ✔️  |
-| hiJudicialDetail    | [历史司法协助详情](http://open.tianyancha.com/open/1016)       | ✔️  |
+| 🏷️方法名              | 📚 官方文档地址                                        | 状态  |
+|:--------------------|:-------------------------------------------------|:----|
+| lawSuit3            | [法律诉讼(V3)](http://open.tianyancha.com/open/1114) | ✔️  |
+| hiLawSuit3          | [历史法律诉讼](http://open.tianyancha.com/open/1115)   | ✔️  |
+| hiAnnouncement      | [历史开庭公告](http://open.tianyancha.com/open/875)    | ✔️  |
+| jrCourtAnnouncement | [法院公告](http://open.tianyancha.com/open/841)      | ✔️  |
+| hiCourt             | [历史法院公告](http://open.tianyancha.com/open/873)    | ✔️  |
+| sendAnnouncement    | [送达公告](http://open.tianyancha.com/open/962)      | ✔️  |
+| courtRegister       | [立案信息](http://open.tianyancha.com/open/961)      | ✔️  |
+| judicialV4          | [司法协助](http://open.tianyancha.com/open/756)      | ✔️  |
+| getJudicialDetail   | [司法协助详情](http://open.tianyancha.com/open/757)    | ✔️  |
+| hiJudicial          | [历史司法协助](http://open.tianyancha.com/open/1015)   | ✔️  |
+| hiJudicialDetail    | [历史司法协助详情](http://open.tianyancha.com/open/1016) | ✔️  |
+| bankruptcy          | [破产重整](http://open.tianyancha.com/open/1036)     | ✔️  |
+| bankruptcyDetail    | [破产重整详情](http://open.tianyancha.com/open/1037)   | ✔️  |
+| zhixinginfo         | [被执行人](http://open.tianyancha.com/open/839)      | ✔️  |
+| hiZhixing           | [历史被执行人](http://open.tianyancha.com/open/871)    | ✔️  |

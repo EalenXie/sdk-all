@@ -387,4 +387,40 @@ public class TianYanChaClient extends RestClient {
         });
     }
 
+    /**
+     * <a href="http://open.tianyancha.com/open/1036">破产重整</a>
+     * <p>可以通过公司名称或ID获取破产重整信息，破产重整信息包括破产案件公开时间、申请人、被申请人、申请对象等字段的详细信息</p>
+     */
+    public Response<Bankruptcy> bankruptcy(KeywordPageQuery query) {
+        return get("/services/open/jr/bankruptcy/2.0", query, new ParameterizedTypeReference<Response<Bankruptcy>>() {
+        });
+    }
+
+    /**
+     * <a href="http://open.tianyancha.com/open/1037">破产重整详情</a>
+     * <p>可以通过公司名称或ID获取破产重整信息，破产重整信息包括破产案件公开时间、申请人、被申请人、申请对象、管理人主要负责人等字段的详细信息</p>
+     */
+    public Response<BankruptcyDetail> bankruptcyDetail(String gid, String uuid) {
+        return get("/services/open/jr/bankruptcy/detail/2.0", String.format("gid=%s&uuid=%s", gid, uuid), new ParameterizedTypeReference<Response<BankruptcyDetail>>() {
+        });
+    }
+
+    /**
+     * <a href="http://open.tianyancha.com/open/839">被执行人</a>
+     * <p>可以通过公司名称或ID获取破产重整信息，破产重整信息包括破产案件公开时间、申请人、被申请人、申请对象、管理人主要负责人等字段的详细信息</p>
+     */
+    public Response<TotalItems<Zhixinginfo>> zhixinginfo(KeywordPageQuery query) {
+        return get("/services/open/jr/zhixinginfo/2.0", query, new ParameterizedTypeReference<Response<TotalItems<Zhixinginfo>>>() {
+        });
+    }
+
+    /**
+     * <a href="http://open.tianyancha.com/open/871">历史被执行人</a>
+     * <p>可以通过公司名称或ID获取企业历史的被执行人信息，历史被执行人信息包括执行法院、案件内容、执行标的、被执行人名称、组织机构代码等字段信息</p>
+     */
+    public Response<TotalItems<Zhixinginfo>> hiZhixing(KeywordPageQuery query) {
+        return get("/services/open/hi/zhixing/2.0", query, new ParameterizedTypeReference<Response<TotalItems<Zhixinginfo>>>() {
+        });
+    }
+
 }
