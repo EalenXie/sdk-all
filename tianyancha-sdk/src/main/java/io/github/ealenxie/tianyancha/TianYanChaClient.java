@@ -423,4 +423,30 @@ public class TianYanChaClient extends RestClient {
         });
     }
 
+    /**
+     * <a href="http://open.tianyancha.com/open/843">失信人</a>
+     * <p>可以通过公司名称或ID判定企业失信情况，失信信息包括失信人名称、组织机构代码、履行情况、失信行为具体情形等字段的详细信息</p>
+     */
+    public Response<TotalItems<JrDishonest>> dishonest(KeywordPageQuery query) {
+        return get("/services/open/jr/dishonest/2.0", query, new ParameterizedTypeReference<Response<TotalItems<JrDishonest>>>() {
+        });
+    }
+
+    /**
+     * <a href="http://open.tianyancha.com/open/872">历史失信人</a>
+     * <p>可以通过公司名称或ID获取企业历史的失信情况，历史失信信息包括失信人名称、组织机构代码、履行情况、失信行为具体情形等字段信息</p>
+     */
+    public Response<TotalItems<HiDishonest>> hiDishonest(KeywordPageQuery query) {
+        return get("/services/open/hi/dishonest/2.0", query, new ParameterizedTypeReference<Response<TotalItems<HiDishonest>>>() {
+        });
+    }
+
+    /**
+     * <a href="http://open.tianyancha.com/open/1014">限制消费令</a>
+     * <p>可以通过公司名称或ID获取限制消费令信息，限制消费令信息包括执行法院、案件内容、被执行人名称等字段的详细信息</p>
+     */
+    public Response<TotalItems<ConsumptionRestriction>> consumptionRestriction(KeywordPageQuery query) {
+        return get("/services/open/jr/consumptionRestriction/2.0", query, new ParameterizedTypeReference<Response<TotalItems<ConsumptionRestriction>>>() {
+        });
+    }
 }
