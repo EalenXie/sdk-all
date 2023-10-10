@@ -18,11 +18,11 @@ public class OrdersDTO {
     private Integer limit;
 
     /**
-     * shipped: Show orders that have been shipped. returns orders with fulfillment_status of fulfilled.
+     * shipped: Show orders that have been shipped. Return orders with fulfillment_status of fulfilled.
      * <p>
      * partial: Show partially shipped orders.
      * <p>
-     * unshipped: Show orders that have not yet been shipped. Returns orders with fulfillment_status of null.
+     * unshipped: Show orders that have not yet been shipped. Return orders with fulfillment_status of null.
      * <p>
      * any: Show orders of any fulfillment status.
      * <p>

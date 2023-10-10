@@ -6,15 +6,15 @@ package io.github.ealenxie.paypal.referencedpayouts;
  **/
 public enum DirectiveType {
     /**
-     * The paypal provided ID of the financial instrument that receives the payout.
+     * The PayPal provided ID of the financial instrument that receives the payout.
      */
     FINANCIAL_INSTRUMENT_ID,
     /**
-     * 	The valid paypal email address of an account that receives the payout.
+     * 	The valid PayPal email address of an account that receives the payout.
      */
     EMAIL,
     /**
-     * 	The payer id of a valid paypal account that receives the payout.
+     * 	The payer id of a valid PayPal account that receives the payout.
      */
     ACCOUNT_ID
 }

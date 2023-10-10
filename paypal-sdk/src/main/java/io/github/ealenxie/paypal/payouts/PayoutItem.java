@@ -48,8 +48,8 @@ public class PayoutItem {
     /**
      * The recipient wallet.
      * Enum:	Description
-     * PAYPAL	PayPal Wallet.
-     * VENMO	Venmo Wallet.
+     * PAYPAL Wallet.
+     * VENMO Wallet.
      * RECIPIENT_SELECTED	Recipient selects how to receive payment from payment options.
      */
     @JsonProperty("recipient_wallet")

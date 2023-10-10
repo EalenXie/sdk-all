@@ -19,14 +19,14 @@ public class EventNotificationsQueryParams {
     private Integer pageSize;
     /**
      * Filters the webhook event notifications in the response to those created on or after this date and time and on or before the end_time value.
-     * Both values are in Internet date and time format format.
+     * Both values are in Internet date and time format.
      * Example: start_time=2013-03-06T11:00:00Z.
      */
     @JsonProperty("start_time")
     private String startTime;
     /**
      * Filters the webhook event notifications in the response to those created on or after the start_time and on or before this date and time.
-     * Both values are in Internet date and time format format.
+     * Both values are in Internet date and time format.
      * Example: end_time=2013-03-06T11:00:00Z.
      */
     @JsonProperty("end_time")
