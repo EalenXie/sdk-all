@@ -2,9 +2,7 @@ package io.github.ealenxie.paypal.subscriptions;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.ealenxie.paypal.Money;
-import lombok.Data;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**

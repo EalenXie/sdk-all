@@ -11,7 +11,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class PageDTO {
+public class PageQueryParams {
     /**
      * 分页游标
      * 首次调用，该参数传0。

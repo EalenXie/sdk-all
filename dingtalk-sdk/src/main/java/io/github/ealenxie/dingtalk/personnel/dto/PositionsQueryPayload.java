@@ -15,7 +15,7 @@ import java.util.List;
  */
 @Getter
 @Setter
-public class QueryPositionsDTO {
+public class PositionsQueryPayload {
 
     /**
      * 职位名称

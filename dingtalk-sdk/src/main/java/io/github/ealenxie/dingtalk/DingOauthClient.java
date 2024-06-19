@@ -2,10 +2,8 @@ package io.github.ealenxie.dingtalk;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.ealenxie.dingtalk.oauth.*;
-import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestOperations;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -33,9 +31,7 @@ public class DingOauthClient extends DingClient {
     public GetUserTokenResponseBody userAccessToken(GetUserTokenRequest request) {
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(String.format("%s/%s/oauth2/userAccessToken", DEFAULT_API_URL, VERSION));
         URI uri = builder.build().encode().toUri();
-        ResponseEntity<GetUserTokenResponseBody> exchange = restOperations.exchange(uri, HttpMethod.POST, new HttpEntity<>(request, getDingHeader()), new ParameterizedTypeReference<GetUserTokenResponseBody>() {
-        });
-        return exchange.getBody();
+        return restOperations.exchange(uri, HttpMethod.POST, new HttpEntity<>(request, getDingHeader()), GetUserTokenResponseBody.class).getBody();
     }
 
     /**
@@ -44,9 +40,7 @@ public class DingOauthClient extends DingClient {
     public GetSsoUserInfoResponseBody ssoUserInfo(String accessToken, String code) {
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(String.format("%s/%s/oauth2/ssoUserInfo?code=%s", DEFAULT_API_URL, VERSION, code));
         URI uri = builder.build().encode().toUri();
-        ResponseEntity<GetSsoUserInfoResponseBody> exchange = restOperations.exchange(uri, HttpMethod.POST, new HttpEntity<>(null, getDingHeader(accessToken)), new ParameterizedTypeReference<GetSsoUserInfoResponseBody>() {
-        });
-        return exchange.getBody();
+        return restOperations.exchange(uri, HttpMethod.POST, new HttpEntity<>(null, getDingHeader(accessToken)), GetSsoUserInfoResponseBody.class).getBody();
     }
 
     /**
@@ -55,9 +49,7 @@ public class DingOauthClient extends DingClient {
     public GetAccessTokenResponseBody accessToken(GetAccessTokenRequest request) {
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(String.format("%s/%s/oauth2/accessToken", DEFAULT_API_URL, VERSION));
         URI uri = builder.build().encode().toUri();
-        ResponseEntity<GetAccessTokenResponseBody> exchange = restOperations.exchange(uri, HttpMethod.POST, new HttpEntity<>(request, getDingHeader()), new ParameterizedTypeReference<GetAccessTokenResponseBody>() {
-        });
-        return exchange.getBody();
+        return restOperations.exchange(uri, HttpMethod.POST, new HttpEntity<>(request, getDingHeader()), GetAccessTokenResponseBody.class).getBody();
     }
 
     /**
@@ -66,9 +58,7 @@ public class DingOauthClient extends DingClient {
     public GetCorpAccessTokenResponseBody corpAccessToken(GetCorpAccessTokenRequest request) {
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(String.format("%s/%s/oauth2/corpAccessToken", DEFAULT_API_URL, VERSION));
         URI uri = builder.build().encode().toUri();
-        ResponseEntity<GetCorpAccessTokenResponseBody> exchange = restOperations.exchange(uri, HttpMethod.POST, new HttpEntity<>(request, getDingHeader()), new ParameterizedTypeReference<GetCorpAccessTokenResponseBody>() {
-        });
-        return exchange.getBody();
+        return restOperations.exchange(uri, HttpMethod.POST, new HttpEntity<>(request, getDingHeader()), GetCorpAccessTokenResponseBody.class).getBody();
     }
 
     /**
@@ -77,9 +67,7 @@ public class DingOauthClient extends DingClient {
     public CreateJsapiTicketResponseBody jsapiTickets(String accessToken) {
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(String.format("%s/%s/oauth2/jsapiTickets", DEFAULT_API_URL, VERSION));
         URI uri = builder.build().encode().toUri();
-        ResponseEntity<CreateJsapiTicketResponseBody> exchange = restOperations.exchange(uri, HttpMethod.POST, new HttpEntity<>(null, getDingHeader(accessToken)), new ParameterizedTypeReference<CreateJsapiTicketResponseBody>() {
-        });
-        return exchange.getBody();
+        return restOperations.exchange(uri, HttpMethod.POST, new HttpEntity<>(null, getDingHeader(accessToken)), CreateJsapiTicketResponseBody.class).getBody();
     }
 
     /**
@@ -88,9 +76,7 @@ public class DingOauthClient extends DingClient {
     public GetSsoAccessTokenResponseBody ssoAccessToken(GetSsoAccessTokenRequest request) {
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(String.format("%s/%s/oauth2/ssoAccessToken", DEFAULT_API_URL, VERSION));
         URI uri = builder.build().encode().toUri();
-        ResponseEntity<GetSsoAccessTokenResponseBody> exchange = restOperations.exchange(uri, HttpMethod.POST, new HttpEntity<>(request, getDingHeader()), new ParameterizedTypeReference<GetSsoAccessTokenResponseBody>() {
-        });
-        return exchange.getBody();
+        return restOperations.exchange(uri, HttpMethod.POST, new HttpEntity<>(request, getDingHeader()), GetSsoAccessTokenResponseBody.class).getBody();
     }
 
 

@@ -11,7 +11,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class QueryJobRanksDTO extends PageDTO {
+public class JobRanksQueryParams extends PageQueryParams {
     /**
      * 职级序列ID
      */

@@ -10,7 +10,7 @@ import lombok.Setter;
  **/
 @Getter
 @Setter
-public class UserListRequest {
+public class UserListPayload {
 
     /**
      * 分页查询的游标，最开始传0，后续传返回参数中的next_cursor值

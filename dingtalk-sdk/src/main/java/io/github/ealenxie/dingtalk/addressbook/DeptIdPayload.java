@@ -10,7 +10,7 @@ import lombok.Setter;
  **/
 @Getter
 @Setter
-public class DepartmentListsubRequest {
+public class DeptIdPayload {
     /**
      * 父部门ID。
      * 企业内部应用，调用获取部门列表接口获取dept_id参数值。

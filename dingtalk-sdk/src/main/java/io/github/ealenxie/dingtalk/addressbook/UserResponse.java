@@ -10,7 +10,7 @@ import lombok.Setter;
  **/
 @Getter
 @Setter
-public class GetUserResponseBody {
+public class UserResponse {
     /**
      * 头像地址
      */

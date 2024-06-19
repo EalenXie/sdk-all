@@ -12,7 +12,7 @@ import java.util.List;
  **/
 @Getter
 @Setter
-public class DeptListParentByDeptIdResponse {
+public class ParentIdsResponse {
     /**
      * 该部门的所有父部门ID列表。
      * 获取的list元素第一个是当前部门ID，最后一个是父部门ID，从左至右部门层级递增
