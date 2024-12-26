@@ -110,7 +110,7 @@ public class MarketplaceClient extends WalmartClient {
     public ItemBulkResponse itemBulkUploads(String accessToken, String feedType, byte[] file) {
         HttpHeaders headers = getBearerHeaders(accessToken);
         headers.setContentType(MediaType.MULTIPART_FORM_DATA);
-        return exchange("/v3/items/associations", HttpMethod.POST, accessToken, new FeedTypePayload(feedType), new HttpEntity<>(file, headers), ItemBulkResponse.class);
+        return exchange(FEEDS_URL, HttpMethod.POST, accessToken, new FeedTypePayload(feedType), new HttpEntity<>(file, headers), ItemBulkResponse.class);
     }
 
     /**
@@ -218,9 +218,7 @@ public class MarketplaceClient extends WalmartClient {
      * <a href="https://developer.walmart.com/api/us/mp/price#operation/priceBulkUploads">Update bulk prices (Multiple)</a>
      */
     public ItemBulkResponse priceBulkUploads(String accessToken, String feedType, byte[] file) {
-        HttpHeaders headers = getBearerHeaders(accessToken);
-        headers.setContentType(MediaType.MULTIPART_FORM_DATA);
-        return exchange(FEEDS_URL, HttpMethod.POST, accessToken, new FeedTypePayload(feedType), new HttpEntity<>(file, headers), ItemBulkResponse.class);
+        return itemBulkUploads(accessToken, feedType, file);
     }
 
     /**
