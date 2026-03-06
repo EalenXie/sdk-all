@@ -29,36 +29,28 @@ public class DingOauthClient extends DingClient {
      * <a href="https://open.dingtalk.com/document/orgapp/obtain-user-token">获取用户token</a>
      */
     public GetUserTokenResponseBody userAccessToken(GetUserTokenRequest request) {
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(String.format("%s/%s/oauth2/userAccessToken", DEFAULT_API_URL, VERSION));
-        URI uri = builder.build().encode().toUri();
-        return restOperations.exchange(uri, HttpMethod.POST, new HttpEntity<>(request, getDingHeader()), GetUserTokenResponseBody.class).getBody();
+        return restOperations.exchange(UriComponentsBuilder.fromHttpUrl(String.format("%s/%s/oauth2/userAccessToken", DEFAULT_API_URL, VERSION)).build().encode().toUri(), HttpMethod.POST, new HttpEntity<>(request, getDingHeader()), GetUserTokenResponseBody.class).getBody();
     }
 
     /**
      * <a href="https://open.dingtalk.com/document/orgapp/obtains-the-identity-of-an-application-administrator">获取应用管理后台免登的用户信息</a>
      */
     public GetSsoUserInfoResponseBody ssoUserInfo(String accessToken, String code) {
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(String.format("%s/%s/oauth2/ssoUserInfo?code=%s", DEFAULT_API_URL, VERSION, code));
-        URI uri = builder.build().encode().toUri();
-        return restOperations.exchange(uri, HttpMethod.POST, new HttpEntity<>(null, getDingHeader(accessToken)), GetSsoUserInfoResponseBody.class).getBody();
+        return restOperations.exchange(UriComponentsBuilder.fromHttpUrl(String.format("%s/%s/oauth2/ssoUserInfo?code=%s", DEFAULT_API_URL, VERSION, code)).build().encode().toUri(), HttpMethod.POST, new HttpEntity<>(null, getDingHeader(accessToken)), GetSsoUserInfoResponseBody.class).getBody();
     }
 
     /**
      * <a href="https://open.dingtalk.com/document/orgapp/obtain-the-access_token-of-an-internal-app">获取企业内部应用的accessToken</a>
      */
     public GetAccessTokenResponseBody accessToken(GetAccessTokenRequest request) {
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(String.format("%s/%s/oauth2/accessToken", DEFAULT_API_URL, VERSION));
-        URI uri = builder.build().encode().toUri();
-        return restOperations.exchange(uri, HttpMethod.POST, new HttpEntity<>(request, getDingHeader()), GetAccessTokenResponseBody.class).getBody();
+        return restOperations.exchange(UriComponentsBuilder.fromHttpUrl(String.format("%s/%s/oauth2/accessToken", DEFAULT_API_URL, VERSION)).build().encode().toUri(), HttpMethod.POST, new HttpEntity<>(request, getDingHeader()), GetAccessTokenResponseBody.class).getBody();
     }
 
     /**
      * <a href="https://open.dingtalk.com/document/orgapp/obtain-the-access_token-of-the-authorized-enterprise">获取定制应用的accessToken</a>
      */
     public GetCorpAccessTokenResponseBody corpAccessToken(GetCorpAccessTokenRequest request) {
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(String.format("%s/%s/oauth2/corpAccessToken", DEFAULT_API_URL, VERSION));
-        URI uri = builder.build().encode().toUri();
-        return restOperations.exchange(uri, HttpMethod.POST, new HttpEntity<>(request, getDingHeader()), GetCorpAccessTokenResponseBody.class).getBody();
+        return restOperations.exchange(UriComponentsBuilder.fromHttpUrl(String.format("%s/%s/oauth2/corpAccessToken", DEFAULT_API_URL, VERSION)).build().encode().toUri(), HttpMethod.POST, new HttpEntity<>(request, getDingHeader()), GetCorpAccessTokenResponseBody.class).getBody();
     }
 
     /**

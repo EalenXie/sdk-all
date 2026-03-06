@@ -15,8 +15,6 @@ import org.springframework.http.HttpMethod;
 import org.springframework.web.client.RestOperations;
 import org.springframework.web.client.RestTemplate;
 
-import java.net.URI;
-
 /**
  * 钉钉智能人事相关API
  *
@@ -41,8 +39,7 @@ public class DingHrmClient extends DingClient {
      * <a href="https://open.dingtalk.com/document/orgapp/obtain-enterprise-position-information">获取企业职位列表</a>
      */
     public PageResponse<PositionVO> queryPositions(String apiSecret, PageQueryParams queryParams, PositionsQueryPayload payload) {
-        URI uri = buildUri(DEFAULT_API_URL, String.format("%s/hrm/positions/query", VERSION), queryParams);
-        return restOperations.exchange(uri, HttpMethod.POST, new HttpEntity<>(payload, getDingHeader(apiSecret)), new ParameterizedTypeReference<PageResponse<PositionVO>>() {
+        return restOperations.exchange(buildUri(DEFAULT_API_URL, String.format("%s/hrm/positions/query", VERSION), queryParams), HttpMethod.POST, new HttpEntity<>(payload, getDingHeader(apiSecret)), new ParameterizedTypeReference<PageResponse<PositionVO>>() {
         }).getBody();
     }
 
@@ -50,8 +47,7 @@ public class DingHrmClient extends DingClient {
      * <a href="https://open.dingtalk.com/document/orgapp/obtain-enterprise-rank-information">获取企业职级列表</a>
      */
     public PageResponse<JobRankVO> queryJobRanks(String apiSecret, JobRanksQueryParams queryParams) {
-        URI uri = buildUri(DEFAULT_API_URL, String.format("%s/hrm/jobRanks", VERSION), queryParams);
-        return restOperations.exchange(uri, HttpMethod.GET, new HttpEntity<>(null, getDingHeader(apiSecret)), new ParameterizedTypeReference<PageResponse<JobRankVO>>() {
+        return restOperations.exchange(buildUri(DEFAULT_API_URL, String.format("%s/hrm/jobRanks", VERSION), queryParams), HttpMethod.GET, new HttpEntity<>(null, getDingHeader(apiSecret)), new ParameterizedTypeReference<PageResponse<JobRankVO>>() {
         }).getBody();
     }
 
@@ -59,8 +55,7 @@ public class DingHrmClient extends DingClient {
      * <a href="https://open.dingtalk.com/document/orgapp/obtain-enterprise-title-information">获取企业职务列表</a>
      */
     public PageResponse<JobVO> queryJobs(String apiSecret, QueryJobsQueryParams queryParams) {
-        URI uri = buildUri(DEFAULT_API_URL, String.format("%s/hrm/jobs", VERSION), queryParams);
-        return restOperations.exchange(uri, HttpMethod.GET, new HttpEntity<>(null, getDingHeader(apiSecret)), new ParameterizedTypeReference<PageResponse<JobVO>>() {
+        return restOperations.exchange(buildUri(DEFAULT_API_URL, String.format("%s/hrm/jobs", VERSION), queryParams), HttpMethod.GET, new HttpEntity<>(null, getDingHeader(apiSecret)), new ParameterizedTypeReference<PageResponse<JobVO>>() {
         }).getBody();
     }
 
