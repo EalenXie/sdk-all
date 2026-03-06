@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
@@ -31,12 +32,18 @@ public class SearchResponse {
         private String url;
         private String content;
         private String engine;
-        @JsonProperty("parsed_url")
-        private List<String> parsedUrl;
-        private String template;
         @JsonProperty("publishedDate")
         private String publishedDate;
+        private String template;
+        @JsonProperty("parsed_url")
+        private List<String> parsedUrl;
         private String thumbnail;
+        private String imageSrc;
+        private String priority;
+        private List<BigDecimal> position;
+        private List<String> engines;
+        private BigDecimal score;
+        private String category;
     }
 
     @Getter

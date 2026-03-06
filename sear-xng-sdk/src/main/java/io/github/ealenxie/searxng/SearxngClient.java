@@ -39,8 +39,8 @@ public class SearxngClient {
      * GET 方式搜索
      */
     public SearchResponse search(SearchRequest request) {
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(String.format("%s/search", baseUrl));
         Map<String, String> params = request.toParams();
+        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(String.format("%s/search", baseUrl));
         params.forEach(builder::queryParam);
         URI uri = builder.build().toUri();
         ResponseEntity<SearchResponse> response = restOperations.getForEntity(uri, SearchResponse.class);
